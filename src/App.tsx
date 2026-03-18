@@ -173,36 +173,42 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image — Westminster / Big Ben wide daylight panoramic */}
       <div
-        className="absolute inset-0 z-0 bg-cover bg-no-repeat"
+        className="absolute inset-0 z-0 bg-cover bg-no-repeat hero-image-enhance"
         style={{
           backgroundImage:
             'url("https://images.unsplash.com/photo-1486299267070-83823f5448dd?q=85&w=2400&auto=format&fit=crop")',
           backgroundPosition: 'center 40%',
         }}
       >
-        {/* Light overlay — reduced opacity, image stays vivid */}
+        {/* Minimal top veil for text readability — NO full-screen fog */}
         <div className="absolute inset-0 hero-overlay"></div>
+        {/* Warm sunlight diagonal — morning feel */}
         <div className="absolute inset-0 hero-warm-tint"></div>
-        <div className="absolute inset-0 hero-blue-tint"></div>
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full pt-24 pb-32">
         {/* Eyebrow */}
         <div className="animate-fade-in-up">
-          <span className="inline-block text-[11px] font-bold text-[#4A6178] uppercase tracking-[0.35em] mb-6 px-4 py-1.5 rounded-full bg-white/60 backdrop-blur-sm border border-[#5FA8FF]/20">
+          <span className="inline-block text-[11px] font-bold text-[#3A4F63] uppercase tracking-[0.35em] mb-6 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur-md border border-white/30 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
             London-Based Digital Infrastructure
           </span>
         </div>
 
-        {/* Headline */}
-        <h1 className="font-display tight-headline text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-[#1B2A3A] mb-8 animate-fade-in-up animate-delay-100 uppercase">
+        {/* Headline — text-shadow for readability on vivid image */}
+        <h1
+          className="font-display tight-headline text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-[#0F1D2B] mb-8 animate-fade-in-up animate-delay-100 uppercase"
+          style={{ textShadow: '0 2px 20px rgba(255,255,255,0.60), 0 1px 4px rgba(255,255,255,0.40)' }}
+        >
           BUILD.{' '}
-          <span className="text-gradient-ombre">AUTOMATE.</span>{' '}
+          <span className="text-gradient-ombre" style={{ filter: 'drop-shadow(0 2px 12px rgba(255,255,255,0.35))' }}>AUTOMATE.</span>{' '}
           SCALE.
         </h1>
 
         {/* Subheadline */}
-        <p className="text-lg md:text-xl text-[#4A6178] max-w-2xl mx-auto font-medium leading-relaxed mb-12 animate-fade-in-up animate-delay-200">
+        <p
+          className="text-lg md:text-xl text-[#2C3E50] max-w-2xl mx-auto font-semibold leading-relaxed mb-12 animate-fade-in-up animate-delay-200"
+          style={{ textShadow: '0 1px 12px rgba(255,255,255,0.50)' }}
+        >
           Institutional-grade digital infrastructure and automation solutions for modern enterprises.
         </p>
 
@@ -217,15 +223,15 @@ const Hero = () => {
           </button>
           <button
             onClick={() => scrollToSection('services')}
-            className="btn-secondary px-9 py-4 rounded-lg text-[13px] uppercase tracking-[0.15em]"
+            className="btn-secondary px-9 py-4 rounded-lg text-[13px] uppercase tracking-[0.15em] shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
           >
             View Services
           </button>
         </div>
       </div>
 
-      {/* Bottom gradient fade into page bg */}
-      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-[#F5F7FB] via-[#F5F7FB]/80 to-transparent pointer-events-none"></div>
+      {/* Short bottom fade — just enough to blend into page bg, NOT a fog wall */}
+      <div className="absolute bottom-0 left-0 w-full h-28 bg-gradient-to-t from-[#F5F7FB] to-transparent pointer-events-none"></div>
     </section>
   );
 };

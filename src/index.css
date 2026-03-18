@@ -28,25 +28,35 @@ html {
 }
 
 /* ── Hero Overlays ─────────────────────────── */
-/* Much lighter wash — image stays vivid and visible */
+/* Minimal top-only veil for text readability — NO full-screen fog */
 .hero-overlay {
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.06) 0%,
-    rgba(255, 255, 255, 0.10) 35%,
-    rgba(245, 247, 251, 0.55) 78%,
-    rgba(245, 247, 251, 0.92) 100%
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.04) 30%,
+    transparent 55%,
+    transparent 100%
   );
 }
 
-/* Subtle warm sunlight */
+/* Warm sunlight feel — diagonal from top-left like morning light */
 .hero-warm-tint {
-  background: rgba(255, 220, 180, 0.06);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 225, 185, 0.12) 0%,
+    rgba(255, 220, 170, 0.06) 35%,
+    transparent 65%
+  );
 }
 
-/* Soft sky-blue atmospheric tint */
+/* REMOVED — no blue tint, it was desaturating the sky */
 .hero-blue-tint {
-  background: rgba(95, 168, 255, 0.06);
+  background: transparent;
+}
+
+/* Image clarity boost */
+.hero-image-enhance {
+  filter: contrast(1.08) saturate(1.10) brightness(1.02);
 }
 
 /* ── Typography ────────────────────────────── */
@@ -69,12 +79,13 @@ html {
 
 /* ── Buttons ───────────────────────────────── */
 .btn-primary {
-  background: linear-gradient(135deg, #5FA8FF 0%, #7B8FFF 50%, #8B5CF6 100%);
+  background: linear-gradient(135deg, #5FA8FF 0%, #6F7FFF 45%, #8B5CF6 100%);
   box-shadow:
-    0 4px 18px rgba(95, 168, 255, 0.35),
-    0 2px 6px rgba(139, 92, 246, 0.15);
+    0 6px 24px rgba(95, 168, 255, 0.40),
+    0 2px 8px rgba(139, 92, 246, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.20);
   color: #fff;
   font-weight: 700;
   cursor: pointer;
@@ -86,9 +97,10 @@ html {
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow:
-    0 8px 32px rgba(95, 168, 255, 0.45),
-    0 4px 12px rgba(139, 92, 246, 0.25);
-  filter: brightness(1.06);
+    0 10px 36px rgba(95, 168, 255, 0.50),
+    0 4px 14px rgba(139, 92, 246, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.30);
+  filter: brightness(1.08);
 }
 
 .btn-secondary {
