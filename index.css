@@ -1,0 +1,249 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+  --color-institutional-navy: #1B2A3A;
+  --color-accent-blue: #5FA8FF;
+  --color-accent-violet: #8B5CF6;
+  --color-accent-mid: #A5BFFF;
+  --color-accent-warm: #FFD9A8;
+  --color-bg-page: #F5F7FB;
+  --color-bg-alt: #EDF2FA;
+  --color-subtext: #4A6178;
+}
+
+/* ── Base ──────────────────────────────────── */
+body {
+  background-color: #F5F7FB;
+  color: #1B2A3A;
+  font-family: var(--font-sans);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Hero Overlays ─────────────────────────── */
+/* Minimal top-only veil for text readability — NO full-screen fog */
+.hero-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.04) 30%,
+    transparent 55%,
+    transparent 100%
+  );
+}
+
+/* Warm sunlight feel — diagonal from top-left like morning light */
+.hero-warm-tint {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 225, 185, 0.12) 0%,
+    rgba(255, 220, 170, 0.06) 35%,
+    transparent 65%
+  );
+}
+
+/* REMOVED — no blue tint, it was desaturating the sky */
+.hero-blue-tint {
+  background: transparent;
+}
+
+/* Image clarity boost */
+.hero-image-enhance {
+  filter: contrast(1.08) saturate(1.10) brightness(1.02);
+}
+
+/* ── Typography ────────────────────────────── */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Vivid blue→violet ombre for AUTOMATE headline */
+.text-gradient-ombre {
+  background: linear-gradient(135deg, #5FA8FF 0%, #7B9DFF 40%, #8B5CF6 75%, #A78BFA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tight-headline {
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+/* ── Buttons ───────────────────────────────── */
+.btn-primary {
+  background: linear-gradient(135deg, #5FA8FF 0%, #6F7FFF 45%, #8B5CF6 100%);
+  box-shadow:
+    0 6px 24px rgba(95, 168, 255, 0.40),
+    0 2px 8px rgba(139, 92, 246, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 36px rgba(95, 168, 255, 0.50),
+    0 4px 14px rgba(139, 92, 246, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.30);
+  filter: brightness(1.08);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.90);
+  border: 1px solid rgba(95, 168, 255, 0.22);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  color: #1B2A3A;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+
+.btn-secondary:hover {
+  background: #EDF2FA;
+  border-color: #5FA8FF;
+  box-shadow: 0 4px 16px rgba(95, 168, 255, 0.18);
+}
+
+/* ── Cards ─────────────────────────────────── */
+.institutional-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(95, 168, 255, 0.10);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 8px 28px rgba(95, 168, 255, 0.06);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 12px;
+}
+
+.institutional-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 40px rgba(95, 168, 255, 0.16),
+    0 4px 14px rgba(139, 92, 246, 0.08);
+  border-color: rgba(95, 168, 255, 0.28);
+}
+
+/* ── Platform cards with vivid blue→violet top accent ── */
+.platform-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(95, 168, 255, 0.12);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    0 12px 36px rgba(95, 168, 255, 0.07);
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.platform-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #5FA8FF 0%, #7B8FFF 50%, #8B5CF6 100%);
+  opacity: 0.7;
+  transition: opacity 0.35s ease;
+}
+
+.platform-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 18px 52px rgba(95, 168, 255, 0.20),
+    0 6px 18px rgba(139, 92, 246, 0.08);
+  border-color: rgba(95, 168, 255, 0.30);
+}
+
+.platform-card:hover::before {
+  opacity: 1;
+}
+
+/* ── Section Divider ───────────────────────── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(95, 168, 255, 0.20), rgba(139, 92, 246, 0.10), transparent);
+}
+
+/* ── Subtle page-level texture ─────────────── */
+.page-texture {
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(95, 168, 255, 0.07) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(255, 220, 180, 0.03) 0%, transparent 50%);
+}
+
+/* ── Legal pages ───────────────────────────── */
+.legal-content h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1B2A3A;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.legal-content p {
+  color: #4A6178;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.legal-content ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  color: #4A6178;
+  margin-bottom: 1rem;
+}
+
+.legal-content ul li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* ── Animations ────────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+.animate-delay-400 { animation-delay: 0.4s; }
+.animate-delay-500 { animation-delay: 0.5s; }
+.animate-delay-600 { animation-delay: 0.6s; }
