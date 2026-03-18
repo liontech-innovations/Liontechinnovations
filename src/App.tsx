@@ -86,7 +86,7 @@ const Navbar = () => {
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/92 backdrop-blur-xl border-b border-[#8BB8FF]/10 py-3 shadow-[0_2px_20px_rgba(139,184,255,0.08)]'
+          ? 'bg-white/92 backdrop-blur-xl border-b border-[#5FA8FF]/10 py-3 shadow-[0_2px_20px_rgba(95,168,255,0.08)]'
           : 'bg-transparent py-5'
       }`}
     >
@@ -99,7 +99,7 @@ const Navbar = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <Building2
-              className="text-[#8BB8FF] group-hover:scale-105 transition-transform"
+              className="text-[#5FA8FF] group-hover:scale-105 transition-transform"
               size={26}
             />
             <span className="text-[#1B2A3A] font-bold text-xl tracking-wide">
@@ -114,7 +114,7 @@ const Navbar = () => {
               <button
                 key={link.id}
                 onClick={() => handleNav(link.id)}
-                className="text-[#5B7088] hover:text-[#1B2A3A] transition-colors text-[13px] uppercase tracking-[0.18em] font-semibold bg-transparent border-none cursor-pointer"
+                className="text-[#4A6178] hover:text-[#1B2A3A] transition-colors text-[13px] uppercase tracking-[0.18em] font-semibold bg-transparent border-none cursor-pointer"
               >
                 {link.label}
               </button>
@@ -139,13 +139,13 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white/98 backdrop-blur-xl absolute top-full left-0 w-full border-t border-[#8BB8FF]/10 shadow-xl">
+        <div className="md:hidden bg-white/98 backdrop-blur-xl absolute top-full left-0 w-full border-t border-[#5FA8FF]/10 shadow-xl">
           <div className="px-5 pt-3 pb-6 space-y-1">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => handleNav(link.id)}
-                className="block w-full text-left px-3 py-3.5 text-[#1B2A3A] hover:bg-[#EEF4FA] rounded-lg text-[13px] uppercase tracking-[0.15em] font-semibold bg-transparent border-none cursor-pointer"
+                className="block w-full text-left px-3 py-3.5 text-[#1B2A3A] hover:bg-[#EDF2FA] rounded-lg text-[13px] uppercase tracking-[0.15em] font-semibold bg-transparent border-none cursor-pointer"
               >
                 {link.label}
               </button>
@@ -166,21 +166,21 @@ const Navbar = () => {
 };
 
 /* ─────────────────────────────────────────────
-   HERO — Tower Bridge + Gherkin + Financial District
-   Using the exact Unsplash image with bright daylight
+   HERO — Big Ben + Thames + Westminster — wide panoramic, mobile-safe
    ───────────────────────────────────────────── */
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image — Crisp daylight London financial district */}
+      {/* Background Image — Westminster / Big Ben wide daylight panoramic */}
       <div
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 z-0 bg-cover bg-no-repeat"
         style={{
           backgroundImage:
-            'url("https://images.unsplash.com/photo-1533929736458-ca588d08c8be?q=85&w=2400&auto=format&fit=crop")',
+            'url("https://images.unsplash.com/photo-1486299267070-83823f5448dd?q=85&w=2400&auto=format&fit=crop")',
+          backgroundPosition: 'center 40%',
         }}
       >
-        {/* Light atmospheric overlay — NOT gloomy, keeps image visible */}
+        {/* Light overlay — reduced opacity, image stays vivid */}
         <div className="absolute inset-0 hero-overlay"></div>
         <div className="absolute inset-0 hero-warm-tint"></div>
         <div className="absolute inset-0 hero-blue-tint"></div>
@@ -189,7 +189,7 @@ const Hero = () => {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full pt-24 pb-32">
         {/* Eyebrow */}
         <div className="animate-fade-in-up">
-          <span className="inline-block text-[11px] font-bold text-[#5B7088] uppercase tracking-[0.35em] mb-6 px-4 py-1.5 rounded-full bg-white/50 backdrop-blur-sm border border-[#8BB8FF]/15">
+          <span className="inline-block text-[11px] font-bold text-[#4A6178] uppercase tracking-[0.35em] mb-6 px-4 py-1.5 rounded-full bg-white/60 backdrop-blur-sm border border-[#5FA8FF]/20">
             London-Based Digital Infrastructure
           </span>
         </div>
@@ -202,7 +202,7 @@ const Hero = () => {
         </h1>
 
         {/* Subheadline */}
-        <p className="text-lg md:text-xl text-[#5B7088] max-w-2xl mx-auto font-medium leading-relaxed mb-12 animate-fade-in-up animate-delay-200">
+        <p className="text-lg md:text-xl text-[#4A6178] max-w-2xl mx-auto font-medium leading-relaxed mb-12 animate-fade-in-up animate-delay-200">
           Institutional-grade digital infrastructure and automation solutions for modern enterprises.
         </p>
 
@@ -278,13 +278,13 @@ const Services = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-16">
-          <span className="text-[11px] font-bold text-[#8BB8FF] uppercase tracking-[0.35em] mb-3 block">
+          <span className="text-[11px] font-bold text-[#5FA8FF] uppercase tracking-[0.35em] mb-3 block">
             Our Capabilities
           </span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-[#1B2A3A] tight-headline mb-5">
             Enterprise-Grade Solutions
           </h2>
-          <p className="text-[#5B7088] text-lg max-w-xl leading-relaxed">
+          <p className="text-[#4A6178] text-lg max-w-xl leading-relaxed">
             We architect and deploy robust digital systems that solve complex business challenges and drive operational efficiency.
           </p>
         </div>
@@ -296,13 +296,13 @@ const Services = () => {
               key={index}
               className="institutional-card p-8 group"
             >
-              <div className="w-11 h-11 rounded-lg bg-[#EEF4FA] flex items-center justify-center text-[#8BB8FF] mb-6 group-hover:bg-[#8BB8FF] group-hover:text-white transition-all duration-300">
+              <div className="w-11 h-11 rounded-lg bg-[#EDF2FA] flex items-center justify-center text-[#5FA8FF] mb-6 group-hover:bg-gradient-to-br group-hover:from-[#5FA8FF] group-hover:to-[#8B5CF6] group-hover:text-white transition-all duration-300">
                 {service.icon}
               </div>
               <h3 className="text-lg font-bold text-[#1B2A3A] mb-3 tracking-tight">
                 {service.title}
               </h3>
-              <p className="text-[#5B7088] leading-relaxed text-[15px]">
+              <p className="text-[#4A6178] leading-relaxed text-[15px]">
                 {service.description}
               </p>
             </div>
@@ -342,20 +342,20 @@ const Platforms = () => {
   ];
 
   return (
-    <section id="platforms" className="py-28 bg-[#EEF4FA] relative overflow-hidden">
+    <section id="platforms" className="py-28 bg-[#EDF2FA] relative overflow-hidden">
       {/* Subtle decorative gradient blobs */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[#8BB8FF]/5 to-transparent rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-[#C9DDFE]/8 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[#5FA8FF]/8 to-transparent rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-[#8B5CF6]/6 to-transparent rounded-full blur-3xl"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="text-[11px] font-bold text-[#8BB8FF] uppercase tracking-[0.35em] mb-3 block">
+          <span className="text-[11px] font-bold text-[#5FA8FF] uppercase tracking-[0.35em] mb-3 block">
             Deployed Systems
           </span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-[#1B2A3A] tight-headline mb-5">
             Live Production Platforms
           </h2>
-          <p className="text-[#5B7088] text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="text-[#4A6178] text-lg max-w-xl mx-auto leading-relaxed">
             Real-world infrastructure powering critical business operations across the UK.
           </p>
         </div>
@@ -371,23 +371,23 @@ const Platforms = () => {
             >
               {/* Tag + Status */}
               <div className="flex items-center justify-between mb-5">
-                <span className="text-[10px] font-bold text-[#8BB8FF] uppercase tracking-[0.2em] bg-[#EEF4FA] px-3 py-1 rounded-full">
+                <span className="text-[10px] font-bold text-[#5FA8FF] uppercase tracking-[0.2em] bg-[#EDF2FA] px-3 py-1 rounded-full">
                   {project.tag}
                 </span>
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[10px] font-semibold text-[#5B7088]/60 uppercase tracking-widest">Live</span>
+                  <span className="text-[10px] font-semibold text-[#4A6178]/60 uppercase tracking-widest">Live</span>
                   <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
                 </div>
               </div>
 
-              <h3 className="text-xl font-bold text-[#1B2A3A] mb-3 tracking-tight group-hover:text-[#8BB8FF] transition-colors">
+              <h3 className="text-xl font-bold text-[#1B2A3A] mb-3 tracking-tight group-hover:text-[#5FA8FF] transition-colors">
                 {project.title}
               </h3>
-              <p className="text-[#5B7088] text-[15px] leading-relaxed mb-8 flex-grow">
+              <p className="text-[#4A6178] text-[15px] leading-relaxed mb-8 flex-grow">
                 {project.description}
               </p>
 
-              <div className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.15em] text-[#1B2A3A] group-hover:text-[#8BB8FF] transition-colors">
+              <div className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.15em] text-[#1B2A3A] group-hover:text-[#5FA8FF] transition-colors">
                 Visit Platform
                 <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </div>
@@ -416,13 +416,13 @@ const Company = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left — copy */}
           <div>
-            <span className="text-[11px] font-bold text-[#8BB8FF] uppercase tracking-[0.35em] mb-3 block">
+            <span className="text-[11px] font-bold text-[#5FA8FF] uppercase tracking-[0.35em] mb-3 block">
               Corporate Excellence
             </span>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-[#1B2A3A] tight-headline mb-7">
               Engineered for Serious Business
             </h2>
-            <p className="text-[17px] text-[#5B7088] mb-8 leading-relaxed">
+            <p className="text-[17px] text-[#4A6178] mb-8 leading-relaxed">
               Lion Tech Innovations Ltd is a structured UK digital infrastructure company delivering
               high-performance systems — from websites and SaaS platforms to automation workflows and
               AI-powered business solutions — designed for organisations that demand operational
@@ -431,8 +431,8 @@ const Company = () => {
             <div className="space-y-4">
               {highlights.map((item, i) => (
                 <div key={i} className="flex items-center gap-3.5">
-                  <div className="w-6 h-6 rounded-full bg-[#EEF4FA] flex items-center justify-center flex-shrink-0">
-                    <CheckCircle2 className="text-[#8BB8FF]" size={14} />
+                  <div className="w-6 h-6 rounded-full bg-[#EDF2FA] flex items-center justify-center flex-shrink-0">
+                    <CheckCircle2 className="text-[#5FA8FF]" size={14} />
                   </div>
                   <span className="text-[#1B2A3A] font-semibold text-[15px]">{item}</span>
                 </div>
@@ -443,24 +443,24 @@ const Company = () => {
           {/* Right — stat cards */}
           <div className="grid grid-cols-2 gap-5">
             <div className="institutional-card p-7">
-              <BarChart3 className="text-[#8BB8FF] mb-5" size={28} />
+              <BarChart3 className="text-[#5FA8FF] mb-5" size={28} />
               <h3 className="text-3xl font-bold text-[#1B2A3A] mb-1.5 font-display">99.9%</h3>
-              <p className="text-[11px] font-bold text-[#5B7088] uppercase tracking-[0.18em]">Uptime Target</p>
+              <p className="text-[11px] font-bold text-[#4A6178] uppercase tracking-[0.18em]">Uptime Target</p>
             </div>
             <div className="institutional-card p-7 mt-8">
-              <Shield className="text-[#8BB8FF] mb-5" size={28} />
+              <Shield className="text-[#5FA8FF] mb-5" size={28} />
               <h3 className="text-3xl font-bold text-[#1B2A3A] mb-1.5 font-display">24/7</h3>
-              <p className="text-[11px] font-bold text-[#5B7088] uppercase tracking-[0.18em]">Monitoring</p>
+              <p className="text-[11px] font-bold text-[#4A6178] uppercase tracking-[0.18em]">Monitoring</p>
             </div>
             <div className="institutional-card p-7">
-              <Cpu className="text-[#8BB8FF] mb-5" size={28} />
+              <Cpu className="text-[#5FA8FF] mb-5" size={28} />
               <h3 className="text-3xl font-bold text-[#1B2A3A] mb-1.5 font-display">3+</h3>
-              <p className="text-[11px] font-bold text-[#5B7088] uppercase tracking-[0.18em]">Live Platforms</p>
+              <p className="text-[11px] font-bold text-[#4A6178] uppercase tracking-[0.18em]">Live Platforms</p>
             </div>
             <div className="institutional-card p-7 mt-8">
-              <Globe className="text-[#8BB8FF] mb-5" size={28} />
+              <Globe className="text-[#5FA8FF] mb-5" size={28} />
               <h3 className="text-3xl font-bold text-[#1B2A3A] mb-1.5 font-display">UK</h3>
-              <p className="text-[11px] font-bold text-[#5B7088] uppercase tracking-[0.18em]">Registered Entity</p>
+              <p className="text-[11px] font-bold text-[#4A6178] uppercase tracking-[0.18em]">Registered Entity</p>
             </div>
           </div>
         </div>
@@ -474,18 +474,18 @@ const Company = () => {
    ───────────────────────────────────────────── */
 const Contact = () => {
   return (
-    <section id="contact" className="py-28 bg-[#EEF4FA] relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b from-[#8BB8FF]/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+    <section id="contact" className="py-28 bg-[#EDF2FA] relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b from-[#5FA8FF]/8 via-[#8B5CF6]/4 to-transparent rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <span className="text-[11px] font-bold text-[#8BB8FF] uppercase tracking-[0.35em] mb-3 block">
+          <span className="text-[11px] font-bold text-[#5FA8FF] uppercase tracking-[0.35em] mb-3 block">
             Get in Touch
           </span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-[#1B2A3A] tight-headline mb-5">
             Ready to Build Something Serious?
           </h2>
-          <p className="text-[#5B7088] text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="text-[#4A6178] text-lg max-w-xl mx-auto leading-relaxed">
             Schedule a consultation to discuss your digital infrastructure requirements with our technical directors.
           </p>
         </div>
@@ -496,29 +496,29 @@ const Contact = () => {
             href="mailto:contact@liontechinnovations.co.uk"
             className="institutional-card p-7 text-center group no-underline cursor-pointer"
           >
-            <div className="w-12 h-12 rounded-xl bg-[#EEF4FA] flex items-center justify-center mx-auto mb-4 group-hover:bg-[#8BB8FF] group-hover:text-white text-[#8BB8FF] transition-all duration-300">
+            <div className="w-12 h-12 rounded-xl bg-[#EDF2FA] flex items-center justify-center mx-auto mb-4 group-hover:bg-gradient-to-br group-hover:from-[#5FA8FF] group-hover:to-[#8B5CF6] group-hover:text-white text-[#5FA8FF] transition-all duration-300">
               <Mail size={22} />
             </div>
             <p className="text-[13px] font-bold text-[#1B2A3A] mb-1">Email</p>
-            <p className="text-[14px] text-[#5B7088]">contact@liontechinnovations.co.uk</p>
+            <p className="text-[14px] text-[#4A6178]">contact@liontechinnovations.co.uk</p>
           </a>
 
           {/* Phone */}
           <div className="institutional-card p-7 text-center">
-            <div className="w-12 h-12 rounded-xl bg-[#EEF4FA] flex items-center justify-center mx-auto mb-4 text-[#8BB8FF]">
+            <div className="w-12 h-12 rounded-xl bg-[#EDF2FA] flex items-center justify-center mx-auto mb-4 text-[#5FA8FF]">
               <Phone size={22} />
             </div>
             <p className="text-[13px] font-bold text-[#1B2A3A] mb-1">Phone</p>
-            <p className="text-[14px] text-[#5B7088]">+44 (0) 20 1234 5678</p>
+            <p className="text-[14px] text-[#4A6178]">+44 (0) 20 1234 5678</p>
           </div>
 
           {/* Location */}
           <div className="institutional-card p-7 text-center">
-            <div className="w-12 h-12 rounded-xl bg-[#EEF4FA] flex items-center justify-center mx-auto mb-4 text-[#8BB8FF]">
+            <div className="w-12 h-12 rounded-xl bg-[#EDF2FA] flex items-center justify-center mx-auto mb-4 text-[#5FA8FF]">
               <MapPin size={22} />
             </div>
             <p className="text-[13px] font-bold text-[#1B2A3A] mb-1">Location</p>
-            <p className="text-[14px] text-[#5B7088]">London, United Kingdom</p>
+            <p className="text-[14px] text-[#4A6178]">London, United Kingdom</p>
           </div>
         </div>
 
@@ -541,16 +541,16 @@ const Contact = () => {
    ───────────────────────────────────────────── */
 const Footer = () => {
   return (
-    <footer className="bg-white pt-20 pb-8 border-t border-[#8BB8FF]/10">
+    <footer className="bg-white pt-20 pb-8 border-t border-[#5FA8FF]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div>
             <a href="#/" className="flex items-center gap-2 mb-5 no-underline">
-              <Building2 className="text-[#8BB8FF]" size={24} />
+              <Building2 className="text-[#5FA8FF]" size={24} />
               <span className="text-[#1B2A3A] font-bold text-lg tracking-wide">LION TECH</span>
             </a>
-            <p className="text-[#5B7088] text-sm leading-relaxed max-w-xs">
+            <p className="text-[#4A6178] text-sm leading-relaxed max-w-xs">
               Institutional-grade digital infrastructure, automation, and AI solutions for modern enterprises.
             </p>
           </div>
@@ -563,7 +563,7 @@ const Footer = () => {
                 <li key={item}>
                   <button
                     onClick={() => scrollToSection('services')}
-                    className="text-[#5B7088] hover:text-[#1B2A3A] transition-colors text-sm font-medium bg-transparent border-none cursor-pointer p-0"
+                    className="text-[#4A6178] hover:text-[#1B2A3A] transition-colors text-sm font-medium bg-transparent border-none cursor-pointer p-0"
                   >
                     {item}
                   </button>
@@ -577,17 +577,17 @@ const Footer = () => {
             <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] mb-5 text-[#1B2A3A]">Platforms</h4>
             <ul className="space-y-3">
               <li>
-                <a href="https://clearvisas.co.uk" target="_blank" rel="noopener noreferrer" className="text-[#5B7088] hover:text-[#1B2A3A] transition-colors text-sm font-medium no-underline inline-flex items-center gap-1.5">
+                <a href="https://clearvisas.co.uk" target="_blank" rel="noopener noreferrer" className="text-[#4A6178] hover:text-[#1B2A3A] transition-colors text-sm font-medium no-underline inline-flex items-center gap-1.5">
                   ClearVisa UK <ExternalLink size={11} />
                 </a>
               </li>
               <li>
-                <a href="https://www.calcfee.com/" target="_blank" rel="noopener noreferrer" className="text-[#5B7088] hover:text-[#1B2A3A] transition-colors text-sm font-medium no-underline inline-flex items-center gap-1.5">
+                <a href="https://www.calcfee.com/" target="_blank" rel="noopener noreferrer" className="text-[#4A6178] hover:text-[#1B2A3A] transition-colors text-sm font-medium no-underline inline-flex items-center gap-1.5">
                   CalcFee <ExternalLink size={11} />
                 </a>
               </li>
               <li>
-                <a href="https://bundlebase.com" target="_blank" rel="noopener noreferrer" className="text-[#5B7088] hover:text-[#1B2A3A] transition-colors text-sm font-medium no-underline inline-flex items-center gap-1.5">
+                <a href="https://bundlebase.com" target="_blank" rel="noopener noreferrer" className="text-[#4A6178] hover:text-[#1B2A3A] transition-colors text-sm font-medium no-underline inline-flex items-center gap-1.5">
                   BundleBase <ExternalLink size={11} />
                 </a>
               </li>
@@ -598,16 +598,16 @@ const Footer = () => {
           <div>
             <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] mb-5 text-[#1B2A3A]">Contact</h4>
             <ul className="space-y-3.5">
-              <li className="flex items-center gap-3 text-[#5B7088] text-sm">
-                <Mail size={15} className="text-[#8BB8FF] flex-shrink-0" />
+              <li className="flex items-center gap-3 text-[#4A6178] text-sm">
+                <Mail size={15} className="text-[#5FA8FF] flex-shrink-0" />
                 <span>contact@liontechinnovations.co.uk</span>
               </li>
-              <li className="flex items-center gap-3 text-[#5B7088] text-sm">
-                <Phone size={15} className="text-[#8BB8FF] flex-shrink-0" />
+              <li className="flex items-center gap-3 text-[#4A6178] text-sm">
+                <Phone size={15} className="text-[#5FA8FF] flex-shrink-0" />
                 <span>+44 (0) 20 1234 5678</span>
               </li>
-              <li className="flex items-center gap-3 text-[#5B7088] text-sm">
-                <MapPin size={15} className="text-[#8BB8FF] flex-shrink-0" />
+              <li className="flex items-center gap-3 text-[#4A6178] text-sm">
+                <MapPin size={15} className="text-[#5FA8FF] flex-shrink-0" />
                 <span>London, United Kingdom</span>
               </li>
             </ul>
@@ -615,19 +615,19 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-[#8BB8FF]/10 pt-7 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[#5B7088]/60 text-[11px] uppercase tracking-[0.15em] font-semibold">
+        <div className="border-t border-[#5FA8FF]/10 pt-7 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-[#4A6178]/60 text-[11px] uppercase tracking-[0.15em] font-semibold">
             &copy; {new Date().getFullYear()} Lion Tech Innovations Ltd. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <a href="#/privacy-policy" className="text-[#5B7088]/60 hover:text-[#1B2A3A] text-[11px] uppercase tracking-[0.15em] font-semibold no-underline transition-colors">
+            <a href="#/privacy-policy" className="text-[#4A6178]/60 hover:text-[#1B2A3A] text-[11px] uppercase tracking-[0.15em] font-semibold no-underline transition-colors">
               Privacy Policy
             </a>
-            <a href="#/terms-and-conditions" className="text-[#5B7088]/60 hover:text-[#1B2A3A] text-[11px] uppercase tracking-[0.15em] font-semibold no-underline transition-colors">
+            <a href="#/terms-and-conditions" className="text-[#4A6178]/60 hover:text-[#1B2A3A] text-[11px] uppercase tracking-[0.15em] font-semibold no-underline transition-colors">
               Terms & Conditions
             </a>
           </div>
-          <p className="text-[#5B7088]/60 text-[11px] uppercase tracking-[0.15em] font-semibold">
+          <p className="text-[#4A6178]/60 text-[11px] uppercase tracking-[0.15em] font-semibold">
             Company registered in England & Wales · No. 17068390
           </p>
         </div>
@@ -646,11 +646,11 @@ const PrivacyPolicy = () => {
     <div className="min-h-screen bg-[#F5F7FB]">
       <Navbar />
       <div className="pt-32 pb-20 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <a href="#/" className="text-[#8BB8FF] text-sm font-semibold mb-6 inline-flex items-center gap-1.5 no-underline hover:underline">
+        <a href="#/" className="text-[#5FA8FF] text-sm font-semibold mb-6 inline-flex items-center gap-1.5 no-underline hover:underline">
           &larr; Back to Home
         </a>
         <h1 className="font-display text-4xl font-bold text-[#1B2A3A] mb-3 tight-headline">Privacy Policy</h1>
-        <p className="text-[#5B7088] text-sm mb-10">Last updated: March 2026</p>
+        <p className="text-[#4A6178] text-sm mb-10">Last updated: March 2026</p>
 
         <div className="legal-content">
           <h2>1. Introduction</h2>
@@ -735,11 +735,11 @@ const TermsAndConditions = () => {
     <div className="min-h-screen bg-[#F5F7FB]">
       <Navbar />
       <div className="pt-32 pb-20 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <a href="#/" className="text-[#8BB8FF] text-sm font-semibold mb-6 inline-flex items-center gap-1.5 no-underline hover:underline">
+        <a href="#/" className="text-[#5FA8FF] text-sm font-semibold mb-6 inline-flex items-center gap-1.5 no-underline hover:underline">
           &larr; Back to Home
         </a>
         <h1 className="font-display text-4xl font-bold text-[#1B2A3A] mb-3 tight-headline">Terms & Conditions</h1>
-        <p className="text-[#5B7088] text-sm mb-10">Last updated: March 2026</p>
+        <p className="text-[#4A6178] text-sm mb-10">Last updated: March 2026</p>
 
         <div className="legal-content">
           <h2>1. Introduction</h2>
@@ -842,7 +842,7 @@ export default function App() {
   const route = useHashRoute();
 
   return (
-    <div className="selection:bg-[#8BB8FF]/30 selection:text-[#1B2A3A]">
+    <div className="selection:bg-[#5FA8FF]/30 selection:text-[#1B2A3A]">
       {route === '/privacy-policy' && <PrivacyPolicy />}
       {route === '/terms-and-conditions' && <TermsAndConditions />}
       {(route === '/' || (route !== '/privacy-policy' && route !== '/terms-and-conditions')) && <HomePage />}
