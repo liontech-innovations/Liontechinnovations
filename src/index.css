@@ -5,12 +5,12 @@
   --font-display: "Playfair Display", Georgia, serif;
   --color-institutional-navy: #1B2A3A;
   --color-accent-blue: #5FA8FF;
-  --color-accent-violet: #8B5CF6;
+  --color-accent-violet: #7C5CFF;
   --color-accent-mid: #A5BFFF;
   --color-accent-warm: #FFD9A8;
   --color-bg-page: #F5F7FB;
   --color-bg-alt: #EDF2FA;
-  --color-subtext: #4A6178;
+  --color-subtext: #455A6E;
 }
 
 /* ── Base ──────────────────────────────────── */
@@ -28,13 +28,13 @@ html {
 }
 
 /* ── Hero Overlays ─────────────────────────── */
-/* Minimal top-only veil for text readability — NO full-screen fog */
+/* Near-invisible top veil — just enough for headline readability */
 .hero-overlay {
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(255, 255, 255, 0.04) 30%,
-    transparent 55%,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.03) 25%,
+    transparent 50%,
     transparent 100%
   );
 }
@@ -49,14 +49,23 @@ html {
   );
 }
 
-/* REMOVED — no blue tint, it was desaturating the sky */
+/* Cinematic vignette — edges slightly darker, center stays bright */
+.hero-vignette {
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 45%,
+    transparent 50%,
+    rgba(15, 29, 43, 0.06) 100%
+  );
+}
+
+/* REMOVED — blue tint was desaturating the sky */
 .hero-blue-tint {
   background: transparent;
 }
 
 /* Image clarity boost */
 .hero-image-enhance {
-  filter: contrast(1.08) saturate(1.10) brightness(1.02);
+  filter: contrast(1.08) saturate(1.12) brightness(1.02);
 }
 
 /* ── Typography ────────────────────────────── */
@@ -64,28 +73,28 @@ html {
   font-family: var(--font-display);
 }
 
-/* Vivid blue→violet ombre for AUTOMATE headline */
+/* Vivid blue→violet ombre — sharper, higher contrast stops */
 .text-gradient-ombre {
-  background: linear-gradient(135deg, #5FA8FF 0%, #7B9DFF 40%, #8B5CF6 75%, #A78BFA 100%);
+  background: linear-gradient(135deg, #5FA8FF 0%, #6E8CFF 35%, #7C5CFF 65%, #9B7AFF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .tight-headline {
-  letter-spacing: -0.03em;
-  line-height: 1.05;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
 }
 
 /* ── Buttons ───────────────────────────────── */
 .btn-primary {
-  background: linear-gradient(135deg, #5FA8FF 0%, #6F7FFF 45%, #8B5CF6 100%);
+  background: linear-gradient(135deg, #5FA8FF 0%, #6E78FF 40%, #7C5CFF 100%);
   box-shadow:
-    0 6px 24px rgba(95, 168, 255, 0.40),
-    0 2px 8px rgba(139, 92, 246, 0.20),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    0 10px 30px rgba(124, 92, 255, 0.25),
+    0 4px 10px rgba(95, 168, 255, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(255, 255, 255, 0.20);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   color: #fff;
   font-weight: 700;
   cursor: pointer;
@@ -97,40 +106,41 @@ html {
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow:
-    0 10px 36px rgba(95, 168, 255, 0.50),
-    0 4px 14px rgba(139, 92, 246, 0.30),
-    inset 0 1px 0 rgba(255, 255, 255, 0.30);
-  filter: brightness(1.08);
+    0 14px 40px rgba(124, 92, 255, 0.35),
+    0 6px 16px rgba(95, 168, 255, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  filter: brightness(1.10);
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.90);
-  border: 1px solid rgba(95, 168, 255, 0.22);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(27, 42, 58, 0.10);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   color: #1B2A3A;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
   background: #EDF2FA;
-  border-color: #5FA8FF;
-  box-shadow: 0 4px 16px rgba(95, 168, 255, 0.18);
+  border-color: rgba(95, 168, 255, 0.40);
+  box-shadow: 0 6px 20px rgba(95, 168, 255, 0.15);
+  transform: translateY(-1px);
 }
 
 /* ── Cards ─────────────────────────────────── */
 .institutional-card {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(95, 168, 255, 0.10);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(27, 42, 58, 0.06);
   box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.04),
-    0 8px 28px rgba(95, 168, 255, 0.06);
+    0 1px 2px rgba(0, 0, 0, 0.03),
+    0 8px 25px rgba(0, 0, 0, 0.05);
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 12px;
 }
@@ -138,19 +148,19 @@ html {
 .institutional-card:hover {
   transform: translateY(-4px);
   box-shadow:
-    0 12px 40px rgba(95, 168, 255, 0.16),
-    0 4px 14px rgba(139, 92, 246, 0.08);
-  border-color: rgba(95, 168, 255, 0.28);
+    0 12px 35px rgba(0, 0, 0, 0.08),
+    0 4px 14px rgba(124, 92, 255, 0.06);
+  border-color: rgba(95, 168, 255, 0.22);
 }
 
 /* ── Platform cards with vivid blue→violet top accent ── */
 .platform-card {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(95, 168, 255, 0.12);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(27, 42, 58, 0.07);
   box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.04),
-    0 12px 36px rgba(95, 168, 255, 0.07);
+    0 2px 6px rgba(0, 0, 0, 0.04),
+    0 12px 36px rgba(0, 0, 0, 0.05);
   border-radius: 14px;
   position: relative;
   overflow: hidden;
@@ -164,17 +174,17 @@ html {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #5FA8FF 0%, #7B8FFF 50%, #8B5CF6 100%);
-  opacity: 0.7;
+  background: linear-gradient(90deg, #5FA8FF 0%, #6E78FF 50%, #7C5CFF 100%);
+  opacity: 0.75;
   transition: opacity 0.35s ease;
 }
 
 .platform-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   box-shadow:
-    0 18px 52px rgba(95, 168, 255, 0.20),
-    0 6px 18px rgba(139, 92, 246, 0.08);
-  border-color: rgba(95, 168, 255, 0.30);
+    0 18px 48px rgba(0, 0, 0, 0.09),
+    0 6px 18px rgba(124, 92, 255, 0.08);
+  border-color: rgba(95, 168, 255, 0.25);
 }
 
 .platform-card:hover::before {
@@ -184,15 +194,24 @@ html {
 /* ── Section Divider ───────────────────────── */
 .section-divider {
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(95, 168, 255, 0.20), rgba(139, 92, 246, 0.10), transparent);
+  background: linear-gradient(to right, transparent, rgba(95, 168, 255, 0.16), rgba(124, 92, 255, 0.08), transparent);
 }
 
 /* ── Subtle page-level texture ─────────────── */
 .page-texture {
   background-image:
-    radial-gradient(ellipse at 20% 50%, rgba(95, 168, 255, 0.07) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 60% 80%, rgba(255, 220, 180, 0.03) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 50%, rgba(95, 168, 255, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(124, 92, 255, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(255, 220, 180, 0.025) 0%, transparent 50%);
+}
+
+/* ── Section gradient backgrounds for depth ── */
+.bg-section-light {
+  background: linear-gradient(180deg, #F5F7FB 0%, #EFF3FA 100%);
+}
+
+.bg-section-alt {
+  background: linear-gradient(180deg, #EDF2FA 0%, #E6ECF5 100%);
 }
 
 /* ── Legal pages ───────────────────────────── */
@@ -205,7 +224,7 @@ html {
 }
 
 .legal-content p {
-  color: #4A6178;
+  color: #455A6E;
   line-height: 1.75;
   margin-bottom: 1rem;
   font-size: 0.95rem;
@@ -214,7 +233,7 @@ html {
 .legal-content ul {
   list-style: disc;
   padding-left: 1.5rem;
-  color: #4A6178;
+  color: #455A6E;
   margin-bottom: 1rem;
 }
 
