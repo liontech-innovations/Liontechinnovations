@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-primary-dark: #0B1A2B;
+  --color-secondary-dark: #0F223A;
+  --color-accent-blue: #5B8CFF;
+  --color-accent-purple: #9B7CFF;
+  --color-subtext: #A0AEC0;
+}
+
+body {
+  background-color: #0B1A2B;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  margin: 0;
+}
+
+.hero-gradient {
+  background: linear-gradient(rgba(5, 15, 35, 0.75), rgba(5, 15, 35, 0.9));
+}
+
+.hero-glow {
+  background: radial-gradient(circle, rgba(120, 140, 255, 0.15), transparent 60%);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #5B8CFF, #9B7CFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #5B8CFF, #9B7CFF);
+  box-shadow: 0 8px 30px rgba(91, 140, 255, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 12px 40px rgba(91, 140, 255, 0.35);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.02);
+  transition: all 0.3s ease;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.glass-card {
+  background: rgba(15, 34, 58, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(91, 140, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.saas-card {
+  background: #0F223A;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.saas-card:hover {
+  border-color: rgba(91, 140, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(91, 140, 255, 0.05);
+}
+
+.tight-headline {
+  letter-spacing: -0.5px;
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(91, 140, 255, 0.1), transparent);
+}

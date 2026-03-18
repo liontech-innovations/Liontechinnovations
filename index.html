@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lion Tech Innovations Ltd</title>
+    <script>
+      // Suppress the 'isZerion' error caused by browser extensions
+      window.addEventListener('error', function(event) {
+        if (event.message && event.message.includes('isZerion')) {
+          event.stopImmediatePropagation();
+        }
+      });
+      // Prevent extensions from redefining non-configurable properties if possible
+      try {
+        if (!window.ethereum) {
+          Object.defineProperty(window, 'ethereum', {
+            value: {},
+            writable: true,
+            configurable: true
+          });
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
