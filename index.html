@@ -3,15 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lion Tech Innovations Ltd</title>
+    <title>Lion Tech Innovations Ltd | Digital Infrastructure & Automation</title>
+    <meta name="description" content="Lion Tech Innovations Ltd — Institutional-grade digital infrastructure, automation, and AI solutions for modern enterprises. London, UK." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
-      // Suppress the 'isZerion' error caused by browser extensions
       window.addEventListener('error', function(event) {
         if (event.message && event.message.includes('isZerion')) {
           event.stopImmediatePropagation();
         }
       });
-      // Prevent extensions from redefining non-configurable properties if possible
       try {
         if (!window.ethereum) {
           Object.defineProperty(window, 'ethereum', {
@@ -28,4 +30,3 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-
