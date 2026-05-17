@@ -29,7 +29,7 @@ interface ReadyPayload {
   brief?: Brief;
 }
 
-const OPENER = "I'm LionTech's intake assistant. Describe what you're building, fixing, or scaling — the more context the better. I'll structure it into a brief for the engineering team.";
+const OPENER = "Welcome to LionTech. What are you building, fixing, or scaling today? Describe it in as much detail as you'd like — I'll structure it into a brief for the engineering team.";
 const emptyBrief: Brief = {
   project: '',
   problem: '',
@@ -158,6 +158,7 @@ export default function IntakeDialog({ open, onClose }: { open: boolean; onClose
     setState('streaming');
 
     let accumulated = '';
+    let isJsonMode: boolean | null = null;
     try {
       const res = await fetch('/api/intake', {
         method: 'POST',
@@ -171,7 +172,11 @@ export default function IntakeDialog({ open, onClose }: { open: boolean; onClose
         const { value, done } = await reader.read();
         if (done) break;
         accumulated += decoder.decode(value, { stream: true });
-        setStreamingText(accumulated);
+        if (isJsonMode === null) {
+          const trimmed = accumulated.trimStart();
+          if (trimmed.length > 0) isJsonMode = trimmed[0] === '{';
+        }
+        setStreamingText(isJsonMode === true ? 'Structuring your brief…' : accumulated);
       }
     } catch {
       setStreamingText('');
@@ -181,6 +186,11 @@ export default function IntakeDialog({ open, onClose }: { open: boolean; onClose
 
     const readyPayload = tryParseReadyPayload(accumulated);
     setStreamingText('');
+
+    if (isJsonMode === true && !readyPayload) {
+      setState('error');
+      return;
+    }
 
     if (readyPayload?.declined) {
       setMessages(newMessages);
