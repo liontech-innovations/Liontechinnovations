@@ -34,23 +34,63 @@ const platformLinks = {
   bundleBase: 'https://bundlebase.com',
 };
 
-function useHashRoute() {
-  const [route, setRoute] = useState(() => window.location.hash.replace('#', '') || '/');
+const routeMeta = {
+  '/': {
+    title: 'Lion Tech Innovations | UK AI Infrastructure Operator',
+    description: 'Lion Tech Innovations Ltd is a UK AI infrastructure company building operational automation systems, SaaS platforms, and enterprise-grade digital workflows.',
+  },
+  '/privacy-policy': {
+    title: 'Privacy Policy | Lion Tech Innovations',
+    description: 'How Lion Tech Innovations Ltd collects, uses, and protects personal data, including AI intake conversation data, under UK GDPR.',
+  },
+  '/terms-and-conditions': {
+    title: 'Terms & Conditions | Lion Tech Innovations',
+    description: 'The terms governing use of the Lion Tech Innovations website, AI intake assistant, and engagement process under English and Welsh law.',
+  },
+};
+
+type Route = keyof typeof routeMeta;
+
+function getRoute(): Route {
+  if (window.location.pathname === '/privacy-policy' || window.location.pathname === '/terms-and-conditions') {
+    return window.location.pathname;
+  }
+
+  return '/';
+}
+
+function navigateTo(path: Route) {
+  if (window.location.pathname !== path || window.location.hash.length > 0) {
+    window.history.pushState(null, '', path);
+  }
+  window.dispatchEvent(new Event('popstate'));
+}
+
+function useHistoryRoute() {
+  const [route, setRoute] = useState<Route>(() => getRoute());
 
   useEffect(() => {
-    const handler = () => setRoute(window.location.hash.replace('#', '') || '/');
-    window.addEventListener('hashchange', handler);
-    return () => window.removeEventListener('hashchange', handler);
+    const handler = () => setRoute(getRoute());
+    window.addEventListener('popstate', handler);
+    return () => window.removeEventListener('popstate', handler);
   }, []);
 
   return route;
 }
 
+function usePageMeta(title: string, description: string) {
+  useEffect(() => {
+    document.title = title;
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute('content', description);
+  }, [title, description]);
+}
+
 function scrollToSection(id: string) {
   const scroll = () => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-  if (window.location.hash && window.location.hash !== '#/' && !window.location.hash.startsWith('#/#')) {
-    window.location.hash = '/';
+  if (window.location.pathname !== '/') {
+    navigateTo('/');
     window.setTimeout(scroll, 100);
     return;
   }
@@ -106,7 +146,7 @@ const Navbar = ({ onStartIntake }: { onStartIntake: () => void }) => {
   return (
     <nav className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'border-b border-[#C8A24A]/14 bg-[#020817]/90 py-2.5 shadow-[0_14px_44px_rgba(0,0,0,0.28)] backdrop-blur-xl' : 'border-b border-white/8 bg-[#020817]/30 py-3.5 backdrop-blur-[3px]'}`}>
       <div className="relative mx-auto flex max-w-[1320px] items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="#/" className="flex min-w-0 max-w-[calc(100%-3.5rem)] items-center no-underline" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <a href="/" className="flex min-w-0 max-w-[calc(100%-3.5rem)] items-center no-underline" onClick={(event) => { event.preventDefault(); navigateTo('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
           <img src="/assets/liontechlogo.png" alt="LionTech Innovations" className="nav-logo" />
         </a>
         <div className="hidden items-center gap-7 lg:flex">
@@ -281,14 +321,14 @@ const Contact = ({ onStartIntake }: { onStartIntake: () => void }) => (
 const Footer = () => (
   <footer className="border-t border-[#E2D3A6] bg-white py-8">
     <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-7 px-4 sm:px-6 md:grid-cols-[1.2fr_0.8fr_0.8fr_1fr] lg:px-8">
-      <div><a href="#/" className="flex items-center no-underline"><img src="/assets/liontechlogo.png" alt="LionTech Innovations" className="footer-logo" /></a><p className="mt-3 max-w-xs text-[13px] leading-6 text-[#455A6E]">Digital infrastructure, automation systems, SaaS platforms, and AI-powered business tools.</p></div>
+      <div><a href="/" className="flex items-center no-underline" onClick={(event) => { event.preventDefault(); navigateTo('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}><img src="/assets/liontechlogo.png" alt="LionTech Innovations" className="footer-logo" /></a><p className="mt-3 max-w-xs text-[13px] leading-6 text-[#455A6E]">Digital infrastructure, automation systems, SaaS platforms, and AI-powered business tools.</p></div>
       <div><h3 className="footer-heading">Solutions</h3><div className="mt-4 space-y-3">{['Web Infrastructure', 'AI Automation', 'SaaS Platforms', 'Payment Systems'].map((item) => <button key={item} onClick={() => scrollToSection('services')} className="footer-link block">{item}</button>)}</div></div>
       <div><h3 className="footer-heading">Platforms</h3><div className="mt-4 space-y-3">{[['ClearVisa UK', platformLinks.clearVisa], ['CalcFee', platformLinks.calcFee], ['BundleBase', platformLinks.bundleBase]].map(([label, href]) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="footer-link inline-flex items-center gap-1.5 no-underline">{label}<ExternalLink size={12} /></a>)}</div></div>
       <div><h3 className="footer-heading">Contact</h3><div className="mt-4 space-y-3 text-sm text-[#455A6E]"><a href="mailto:contact@liontechinnovations.co.uk" className="footer-link flex items-center gap-2 no-underline"><Mail size={15} /><span className="break-all">contact@liontechinnovations.co.uk</span></a><p className="flex items-center gap-2"><MapPin size={15} className="text-[#5B76FF]" />London, United Kingdom</p></div></div>
     </div>
     <div className="mx-auto mt-8 flex max-w-[1320px] flex-col gap-3 border-t border-[#E2D3A6] px-4 pt-5 text-[10px] font-semibold uppercase tracking-[0.13em] text-[#455A6E]/68 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
       <p>&copy; {new Date().getFullYear()} Lion Tech Innovations Ltd. All rights reserved.</p>
-      <div className="flex gap-5"><a href="#/privacy-policy" className="text-[#455A6E]/68 no-underline transition hover:text-[#0B1F35]">Privacy Policy</a><a href="#/terms-and-conditions" className="text-[#455A6E]/68 no-underline transition hover:text-[#0B1F35]">Terms & Conditions</a></div>
+      <div className="flex gap-5"><a href="/privacy-policy" onClick={(event) => { event.preventDefault(); navigateTo('/privacy-policy'); }} className="text-[#455A6E]/68 no-underline transition hover:text-[#0B1F35]">Privacy Policy</a><a href="/terms-and-conditions" onClick={(event) => { event.preventDefault(); navigateTo('/terms-and-conditions'); }} className="text-[#455A6E]/68 no-underline transition hover:text-[#0B1F35]">Terms & Conditions</a></div>
       <p>Company registered in England &amp; Wales &mdash; No. 17068390</p>
     </div>
   </footer>
@@ -300,7 +340,7 @@ const LegalPage = ({ title, children, onStartIntake }: { title: string; children
     <div className="min-h-screen bg-[#F4F7FB]">
       <Navbar onStartIntake={onStartIntake} />
       <main className="mx-auto max-w-3xl px-4 pb-20 pt-32 sm:px-6 lg:px-8">
-        <a href="#/" className="mb-6 inline-flex text-sm font-semibold text-[#5B76FF] no-underline hover:underline">&larr; Back to Home</a>
+        <a href="/" onClick={(event) => { event.preventDefault(); navigateTo('/'); }} className="mb-6 inline-flex text-sm font-semibold text-[#5B76FF] no-underline hover:underline">&larr; Back to Home</a>
         <h1 className="text-4xl font-black tracking-[-0.04em] text-[#0B1F35]">{title}</h1>
         <p className="mt-2 text-sm text-[#455A6E]">Last updated: May 2026</p>
         <div className="legal-content mt-10">{children}</div>
@@ -310,7 +350,10 @@ const LegalPage = ({ title, children, onStartIntake }: { title: string; children
   );
 };
 
-const PrivacyPolicy = ({ onStartIntake }: { onStartIntake: () => void }) => (
+const PrivacyPolicy = ({ onStartIntake }: { onStartIntake: () => void }) => {
+  usePageMeta(routeMeta['/privacy-policy'].title, routeMeta['/privacy-policy'].description);
+
+  return (
   <LegalPage title="Privacy Policy" onStartIntake={onStartIntake}>
     <h2>1. Introduction</h2>
     <p>Lion Tech Innovations Ltd ("LionTech", "we", "our", "us"), registered in England and Wales (Company No. 17068390), is committed to protecting the privacy of individuals who interact with our website, services, and products. This policy explains what information we collect, how we use it, and the rights you have under UK GDPR and the Data Protection Act 2018.</p>
@@ -374,9 +417,13 @@ const PrivacyPolicy = ({ onStartIntake }: { onStartIntake: () => void }) => (
       <li>Postal: Lion Tech Innovations Ltd, London, United Kingdom (full registered office available on request).</li>
     </ul>
   </LegalPage>
-);
+  );
+};
 
-const TermsAndConditions = ({ onStartIntake }: { onStartIntake: () => void }) => (
+const TermsAndConditions = ({ onStartIntake }: { onStartIntake: () => void }) => {
+  usePageMeta(routeMeta['/terms-and-conditions'].title, routeMeta['/terms-and-conditions'].description);
+
+  return (
   <LegalPage title="Terms & Conditions" onStartIntake={onStartIntake}>
     <h2>1. Introduction</h2>
     <p>These Terms govern your use of the website operated by Lion Tech Innovations Ltd ("LionTech", "we", "our", "us"), a company registered in England and Wales (Company No. 17068390). By accessing this website or using our services, you agree to these Terms.</p>
@@ -417,9 +464,13 @@ const TermsAndConditions = ({ onStartIntake }: { onStartIntake: () => void }) =>
       <li>General contact: <a href="mailto:contact@liontechinnovations.co.uk">contact@liontechinnovations.co.uk</a></li>
     </ul>
   </LegalPage>
-);
+  );
+};
 
-const HomePage = ({ onStartIntake }: { onStartIntake: () => void }) => (
+const HomePage = ({ onStartIntake }: { onStartIntake: () => void }) => {
+  usePageMeta(routeMeta['/'].title, routeMeta['/'].description);
+
+  return (
   <div className="min-h-screen bg-[#F4F7FB]">
     <Navbar onStartIntake={onStartIntake} />
     <Hero onStartIntake={onStartIntake} />
@@ -430,10 +481,11 @@ const HomePage = ({ onStartIntake }: { onStartIntake: () => void }) => (
     <Contact onStartIntake={onStartIntake} />
     <Footer />
   </div>
-);
+  );
+};
 
 export default function App() {
-  const route = useHashRoute();
+  const route = useHistoryRoute();
   const [isIntakeOpen, setIsIntakeOpen] = useState(false);
   const openIntake = () => setIsIntakeOpen(true);
 
