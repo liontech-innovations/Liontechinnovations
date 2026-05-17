@@ -1,0 +1,6 @@
+{
+  "functions": {
+    "api/intake.ts": { "runtime": "edge" },
+    "api/intake-submit.ts": { "runtime": "edge" }
+  }
+}
