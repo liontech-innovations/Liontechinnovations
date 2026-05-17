@@ -29,7 +29,7 @@ interface ReadyPayload {
   brief?: Brief;
 }
 
-const OPENER = "I'm LionTech's intake assistant. I'll structure your requirements into a brief for our engineering team. Tell me what you're scoping.";
+const OPENER = "I'm LionTech's intake assistant. Describe what you're building, fixing, or scaling — the more context the better. I'll structure it into a brief for the engineering team.";
 const emptyBrief: Brief = {
   project: '',
   problem: '',
@@ -78,6 +78,7 @@ export default function IntakeDialog({ open, onClose }: { open: boolean; onClose
 
   const hasConversation = messages.length > 0 || input.trim().length > 0 || state === 'brief-ready' || state === 'streaming';
   const emailValid = emailPattern.test(contact.email.trim());
+  const canSubmit = state !== 'streaming' && input.trim().length > 0;
 
   useEffect(() => {
     if (!open) return;
@@ -247,16 +248,16 @@ export default function IntakeDialog({ open, onClose }: { open: boolean; onClose
         value={input}
         onChange={(event) => setInput(event.target.value)}
         onKeyDown={(event) => {
-          if ((event.metaKey || event.ctrlKey) && event.key === 'Enter') {
+          if (event.key === 'Enter' && !event.shiftKey) {
             event.preventDefault();
-            void sendMessage();
+            if (canSubmit) void sendMessage();
           }
         }}
         disabled={state === 'streaming'}
         placeholder="Type your message"
         rows={1}
       />
-      <button type="submit" disabled={state === 'streaming' || input.trim().length === 0}>Send <ArrowRight size={15} /></button>
+      <button type="submit" disabled={!canSubmit}>Send <ArrowRight size={15} /></button>
     </form>
   );
 
