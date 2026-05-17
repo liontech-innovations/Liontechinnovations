@@ -1,38 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  Building2,
-  Cpu,
-  Globe,
-  Layers,
-  Server,
   ArrowRight,
+  ArrowUpRight,
+  BarChart3,
+  Building2,
   CheckCircle2,
-  Menu,
-  X,
+  Cpu,
+  ExternalLink,
+  FileText,
+  Globe2,
+  Layers,
   Mail,
   MapPin,
-  Phone,
-  Zap,
+  Menu,
+  Server,
   Shield,
-  BarChart3,
-  ExternalLink,
-  ArrowUpRight,
-  ChevronUp,
+  X,
+  Zap,
 } from 'lucide-react';
 
-/* ─────────────────────────────────────────────
-   HASH ROUTER — supports /, /privacy-policy, /terms-and-conditions
-   ───────────────────────────────────────────── */
 function useHashRoute() {
-  const [route, setRoute] = useState(() => {
-    const hash = window.location.hash.replace('#', '') || '/';
-    return hash;
-  });
+  const [route, setRoute] = useState(() => window.location.hash.replace('#', '') || '/');
 
   useEffect(() => {
-    const handler = () => {
-      setRoute(window.location.hash.replace('#', '') || '/');
-    };
+    const handler = () => setRoute(window.location.hash.replace('#', '') || '/');
     window.addEventListener('hashchange', handler);
     return () => window.removeEventListener('hashchange', handler);
   }, []);
@@ -40,42 +31,60 @@ function useHashRoute() {
   return route;
 }
 
-/* ─────────────────────────────────────────────
-   SMOOTH SCROLL HELPER
-   ───────────────────────────────────────────── */
 function scrollToSection(id: string) {
-  // Ensure we're on the home page first
+  const scroll = () => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
   if (window.location.hash && window.location.hash !== '#/' && !window.location.hash.startsWith('#/#')) {
     window.location.hash = '/';
-    setTimeout(() => {
-      const el = document.getElementById(id);
-      el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
-  } else {
-    const el = document.getElementById(id);
-    el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(scroll, 100);
+    return;
   }
+
+  scroll();
 }
 
-/* ─────────────────────────────────────────────
-   NAVBAR
-   ───────────────────────────────────────────── */
+const navLinks = [
+  { label: 'Services', id: 'services' },
+  { label: 'Platforms', id: 'platforms' },
+  { label: 'Company', id: 'company' },
+  { label: 'Contact', id: 'contact' },
+];
+
+const techStack = [
+  'Anthropic',
+  'NVIDIA',
+  'Vercel',
+  'AWS',
+  'Supabase',
+  'Stripe',
+  'OpenAI',
+  'Microsoft Azure',
+  'Google Cloud',
+  'Docker',
+  'Cloudflare',
+  'GitHub',
+  'Redis',
+  'PostgreSQL',
+  'SendGrid',
+  'and more',
+];
+
+const platformLinks = {
+  clearVisa: 'https://clearvisas.co.uk',
+  calcFee: 'https://www.calcfee.com/',
+  bundleBase: 'https://bundlebase.com',
+};
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => setIsScrolled(window.scrollY > 36);
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const navLinks = [
-    { label: 'Services', id: 'services' },
-    { label: 'Platforms', id: 'platforms' },
-    { label: 'Company', id: 'company' },
-    { label: 'Contact', id: 'contact' },
-  ];
 
   const handleNav = (id: string) => {
     setMobileMenuOpen(false);
@@ -84,80 +93,71 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
+      className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/92 backdrop-blur-xl border-b border-[#5FA8FF]/10 py-3 shadow-[0_2px_20px_rgba(95,168,255,0.08)]'
-          : 'bg-transparent py-5'
+          ? 'border-b border-white/10 bg-[#06172A]/92 py-3 shadow-[0_18px_60px_rgba(0,0,0,0.24)] backdrop-blur-xl'
+          : 'border-b border-white/10 bg-[#06172A]/22 py-5 backdrop-blur-[2px]'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          {/* Logo */}
-          <a
-            href="#/"
-            className="flex items-center gap-2.5 group"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          >
-            <Building2
-              className="text-[#5FA8FF] group-hover:scale-105 transition-transform"
-              size={26}
-            />
-            <span className="text-[#1B2A3A] font-bold text-xl tracking-wide">
-              LION TECH{' '}
-              <span className="text-gradient-ombre font-normal">INNOVATIONS</span>
-            </span>
-          </a>
+      <div className="relative mx-auto flex max-w-[1500px] items-center justify-between px-4 sm:px-6 lg:px-8">
+        <a
+          href="#/"
+          className="flex min-w-0 max-w-[calc(100%-3.75rem)] items-center gap-2.5 no-underline"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <Building2 className="h-7 w-7 shrink-0 text-[#6EA8FF]" aria-hidden="true" />
+          <span className="truncate text-[16px] font-bold uppercase tracking-[0.05em] text-white sm:text-[22px]">
+            Lion Tech <span className="font-medium text-white/82">Innovations</span>
+          </span>
+        </a>
 
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-9">
+        <div className="hidden items-center gap-8 lg:flex">
+          {navLinks.map((link) => (
+            <button
+              key={link.id}
+              onClick={() => handleNav(link.id)}
+              className="border-none bg-transparent text-[13px] font-bold uppercase tracking-[0.22em] text-white/82 transition hover:text-white"
+            >
+              {link.label}
+            </button>
+          ))}
+          <button
+            onClick={() => handleNav('contact')}
+            className="btn-primary rounded-md px-8 py-3 text-[12px] uppercase tracking-[0.16em]"
+          >
+            Get Started
+          </button>
+        </div>
+
+        <button
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded={mobileMenuOpen}
+          onClick={() => setMobileMenuOpen((open) => !open)}
+          className="mobile-menu-button"
+        >
+          {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </div>
+
+      {mobileMenuOpen && (
+        <div className="absolute left-0 top-full w-full border-t border-white/10 bg-[#06172A]/96 px-4 py-4 shadow-2xl backdrop-blur-xl lg:hidden">
+          <div className="mx-auto max-w-[1500px] space-y-2">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => handleNav(link.id)}
-                className="text-[#455A6E] hover:text-[#1B2A3A] transition-colors text-[13px] uppercase tracking-[0.18em] font-semibold bg-transparent border-none cursor-pointer"
+                className="block w-full rounded-md border-none bg-transparent px-3 py-3 text-left text-[13px] font-bold uppercase tracking-[0.18em] text-white/82 transition hover:bg-white/8 hover:text-white"
               >
                 {link.label}
               </button>
             ))}
             <button
               onClick={() => handleNav('contact')}
-              className="btn-primary px-6 py-2.5 rounded-lg text-[12px] uppercase tracking-[0.15em]"
+              className="btn-primary mt-3 w-full rounded-md px-6 py-3.5 text-[12px] uppercase tracking-[0.16em]"
             >
               Get Started
             </button>
-          </div>
-
-          {/* Mobile toggle */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-[#1B2A3A] bg-transparent border-none cursor-pointer"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-white/98 backdrop-blur-xl absolute top-full left-0 w-full border-t border-[#5FA8FF]/10 shadow-xl">
-          <div className="px-5 pt-3 pb-6 space-y-1">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => handleNav(link.id)}
-                className="block w-full text-left px-3 py-3.5 text-[#1B2A3A] hover:bg-[#EDF2FA] rounded-lg text-[13px] uppercase tracking-[0.15em] font-semibold bg-transparent border-none cursor-pointer"
-              >
-                {link.label}
-              </button>
-            ))}
-            <div className="pt-3 px-3">
-              <button
-                onClick={() => handleNav('contact')}
-                className="w-full btn-primary px-6 py-3.5 rounded-lg text-[12px] uppercase tracking-[0.15em]"
-              >
-                Get Started
-              </button>
-            </div>
           </div>
         </div>
       )}
@@ -165,154 +165,255 @@ const Navbar = () => {
   );
 };
 
-/* ─────────────────────────────────────────────
-   HERO — Big Ben + Thames + Westminster — wide panoramic, mobile-safe
-   ───────────────────────────────────────────── */
-const Hero = () => {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image — Westminster / Big Ben wide daylight panoramic */}
-      <div
-        className="absolute inset-0 z-0 bg-cover bg-no-repeat hero-image-enhance"
-        style={{
-          backgroundImage:
-            'url("https://images.unsplash.com/photo-1486299267070-83823f5448dd?q=85&w=2400&auto=format&fit=crop")',
-          backgroundPosition: 'center 40%',
-        }}
-      >
-        {/* Near-invisible top veil */}
-        <div className="absolute inset-0 hero-overlay"></div>
-        {/* Warm sunlight diagonal */}
-        <div className="absolute inset-0 hero-warm-tint"></div>
-        {/* Cinematic vignette — focus toward center */}
-        <div className="absolute inset-0 hero-vignette"></div>
+const TrustStrip = () => (
+  <div className="hero-trust mx-auto w-full min-w-0 max-w-[1500px] overflow-hidden rounded-lg border border-white/10 bg-[#081D34]/78 px-4 py-4 shadow-[0_18px_70px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:px-5">
+    <div className="flex min-w-0 items-center gap-4 overflow-x-auto pb-1 [scrollbar-width:none] md:gap-4 [&::-webkit-scrollbar]:hidden">
+      <div className="shrink-0 border-r border-white/12 pr-4 text-[9px] font-bold uppercase leading-snug tracking-[0.16em] text-white/58 sm:text-[10px]">
+        Trusted by
+        <br />
+        modern businesses
       </div>
-
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full pt-24 pb-32">
-        {/* Eyebrow */}
-        <div className="animate-fade-in-up">
-          <span className="inline-block text-[11px] font-bold text-[#3A4F63] uppercase tracking-[0.35em] mb-6 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur-md border border-white/30 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-            London-Based Digital Infrastructure
-          </span>
-        </div>
-
-        {/* Headline — wider tracking on BUILD/SCALE, sharper gradient on AUTOMATE */}
-        <h1
-          className="font-display tight-headline text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-[#0F1D2B] mb-8 animate-fade-in-up animate-delay-100 uppercase"
-          style={{ textShadow: '0 2px 24px rgba(255,255,255,0.65), 0 1px 4px rgba(255,255,255,0.45)', letterSpacing: '-0.01em' }}
+      {techStack.map((name) => (
+        <span
+          key={name}
+          className="shrink-0 text-[12px] font-bold tracking-[-0.01em] text-white/88 last:font-medium last:text-white/72 xl:text-[13px]"
         >
-          <span style={{ letterSpacing: '0.02em' }}>BUILD.</span>{' '}
-          <span className="text-gradient-ombre" style={{ filter: 'drop-shadow(0 2px 16px rgba(255,255,255,0.40))' }}>AUTOMATE.</span>{' '}
-          <span style={{ letterSpacing: '0.02em' }}>SCALE.</span>
+          {name}
+        </span>
+      ))}
+    </div>
+  </div>
+);
+
+const Hero = () => (
+  <section className="relative isolate min-h-[760px] overflow-hidden bg-[#06172A] pt-28 text-white sm:min-h-screen lg:pt-32">
+    <img
+      src="https://images.unsplash.com/photo-1486299267070-83823f5448dd?q=90&w=2400&auto=format&fit=crop"
+      alt="Sunny London skyline with Big Ben and Westminster"
+      className="hero-bg absolute inset-0 z-0 h-full w-full object-cover"
+      style={{ objectPosition: 'center 42%' }}
+    />
+    <div className="hero-overlay absolute inset-0 z-[1]" />
+    <div className="hero-bottom-fade absolute inset-x-0 bottom-0 z-[1] h-72" />
+
+    <div className="relative z-10 mx-auto flex min-h-[640px] w-full min-w-0 max-w-[1500px] flex-col justify-center px-4 pb-7 sm:px-6 lg:px-8">
+      <div className="hero-copy w-full max-w-[620px] pt-7 sm:pt-10">
+        <span className="inline-flex max-w-full items-center rounded-md border border-white/14 bg-white/8 px-4 py-2 text-[9px] font-bold uppercase leading-5 tracking-[0.16em] text-white/88 shadow-[0_10px_30px_rgba(0,0,0,0.18)] backdrop-blur-md sm:text-[11px] sm:tracking-[0.34em]">
+          London-Based Digital Infrastructure Company
+        </span>
+
+        <h1 className="mt-6 text-[52px] font-black uppercase leading-[0.96] tracking-[0.01em] text-white sm:text-[88px] md:text-[104px] lg:text-[116px]">
+          Build.
+          <span className="block text-gradient-ombre">Automate.</span>
+          Scale.
         </h1>
 
-        {/* Subheadline */}
-        <p
-          className="text-lg md:text-xl text-[#2C3E50] max-w-2xl mx-auto font-semibold leading-relaxed mb-12 animate-fade-in-up animate-delay-200"
-          style={{ textShadow: '0 1px 14px rgba(255,255,255,0.55)' }}
-        >
-          Institutional-grade digital infrastructure and automation solutions for modern enterprises.
+        <p className="mt-6 max-w-[330px] text-base font-medium leading-7 text-white/88 sm:max-w-xl sm:text-lg">
+          We build and deploy enterprise-grade digital infrastructure, automation systems, and AI-powered platforms that drive real business results.
         </p>
 
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up animate-delay-300">
+        <div className="mt-8 flex flex-col gap-4 sm:flex-row">
           <button
             onClick={() => scrollToSection('contact')}
-            className="btn-primary px-9 py-4 rounded-lg text-[13px] uppercase tracking-[0.15em] gap-2.5"
+            className="btn-primary w-full rounded-md px-8 py-4 text-[12px] uppercase tracking-[0.16em] sm:w-auto sm:min-w-[246px]"
           >
             Book a Consultation
-            <ArrowRight size={16} />
+            <ArrowRight size={17} />
           </button>
           <button
             onClick={() => scrollToSection('services')}
-            className="btn-secondary px-9 py-4 rounded-lg text-[13px] uppercase tracking-[0.15em]"
+            className="btn-secondary-dark w-full rounded-md px-8 py-4 text-[12px] uppercase tracking-[0.16em] sm:w-auto sm:min-w-[178px]"
           >
             View Services
           </button>
         </div>
       </div>
 
-      {/* Minimal bottom blend — barely visible, skyline stays fully clear */}
-      <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-[#F5F7FB]/90 to-transparent pointer-events-none"></div>
-    </section>
-  );
-};
+      <div className="mt-auto pt-10">
+        <TrustStrip />
+      </div>
+    </div>
+  </section>
+);
 
-/* ─────────────────────────────────────────────
-   SERVICES
-   ───────────────────────────────────────────── */
-const Services = () => {
-  const services = [
+const Stats = () => {
+  const stats = [
     {
-      icon: <Globe size={26} />,
-      title: 'Corporate Website Design',
-      description:
-        'High-end, secure, and performant web presences that reflect your corporate identity and establish immediate trust.',
-    },
-    {
-      icon: <Layers size={26} />,
-      title: 'Landing Pages & Funnels',
-      description:
-        'Conversion-optimised digital entry points designed to capture high-value leads and drive measurable ROI.',
-    },
-    {
-      icon: <Cpu size={26} />,
-      title: 'AI Automation Systems',
-      description:
-        'Intelligent workflows that reduce operational overhead, minimise human error, and accelerate processing times.',
-    },
-    {
-      icon: <Zap size={26} />,
-      title: 'Business Process Automation',
-      description:
-        'End-to-end digitisation of legacy processes, connecting disparate systems into unified, efficient pipelines.',
+      icon: <BarChart3 size={26} />,
+      value: '99.9%',
+      label: 'Uptime Target',
+      copy: 'Enterprise-grade reliability and infrastructure.',
     },
     {
       icon: <Shield size={26} />,
-      title: 'Custom SaaS Interfaces',
-      description:
-        'Bespoke software-as-a-service platforms built with robust architectures for internal use or commercial deployment.',
+      value: '24/7',
+      label: 'System Monitoring',
+      copy: 'Continuous monitoring and rapid response.',
     },
     {
-      icon: <Server size={26} />,
-      title: 'Digital Infrastructure',
-      description:
-        'Scalable cloud deployments, database architecture, and API integrations for enterprise-grade reliability.',
+      icon: <Cpu size={26} />,
+      value: '3+',
+      label: 'Live Platforms',
+      copy: 'Production systems delivering real business value.',
+    },
+    {
+      icon: <Globe2 size={26} />,
+      value: 'UK',
+      label: 'Registered Company',
+      copy: 'London-based with global client delivery.',
     },
   ];
 
   return (
-    <section id="services" className="py-32 bg-section-light page-texture">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <div className="mb-16">
-          <span className="text-[11px] font-bold text-[#5FA8FF] uppercase tracking-[0.35em] mb-3 block">
-            Our Capabilities
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-[#1B2A3A] tight-headline mb-5">
+    <section className="border-y border-white/8 bg-[#06172A]">
+      <div className="mx-auto grid max-w-[1500px] grid-cols-1 divide-y divide-white/8 px-4 py-8 sm:px-6 md:grid-cols-2 md:divide-x md:divide-y-0 lg:grid-cols-4 lg:px-8">
+        {stats.map((item) => (
+          <div key={item.label} className="flex gap-6 py-7 md:px-6 lg:px-8">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-white/8 bg-white/6 text-[#7C6BFF] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+              {item.icon}
+            </div>
+            <div>
+              <p className="text-4xl font-black leading-none tracking-[-0.03em] text-white">{item.value}</p>
+              <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.24em] text-white/78">{item.label}</p>
+              <p className="mt-3 max-w-[230px] text-sm leading-6 text-white/62">{item.copy}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+const Platforms = () => {
+  const projects = [
+    {
+      icon: <Shield size={22} />,
+      title: 'ClearVisa UK',
+      url: platformLinks.clearVisa,
+      category: 'Compliance SaaS',
+      description: 'AI-powered immigration risk analysis platform helping users assess UK visa refusal risk with confidence.',
+    },
+    {
+      icon: <Building2 size={22} />,
+      title: 'CalcFee',
+      url: platformLinks.calcFee,
+      category: 'FinTech Tool',
+      description: 'Smart financial calculator platform with real-time data processing and premium PDF reporting.',
+    },
+    {
+      icon: <FileText size={22} />,
+      title: 'BundleBase',
+      url: platformLinks.bundleBase,
+      category: 'Legal Tech',
+      description: 'Document bundling system for UK legal professionals. Automated PDF generation and structured output.',
+    },
+  ];
+
+  return (
+    <section id="platforms" className="bg-[#06172A] py-20 text-white sm:py-24">
+      <div className="mx-auto grid max-w-[1500px] gap-10 px-4 sm:px-6 lg:grid-cols-[0.72fr_1.28fr] lg:px-8">
+        <div>
+          <span className="section-eyebrow text-[#8F80FF]">Our Live Platforms</span>
+          <h2 className="mt-4 max-w-md text-3xl font-black tracking-[-0.04em] text-white sm:text-4xl">
+            Real Systems. Real Impact.
+          </h2>
+          <p className="mt-5 max-w-md text-base leading-7 text-white/66">
+            Production-ready platforms solving real business problems across compliance, finance, legal, and automation.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+          {projects.map((project) => (
+            <a
+              key={project.title}
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="dark-card group flex min-h-[260px] flex-col p-6 no-underline"
+            >
+              <div className="mb-5 flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-md border border-white/10 bg-white/6 text-[#7C6BFF]">
+                    {project.icon}
+                  </span>
+                  <span className="rounded-full bg-[#7C5CFF]/14 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[#A99DFF]">
+                    {project.category}
+                  </span>
+                </div>
+                <span className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white">
+                  Live <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                </span>
+              </div>
+
+              <h3 className="text-xl font-bold tracking-[-0.03em] text-white">{project.title}</h3>
+              <p className="mt-3 grow text-[15px] leading-6 text-white/66">{project.description}</p>
+              <span className="mt-6 inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.16em] text-[#9E90FF] transition group-hover:text-white">
+                Visit Platform
+                <ArrowUpRight size={15} className="transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Services = () => {
+  const services = [
+    {
+      icon: <Globe2 size={25} />,
+      title: 'Corporate Website Design',
+      description: 'Fast, credible web presences built for trust, clarity, and high-value enquiries.',
+    },
+    {
+      icon: <Layers size={25} />,
+      title: 'Landing Pages & Funnels',
+      description: 'Focused conversion journeys with clear messaging, analytics-ready structure, and polished execution.',
+    },
+    {
+      icon: <Cpu size={25} />,
+      title: 'AI Automation Systems',
+      description: 'Workflow automation that reduces manual processing, improves response times, and scales operations.',
+    },
+    {
+      icon: <Zap size={25} />,
+      title: 'SaaS Platform Development',
+      description: 'Production-ready software platforms with secure architecture and intuitive user flows.',
+    },
+    {
+      icon: <Server size={25} />,
+      title: 'API & Payment Infrastructure',
+      description: 'Reliable integrations, payment flows, data pipelines, and backend services for real business use.',
+    },
+    {
+      icon: <BarChart3 size={25} />,
+      title: 'Technical SEO & Performance',
+      description: 'Search-ready structure, Core Web Vitals discipline, and performance tuning for faster growth.',
+    },
+  ];
+
+  return (
+    <section id="services" className="bg-[#F4F7FB] py-24 sm:py-28">
+      <div className="mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl">
+          <span className="section-eyebrow text-[#6B5CFF]">Our Capabilities</span>
+          <h2 className="mt-4 text-4xl font-black tracking-[-0.05em] text-[#0B1F35] sm:text-5xl">
             Enterprise-Grade Solutions
           </h2>
-          <p className="text-[#455A6E] text-lg max-w-xl leading-relaxed">
+          <p className="mt-5 text-lg leading-8 text-[#455A6E]">
             We architect and deploy robust digital systems that solve complex business challenges and drive operational efficiency.
           </p>
         </div>
 
-        {/* Service cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="institutional-card p-8 group"
-            >
-              <div className="w-11 h-11 rounded-lg bg-[#EDF2FA] flex items-center justify-center text-[#5FA8FF] mb-6 group-hover:bg-gradient-to-br group-hover:from-[#5FA8FF] group-hover:to-[#7C5CFF] group-hover:text-white transition-all duration-300">
+        <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((service) => (
+            <div key={service.title} className="light-card group p-7">
+              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-md bg-[#E8EFFA] text-[#5B76FF] transition group-hover:bg-[#0B1F35] group-hover:text-white">
                 {service.icon}
               </div>
-              <h3 className="text-lg font-bold text-[#1B2A3A] mb-3 tracking-tight">
-                {service.title}
-              </h3>
-              <p className="text-[#455A6E] leading-relaxed text-[15px]">
-                {service.description}
-              </p>
+              <h3 className="text-xl font-bold tracking-[-0.03em] text-[#0B1F35]">{service.title}</h3>
+              <p className="mt-3 text-[15px] leading-7 text-[#455A6E]">{service.description}</p>
             </div>
           ))}
         </div>
@@ -321,539 +422,239 @@ const Services = () => {
   );
 };
 
-/* ─────────────────────────────────────────────
-   PLATFORMS / DEPLOYED SYSTEMS
-   ───────────────────────────────────────────── */
-const Platforms = () => {
-  const projects = [
-    {
-      title: 'ClearVisa UK',
-      url: 'https://clearvisas.co.uk',
-      description:
-        'Immigration risk analysis platform helping users assess UK visa refusal risk. Built with secure data handling and real-time compliance intelligence.',
-      tag: 'Compliance SaaS',
-    },
-    {
-      title: 'CalcFee',
-      url: 'https://www.calcfee.com/',
-      description:
-        'Financial calculator platform designed to uncover hidden costs and fees. Features real-time data processing and premium PDF report generation.',
-      tag: 'FinTech Tool',
-    },
-    {
-      title: 'BundleBase',
-      url: 'https://bundlebase.com',
-      description:
-        'Document bundling system for UK legal processes and evidence preparation. Automated PDF generation and structured bundle compilation.',
-      tag: 'Legal Tech',
-    },
-  ];
-
-  return (
-    <section id="platforms" className="py-32 bg-section-alt relative overflow-hidden">
-      {/* Subtle decorative gradient blobs */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[#5FA8FF]/8 to-transparent rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-[#7C5CFF]/6 to-transparent rounded-full blur-3xl"></div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <span className="text-[11px] font-bold text-[#5FA8FF] uppercase tracking-[0.35em] mb-3 block">
-            Deployed Systems
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-[#1B2A3A] tight-headline mb-5">
-            Live Production Platforms
-          </h2>
-          <p className="text-[#455A6E] text-lg max-w-xl mx-auto leading-relaxed">
-            Real-world infrastructure powering critical business operations across the UK.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-7">
-          {projects.map((project, index) => (
-            <a
-              key={index}
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="platform-card p-8 flex flex-col h-full group cursor-pointer no-underline"
-            >
-              {/* Tag + Status */}
-              <div className="flex items-center justify-between mb-5">
-                <span className="text-[10px] font-bold text-[#5FA8FF] uppercase tracking-[0.2em] bg-[#EDF2FA] px-3 py-1 rounded-full">
-                  {project.tag}
-                </span>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-[10px] font-semibold text-[#455A6E]/60 uppercase tracking-widest">Live</span>
-                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
-                </div>
-              </div>
-
-              <h3 className="text-xl font-bold text-[#1B2A3A] mb-3 tracking-tight group-hover:text-[#5FA8FF] transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-[#455A6E] text-[15px] leading-relaxed mb-8 flex-grow">
-                {project.description}
-              </p>
-
-              <div className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.15em] text-[#1B2A3A] group-hover:text-[#5FA8FF] transition-colors">
-                Visit Platform
-                <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-/* ─────────────────────────────────────────────
-   COMPANY
-   ───────────────────────────────────────────── */
 const Company = () => {
   const highlights = [
     'Structured UK digital infrastructure company',
-    'Enterprise-grade design & automation',
-    'Operational reliability & uptime focus',
-    'London-based, serving UK & global clients',
+    'Enterprise-grade design, automation, and SaaS delivery',
+    'Reliability-minded architecture for production systems',
+    'London-based with UK and global client delivery',
   ];
 
   return (
-    <section id="company" className="py-32 bg-section-light page-texture">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left — copy */}
-          <div>
-            <span className="text-[11px] font-bold text-[#5FA8FF] uppercase tracking-[0.35em] mb-3 block">
-              Corporate Excellence
-            </span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-[#1B2A3A] tight-headline mb-7">
-              Engineered for Serious Business
-            </h2>
-            <p className="text-[17px] text-[#455A6E] mb-8 leading-relaxed">
-              Lion Tech Innovations Ltd is a structured UK digital infrastructure company delivering
-              high-performance systems — from websites and SaaS platforms to automation workflows and
-              AI-powered business solutions — designed for organisations that demand operational
-              reliability, premium presentation, and enterprise-grade execution.
-            </p>
-            <div className="space-y-4">
-              {highlights.map((item, i) => (
-                <div key={i} className="flex items-center gap-3.5">
-                  <div className="w-6 h-6 rounded-full bg-[#EDF2FA] flex items-center justify-center flex-shrink-0">
-                    <CheckCircle2 className="text-[#5FA8FF]" size={14} />
-                  </div>
-                  <span className="text-[#1B2A3A] font-semibold text-[15px]">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right — stat cards */}
-          <div className="grid grid-cols-2 gap-5">
-            <div className="institutional-card p-7">
-              <BarChart3 className="text-[#5FA8FF] mb-5" size={28} />
-              <h3 className="text-3xl font-bold text-[#1B2A3A] mb-1.5 font-display">99.9%</h3>
-              <p className="text-[11px] font-bold text-[#455A6E] uppercase tracking-[0.18em]">Uptime Target</p>
-            </div>
-            <div className="institutional-card p-7 mt-8">
-              <Shield className="text-[#5FA8FF] mb-5" size={28} />
-              <h3 className="text-3xl font-bold text-[#1B2A3A] mb-1.5 font-display">24/7</h3>
-              <p className="text-[11px] font-bold text-[#455A6E] uppercase tracking-[0.18em]">Monitoring</p>
-            </div>
-            <div className="institutional-card p-7">
-              <Cpu className="text-[#5FA8FF] mb-5" size={28} />
-              <h3 className="text-3xl font-bold text-[#1B2A3A] mb-1.5 font-display">3+</h3>
-              <p className="text-[11px] font-bold text-[#455A6E] uppercase tracking-[0.18em]">Live Platforms</p>
-            </div>
-            <div className="institutional-card p-7 mt-8">
-              <Globe className="text-[#5FA8FF] mb-5" size={28} />
-              <h3 className="text-3xl font-bold text-[#1B2A3A] mb-1.5 font-display">UK</h3>
-              <p className="text-[11px] font-bold text-[#455A6E] uppercase tracking-[0.18em]">Registered Entity</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-/* ─────────────────────────────────────────────
-   CONTACT / CTA
-   ───────────────────────────────────────────── */
-const Contact = () => {
-  return (
-    <section id="contact" className="py-32 bg-section-alt relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b from-[#5FA8FF]/8 via-[#7C5CFF]/4 to-transparent rounded-full blur-3xl pointer-events-none"></div>
-
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <span className="text-[11px] font-bold text-[#5FA8FF] uppercase tracking-[0.35em] mb-3 block">
-            Get in Touch
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-[#1B2A3A] tight-headline mb-5">
-            Ready to Build Something Serious?
+    <section id="company" className="bg-white py-24 sm:py-28">
+      <div className="mx-auto grid max-w-[1500px] grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
+        <div>
+          <span className="section-eyebrow text-[#6B5CFF]">Company</span>
+          <h2 className="mt-4 max-w-2xl text-4xl font-black tracking-[-0.05em] text-[#0B1F35] sm:text-5xl">
+            Engineered for Serious Business
           </h2>
-          <p className="text-[#455A6E] text-lg max-w-xl mx-auto leading-relaxed">
-            Schedule a consultation to discuss your digital infrastructure requirements with our technical directors.
+          <p className="mt-6 max-w-2xl text-[17px] leading-8 text-[#455A6E]">
+            Lion Tech Innovations Ltd builds high-performance systems, from websites and SaaS platforms to automation workflows and AI-powered business tools, for organisations that need operational reliability and premium execution.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {/* Email */}
-          <a
-            href="mailto:contact@liontechinnovations.co.uk"
-            className="institutional-card p-7 text-center group no-underline cursor-pointer"
-          >
-            <div className="w-12 h-12 rounded-xl bg-[#EDF2FA] flex items-center justify-center mx-auto mb-4 group-hover:bg-gradient-to-br group-hover:from-[#5FA8FF] group-hover:to-[#7C5CFF] group-hover:text-white text-[#5FA8FF] transition-all duration-300">
-              <Mail size={22} />
+        <div className="grid gap-4 sm:grid-cols-2">
+          {highlights.map((item) => (
+            <div key={item} className="flex items-start gap-4 rounded-lg border border-[#DCE6F2] bg-[#F8FAFD] p-5">
+              <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#E8EFFA] text-[#5B76FF]">
+                <CheckCircle2 size={16} />
+              </span>
+              <p className="text-[15px] font-semibold leading-6 text-[#0B1F35]">{item}</p>
             </div>
-            <p className="text-[13px] font-bold text-[#1B2A3A] mb-1">Email</p>
-            <p className="text-[14px] text-[#455A6E]">contact@liontechinnovations.co.uk</p>
-          </a>
-
-          {/* Phone */}
-          <div className="institutional-card p-7 text-center">
-            <div className="w-12 h-12 rounded-xl bg-[#EDF2FA] flex items-center justify-center mx-auto mb-4 text-[#5FA8FF]">
-              <Phone size={22} />
-            </div>
-            <p className="text-[13px] font-bold text-[#1B2A3A] mb-1">Phone</p>
-            <p className="text-[14px] text-[#455A6E]">+44 (0) 20 1234 5678</p>
-          </div>
-
-          {/* Location */}
-          <div className="institutional-card p-7 text-center">
-            <div className="w-12 h-12 rounded-xl bg-[#EDF2FA] flex items-center justify-center mx-auto mb-4 text-[#5FA8FF]">
-              <MapPin size={22} />
-            </div>
-            <p className="text-[13px] font-bold text-[#1B2A3A] mb-1">Location</p>
-            <p className="text-[14px] text-[#455A6E]">London, United Kingdom</p>
-          </div>
-        </div>
-
-        <div className="text-center">
-          <a
-            href="mailto:contact@liontechinnovations.co.uk"
-            className="btn-primary px-10 py-4 rounded-lg text-[13px] uppercase tracking-[0.15em] gap-2.5 no-underline"
-          >
-            Book a Consultation
-            <ArrowRight size={16} />
-          </a>
+          ))}
         </div>
       </div>
     </section>
   );
 };
 
-/* ─────────────────────────────────────────────
-   FOOTER
-   ───────────────────────────────────────────── */
-const Footer = () => {
-  return (
-    <footer className="bg-white pt-20 pb-8 border-t border-[#5FA8FF]/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          {/* Brand */}
-          <div>
-            <a href="#/" className="flex items-center gap-2 mb-5 no-underline">
-              <Building2 className="text-[#5FA8FF]" size={24} />
-              <span className="text-[#1B2A3A] font-bold text-lg tracking-wide">LION TECH</span>
-            </a>
-            <p className="text-[#455A6E] text-sm leading-relaxed max-w-xs">
-              Institutional-grade digital infrastructure, automation, and AI solutions for modern enterprises.
-            </p>
-          </div>
+const Contact = () => (
+  <section id="contact" className="relative overflow-hidden bg-[#071A30] py-24 text-white sm:py-28">
+    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#7C5CFF]/50 to-transparent" />
+    <div className="absolute -right-32 top-8 h-72 w-72 rounded-full bg-[#5FA8FF]/12 blur-3xl" />
+    <div className="absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-[#7C5CFF]/12 blur-3xl" />
 
-          {/* Solutions */}
-          <div>
-            <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] mb-5 text-[#1B2A3A]">Solutions</h4>
-            <ul className="space-y-3">
-              {['Web Infrastructure', 'AI Automation', 'SaaS Development', 'Process Automation'].map((item) => (
-                <li key={item}>
-                  <button
-                    onClick={() => scrollToSection('services')}
-                    className="text-[#455A6E] hover:text-[#1B2A3A] transition-colors text-sm font-medium bg-transparent border-none cursor-pointer p-0"
-                  >
-                    {item}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
+    <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
+      <span className="section-eyebrow text-[#9E90FF]">Contact</span>
+      <h2 className="mt-4 text-4xl font-black tracking-[-0.05em] text-white sm:text-5xl">
+        Ready to Build Something Serious?
+      </h2>
+      <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-white/68">
+        Schedule a consultation to discuss your digital infrastructure, automation, or platform requirements.
+      </p>
 
-          {/* Platforms */}
-          <div>
-            <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] mb-5 text-[#1B2A3A]">Platforms</h4>
-            <ul className="space-y-3">
-              <li>
-                <a href="https://clearvisas.co.uk" target="_blank" rel="noopener noreferrer" className="text-[#455A6E] hover:text-[#1B2A3A] transition-colors text-sm font-medium no-underline inline-flex items-center gap-1.5">
-                  ClearVisa UK <ExternalLink size={11} />
-                </a>
-              </li>
-              <li>
-                <a href="https://www.calcfee.com/" target="_blank" rel="noopener noreferrer" className="text-[#455A6E] hover:text-[#1B2A3A] transition-colors text-sm font-medium no-underline inline-flex items-center gap-1.5">
-                  CalcFee <ExternalLink size={11} />
-                </a>
-              </li>
-              <li>
-                <a href="https://bundlebase.com" target="_blank" rel="noopener noreferrer" className="text-[#455A6E] hover:text-[#1B2A3A] transition-colors text-sm font-medium no-underline inline-flex items-center gap-1.5">
-                  BundleBase <ExternalLink size={11} />
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] mb-5 text-[#1B2A3A]">Contact</h4>
-            <ul className="space-y-3.5">
-              <li className="flex items-center gap-3 text-[#455A6E] text-sm">
-                <Mail size={15} className="text-[#5FA8FF] flex-shrink-0" />
-                <span>contact@liontechinnovations.co.uk</span>
-              </li>
-              <li className="flex items-center gap-3 text-[#455A6E] text-sm">
-                <Phone size={15} className="text-[#5FA8FF] flex-shrink-0" />
-                <span>+44 (0) 20 1234 5678</span>
-              </li>
-              <li className="flex items-center gap-3 text-[#455A6E] text-sm">
-                <MapPin size={15} className="text-[#5FA8FF] flex-shrink-0" />
-                <span>London, United Kingdom</span>
-              </li>
-            </ul>
-          </div>
+      <div className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-5 sm:grid-cols-2">
+        <a href="mailto:contact@liontechinnovations.co.uk" className="dark-card p-7 text-left no-underline">
+          <Mail className="mb-5 text-[#8F80FF]" size={26} />
+          <p className="text-[12px] font-bold uppercase tracking-[0.18em] text-white/50">Email</p>
+          <p className="mt-2 break-words text-base font-semibold text-white">contact@liontechinnovations.co.uk</p>
+        </a>
+        <div className="dark-card p-7 text-left">
+          <MapPin className="mb-5 text-[#8F80FF]" size={26} />
+          <p className="text-[12px] font-bold uppercase tracking-[0.18em] text-white/50">Location</p>
+          <p className="mt-2 text-base font-semibold text-white">London, United Kingdom</p>
         </div>
+      </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-[#5FA8FF]/10 pt-7 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[#455A6E]/60 text-[11px] uppercase tracking-[0.15em] font-semibold">
-            &copy; {new Date().getFullYear()} Lion Tech Innovations Ltd. All rights reserved.
-          </p>
-          <div className="flex items-center gap-6">
-            <a href="#/privacy-policy" className="text-[#455A6E]/60 hover:text-[#1B2A3A] text-[11px] uppercase tracking-[0.15em] font-semibold no-underline transition-colors">
-              Privacy Policy
+      <a
+        href="mailto:contact@liontechinnovations.co.uk"
+        className="btn-primary mt-10 rounded-md px-9 py-4 text-[12px] uppercase tracking-[0.16em] no-underline"
+      >
+        Book a Consultation
+        <ArrowRight size={17} />
+      </a>
+    </div>
+  </section>
+);
+
+const Footer = () => (
+  <footer className="border-t border-[#DCE6F2] bg-white py-10">
+    <div className="mx-auto grid max-w-[1500px] grid-cols-1 gap-8 px-4 sm:px-6 md:grid-cols-[1.2fr_0.8fr_0.8fr_1fr] lg:px-8">
+      <div>
+        <a href="#/" className="flex items-center gap-2 no-underline">
+          <Building2 className="text-[#5B76FF]" size={24} />
+          <span className="text-lg font-black uppercase tracking-[0.08em] text-[#0B1F35]">Lion Tech</span>
+        </a>
+        <p className="mt-4 max-w-xs text-sm leading-6 text-[#455A6E]">
+          Digital infrastructure, automation systems, SaaS platforms, and AI-powered business tools.
+        </p>
+      </div>
+
+      <div>
+        <h3 className="footer-heading">Solutions</h3>
+        <div className="mt-4 space-y-3">
+          {['Web Infrastructure', 'AI Automation', 'SaaS Platforms', 'Payment Systems'].map((item) => (
+            <button key={item} onClick={() => scrollToSection('services')} className="footer-link block">
+              {item}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h3 className="footer-heading">Platforms</h3>
+        <div className="mt-4 space-y-3">
+          {[
+            ['ClearVisa UK', platformLinks.clearVisa],
+            ['CalcFee', platformLinks.calcFee],
+            ['BundleBase', platformLinks.bundleBase],
+          ].map(([label, href]) => (
+            <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="footer-link inline-flex items-center gap-1.5 no-underline">
+              {label}
+              <ExternalLink size={12} />
             </a>
-            <a href="#/terms-and-conditions" className="text-[#455A6E]/60 hover:text-[#1B2A3A] text-[11px] uppercase tracking-[0.15em] font-semibold no-underline transition-colors">
-              Terms & Conditions
-            </a>
-          </div>
-          <p className="text-[#455A6E]/60 text-[11px] uppercase tracking-[0.15em] font-semibold">
-            Company registered in England & Wales · No. 17068390
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h3 className="footer-heading">Contact</h3>
+        <div className="mt-4 space-y-3 text-sm text-[#455A6E]">
+          <a href="mailto:contact@liontechinnovations.co.uk" className="footer-link flex items-center gap-2 no-underline">
+            <Mail size={15} />
+            <span className="break-all">contact@liontechinnovations.co.uk</span>
+          </a>
+          <p className="flex items-center gap-2">
+            <MapPin size={15} className="text-[#5B76FF]" />
+            London, United Kingdom
           </p>
         </div>
       </div>
-    </footer>
-  );
-};
+    </div>
 
-/* ─────────────────────────────────────────────
-   PRIVACY POLICY PAGE
-   ───────────────────────────────────────────── */
-const PrivacyPolicy = () => {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+    <div className="mx-auto mt-10 flex max-w-[1500px] flex-col gap-4 border-t border-[#DCE6F2] px-4 pt-7 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#455A6E]/68 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+      <p>&copy; {new Date().getFullYear()} Lion Tech Innovations Ltd. All rights reserved.</p>
+      <div className="flex gap-5">
+        <a href="#/privacy-policy" className="text-[#455A6E]/68 no-underline transition hover:text-[#0B1F35]">
+          Privacy Policy
+        </a>
+        <a href="#/terms-and-conditions" className="text-[#455A6E]/68 no-underline transition hover:text-[#0B1F35]">
+          Terms & Conditions
+        </a>
+      </div>
+      <p>Company registered in England & Wales - No. 17068390</p>
+    </div>
+  </footer>
+);
+
+const LegalPage = ({ title, children }: { title: string; children: React.ReactNode }) => {
+  useEffect(() => window.scrollTo(0, 0), []);
 
   return (
-    <div className="min-h-screen bg-[#F5F7FB]">
+    <div className="min-h-screen bg-[#F4F7FB]">
       <Navbar />
-      <div className="pt-32 pb-20 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <a href="#/" className="text-[#5FA8FF] text-sm font-semibold mb-6 inline-flex items-center gap-1.5 no-underline hover:underline">
+      <main className="mx-auto max-w-3xl px-4 pb-20 pt-32 sm:px-6 lg:px-8">
+        <a href="#/" className="mb-6 inline-flex text-sm font-semibold text-[#5B76FF] no-underline hover:underline">
           &larr; Back to Home
         </a>
-        <h1 className="font-display text-4xl font-bold text-[#1B2A3A] mb-3 tight-headline">Privacy Policy</h1>
-        <p className="text-[#455A6E] text-sm mb-10">Last updated: March 2026</p>
-
-        <div className="legal-content">
-          <h2>1. Introduction</h2>
-          <p>
-            Lion Tech Innovations Ltd ("we", "our", "us"), registered in England and Wales
-            (Company No. 17068390), is committed to protecting the privacy of individuals
-            who visit our website and use our services. This Privacy Policy explains how we collect, use, and
-            safeguard your personal information in accordance with the UK General Data Protection Regulation
-            (UK GDPR) and the Data Protection Act 2018.
-          </p>
-
-          <h2>2. Information We Collect</h2>
-          <p>We may collect the following types of personal information:</p>
-          <ul>
-            <li>Contact information (name, email address, phone number) when you submit enquiries</li>
-            <li>Technical data (IP address, browser type, device information) collected automatically via cookies and analytics</li>
-            <li>Usage data relating to how you navigate and interact with our website</li>
-            <li>Business information you provide when discussing potential projects or engagements</li>
-          </ul>
-
-          <h2>3. How We Use Your Information</h2>
-          <p>We use your personal data to:</p>
-          <ul>
-            <li>Respond to your enquiries and provide requested services</li>
-            <li>Improve our website and user experience</li>
-            <li>Send relevant communications about our services (with your consent)</li>
-            <li>Comply with legal obligations and protect our legitimate interests</li>
-          </ul>
-
-          <h2>4. Data Sharing</h2>
-          <p>
-            We do not sell your personal data. We may share information with trusted third-party service providers
-            who assist in operating our website and conducting business, provided they agree to keep your
-            information confidential. We may also disclose data where required by law or to protect our rights.
-          </p>
-
-          <h2>5. Data Retention</h2>
-          <p>
-            We retain personal data only for as long as necessary to fulfil the purposes for which it was collected,
-            or as required by applicable law. Enquiry data is typically retained for up to 24 months.
-          </p>
-
-          <h2>6. Your Rights</h2>
-          <p>Under UK GDPR, you have the right to:</p>
-          <ul>
-            <li>Access the personal data we hold about you</li>
-            <li>Request correction of inaccurate data</li>
-            <li>Request deletion of your data</li>
-            <li>Object to or restrict processing of your data</li>
-            <li>Data portability</li>
-            <li>Lodge a complaint with the Information Commissioner's Office (ICO)</li>
-          </ul>
-
-          <h2>7. Cookies</h2>
-          <p>
-            Our website uses cookies to enhance your browsing experience. You can control cookie preferences
-            through your browser settings. Essential cookies are required for the website to function properly.
-          </p>
-
-          <h2>8. Contact Us</h2>
-          <p>
-            For questions regarding this Privacy Policy or to exercise your data rights, please contact us at:
-            <br />
-            <strong>Email:</strong> contact@liontechinnovations.co.uk
-            <br />
-            <strong>Address:</strong> London, United Kingdom
-          </p>
-        </div>
-      </div>
+        <h1 className="text-4xl font-black tracking-[-0.04em] text-[#0B1F35]">{title}</h1>
+        <p className="mt-2 text-sm text-[#455A6E]">Last updated: March 2026</p>
+        <div className="legal-content mt-10">{children}</div>
+      </main>
       <Footer />
     </div>
   );
 };
 
-/* ─────────────────────────────────────────────
-   TERMS & CONDITIONS PAGE
-   ───────────────────────────────────────────── */
-const TermsAndConditions = () => {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+const PrivacyPolicy = () => (
+  <LegalPage title="Privacy Policy">
+    <h2>1. Introduction</h2>
+    <p>
+      Lion Tech Innovations Ltd ("we", "our", "us"), registered in England and Wales (Company No. 17068390), is committed to protecting the privacy of individuals who visit our website and use our services.
+    </p>
+    <h2>2. Information We Collect</h2>
+    <p>We may collect contact information, technical data, usage data, and business information you provide when discussing potential projects or engagements.</p>
+    <h2>3. How We Use Your Information</h2>
+    <p>We use personal data to respond to enquiries, provide requested services, improve our website, send relevant communications where permitted, and comply with legal obligations.</p>
+    <h2>4. Data Sharing</h2>
+    <p>We do not sell personal data. We may share information with trusted service providers who help operate our website and business, or where required by law.</p>
+    <h2>5. Data Retention</h2>
+    <p>We retain personal data only for as long as necessary for the purposes for which it was collected, or as required by applicable law.</p>
+    <h2>6. Your Rights</h2>
+    <p>Under UK GDPR, you have rights to access, correct, delete, restrict, object to processing, request portability, and lodge a complaint with the Information Commissioner's Office.</p>
+    <h2>7. Cookies</h2>
+    <p>Our website may use cookies to enhance browsing and measure website usage. You can control cookie preferences through your browser settings.</p>
+    <h2>8. Contact Us</h2>
+    <p>
+      For questions regarding this Privacy Policy, contact us at <strong>contact@liontechinnovations.co.uk</strong>. Address: London, United Kingdom.
+    </p>
+  </LegalPage>
+);
 
-  return (
-    <div className="min-h-screen bg-[#F5F7FB]">
-      <Navbar />
-      <div className="pt-32 pb-20 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <a href="#/" className="text-[#5FA8FF] text-sm font-semibold mb-6 inline-flex items-center gap-1.5 no-underline hover:underline">
-          &larr; Back to Home
-        </a>
-        <h1 className="font-display text-4xl font-bold text-[#1B2A3A] mb-3 tight-headline">Terms & Conditions</h1>
-        <p className="text-[#455A6E] text-sm mb-10">Last updated: March 2026</p>
+const TermsAndConditions = () => (
+  <LegalPage title="Terms & Conditions">
+    <h2>1. Introduction</h2>
+    <p>These Terms and Conditions govern your use of the Lion Tech Innovations Ltd website and our provision of services.</p>
+    <h2>2. Services</h2>
+    <p>Lion Tech Innovations Ltd provides digital infrastructure, web development, automation, and related technology services on a project basis.</p>
+    <h2>3. Intellectual Property</h2>
+    <p>All content on this website is the property of Lion Tech Innovations Ltd or its licensors and is protected by applicable intellectual property laws.</p>
+    <h2>4. Client Obligations</h2>
+    <p>Clients agree to provide accurate information, respond to project requests in a timely manner, ensure rights to supplied materials, and pay agreed fees.</p>
+    <h2>5. Limitation of Liability</h2>
+    <p>To the maximum extent permitted by law, Lion Tech Innovations Ltd shall not be liable for indirect, incidental, or consequential damages arising from website or service use.</p>
+    <h2>6. Warranties</h2>
+    <p>Services are delivered with reasonable skill and care in accordance with applicable project agreements and industry standards.</p>
+    <h2>7. Governing Law</h2>
+    <p>These Terms and Conditions are governed by the laws of England and Wales.</p>
+    <h2>8. Contact</h2>
+    <p>
+      For questions about these Terms and Conditions, contact us at <strong>contact@liontechinnovations.co.uk</strong>. Address: London, United Kingdom.
+    </p>
+  </LegalPage>
+);
 
-        <div className="legal-content">
-          <h2>1. Introduction</h2>
-          <p>
-            These Terms and Conditions govern your use of the Lion Tech Innovations Ltd website and our
-            provision of services. By accessing our website or engaging our services, you agree to be bound
-            by these terms. Lion Tech Innovations Ltd is a company registered in England and Wales (Company No. 17068390).
-          </p>
+const HomePage = () => (
+  <div className="min-h-screen bg-[#F4F7FB]">
+    <Navbar />
+    <Hero />
+    <Stats />
+    <Platforms />
+    <Services />
+    <Company />
+    <Contact />
+    <Footer />
+  </div>
+);
 
-          <h2>2. Services</h2>
-          <p>
-            Lion Tech Innovations Ltd provides digital infrastructure, web development, automation, and related
-            technology services. All services are provided on a project basis, subject to individual agreements
-            or statements of work.
-          </p>
-
-          <h2>3. Intellectual Property</h2>
-          <p>
-            All content on this website — including text, graphics, logos, and software — is the property of
-            Lion Tech Innovations Ltd or its licensors and is protected by applicable intellectual property laws.
-            You may not reproduce, distribute, or create derivative works without our written permission.
-          </p>
-
-          <h2>4. Client Obligations</h2>
-          <p>When engaging our services, you agree to:</p>
-          <ul>
-            <li>Provide accurate and complete information necessary for project delivery</li>
-            <li>Respond to requests for feedback and approval in a timely manner</li>
-            <li>Ensure you have the rights to any materials you provide to us</li>
-            <li>Pay all fees as agreed in the relevant statement of work</li>
-          </ul>
-
-          <h2>5. Limitation of Liability</h2>
-          <p>
-            To the maximum extent permitted by law, Lion Tech Innovations Ltd shall not be liable for any
-            indirect, incidental, or consequential damages arising from use of our website or services.
-            Our total liability shall not exceed the fees paid for the specific service giving rise to the claim.
-          </p>
-
-          <h2>6. Warranties</h2>
-          <p>
-            Our website is provided on an "as is" basis. While we strive for accuracy, we do not warrant
-            that the website will be uninterrupted, error-free, or free from harmful components. Services
-            are delivered with reasonable skill and care in accordance with industry standards.
-          </p>
-
-          <h2>7. Termination</h2>
-          <p>
-            We reserve the right to suspend or terminate access to our website at any time. Project-specific
-            termination provisions will be set out in individual agreements.
-          </p>
-
-          <h2>8. Governing Law</h2>
-          <p>
-            These Terms and Conditions are governed by and construed in accordance with the laws of England
-            and Wales. Any disputes shall be subject to the exclusive jurisdiction of the courts of England
-            and Wales.
-          </p>
-
-          <h2>9. Contact</h2>
-          <p>
-            For questions about these Terms and Conditions, please contact us at:
-            <br />
-            <strong>Email:</strong> contact@liontechinnovations.co.uk
-            <br />
-            <strong>Address:</strong> London, United Kingdom
-          </p>
-        </div>
-      </div>
-      <Footer />
-    </div>
-  );
-};
-
-/* ─────────────────────────────────────────────
-   HOME PAGE (assembles all sections)
-   ───────────────────────────────────────────── */
-const HomePage = () => {
-  return (
-    <div className="min-h-screen bg-[#F5F7FB]">
-      <Navbar />
-      <Hero />
-      <div className="section-divider"></div>
-      <Services />
-      <div className="section-divider"></div>
-      <Platforms />
-      <div className="section-divider"></div>
-      <Company />
-      <div className="section-divider"></div>
-      <Contact />
-      <Footer />
-    </div>
-  );
-};
-
-/* ─────────────────────────────────────────────
-   APP — Hash Router
-   ───────────────────────────────────────────── */
 export default function App() {
   const route = useHashRoute();
 
   return (
-    <div className="selection:bg-[#5FA8FF]/30 selection:text-[#1B2A3A]">
+    <div className="selection:bg-[#6EA8FF]/30 selection:text-[#0B1F35]">
       {route === '/privacy-policy' && <PrivacyPolicy />}
       {route === '/terms-and-conditions' && <TermsAndConditions />}
-      {(route === '/' || (route !== '/privacy-policy' && route !== '/terms-and-conditions')) && <HomePage />}
+      {route !== '/privacy-policy' && route !== '/terms-and-conditions' && <HomePage />}
     </div>
   );
 }
