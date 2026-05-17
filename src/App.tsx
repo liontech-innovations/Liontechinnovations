@@ -9,7 +9,6 @@ import {
   ExternalLink,
   FileText,
   Globe2,
-  Layers,
   Mail,
   MapPin,
   Menu,
@@ -137,7 +136,7 @@ const Navbar = ({ onStartIntake }: { onStartIntake: () => void }) => {
 const TrustStrip = () => (
   <div className="trust-strip hero-trust mx-auto w-full min-w-0 max-w-[1320px] overflow-hidden rounded-md border border-[#C8A24A]/14 bg-[#020817]/76 px-3 py-2.5 shadow-[0_14px_48px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:px-4">
     <div className="flex min-w-0 items-center gap-3 overflow-x-auto [scrollbar-width:none] md:gap-3.5 [&::-webkit-scrollbar]:hidden">
-      <div className="shrink-0 border-r border-[#C8A24A]/18 pr-4 text-[8px] font-bold uppercase leading-snug tracking-[0.16em] text-white/48 sm:text-[9px]">Trusted by<br />modern businesses</div>
+      <div className="shrink-0 border-r border-[#C8A24A]/18 pr-4 text-[8px] font-bold uppercase leading-snug tracking-[0.16em] text-white/48 sm:text-[9px]">Our Stack</div>
       {techStack.map((name) => (
         <div key={name} className="brand-logo" aria-label={name} title={name}>
           <BrandMark name={name} />
@@ -202,7 +201,7 @@ const Platforms = () => {
   return (
     <section id="platforms" className="scroll-target section-dark-connected py-14 text-white sm:py-18">
       <div className="mx-auto grid max-w-[1320px] gap-8 px-4 sm:px-6 lg:grid-cols-[0.68fr_1.32fr] lg:px-8">
-        <div><span className="section-eyebrow text-[#C8A24A]">Our Live Platforms</span><h2 className="mt-3 max-w-md text-3xl font-black tracking-[-0.04em] text-white sm:text-[34px]">Real Systems. Real Impact.</h2><p className="mt-4 max-w-md text-[15px] leading-6 text-white/62">Production-ready platforms solving real business problems across compliance, finance, legal, and automation.</p></div>
+        <div><span className="section-eyebrow text-[#C8A24A]">Our Live Platforms</span><h2 className="mt-3 max-w-md text-3xl font-black tracking-[-0.04em] text-white sm:text-[34px]">Our Platforms</h2><p className="mt-4 max-w-md text-[15px] leading-6 text-white/62">Production-ready platforms solving real business problems across compliance, finance, legal, and automation.</p></div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {projects.map((project) => (
             <a key={project.title} href={project.url} target="_blank" rel="noopener noreferrer" className="dark-card group flex min-h-[220px] flex-col p-5 no-underline">
@@ -223,24 +222,21 @@ const Platforms = () => {
 
 const Services = () => {
   const services = [
-    { icon: <Globe2 size={25} />, title: 'Corporate Website Design', description: 'Fast, credible web presences built for trust, clarity, and high-value enquiries.' },
-    { icon: <Layers size={25} />, title: 'Landing Pages & Funnels', description: 'Focused conversion journeys with clear messaging, analytics-ready structure, and polished execution.' },
-    { icon: <Cpu size={25} />, title: 'AI Automation Systems', description: 'Workflow automation that reduces manual processing, improves response times, and scales operations.' },
-    { icon: <Zap size={25} />, title: 'SaaS Platform Development', description: 'Production-ready software platforms with secure architecture and intuitive user flows.' },
-    { icon: <Server size={25} />, title: 'API & Payment Infrastructure', description: 'Reliable integrations, payment flows, data pipelines, and backend services for real business use.' },
-    { icon: <BarChart3 size={25} />, title: 'Technical SEO & Performance', description: 'Search-ready structure, Core Web Vitals discipline, and performance tuning for faster growth.' },
+    { icon: <Zap size={25} />, title: 'SaaS Platform Development', description: 'Production-ready software platforms with secure architecture, intuitive flows, and operational reliability — the stack behind ClearVisa UK, CalcFee, and BundleBase.' },
+    { icon: <Cpu size={25} />, title: 'AI Automation Systems', description: 'Workflow automation, intake systems, and operational AI integrations that reduce manual processing and scale operations.' },
+    { icon: <Server size={25} />, title: 'API & Payment Infrastructure', description: 'Reliable integrations, payment flows, webhooks, and backend services for production business systems.' },
   ];
 
   return (
     <section id="services" className="scroll-target section-light-connected py-16 sm:py-20">
       <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl"><span className="section-eyebrow text-[#A77F26]">Our Capabilities</span><h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-[#071426] sm:text-[40px]">Enterprise-Grade Solutions</h2><p className="mt-4 text-base leading-7 text-[#455A6E]">We architect and deploy robust digital systems that solve complex business challenges and drive operational efficiency.</p></div>
+        <div className="max-w-2xl"><span className="section-eyebrow text-[#C8A24A]">Our Capabilities</span><h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">Enterprise-Grade Solutions</h2><p className="mt-4 text-base leading-7 text-white/72">We architect and deploy robust digital systems that solve complex business challenges and drive operational efficiency.</p></div>
         <div className="mt-9 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <div key={service.title} className="light-card group p-5">
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md bg-[#F3EAD1] text-[#A77F26] transition group-hover:bg-[#071426] group-hover:text-[#C8A24A]">{service.icon}</div>
-              <h3 className="text-lg font-bold tracking-[-0.03em] text-[#071426]">{service.title}</h3>
-              <p className="mt-2.5 text-[14px] leading-6 text-[#455A6E]">{service.description}</p>
+              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md border border-[#C8A24A]/14 bg-white/5 text-[#C8A24A] transition group-hover:border-[#C8A24A]/28 group-hover:bg-[#C8A24A]/8">{service.icon}</div>
+              <h3 className="text-lg font-bold tracking-[-0.03em] text-white">{service.title}</h3>
+              <p className="mt-2.5 text-[14px] leading-6 text-white/72">{service.description}</p>
             </div>
           ))}
         </div>
@@ -255,10 +251,10 @@ const Company = () => {
   return (
     <section id="company" className="scroll-target section-light-muted py-16 sm:py-20">
       <div className="mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-9 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
-        <div><span className="section-eyebrow text-[#A77F26]">Company</span><h2 className="mt-3 max-w-2xl text-3xl font-black tracking-[-0.045em] text-[#071426] sm:text-[40px]">Engineered for Serious Business</h2><p className="mt-4 max-w-2xl text-base leading-7 text-[#455A6E]">Lion Tech Innovations Ltd builds high-performance systems, from websites and SaaS platforms to automation workflows and AI-powered business tools, for organisations that need operational reliability and premium execution.</p></div>
+        <div><span className="section-eyebrow text-[#C8A24A]">Company</span><h2 className="mt-3 max-w-2xl text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">Engineered for Serious Business</h2><p className="mt-4 max-w-2xl text-base leading-7 text-white/72">Lion Tech Innovations Ltd builds high-performance systems, from websites and SaaS platforms to automation workflows and AI-powered business tools, for organisations that need operational reliability and premium execution.</p></div>
         <div className="grid gap-3.5 sm:grid-cols-2">
           {highlights.map((item) => (
-            <div key={item} className="flex items-start gap-3 rounded-md border border-[#E2D3A6] bg-[#FBFAF6] p-4"><span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#F3EAD1] text-[#A77F26]"><CheckCircle2 size={14} /></span><p className="text-[14px] font-semibold leading-6 text-[#071426]">{item}</p></div>
+            <div key={item} className="company-card flex items-start gap-3 p-4"><span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#C8A24A]/14 bg-white/5 text-[#C8A24A]"><CheckCircle2 size={14} /></span><p className="text-[14px] font-semibold leading-6 text-white/72">{item}</p></div>
           ))}
         </div>
       </div>
@@ -271,7 +267,7 @@ const Contact = ({ onStartIntake }: { onStartIntake: () => void }) => (
     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#C8A24A]/50 to-transparent" />
     <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
       <span className="section-eyebrow text-[#C8A24A]">Contact</span>
-      <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">Ready to Build Something Serious?</h2>
+      <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">Begin an Engagement</h2>
       <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-white/64">Schedule a consultation to discuss your digital infrastructure, automation, or platform requirements.</p>
       <div className="mx-auto mt-9 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2">
         <a href="mailto:contact@liontechinnovations.co.uk" className="dark-card p-5 text-left no-underline"><Mail className="mb-4 text-[#C8A24A]" size={22} /><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/44">Email</p><p className="mt-2 break-words text-[15px] font-semibold text-white">contact@liontechinnovations.co.uk</p></a>
