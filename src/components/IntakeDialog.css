@@ -1,0 +1,310 @@
+.intake-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+  background: rgba(2, 8, 23, 0.96);
+  backdrop-filter: blur(12px);
+}
+
+.intake-dialog {
+  display: flex;
+  width: min(100%, 720px);
+  height: 100vh;
+  flex-direction: column;
+  background: #020817;
+  color: #FFFFFF;
+  box-shadow: 0 0 0 1px rgba(200, 162, 74, 0.14), 0 32px 100px rgba(0, 0, 0, 0.42);
+}
+
+.intake-dialog-header {
+  display: flex;
+  min-height: 74px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(200, 162, 74, 0.18);
+  padding: 1rem 1rem 1rem 1.5rem;
+}
+
+.intake-dialog-lockup {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.intake-dialog-lockup img {
+  display: block;
+  width: 92px;
+  height: 30px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.intake-dialog-lockup span {
+  color: #C8A24A;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.24em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.intake-dialog-close {
+  display: inline-flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: transparent;
+  color: #FFFFFF;
+}
+
+.intake-dialog-thread {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1.25rem;
+  overflow-y: auto;
+  padding: 1.25rem 1rem 2rem;
+}
+
+.intake-dialog-message {
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.intake-dialog-message p {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.intake-dialog-message span {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #C8A24A;
+  font-size: 0.66rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.intake-dialog-message em {
+  color: rgba(255, 255, 255, 0.42);
+  font-style: normal;
+}
+
+.intake-dialog-message-user {
+  align-self: flex-end;
+  max-width: 80%;
+  border-radius: 10px;
+  background: #0B1B33;
+  padding: 12px 16px;
+  color: #FFFFFF;
+}
+
+.intake-dialog-message-assistant {
+  align-self: flex-start;
+  max-width: 80%;
+  border-left: 2px solid #C8A24A;
+  padding-left: 14px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.intake-dialog-composer {
+  display: flex;
+  gap: 0.75rem;
+  border-top: 1px solid rgba(200, 162, 74, 0.16);
+  padding: 1rem;
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+.intake-dialog-composer textarea {
+  min-height: 56px;
+  max-height: 200px;
+  flex: 1;
+  resize: none;
+  border: 1px solid rgba(200, 162, 74, 0.34);
+  border-radius: 10px;
+  background: #071426;
+  color: #FFFFFF;
+  padding: 0.95rem 1rem;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+  outline: none;
+}
+
+.intake-dialog-composer textarea:focus,
+.intake-dialog-preview input:focus,
+.intake-dialog-preview textarea:focus {
+  box-shadow: 0 0 0 2px rgba(200, 162, 74, 0.72);
+}
+
+.intake-dialog-composer button,
+.intake-dialog-submit,
+.intake-dialog-terminal a,
+.intake-dialog-terminal button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border: 1px solid rgba(200, 162, 74, 0.62);
+  border-radius: 8px;
+  background: #C8A24A;
+  color: #020817;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.intake-dialog-composer button {
+  min-width: 100px;
+  padding: 0 1rem;
+}
+
+.intake-dialog-composer button:disabled,
+.intake-dialog-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.intake-dialog-preview {
+  border-top: 1px solid rgba(200, 162, 74, 0.16);
+  padding: 1rem;
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+.intake-dialog-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  max-height: 38vh;
+  overflow-y: auto;
+  padding-right: 0.35rem;
+}
+
+.intake-dialog-preview label {
+  display: grid;
+  gap: 0.35rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.intake-dialog-preview input,
+.intake-dialog-preview textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: #071426;
+  color: #FFFFFF;
+  padding: 0.75rem 0.85rem;
+  font: inherit;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  outline: none;
+}
+
+.intake-dialog-preview textarea {
+  min-height: 82px;
+  resize: vertical;
+}
+
+.intake-dialog-submit {
+  width: 100%;
+  margin-top: 0.9rem;
+  min-height: 52px;
+}
+
+.intake-dialog-error {
+  margin: 0.7rem 0 0;
+  color: #F1D58A;
+  font-size: 0.86rem;
+}
+
+.intake-dialog-terminal {
+  display: grid;
+  flex: 1;
+  place-content: center;
+  justify-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.intake-dialog-terminal p {
+  max-width: 520px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.intake-dialog-terminal a,
+.intake-dialog-terminal button {
+  min-height: 44px;
+  padding: 0 1rem;
+}
+
+@media (max-width: 640px) {
+  .intake-dialog {
+    width: 100%;
+    max-width: none;
+  }
+
+  .intake-dialog-header {
+    min-height: 64px;
+    padding-left: 1rem;
+  }
+
+  .intake-dialog-lockup {
+    gap: 0.85rem;
+  }
+
+  .intake-dialog-lockup img {
+    width: 78px;
+    height: 26px;
+  }
+
+  .intake-dialog-lockup span {
+    font-size: 0.64rem;
+    letter-spacing: 0.16em;
+  }
+
+  .intake-dialog-message-user,
+  .intake-dialog-message-assistant {
+    max-width: 92%;
+  }
+
+  .intake-dialog-composer {
+    position: sticky;
+    bottom: 0;
+    flex-direction: column;
+    background: #020817;
+  }
+
+  .intake-dialog-composer textarea {
+    width: 100%;
+  }
+
+  .intake-dialog-composer button {
+    min-height: 48px;
+    width: 100%;
+  }
+
+  .intake-dialog-preview-grid {
+    grid-template-columns: 1fr;
+    max-height: 48vh;
+  }
+
+  .intake-dialog-submit {
+    min-height: 50px;
+  }
+}
