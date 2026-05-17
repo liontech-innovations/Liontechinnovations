@@ -18,16 +18,7 @@ import {
   X,
   Zap,
 } from 'lucide-react';
-
-type IntakeData = {
-  systemType: string;
-  description: string;
-  timeline: string;
-  budget: string;
-  name: string;
-  email: string;
-  companyUrl: string;
-};
+import IntakeDialog from './components/IntakeDialog';
 
 const navLinks = [
   { label: 'Services', id: 'services' },
@@ -37,24 +28,11 @@ const navLinks = [
 ];
 
 const techStack = ['Anthropic', 'NVIDIA', 'Vercel', 'AWS', 'Supabase', 'Stripe', 'OpenAI', 'Microsoft Azure', 'Google Cloud', 'GitHub'];
-const systemOptions = ['AI Automation', 'SaaS Platform', 'Corporate Website', 'Landing Page / Funnel', 'API / Payment Infrastructure', 'Technical SEO / Performance', 'Not sure yet'];
-const timelineOptions = ['Urgent', 'This month', '1\u20133 months', 'Exploring'];
-const budgetOptions = ['Under \u00A31,000', '\u00A31,000\u2013\u00A33,000', '\u00A33,000\u2013\u00A310,000', '\u00A310,000+', 'Not sure'];
 
 const platformLinks = {
   clearVisa: 'https://clearvisas.co.uk',
   calcFee: 'https://www.calcfee.com/',
   bundleBase: 'https://bundlebase.com',
-};
-
-const initialIntakeData: IntakeData = {
-  systemType: '',
-  description: '',
-  timeline: '',
-  budget: '',
-  name: '',
-  email: '',
-  companyUrl: '',
 };
 
 function useHashRoute() {
@@ -79,25 +57,6 @@ function scrollToSection(id: string) {
   }
 
   scroll();
-}
-
-function buildIntakeMailto(data: IntakeData) {
-  const subject = encodeURIComponent(`LionTech AI Intake - ${data.name || 'New enquiry'}`);
-  const body = encodeURIComponent(
-    [
-      'LionTech AI Intake',
-      '',
-      `System type: ${data.systemType}`,
-      `Description: ${data.description}`,
-      `Timeline: ${data.timeline}`,
-      `Budget: ${data.budget}`,
-      `Name: ${data.name}`,
-      `Email: ${data.email}`,
-      `Company / website URL: ${data.companyUrl || 'Not provided'}`,
-    ].join('\n'),
-  );
-
-  return `mailto:contact@liontechinnovations.co.uk?subject=${subject}&body=${body}`;
 }
 
 const BrandMark = ({ name }: { name: string }) => {
@@ -129,141 +88,6 @@ const BrandMark = ({ name }: { name: string }) => {
   }
 };
 
-const IntakeModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
-  const [step, setStep] = useState(0);
-  const [submitted, setSubmitted] = useState(false);
-  const [data, setData] = useState<IntakeData>(initialIntakeData);
-
-  useEffect(() => {
-    if (!isOpen) return;
-    const handleKeyDown = (event: KeyboardEvent) => event.key === 'Escape' && onClose();
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
-
-  const updateField = (field: keyof IntakeData, value: string) => setData((current) => ({ ...current, [field]: value }));
-  const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim());
-  const canContinue =
-    (step === 0 && Boolean(data.systemType)) ||
-    (step === 1 && data.description.trim().length > 6) ||
-    (step === 2 && Boolean(data.timeline)) ||
-    (step === 3 && Boolean(data.budget)) ||
-    (step === 4 && data.name.trim().length > 1) ||
-    (step === 5 && isEmailValid);
-
-  const resetIntake = () => {
-    setData(initialIntakeData);
-    setStep(0);
-    setSubmitted(false);
-  };
-
-  const renderOptions = (field: keyof IntakeData, options: string[]) => (
-    <div className="intake-options">
-      {options.map((option) => (
-        <button key={option} type="button" onClick={() => updateField(field, option)} className={data[field] === option ? 'intake-option intake-option-active' : 'intake-option'}>
-          {option}
-        </button>
-      ))}
-    </div>
-  );
-
-  const renderStep = () => {
-    if (submitted) {
-      return (
-        <div className="intake-complete">
-          <div className="intake-bubble intake-bubble-ai">Thanks {'\u2014'} your intake has been prepared. LionTech Innovations will review the details and respond by email.</div>
-          <div className="intake-summary">
-            <p><strong>System:</strong> {data.systemType}</p>
-            <p><strong>Timeline:</strong> {data.timeline}</p>
-            <p><strong>Budget:</strong> {data.budget}</p>
-            <p><strong>Contact:</strong> {data.name} / {data.email}</p>
-          </div>
-          <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-            <a href={buildIntakeMailto(data)} className="btn-primary rounded-md px-5 py-3 text-[11px] uppercase tracking-[0.14em] no-underline">
-              Send Intake by Email <ArrowRight size={14} />
-            </a>
-            <button type="button" onClick={resetIntake} className="btn-secondary-dark rounded-md px-5 py-3 text-[11px] uppercase tracking-[0.14em]">
-              New Intake
-            </button>
-          </div>
-        </div>
-      );
-    }
-
-    if (step === 0) return <><div className="intake-bubble intake-bubble-ai">What type of system do you need?</div>{renderOptions('systemType', systemOptions)}</>;
-    if (step === 1) {
-      return (
-        <>
-          <div className="intake-bubble intake-bubble-ai">Briefly describe what you want built or fixed.</div>
-          <textarea value={data.description} onChange={(event) => updateField('description', event.target.value)} className="intake-field min-h-32 resize-none" placeholder="Example: We need an AI workflow to triage inbound enquiries and generate structured follow-up tasks." autoFocus />
-        </>
-      );
-    }
-    if (step === 2) return <><div className="intake-bubble intake-bubble-ai">What is your timeline?</div>{renderOptions('timeline', timelineOptions)}</>;
-    if (step === 3) return <><div className="intake-bubble intake-bubble-ai">What is your estimated budget?</div>{renderOptions('budget', budgetOptions)}</>;
-    if (step === 4) {
-      return (
-        <>
-          <div className="intake-bubble intake-bubble-ai">Your name</div>
-          <input value={data.name} onChange={(event) => updateField('name', event.target.value)} className="intake-field" placeholder="Your name" autoFocus />
-        </>
-      );
-    }
-
-    return (
-      <>
-        <div className="intake-bubble intake-bubble-ai">Your email and optional company / website URL</div>
-        <input type="email" value={data.email} onChange={(event) => updateField('email', event.target.value)} className="intake-field" placeholder="you@company.com" autoFocus />
-        <input value={data.companyUrl} onChange={(event) => updateField('companyUrl', event.target.value)} className="intake-field" placeholder="Company / website URL (optional)" />
-      </>
-    );
-  };
-
-  return (
-    <div className="intake-overlay" role="presentation" onMouseDown={onClose}>
-      <div className="intake-modal" role="dialog" aria-modal="true" aria-labelledby="intake-title" onMouseDown={(event) => event.stopPropagation()}>
-        <div className="intake-header">
-          <div>
-            <p className="intake-kicker">LionTech AI Intake</p>
-            <h2 id="intake-title">Start AI Intake</h2>
-          </div>
-          <button type="button" aria-label="Close intake" onClick={onClose} className="intake-close"><X size={18} /></button>
-        </div>
-        <div className="intake-progress" aria-hidden="true"><span style={{ width: submitted ? '100%' : `${((step + 1) / 6) * 100}%` }} /></div>
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            if (step < 5) {
-              if (canContinue) setStep((current) => current + 1);
-              return;
-            }
-            if (canContinue) setSubmitted(true);
-          }}
-          className="intake-body"
-        >
-          <div className="intake-bubble intake-bubble-user">I want to scope a serious digital system.</div>
-          {renderStep()}
-          {!submitted && (
-            <div className="intake-actions">
-              <button type="button" onClick={() => setStep((current) => Math.max(0, current - 1))} disabled={step === 0} className="btn-secondary-dark rounded-md px-5 py-3 text-[11px] uppercase tracking-[0.14em] disabled:cursor-not-allowed disabled:opacity-40">Back</button>
-              <button type="submit" disabled={!canContinue} className="btn-primary rounded-md px-5 py-3 text-[11px] uppercase tracking-[0.14em] disabled:cursor-not-allowed disabled:opacity-50">
-                {step === 5 ? 'Prepare Intake' : 'Continue'} <ArrowRight size={14} />
-              </button>
-            </div>
-          )}
-        </form>
-      </div>
-    </div>
-  );
-};
-
 const Navbar = ({ onStartIntake }: { onStartIntake: () => void }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -290,7 +114,7 @@ const Navbar = ({ onStartIntake }: { onStartIntake: () => void }) => {
           {navLinks.map((link) => (
             <button key={link.id} onClick={() => handleNav(link.id)} className="border-none bg-transparent text-[11px] font-bold uppercase tracking-[0.22em] text-white/74 transition hover:text-[#C8A24A]">{link.label}</button>
           ))}
-          <button onClick={onStartIntake} className="btn-primary whitespace-nowrap rounded-md px-6 py-2.5 text-[11px] uppercase tracking-[0.16em]">Start AI Intake</button>
+          <button onClick={onStartIntake} className="btn-primary whitespace-nowrap rounded-md px-6 py-2.5 text-[11px] uppercase tracking-[0.16em]">Submit a Brief</button>
         </div>
         <button type="button" aria-label="Toggle navigation" aria-expanded={mobileMenuOpen} onClick={() => setMobileMenuOpen((open) => !open)} className="mobile-menu-button">
           {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -302,7 +126,7 @@ const Navbar = ({ onStartIntake }: { onStartIntake: () => void }) => {
             {navLinks.map((link) => (
               <button key={link.id} onClick={() => handleNav(link.id)} className="block w-full rounded-md border-none bg-transparent px-3 py-2.5 text-left text-[12px] font-bold uppercase tracking-[0.18em] text-white/78 transition hover:bg-white/8 hover:text-[#C8A24A]">{link.label}</button>
             ))}
-            <button onClick={() => { setMobileMenuOpen(false); onStartIntake(); }} className="btn-primary mt-2 w-full rounded-md px-6 py-3 text-[11px] uppercase tracking-[0.16em]">Start AI Intake</button>
+            <button onClick={() => { setMobileMenuOpen(false); onStartIntake(); }} className="btn-primary mt-2 w-full rounded-md px-6 py-3 text-[11px] uppercase tracking-[0.16em]">Submit a Brief</button>
           </div>
         </div>
       )}
@@ -337,7 +161,7 @@ const Hero = ({ onStartIntake }: { onStartIntake: () => void }) => (
         </h1>
         <p className="mt-5 max-w-[330px] text-[15px] font-medium leading-7 text-white/82 sm:max-w-xl sm:text-base">LionTech Innovations builds production-ready AI systems, automation workflows, and SaaS platforms for businesses that need reliable digital infrastructure.</p>
         <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-          <button onClick={onStartIntake} className="btn-primary w-full rounded-md px-6 py-3 text-[11px] uppercase tracking-[0.16em] sm:w-auto sm:min-w-[190px]">Start AI Intake <ArrowRight size={15} /></button>
+          <button onClick={onStartIntake} className="btn-primary w-full rounded-md px-6 py-3 text-[11px] uppercase tracking-[0.16em] sm:w-auto sm:min-w-[190px]">Submit a Brief <ArrowRight size={15} /></button>
           <button onClick={() => scrollToSection('services')} className="btn-secondary-dark w-full rounded-md px-6 py-3 text-[11px] uppercase tracking-[0.16em] sm:w-auto sm:min-w-[155px]">View Services</button>
         </div>
       </div>
@@ -453,7 +277,7 @@ const Contact = ({ onStartIntake }: { onStartIntake: () => void }) => (
         <a href="mailto:contact@liontechinnovations.co.uk" className="dark-card p-5 text-left no-underline"><Mail className="mb-4 text-[#C8A24A]" size={22} /><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/44">Email</p><p className="mt-2 break-words text-[15px] font-semibold text-white">contact@liontechinnovations.co.uk</p></a>
         <div className="dark-card p-5 text-left"><MapPin className="mb-4 text-[#C8A24A]" size={22} /><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/44">Location</p><p className="mt-2 text-[15px] font-semibold text-white">London, United Kingdom</p></div>
       </div>
-      <button type="button" onClick={onStartIntake} className="btn-primary mt-8 rounded-md px-7 py-3 text-[11px] uppercase tracking-[0.16em] no-underline">Start AI Intake <ArrowRight size={15} /></button>
+      <button type="button" onClick={onStartIntake} className="btn-primary mt-8 rounded-md px-7 py-3 text-[11px] uppercase tracking-[0.16em] no-underline">Submit a Brief <ArrowRight size={15} /></button>
     </div>
   </section>
 );
@@ -539,7 +363,7 @@ export default function App() {
       {route === '/privacy-policy' && <PrivacyPolicy onStartIntake={openIntake} />}
       {route === '/terms-and-conditions' && <TermsAndConditions onStartIntake={openIntake} />}
       {route !== '/privacy-policy' && route !== '/terms-and-conditions' && <HomePage onStartIntake={openIntake} />}
-      <IntakeModal isOpen={isIntakeOpen} onClose={() => setIsIntakeOpen(false)} />
+      <IntakeDialog open={isIntakeOpen} onClose={() => setIsIntakeOpen(false)} />
     </div>
   );
 }
