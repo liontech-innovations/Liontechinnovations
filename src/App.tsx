@@ -306,7 +306,7 @@ const LegalPage = ({ title, children, onStartIntake }: { title: string; children
       <main className="mx-auto max-w-3xl px-4 pb-20 pt-32 sm:px-6 lg:px-8">
         <a href="#/" className="mb-6 inline-flex text-sm font-semibold text-[#5B76FF] no-underline hover:underline">&larr; Back to Home</a>
         <h1 className="text-4xl font-black tracking-[-0.04em] text-[#0B1F35]">{title}</h1>
-        <p className="mt-2 text-sm text-[#455A6E]">Last updated: March 2026</p>
+        <p className="mt-2 text-sm text-[#455A6E]">Last updated: May 2026</p>
         <div className="legal-content mt-10">{children}</div>
       </main>
       <Footer />
@@ -316,27 +316,110 @@ const LegalPage = ({ title, children, onStartIntake }: { title: string; children
 
 const PrivacyPolicy = ({ onStartIntake }: { onStartIntake: () => void }) => (
   <LegalPage title="Privacy Policy" onStartIntake={onStartIntake}>
-    <h2>1. Introduction</h2><p>Lion Tech Innovations Ltd ("we", "our", "us"), registered in England and Wales (Company No. 17068390), is committed to protecting the privacy of individuals who visit our website and use our services.</p>
-    <h2>2. Information We Collect</h2><p>We may collect contact information, technical data, usage data, and business information you provide when discussing potential projects or engagements.</p>
-    <h2>3. How We Use Your Information</h2><p>We use personal data to respond to enquiries, provide requested services, improve our website, send relevant communications where permitted, and comply with legal obligations.</p>
-    <h2>4. Data Sharing</h2><p>We do not sell personal data. We may share information with trusted service providers who help operate our website and business, or where required by law.</p>
-    <h2>5. Data Retention</h2><p>We retain personal data only for as long as necessary for the purposes for which it was collected, or as required by applicable law.</p>
-    <h2>6. Your Rights</h2><p>Under UK GDPR, you have rights to access, correct, delete, restrict, object to processing, request portability, and lodge a complaint with the Information Commissioner's Office.</p>
-    <h2>7. Cookies</h2><p>Our website may use cookies to enhance browsing and measure website usage. You can control cookie preferences through your browser settings.</p>
-    <h2>8. Contact Us</h2><p>For questions regarding this Privacy Policy, contact us at <strong>contact@liontechinnovations.co.uk</strong>. Address: London, United Kingdom.</p>
+    <h2>1. Introduction</h2>
+    <p>Lion Tech Innovations Ltd ("LionTech", "we", "our", "us"), registered in England and Wales (Company No. 17068390), is committed to protecting the privacy of individuals who interact with our website, services, and products. This policy explains what information we collect, how we use it, and the rights you have under UK GDPR and the Data Protection Act 2018.</p>
+    <h2>2. Information We Collect</h2>
+    <p>We collect the following categories of personal data:</p>
+    <ul>
+      <li>Contact information you provide voluntarily (name, email address, company, role) when submitting a brief through our AI intake assistant or contacting us directly.</li>
+      <li>Conversation data from the AI intake assistant, including the messages you send and the structured brief generated from those messages.</li>
+      <li>Technical data automatically logged when you visit the site: IP address, browser type, device type, referring page, and timestamps.</li>
+      <li>Communication records from any subsequent correspondence with our team.</li>
+    </ul>
+    <p>We do not knowingly collect special category data, financial details, or information from children under 16.</p>
+    <h2>3. How We Use Your Information</h2>
+    <p>We process personal data on the following lawful bases under UK GDPR:</p>
+    <ul>
+      <li>Legitimate interests: to respond to enquiries, evaluate fit for engagements, operate our infrastructure, and improve our services.</li>
+      <li>Contractual necessity: where you become a customer or engagement partner.</li>
+      <li>Legal obligation: to comply with applicable UK laws, including tax, company, and data protection legislation.</li>
+    </ul>
+    <p>We do not sell personal data. We do not use personal data for advertising or profiling.</p>
+    <h2>4. Third-Party Processors</h2>
+    <p>We use the following processors to deliver our services. Each is bound by data protection contracts and processes data only on our instructions:</p>
+    <ul>
+      <li>OpenRouter (OpenRouter, Inc., USA) — routes the AI intake conversation to the Anthropic Claude language model.</li>
+      <li>Anthropic, PBC (USA) — provides the underlying Claude language model used for the intake assistant. Anthropic's API data usage policy applies.</li>
+      <li>Resend (Resend, Inc., USA) — delivers transactional email notifications. Hosted in Ireland (EU).</li>
+      <li>Vercel Inc. (USA) — hosts our website infrastructure on its Edge network.</li>
+      <li>Google LLC (USA / Ireland) — provides Google Workspace for our email and document infrastructure.</li>
+      <li>GoDaddy.com, LLC (USA) — registers our domain.</li>
+    </ul>
+    <p>International transfers to the USA are protected by Standard Contractual Clauses (SCCs) and the EU–US Data Privacy Framework where applicable.</p>
+    <h2>5. Data Retention</h2>
+    <ul>
+      <li>AI intake conversation transcripts are transmitted in-memory during the conversation. Once a brief is generated and emailed to our team, the transcript is retained only as part of that email record. We do not store transcripts in a database.</li>
+      <li>Email correspondence is retained for up to 7 years for legitimate business and tax purposes, then deleted.</li>
+      <li>Technical logs are retained for up to 30 days for security and operational purposes, then deleted.</li>
+      <li>Customer records are retained for the duration of the engagement plus 7 years thereafter.</li>
+    </ul>
+    <h2>6. Your Rights</h2>
+    <p>Under UK GDPR you have the right to:</p>
+    <ul>
+      <li>Access the personal data we hold about you.</li>
+      <li>Request correction of inaccurate data.</li>
+      <li>Request deletion of your data where applicable.</li>
+      <li>Request restriction of, or object to, processing.</li>
+      <li>Request data portability in a structured, machine-readable format.</li>
+      <li>Withdraw consent where processing is based on consent.</li>
+      <li>Lodge a complaint with the UK Information Commissioner's Office (ICO) at ico.org.uk.</li>
+    </ul>
+    <p>To exercise any of these rights, email <a href="mailto:privacy@liontechinnovations.co.uk">privacy@liontechinnovations.co.uk</a>. We will respond within one calendar month.</p>
+    <h2>7. Cookies</h2>
+    <p>Our website uses only essential cookies required for site function. We do not use advertising, analytics, or tracking cookies. You can control cookie preferences through your browser settings.</p>
+    <h2>8. Security</h2>
+    <p>We apply reasonable technical and organisational measures to protect personal data, including encrypted transport (HTTPS), least-privilege access controls, and segregation of production credentials. We will notify affected individuals and the ICO of any qualifying data breach within 72 hours of discovery.</p>
+    <h2>9. Changes to This Policy</h2>
+    <p>We may update this policy from time to time. Material changes will be reflected in the "Last updated" date at the top.</p>
+    <h2>10. Contact</h2>
+    <ul>
+      <li>Data protection enquiries and rights requests: <a href="mailto:privacy@liontechinnovations.co.uk">privacy@liontechinnovations.co.uk</a></li>
+      <li>General contact: <a href="mailto:contact@liontechinnovations.co.uk">contact@liontechinnovations.co.uk</a></li>
+      <li>Postal: Lion Tech Innovations Ltd, London, United Kingdom (full registered office available on request).</li>
+    </ul>
   </LegalPage>
 );
 
 const TermsAndConditions = ({ onStartIntake }: { onStartIntake: () => void }) => (
   <LegalPage title="Terms & Conditions" onStartIntake={onStartIntake}>
-    <h2>1. Introduction</h2><p>These Terms and Conditions govern your use of the Lion Tech Innovations Ltd website and our provision of services.</p>
-    <h2>2. Services</h2><p>Lion Tech Innovations Ltd provides digital infrastructure, web development, automation, and related technology services on a project basis.</p>
-    <h2>3. Intellectual Property</h2><p>All content on this website is the property of Lion Tech Innovations Ltd or its licensors and is protected by applicable intellectual property laws.</p>
-    <h2>4. Client Obligations</h2><p>Clients agree to provide accurate information, respond to project requests in a timely manner, ensure rights to supplied materials, and pay agreed fees.</p>
-    <h2>5. Limitation of Liability</h2><p>To the maximum extent permitted by law, Lion Tech Innovations Ltd shall not be liable for indirect, incidental, or consequential damages arising from website or service use.</p>
-    <h2>6. Warranties</h2><p>Services are delivered with reasonable skill and care in accordance with applicable project agreements and industry standards.</p>
-    <h2>7. Governing Law</h2><p>These Terms and Conditions are governed by the laws of England and Wales.</p>
-    <h2>8. Contact</h2><p>For questions about these Terms and Conditions, contact us at <strong>contact@liontechinnovations.co.uk</strong>. Address: London, United Kingdom.</p>
+    <h2>1. Introduction</h2>
+    <p>These Terms govern your use of the website operated by Lion Tech Innovations Ltd ("LionTech", "we", "our", "us"), a company registered in England and Wales (Company No. 17068390). By accessing this website or using our services, you agree to these Terms.</p>
+    <h2>2. Services</h2>
+    <p>LionTech operates a portfolio of UK technology platforms — including ClearVisa UK, CalcFee, and BundleBase — and selectively undertakes infrastructure engagements with organisations that need production-grade systems work. We do not offer freelance services, hourly billing, marketing services, or generic agency work.</p>
+    <h2>3. Engagement Process</h2>
+    <ul>
+      <li>Submissions via our AI intake assistant ("Submit a Brief") are evaluated by our engineering team within one business day.</li>
+      <li>A submission does not constitute an offer of services or a contract.</li>
+      <li>If we determine a fit, we will follow up to arrange a discovery call. Terms specific to any engagement (scope, fees, timelines, deliverables, liability, intellectual property) will be set out in a separate written agreement before any work begins.</li>
+    </ul>
+    <h2>4. Use of the Website</h2>
+    <p>You agree not to:</p>
+    <ul>
+      <li>Attempt to disrupt, probe, or circumvent the security of the website or its underlying infrastructure.</li>
+      <li>Submit unlawful, defamatory, or abusive content through the intake assistant or any other form.</li>
+      <li>Use automated tools, scrapers, or scripts to interact with the intake assistant or extract content.</li>
+      <li>Misrepresent your identity, company, or intentions.</li>
+    </ul>
+    <p>We reserve the right to refuse service, block access, or terminate engagements at our discretion.</p>
+    <h2>5. Intellectual Property</h2>
+    <p>All content on this website — including text, graphics, logos, the "LionTech Innovations" name, product branding (ClearVisa UK, CalcFee, BundleBase), and source code — is the property of Lion Tech Innovations Ltd or its licensors and is protected by UK copyright and trademark law. Use, reproduction, or distribution without prior written permission is prohibited.</p>
+    <h2>6. Products</h2>
+    <p>ClearVisa UK, CalcFee, and BundleBase are each operated under their own terms of service available on the respective product website. Those product terms govern use of those products and take precedence over these Terms for matters specific to the product.</p>
+    <h2>7. Disclaimers</h2>
+    <p>The website and any informational content are provided "as is" without warranties of any kind, express or implied. We make no warranty that the website will be uninterrupted, error-free, or free from security vulnerabilities at all times. Outputs from the AI intake assistant are not professional advice; they are an automated structuring of your submitted information for our team to review.</p>
+    <h2>8. Limitation of Liability</h2>
+    <p>To the maximum extent permitted by UK law, Lion Tech Innovations Ltd shall not be liable for any indirect, incidental, consequential, special, or punitive damages arising from your use of the website or any free-tier interactions. Nothing in these Terms limits liability for fraud, death or personal injury caused by negligence, or any other liability that cannot be excluded by UK law.</p>
+    <h2>9. Indemnification</h2>
+    <p>You agree to indemnify and hold harmless Lion Tech Innovations Ltd from any claims, damages, or expenses arising from your breach of these Terms or your misuse of the website.</p>
+    <h2>10. Governing Law</h2>
+    <p>These Terms are governed by the laws of England and Wales. Any disputes arising shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+    <h2>11. Changes to These Terms</h2>
+    <p>We may update these Terms periodically. Material changes will be reflected in the "Last updated" date at the top.</p>
+    <h2>12. Contact</h2>
+    <ul>
+      <li>Legal and contractual enquiries: <a href="mailto:legal@liontechinnovations.co.uk">legal@liontechinnovations.co.uk</a></li>
+      <li>General contact: <a href="mailto:contact@liontechinnovations.co.uk">contact@liontechinnovations.co.uk</a></li>
+    </ul>
   </LegalPage>
 );
 
