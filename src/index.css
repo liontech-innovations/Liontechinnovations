@@ -344,17 +344,48 @@ a:has(> .footer-logo),
 .legal-content h2 {
   margin-top: 2.25rem;
   margin-bottom: 0.75rem;
-  color: #0B1F35;
+  color: #FFFFFF;
   font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: -0.02em;
 }
 
+.legal-content h3 {
+  color: #FFFFFF;
+}
+
 .legal-content p {
   margin-bottom: 1rem;
-  color: #455A6E;
+  color: rgba(255, 255, 255, 0.72);
   font-size: 0.96rem;
   line-height: 1.78;
+}
+
+.legal-content li {
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.78;
+}
+
+.legal-content strong {
+  color: #FFFFFF;
+}
+
+.legal-content a {
+  color: #C8A24A;
+  text-decoration: none;
+}
+
+.legal-content a:hover {
+  color: #D4B05A;
+  text-decoration: underline;
+}
+
+.legal-content li::marker {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.legal-content hr {
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 @media (max-width: 767px) {

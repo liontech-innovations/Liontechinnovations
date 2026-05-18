@@ -301,7 +301,9 @@ const Services = () => {
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md border border-[#C8A24A]/14 bg-white/5 text-[#C8A24A] transition group-hover:border-[#C8A24A]/28 group-hover:bg-[#C8A24A]/8">{service.icon}</div>
                 <h3 className="text-lg font-bold tracking-[-0.03em] text-white">{service.title}</h3>
                 <p className="mt-2.5 text-[14px] leading-6 text-white/72">{service.description}</p>
-                <span className="absolute bottom-4 right-5 text-lg font-semibold text-[#C8A24A] opacity-0 transition group-hover:opacity-100">→</span>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#C8A24A]">
+                  Read more <span className="transition-transform group-hover:translate-x-0.5">→</span>
+                </span>
               </a>
             ) : (
               <div key={service.title} className="light-card group p-5">
@@ -369,12 +371,12 @@ const Footer = () => (
 const LegalPage = ({ title, children, onStartIntake }: { title: string; children: React.ReactNode; onStartIntake: () => void }) => {
   useEffect(() => window.scrollTo(0, 0), []);
   return (
-    <div className="min-h-screen bg-[#F4F7FB]">
+    <div className="min-h-screen bg-[#020817]">
       <Navbar onStartIntake={onStartIntake} />
       <main className="mx-auto max-w-3xl px-4 pb-20 pt-32 sm:px-6 lg:px-8">
-        <a href="/" onClick={(event) => { event.preventDefault(); navigateTo('/'); }} className="mb-6 inline-flex text-sm font-semibold text-[#5B76FF] no-underline hover:underline">&larr; Back to Home</a>
-        <h1 className="text-4xl font-black tracking-[-0.04em] text-[#0B1F35]">{title}</h1>
-        <p className="mt-2 text-sm text-[#455A6E]">Last updated: May 2026</p>
+        <a href="/" onClick={(event) => { event.preventDefault(); navigateTo('/'); }} className="mb-6 inline-flex text-sm font-semibold text-[#C8A24A] no-underline transition hover:text-[#D4B05A] hover:underline">&larr; Back to Home</a>
+        <h1 className="text-4xl font-black tracking-[-0.04em] text-white">{title}</h1>
+        <p className="mt-2 text-sm text-white/56">Last updated: May 2026</p>
         <div className="legal-content mt-10">{children}</div>
       </main>
       <Footer />
@@ -385,13 +387,13 @@ const LegalPage = ({ title, children, onStartIntake }: { title: string; children
 const CapabilityPage = ({ eyebrow, title, intro, children, onStartIntake }: { eyebrow: string; title: string; intro: string; children: React.ReactNode; onStartIntake: () => void }) => {
   useEffect(() => window.scrollTo(0, 0), []);
   return (
-    <div className="min-h-screen bg-[#F4F7FB]">
+    <div className="min-h-screen bg-[#020817]">
       <Navbar onStartIntake={onStartIntake} />
       <main className="mx-auto max-w-3xl px-4 pb-20 pt-32 sm:px-6 lg:px-8">
-        <a href="/" onClick={(event) => { event.preventDefault(); navigateTo('/'); }} className="mb-6 inline-flex text-sm font-semibold text-[#5B76FF] no-underline hover:underline">&larr; Back to Home</a>
+        <a href="/" onClick={(event) => { event.preventDefault(); navigateTo('/'); }} className="mb-6 inline-flex text-sm font-semibold text-[#C8A24A] no-underline transition hover:text-[#D4B05A] hover:underline">&larr; Back to Home</a>
         <span className="section-eyebrow text-[#C8A24A]">{eyebrow}</span>
-        <h1 className="mt-3 text-4xl font-black tracking-[-0.04em] text-[#0B1F35]">{title}</h1>
-        <p className="mt-5 text-lg leading-8 text-[#455A6E]">{intro}</p>
+        <h1 className="mt-3 text-4xl font-black tracking-[-0.04em] text-white">{title}</h1>
+        <p className="mt-5 text-lg leading-8 text-white/72">{intro}</p>
         <div className="legal-content mt-10">{children}</div>
         <button type="button" onClick={onStartIntake} className="btn-primary mt-10 rounded-md px-7 py-3 text-[11px] uppercase tracking-[0.16em] no-underline">Submit a Brief <ArrowRight size={15} /></button>
       </main>
