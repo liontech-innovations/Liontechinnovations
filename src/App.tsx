@@ -47,12 +47,30 @@ const routeMeta = {
     title: 'Terms & Conditions | Lion Tech Innovations',
     description: 'The terms governing use of the Lion Tech Innovations website, AI intake assistant, and engagement process under English and Welsh law.',
   },
+  '/uk-ai-infrastructure': {
+    title: 'UK AI Infrastructure | Lion Tech Innovations',
+    description: 'Lion Tech Innovations Ltd is a UK AI infrastructure operator building operational automation systems, SaaS platforms, and enterprise-grade digital workflows. London-based, selectively engaged.',
+  },
+  '/saas-platform-development': {
+    title: 'SaaS Platform Development | Lion Tech Innovations',
+    description: 'We architect and ship production SaaS for regulated UK markets. The patterns behind ClearVisa UK, CalcFee, and BundleBase — applied to your domain.',
+  },
+  '/ai-intake-systems': {
+    title: 'AI Intake Systems | Lion Tech Innovations',
+    description: "Real conversational intake powered by streaming LLMs. The architecture behind LionTech's own AI intake, available for your domain.",
+  },
 };
 
 type Route = keyof typeof routeMeta;
 
 function getRoute(): Route {
-  if (window.location.pathname === '/privacy-policy' || window.location.pathname === '/terms-and-conditions') {
+  if (
+    window.location.pathname === '/privacy-policy' ||
+    window.location.pathname === '/terms-and-conditions' ||
+    window.location.pathname === '/uk-ai-infrastructure' ||
+    window.location.pathname === '/saas-platform-development' ||
+    window.location.pathname === '/ai-intake-systems'
+  ) {
     return window.location.pathname;
   }
 
@@ -262,8 +280,8 @@ const Platforms = () => {
 
 const Services = () => {
   const services = [
-    { icon: <Zap size={25} />, title: 'SaaS Platform Development', description: 'Production-ready software platforms with secure architecture, intuitive flows, and operational reliability — the stack behind ClearVisa UK, CalcFee, and BundleBase.' },
-    { icon: <Cpu size={25} />, title: 'AI Automation Systems', description: 'Workflow automation, intake systems, and operational AI integrations that reduce manual processing and scale operations.' },
+    { icon: <Zap size={25} />, title: 'SaaS Platform Development', href: '/saas-platform-development' as Route, description: 'Production-ready software platforms with secure architecture, intuitive flows, and operational reliability — the stack behind ClearVisa UK, CalcFee, and BundleBase.' },
+    { icon: <Cpu size={25} />, title: 'AI Automation Systems', href: '/ai-intake-systems' as Route, description: 'Workflow automation, intake systems, and operational AI integrations that reduce manual processing and scale operations.' },
     { icon: <Server size={25} />, title: 'API & Payment Infrastructure', description: 'Reliable integrations, payment flows, webhooks, and backend services for production business systems.' },
   ];
 
@@ -273,11 +291,25 @@ const Services = () => {
         <div className="max-w-2xl"><span className="section-eyebrow text-[#C8A24A]">Our Capabilities</span><h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">Enterprise-Grade Solutions</h2><p className="mt-4 text-base leading-7 text-white/72">We architect and deploy robust digital systems that solve complex business challenges and drive operational efficiency.</p></div>
         <div className="mt-9 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
-            <div key={service.title} className="light-card group p-5">
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md border border-[#C8A24A]/14 bg-white/5 text-[#C8A24A] transition group-hover:border-[#C8A24A]/28 group-hover:bg-[#C8A24A]/8">{service.icon}</div>
-              <h3 className="text-lg font-bold tracking-[-0.03em] text-white">{service.title}</h3>
-              <p className="mt-2.5 text-[14px] leading-6 text-white/72">{service.description}</p>
-            </div>
+            service.href ? (
+              <a
+                key={service.title}
+                href={service.href}
+                onClick={(event) => { event.preventDefault(); navigateTo(service.href); }}
+                className="light-card group relative block p-5 no-underline transition hover:border-[#C8A24A]/36"
+              >
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md border border-[#C8A24A]/14 bg-white/5 text-[#C8A24A] transition group-hover:border-[#C8A24A]/28 group-hover:bg-[#C8A24A]/8">{service.icon}</div>
+                <h3 className="text-lg font-bold tracking-[-0.03em] text-white">{service.title}</h3>
+                <p className="mt-2.5 text-[14px] leading-6 text-white/72">{service.description}</p>
+                <span className="absolute bottom-4 right-5 text-lg font-semibold text-[#C8A24A] opacity-0 transition group-hover:opacity-100">→</span>
+              </a>
+            ) : (
+              <div key={service.title} className="light-card group p-5">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md border border-[#C8A24A]/14 bg-white/5 text-[#C8A24A] transition group-hover:border-[#C8A24A]/28 group-hover:bg-[#C8A24A]/8">{service.icon}</div>
+                <h3 className="text-lg font-bold tracking-[-0.03em] text-white">{service.title}</h3>
+                <p className="mt-2.5 text-[14px] leading-6 text-white/72">{service.description}</p>
+              </div>
+            )
           ))}
         </div>
       </div>
@@ -347,6 +379,187 @@ const LegalPage = ({ title, children, onStartIntake }: { title: string; children
       </main>
       <Footer />
     </div>
+  );
+};
+
+const CapabilityPage = ({ eyebrow, title, intro, children, onStartIntake }: { eyebrow: string; title: string; intro: string; children: React.ReactNode; onStartIntake: () => void }) => {
+  useEffect(() => window.scrollTo(0, 0), []);
+  return (
+    <div className="min-h-screen bg-[#F4F7FB]">
+      <Navbar onStartIntake={onStartIntake} />
+      <main className="mx-auto max-w-3xl px-4 pb-20 pt-32 sm:px-6 lg:px-8">
+        <a href="/" onClick={(event) => { event.preventDefault(); navigateTo('/'); }} className="mb-6 inline-flex text-sm font-semibold text-[#5B76FF] no-underline hover:underline">&larr; Back to Home</a>
+        <span className="section-eyebrow text-[#C8A24A]">{eyebrow}</span>
+        <h1 className="mt-3 text-4xl font-black tracking-[-0.04em] text-[#0B1F35]">{title}</h1>
+        <p className="mt-5 text-lg leading-8 text-[#455A6E]">{intro}</p>
+        <div className="legal-content mt-10">{children}</div>
+        <button type="button" onClick={onStartIntake} className="btn-primary mt-10 rounded-md px-7 py-3 text-[11px] uppercase tracking-[0.16em] no-underline">Submit a Brief <ArrowRight size={15} /></button>
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+const UkAiInfrastructure = ({ onStartIntake }: { onStartIntake: () => void }) => {
+  usePageMeta(routeMeta['/uk-ai-infrastructure'].title, routeMeta['/uk-ai-infrastructure'].description);
+
+  return (
+    <CapabilityPage
+      eyebrow="UK AI INFRASTRUCTURE"
+      title="UK AI Infrastructure Operator"
+      intro="Lion Tech Innovations Ltd is a UK AI infrastructure company building operational automation systems, SaaS platforms, and enterprise-grade digital workflows for organisations that need reliable production systems. We operate, we don't agency. The platforms we ship are platforms we run."
+      onStartIntake={onStartIntake}
+    >
+      <h2>What we operate</h2>
+      <p>We maintain a portfolio of production UK technology platforms. Three are currently public:</p>
+      <ul>
+        <li><strong>ClearVisa UK</strong> — Compliance SaaS. AI-powered immigration risk analysis. Helps applicants assess UK visa refusal risk before submission, using classification models trained on Home Office decision patterns and policy guidance. Live.</li>
+        <li><strong>CalcFee</strong> — Fintech tool. Real-time financial calculation and reporting platform with secure data processing pipelines and structured PDF output generation. Live.</li>
+        <li><strong>BundleBase</strong> — Legal tech. Document bundling system for UK legal professionals. Automated PDF generation, indexing, and structured output for court-ready bundles. Live.</li>
+      </ul>
+      <p>Each platform is operated by us, on our infrastructure, end to end. We design, deploy, secure, monitor, and maintain. The same engineering rigour applies to any partner engagement.</p>
+
+      <h2>Infrastructure principles</h2>
+      <p><strong>Production-first.</strong> Every system we ship is designed for the conditions it will actually run under: real users, real load, regulated UK markets, real failure modes. We do not ship MVPs that quietly become someone else's 3am incident.</p>
+      <p><strong>Stack discipline.</strong> Our stack is deliberately narrow. TypeScript across frontend and serverless functions. Vercel Edge for compute. Supabase for managed Postgres and storage. Stripe for payment flows. Anthropic Claude via OpenRouter for LLM workloads. Resend for transactional email. Cloudflare for edge protection. A narrow stack means fewer abstractions to maintain, deeper expertise per tool, and predictable operational behaviour.</p>
+      <p><strong>Operational reliability.</strong> Production-grade is not a marketing word. It means observability before launch, runbooks for every incident class, structured logging, alerting that pages on signal not noise, deploy gates with rollback, and a habit of fixing the cause rather than the symptom.</p>
+      <p><strong>UK jurisdiction.</strong> Subject to UK GDPR, the Data Protection Act 2018, and English and Welsh law. Data flows are designed with UK and EU data residency in mind. International transfers documented and contracted under Standard Contractual Clauses where applicable.</p>
+
+      <h2>What we build for partners</h2>
+      <p>We selectively undertake infrastructure engagements with organisations that need production systems, not marketing collateral. Three capability lanes — each built on what we already operate:</p>
+      <ul>
+        <li><a href="/saas-platform-development" onClick={(event) => { event.preventDefault(); navigateTo('/saas-platform-development'); }}>SaaS Platform Development</a>. Architecting and shipping production SaaS for regulated UK markets. The patterns behind ClearVisa, CalcFee, and BundleBase, applied to your domain.</li>
+        <li><a href="/ai-intake-systems" onClick={(event) => { event.preventDefault(); navigateTo('/ai-intake-systems'); }}>AI Automation Systems</a>. Operational AI: intake systems, document processing, classification pipelines, workflow automation. We integrate with your existing stack rather than ask you to adopt ours.</li>
+        <li><strong>API &amp; Payment Infrastructure.</strong> Stripe integrations, webhook reliability, idempotent transactional pipelines, financial reporting. The critical, often-unglamorous work that determines whether your business gets paid on time.</li>
+      </ul>
+      <p>What we do not do: marketing campaigns, SEO consulting, social media management, freelance hourly work, generic agency engagements, app cloning, ghostwriting, content writing. If those are what you need, we are not a fit.</p>
+
+      <h2>How we engage</h2>
+      <p>Engagement is initiated through our AI intake assistant — a real conversational interface, not a form. It captures requirements in your own words and generates a structured brief for our engineering team to review within one business day.</p>
+      <p>If your brief fits how we work, we follow up with a discovery call to clarify constraints. After that, we issue a written engagement agreement with scope, fees, timelines, deliverables, and liability terms. No work begins outside a signed scope.</p>
+      <p>We currently take a small number of engagements per year. Selectivity is not a marketing pose — it is how we maintain operational quality on the platforms we already run.</p>
+
+      <h2>Where we are</h2>
+      <p>London, United Kingdom. Registered in England and Wales (Company No. 17068390). All contracts governed by English and Welsh law.</p>
+      <p>We work primarily with UK organisations. We accept engagements from EU and overseas clients on a case-by-case basis where the work is interesting and the data residency model fits.</p>
+    </CapabilityPage>
+  );
+};
+
+const SaasPlatformDevelopment = ({ onStartIntake }: { onStartIntake: () => void }) => {
+  usePageMeta(routeMeta['/saas-platform-development'].title, routeMeta['/saas-platform-development'].description);
+
+  return (
+    <CapabilityPage
+      eyebrow="SAAS PLATFORM DEVELOPMENT"
+      title="Production SaaS for Regulated UK Markets"
+      intro="We build production SaaS the way it has to work in real markets: secure, audited, observable, and operationally reliable. ClearVisa UK, CalcFee, and BundleBase run on the patterns described below."
+      onStartIntake={onStartIntake}
+    >
+      <h2>What 'production-ready' actually means</h2>
+      <p>Most SaaS shipped today is a prototype with a Stripe button bolted on. We define production-ready strictly:</p>
+      <ul>
+        <li><strong>Multi-tenant data isolation enforced at the database layer.</strong> Row-level security policies in Postgres, not application-layer filters. A bug in your application code cannot leak data between tenants.</li>
+        <li><strong>Audit logging on every state change.</strong> Who did what, when, with what payload. Retained for the legally required period. Queryable.</li>
+        <li><strong>Observability before launch.</strong> Structured logs with request IDs propagated across all services. Alert thresholds set before traffic arrives, not retrofitted after incidents.</li>
+        <li><strong>Idempotent transactional flows.</strong> Every payment, every webhook, every state transition designed to handle replay safely. Network failures should not produce duplicate charges or orphaned records.</li>
+        <li><strong>GDPR-compliant data handling.</strong> Lawful basis documented per data category. Subject access, rectification, and erasure flows in place from launch — not added under pressure during a complaint.</li>
+      </ul>
+
+      <h2>Stack discipline</h2>
+      <p>We use the same narrow stack across every platform we ship:</p>
+      <ul>
+        <li><strong>Frontend:</strong> TypeScript + React + Vite. Tailwind for styling.</li>
+        <li><strong>Runtime:</strong> Vercel Edge functions for low-latency execution. Node serverless where edge is unsuitable.</li>
+        <li><strong>Database:</strong> Supabase-managed Postgres. Row-level security policies. Database-side triggers for auditing.</li>
+        <li><strong>Auth:</strong> Supabase Auth or Clerk, depending on the engagement's compliance requirements.</li>
+        <li><strong>Payments:</strong> Stripe. Webhook receivers idempotent by event ID. Subscription state mirrored in our own database for auditability.</li>
+        <li><strong>Email:</strong> Resend for transactional. Postmark or AWS SES for higher-volume engagements.</li>
+        <li><strong>Edge security:</strong> Cloudflare. Rate limiting, bot mitigation, WAF rules.</li>
+        <li><strong>Monitoring:</strong> Vercel observability, Sentry, and structured logging into Supabase or BetterStack.</li>
+      </ul>
+      <p>This stack is deliberately narrow. Deep expertise across few tools is more useful than shallow coverage of many.</p>
+
+      <h2>Our shipped platforms</h2>
+      <p><strong>ClearVisa UK</strong> — compliance SaaS in the UK immigration risk-analysis space. Built around a classification model, a document handling pipeline, and an outcome scoring presentation layer. Multi-tenant, GDPR-compliant, and operating in a regulated category.</p>
+      <p><strong>CalcFee</strong> — fintech tool. Real-time calculation engine, secure financial data pipeline, structured PDF report generation. Stripe-integrated billing.</p>
+      <p><strong>BundleBase</strong> — legal tech. Document bundling system for UK legal professionals. Automated PDF generation with indexing, structured output, and audit trails on every bundle compiled.</p>
+      <p>The architectural patterns across all three are the same. Multi-tenancy, RLS, audit logs, idempotent transactions, observability, structured PDF output. We build to one standard.</p>
+
+      <h2>What an engagement looks like</h2>
+      <p>Most SaaS partner engagements follow this shape:</p>
+      <ol>
+        <li><strong>Discovery.</strong> 60-90 min call. Domain understanding, regulatory constraints, integration surface, team and ownership model.</li>
+        <li><strong>Scoping document.</strong> Architecture proposal, data model, integration map, deployment plan, milestones, and pricing. Signed before any code.</li>
+        <li><strong>Build.</strong> Iterative delivery. Working software in production environments from week one, not week twelve.</li>
+        <li><strong>Handover or operate.</strong> Depending on the engagement, we either hand the platform to your internal team with documentation and runbooks, or continue to operate it under a managed-platform agreement.</li>
+      </ol>
+      <p>We do not run hourly billing. Engagements are fixed-scope or platform-operated, with clear deliverables and timelines.</p>
+
+      <h2>What we don't build</h2>
+      <p>We do not build: marketing sites with 'SaaS' in the page title, NFT mints, crypto exchanges, gambling platforms, dating apps, AI image generators, copywriting tools, generic CRMs, or one-off WordPress builds. We have no problem with these markets — they're not where our engineering value is concentrated.</p>
+      <p>Part of <a href="/uk-ai-infrastructure" onClick={(event) => { event.preventDefault(); navigateTo('/uk-ai-infrastructure'); }}>LionTech's UK AI infrastructure</a>.</p>
+    </CapabilityPage>
+  );
+};
+
+const AiIntakeSystems = ({ onStartIntake }: { onStartIntake: () => void }) => {
+  usePageMeta(routeMeta['/ai-intake-systems'].title, routeMeta['/ai-intake-systems'].description);
+
+  return (
+    <CapabilityPage
+      eyebrow="AI INTAKE SYSTEMS"
+      title="Conversational Intake, Not Multi-Step Forms"
+      intro="Multi-step intake wizards are an anti-pattern. Real buyers describe their problem in their own words; a structured form forces them to translate their problem into your taxonomy. We build conversational AI intake systems that capture intent in the visitor's own language, then structure it for your team. The intake on this site is itself a working example. The same architecture is available for your domain."
+      onStartIntake={onStartIntake}
+    >
+      <h2>Why conversational beats form</h2>
+      <p>Forms work when the user already knows what they want. For complex purchases — software, legal services, financial products, infrastructure work — the user is exploring, and a form makes them feel interrogated.</p>
+      <p>Conversational intake inverts this. The user describes their problem in natural language. The AI captures intent, asks at most one clarifying question, and produces a structured brief for the receiving team. The user does less work; the team gets richer information.</p>
+      <p>Compared to a typical multi-step form:</p>
+      <ul>
+        <li><strong>Higher completion rate.</strong> No drop-off between steps.</li>
+        <li><strong>Higher information density.</strong> Free-text replies surface context that radio buttons never capture.</li>
+        <li><strong>Faster qualification.</strong> The AI can decline obvious misfits politely, freeing your team to focus on real opportunities.</li>
+        <li><strong>Better team handoff.</strong> The output is a structured brief in your team's schema, not a CRM record padded with empty fields.</li>
+      </ul>
+
+      <h2>Architecture (the intake on this site)</h2>
+      <p>The AI intake you can try via the Submit a Brief button on this site uses the following architecture. The same pattern is what we deploy for partners.</p>
+      <p><strong>Frontend.</strong> React component with streaming response rendering. The user types, sends with Enter, and watches the assistant's response stream in character by character — the streaming itself is most of what makes the experience feel intelligent.</p>
+      <p><strong>API endpoint.</strong> Vercel Edge function. Receives the conversation history, applies a system prompt that defines the AI's voice and behaviour, and streams the response back from the upstream model.</p>
+      <p><strong>Model.</strong> Anthropic Claude (currently Sonnet 4.6) accessed via OpenRouter. OpenRouter abstracts model providers, so the system can switch providers without code changes if pricing, latency, or capability requires it.</p>
+      <p><strong>System prompt.</strong> The system prompt IS the product. It defines voice (engineer, terse, no filler), turn rules (maximum one clarifying question, brief on second response), decline filters (explicit budget or scope misfit), and output format (structured JSON brief).</p>
+      <p><strong>Brief generation.</strong> When the conversation has enough signal, the assistant responds with JSON in a strict schema: project, problem, current state, capabilities required, constraints, urgency, suggested next step.</p>
+      <p><strong>Submission endpoint.</strong> A second Vercel Edge function receives the user-confirmed brief plus contact details, formats it as HTML email, and dispatches via Resend to the receiving team. Reply-to is set to the visitor's email so team replies go directly to them.</p>
+      <p><strong>No database.</strong> Conversation transcripts are not stored. The brief lives only in the email record. This is deliberate — minimum-data-retention by design.</p>
+
+      <h2>Engineering details we get asked about</h2>
+      <p><strong>Streaming.</strong> We use a fetch with ReadableStream consumed character-by-character on the client. No fake typing animation.</p>
+      <p><strong>JSON suppression.</strong> When the assistant generates the brief JSON, the client detects JSON mode on the first non-whitespace character and replaces the streamed text with a placeholder, then transitions to the brief preview UI when streaming completes. The raw JSON is never visible to the user.</p>
+      <p><strong>Turn budget.</strong> The system prompt enforces a maximum of one clarifying question. Backend logic enforces a maximum of three visitor messages. After that, the model must produce a brief regardless of how thin the input is.</p>
+      <p><strong>Decline filter.</strong> Only specific signals trigger a decline: explicit budget under £15K, hobby framing, requests for services we don't offer. Short answers, terse phrasing, or thin input do not trigger a decline.</p>
+      <p><strong>Rate limiting.</strong> Per-IP rate limits at the edge prevent abuse. Cost-bounded per conversation.</p>
+
+      <h2>Where this applies</h2>
+      <p>We deploy AI intake systems for:</p>
+      <ul>
+        <li>Professional services firms (law, accountancy, consulting) where the qualification process is currently a 30-minute phone call.</li>
+        <li>B2B SaaS companies where the enterprise inbound funnel is currently a HubSpot form.</li>
+        <li>Regulated services (fintech, healthtech, legaltech) where intake needs to be auditable and structured.</li>
+        <li>Internal tools, replacing internal ticketing or request forms with conversational intake that handles triage automatically.</li>
+      </ul>
+      <p>We do not deploy AI intake for retail support, customer service chatbots, or general-purpose AI assistants. Different problem space.</p>
+
+      <h2>What an engagement looks like</h2>
+      <p>Two engagement models:</p>
+      <ol>
+        <li><strong>Drop-in intake.</strong> We build a customised version of the intake on your site, with your system prompt, your branding, your structured brief schema, and your email delivery target. Typical delivery: two to three weeks.</li>
+        <li><strong>Operated intake.</strong> As above, but we host, monitor, and maintain the system long term. Includes a monthly cost cap, model upgrades as they ship, and quarterly system prompt iteration based on conversation logs.</li>
+      </ol>
+      <p>Both engagement models include conversation flow design — choosing what the AI should and shouldn't ask is more important than the implementation. The system prompt is the product.</p>
+      <p>Part of <a href="/uk-ai-infrastructure" onClick={(event) => { event.preventDefault(); navigateTo('/uk-ai-infrastructure'); }}>LionTech's UK AI infrastructure</a>.</p>
+    </CapabilityPage>
   );
 };
 
@@ -493,7 +706,10 @@ export default function App() {
     <div className="selection:bg-[#6EA8FF]/30 selection:text-[#0B1F35]">
       {route === '/privacy-policy' && <PrivacyPolicy onStartIntake={openIntake} />}
       {route === '/terms-and-conditions' && <TermsAndConditions onStartIntake={openIntake} />}
-      {route !== '/privacy-policy' && route !== '/terms-and-conditions' && <HomePage onStartIntake={openIntake} />}
+      {route === '/uk-ai-infrastructure' && <UkAiInfrastructure onStartIntake={openIntake} />}
+      {route === '/saas-platform-development' && <SaasPlatformDevelopment onStartIntake={openIntake} />}
+      {route === '/ai-intake-systems' && <AiIntakeSystems onStartIntake={openIntake} />}
+      {route === '/' && <HomePage onStartIntake={openIntake} />}
       <IntakeDialog open={isIntakeOpen} onClose={() => setIsIntakeOpen(false)} />
     </div>
   );
