@@ -715,9 +715,34 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
   const meta = routeMeta['/lead-recovery'];
   const stripeLink = 'https://buy.stripe.com/aFadRb3UNcOIafU2oR5wI04';
   const demoSlots = [
-    { label: '/images/lead-recovery/hero-mock.png', alt: 'Emergency roofing homepage' },
-    { label: '/images/lead-recovery/wizard-mock.png', alt: '5-step estimate assistant' },
-    { label: '/images/lead-recovery/sms-mock.png', alt: 'Qualified SMS lead alert' },
+    {
+      eyebrow: 'Hero Preview',
+      title: 'Emergency Roofing Homepage',
+      description: 'High-converting emergency roofing landing page engineered for mobile callouts and fast lead capture.',
+      image: '/images/lead-recovery/hero-mock.jpg',
+      alt: 'Emergency roofing homepage',
+    },
+    {
+      eyebrow: 'Estimate Assistant',
+      title: 'Lead Qualification Assistant',
+      description: 'Multi-step estimate assistant that filters tyre-kickers and qualifies emergency roofing enquiries before contact.',
+      image: '/images/lead-recovery/wizard-mock.jpg',
+      alt: 'Lead qualification assistant',
+    },
+    {
+      eyebrow: 'Assessment Engine',
+      title: 'Instant Roofing Assessment',
+      description: 'Dynamic estimate logic with urgency scoring, payment qualification, and realistic repair ranges.',
+      image: '/images/lead-recovery/assessment-mock.jpg',
+      alt: 'Instant roofing assessment',
+    },
+    {
+      eyebrow: 'SMS Alert System',
+      title: 'Real-Time SMS Lead Alerts',
+      description: 'Qualified roofing enquiries instantly routed to your phone via Twilio SMS notifications.',
+      image: '/images/lead-recovery/sms-mock.jpg',
+      alt: 'Real-time SMS lead alert',
+    },
   ];
   const included = [
     'Emergency-positioned homepage built under your brand',
@@ -769,9 +794,16 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
           <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
             <span className="section-eyebrow text-[#C8A24A]">See It In Action</span>
             <h2 className="mt-3 max-w-2xl text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">A live, working roofing lead system.</h2>
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            <div className="mx-auto mt-6 grid max-w-5xl gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {demoSlots.map((slot) => (
-                <div key={slot.label} aria-label={slot.alt} className="flex aspect-[9/16] items-center justify-center rounded-xl border border-[#C8A24A]/18 bg-[#071426] p-5 text-center text-[12px] font-bold leading-5 tracking-[0.08em] text-white/56 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_20px_54px_rgba(0,0,0,0.25)]">{slot.label}</div>
+                <article key={slot.title} className="group rounded-xl border border-[#C8A24A]/16 bg-[#071426]/72 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_18px_44px_rgba(0,0,0,0.22)] transition duration-200 hover:-translate-y-1 hover:border-[#C8A24A]/35 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_22px_56px_rgba(0,0,0,0.3)]">
+                  <div className="aspect-[4/5] overflow-hidden rounded-lg border border-white/8 bg-[#020817]">
+                    <img src={slot.image} alt={slot.alt} loading="lazy" className="h-full w-full object-cover object-top" />
+                  </div>
+                  <p className="mt-3 text-[10px] font-black uppercase tracking-[0.16em] text-[#C8A24A]">{slot.eyebrow}</p>
+                  <h3 className="mt-1.5 text-[15px] font-black tracking-[-0.025em] text-white">{slot.title}</h3>
+                  <p className="mt-2 text-[12px] leading-5 text-white/64">{slot.description}</p>
+                </article>
               ))}
             </div>
           </div>
