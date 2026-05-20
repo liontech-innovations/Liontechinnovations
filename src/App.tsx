@@ -3,7 +3,6 @@ import {
   ArrowRight,
   ArrowUpRight,
   BarChart3,
-  Building2,
   CheckCircle2,
   Cpu,
   ExternalLink,
@@ -30,6 +29,7 @@ const techStack = ['Anthropic', 'NVIDIA', 'Vercel', 'AWS', 'Supabase', 'Stripe',
 const platformLinks = {
   clearVisa: 'https://clearvisas.co.uk',
   calcFee: 'https://www.calcfee.com/',
+  leadRecovery: 'https://leadrecovery.co.uk',
 };
 
 const routeMeta = {
@@ -249,24 +249,30 @@ const Stats = () => {
 
 const Platforms = () => {
   const projects = [
-    { icon: <Shield size={22} />, title: 'ClearVisa UK', url: platformLinks.clearVisa, category: 'Compliance SaaS', description: 'AI-powered immigration risk analysis platform helping users assess UK visa refusal risk with confidence.' },
-    { icon: <Building2 size={22} />, title: 'CalcFee', url: platformLinks.calcFee, category: 'FinTech Tool', description: 'Smart financial calculator platform with real-time data processing and premium PDF reporting.' },
+    { title: 'ClearVisa UK', url: platformLinks.clearVisa, category: 'Compliance SaaS', image: '/assets/clearvisa-platform-preview.jpg', description: 'AI-powered immigration risk analysis platform helping users assess UK visa refusal risk with confidence.' },
+    { title: 'CalcFee', url: platformLinks.calcFee, category: 'FinTech Tool', image: '/assets/calcfee-platform-preview.jpg', description: 'Smart financial calculator platform with real-time data processing and premium PDF reporting.' },
+    { title: 'Lead Recovery', url: platformLinks.leadRecovery, category: 'Emergency Lead Infrastructure', image: '/assets/lead-recovery-platform-preview.jpg', description: 'Premium emergency roofing websites with qualified SMS lead alerts and postcode-based qualification systems.' },
   ];
 
   return (
-    <section id="platforms" className="scroll-target section-dark-connected py-14 text-white sm:py-18">
-      <div className="mx-auto grid max-w-[1320px] gap-8 px-4 sm:px-6 lg:grid-cols-[0.68fr_1.32fr] lg:px-8">
-        <div><span className="section-eyebrow text-[#C8A24A]">Our Live Platforms</span><h2 className="mt-3 max-w-md text-3xl font-black tracking-[-0.04em] text-white sm:text-[34px]">Our Platforms</h2><p className="mt-4 max-w-md text-[15px] leading-6 text-white/62">Production-ready platforms solving real business problems across compliance, finance, legal, and automation.</p></div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <section id="platforms" className="scroll-target section-dark-connected py-16 text-white sm:py-20">
+      <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl"><span className="section-eyebrow text-[#C8A24A]">Our Live Platforms</span><h2 className="mt-3 max-w-md text-3xl font-black tracking-[-0.04em] text-white sm:text-[34px]">Our Platforms</h2><p className="mt-4 max-w-2xl text-[15px] leading-6 text-white/62">Production-ready platforms solving real business problems across compliance, finance, lead infrastructure, and automation.</p></div>
+        <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3">
           {projects.map((project) => (
-            <a key={project.title} href={project.url} target="_blank" rel="noopener noreferrer" className="dark-card group flex min-h-[220px] flex-col p-5 no-underline">
-              <div className="mb-4 flex items-center justify-between gap-2">
-                <div className="flex items-center gap-2.5"><span className="flex h-9 w-9 items-center justify-center rounded-md border border-[#C8A24A]/16 bg-white/5 text-[#C8A24A]">{project.icon}</span><span className="rounded-full bg-[#C8A24A]/10 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#D8BE74]">{project.category}</span></div>
-                <span className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.16em] text-white">Live <span className="h-2 w-2 rounded-full bg-emerald-400" /></span>
+            <a key={project.title} href={project.url} target="_blank" rel="noopener noreferrer" className="platform-card group no-underline">
+              <div className="platform-preview">
+                <img src={project.image} alt={`${project.title} platform preview`} loading="lazy" />
               </div>
-              <h3 className="text-lg font-bold tracking-[-0.03em] text-white">{project.title}</h3>
-              <p className="mt-2.5 grow text-[14px] leading-6 text-white/62">{project.description}</p>
-              <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.15em] text-[#C8A24A] transition group-hover:text-white">Visit Platform <ArrowUpRight size={13} className="transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></span>
+              <div className="flex flex-1 flex-col p-5">
+                <div className="mb-4 flex items-center justify-between gap-3">
+                  <span className="platform-badge">{project.category}</span>
+                  <span className="platform-live">Live <span /></span>
+                </div>
+                <h3 className="text-xl font-black tracking-[-0.035em] text-white">{project.title}</h3>
+                <p className="mt-3 grow text-[14px] leading-6 text-white/66">{project.description}</p>
+                <span className="mt-6 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.15em] text-[#C8A24A] transition group-hover:text-white">Visit Platform <ArrowUpRight size={13} className="transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></span>
+              </div>
             </a>
           ))}
         </div>
