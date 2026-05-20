@@ -12,6 +12,7 @@ import {
   Menu,
   Server,
   Shield,
+  ShieldCheck,
   X,
   Zap,
 } from 'lucide-react';
@@ -57,6 +58,10 @@ const routeMeta = {
     title: 'AI Intake Systems | Lion Tech Innovations',
     description: "Real conversational intake powered by streaming LLMs. The architecture behind LionTech's own AI intake, available for your domain.",
   },
+  '/lead-recovery': {
+    title: 'Lead Recovery — Premium Emergency Roofing Websites | Lion Tech Innovations',
+    description: 'Premium emergency roofing websites with qualified SMS lead alerts, postcode coverage, and conversion-engineered design. Built in 5 working days. £995 deposit. UK infrastructure company.',
+  },
 };
 
 type Route = keyof typeof routeMeta;
@@ -67,7 +72,8 @@ function getRoute(): Route {
     window.location.pathname === '/terms-and-conditions' ||
     window.location.pathname === '/uk-ai-infrastructure' ||
     window.location.pathname === '/saas-platform-development' ||
-    window.location.pathname === '/ai-intake-systems'
+    window.location.pathname === '/ai-intake-systems' ||
+    window.location.pathname === '/lead-recovery'
   ) {
     return window.location.pathname;
   }
@@ -100,6 +106,11 @@ function usePageMeta(title: string, description: string) {
     const desc = document.querySelector('meta[name="description"]');
     if (desc) desc.setAttribute('content', description);
   }, [title, description]);
+}
+
+function setMeta(selector: string, attr: string, value: string) {
+  const tag = document.querySelector(selector);
+  if (tag) tag.setAttribute(attr, value);
 }
 
 function scrollToSection(id: string) {
@@ -251,7 +262,7 @@ const Platforms = () => {
   const projects = [
     { title: 'ClearVisa UK', url: platformLinks.clearVisa, category: 'Compliance SaaS', image: '/assets/clearvisa-platform-preview.jpg', description: 'AI-powered immigration risk analysis platform helping users assess UK visa refusal risk with confidence.' },
     { title: 'CalcFee', url: platformLinks.calcFee, category: 'FinTech Tool', image: '/assets/calcfee-platform-preview.jpg', description: 'Smart financial calculator platform with real-time data processing and premium PDF reporting.' },
-    { title: 'Lead Recovery', url: platformLinks.leadRecovery, category: 'Emergency Lead Infrastructure', image: '/assets/lead-recovery-platform-preview.jpg', description: 'Premium emergency roofing websites with qualified SMS lead alerts and postcode-based qualification systems.' },
+    { title: 'Lead Recovery', url: '/lead-recovery', category: 'Emergency Lead Infrastructure', image: '/assets/lead-recovery-platform-preview.jpg', description: 'Premium emergency roofing websites with qualified SMS lead alerts and postcode-based qualification systems.', internal: true },
   ];
 
   return (
@@ -260,7 +271,7 @@ const Platforms = () => {
         <div className="max-w-2xl"><span className="section-eyebrow text-[#C8A24A]">Our Live Platforms</span><h2 className="mt-3 max-w-md text-3xl font-black tracking-[-0.04em] text-white sm:text-[34px]">Our Platforms</h2><p className="mt-4 max-w-2xl text-[15px] leading-6 text-white/62">Production-ready platforms solving real business problems across compliance, finance, lead infrastructure, and automation.</p></div>
         <div className="mx-auto mt-8 grid max-w-[1080px] grid-cols-1 gap-4 md:grid-cols-3">
           {projects.map((project) => (
-            <a key={project.title} href={project.url} target="_blank" rel="noopener noreferrer" className="platform-card group no-underline">
+            <a key={project.title} href={project.url} target={project.internal ? undefined : '_blank'} rel={project.internal ? undefined : 'noopener noreferrer'} onClick={project.internal ? (event) => { event.preventDefault(); navigateTo('/lead-recovery'); } : undefined} className="platform-card group no-underline">
               <div className="platform-preview">
                 <img src={project.image} alt={`${project.title} platform preview`} loading="lazy" />
               </div>
@@ -700,6 +711,135 @@ const HomePage = ({ onStartIntake }: { onStartIntake: () => void }) => {
   );
 };
 
+const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
+  const meta = routeMeta['/lead-recovery'];
+  const stripeLink = 'https://buy.stripe.com/aFadRb3UNcOIafU2oR5wI04';
+  const demoSlots = [
+    { label: '/images/lead-recovery/hero-mock.png', alt: 'Emergency roofing homepage' },
+    { label: '/images/lead-recovery/wizard-mock.png', alt: '5-step estimate assistant' },
+    { label: '/images/lead-recovery/sms-mock.png', alt: 'Qualified SMS lead alert' },
+  ];
+  const included = [
+    'Emergency-positioned homepage built under your brand',
+    '5-step qualified estimate assistant',
+    'Real-time Twilio SMS lead alerts on your phone',
+    'Postcode-based local coverage intelligence',
+    'WhatsApp and one-tap call integration',
+    'Photo upload for roof damage submissions',
+    'Mobile-first conversion architecture',
+    'Google Maps service-area display',
+  ];
+
+  usePageMeta(meta.title, meta.description);
+  useEffect(() => {
+    setMeta('meta[property="og:title"]', 'content', meta.title);
+    setMeta('meta[property="og:description"]', 'content', meta.description);
+    setMeta('meta[property="og:url"]', 'content', 'https://liontechinnovations.co.uk/lead-recovery');
+    setMeta('meta[name="twitter:title"]', 'content', meta.title);
+    setMeta('meta[name="twitter:description"]', 'content', meta.description);
+    setMeta('link[rel="canonical"]', 'href', 'https://liontechinnovations.co.uk/lead-recovery');
+  }, [meta.description, meta.title]);
+
+  return (
+    <div className="min-h-screen bg-[#020817] text-white">
+      <Navbar onStartIntake={onStartIntake} />
+
+      <main>
+        <section className="relative overflow-hidden border-b border-[#C8A24A]/10 pt-28 pb-14 sm:pt-32 sm:pb-20">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_18%,rgba(200,162,74,0.12),transparent_34%),linear-gradient(180deg,#071426_0%,#020817_78%)]" />
+          <div className="relative mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl">
+              <span className="section-eyebrow text-[#C8A24A]">Roofing Lead Infrastructure</span>
+              <h1 className="mt-4 text-[34px] font-black leading-[1.05] tracking-[-0.045em] text-white sm:text-5xl lg:text-[58px]">Premium Emergency Roofing Websites, Built in 5 Working Days</h1>
+              <p className="mt-5 max-w-2xl text-[17px] leading-7 text-white/70 sm:text-lg sm:leading-8">Capture qualified emergency roofing enquiries with SMS lead alerts, postcode coverage intelligence, and conversion-engineered design — deployed under your brand in 5 working days.</p>
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <a href={stripeLink} target="_blank" rel="noopener noreferrer" className="btn-primary min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Secure Your Build Slot — £995 Deposit →</a>
+                <a href="https://leadrecovery.co.uk" target="_blank" rel="noopener noreferrer" className="btn-secondary-dark min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">See it live ↗</a>
+              </div>
+              <div className="mt-7 grid gap-3 text-[13px] font-semibold text-white/72 sm:grid-cols-3">
+                <div className="flex items-center gap-2"><Zap size={16} className="text-[#C8A24A]" />Live in 5 working days</div>
+                <div className="flex items-center gap-2"><ShieldCheck size={16} className="text-[#C8A24A]" />Stripe-secured payment</div>
+                <div className="flex items-center gap-2"><MapPin size={16} className="text-[#C8A24A]" />UK-based infrastructure company</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-white/8 py-14 sm:py-18">
+          <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
+            <span className="section-eyebrow text-[#C8A24A]">See It In Action</span>
+            <h2 className="mt-3 max-w-2xl text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">A live, working roofing lead system.</h2>
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {demoSlots.map((slot) => (
+                <div key={slot.label} aria-label={slot.alt} className="flex aspect-[9/16] items-center justify-center rounded-xl border border-[#C8A24A]/18 bg-[#071426] p-5 text-center text-[12px] font-bold leading-5 tracking-[0.08em] text-white/56 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_20px_54px_rgba(0,0,0,0.25)]">{slot.label}</div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-white/8 py-14 sm:py-18">
+          <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
+            <span className="section-eyebrow text-[#C8A24A]">What's Included</span>
+            <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">Everything you need to capture and qualify emergency roofing leads.</h2>
+            <div className="mt-8 grid gap-3 md:grid-cols-2">
+              {included.map((item) => (
+                <p key={item} className="text-[15px] font-semibold leading-7 text-white/72"><span className="mr-2 text-[#C8A24A]">→</span>{item}</p>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-white/8 py-14 sm:py-18">
+          <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
+            <span className="section-eyebrow text-[#C8A24A]">How It Works</span>
+            <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">From deposit to live site — 5 working days.</h2>
+            <div className="mt-8 grid gap-4 md:grid-cols-3">
+              {[
+                ['01', 'Reserve your slot', "Pay the £995 deposit on this page. You'll receive a confirmation email and an intake form within 1 hour."],
+                ['02', 'Complete the intake form', '10 questions, takes 5 minutes. Tell us your brand name, service area, phone number, and which roofing services you offer.'],
+                ['03', 'Your site goes live', 'Within 5 working days. You receive the URL, the SMS alert system is tested with your number, and your phone starts buzzing with qualified leads.'],
+              ].map(([number, title, copy]) => (
+                <div key={number} className="rounded-xl border border-[#C8A24A]/14 bg-[#071426]/72 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_20px_54px_rgba(0,0,0,0.22)]">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#C8A24A]/34 bg-[#C8A24A]/10 text-[12px] font-black text-[#C8A24A]">{number}</div>
+                  <h3 className="mt-5 text-lg font-black tracking-[-0.03em] text-white">{title}</h3>
+                  <p className="mt-3 text-[14px] leading-6 text-white/70">{copy}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-white/8 py-14 text-center sm:py-18">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+            <span className="section-eyebrow text-[#C8A24A]">Transparent Pricing</span>
+            <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">£995 today. £1,000 on launch. That's it.</h2>
+            <p className="mx-auto mt-5 max-w-2xl text-[16px] leading-7 text-white/70">Optional £149/month support package available after launch (hosting, SMS credits, monthly performance review). Cancel any time.</p>
+            <p className="mx-auto mt-4 max-w-2xl text-[13px] leading-6 text-white/50">48-hour deposit refund. 60-day money-back guarantee if your site doesn't generate at least 3 qualified leads.</p>
+          </div>
+        </section>
+
+        <section className="border-b border-white/8 py-14 text-center sm:py-18">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+            <span className="section-eyebrow text-[#C8A24A]">Ready To Start?</span>
+            <div className="mt-5">
+              <a href={stripeLink} target="_blank" rel="noopener noreferrer" className="btn-primary min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Secure Your Build Slot — £995 Deposit →</a>
+            </div>
+            <p className="mx-auto mt-4 max-w-xl text-[13px] leading-6 text-white/50">Payment processed by Stripe. Receipt and intake form delivered instantly to your email.</p>
+          </div>
+        </section>
+
+        <section className="py-6 text-center">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+            <p className="text-[13px] leading-6 text-white/60">Built by Lion Tech Innovations — London-based digital infrastructure company. Companies House 17068390.</p>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  );
+};
+
 export default function App() {
   const route = useHistoryRoute();
   const [isIntakeOpen, setIsIntakeOpen] = useState(false);
@@ -712,6 +852,7 @@ export default function App() {
       {route === '/uk-ai-infrastructure' && <UkAiInfrastructure onStartIntake={openIntake} />}
       {route === '/saas-platform-development' && <SaasPlatformDevelopment onStartIntake={openIntake} />}
       {route === '/ai-intake-systems' && <AiIntakeSystems onStartIntake={openIntake} />}
+      {route === '/lead-recovery' && <LeadRecoveryPage onStartIntake={openIntake} />}
       {route === '/' && <HomePage onStartIntake={openIntake} />}
       <IntakeDialog open={isIntakeOpen} onClose={() => setIsIntakeOpen(false)} />
     </div>
