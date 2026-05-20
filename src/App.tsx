@@ -255,23 +255,23 @@ const Platforms = () => {
   ];
 
   return (
-    <section id="platforms" className="scroll-target section-dark-connected py-16 text-white sm:py-20">
+    <section id="platforms" className="scroll-target section-dark-connected py-14 text-white sm:py-18">
       <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl"><span className="section-eyebrow text-[#C8A24A]">Our Live Platforms</span><h2 className="mt-3 max-w-md text-3xl font-black tracking-[-0.04em] text-white sm:text-[34px]">Our Platforms</h2><p className="mt-4 max-w-2xl text-[15px] leading-6 text-white/62">Production-ready platforms solving real business problems across compliance, finance, lead infrastructure, and automation.</p></div>
-        <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3">
+        <div className="mx-auto mt-8 grid max-w-[1080px] grid-cols-1 gap-4 md:grid-cols-3">
           {projects.map((project) => (
             <a key={project.title} href={project.url} target="_blank" rel="noopener noreferrer" className="platform-card group no-underline">
               <div className="platform-preview">
                 <img src={project.image} alt={`${project.title} platform preview`} loading="lazy" />
               </div>
-              <div className="flex flex-1 flex-col p-5">
-                <div className="mb-4 flex items-center justify-between gap-3">
+              <div className="flex flex-1 flex-col p-4">
+                <div className="mb-3 flex items-center justify-between gap-2.5">
                   <span className="platform-badge">{project.category}</span>
                   <span className="platform-live">Live <span /></span>
                 </div>
-                <h3 className="text-xl font-black tracking-[-0.035em] text-white">{project.title}</h3>
-                <p className="mt-3 grow text-[14px] leading-6 text-white/66">{project.description}</p>
-                <span className="mt-6 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.15em] text-[#C8A24A] transition group-hover:text-white">Visit Platform <ArrowUpRight size={13} className="transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></span>
+                <h3 className="text-lg font-black tracking-[-0.035em] text-white">{project.title}</h3>
+                <p className="mt-2.5 grow text-[13px] leading-5 text-white/66">{project.description}</p>
+                <span className="mt-5 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.15em] text-[#C8A24A] transition group-hover:text-white">Visit Platform <ArrowUpRight size={12} className="transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></span>
               </div>
             </a>
           ))}
@@ -360,7 +360,7 @@ const Footer = () => (
     <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-7 px-4 sm:px-6 md:grid-cols-[1.2fr_0.8fr_0.8fr_1fr] lg:px-8">
       <div><a href="/" className="flex items-center no-underline" onClick={(event) => { event.preventDefault(); navigateTo('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}><img src="/assets/liontechlogo.png" alt="LionTech Innovations" className="footer-logo" /></a><p className="mt-3 max-w-xs text-[13px] leading-6 text-[#455A6E]">Digital infrastructure, automation systems, SaaS platforms, and AI-powered business tools.</p></div>
       <div><h3 className="footer-heading">Solutions</h3><div className="mt-4 space-y-3">{['Web Infrastructure', 'AI Automation', 'SaaS Platforms', 'Payment Systems'].map((item) => <button key={item} onClick={() => scrollToSection('services')} className="footer-link block">{item}</button>)}</div></div>
-      <div><h3 className="footer-heading">Platforms</h3><div className="mt-4 space-y-3">{[['ClearVisa UK', platformLinks.clearVisa], ['CalcFee', platformLinks.calcFee]].map(([label, href]) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="footer-link inline-flex items-center gap-1.5 no-underline">{label}<ExternalLink size={12} /></a>)}</div></div>
+      <div><h3 className="footer-heading">Platforms</h3><div className="mt-4 space-y-3">{[['ClearVisa UK', platformLinks.clearVisa], ['CalcFee', platformLinks.calcFee], ['Lead Recovery', platformLinks.leadRecovery]].map(([label, href]) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="footer-link inline-flex items-center gap-1.5 no-underline">{label}<ExternalLink size={12} /></a>)}</div></div>
       <div><h3 className="footer-heading">Contact</h3><div className="mt-4 space-y-3 text-sm text-[#455A6E]"><a href="mailto:contact@liontechinnovations.co.uk" className="footer-link flex items-center gap-2 no-underline"><Mail size={15} /><span className="break-all">contact@liontechinnovations.co.uk</span></a><p className="flex items-center gap-2"><MapPin size={15} className="text-[#5B76FF]" />London, United Kingdom</p></div></div>
     </div>
     <div className="mx-auto mt-8 flex max-w-[1320px] flex-col gap-3 border-t border-[#E2D3A6] px-4 pt-5 text-[10px] font-semibold uppercase tracking-[0.13em] text-[#455A6E]/68 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
