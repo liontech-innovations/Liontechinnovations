@@ -754,6 +754,7 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
     'Mobile-first conversion architecture',
     'Google Maps service-area display',
   ];
+  const [selectedDemo, setSelectedDemo] = useState<(typeof demoSlots)[number] | null>(null);
 
   usePageMeta(meta.title, meta.description);
   useEffect(() => {
@@ -764,6 +765,22 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
     setMeta('meta[name="twitter:description"]', 'content', meta.description);
     setMeta('link[rel="canonical"]', 'href', 'https://liontechinnovations.co.uk/lead-recovery');
   }, [meta.description, meta.title]);
+  useEffect(() => {
+    if (!selectedDemo) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSelectedDemo(null);
+    };
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedDemo]);
 
   return (
     <div className="min-h-screen bg-[#020817] text-white">
@@ -797,9 +814,10 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
             <div className="mx-auto mt-6 grid max-w-5xl gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {demoSlots.map((slot) => (
                 <article key={slot.title} className="group rounded-xl border border-[#C8A24A]/16 bg-[#071426]/72 p-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_18px_44px_rgba(0,0,0,0.22)] transition duration-200 hover:-translate-y-1 hover:border-[#C8A24A]/35 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_22px_56px_rgba(0,0,0,0.3)]">
-                  <div className="aspect-[5/6] overflow-hidden rounded-lg border border-white/8 bg-[#020817]">
+                  <button type="button" aria-label={`Enlarge ${slot.title} screenshot`} onClick={() => setSelectedDemo(slot)} className="relative block aspect-[5/6] w-full cursor-pointer overflow-hidden rounded-lg border border-white/8 bg-[#020817] p-0 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#C8A24A]">
                     <img src={slot.image} alt={slot.alt} loading="lazy" className="h-full w-full object-contain" />
-                  </div>
+                    <span className="pointer-events-none absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full border border-[#C8A24A]/20 bg-[#020817]/82 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.12em] text-[#C8A24A] backdrop-blur-sm">Click to enlarge</span>
+                  </button>
                   <p className="mt-2.5 text-[10px] font-black uppercase tracking-[0.16em] text-[#C8A24A]">{slot.eyebrow}</p>
                   <h3 className="mt-1.5 text-[15px] font-black tracking-[-0.025em] text-white">{slot.title}</h3>
                   <p className="mt-1.5 text-[12px] leading-5 text-white/64">{slot.description}</p>
@@ -866,6 +884,17 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
           </div>
         </section>
       </main>
+
+      {selectedDemo && (
+        <div className="fixed inset-0 z-[80] flex items-center justify-center bg-[#020817]/92 p-4 backdrop-blur-md sm:p-6" role="dialog" aria-modal="true" aria-label={`${selectedDemo.title} enlarged preview`} onClick={() => setSelectedDemo(null)}>
+          <button type="button" aria-label="Close preview" onClick={() => setSelectedDemo(null)} className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full border border-white/14 bg-[#071426]/88 text-white shadow-[0_18px_44px_rgba(0,0,0,0.34)] transition hover:border-[#C8A24A]/45 hover:text-[#C8A24A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#C8A24A]">
+            <X size={20} />
+          </button>
+          <div className="w-full max-w-5xl rounded-2xl border border-[#C8A24A]/20 bg-[#071426]/86 p-3 shadow-[0_28px_90px_rgba(0,0,0,0.55)] sm:p-4" onClick={(event) => event.stopPropagation()}>
+            <img src={selectedDemo.image} alt={selectedDemo.alt} className="mx-auto max-h-[82vh] max-w-full rounded-xl object-contain" />
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>
