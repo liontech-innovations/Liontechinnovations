@@ -7,7 +7,6 @@ import {
   CheckCircle2,
   Cpu,
   ExternalLink,
-  FileText,
   Globe2,
   Mail,
   MapPin,
@@ -31,7 +30,6 @@ const techStack = ['Anthropic', 'NVIDIA', 'Vercel', 'AWS', 'Supabase', 'Stripe',
 const platformLinks = {
   clearVisa: 'https://clearvisas.co.uk',
   calcFee: 'https://www.calcfee.com/',
-  bundleBase: 'https://bundlebase.com',
 };
 
 const routeMeta = {
@@ -53,7 +51,7 @@ const routeMeta = {
   },
   '/saas-platform-development': {
     title: 'SaaS Platform Development | Lion Tech Innovations',
-    description: 'We architect and ship production SaaS for regulated UK markets. The patterns behind ClearVisa UK, CalcFee, and BundleBase — applied to your domain.',
+    description: 'We architect and ship production SaaS for regulated UK markets. The patterns behind ClearVisa UK and CalcFee — applied to your domain.',
   },
   '/ai-intake-systems': {
     title: 'AI Intake Systems | Lion Tech Innovations',
@@ -253,14 +251,13 @@ const Platforms = () => {
   const projects = [
     { icon: <Shield size={22} />, title: 'ClearVisa UK', url: platformLinks.clearVisa, category: 'Compliance SaaS', description: 'AI-powered immigration risk analysis platform helping users assess UK visa refusal risk with confidence.' },
     { icon: <Building2 size={22} />, title: 'CalcFee', url: platformLinks.calcFee, category: 'FinTech Tool', description: 'Smart financial calculator platform with real-time data processing and premium PDF reporting.' },
-    { icon: <FileText size={22} />, title: 'BundleBase', url: platformLinks.bundleBase, category: 'Legal Tech', description: 'Document bundling system for UK legal professionals. Automated PDF generation and structured output.' },
   ];
 
   return (
     <section id="platforms" className="scroll-target section-dark-connected py-14 text-white sm:py-18">
       <div className="mx-auto grid max-w-[1320px] gap-8 px-4 sm:px-6 lg:grid-cols-[0.68fr_1.32fr] lg:px-8">
         <div><span className="section-eyebrow text-[#C8A24A]">Our Live Platforms</span><h2 className="mt-3 max-w-md text-3xl font-black tracking-[-0.04em] text-white sm:text-[34px]">Our Platforms</h2><p className="mt-4 max-w-md text-[15px] leading-6 text-white/62">Production-ready platforms solving real business problems across compliance, finance, legal, and automation.</p></div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {projects.map((project) => (
             <a key={project.title} href={project.url} target="_blank" rel="noopener noreferrer" className="dark-card group flex min-h-[220px] flex-col p-5 no-underline">
               <div className="mb-4 flex items-center justify-between gap-2">
@@ -280,7 +277,7 @@ const Platforms = () => {
 
 const Services = () => {
   const services = [
-    { icon: <Zap size={25} />, title: 'SaaS Platform Development', href: '/saas-platform-development' as Route, description: 'Production-ready software platforms with secure architecture, intuitive flows, and operational reliability — the stack behind ClearVisa UK, CalcFee, and BundleBase.' },
+    { icon: <Zap size={25} />, title: 'SaaS Platform Development', href: '/saas-platform-development' as Route, description: 'Production-ready software platforms with secure architecture, intuitive flows, and operational reliability — the stack behind ClearVisa UK and CalcFee.' },
     { icon: <Cpu size={25} />, title: 'AI Automation Systems', href: '/ai-intake-systems' as Route, description: 'Workflow automation, intake systems, and operational AI integrations that reduce manual processing and scale operations.' },
     { icon: <Server size={25} />, title: 'API & Payment Infrastructure', description: 'Reliable integrations, payment flows, webhooks, and backend services for production business systems.' },
   ];
@@ -357,7 +354,7 @@ const Footer = () => (
     <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-7 px-4 sm:px-6 md:grid-cols-[1.2fr_0.8fr_0.8fr_1fr] lg:px-8">
       <div><a href="/" className="flex items-center no-underline" onClick={(event) => { event.preventDefault(); navigateTo('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}><img src="/assets/liontechlogo.png" alt="LionTech Innovations" className="footer-logo" /></a><p className="mt-3 max-w-xs text-[13px] leading-6 text-[#455A6E]">Digital infrastructure, automation systems, SaaS platforms, and AI-powered business tools.</p></div>
       <div><h3 className="footer-heading">Solutions</h3><div className="mt-4 space-y-3">{['Web Infrastructure', 'AI Automation', 'SaaS Platforms', 'Payment Systems'].map((item) => <button key={item} onClick={() => scrollToSection('services')} className="footer-link block">{item}</button>)}</div></div>
-      <div><h3 className="footer-heading">Platforms</h3><div className="mt-4 space-y-3">{[['ClearVisa UK', platformLinks.clearVisa], ['CalcFee', platformLinks.calcFee], ['BundleBase', platformLinks.bundleBase]].map(([label, href]) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="footer-link inline-flex items-center gap-1.5 no-underline">{label}<ExternalLink size={12} /></a>)}</div></div>
+      <div><h3 className="footer-heading">Platforms</h3><div className="mt-4 space-y-3">{[['ClearVisa UK', platformLinks.clearVisa], ['CalcFee', platformLinks.calcFee]].map(([label, href]) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="footer-link inline-flex items-center gap-1.5 no-underline">{label}<ExternalLink size={12} /></a>)}</div></div>
       <div><h3 className="footer-heading">Contact</h3><div className="mt-4 space-y-3 text-sm text-[#455A6E]"><a href="mailto:contact@liontechinnovations.co.uk" className="footer-link flex items-center gap-2 no-underline"><Mail size={15} /><span className="break-all">contact@liontechinnovations.co.uk</span></a><p className="flex items-center gap-2"><MapPin size={15} className="text-[#5B76FF]" />London, United Kingdom</p></div></div>
     </div>
     <div className="mx-auto mt-8 flex max-w-[1320px] flex-col gap-3 border-t border-[#E2D3A6] px-4 pt-5 text-[10px] font-semibold uppercase tracking-[0.13em] text-[#455A6E]/68 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
@@ -413,11 +410,10 @@ const UkAiInfrastructure = ({ onStartIntake }: { onStartIntake: () => void }) =>
       onStartIntake={onStartIntake}
     >
       <h2>What we operate</h2>
-      <p>We maintain a portfolio of production UK technology platforms. Three are currently public:</p>
+      <p>We maintain a portfolio of production UK technology platforms. Two are currently public:</p>
       <ul>
         <li><strong>ClearVisa UK</strong> — Compliance SaaS. AI-powered immigration risk analysis. Helps applicants assess UK visa refusal risk before submission, using classification models trained on Home Office decision patterns and policy guidance. Live.</li>
         <li><strong>CalcFee</strong> — Fintech tool. Real-time financial calculation and reporting platform with secure data processing pipelines and structured PDF output generation. Live.</li>
-        <li><strong>BundleBase</strong> — Legal tech. Document bundling system for UK legal professionals. Automated PDF generation, indexing, and structured output for court-ready bundles. Live.</li>
       </ul>
       <p>Each platform is operated by us, on our infrastructure, end to end. We design, deploy, secure, monitor, and maintain. The same engineering rigour applies to any partner engagement.</p>
 
@@ -430,7 +426,7 @@ const UkAiInfrastructure = ({ onStartIntake }: { onStartIntake: () => void }) =>
       <h2>What we build for partners</h2>
       <p>We selectively undertake infrastructure engagements with organisations that need production systems, not marketing collateral. Three capability lanes — each built on what we already operate:</p>
       <ul>
-        <li><a href="/saas-platform-development" onClick={(event) => { event.preventDefault(); navigateTo('/saas-platform-development'); }}>SaaS Platform Development</a>. Architecting and shipping production SaaS for regulated UK markets. The patterns behind ClearVisa, CalcFee, and BundleBase, applied to your domain.</li>
+        <li><a href="/saas-platform-development" onClick={(event) => { event.preventDefault(); navigateTo('/saas-platform-development'); }}>SaaS Platform Development</a>. Architecting and shipping production SaaS for regulated UK markets. The patterns behind ClearVisa and CalcFee, applied to your domain.</li>
         <li><a href="/ai-intake-systems" onClick={(event) => { event.preventDefault(); navigateTo('/ai-intake-systems'); }}>AI Automation Systems</a>. Operational AI: intake systems, document processing, classification pipelines, workflow automation. We integrate with your existing stack rather than ask you to adopt ours.</li>
         <li><strong>API &amp; Payment Infrastructure.</strong> Stripe integrations, webhook reliability, idempotent transactional pipelines, financial reporting. The critical, often-unglamorous work that determines whether your business gets paid on time.</li>
       </ul>
@@ -455,7 +451,7 @@ const SaasPlatformDevelopment = ({ onStartIntake }: { onStartIntake: () => void 
     <CapabilityPage
       eyebrow="SAAS PLATFORM DEVELOPMENT"
       title="Production SaaS for Regulated UK Markets"
-      intro="We build production SaaS the way it has to work in real markets: secure, audited, observable, and operationally reliable. ClearVisa UK, CalcFee, and BundleBase run on the patterns described below."
+      intro="We build production SaaS the way it has to work in real markets: secure, audited, observable, and operationally reliable. ClearVisa UK and CalcFee run on the patterns described below."
       onStartIntake={onStartIntake}
     >
       <h2>What 'production-ready' actually means</h2>
@@ -485,8 +481,7 @@ const SaasPlatformDevelopment = ({ onStartIntake }: { onStartIntake: () => void 
       <h2>Our shipped platforms</h2>
       <p><strong>ClearVisa UK</strong> — compliance SaaS in the UK immigration risk-analysis space. Built around a classification model, a document handling pipeline, and an outcome scoring presentation layer. Multi-tenant, GDPR-compliant, and operating in a regulated category.</p>
       <p><strong>CalcFee</strong> — fintech tool. Real-time calculation engine, secure financial data pipeline, structured PDF report generation. Stripe-integrated billing.</p>
-      <p><strong>BundleBase</strong> — legal tech. Document bundling system for UK legal professionals. Automated PDF generation with indexing, structured output, and audit trails on every bundle compiled.</p>
-      <p>The architectural patterns across all three are the same. Multi-tenancy, RLS, audit logs, idempotent transactions, observability, structured PDF output. We build to one standard.</p>
+      <p>The architectural patterns across both are the same. Multi-tenancy, RLS, audit logs, idempotent transactions, observability, structured PDF output. We build to one standard.</p>
 
       <h2>What an engagement looks like</h2>
       <p>Most SaaS partner engagements follow this shape:</p>
@@ -643,7 +638,7 @@ const TermsAndConditions = ({ onStartIntake }: { onStartIntake: () => void }) =>
     <h2>1. Introduction</h2>
     <p>These Terms govern your use of the website operated by Lion Tech Innovations Ltd ("LionTech", "we", "our", "us"), a company registered in England and Wales (Company No. 17068390). By accessing this website or using our services, you agree to these Terms.</p>
     <h2>2. Services</h2>
-    <p>LionTech operates a portfolio of UK technology platforms — including ClearVisa UK, CalcFee, and BundleBase — and selectively undertakes infrastructure engagements with organisations that need production-grade systems work. We do not offer freelance services, hourly billing, marketing services, or generic agency work.</p>
+    <p>LionTech operates a portfolio of UK technology platforms — including ClearVisa UK and CalcFee — and selectively undertakes infrastructure engagements with organisations that need production-grade systems work. We do not offer freelance services, hourly billing, marketing services, or generic agency work.</p>
     <h2>3. Engagement Process</h2>
     <ul>
       <li>Submissions via our AI intake assistant ("Submit a Brief") are evaluated by our engineering team within one business day.</li>
@@ -660,9 +655,9 @@ const TermsAndConditions = ({ onStartIntake }: { onStartIntake: () => void }) =>
     </ul>
     <p>We reserve the right to refuse service, block access, or terminate engagements at our discretion.</p>
     <h2>5. Intellectual Property</h2>
-    <p>All content on this website — including text, graphics, logos, the "LionTech Innovations" name, product branding (ClearVisa UK, CalcFee, BundleBase), and source code — is the property of Lion Tech Innovations Ltd or its licensors and is protected by UK copyright and trademark law. Use, reproduction, or distribution without prior written permission is prohibited.</p>
+    <p>All content on this website — including text, graphics, logos, the "LionTech Innovations" name, product branding (ClearVisa UK, CalcFee), and source code — is the property of Lion Tech Innovations Ltd or its licensors and is protected by UK copyright and trademark law. Use, reproduction, or distribution without prior written permission is prohibited.</p>
     <h2>6. Products</h2>
-    <p>ClearVisa UK, CalcFee, and BundleBase are each operated under their own terms of service available on the respective product website. Those product terms govern use of those products and take precedence over these Terms for matters specific to the product.</p>
+    <p>ClearVisa UK and CalcFee are each operated under their own terms of service available on the respective product website. Those product terms govern use of those products and take precedence over these Terms for matters specific to the product.</p>
     <h2>7. Disclaimers</h2>
     <p>The website and any informational content are provided "as is" without warranties of any kind, express or implied. We make no warranty that the website will be uninterrupted, error-free, or free from security vulnerabilities at all times. Outputs from the AI intake assistant are not professional advice; they are an automated structuring of your submitted information for our team to review.</p>
     <h2>8. Limitation of Liability</h2>
