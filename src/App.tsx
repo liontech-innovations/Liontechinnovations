@@ -59,8 +59,8 @@ const routeMeta = {
     description: "Real conversational intake powered by streaming LLMs. The architecture behind LionTech's own AI intake, available for your domain.",
   },
   '/lead-recovery': {
-    title: 'Lead Recovery — Premium Emergency Roofing Websites | Lion Tech Innovations',
-    description: 'Premium emergency roofing websites with qualified SMS lead alerts, postcode coverage, and conversion-engineered design. Built in 5 working days. £995 deposit. UK infrastructure company.',
+    title: 'Lead Recovery — Emergency Roofing Lead Website | Lion Tech Innovations',
+    description: 'Emergency roofing lead website for UK roofers. Managed plan: £495 setup + £199/month from launch day. One-off build and handoff: £1,995.',
   },
 };
 
@@ -713,48 +713,74 @@ const HomePage = ({ onStartIntake }: { onStartIntake: () => void }) => {
 
 const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
   const meta = routeMeta['/lead-recovery'];
-  const stripeLink = 'https://buy.stripe.com/aFadRb3UNcOIafU2oR5wI04';
-  const demoSlots = [
+  const managedLink = 'MANAGED_SETUP_PAYMENT_LINK_HERE';
+  const oneOffLink = 'ONE_OFF_BUILD_PAYMENT_LINK_HERE';
+  const previewImage = '/images/roofing-lead-website-preview.jpg';
+
+  const managedIncludes = [
+    'Custom emergency roofing website',
+    'SMS lead alerts to your phone',
+    'Hosting and basic maintenance included',
+    '1 small website tweak per month',
+    'Quarterly performance check-in',
+    '12-month minimum term',
+    'Cancel any time after month 12',
+  ];
+  const oneOffIncludes = [
+    'Custom emergency roofing website',
+    'Built and handed over after completion',
+    'No monthly management',
+    'No ongoing support included',
+    'You manage hosting, domain, SMS, database, and future changes',
+  ];
+  const includedGroups = [
     {
-      eyebrow: 'Hero Preview',
-      title: 'Emergency Roofing Homepage',
-      description: 'High-converting emergency roofing landing page engineered for mobile callouts and fast lead capture.',
-      image: '/images/lead-recovery/hero-mock.jpg',
-      alt: 'Emergency roofing homepage',
+      title: 'Website & Branding',
+      items: ['Custom emergency roofing lead-capture website', 'Built around your business name', 'Your branding, colours, and logo added', 'Your service areas added', 'Your phone number displayed clearly', 'Mobile-friendly layout', 'Click-to-call buttons for mobile visitors'],
     },
     {
-      eyebrow: 'Estimate Assistant',
-      title: 'Lead Qualification Assistant',
-      description: 'Multi-step estimate assistant that filters tyre-kickers and qualifies emergency roofing enquiries before contact.',
-      image: '/images/lead-recovery/wizard-mock.jpg',
-      alt: 'Lead qualification assistant',
+      title: 'Lead Capture',
+      items: ['Emergency roofing enquiry form', 'Leak repair / storm damage / urgent roof repair wording', 'Calls and enquiries sent to your phone', 'SMS lead alerts', 'Lead details stored securely', 'Simple lead tracking so enquiries can be reviewed'],
     },
     {
-      eyebrow: 'Assessment Engine',
-      title: 'Instant Roofing Assessment',
-      description: 'Dynamic estimate logic with urgency scoring, payment qualification, and realistic repair ranges.',
-      image: '/images/lead-recovery/assessment-mock.jpg',
-      alt: 'Instant roofing assessment',
+      title: 'Setup',
+      items: ['Domain connected or setup guidance provided', 'Website launched within 5 working days after intake details are received', 'Basic local wording for your town/city', 'No technical setup needed by the roofer'],
     },
     {
-      eyebrow: 'SMS Alert System',
-      title: 'Real-Time SMS Lead Alerts',
-      description: 'Qualified roofing enquiries instantly routed to your phone via Twilio SMS notifications.',
-      image: '/images/lead-recovery/sms-mock.jpg',
-      alt: 'Real-time SMS lead alert',
+      title: 'Managed Support',
+      items: ['Hosting included', 'Basic maintenance included', 'Security updates included', 'Basic speed/performance checks', 'Up to 1 small website tweak per month', 'Quarterly performance review/check-in'],
     },
   ];
-  const included = [
-    'Emergency-positioned homepage built under your brand',
-    '5-step qualified estimate assistant',
-    'Real-time Twilio SMS lead alerts on your phone',
-    'Postcode-based local coverage intelligence',
-    'WhatsApp and one-tap call integration',
-    'Photo upload for roof damage submissions',
-    'Mobile-first conversion architecture',
-    'Google Maps service-area display',
+  const tweakExamples = ['Updating your phone number', 'Changing opening hours', 'Updating a short paragraph', 'Changing a service area', 'Swapping one image', 'Adding one short customer testimonial', 'Updating a small offer or seasonal message'];
+  const paidExtras = ['Uploading lots of extra photographs', 'Adding new website pages', 'Full page redesigns', 'Rewriting large sections of the website', 'Adding new services that need new copy or layout', 'SEO campaigns', 'Google Ads management', 'Social media posting', 'Photography', 'Logo design from scratch', 'CRM setup', 'Complex integrations', 'Extra automation work', 'Major design changes', 'Rebuilding the site after the roofer changes direction'];
+  const comparisonRows = [
+    ['Price today', '£495 setup', '£1,995 one-off'],
+    ['Monthly cost', '£199/month from launch', '£0'],
+    ['Website build', 'Included', 'Included'],
+    ['Live in 5 working days', 'Yes, after intake details received', 'Yes, after intake details received'],
+    ['Business branding', 'Included', 'Included'],
+    ['SMS lead alerts', 'Included', 'Setup included before handoff'],
+    ['Hosting', 'Included while managed plan active', 'Your responsibility after handoff'],
+    ['Basic maintenance', 'Included', 'Not included'],
+    ['Security updates', 'Included', 'Your responsibility after handoff'],
+    ['Small tweaks', '1 per month included', 'Charged separately'],
+    ['Quarterly check-in', 'Included', 'Not included'],
+    ['Best for', 'Roofers who want it handled', 'Roofers who want to manage it themselves'],
   ];
-  const [selectedDemo, setSelectedDemo] = useState<(typeof demoSlots)[number] | null>(null);
+  const faqs = [
+    ['What do I pay today?', 'For the managed plan, you pay £495 today. The £199/month managed plan starts from launch day.'],
+    ['When does the £199/month start?', 'It starts on launch day, after the website is live.'],
+    ['Is there a minimum term?', 'Yes. The managed plan has a 12-month minimum term. After that, you can cancel any time.'],
+    ['When will my website go live?', 'The target is 5 working days after we receive your required business details, including your business name, phone number, service areas, and any branding or photos you want used.'],
+    ['Do I need to know anything technical?', 'No. The managed plan is designed for roofers who want the technical side handled for them.'],
+    ['What happens after launch?', 'On the managed plan, hosting, SMS lead routing, basic maintenance, security updates, and one small website tweak per month are included.'],
+    ['What counts as a small tweak?', 'A small tweak is a simple change that takes under 30 minutes, such as changing a phone number, swapping one image, updating opening hours, or editing a short paragraph.'],
+    ['What is not included?', 'Bigger changes such as new pages, full redesigns, SEO campaigns, Google Ads, lots of photo uploads, major rewrites, or complex integrations are charged separately.'],
+    ['How are extras charged?', 'Extra work is charged at £75/hour or as a fixed quote agreed before work starts. You are never charged for extra work without approval.'],
+    ['What is the difference between managed and one-off?', 'Managed means we build the website and keep the basics running for you. One-off means we build it, hand it over, and you manage it yourself after completion.'],
+    ['Are there hidden fees?', 'No. The page clearly shows what is included, what is not included, and how extra work is charged.'],
+    ['Can I use my own business name and branding?', 'Yes. The website is built around your roofing business name, branding, phone number, and service areas.'],
+  ];
 
   usePageMeta(meta.title, meta.description);
   useEffect(() => {
@@ -765,22 +791,24 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
     setMeta('meta[name="twitter:description"]', 'content', meta.description);
     setMeta('link[rel="canonical"]', 'href', 'https://liontechinnovations.co.uk/lead-recovery');
   }, [meta.description, meta.title]);
-  useEffect(() => {
-    if (!selectedDemo) return;
 
-    const previousOverflow = document.body.style.overflow;
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setSelectedDemo(null);
-    };
+  const CheckItem: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+    <li className="flex gap-2 text-[14px] leading-6 text-white/72">
+      <CheckCircle2 size={16} className="mt-1 shrink-0 text-[#C8A24A]" />
+      <span>{children}</span>
+    </li>
+  );
 
-    document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [selectedDemo]);
+  const PreviewFrame = ({ caption, compact = false }: { caption: string; compact?: boolean }) => (
+    <div className="rounded-2xl border border-[#C8A24A]/18 bg-[#071426]/78 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_70px_rgba(0,0,0,0.34)]">
+      <div className="mb-3 flex items-center justify-between gap-3">
+        <span className="rounded-full border border-[#C8A24A]/22 bg-[#C8A24A]/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-[#C8A24A]">Example preview</span>
+        <span className="hidden text-[11px] font-semibold text-white/45 sm:inline">Demo only</span>
+      </div>
+      <img src={previewImage} alt="Example emergency roofing lead website preview" loading={compact ? 'lazy' : 'eager'} className="w-full rounded-xl border border-white/8 object-contain" />
+      <p className="mt-3 text-[12px] leading-5 text-white/56">{caption}</p>
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-[#020817] text-white">
@@ -789,38 +817,66 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
       <main>
         <section className="relative overflow-hidden border-b border-[#C8A24A]/10 pt-28 pb-14 sm:pt-32 sm:pb-20">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_18%,rgba(200,162,74,0.12),transparent_34%),linear-gradient(180deg,#071426_0%,#020817_78%)]" />
-          <div className="relative mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl">
-              <span className="section-eyebrow text-[#C8A24A]">Roofing Lead Infrastructure</span>
-              <h1 className="mt-4 text-[34px] font-black leading-[1.05] tracking-[-0.045em] text-white sm:text-5xl lg:text-[58px]">Premium Emergency Roofing Websites, Built in 5 Working Days</h1>
-              <p className="mt-5 max-w-2xl text-[17px] leading-7 text-white/70 sm:text-lg sm:leading-8">Capture qualified emergency roofing enquiries with SMS lead alerts, postcode coverage intelligence, and conversion-engineered design — deployed under your brand in 5 working days.</p>
+          <div className="relative mx-auto grid max-w-[1320px] gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,0.75fr)] lg:items-center lg:px-8">
+            <div>
+              <span className="section-eyebrow text-[#C8A24A]">Roofing Lead Website</span>
+              <h1 className="mt-4 text-[34px] font-black leading-[1.05] tracking-[-0.045em] text-white sm:text-5xl lg:text-[56px]">Emergency Roofing Lead Website Built For Your Business In 5 Working Days</h1>
+              <p className="mt-5 max-w-2xl text-[17px] leading-7 text-white/70 sm:text-lg sm:leading-8">A custom website for your roofing business, built to capture emergency roof repair enquiries and send calls and leads straight to your phone. No technical setup needed.</p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <a href={stripeLink} target="_blank" rel="noopener noreferrer" className="btn-primary min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Secure Your Build Slot — £995 Deposit →</a>
-                <a href="https://leadrecovery.co.uk" target="_blank" rel="noopener noreferrer" className="btn-secondary-dark min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">See it live ↗</a>
+                <a href={managedLink} target="_blank" rel="noopener noreferrer" className="btn-primary min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Start Managed Plan — £495 Setup</a>
+                <a href="#included" className="btn-secondary-dark min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">See What's Included</a>
               </div>
-              <div className="mt-7 grid gap-3 text-[13px] font-semibold text-white/72 sm:grid-cols-3">
-                <div className="flex items-center gap-2"><Zap size={16} className="text-[#C8A24A]" />Live in 5 working days</div>
-                <div className="flex items-center gap-2"><ShieldCheck size={16} className="text-[#C8A24A]" />Stripe-secured payment</div>
-                <div className="flex items-center gap-2"><MapPin size={16} className="text-[#C8A24A]" />UK-based infrastructure company</div>
+              <div className="mt-7 grid gap-3 text-[13px] font-semibold text-white/72 sm:grid-cols-2">
+                {['Live in 5 working days', 'Built around your roofing business', 'Calls and enquiries sent to your phone', 'No technical setup needed'].map((item) => (
+                  <div key={item} className="flex items-center gap-2"><CheckCircle2 size={16} className="text-[#C8A24A]" />{item}</div>
+                ))}
               </div>
             </div>
+            <PreviewFrame caption="Demo preview — your site is built around your own business name, branding, phone number, service areas, and roofing services." />
           </div>
         </section>
 
         <section className="border-b border-white/8 py-14 sm:py-18">
           <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
-            <span className="section-eyebrow text-[#C8A24A]">See It In Action</span>
-            <h2 className="mt-3 max-w-2xl text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">A live, working roofing lead system.</h2>
-            <div className="mx-auto mt-6 grid max-w-5xl gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              {demoSlots.map((slot) => (
-                <article key={slot.title} className="group rounded-xl border border-[#C8A24A]/16 bg-[#071426]/72 p-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_18px_44px_rgba(0,0,0,0.22)] transition duration-200 hover:-translate-y-1 hover:border-[#C8A24A]/35 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_22px_56px_rgba(0,0,0,0.3)]">
-                  <button type="button" aria-label={`Enlarge ${slot.title} screenshot`} onClick={() => setSelectedDemo(slot)} className="relative block aspect-[5/6] w-full cursor-pointer overflow-hidden rounded-lg border border-white/8 bg-[#020817] p-0 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#C8A24A]">
-                    <img src={slot.image} alt={slot.alt} loading="lazy" className="h-full w-full object-contain" />
-                    <span className="pointer-events-none absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full border border-[#C8A24A]/20 bg-[#020817]/82 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.12em] text-[#C8A24A] backdrop-blur-sm">Click to enlarge</span>
-                  </button>
-                  <p className="mt-2.5 text-[10px] font-black uppercase tracking-[0.16em] text-[#C8A24A]">{slot.eyebrow}</p>
-                  <h3 className="mt-1.5 text-[15px] font-black tracking-[-0.025em] text-white">{slot.title}</h3>
-                  <p className="mt-1.5 text-[12px] leading-5 text-white/64">{slot.description}</p>
+            <span className="section-eyebrow text-[#C8A24A]">Clear Pricing</span>
+            <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">Choose managed monthly support or own it outright.</h2>
+            <div className="mt-8 grid gap-5 lg:grid-cols-2">
+              <article className="relative rounded-2xl border border-[#C8A24A]/35 bg-[#071426]/88 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_28px_80px_rgba(0,0,0,0.38)]">
+                <span className="absolute right-5 top-5 rounded-full bg-[#C8A24A] px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-[#020817]">Recommended</span>
+                <PreviewFrame compact caption="Same website, fully managed for you." />
+                <h3 className="mt-6 text-2xl font-black tracking-[-0.035em] text-white">Managed Website</h3>
+                <p className="mt-2 text-3xl font-black tracking-[-0.04em] text-[#C8A24A]">£495 setup + £199/month from launch day</p>
+                <p className="mt-3 text-[15px] leading-6 text-white/70">Best for roofers who want the website built, hosted, maintained, and managed for them.</p>
+                <ul className="mt-5 grid gap-2">{managedIncludes.map((item) => <CheckItem key={item}>{item}</CheckItem>)}</ul>
+                <p className="mt-5 text-[13px] font-semibold text-white/70">12-month minimum term. Cancel any time after the first 12 months.</p>
+                <a href={managedLink} target="_blank" rel="noopener noreferrer" className="btn-primary mt-5 inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Start Managed Plan — £495 Setup</a>
+                <p className="mt-3 text-[12px] leading-5 text-white/50">The £199/month managed plan starts from launch day.</p>
+              </article>
+
+              <article className="rounded-2xl border border-white/10 bg-[#071426]/62 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_20px_56px_rgba(0,0,0,0.28)]">
+                <PreviewFrame compact caption="Same website, handed over after completion." />
+                <h3 className="mt-6 text-2xl font-black tracking-[-0.035em] text-white">Build & Handoff</h3>
+                <p className="mt-2 text-3xl font-black tracking-[-0.04em] text-white">£1,995 one-off build and handoff</p>
+                <p className="mt-3 text-[15px] leading-6 text-white/70">Best for roofers who want to own the website outright and manage it themselves after launch.</p>
+                <ul className="mt-5 grid gap-2">{oneOffIncludes.map((item) => <CheckItem key={item}>{item}</CheckItem>)}</ul>
+                <a href={oneOffLink} target="_blank" rel="noopener noreferrer" className="btn-secondary-dark mt-5 inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Choose One-Off Build — £1,995</a>
+                <p className="mt-3 text-[12px] leading-5 text-white/50">Future changes or support are charged separately.</p>
+              </article>
+            </div>
+            <p className="mt-5 rounded-xl border border-[#C8A24A]/16 bg-[#C8A24A]/8 p-4 text-[14px] leading-6 text-white/70">Both options include the same custom emergency roofing website. The difference is whether we manage it for you monthly or hand it over after completion.</p>
+          </div>
+        </section>
+
+        <section id="included" className="scroll-mt-24 border-b border-white/8 py-14 sm:py-18">
+          <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
+            <span className="section-eyebrow text-[#C8A24A]">Everything Included</span>
+            <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">What you get with the managed plan</h2>
+            <p className="mt-4 max-w-3xl text-[16px] leading-7 text-white/70">The managed plan is built for roofers who do not want to deal with websites, hosting, SMS systems, or technical setup. We build it, launch it, and keep the basics running for you.</p>
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {includedGroups.map((group) => (
+                <article key={group.title} className="rounded-xl border border-[#C8A24A]/14 bg-[#071426]/72 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_20px_54px_rgba(0,0,0,0.22)]">
+                  <h3 className="text-lg font-black tracking-[-0.03em] text-white">{group.title}</h3>
+                  <ul className="mt-4 grid gap-2">{group.items.map((item) => <CheckItem key={item}>{item}</CheckItem>)}</ul>
                 </article>
               ))}
             </div>
@@ -829,12 +885,45 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
 
         <section className="border-b border-white/8 py-14 sm:py-18">
           <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
-            <span className="section-eyebrow text-[#C8A24A]">What's Included</span>
-            <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">Everything you need to capture and qualify emergency roofing leads.</h2>
-            <div className="mt-8 grid gap-3 md:grid-cols-2">
-              {included.map((item) => (
-                <p key={item} className="text-[15px] font-semibold leading-7 text-white/72"><span className="mr-2 text-[#C8A24A]">→</span>{item}</p>
+            <span className="section-eyebrow text-[#C8A24A]">See What You Get</span>
+            <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">A roofing website built to turn urgent enquiries into calls.</h2>
+            <p className="mt-4 max-w-3xl text-[16px] leading-7 text-white/70">Your site is designed around emergency roof repairs, leaks, storm damage, missing tiles, and urgent callouts — with calls and enquiries sent straight to your phone.</p>
+            <div className="mt-8">
+              <PreviewFrame caption="Example preview. Your website is built using your own business name, branding, phone number, service areas, and roofing services." />
+            </div>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {['Click-to-call and WhatsApp buttons', 'Emergency enquiry form', 'SMS lead alerts to your phone'].map((item) => (
+                <div key={item} className="rounded-xl border border-[#C8A24A]/14 bg-[#071426]/72 p-5 text-[15px] font-bold leading-6 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_18px_44px_rgba(0,0,0,0.2)]">
+                  <CheckCircle2 size={18} className="mb-3 text-[#C8A24A]" />
+                  {item}
+                </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-white/8 py-14 sm:py-18">
+          <div className="mx-auto grid max-w-[1320px] gap-6 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
+            <div>
+              <span className="section-eyebrow text-[#C8A24A]">Monthly Tweak Included</span>
+              <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">What counts as your included monthly tweak?</h2>
+              <p className="mt-4 text-[16px] leading-7 text-white/70">Your managed plan includes 1 small website tweak per month. A small tweak is a simple change that takes under 30 minutes.</p>
+              <p className="mt-4 text-[13px] font-semibold text-white/50">Unused tweaks do not roll over.</p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {tweakExamples.map((item) => <p key={item} className="rounded-lg border border-white/10 bg-[#071426]/72 p-4 text-[14px] font-semibold leading-6 text-white/72"><span className="mr-2 text-[#C8A24A]">→</span>{item}</p>)}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-[#C8A24A]/20 bg-[#C8A24A]/[0.03] py-14 sm:py-18">
+          <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
+            <span className="section-eyebrow text-[#C8A24A]">No Hidden Extras</span>
+            <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">Bigger changes are agreed before any extra charge.</h2>
+            <p className="mt-4 max-w-3xl text-[16px] leading-7 text-white/70">Some work sits outside the managed plan. If you need extra work, we agree the price with you first. You are never charged for extra work without approval.</p>
+            <p className="mt-5 rounded-xl border border-[#C8A24A]/24 bg-[#C8A24A]/10 p-4 text-[16px] font-bold leading-7 text-white">Extra work is charged at £75/hour or as a fixed quote agreed before work starts.</p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {paidExtras.map((item) => <p key={item} className="rounded-lg border border-white/10 bg-[#071426]/72 p-4 text-[14px] leading-6 text-white/68">{item}</p>)}
             </div>
           </div>
         </section>
@@ -842,12 +931,13 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
         <section className="border-b border-white/8 py-14 sm:py-18">
           <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
             <span className="section-eyebrow text-[#C8A24A]">How It Works</span>
-            <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">From deposit to live site — 5 working days.</h2>
-            <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">From setup payment to live site — 5 working days.</h2>
+            <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               {[
-                ['01', 'Reserve your slot', "Pay the £995 deposit on this page. You'll receive a confirmation email and an intake form within 1 hour."],
-                ['02', 'Complete the intake form', '10 questions, takes 5 minutes. Tell us your brand name, service area, phone number, and which roofing services you offer.'],
-                ['03', 'Your site goes live', 'Within 5 working days. You receive the URL, the SMS alert system is tested with your number, and your phone starts buzzing with qualified leads.'],
+                ['01', 'Pay the £495 setup', 'Secure your managed website build with the £495 setup payment. You receive the intake form and next steps by email.'],
+                ['02', 'Send your business details', 'Send your business name, logo if available, phone number, service areas, roofing services, and any photos you want included.'],
+                ['03', 'Your website goes live', 'Within 5 working days after we receive the required details, your website goes live and lead alerts are routed to your phone.'],
+                ['04', 'Managed support starts', 'Your £199/month managed plan starts from launch day. Hosting, SMS lead routing, basic maintenance, and included small tweaks are handled for you.'],
               ].map(([number, title, copy]) => (
                 <div key={number} className="rounded-xl border border-[#C8A24A]/14 bg-[#071426]/72 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_20px_54px_rgba(0,0,0,0.22)]">
                   <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#C8A24A]/34 bg-[#C8A24A]/10 text-[12px] font-black text-[#C8A24A]">{number}</div>
@@ -859,22 +949,69 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
           </div>
         </section>
 
-        <section className="border-b border-white/8 py-14 text-center sm:py-18">
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            <span className="section-eyebrow text-[#C8A24A]">Transparent Pricing</span>
-            <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">£995 today. £1,000 on launch. That's it.</h2>
-            <p className="mx-auto mt-5 max-w-2xl text-[16px] leading-7 text-white/70">Optional £149/month support package available after launch (hosting, SMS credits, monthly performance review). Cancel any time.</p>
-            <p className="mx-auto mt-4 max-w-2xl text-[13px] leading-6 text-white/50">48-hour deposit refund. 60-day money-back guarantee if your site doesn't generate at least 3 qualified leads.</p>
+        <section className="border-b border-white/8 py-14 sm:py-18">
+          <div className="mx-auto grid max-w-[1320px] gap-6 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
+            <div>
+              <span className="section-eyebrow text-[#C8A24A]">One-Off Option</span>
+              <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">Want to own it outright?</h2>
+              <p className="mt-4 text-[16px] leading-7 text-white/70">Some roofers prefer to pay once and manage everything themselves. The one-off option gives you the same custom emergency roofing website, then it is handed over after completion.</p>
+              <p className="mt-5 text-3xl font-black tracking-[-0.04em] text-[#C8A24A]">£1,995 one-off build and handoff</p>
+              <p className="mt-4 rounded-xl border border-white/10 bg-[#071426]/72 p-4 text-[14px] leading-6 text-white/70">After handoff, you are responsible for hosting, domain, SMS account, database, updates, and future changes.</p>
+              <a href={oneOffLink} target="_blank" rel="noopener noreferrer" className="btn-secondary-dark mt-5 inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Choose One-Off Build — £1,995</a>
+              <p className="mt-3 text-[12px] leading-5 text-white/50">Post-handoff support is charged at £75/hour or by fixed quote agreed before work starts.</p>
+            </div>
+            <div className="rounded-xl border border-[#C8A24A]/14 bg-[#071426]/72 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_20px_54px_rgba(0,0,0,0.22)]">
+              <h3 className="text-lg font-black tracking-[-0.03em] text-white">Included</h3>
+              <ul className="mt-4 grid gap-2">
+                {['Custom emergency roofing website', 'Business branding and service area setup', 'Lead form and call setup', 'Built within the same 5-working-day target after intake details are received', 'Handoff after completion', 'No monthly support'].map((item) => <CheckItem key={item}>{item}</CheckItem>)}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-white/8 py-14 sm:py-18">
+          <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
+            <span className="section-eyebrow text-[#C8A24A]">Compare Options</span>
+            <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">Managed plan or one-off build?</h2>
+            <div className="mt-8 overflow-hidden rounded-2xl border border-[#C8A24A]/14 bg-[#071426]/72">
+              <div className="hidden grid-cols-[1fr_1fr_1fr] border-b border-white/10 bg-white/[0.03] text-[12px] font-black uppercase tracking-[0.12em] text-[#C8A24A] md:grid">
+                <div className="p-4">Feature</div><div className="p-4">Managed Plan</div><div className="p-4">One-Off Build</div>
+              </div>
+              {comparisonRows.map(([feature, managed, oneOff]) => (
+                <div key={feature} className="grid gap-2 border-b border-white/8 p-4 last:border-b-0 md:grid-cols-[1fr_1fr_1fr] md:gap-0">
+                  <div className="text-[13px] font-black uppercase tracking-[0.08em] text-white md:text-[14px] md:normal-case md:tracking-normal">{feature}</div>
+                  <div className="text-[14px] leading-6 text-white/72"><span className="mr-2 text-[#C8A24A] md:hidden">Managed:</span>{managed}</div>
+                  <div className="text-[14px] leading-6 text-white/72"><span className="mr-2 text-[#C8A24A] md:hidden">One-off:</span>{oneOff}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-white/8 py-14 sm:py-18">
+          <div className="mx-auto max-w-[980px] px-4 sm:px-6 lg:px-8">
+            <span className="section-eyebrow text-[#C8A24A]">FAQ</span>
+            <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">Common questions from roofers</h2>
+            <div className="mt-8 grid gap-4">
+              {faqs.map(([question, answer]) => (
+                <article key={question} className="rounded-xl border border-white/10 bg-[#071426]/72 p-5">
+                  <h3 className="text-[16px] font-black tracking-[-0.02em] text-white">{question}</h3>
+                  <p className="mt-2 text-[14px] leading-6 text-white/70">{answer}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
         <section className="border-b border-white/8 py-14 text-center sm:py-18">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            <span className="section-eyebrow text-[#C8A24A]">Ready To Start?</span>
-            <div className="mt-5">
-              <a href={stripeLink} target="_blank" rel="noopener noreferrer" className="btn-primary min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Secure Your Build Slot — £995 Deposit →</a>
+            <h2 className="text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">Ready to get your roofing lead website built?</h2>
+            <p className="mx-auto mt-5 max-w-2xl text-[16px] leading-7 text-white/70">Start with the £495 managed setup payment. Your website is built around your business and launched within 5 working days after your intake details are received.</p>
+            <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
+              <a href={managedLink} target="_blank" rel="noopener noreferrer" className="btn-primary min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Start Managed Plan — £495 Setup</a>
+              <a href={oneOffLink} target="_blank" rel="noopener noreferrer" className="btn-secondary-dark min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Choose One-Off Build — £1,995</a>
             </div>
-            <p className="mx-auto mt-4 max-w-xl text-[13px] leading-6 text-white/50">Payment processed by Stripe. Receipt and intake form delivered instantly to your email.</p>
+            <p className="mx-auto mt-4 max-w-xl text-[13px] leading-6 text-white/50">Payment processed securely by Stripe. Intake form and next steps sent by email.</p>
           </div>
         </section>
 
@@ -884,17 +1021,6 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
           </div>
         </section>
       </main>
-
-      {selectedDemo && (
-        <div className="fixed inset-0 z-[80] flex items-center justify-center bg-[#020817]/92 p-4 backdrop-blur-md sm:p-6" role="dialog" aria-modal="true" aria-label={`${selectedDemo.title} enlarged preview`} onClick={() => setSelectedDemo(null)}>
-          <button type="button" aria-label="Close preview" onClick={() => setSelectedDemo(null)} className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full border border-white/14 bg-[#071426]/88 text-white shadow-[0_18px_44px_rgba(0,0,0,0.34)] transition hover:border-[#C8A24A]/45 hover:text-[#C8A24A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#C8A24A]">
-            <X size={20} />
-          </button>
-          <div className="w-full max-w-5xl rounded-2xl border border-[#C8A24A]/20 bg-[#071426]/86 p-3 shadow-[0_28px_90px_rgba(0,0,0,0.55)] sm:p-4" onClick={(event) => event.stopPropagation()}>
-            <img src={selectedDemo.image} alt={selectedDemo.alt} className="mx-auto max-h-[82vh] max-w-full rounded-xl object-contain" />
-          </div>
-        </div>
-      )}
 
       <Footer />
     </div>
