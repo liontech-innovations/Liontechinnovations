@@ -822,18 +822,24 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
   );
 
   const PreviewFrame = ({ caption, compact = false }: { caption: string; compact?: boolean }) => (
-    <div className={`rounded-2xl border border-[#C8A24A]/18 bg-[#071426]/78 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_70px_rgba(0,0,0,0.34)] ${compact ? 'p-2.5' : 'p-3'}`}>
+    <a href="https://leadrecovery.co.uk/" target="_blank" rel="noopener noreferrer" className={`block rounded-2xl border border-[#C8A24A]/18 bg-[#071426]/78 no-underline shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_70px_rgba(0,0,0,0.34)] transition hover:border-[#C8A24A]/36 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_28px_80px_rgba(0,0,0,0.42)] ${compact ? 'p-2.5' : 'p-3'}`} aria-label="Open live Lead Recovery website">
       <div className={`${compact ? 'mb-2' : 'mb-3'} flex items-center justify-between gap-3`}>
         <span className="rounded-full border border-[#C8A24A]/22 bg-[#C8A24A]/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-[#C8A24A]">Example preview</span>
-        <span className="hidden text-[11px] font-semibold text-white/45 sm:inline">Demo only</span>
+        <span className="hidden items-center gap-2 text-[11px] font-black uppercase tracking-[0.12em] text-emerald-300 sm:inline-flex">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+          </span>
+          Live
+        </span>
       </div>
       <img src={previewImage} alt="Example emergency roofing lead website preview" loading={compact ? 'lazy' : 'eager'} className={`${compact ? 'h-40 object-cover object-top sm:h-44 lg:h-48' : 'object-contain'} w-full rounded-xl border border-white/8 bg-[#020817]`} />
       <p className={`${compact ? 'mt-2' : 'mt-3'} text-[12px] leading-5 text-white/56`}>{caption}</p>
-    </div>
+    </a>
   );
 
   return (
-    <div className="min-h-screen bg-[#020817] text-white">
+    <div id="lead-recovery-page" className="h-dvh min-h-screen overflow-y-auto overflow-x-hidden bg-[#020817] text-white [-webkit-overflow-scrolling:touch]">
       <Navbar onStartIntake={onStartIntake} />
 
       <main>
