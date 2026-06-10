@@ -715,7 +715,29 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
   const meta = routeMeta['/lead-recovery'];
   const managedLink = 'MANAGED_SETUP_PAYMENT_LINK_HERE';
   const oneOffLink = 'ONE_OFF_BUILD_PAYMENT_LINK_HERE';
-  const previewImage = '/images/roofing-lead-website-preview.jpg';
+  const previewImage = '/images/roofing-lead-desktop-preview.png';
+  const mobilePreviews = [
+    {
+      label: 'Mobile emergency landing page',
+      src: '/images/lead-recovery/hero-mock.jpg',
+      alt: 'Demo preview of mobile emergency roofing landing page',
+    },
+    {
+      label: 'Roofing issue form',
+      src: '/images/lead-recovery/wizard-mock.jpg',
+      alt: 'Demo preview of roofing issue qualification form',
+    },
+    {
+      label: 'Estimate and payment options',
+      src: '/images/lead-recovery/assessment-mock.jpg',
+      alt: 'Demo preview of roofing assessment and payment options',
+    },
+    {
+      label: 'Lead routed to the roofer',
+      src: '/images/lead-recovery/sms-mock.jpg',
+      alt: 'Demo preview of SMS roofing lead alert',
+    },
+  ];
 
   const managedIncludes = [
     'Custom emergency roofing website',
@@ -800,13 +822,13 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
   );
 
   const PreviewFrame = ({ caption, compact = false }: { caption: string; compact?: boolean }) => (
-    <div className="rounded-2xl border border-[#C8A24A]/18 bg-[#071426]/78 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_70px_rgba(0,0,0,0.34)]">
-      <div className="mb-3 flex items-center justify-between gap-3">
+    <div className={`rounded-2xl border border-[#C8A24A]/18 bg-[#071426]/78 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_24px_70px_rgba(0,0,0,0.34)] ${compact ? 'p-2.5' : 'p-3'}`}>
+      <div className={`${compact ? 'mb-2' : 'mb-3'} flex items-center justify-between gap-3`}>
         <span className="rounded-full border border-[#C8A24A]/22 bg-[#C8A24A]/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-[#C8A24A]">Example preview</span>
         <span className="hidden text-[11px] font-semibold text-white/45 sm:inline">Demo only</span>
       </div>
-      <img src={previewImage} alt="Example emergency roofing lead website preview" loading={compact ? 'lazy' : 'eager'} className="w-full rounded-xl border border-white/8 object-contain" />
-      <p className="mt-3 text-[12px] leading-5 text-white/56">{caption}</p>
+      <img src={previewImage} alt="Example emergency roofing lead website preview" loading={compact ? 'lazy' : 'eager'} className={`${compact ? 'h-40 object-cover object-top sm:h-44 lg:h-48' : 'object-contain'} w-full rounded-xl border border-white/8 bg-[#020817]`} />
+      <p className={`${compact ? 'mt-2' : 'mt-3'} text-[12px] leading-5 text-white/56`}>{caption}</p>
     </div>
   );
 
@@ -885,11 +907,21 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
 
         <section className="border-b border-white/8 py-14 sm:py-18">
           <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
-            <span className="section-eyebrow text-[#C8A24A]">See What You Get</span>
-            <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">A roofing website built to turn urgent enquiries into calls.</h2>
-            <p className="mt-4 max-w-3xl text-[16px] leading-7 text-white/70">Your site is designed around emergency roof repairs, leaks, storm damage, missing tiles, and urgent callouts — with calls and enquiries sent straight to your phone.</p>
-            <div className="mt-8">
-              <PreviewFrame caption="Example preview. Your website is built using your own business name, branding, phone number, service areas, and roofing services." />
+            <span className="section-eyebrow text-[#C8A24A]">See It In Action</span>
+            <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">A live-style roofing lead system built for urgent enquiries.</h2>
+            <p className="mt-4 max-w-3xl text-[16px] leading-7 text-white/70">Show roofers how the website captures emergency roof repair enquiries, drives calls, and sends leads straight to their phone.</p>
+            <div className="-mx-4 mt-7 flex snap-x gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 md:grid-cols-4">
+              {mobilePreviews.map((preview) => (
+                <article key={preview.label} className="min-w-[210px] snap-start rounded-xl border border-[#C8A24A]/14 bg-[#071426]/72 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_18px_44px_rgba(0,0,0,0.2)] sm:min-w-0">
+                  <div className="mb-2 flex items-center justify-between gap-2">
+                    <span className="rounded-full border border-[#C8A24A]/20 bg-[#C8A24A]/8 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.12em] text-[#C8A24A]">Demo preview</span>
+                  </div>
+                  <div className="flex h-[300px] items-center justify-center overflow-hidden rounded-lg border border-white/8 bg-[#020817] sm:h-[330px] lg:h-[360px]">
+                    <img src={preview.src} alt={preview.alt} loading="lazy" className="h-full w-full object-contain" />
+                  </div>
+                  <h3 className="mt-3 text-[14px] font-black tracking-[-0.02em] text-white">{preview.label}</h3>
+                </article>
+              ))}
             </div>
             <div className="mt-6 grid gap-4 md:grid-cols-3">
               {['Click-to-call and WhatsApp buttons', 'Emergency enquiry form', 'SMS lead alerts to your phone'].map((item) => (
