@@ -1,5 +1,20 @@
 {
+  "redirects": [
+    {
+      "source": "/MANAGED_SETUP_PAYMENT_LINK_HERE",
+      "destination": "/api/create-managed-checkout",
+      "permanent": false
+    },
+    {
+      "source": "/ONE_OFF_BUILD_PAYMENT_LINK_HERE",
+      "destination": "https://buy.stripe.com/cNidRbajbeWQ2Nse7z5wI09",
+      "permanent": false
+    }
+  ],
   "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
   ]
 }
