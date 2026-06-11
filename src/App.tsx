@@ -62,6 +62,10 @@ const routeMeta = {
     title: 'Emergency Roofing Lead Capture System — From £495 | Lion Tech Innovations',
     description: 'Capture emergency roofing leads via SMS. Live in 5 working days. £495 setup + £199/mo managed, or £1,995 one-off. Built for UK roofing companies.',
   },
+  '/roofing-brief': {
+    title: 'Roofing Website Build Brief | Lion Tech Innovations',
+    description: 'Submit the build details for your Roofing Lead Recovery website after checkout: contact details, service areas, phone numbers, branding links, and launch notes.',
+  },
 };
 
 type Route = keyof typeof routeMeta;
@@ -73,7 +77,8 @@ function getRoute(): Route {
     window.location.pathname === '/uk-ai-infrastructure' ||
     window.location.pathname === '/saas-platform-development' ||
     window.location.pathname === '/ai-intake-systems' ||
-    window.location.pathname === '/lead-recovery'
+    window.location.pathname === '/lead-recovery' ||
+    window.location.pathname === '/roofing-brief'
   ) {
     return window.location.pathname;
   }
@@ -711,10 +716,360 @@ const HomePage = ({ onStartIntake }: { onStartIntake: () => void }) => {
   );
 };
 
+type RoofingBriefForm = {
+  plan: string;
+  sessionId: string;
+  contactName: string;
+  email: string;
+  mobileNumber: string;
+  roofingBusinessName: string;
+  tradingName: string;
+  mainWebsitePhone: string;
+  whatsappSameAsMain: boolean;
+  whatsappNumber: string;
+  businessEmail: string;
+  mainTownCity: string;
+  areasCovered: string;
+  areasNotCovered: string;
+  services: string[];
+  otherServices: string;
+  currentWebsiteUrl: string;
+  googleBusinessProfile: string;
+  facebookPage: string;
+  instagramLink: string;
+  tradeProfileLinks: string;
+  logoLink: string;
+  logoPhotoUploadLink: string;
+  jobPhotosUploadLink: string;
+  brandColours: string;
+  siteLookNotes: string;
+  reviewLinks: string;
+  testimonials: string;
+  accreditations: string;
+  insuranceGuarantees: string;
+  domainStatus: string;
+  domainName: string;
+  preferredDomainIdeas: string;
+  importantNotes: string;
+  bestTimeToContact: string;
+  confirmAccurate: boolean;
+};
+
+const roofingServices = [
+  'Emergency roof repairs',
+  'Active leaks',
+  'Storm damage',
+  'Missing / slipped tiles',
+  'Flat roofs',
+  'New roofs',
+  'Guttering',
+  'Chimneys',
+  'Leadwork',
+  'Fascias and soffits',
+  'Commercial roofing',
+  'Other',
+];
+
+const RoofingBriefPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
+  const meta = routeMeta['/roofing-brief'];
+  const params = new URLSearchParams(window.location.search);
+  const plan = params.get('plan') === 'oneoff' ? 'oneoff' : 'managed';
+  const sessionId = params.get('session_id') || '';
+  const uploadHelp = 'Paste a Google Drive, Dropbox, WeTransfer, iCloud, OneDrive, or website link. If you do not have one yet, leave blank and send photos later.';
+  const [stripeNote, setStripeNote] = useState('');
+  const [submitError, setSubmitError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [form, setForm] = useState<RoofingBriefForm>(() => ({
+    plan,
+    sessionId,
+    contactName: '',
+    email: '',
+    mobileNumber: '',
+    roofingBusinessName: '',
+    tradingName: '',
+    mainWebsitePhone: '',
+    whatsappSameAsMain: false,
+    whatsappNumber: '',
+    businessEmail: '',
+    mainTownCity: '',
+    areasCovered: '',
+    areasNotCovered: '',
+    services: [],
+    otherServices: '',
+    currentWebsiteUrl: '',
+    googleBusinessProfile: '',
+    facebookPage: '',
+    instagramLink: '',
+    tradeProfileLinks: '',
+    logoLink: '',
+    logoPhotoUploadLink: '',
+    jobPhotosUploadLink: '',
+    brandColours: '',
+    siteLookNotes: '',
+    reviewLinks: '',
+    testimonials: '',
+    accreditations: '',
+    insuranceGuarantees: '',
+    domainStatus: 'not-sure',
+    domainName: '',
+    preferredDomainIdeas: '',
+    importantNotes: '',
+    bestTimeToContact: '',
+    confirmAccurate: false,
+  }));
+
+  usePageMeta(meta.title, meta.description);
+  useEffect(() => {
+    setMeta('meta[property="og:title"]', 'content', meta.title);
+    setMeta('meta[property="og:description"]', 'content', meta.description);
+    setMeta('meta[property="og:url"]', 'content', 'https://liontechinnovations.co.uk/roofing-brief');
+    setMeta('meta[name="twitter:title"]', 'content', meta.title);
+    setMeta('meta[name="twitter:description"]', 'content', meta.description);
+    setMeta('link[rel="canonical"]', 'href', 'https://liontechinnovations.co.uk/roofing-brief');
+  }, [meta.description, meta.title]);
+
+  useEffect(() => {
+    if (!sessionId) {
+      setStripeNote('We could not automatically load your checkout details. Please fill the form manually.');
+      return;
+    }
+
+    let isMounted = true;
+    fetch(`/api/get-checkout-session?session_id=${encodeURIComponent(sessionId)}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (!isMounted) return;
+        if (!data?.ok) {
+          setStripeNote('We could not automatically load your checkout details. Please fill the form manually.');
+          return;
+        }
+
+        const businessField = Array.isArray(data.custom_fields)
+          ? data.custom_fields.find((field: { key?: string; text?: { value?: string } }) => field.key === 'business_name')?.text?.value
+          : '';
+
+        setForm((current) => ({
+          ...current,
+          contactName: current.contactName || data.customer_name || '',
+          email: current.email || data.customer_email || '',
+          mobileNumber: current.mobileNumber || data.customer_phone || '',
+          roofingBusinessName: current.roofingBusinessName || businessField || '',
+        }));
+      })
+      .catch(() => {
+        if (isMounted) setStripeNote('We could not automatically load your checkout details. Please fill the form manually.');
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [sessionId]);
+
+  const updateField = (field: keyof RoofingBriefForm, value: string | boolean | string[]) => {
+    setForm((current) => ({ ...current, [field]: value }));
+  };
+
+  const toggleService = (service: string) => {
+    setForm((current) => ({
+      ...current,
+      services: current.services.includes(service)
+        ? current.services.filter((item) => item !== service)
+        : [...current.services, service],
+    }));
+  };
+
+  const inputClass = 'mt-2 w-full rounded-lg border border-white/10 bg-[#071426]/78 px-3 py-3 text-[15px] text-white outline-none transition placeholder:text-white/35 focus:border-[#C8A24A]/70 focus:ring-2 focus:ring-[#C8A24A]/20';
+  const labelClass = 'block text-[13px] font-bold leading-6 text-white/82';
+
+  const TextInput = ({ field, label, required = false, placeholder = '' }: { field: keyof RoofingBriefForm; label: string; required?: boolean; placeholder?: string }) => (
+    <label className={labelClass}>
+      {label}{required && <span className="text-[#C8A24A]"> *</span>}
+      <input className={inputClass} value={String(form[field] || '')} required={required} placeholder={placeholder} onChange={(event) => updateField(field, event.target.value)} />
+    </label>
+  );
+
+  const TextArea = ({ field, label, required = false, placeholder = '', rows = 4 }: { field: keyof RoofingBriefForm; label: string; required?: boolean; placeholder?: string; rows?: number }) => (
+    <label className={labelClass}>
+      {label}{required && <span className="text-[#C8A24A]"> *</span>}
+      <textarea className={inputClass} value={String(form[field] || '')} required={required} rows={rows} placeholder={placeholder} onChange={(event) => updateField(field, event.target.value)} />
+    </label>
+  );
+
+  const FieldGroup = ({ title, children }: { title: string; children: React.ReactNode }) => (
+    <section className="rounded-2xl border border-[#C8A24A]/14 bg-[#071426]/72 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_18px_48px_rgba(0,0,0,0.24)]">
+      <h2 className="text-xl font-black tracking-[-0.035em] text-white">{title}</h2>
+      <div className="mt-5 grid gap-4 md:grid-cols-2">{children}</div>
+    </section>
+  );
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitError('');
+    setIsSubmitting(true);
+
+    const payload = {
+      ...form,
+      whatsappNumber: form.whatsappSameAsMain ? form.mainWebsitePhone : form.whatsappNumber,
+    };
+
+    try {
+      const response = await fetch('/api/submit-roofing-brief', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const result = await response.json();
+      if (!response.ok || !result?.ok) {
+        setSubmitError(result?.missing?.length ? `Missing server env vars: ${result.missing.join(', ')}` : result?.error || 'Brief submit failed.');
+        return;
+      }
+      setIsSubmitted(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch {
+      setSubmitError('Connection issue. Please try again or email contact@liontechinnovations.co.uk.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (isSubmitted) {
+    return (
+      <div className="min-h-screen bg-[#020817] text-white">
+        <Navbar onStartIntake={onStartIntake} />
+        <main className="mx-auto max-w-3xl px-4 pb-20 pt-32 sm:px-6 lg:px-8">
+          <div className="rounded-2xl border border-[#C8A24A]/20 bg-[#071426]/78 p-6 text-center shadow-[0_24px_70px_rgba(0,0,0,0.34)]">
+            <CheckCircle2 className="mx-auto text-[#C8A24A]" size={38} />
+            <h1 className="mt-5 text-3xl font-black tracking-[-0.04em] text-white">Brief received.</h1>
+            <p className="mx-auto mt-4 max-w-xl text-[16px] leading-7 text-white/72">Your 5-working-day build starts now, provided payment is complete. We'll review the details and contact you if anything is missing.</p>
+            <a href="/lead-recovery" onClick={(event) => { event.preventDefault(); navigateTo('/lead-recovery'); }} className="btn-primary mt-7 inline-flex min-h-11 items-center justify-center rounded-md px-6 py-3 text-[11px] uppercase tracking-[0.14em] no-underline">Back to Lead Recovery Page</a>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-[#020817] text-white">
+      <Navbar onStartIntake={onStartIntake} />
+      <main className="mx-auto max-w-5xl px-4 pb-20 pt-32 sm:px-6 lg:px-8">
+        <a href="/lead-recovery" onClick={(event) => { event.preventDefault(); navigateTo('/lead-recovery'); }} className="mb-6 inline-flex text-sm font-semibold text-[#C8A24A] no-underline transition hover:text-[#D4B05A] hover:underline">&larr; Back to Lead Recovery</a>
+        <span className="section-eyebrow text-[#C8A24A]">Roofing build brief</span>
+        <h1 className="mt-3 text-4xl font-black tracking-[-0.04em] text-white">Roofing Website Build Brief</h1>
+        <p className="mt-5 text-xl font-bold tracking-[-0.02em] text-white">Payment received - now send your build details.</p>
+        <p className="mt-3 max-w-3xl text-[16px] leading-7 text-white/72">This takes about 5 minutes. Your 5-working-day build starts once payment and this brief are both complete.</p>
+        <p className="mt-4 max-w-3xl rounded-xl border border-[#C8A24A]/18 bg-[#C8A24A]/8 p-4 text-[14px] leading-6 text-white/72">No technical knowledge needed. If you do not have a logo or photos yet, leave those fields blank or paste a link later.</p>
+        {stripeNote && <p className="mt-4 rounded-xl border border-white/10 bg-white/[0.04] p-4 text-[14px] leading-6 text-white/68">{stripeNote}</p>}
+
+        <form onSubmit={handleSubmit} className="mt-8 grid gap-5">
+          <input type="hidden" name="plan" value={form.plan} />
+          <input type="hidden" name="sessionId" value={form.sessionId} />
+
+          <FieldGroup title="1. Contact details">
+            <TextInput field="contactName" label="Contact name" required />
+            <TextInput field="email" label="Email" required />
+            <TextInput field="mobileNumber" label="Mobile number" required />
+            <TextInput field="roofingBusinessName" label="Roofing business name" required />
+            <TextInput field="tradingName" label="Trading name if different" />
+          </FieldGroup>
+
+          <FieldGroup title="2. Website contact details">
+            <TextInput field="mainWebsitePhone" label="Main phone number to show on the website" required />
+            <label className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.03] px-3 py-3 text-[13px] font-bold text-white/82">
+              <input type="checkbox" checked={form.whatsappSameAsMain} onChange={(event) => updateField('whatsappSameAsMain', event.target.checked)} />
+              WhatsApp number is the same as main phone
+            </label>
+            <TextInput field="whatsappNumber" label="WhatsApp number to use" />
+            <TextInput field="businessEmail" label="Business email to show on website, optional" />
+          </FieldGroup>
+
+          <FieldGroup title="3. Service areas">
+            <TextInput field="mainTownCity" label="Main town/city" required />
+            <TextArea field="areasCovered" label="Areas/postcodes covered" required />
+            <TextArea field="areasNotCovered" label="Areas you do NOT cover, optional" />
+          </FieldGroup>
+
+          <section className="rounded-2xl border border-[#C8A24A]/14 bg-[#071426]/72 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_18px_48px_rgba(0,0,0,0.24)]">
+            <h2 className="text-xl font-black tracking-[-0.035em] text-white">4. Roofing services</h2>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {roofingServices.map((service) => (
+                <label key={service} className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.03] px-3 py-3 text-[13px] font-bold text-white/82">
+                  <input type="checkbox" checked={form.services.includes(service)} onChange={() => toggleService(service)} />
+                  {service}
+                </label>
+              ))}
+            </div>
+            {form.services.includes('Other') && <div className="mt-4"><TextInput field="otherServices" label="Other services" /></div>}
+          </section>
+
+          <FieldGroup title="5. Existing online presence">
+            <TextInput field="currentWebsiteUrl" label="Current website URL, optional" />
+            <TextInput field="googleBusinessProfile" label="Google Business Profile link, optional" />
+            <TextInput field="facebookPage" label="Facebook page link, optional" />
+            <TextInput field="instagramLink" label="Instagram link, optional" />
+            <TextArea field="tradeProfileLinks" label="Checkatrade / Rated People / MyBuilder / other profile links, optional" />
+          </FieldGroup>
+
+          <FieldGroup title="6. Branding">
+            <TextInput field="logoLink" label="Logo link, optional" placeholder={uploadHelp} />
+            <TextInput field="logoPhotoUploadLink" label="Logo/photo upload link" placeholder={uploadHelp} />
+            <TextInput field="jobPhotosUploadLink" label="Job photos upload link" placeholder={uploadHelp} />
+            <TextInput field="brandColours" label="Brand colours, optional" />
+            <TextArea field="siteLookNotes" label="Notes about how they want the site to look, optional" />
+          </FieldGroup>
+
+          <FieldGroup title="7. Reviews / trust">
+            <TextArea field="reviewLinks" label="Review links, optional" />
+            <TextArea field="testimonials" label="Short testimonials to include, optional" />
+            <TextArea field="accreditations" label="Accreditations to mention, optional" />
+            <TextArea field="insuranceGuarantees" label="Insurance / guarantees to mention, optional" />
+          </FieldGroup>
+
+          <section className="rounded-2xl border border-[#C8A24A]/14 bg-[#071426]/72 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_18px_48px_rgba(0,0,0,0.24)]">
+            <h2 className="text-xl font-black tracking-[-0.035em] text-white">8. Domain</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              {[
+                ['own-domain', 'I already own a domain'],
+                ['need-domain', 'I need a new domain'],
+                ['not-sure', 'I am not sure'],
+              ].map(([value, label]) => (
+                <label key={value} className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.03] px-3 py-3 text-[13px] font-bold text-white/82">
+                  <input type="radio" name="domainStatus" checked={form.domainStatus === value} onChange={() => updateField('domainStatus', value)} />
+                  {label}
+                </label>
+              ))}
+            </div>
+            {form.domainStatus === 'own-domain' && <div className="mt-4"><TextInput field="domainName" label="Domain name" /></div>}
+            {form.domainStatus === 'need-domain' && <div className="mt-4"><TextArea field="preferredDomainIdeas" label="Preferred domain ideas" /></div>}
+          </section>
+
+          <FieldGroup title="9. Urgency / notes">
+            <TextArea field="importantNotes" label="Anything important we should know?" />
+            <TextInput field="bestTimeToContact" label="Best time to contact you" />
+            <label className="md:col-span-2 flex items-start gap-3 rounded-lg border border-[#C8A24A]/18 bg-[#C8A24A]/8 px-3 py-3 text-[13px] font-bold leading-6 text-white/82">
+              <input className="mt-1" type="checkbox" required checked={form.confirmAccurate} onChange={(event) => updateField('confirmAccurate', event.target.checked)} />
+              I confirm these details are accurate enough for LionTech to start the build.
+            </label>
+          </FieldGroup>
+
+          {submitError && <p className="rounded-xl border border-red-400/25 bg-red-500/10 p-4 text-[14px] font-semibold leading-6 text-red-100">{submitError}</p>}
+          <div>
+            <button type="submit" disabled={isSubmitting} className="btn-primary min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] disabled:cursor-not-allowed disabled:opacity-60">
+              {isSubmitting ? 'Submitting...' : 'Submit Build Brief'}
+            </button>
+          </div>
+        </form>
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
 const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
   const meta = routeMeta['/lead-recovery'];
   const managedLink = '/api/create-managed-checkout';
-  const oneOffLink = 'https://buy.stripe.com/cNidRbajbeWQ2Nse7z5wI09';
+  const oneOffLink = '/api/create-oneoff-checkout';
   const checkoutStatus = new URLSearchParams(window.location.search).get('checkout');
   const previewImage = '/images/roofing-lead-desktop-preview.png';
   const mobilePreviews = [
@@ -899,13 +1254,15 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
                 <p className="mt-2 text-3xl font-black tracking-[-0.04em] text-white">£1,995 one-off build and handoff</p>
                 <p className="mt-3 text-[15px] leading-6 text-white/70">Best for roofers who want to own the website outright and manage it themselves after launch.</p>
                 <ul className="mt-5 grid gap-2">{oneOffIncludes.map((item) => <CheckItem key={item}>{item}</CheckItem>)}</ul>
-                <a href={oneOffLink} target="_blank" rel="noopener noreferrer" className="btn-secondary-dark mt-5 inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Choose One-Off Build — £1,995 →</a>
+                <a href={oneOffLink} className="btn-secondary-dark mt-5 inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Choose One-Off Build — £1,995 →</a>
                 <p className="mt-3 text-[12px] leading-5 text-white/50">Future changes or support are charged separately.</p>
               </article>
             </div>
             <div className="mx-auto mt-6 max-w-3xl text-center text-[13px] leading-6 text-white/56">
+              <p>After payment, you'll complete a 5-minute build brief so we can start without back-and-forth.</p>
+              <p>Your 5-working-day build starts once payment and the build brief are both complete.</p>
               <p>48-hour deposit refund. 60-day money-back guarantee if your site doesn't generate at least 3 qualified leads.</p>
-              <p className="mt-1">Payment processed by Stripe. Receipt and intake form delivered instantly to your email.</p>
+              <p className="mt-1">Payment processed by Stripe. Checkout sends you straight to the build brief.</p>
             </div>
           </div>
         </section>
@@ -984,12 +1341,12 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
         <section className="border-b border-white/8 py-14 sm:py-18">
           <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
             <span className="section-eyebrow text-[#C8A24A]">How It Works</span>
-            <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">From payment to live site — 5 working days.</h2>
+            <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">From payment + brief to live site - 5 working days.</h2>
             <div className="mt-8 grid gap-4 md:grid-cols-3">
               {[
-                ['01', 'Reserve your slot', "Pay the £495 setup (managed) or £1,995 one-off on this page. You'll receive a confirmation email and intake form within 1 hour."],
-                ['02', 'Send your business details', 'Send your business name, logo if available, phone number, service areas, roofing services, and any photos you want included.'],
-                ['03', 'Your website goes live', 'Within 5 working days after we receive the required details, your website goes live and lead alerts are routed to your phone.'],
+                ['01', 'Pay online', 'Choose managed or one-off and complete Stripe checkout.'],
+                ['02', 'Submit your build brief', 'After payment, you\'ll be sent straight to a simple form for your business name, phone number, service areas, logo/photo links, and website details.'],
+                ['03', 'Your website goes live', 'Once payment and the brief are complete, your 5-working-day build starts. We launch your site and route leads to your phone.'],
               ].map(([number, title, copy]) => (
                 <div key={number} className="rounded-xl border border-[#C8A24A]/14 bg-[#071426]/72 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_20px_54px_rgba(0,0,0,0.22)]">
                   <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#C8A24A]/34 bg-[#C8A24A]/10 text-[12px] font-black text-[#C8A24A]">{number}</div>
@@ -1009,7 +1366,7 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
               <p className="mt-4 text-[16px] leading-7 text-white/70">Some roofers prefer to pay once and manage everything themselves. The one-off option gives you the same custom emergency roofing website, then it is handed over after completion.</p>
               <p className="mt-5 text-3xl font-black tracking-[-0.04em] text-[#C8A24A]">£1,995 one-off build and handoff</p>
               <p className="mt-4 rounded-xl border border-white/10 bg-[#071426]/72 p-4 text-[14px] leading-6 text-white/70">After handoff, you are responsible for hosting, domain, SMS account, database, updates, and future changes.</p>
-              <a href={oneOffLink} target="_blank" rel="noopener noreferrer" className="btn-secondary-dark mt-5 inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Choose One-Off Build — £1,995</a>
+              <a href={oneOffLink} className="btn-secondary-dark mt-5 inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Choose One-Off Build — £1,995</a>
               <p className="mt-3 text-[12px] leading-5 text-white/50">Post-handoff support is charged at £75/hour or by fixed quote agreed before work starts.</p>
             </div>
             <div className="rounded-xl border border-[#C8A24A]/14 bg-[#071426]/72 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_20px_54px_rgba(0,0,0,0.22)]">
@@ -1061,7 +1418,7 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
             <p className="mx-auto mt-5 max-w-2xl text-[16px] leading-7 text-white/70">Start with the £495 managed setup payment. Your website is built around your business and launched within 5 working days after your intake details are received.</p>
             <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
               <a href={managedLink} className="btn-primary min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Start Managed Plan — £495 Setup</a>
-              <a href={oneOffLink} target="_blank" rel="noopener noreferrer" className="btn-secondary-dark min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Choose One-Off Build — £1,995</a>
+              <a href={oneOffLink} className="btn-secondary-dark min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Choose One-Off Build — £1,995</a>
             </div>
             <p className="mx-auto mt-4 max-w-xl text-[13px] leading-6 text-white/50">Payment processed securely by Stripe. Intake form and next steps sent by email.</p>
           </div>
@@ -1092,6 +1449,7 @@ export default function App() {
       {route === '/saas-platform-development' && <SaasPlatformDevelopment onStartIntake={openIntake} />}
       {route === '/ai-intake-systems' && <AiIntakeSystems onStartIntake={openIntake} />}
       {route === '/lead-recovery' && <LeadRecoveryPage onStartIntake={openIntake} />}
+      {route === '/roofing-brief' && <RoofingBriefPage onStartIntake={openIntake} />}
       {route === '/' && <HomePage onStartIntake={openIntake} />}
       <IntakeDialog open={isIntakeOpen} onClose={() => setIsIntakeOpen(false)} />
     </div>
