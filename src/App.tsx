@@ -831,7 +831,7 @@ const RoofingBriefPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
 
   useEffect(() => {
     if (!sessionId) {
-      setStripeNote('We could not automatically load your checkout details. Please fill the form manually.');
+      setStripeNote('No checkout details loaded. Please enter your details manually.');
       return;
     }
 
@@ -1070,6 +1070,8 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
   const meta = routeMeta['/lead-recovery'];
   const managedLink = '/api/create-managed-checkout';
   const oneOffLink = '/api/create-oneoff-checkout';
+  const managedBriefLink = '/roofing-brief?plan=managed&source=lead-recovery';
+  const oneOffBriefLink = '/roofing-brief?plan=oneoff&source=lead-recovery';
   const checkoutStatus = new URLSearchParams(window.location.search).get('checkout');
   const previewImage = '/images/roofing-lead-desktop-preview.png';
   const mobilePreviews = [
@@ -1170,6 +1172,13 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
     setMeta('link[rel="canonical"]', 'href', 'https://liontechinnovations.co.uk/lead-recovery');
   }, [meta.description, meta.title]);
 
+  const goToBrief = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    event.preventDefault();
+    window.history.pushState(null, '', href);
+    window.dispatchEvent(new Event('popstate'));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const CheckItem: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <li className="flex gap-2 text-[14px] leading-6 text-white/72">
       <CheckCircle2 size={16} className="mt-1 shrink-0 text-[#C8A24A]" />
@@ -1200,13 +1209,15 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
 
       <main>
         {checkoutStatus === 'success' && (
-          <div className="border-b border-[#C8A24A]/18 bg-[#C8A24A]/10 px-4 py-3 text-center text-[14px] font-semibold leading-6 text-white sm:px-6">
-            Payment received. Your receipt, intake form, and next steps will be sent by email.
+          <div className="border-b border-[#C8A24A]/18 bg-[#C8A24A]/10 px-4 py-4 text-center text-[14px] font-semibold leading-6 text-white sm:px-6">
+            <span>Payment received. Next step: submit your build brief.</span>
+            <a href="/roofing-brief?plan=managed&source=success-banner" onClick={(event) => goToBrief(event, '/roofing-brief?plan=managed&source=success-banner')} className="ml-0 mt-3 inline-flex min-h-10 items-center justify-center rounded-md bg-[#C8A24A] px-4 py-2 text-[11px] font-black uppercase tracking-[0.12em] text-[#020817] no-underline sm:ml-4 sm:mt-0">Submit Build Brief &rarr;</a>
           </div>
         )}
         {checkoutStatus === 'cancelled' && (
-          <div className="border-b border-white/10 bg-white/[0.04] px-4 py-3 text-center text-[14px] font-semibold leading-6 text-white/72 sm:px-6">
-            Checkout cancelled. You can restart whenever you are ready.
+          <div className="border-b border-white/10 bg-white/[0.04] px-4 py-4 text-center text-[14px] font-semibold leading-6 text-white/72 sm:px-6">
+            <span>Checkout cancelled. You can restart payment below, or submit your brief if you already paid.</span>
+            <a href="/roofing-brief?plan=managed&source=cancel-banner" onClick={(event) => goToBrief(event, '/roofing-brief?plan=managed&source=cancel-banner')} className="ml-0 mt-3 inline-flex text-[12px] font-bold text-[#C8A24A] no-underline hover:text-[#D4B05A] hover:underline sm:ml-3 sm:mt-0">Submit build brief &rarr;</a>
           </div>
         )}
         <section className="relative overflow-hidden border-b border-[#C8A24A]/10 pt-28 pb-14 sm:pt-32 sm:pb-20">
@@ -1245,6 +1256,7 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
                 <p className="mt-5 text-[13px] font-semibold text-white/70">12-month minimum term. Cancel any time after the first 12 months.</p>
                 <a href={managedLink} className="btn-primary mt-5 inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Start Managed Plan — £495 →</a>
                 <p className="mt-3 text-[12px] leading-5 text-white/50">The £199/month managed plan starts from launch day.</p>
+                <a href="/roofing-brief?plan=managed&source=pricing-card" onClick={(event) => goToBrief(event, '/roofing-brief?plan=managed&source=pricing-card')} className="mt-3 block text-[13px] font-bold text-[#C8A24A] no-underline transition hover:text-[#D4B05A] hover:underline">Paid already? Submit managed brief &rarr;</a>
               </article>
 
               <article className="rounded-2xl border border-white/10 bg-[#071426]/62 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_20px_56px_rgba(0,0,0,0.28)]">
@@ -1256,7 +1268,18 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
                 <ul className="mt-5 grid gap-2">{oneOffIncludes.map((item) => <CheckItem key={item}>{item}</CheckItem>)}</ul>
                 <a href={oneOffLink} className="btn-secondary-dark mt-5 inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Choose One-Off Build — £1,995 →</a>
                 <p className="mt-3 text-[12px] leading-5 text-white/50">Future changes or support are charged separately.</p>
+                <a href="/roofing-brief?plan=oneoff&source=pricing-card" onClick={(event) => goToBrief(event, '/roofing-brief?plan=oneoff&source=pricing-card')} className="mt-3 block text-[13px] font-bold text-[#C8A24A] no-underline transition hover:text-[#D4B05A] hover:underline">Paid already? Submit one-off brief &rarr;</a>
               </article>
+            </div>
+            <div className="mt-6 rounded-2xl border border-[#C8A24A]/28 border-l-4 border-l-[#C8A24A] bg-[#071426]/88 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_24px_70px_rgba(0,0,0,0.32)] sm:p-6">
+              <h3 className="text-2xl font-black tracking-[-0.035em] text-white">Already paid? Submit your build brief here.</h3>
+              <p className="mt-3 max-w-3xl text-[16px] leading-7 text-white/72">After payment, complete this 5-minute form so we can build your roofing website without back-and-forth.</p>
+              <p className="mt-2 text-[14px] font-semibold leading-6 text-white/62">Your 5-working-day build starts once payment and the build brief are both complete.</p>
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                <a href={managedBriefLink} onClick={(event) => goToBrief(event, managedBriefLink)} className="btn-primary inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Submit Managed Brief</a>
+                <a href={oneOffBriefLink} onClick={(event) => goToBrief(event, oneOffBriefLink)} className="btn-secondary-dark inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Submit One-Off Brief</a>
+              </div>
+              <p className="mt-3 text-[12px] leading-5 text-white/50">Use this if Stripe does not automatically send you to the brief page after payment.</p>
             </div>
             <div className="mx-auto mt-6 max-w-3xl text-center text-[13px] leading-6 text-white/56">
               <p>After payment, you'll complete a 5-minute build brief so we can start without back-and-forth.</p>
@@ -1352,6 +1375,12 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
                   <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#C8A24A]/34 bg-[#C8A24A]/10 text-[12px] font-black text-[#C8A24A]">{number}</div>
                   <h3 className="mt-5 text-lg font-black tracking-[-0.03em] text-white">{title}</h3>
                   <p className="mt-3 text-[14px] leading-6 text-white/70">{copy}</p>
+                  {title === 'Submit your build brief' && (
+                    <div className="mt-5">
+                      <a href="/roofing-brief?plan=managed&source=how-it-works" onClick={(event) => goToBrief(event, '/roofing-brief?plan=managed&source=how-it-works')} className="btn-primary inline-flex min-h-10 items-center justify-center rounded-md px-4 py-2 text-center text-[10px] uppercase tracking-[0.12em] no-underline">Submit Build Brief &rarr;</a>
+                      <p className="mt-2 text-[12px] leading-5 text-white/50">Use managed unless you paid for the one-off option.</p>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
