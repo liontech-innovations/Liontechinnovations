@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CareOps Lost Enquiry Recovery Audit</title>
+<style>
+  :root {
+    --slate: #1c2b2a;
+    --slate-soft: #24403d;
+    --paper: #f7f5f0;
+    --paper-card: #ffffff;
+    --teal: #1f7a6b;
+    --teal-dark: #185f53;
+    --amber: #b5701a;
+    --ink: #2e3332;
+    --ink-soft: #5c6361;
+    --line: rgba(28,43,42,0.14);
+    --line-soft: rgba(28,43,42,0.08);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; }
+  .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); margin: 0 0 14px; }
+
+  /* hero */
+  .hero { background: var(--slate); color: var(--paper); padding: 56px 0 52px; }
+  .hero .wrap { }
+  .hero .brand { font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(247,245,240,0.6); margin: 0 0 28px; }
+  .hero h1 { font-size: 40px; font-weight: 800; margin: 0 0 18px; color: #fff; }
+  .hero p { font-size: 18px; color: rgba(247,245,240,0.82); margin: 0 0 28px; max-width: 52ch; }
+  .hero .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-block; font: inherit; font-weight: 700; font-size: 15px; padding: 13px 22px; border-radius: 8px; border: none; cursor: pointer; text-decoration: none; transition: background 0.15s, transform 0.05s; }
+  .btn-primary { background: var(--teal); color: #fff; }
+  .btn-primary:hover { background: var(--teal-dark); }
+  .btn-primary:active { transform: translateY(1px); }
+  .btn-ghost { background: transparent; color: var(--paper); border: 1px solid rgba(247,245,240,0.3); }
+  .btn-ghost:hover { background: rgba(247,245,240,0.08); }
+
+  /* credibility strip */
+  .credstrip { background: var(--slate-soft); color: var(--paper); padding: 16px 0; }
+  .credstrip-title { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,245,240,0.55); margin: 0 0 10px; }
+  .credstrip-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  .credstrip-list li { font-size: 14px; font-weight: 600; color: rgba(247,245,240,0.92); display: flex; align-items: center; gap: 7px; }
+  .credstrip-list li::before { content: "✓"; color: #6cc4b3; font-weight: 800; }
+
+  section { padding: 48px 0; }
+  section + section { border-top: 1px solid var(--line-soft); }
+  h2 { font-size: 26px; font-weight: 800; margin: 0 0 8px; }
+  .lead { font-size: 17px; color: var(--ink-soft); margin: 0 0 28px; max-width: 56ch; }
+
+  /* problem */
+  .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .problem-card { background: var(--paper-card); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; }
+  .problem-card h3 { font-size: 15px; font-weight: 700; margin: 0 0 4px; }
+  .problem-card p { font-size: 14px; color: var(--ink-soft); margin: 0; }
+
+  /* what we check */
+  .check-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 2px; }
+  .check-list li { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--line-soft); font-size: 15px; }
+  .check-list li:last-child { border-bottom: none; }
+  .check-mark { color: var(--teal); font-weight: 800; flex: 0 0 auto; margin-top: 1px; }
+
+  /* calculator */
+  .calc { background: var(--slate); color: var(--paper); border-radius: 14px; padding: 32px 28px; }
+  .calc .eyebrow { color: #6cc4b3; }
+  .calc h2 { color: #fff; }
+  .calc .lead { color: rgba(247,245,240,0.7); }
+  .bandq { margin: 22px 0 4px; }
+  .bandq-label { font-size: 14px; font-weight: 600; color: rgba(247,245,240,0.85); margin: 0 0 10px; }
+  .bandq-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .band { font: inherit; font-weight: 700; font-size: 15px; padding: 9px 18px; border-radius: 8px; cursor: pointer; background: rgba(247,245,240,0.06); color: var(--paper); border: 1px solid rgba(247,245,240,0.22); transition: background 0.12s, border-color 0.12s; }
+  .band:hover { background: rgba(247,245,240,0.12); }
+  .band:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+  .band.active { background: var(--teal); border-color: var(--teal); color: #fff; }
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 24px 0 8px; }  .field label { display: block; font-size: 13px; font-weight: 600; color: rgba(247,245,240,0.8); margin: 0 0 7px; }
+  .field input[type="number"] { width: 100%; font: inherit; font-size: 16px; padding: 11px 13px; border-radius: 8px; border: 1px solid rgba(247,245,240,0.2); background: rgba(247,245,240,0.06); color: #fff; }
+  .field input:focus { outline: 2px solid var(--teal); outline-offset: 1px; }
+  .field .hint { font-size: 12px; color: rgba(247,245,240,0.5); margin: 6px 0 0; }
+  .field input[type="range"] { width: 100%; margin-top: 8px; accent-color: var(--teal); }
+  .range-val { font-size: 13px; font-weight: 700; color: #6cc4b3; }
+
+  .result-lead { background: rgba(108,196,179,0.1); border: 1px solid rgba(108,196,179,0.3); border-radius: 10px; padding: 18px 20px; margin-top: 26px; }
+  .result-lead .rlabel { font-size: 13px; font-weight: 600; color: rgba(247,245,240,0.7); margin: 0 0 4px; }
+  .result-lead-val { font-size: 34px; font-weight: 800; color: #6cc4b3; margin: 0; line-height: 1; }
+  .results { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 12px; }
+  .result-card { background: rgba(247,245,240,0.06); border: 1px solid rgba(247,245,240,0.14); border-radius: 10px; padding: 18px 16px; }
+  .result-card .rlabel { font-size: 12px; font-weight: 600; color: rgba(247,245,240,0.65); margin: 0 0 6px; }
+  .result-card .rval { font-size: 26px; font-weight: 800; margin: 0; line-height: 1.05; }
+  .result-card.leak .rval { color: #e8a85a; }
+  .result-card.recover .rval { color: #6cc4b3; }
+  .result-card.roi .rval { color: #fff; }
+  .calc-note { font-size: 12px; color: rgba(247,245,240,0.5); margin: 18px 0 0; }
+
+  /* example */
+  .example { background: var(--paper-card); border: 1px solid var(--line); border-left: 4px solid var(--amber); border-radius: 10px; padding: 22px 24px; }
+  .example h3 { font-size: 16px; margin: 0 0 12px; }
+  .example table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .example td { padding: 7px 0; border-bottom: 1px solid var(--line-soft); }
+  .example td:last-child { text-align: right; font-weight: 700; }
+  .example tr:last-child td { border-bottom: none; font-size: 16px; padding-top: 12px; }
+  .example tr:last-child td:last-child { color: var(--amber); }
+
+  /* deliverables */
+  .deliv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .deliv { background: var(--paper-card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; font-size: 14px; }
+  .deliv strong { display: block; font-size: 15px; margin-bottom: 3px; }
+  .deliv span { color: var(--ink-soft); }
+
+  /* pricing */
+  .price-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .price { background: var(--paper-card); border: 1px solid var(--line); border-radius: 12px; padding: 22px 20px; }
+  .price.feature { border: 2px solid var(--teal); position: relative; }
+  .price.feature::before { content: "Start here"; position: absolute; top: -11px; left: 20px; background: var(--teal); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; }
+  .price h3 { font-size: 16px; margin: 0 0 6px; }
+  .price .amt { font-size: 24px; font-weight: 800; margin: 0 0 4px; }
+  .price .per { font-size: 13px; color: var(--ink-soft); margin: 0 0 12px; }
+  .price p { font-size: 13px; color: var(--ink-soft); margin: 0; }
+
+  /* book */
+  .book { background: var(--slate); color: var(--paper); border-radius: 14px; padding: 38px 30px; text-align: center; }
+  .book h2 { color: #fff; }
+  .book p { color: rgba(247,245,240,0.78); max-width: 46ch; margin: 8px auto 24px; }
+
+  footer { padding: 30px 0 50px; font-size: 12px; color: var(--ink-soft); }
+  footer p { margin: 4px 0; }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 30px; }
+    .problem-grid, .calc-grid, .results, .deliv-grid, .price-grid { grid-template-columns: 1fr; }
+    .calc { padding: 24px 18px; }
+    section { padding: 38px 0; }
+  }
+  @media print {
+    .hero, .calc, .book { background: #fff !important; color: #000 !important; -webkit-print-color-adjust: exact; }
+    .btn { display: none; }
+    .calc .eyebrow, .hero .brand, .hero p, .calc .lead { color: #333 !important; }
+    .hero h1, .calc h2, .book h2 { color: #000 !important; }
+    .result-card { border: 1px solid #ccc; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="brand">CareOps · by Lion Tech Innovations</p>
+    <h1>You're losing care enquiries that should have become clients.</h1>
+    <p>Every week, private-pay enquiries arrive by phone, web form and referral — and some are never followed up. We run a short audit that shows you exactly where they leak, and what that's costing you.</p>
+    <div class="cta-row">
+      <a href="#calculator" class="btn btn-primary">See what it's costing you</a>
+      <a href="#book" class="btn btn-ghost">See where enquiries are lost</a>
+    </div>
+  </div>
+</header>
+
+<div class="credstrip">
+  <div class="wrap">
+    <p class="credstrip-title">Built for UK domiciliary care providers</p>
+    <ul class="credstrip-list">
+      <li>Website enquiries</li>
+      <li>Family enquiries</li>
+      <li>Hospital discharge referrals</li>
+      <li>Local authority referrals</li>
+      <li>Private-pay enquiries</li>
+    </ul>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The problem</p>
+    <h2>The family called. Nobody called back. Another provider won the client.</h2>
+    <p class="lead">In most domiciliary agencies, the same person handles enquiries, scheduling, recruitment and on-call. Enquiries don't get lost on purpose — they get lost because everyone is busy and nobody owns the follow-up.</p>
+    <div class="problem-grid">
+      <div class="problem-card"><h3>The call after 5pm</h3><p>Goes to voicemail. The family is already ringing the next provider on their list.</p></div>
+      <div class="problem-card"><h3>The web form</h3><p>Lands in an inbox, gets half-read between visits, and quietly drops down the screen.</p></div>
+      <div class="problem-card"><h3>The referral</h3><p>Accepted verbally, never logged. Two days later nobody's sure if anyone called back.</p></div>
+      <div class="problem-card"><h3>The follow-up</h3><p>Loses every time to today's rota gap. Important always loses to urgent.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">What we check</p>
+    <h2>A 7–14 day audit of your enquiry front door</h2>
+    <p class="lead">We map how an enquiry actually travels through your agency — and find every point it can fall through.</p>
+    <ul class="check-list">
+      <li><span class="check-mark">→</span> How enquiries arrive: phone, website, email, referral, out-of-hours</li>
+      <li><span class="check-mark">→</span> Who receives each one, and who owns the follow-up</li>
+      <li><span class="check-mark">→</span> Your real response time — measured, not assumed</li>
+      <li><span class="check-mark">→</span> A discreet enquiry test of your own front door (with your permission)</li>
+      <li><span class="check-mark">→</span> Whether enquiry source and conversion are tracked at all</li>
+      <li><span class="check-mark">→</span> Where assessments get booked — and where they stall</li>
+      <li><span class="check-mark">→</span> An estimate of the revenue leaking out, in pounds</li>
+    </ul>
+  </div>
+</section>
+
+<section id="calculator">
+  <div class="wrap">
+    <div class="calc">
+      <p class="eyebrow">Your numbers</p>
+      <h2>What might you be losing?</h2>
+      <p class="lead">Adjust the figures to match your agency. Nothing is sent anywhere — this runs entirely in your browser.</p>
+
+      <div class="bandq">
+        <p class="bandq-label">How many enquiries arrived last month?</p>
+        <div class="bandq-row" role="group" aria-label="Enquiries last month">
+          <button type="button" class="band" data-band="10">10</button>
+          <button type="button" class="band" data-band="25">25</button>
+          <button type="button" class="band" data-band="50">50</button>
+          <button type="button" class="band" data-band="100">100+</button>
+        </div>
+      </div>
+
+      <div class="calc-grid">
+        <div class="field">
+          <label for="enq">Enquiries per month</label>
+          <input type="number" id="enq" value="12" min="0" max="500" />
+          <p class="hint">Phone, web, email and referrals combined</p>
+        </div>
+        <div class="field">
+          <label for="val">Average value of one new client (per year, £)</label>
+          <input type="number" id="val" value="8320" min="0" step="100" />
+          <p class="hint">A 5 hrs/week package ≈ £8,320/yr. Live-in is far higher.</p>
+        </div>
+        <div class="field">
+          <label for="miss">Enquiries not properly followed up <span class="range-val" id="missVal">15%</span></label>
+          <input type="range" id="miss" value="15" min="0" max="60" />
+          <p class="hint">Honest estimate of how many slip through</p>
+        </div>
+        <div class="field">
+          <label for="conv">Of those, how many would have converted <span class="range-val" id="convVal">25%</span></label>
+          <input type="range" id="conv" value="25" min="0" max="80" />
+          <p class="hint">Not every enquiry becomes a client — only the viable ones</p>
+        </div>
+      </div>
+
+      <div class="result-lead">
+        <p class="rlabel">Potential clients lost per year</p>
+        <p class="result-lead-val" id="clientsOut">~5 clients</p>
+      </div>
+      <div class="results">
+        <div class="result-card leak">
+          <p class="rlabel">Annual revenue leakage</p>
+          <p class="rval" id="leakOut">£44,928</p>
+        </div>
+        <div class="result-card recover">
+          <p class="rlabel">Recoverable if halved</p>
+          <p class="rval" id="recoverOut">£22,464</p>
+        </div>
+        <div class="result-card roi">
+          <p class="rlabel">vs. a £750 audit</p>
+          <p class="rval" id="roiOut">30×</p>
+        </div>
+      </div>
+      <p class="calc-note">Illustrative, based on the figures you enter. A single modest homecare package can represent around £8,000+ per year; larger private-pay and live-in packages may be worth significantly more. This is a planning estimate, not a guarantee.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Worked example</p>
+    <h2>One missed private client</h2>
+    <div class="example">
+      <h3>A family rings on a Saturday about daily visits for their father. No answer, no callback.</h3>
+      <table>
+        <tr><td>Package: 2 visits/day, 14 hrs/week</td><td>14 hrs</td></tr>
+        <tr><td>Rate (private pay)</td><td>£32/hr</td></tr>
+        <tr><td>Weekly value</td><td>£448</td></tr>
+        <tr><td>Annual value of that one client</td><td>£23,296</td></tr>
+      </table>
+    </div>
+    <p class="lead" style="margin-top:18px;">That's one enquiry. The audit is about making sure it never reaches voicemail and vanishes.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">What you get</p>
+    <h2>Audit deliverables</h2>
+    <div class="deliv-grid">
+      <div class="deliv"><strong>Enquiry flow map</strong><span>How every enquiry travels through your agency, and where it can drop.</span></div>
+      <div class="deliv"><strong>Response-time findings</strong><span>Your real speed to respond, measured across channels.</span></div>
+      <div class="deliv"><strong>Leakage estimate</strong><span>A pounds figure for what's likely being lost, with the working shown.</span></div>
+      <div class="deliv"><strong>Front-door test results</strong><span>What actually happened when an enquiry came in.</span></div>
+      <div class="deliv"><strong>Prioritised fix list</strong><span>The handful of changes that close the biggest gaps first.</span></div>
+      <div class="deliv"><strong>Follow-up workflow</strong><span>A simple owner / next-action / deadline system to put in place.</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Pricing</p>
+    <h2>Start small. Pay for proof.</h2>
+    <p class="lead">Begin with the audit. If there's no leak, you don't need us. If there is, we'll show you how to close it.</p>
+    <div class="price-grid">
+      <div class="price feature">
+        <h3>Audit</h3>
+        <p class="amt">£495–£750</p>
+        <p class="per">one-off, 7–14 days</p>
+        <p>The full enquiry-front-door audit, leakage estimate and prioritised fix list.</p>
+      </div>
+      <div class="price">
+        <h3>Implementation Sprint</h3>
+        <p class="amt">£1,500–£3,000</p>
+        <p class="per">one-off</p>
+        <p>We install the follow-up workflow, SLA rules, templates, source tracking and weekly report.</p>
+      </div>
+      <div class="price">
+        <h3>Monthly Monitoring</h3>
+        <p class="amt">£500–£1,500</p>
+        <p class="per">per month</p>
+        <p>Ongoing leakage reporting, workflow upkeep and optional call/chat capture.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap">
+    <div class="book">
+      <h2>See where your enquiries are being lost</h2>
+      <p>A short review of how enquiries reach you today, and whether an audit is worth your while. No obligation, no sales pitch.</p>
+      <a href="mailto:careops@liontechinnovations.co.uk?subject=CareOps%20Lost%20Enquiry%20Audit%20—%20review%20request" class="btn btn-primary">Request an audit review</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>CareOps</strong> — a Lion Tech Innovations Ltd service.</p>
+    <p>Enquiries: careops@liontechinnovations.co.uk</p>
+    <p>This audit reviews enquiry handling and operational follow-up. It is not regulated advice and makes no CQC outcome guarantees. Figures shown are illustrative planning estimates.</p>
+  </div>
+</footer>
+
+<script>
+  const $ = id => document.getElementById(id);
+  const gbp = n => '£' + Math.round(n).toLocaleString('en-GB');
+
+  function recalc() {
+    const enq = Math.max(0, +$('enq').value || 0);
+    const val = Math.max(0, +$('val').value || 0);
+    const missPct = +$('miss').value;
+    const convPct = +$('conv').value;
+
+    $('missVal').textContent = missPct + '%';
+    $('convVal').textContent = convPct + '%';
+
+    const lostClientsPerYear = enq * 12 * (missPct / 100) * (convPct / 100);
+    const leak = lostClientsPerYear * val;
+    const recover = leak / 2;
+    const roi = leak > 0 ? Math.max(1, Math.round(recover / 750)) : 0;
+
+    const rounded = Math.round(lostClientsPerYear);
+    $('clientsOut').textContent = lostClientsPerYear > 0
+      ? '~' + rounded + (rounded === 1 ? ' client' : ' clients')
+      : '—';
+    $('leakOut').textContent = gbp(leak);
+    $('recoverOut').textContent = gbp(recover);
+    $('roiOut').textContent = roi > 0 ? roi + '×' : '—';
+
+    // sync active band highlight to the enquiries figure
+    document.querySelectorAll('.band').forEach(b => {
+      b.classList.toggle('active', +b.dataset.band === enq);
+    });
+  }
+
+  ['enq','val','miss','conv'].forEach(id => $(id).addEventListener('input', recalc));
+
+  document.querySelectorAll('.band').forEach(b => {
+    b.addEventListener('click', () => {
+      $('enq').value = b.dataset.band;
+      recalc();
+    });
+  });
+
+  recalc();
+</script>
+
+</body>
+</html>

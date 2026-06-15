@@ -13,6 +13,14 @@
   ],
   "rewrites": [
     {
+      "source": "/careops/lost-enquiry-recovery",
+      "destination": "/careops/lost-enquiry-recovery/index.html"
+    },
+    {
+      "source": "/careops/lost-enquiry-recovery/",
+      "destination": "/careops/lost-enquiry-recovery/index.html"
+    },
+    {
       "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
