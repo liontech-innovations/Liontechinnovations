@@ -349,6 +349,18 @@ a:has(> .footer-logo),
   filter: brightness(1.05) saturate(1.06);
 }
 
+.platform-preview-final img,
+.platform-card:hover .platform-preview-final img {
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+  filter: none;
+}
+
+.platform-preview-final::after {
+  display: none;
+}
+
 .platform-badge {
   max-width: min(100%, 16rem);
   border: 1px solid rgba(200, 162, 74, 0.34);

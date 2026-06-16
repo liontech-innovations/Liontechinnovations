@@ -33,6 +33,23 @@ const platformLinks = {
   leadRecovery: 'https://leadrecovery.co.uk',
 };
 
+const careOpsDemoUrl = 'https://careops-command-centre-demo2.vercel.app/';
+
+const careOpsAssets = {
+  commandCentre: '/assets/careops-command-centre-visual.png',
+  lostEnquiryRecovery: '/assets/careops-lost-enquiry-recovery-visual.png',
+};
+
+const careOpsPaymentLinks = {
+  audit: process.env.NEXT_PUBLIC_STRIPE_CAREOPS_AUDIT_URL || '',
+  implementation: process.env.NEXT_PUBLIC_STRIPE_CAREOPS_IMPLEMENTATION_URL || '',
+  monitoring: process.env.NEXT_PUBLIC_STRIPE_CAREOPS_MONITORING_URL || '',
+  commandSetup: process.env.NEXT_PUBLIC_STRIPE_CAREOPS_COMMAND_SETUP_URL || '',
+  commandMonthly: process.env.NEXT_PUBLIC_STRIPE_CAREOPS_COMMAND_MONTHLY_URL || '',
+  foundingPackage: process.env.NEXT_PUBLIC_STRIPE_CAREOPS_FOUNDING_PACKAGE_URL || '',
+  commandRecoveryMonitoring: process.env.NEXT_PUBLIC_STRIPE_CAREOPS_COMMAND_RECOVERY_MONITORING_URL || '',
+};
+
 const routeMeta = {
   '/': {
     title: 'Lion Tech Innovations | UK AI Infrastructure Operator',
@@ -66,6 +83,14 @@ const routeMeta = {
     title: 'Roofing Website Build Brief | Lion Tech Innovations',
     description: 'Submit the build details for your Roofing Lead Recovery website after checkout: contact details, service areas, phone numbers, branding links, and launch notes.',
   },
+  '/careops/lost-enquiry-recovery': {
+    title: 'CareOps Lost Enquiry Recovery | Lion Tech Innovations',
+    description: 'AI receptionist and follow-up infrastructure for care providers that need to capture missed calls, recover lost enquiries, and protect revenue.',
+  },
+  '/careops/command-centre': {
+    title: 'CareOps Command Centre | Lion Tech Innovations',
+    description: 'Operational oversight, weekly action planning, and enquiry recovery infrastructure for care providers that need cleaner visibility and faster follow-up.',
+  },
 };
 
 type Route = keyof typeof routeMeta;
@@ -78,7 +103,9 @@ function getRoute(): Route {
     window.location.pathname === '/saas-platform-development' ||
     window.location.pathname === '/ai-intake-systems' ||
     window.location.pathname === '/lead-recovery' ||
-    window.location.pathname === '/roofing-brief'
+    window.location.pathname === '/roofing-brief' ||
+    window.location.pathname === '/careops/lost-enquiry-recovery' ||
+    window.location.pathname === '/careops/command-centre'
   ) {
     return window.location.pathname;
   }
@@ -264,20 +291,59 @@ const Stats = () => {
 };
 
 const Platforms = () => {
-  const projects = [
-    { title: 'ClearVisa UK', url: platformLinks.clearVisa, category: 'Compliance SaaS', image: '/assets/clearvisa-platform-preview.jpg', description: 'AI-powered immigration risk analysis platform helping users assess UK visa refusal risk with confidence.' },
-    { title: 'CalcFee', url: platformLinks.calcFee, category: 'FinTech Tool', image: '/assets/calcfee-platform-preview.jpg', description: 'Smart financial calculator platform with real-time data processing and premium PDF reporting.' },
-    { title: 'Lead Recovery', url: '/lead-recovery', category: 'Emergency Lead Infrastructure', image: '/assets/lead-recovery-platform-preview.jpg', description: 'Premium emergency roofing websites with qualified SMS lead alerts and postcode-based qualification systems.', internal: true },
+  type PlatformAction = { label: string; href: string; external?: boolean; route?: Route };
+  type PlatformProject = {
+    title: string;
+    category: string;
+    image: string;
+    description: string;
+    actions: PlatformAction[];
+    finalVisual?: boolean;
+  };
+
+  const projects: PlatformProject[] = [
+    {
+      title: 'ClearVisa UK',
+      category: 'Compliance SaaS',
+      image: '/assets/clearvisa-platform-preview.jpg',
+      description: 'AI-powered immigration risk analysis platform helping users assess UK visa refusal risk with confidence.',
+      actions: [{ label: 'Visit Platform', href: platformLinks.clearVisa, external: true }],
+    },
+    {
+      title: 'CalcFee',
+      category: 'FinTech Tool',
+      image: '/assets/calcfee-platform-preview.jpg',
+      description: 'Smart financial calculator platform with real-time data processing and premium PDF reporting.',
+      actions: [{ label: 'Visit Platform', href: platformLinks.calcFee, external: true }],
+    },
+    {
+      title: 'Lead Recovery',
+      category: 'Emergency Lead Infrastructure',
+      image: '/assets/lead-recovery-platform-preview.jpg',
+      description: 'Premium emergency roofing websites with qualified SMS lead alerts and postcode-based qualification systems.',
+      actions: [{ label: 'Visit Platform', href: '/lead-recovery' as Route, route: '/lead-recovery' as Route }],
+    },
+    {
+      title: 'CareOps',
+      category: 'Care Operations Platform',
+      image: careOpsAssets.commandCentre,
+      description: 'Operational visibility and lost-enquiry recovery infrastructure for UK domiciliary care providers.',
+      finalVisual: true,
+      actions: [
+        { label: 'Lost Enquiry Recovery', href: '/careops/lost-enquiry-recovery' as Route, route: '/careops/lost-enquiry-recovery' as Route },
+        { label: 'Command Centre Demo', href: careOpsDemoUrl, external: true },
+      ],
+    },
   ];
 
   return (
     <section id="platforms" className="scroll-target section-dark-connected py-14 text-white sm:py-18">
       <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl"><span className="section-eyebrow text-[#C8A24A]">Our Live Platforms</span><h2 className="mt-3 max-w-md text-3xl font-black tracking-[-0.04em] text-white sm:text-[34px]">Our Platforms</h2><p className="mt-4 max-w-2xl text-[15px] leading-6 text-white/62">Production-ready platforms solving real business problems across compliance, finance, lead infrastructure, and automation.</p></div>
-        <div className="mx-auto mt-8 grid max-w-[1080px] grid-cols-1 gap-4 md:grid-cols-3">
+        <div className="mx-auto mt-8 grid max-w-[1320px] grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
           {projects.map((project) => (
-            <a key={project.title} href={project.url} target={project.internal ? undefined : '_blank'} rel={project.internal ? undefined : 'noopener noreferrer'} onClick={project.internal ? (event) => { event.preventDefault(); navigateTo('/lead-recovery'); } : undefined} className="platform-card group no-underline">
-              <div className="platform-preview">
+            <article key={project.title} className="platform-card group">
+              <div className={`platform-preview${project.finalVisual ? ' platform-preview-final' : ''}`}>
                 <img src={project.image} alt={`${project.title} platform preview`} loading="lazy" />
               </div>
               <div className="flex flex-1 flex-col p-4">
@@ -287,9 +353,23 @@ const Platforms = () => {
                 </div>
                 <h3 className="text-lg font-black tracking-[-0.035em] text-white">{project.title}</h3>
                 <p className="mt-2.5 grow text-[13px] leading-5 text-white/66">{project.description}</p>
-                <span className="mt-5 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.15em] text-[#C8A24A] transition group-hover:text-white">Visit Platform <ArrowUpRight size={12} className="transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></span>
+                <div className="mt-5 flex flex-col gap-2">
+                  {project.actions.map((action) => (
+                    <a
+                      key={action.label}
+                      href={action.href}
+                      target={action.external ? '_blank' : undefined}
+                      rel={action.external ? 'noopener noreferrer' : undefined}
+                      onClick={action.route ? (event) => { event.preventDefault(); navigateTo(action.route); } : undefined}
+                      className="inline-flex items-center justify-between gap-2 rounded-md border border-[#C8A24A]/22 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.15em] text-[#C8A24A] no-underline transition hover:border-[#C8A24A]/48 hover:bg-[#C8A24A]/10 hover:text-white"
+                    >
+                      {action.label}
+                      {action.external ? <ArrowUpRight size={12} /> : <ArrowRight size={12} />}
+                    </a>
+                  ))}
+                </div>
               </div>
-            </a>
+            </article>
           ))}
         </div>
       </div>
@@ -713,6 +793,348 @@ const HomePage = ({ onStartIntake }: { onStartIntake: () => void }) => {
     <Contact onStartIntake={onStartIntake} />
     <Footer />
   </div>
+  );
+};
+
+type CareOpsPricingOption = {
+  title: string;
+  price: string;
+  cadence: string;
+  description: string;
+  cta: string;
+  href: string;
+  bullets: string[];
+  featured?: boolean;
+};
+
+const CareOpsCheckoutAction = ({ href, label, className = '' }: { href: string; label: string; className?: string }) => {
+  const classes = `inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-[11px] font-black uppercase tracking-[0.16em] no-underline transition ${className || 'border border-[#C8A24A] bg-[#C8A24A] text-[#06101E] hover:bg-[#E1BE5A]'}`;
+
+  if (href) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={classes}>
+        {label}
+        <ArrowUpRight size={14} />
+      </a>
+    );
+  }
+
+  return (
+    <button type="button" onClick={() => scrollToSection('contact')} className={classes}>
+      Contact us to start
+      <ArrowRight size={14} />
+    </button>
+  );
+};
+
+const CareOpsRouteLink = ({ href, children, className }: { href: Route; children: React.ReactNode; className: string }) => (
+  <a
+    href={href}
+    onClick={(event) => {
+      event.preventDefault();
+      navigateTo(href);
+    }}
+    className={className}
+  >
+    {children}
+  </a>
+);
+
+const CareOpsVisual = ({ src, alt }: { src: string; alt: string }) => (
+  <div className="rounded-xl border border-[#C8A24A]/26 bg-[#020817] p-2 shadow-[0_24px_90px_rgba(0,0,0,0.42)]">
+    <img src={src} alt={alt} className="h-auto w-full rounded-lg object-contain" loading="eager" />
+  </div>
+);
+
+const CareOpsPricingGrid = ({ options }: { options: CareOpsPricingOption[] }) => (
+  <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+    {options.map((option) => (
+      <article
+        key={option.title}
+        className={`flex min-h-full flex-col rounded-xl border p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] ${
+          option.featured
+            ? 'border-[#C8A24A]/60 bg-[#C8A24A]/10'
+            : 'border-white/10 bg-white/[0.045]'
+        }`}
+      >
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <h3 className="text-lg font-black tracking-[-0.035em] text-white">{option.title}</h3>
+            <p className="mt-2 text-[13px] leading-5 text-white/64">{option.description}</p>
+          </div>
+          {option.featured ? <span className="rounded-full border border-[#C8A24A]/42 px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.16em] text-[#F4C94D]">Best fit</span> : null}
+        </div>
+        <div className="mt-5">
+          <p className="text-3xl font-black tracking-[-0.04em] text-white">{option.price}</p>
+          {option.cadence ? <p className="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-[#C8A24A]">{option.cadence}</p> : null}
+        </div>
+        <ul className="mt-5 grow space-y-2.5">
+          {option.bullets.map((bullet) => (
+            <li key={bullet} className="flex gap-2 text-[13px] leading-5 text-white/70">
+              <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[#66D06F]" />
+              <span>{bullet}</span>
+            </li>
+          ))}
+        </ul>
+        <CareOpsCheckoutAction href={option.href} label={option.cta} className="mt-6 border border-[#C8A24A] bg-[#C8A24A] text-[#06101E] hover:bg-[#E1BE5A]" />
+      </article>
+    ))}
+  </div>
+);
+
+const CareOpsLostEnquiryRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
+  const meta = routeMeta['/careops/lost-enquiry-recovery'];
+  const pricing: CareOpsPricingOption[] = [
+    {
+      title: 'Lost Enquiry Recovery Audit',
+      price: '£495 one-off',
+      cadence: '',
+      description: 'Find where enquiries are being missed, delayed, or dropped before they turn into lost revenue.',
+      cta: 'Start Audit',
+      href: careOpsPaymentLinks.audit,
+      bullets: ['Missed call and web enquiry review', 'Follow-up gap report', 'Recovery action plan'],
+    },
+    {
+      title: 'Implementation Sprint',
+      price: '£1,500 one-off',
+      cadence: '',
+      description: 'Install the recovery workflow, response routes, and handover process around the provider team.',
+      cta: 'Book Implementation',
+      href: careOpsPaymentLinks.implementation,
+      bullets: ['AI receptionist setup', 'Callback and follow-up workflow', 'Team handover pack'],
+    },
+    {
+      title: 'Monitoring',
+      price: '£750/month',
+      cadence: '',
+      description: 'Keep recovery activity visible with weekly oversight and response-gap checks.',
+      cta: 'Start Monitoring',
+      href: careOpsPaymentLinks.monitoring,
+      bullets: ['Weekly recovery review', 'Missed enquiry checks', 'Priority actions for the team'],
+    },
+    {
+      title: 'Founding Provider Package',
+      price: '£1,995 one-off',
+      cadence: '',
+      description: 'Best entry package for providers who want audit, setup, and launch support in one engagement.',
+      cta: 'Start Founding Package',
+      href: careOpsPaymentLinks.foundingPackage,
+      featured: true,
+      bullets: ['Recovery audit included', 'Implementation sprint included', 'Launch support and handover'],
+    },
+    {
+      title: 'Command + Recovery Monitoring',
+      price: '£995/month',
+      cadence: '',
+      description: 'Combine lost-enquiry recovery oversight with the wider CareOps command centre rhythm.',
+      cta: 'Start Command + Recovery',
+      href: careOpsPaymentLinks.commandRecoveryMonitoring,
+      bullets: ['Recovery monitoring', 'Weekly action planning', 'Operational risk visibility'],
+    },
+  ];
+
+  usePageMeta(meta.title, meta.description);
+
+  useEffect(() => {
+    setMeta('meta[property="og:title"]', 'content', meta.title);
+    setMeta('meta[property="og:description"]', 'content', meta.description);
+    setMeta('meta[property="og:url"]', 'content', 'https://liontechinnovations.co.uk/careops/lost-enquiry-recovery');
+    setMeta('meta[name="twitter:title"]', 'content', meta.title);
+    setMeta('meta[name="twitter:description"]', 'content', meta.description);
+    setMeta('link[rel="canonical"]', 'href', 'https://liontechinnovations.co.uk/careops/lost-enquiry-recovery');
+  }, [meta.description, meta.title]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-[#020817] text-white">
+      <Navbar onStartIntake={onStartIntake} />
+      <main>
+        <section className="px-4 pb-16 pt-28 sm:px-6 lg:px-8 lg:pb-20">
+          <div className="mx-auto grid max-w-[1320px] items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <span className="section-eyebrow text-[#C8A24A]">CareOps Lost Enquiry Recovery</span>
+              <h1 className="mt-4 max-w-3xl text-4xl font-black tracking-[-0.05em] text-white sm:text-5xl lg:text-6xl">Recover missed care enquiries before they become lost revenue.</h1>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-white/70">AI receptionist and follow-up infrastructure for care providers that need every call, web enquiry, and callback handled with a clear recovery process.</p>
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <CareOpsCheckoutAction href={careOpsPaymentLinks.audit} label="Start Audit" />
+                <CareOpsRouteLink href="/careops/command-centre" className="inline-flex items-center justify-center gap-2 rounded-md border border-white/14 px-5 py-3 text-[11px] font-black uppercase tracking-[0.16em] text-white no-underline transition hover:border-[#C8A24A]/42 hover:bg-white/8">
+                  View Command Centre
+                  <ArrowRight size={14} />
+                </CareOpsRouteLink>
+              </div>
+              <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                {['Missed calls captured', 'Follow-up prompts', 'Recovery reporting'].map((item) => (
+                  <div key={item} className="rounded-lg border border-white/10 bg-white/[0.045] p-4">
+                    <CheckCircle2 size={18} className="text-[#66D06F]" />
+                    <p className="mt-3 text-sm font-bold text-white">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <CareOpsVisual src={careOpsAssets.lostEnquiryRecovery} alt="CareOps Lost Enquiry Recovery visual showing AI receptionist and follow-up workflow" />
+          </div>
+        </section>
+
+        <section className="border-y border-white/8 bg-white/[0.025] px-4 py-14 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-[1320px]">
+            <div className="max-w-2xl">
+              <span className="section-eyebrow text-[#C8A24A]">Recovery workflow</span>
+              <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">Built around missed enquiries, not generic automation.</h2>
+            </div>
+            <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {[
+                { icon: <Mail size={22} />, title: 'Capture', copy: 'Centralise missed calls, web enquiries, and callback requests so nothing sits unseen.' },
+                { icon: <Zap size={22} />, title: 'Respond', copy: 'Trigger fast, structured follow-up through the right channel and the right team member.' },
+                { icon: <ShieldCheck size={22} />, title: 'Handover', copy: 'Keep enquiry details, consent notes, and next steps visible for the provider team.' },
+                { icon: <BarChart3 size={22} />, title: 'Improve', copy: 'Review weekly leakage and strengthen the process before the next enquiry is missed.' },
+              ].map((item) => (
+                <article key={item.title} className="rounded-xl border border-white/10 bg-white/[0.045] p-5">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-md border border-[#C8A24A]/20 bg-[#C8A24A]/10 text-[#C8A24A]">{item.icon}</div>
+                  <h3 className="mt-5 text-lg font-black tracking-[-0.035em] text-white">{item.title}</h3>
+                  <p className="mt-2.5 text-[14px] leading-6 text-white/68">{item.copy}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 py-14 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-[1320px]">
+            <div className="mb-8 max-w-2xl">
+              <span className="section-eyebrow text-[#C8A24A]">Pricing</span>
+              <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">Choose the recovery level that matches the leakage.</h2>
+              <p className="mt-4 text-[15px] leading-6 text-white/64">Designed for care providers that want practical enquiry recovery, clear follow-up ownership, and weekly operational visibility.</p>
+            </div>
+            <CareOpsPricingGrid options={pricing} />
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+const CareOpsCommandCentrePage = ({ onStartIntake }: { onStartIntake: () => void }) => {
+  const meta = routeMeta['/careops/command-centre'];
+  const pricing: CareOpsPricingOption[] = [
+    {
+      title: 'Command Centre Setup',
+      price: '£750 one-off',
+      cadence: '',
+      description: 'Configure the weekly action board, provider view, risk categories, and team handover structure.',
+      cta: 'Start Setup',
+      href: careOpsPaymentLinks.commandSetup,
+      bullets: ['Provider dashboard setup', 'Action planning workflow', 'Team handover structure'],
+    },
+    {
+      title: 'Command Centre Monthly',
+      price: '£299/month',
+      cadence: '',
+      description: 'Keep weekly oversight running with clear action lists, risk visibility, and follow-up prompts.',
+      cta: 'Start Command Centre',
+      href: careOpsPaymentLinks.commandMonthly,
+      bullets: ['Weekly command rhythm', 'Action status visibility', 'Operational trend review'],
+    },
+    {
+      title: 'Command + Recovery Monitoring',
+      price: '£995/month',
+      cadence: '',
+      description: 'Add lost-enquiry recovery monitoring to the command centre operating rhythm.',
+      cta: 'Start Command + Recovery',
+      href: careOpsPaymentLinks.commandRecoveryMonitoring,
+      featured: true,
+      bullets: ['Command centre oversight', 'Lost enquiry monitoring', 'Weekly recovery actions'],
+    },
+  ];
+
+  usePageMeta(meta.title, meta.description);
+
+  useEffect(() => {
+    setMeta('meta[property="og:title"]', 'content', meta.title);
+    setMeta('meta[property="og:description"]', 'content', meta.description);
+    setMeta('meta[property="og:url"]', 'content', 'https://liontechinnovations.co.uk/careops/command-centre');
+    setMeta('meta[name="twitter:title"]', 'content', meta.title);
+    setMeta('meta[name="twitter:description"]', 'content', meta.description);
+    setMeta('link[rel="canonical"]', 'href', 'https://liontechinnovations.co.uk/careops/command-centre');
+  }, [meta.description, meta.title]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-[#020817] text-white">
+      <Navbar onStartIntake={onStartIntake} />
+      <main>
+        <section className="px-4 pb-16 pt-28 sm:px-6 lg:px-8 lg:pb-20">
+          <div className="mx-auto grid max-w-[1320px] items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+            <div>
+              <span className="section-eyebrow text-[#C8A24A]">CareOps Command Centre</span>
+              <h1 className="mt-4 max-w-3xl text-4xl font-black tracking-[-0.05em] text-white sm:text-5xl lg:text-6xl">A weekly operating view for care providers that need faster action.</h1>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-white/70">CareOps brings provider risks, action planning, team communication, and enquiry recovery into one command rhythm without replacing the care team or their compliance responsibilities.</p>
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <a href={careOpsDemoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-md border border-[#C8A24A] bg-[#C8A24A] px-5 py-3 text-[11px] font-black uppercase tracking-[0.16em] text-[#06101E] no-underline transition hover:bg-[#E1BE5A]">
+                  Open Demo
+                  <ArrowUpRight size={14} />
+                </a>
+                <CareOpsCheckoutAction href={careOpsPaymentLinks.commandSetup} label="Start Setup" className="border border-white/14 bg-white/[0.045] text-white hover:border-[#C8A24A]/42 hover:bg-white/8" />
+              </div>
+              <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                {['Action planning', 'Risk visibility', 'Team communication'].map((item) => (
+                  <div key={item} className="rounded-lg border border-white/10 bg-white/[0.045] p-4">
+                    <CheckCircle2 size={18} className="text-[#66D06F]" />
+                    <p className="mt-3 text-sm font-bold text-white">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <CareOpsVisual src={careOpsAssets.commandCentre} alt="CareOps Command Centre visual showing weekly provider action planning dashboard" />
+          </div>
+        </section>
+
+        <section className="border-y border-white/8 bg-white/[0.025] px-4 py-14 sm:px-6 lg:px-8">
+          <div className="mx-auto grid max-w-[1320px] gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <span className="section-eyebrow text-[#C8A24A]">Command rhythm</span>
+              <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">Turn scattered operational signals into this week's actions.</h2>
+              <p className="mt-4 text-[15px] leading-6 text-white/64">The command centre is built for care operators who need visibility, ownership, and momentum across staffing, training, rota gaps, evidence, and enquiry follow-up.</p>
+              <CareOpsRouteLink href="/careops/lost-enquiry-recovery" className="mt-6 inline-flex items-center gap-2 rounded-md border border-[#C8A24A]/32 px-4 py-3 text-[11px] font-black uppercase tracking-[0.16em] text-[#C8A24A] no-underline transition hover:border-[#C8A24A]/52 hover:bg-[#C8A24A]/10 hover:text-white">
+                View Lost Enquiry Recovery
+                <ArrowRight size={14} />
+              </CareOpsRouteLink>
+            </div>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {[
+                { title: 'Risk intelligence', copy: 'Score and sort operational issues so urgent tasks move first.' },
+                { title: 'Action planning', copy: 'Create a weekly list the team can act on without dashboard fatigue.' },
+                { title: 'Team communication', copy: 'Keep updates, escalations, and follow-up ownership visible.' },
+                { title: 'Performance insight', copy: 'Track trends and improve the operating process over time.' },
+              ].map((item) => (
+                <article key={item.title} className="rounded-xl border border-white/10 bg-white/[0.045] p-5">
+                  <ShieldCheck size={22} className="text-[#C8A24A]" />
+                  <h3 className="mt-4 text-lg font-black tracking-[-0.035em] text-white">{item.title}</h3>
+                  <p className="mt-2.5 text-[14px] leading-6 text-white/68">{item.copy}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 py-14 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-[1320px]">
+            <div className="mb-8 max-w-2xl">
+              <span className="section-eyebrow text-[#C8A24A]">Pricing</span>
+              <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">Start with setup, monthly oversight, or the combined recovery package.</h2>
+            </div>
+            <CareOpsPricingGrid options={pricing} />
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
   );
 };
 
@@ -1479,6 +1901,8 @@ export default function App() {
       {route === '/ai-intake-systems' && <AiIntakeSystems onStartIntake={openIntake} />}
       {route === '/lead-recovery' && <LeadRecoveryPage onStartIntake={openIntake} />}
       {route === '/roofing-brief' && <RoofingBriefPage onStartIntake={openIntake} />}
+      {route === '/careops/lost-enquiry-recovery' && <CareOpsLostEnquiryRecoveryPage onStartIntake={openIntake} />}
+      {route === '/careops/command-centre' && <CareOpsCommandCentrePage onStartIntake={openIntake} />}
       {route === '/' && <HomePage onStartIntake={openIntake} />}
       <IntakeDialog open={isIntakeOpen} onClose={() => setIsIntakeOpen(false)} />
     </div>
