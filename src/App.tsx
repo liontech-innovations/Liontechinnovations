@@ -933,6 +933,22 @@ const CareOpsLostEnquiryRecoveryPage = ({ onStartIntake }: { onStartIntake: () =
     },
   ];
 
+  const [enquiriesPerMonth, setEnquiriesPerMonth] = useState(12);
+  const [annualClientValue, setAnnualClientValue] = useState(8320);
+  const [notFollowedUpPct, setNotFollowedUpPct] = useState(15);
+  const [wouldConvertPct, setWouldConvertPct] = useState(25);
+  const enquiryBands = [10, 25, 50, 100];
+  const auditPrice = 495;
+  const lostClientsPerYear = enquiriesPerMonth * 12 * (notFollowedUpPct / 100) * (wouldConvertPct / 100);
+  const annualRevenueLeakage = lostClientsPerYear * annualClientValue;
+  const recoverableValue = annualRevenueLeakage / 2;
+  const auditComparison = recoverableValue > 0 ? Math.max(1, Math.round(recoverableValue / auditPrice)) : 0;
+  const gbp = (value: number) => `£${Math.round(value).toLocaleString('en-GB')}`;
+  const clientLossLabel = lostClientsPerYear > 0
+    ? `~${lostClientsPerYear < 10 ? lostClientsPerYear.toFixed(1) : Math.round(lostClientsPerYear)} ${lostClientsPerYear === 1 ? 'client' : 'clients'}`
+    : '0 clients';
+  const scrollToLostSection = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
   usePageMeta(meta.title, meta.description);
 
   useEffect(() => {
@@ -956,17 +972,20 @@ const CareOpsLostEnquiryRecoveryPage = ({ onStartIntake }: { onStartIntake: () =
           <div className="mx-auto grid max-w-[1320px] items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
               <span className="section-eyebrow text-[#C8A24A]">CareOps Lost Enquiry Recovery</span>
-              <h1 className="mt-4 max-w-3xl text-4xl font-black tracking-[-0.05em] text-white sm:text-5xl lg:text-6xl">Recover missed care enquiries before they become lost revenue.</h1>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-white/70">AI receptionist and follow-up infrastructure for care providers that need every call, web enquiry, and callback handled with a clear recovery process.</p>
+              <h1 className="mt-4 max-w-3xl text-4xl font-black tracking-[-0.05em] text-white sm:text-5xl lg:text-6xl">You're losing care enquiries that should have become clients.</h1>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-white/70">Every week, private-pay enquiries arrive by phone, web form and referral. Some are never followed up. CareOps shows where they leak, what they are worth, and what to fix first.</p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <CareOpsCheckoutAction href={careOpsPaymentLinks.audit} label="Start Audit" />
-                <CareOpsRouteLink href="/careops/command-centre" className="inline-flex items-center justify-center gap-2 rounded-md border border-white/14 px-5 py-3 text-[11px] font-black uppercase tracking-[0.16em] text-white no-underline transition hover:border-[#C8A24A]/42 hover:bg-white/8">
-                  View Command Centre
+                <button type="button" onClick={() => scrollToLostSection('lost-calculator')} className="inline-flex items-center justify-center gap-2 rounded-md border border-[#C8A24A] bg-[#C8A24A] px-5 py-3 text-[11px] font-black uppercase tracking-[0.16em] text-[#06101E] transition hover:bg-[#E1BE5A]">
+                  See what it's costing you
                   <ArrowRight size={14} />
-                </CareOpsRouteLink>
+                </button>
+                <button type="button" onClick={() => scrollToLostSection('careops-problem')} className="inline-flex items-center justify-center gap-2 rounded-md border border-white/14 px-5 py-3 text-[11px] font-black uppercase tracking-[0.16em] text-white transition hover:border-[#C8A24A]/42 hover:bg-white/8">
+                  See where enquiries are lost
+                  <ArrowRight size={14} />
+                </button>
               </div>
               <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                {['Missed calls captured', 'Follow-up prompts', 'Recovery reporting'].map((item) => (
+                {['Website enquiries', 'Family enquiries', 'Referral follow-up'].map((item) => (
                   <div key={item} className="rounded-lg border border-white/10 bg-white/[0.045] p-4">
                     <CheckCircle2 size={18} className="text-[#66D06F]" />
                     <p className="mt-3 text-sm font-bold text-white">{item}</p>
@@ -978,25 +997,217 @@ const CareOpsLostEnquiryRecoveryPage = ({ onStartIntake }: { onStartIntake: () =
           </div>
         </section>
 
-        <section className="border-y border-white/8 bg-white/[0.025] px-4 py-14 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-[1320px]">
-            <div className="max-w-2xl">
-              <span className="section-eyebrow text-[#C8A24A]">Recovery workflow</span>
-              <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">Built around missed enquiries, not generic automation.</h2>
+        <section id="careops-problem" className="scroll-mt-24 border-y border-white/8 bg-white/[0.025] px-4 py-14 sm:px-6 lg:px-8">
+          <div className="mx-auto grid max-w-[1320px] gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <span className="section-eyebrow text-[#C8A24A]">The problem</span>
+              <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">The family called. Nobody called back. Another provider won the client.</h2>
+              <p className="mt-4 text-[15px] leading-6 text-white/64">In most domiciliary agencies, the same person handles enquiries, scheduling, recruitment and on-call. Enquiries do not get lost on purpose. They get lost because everyone is busy and nobody owns the follow-up.</p>
             </div>
-            <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               {[
-                { icon: <Mail size={22} />, title: 'Capture', copy: 'Centralise missed calls, web enquiries, and callback requests so nothing sits unseen.' },
-                { icon: <Zap size={22} />, title: 'Respond', copy: 'Trigger fast, structured follow-up through the right channel and the right team member.' },
-                { icon: <ShieldCheck size={22} />, title: 'Handover', copy: 'Keep enquiry details, consent notes, and next steps visible for the provider team.' },
-                { icon: <BarChart3 size={22} />, title: 'Improve', copy: 'Review weekly leakage and strengthen the process before the next enquiry is missed.' },
+                { title: 'The call after 5pm', copy: 'Goes to voicemail. The family is already ringing the next provider on their list.' },
+                { title: 'The web form', copy: 'Lands in an inbox, gets half-read between visits, and quietly drops down the screen.' },
+                { title: 'The referral', copy: 'Accepted verbally, never logged. Two days later nobody is sure if anyone called back.' },
+                { title: 'The follow-up', copy: "Loses every time to today's rota gap. Important always loses to urgent." },
               ].map((item) => (
                 <article key={item.title} className="rounded-xl border border-white/10 bg-white/[0.045] p-5">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-md border border-[#C8A24A]/20 bg-[#C8A24A]/10 text-[#C8A24A]">{item.icon}</div>
-                  <h3 className="mt-5 text-lg font-black tracking-[-0.035em] text-white">{item.title}</h3>
+                  <h3 className="text-lg font-black tracking-[-0.035em] text-white">{item.title}</h3>
                   <p className="mt-2.5 text-[14px] leading-6 text-white/68">{item.copy}</p>
                 </article>
               ))}
+            </div>
+          </div>
+          <div className="mx-auto mt-8 max-w-[1320px] rounded-xl border border-[#C8A24A]/18 bg-[#C8A24A]/8 p-5 sm:p-6">
+            <div className="grid gap-6 lg:grid-cols-[0.75fr_1.25fr]">
+              <div>
+                <span className="section-eyebrow text-[#C8A24A]">What we check</span>
+                <h3 className="mt-3 text-2xl font-black tracking-[-0.04em] text-white">A 7-14 day audit of your enquiry front door.</h3>
+                <p className="mt-3 text-[14px] leading-6 text-white/66">We map how an enquiry actually travels through your provider and find every point it can fall through.</p>
+              </div>
+              <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                {[
+                  'How enquiries arrive: phone, website, email, referral and out-of-hours',
+                  'Who receives each enquiry, and who owns the follow-up',
+                  'Your real response time, measured rather than assumed',
+                  'A discreet front-door enquiry test, with your permission',
+                  'Whether enquiry source and conversion are tracked',
+                  'Where assessments get booked, and where they stall',
+                ].map((item) => (
+                  <div key={item} className="flex gap-2 rounded-lg border border-white/10 bg-[#020817]/48 p-3 text-[13px] leading-5 text-white/72">
+                    <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[#66D06F]" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="lost-calculator" className="scroll-mt-24 px-4 py-14 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-[1320px] rounded-xl border border-[#C8A24A]/30 bg-[#06101E] p-5 shadow-[0_24px_90px_rgba(0,0,0,0.34)] sm:p-7 lg:p-8">
+            <div className="grid gap-8 lg:grid-cols-[0.88fr_1.12fr]">
+              <div>
+                <span className="section-eyebrow text-[#C8A24A]">Your numbers</span>
+                <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">What might missed follow-up be costing you?</h2>
+                <p className="mt-4 text-[15px] leading-6 text-white/64">Adjust the figures to match your provider. Nothing is sent anywhere. This calculator runs entirely in your browser.</p>
+                <div className="mt-6">
+                  <p className="text-[13px] font-bold uppercase tracking-[0.16em] text-white/70">Enquiries last month</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {enquiryBands.map((band) => (
+                      <button
+                        key={band}
+                        type="button"
+                        onClick={() => setEnquiriesPerMonth(band)}
+                        className={`rounded-md border px-4 py-2 text-sm font-black transition ${
+                          enquiriesPerMonth === band
+                            ? 'border-[#C8A24A] bg-[#C8A24A] text-[#06101E]'
+                            : 'border-white/14 bg-white/[0.045] text-white hover:border-[#C8A24A]/42'
+                        }`}
+                      >
+                        {band === 100 ? '100+' : band}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <label className="block rounded-lg border border-white/10 bg-white/[0.045] p-4">
+                  <span className="text-[13px] font-bold text-white">Enquiries per month</span>
+                  <input
+                    type="number"
+                    min={0}
+                    max={500}
+                    value={enquiriesPerMonth}
+                    onChange={(event) => setEnquiriesPerMonth(Math.max(0, Number(event.target.value) || 0))}
+                    className="mt-2 w-full rounded-md border border-white/14 bg-[#020817] px-3 py-3 text-base font-bold text-white outline-none transition focus:border-[#C8A24A]"
+                  />
+                  <span className="mt-2 block text-xs leading-5 text-white/48">Phone, web, email and referrals combined.</span>
+                </label>
+                <label className="block rounded-lg border border-white/10 bg-white/[0.045] p-4">
+                  <span className="text-[13px] font-bold text-white">Annual value of one new client</span>
+                  <input
+                    type="number"
+                    min={0}
+                    step={100}
+                    value={annualClientValue}
+                    onChange={(event) => setAnnualClientValue(Math.max(0, Number(event.target.value) || 0))}
+                    className="mt-2 w-full rounded-md border border-white/14 bg-[#020817] px-3 py-3 text-base font-bold text-white outline-none transition focus:border-[#C8A24A]"
+                  />
+                  <span className="mt-2 block text-xs leading-5 text-white/48">A 5 hrs/week package is around £8,320/year.</span>
+                </label>
+                <label className="block rounded-lg border border-white/10 bg-white/[0.045] p-4">
+                  <span className="flex items-center justify-between gap-3 text-[13px] font-bold text-white">
+                    Not properly followed up
+                    <span className="text-[#C8A24A]">{notFollowedUpPct}%</span>
+                  </span>
+                  <input
+                    type="range"
+                    min={0}
+                    max={60}
+                    value={notFollowedUpPct}
+                    onChange={(event) => setNotFollowedUpPct(Number(event.target.value))}
+                    className="mt-4 w-full accent-[#C8A24A]"
+                  />
+                  <span className="mt-2 block text-xs leading-5 text-white/48">Honest estimate of how many slip through.</span>
+                </label>
+                <label className="block rounded-lg border border-white/10 bg-white/[0.045] p-4">
+                  <span className="flex items-center justify-between gap-3 text-[13px] font-bold text-white">
+                    Would have converted
+                    <span className="text-[#C8A24A]">{wouldConvertPct}%</span>
+                  </span>
+                  <input
+                    type="range"
+                    min={0}
+                    max={80}
+                    value={wouldConvertPct}
+                    onChange={(event) => setWouldConvertPct(Number(event.target.value))}
+                    className="mt-4 w-full accent-[#C8A24A]"
+                  />
+                  <span className="mt-2 block text-xs leading-5 text-white/48">Only the viable missed enquiries, not every enquiry.</span>
+                </label>
+              </div>
+            </div>
+
+            <div className="mt-7 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {[
+                { label: 'Potential clients lost per year', value: clientLossLabel, tone: 'text-white' },
+                { label: 'Annual revenue leakage', value: gbp(annualRevenueLeakage), tone: 'text-[#F2A84A]' },
+                { label: 'Recoverable value if halved', value: gbp(recoverableValue), tone: 'text-[#66D06F]' },
+                { label: 'Recoverable value vs. £495 audit', value: auditComparison > 0 ? `${auditComparison}x` : '0x', tone: 'text-[#C8A24A]' },
+              ].map((item) => (
+                <div key={item.label} className="rounded-lg border border-white/10 bg-white/[0.055] p-4">
+                  <p className="text-[11px] font-black uppercase tracking-[0.14em] text-white/54">{item.label}</p>
+                  <p className={`mt-3 text-3xl font-black tracking-[-0.04em] ${item.tone}`}>{item.value}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 flex flex-col gap-4 rounded-lg border border-[#C8A24A]/18 bg-[#C8A24A]/8 p-4 sm:flex-row sm:items-center sm:justify-between">
+              <p className="max-w-3xl text-[13px] leading-6 text-white/62">Illustrative planning estimate only. The audit checks the real front-door process and gives you the working behind any leakage estimate before implementation is discussed.</p>
+              <CareOpsCheckoutAction href={careOpsPaymentLinks.audit} label="Request an audit review" className="shrink-0 border border-[#C8A24A] bg-[#C8A24A] text-[#06101E] hover:bg-[#E1BE5A]" />
+            </div>
+          </div>
+        </section>
+
+        <section className="border-y border-white/8 bg-white/[0.025] px-4 py-14 sm:px-6 lg:px-8">
+          <div className="mx-auto grid max-w-[1320px] gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+            <div>
+              <span className="section-eyebrow text-[#C8A24A]">Worked example</span>
+              <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">One missed private client.</h2>
+              <p className="mt-4 text-[15px] leading-6 text-white/64">A family rings on a Saturday about daily visits for their father. No answer, no callback. That one enquiry can carry more value than the audit itself.</p>
+            </div>
+            <div className="overflow-hidden rounded-xl border border-[#C8A24A]/26 bg-[#020817]">
+              {[
+                ['Package', '2 visits/day'],
+                ['Hours per week', '14 hrs'],
+                ['Rate', '£32/hr'],
+                ['Weekly value', '£448'],
+                ['Annual value', '£23,296'],
+              ].map(([label, value]) => (
+                <div key={label} className="grid grid-cols-[1fr_auto] gap-4 border-b border-white/8 px-4 py-4 last:border-b-0 sm:px-5">
+                  <span className="text-[13px] font-bold text-white/62">{label}</span>
+                  <span className={`text-right text-[14px] font-black ${label === 'Annual value' ? 'text-[#C8A24A]' : 'text-white'}`}>{value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="mx-auto mt-6 max-w-[1320px] rounded-lg border border-white/10 bg-white/[0.045] p-5">
+            <p className="text-[15px] leading-7 text-white/70">A £495-£750 audit makes sense when one missed private enquiry can represent £23,296/year. The point is not to buy software first. The point is to prove where revenue is leaking, then close the biggest gap.</p>
+          </div>
+        </section>
+
+        <section id="careops-audit" className="scroll-mt-24 px-4 py-14 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-[1320px]">
+            <div className="mb-8 max-w-2xl">
+              <span className="section-eyebrow text-[#C8A24A]">Audit deliverables</span>
+              <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">What you get before any implementation decision.</h2>
+            </div>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {[
+                { title: 'Enquiry flow map', copy: 'How every enquiry travels through your provider, and where it can drop.' },
+                { title: 'Response-time findings', copy: 'Your real speed to respond, measured across channels.' },
+                { title: 'Leakage estimate', copy: 'A pounds figure for what is likely being lost, with the working shown.' },
+                { title: 'Front-door test results', copy: 'What actually happened when an enquiry came in, with permission.' },
+                { title: 'Prioritised fix list', copy: 'The small number of changes that close the biggest gaps first.' },
+                { title: 'Follow-up workflow', copy: 'A simple owner, next-action and deadline system to put in place.' },
+              ].map((item) => (
+                <article key={item.title} className="rounded-xl border border-white/10 bg-white/[0.045] p-5">
+                  <ShieldCheck size={21} className="text-[#C8A24A]" />
+                  <h3 className="mt-4 text-lg font-black tracking-[-0.035em] text-white">{item.title}</h3>
+                  <p className="mt-2.5 text-[14px] leading-6 text-white/68">{item.copy}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 pb-14 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-[980px] rounded-xl border border-[#C8A24A]/30 bg-[#C8A24A]/10 p-6 text-center sm:p-8">
+            <span className="section-eyebrow text-[#C8A24A]">Audit review</span>
+            <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">See where your enquiries are being lost.</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-6 text-white/66">Start with a short review of how enquiries reach you today, and whether a paid audit is worth your while. No obligation, no hard sell.</p>
+            <div className="mt-6 flex justify-center">
+              <CareOpsCheckoutAction href={careOpsPaymentLinks.audit} label="Request an audit review" />
             </div>
           </div>
         </section>
@@ -1005,8 +1216,8 @@ const CareOpsLostEnquiryRecoveryPage = ({ onStartIntake }: { onStartIntake: () =
           <div className="mx-auto max-w-[1320px]">
             <div className="mb-8 max-w-2xl">
               <span className="section-eyebrow text-[#C8A24A]">Pricing</span>
-              <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">Choose the recovery level that matches the leakage.</h2>
-              <p className="mt-4 text-[15px] leading-6 text-white/64">Designed for care providers that want practical enquiry recovery, clear follow-up ownership, and weekly operational visibility.</p>
+              <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">Start small. Pay for proof.</h2>
+              <p className="mt-4 text-[15px] leading-6 text-white/64">Begin with the audit. If there is no meaningful leak, you do not need a bigger engagement. If there is, we show you how to close it.</p>
             </div>
             <CareOpsPricingGrid options={pricing} />
           </div>
