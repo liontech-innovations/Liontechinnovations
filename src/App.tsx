@@ -36,8 +36,8 @@ const platformLinks = {
 const careOpsDemoUrl = 'https://careops-command-centre-demo2.vercel.app/';
 
 const careOpsAssets = {
-  commandCentre: '/assets/careops-command-centre-visual.png',
-  lostEnquiryRecovery: '/assets/careops-lost-enquiry-recovery-visual.png',
+  commandCentre: '/assets/careops-command-centre-dashboard.jpg',
+  lostEnquiryRecovery: '/assets/careops-ai-receptionist-platform.jpg',
 };
 
 const careOpsPaymentLinks = {
@@ -326,12 +326,12 @@ const Platforms = () => {
     {
       title: 'CareOps',
       category: 'Care Operations Platform',
-      image: careOpsAssets.commandCentre,
+      image: careOpsAssets.lostEnquiryRecovery,
       description: 'Operational visibility and lost-enquiry recovery infrastructure for UK domiciliary care providers.',
       finalVisual: true,
       actions: [
         { label: 'Lost Enquiry Recovery', href: '/careops/lost-enquiry-recovery' as Route, route: '/careops/lost-enquiry-recovery' as Route },
-        { label: 'Command Centre Demo', href: careOpsDemoUrl, external: true },
+        { label: 'Command Centre', href: '/careops/command-centre' as Route, route: '/careops/command-centre' as Route },
       ],
     },
   ];
@@ -922,15 +922,6 @@ const CareOpsLostEnquiryRecoveryPage = ({ onStartIntake }: { onStartIntake: () =
       featured: true,
       bullets: ['Recovery audit included', 'Implementation sprint included', 'Launch support and handover'],
     },
-    {
-      title: 'Command + Recovery Monitoring',
-      price: '£995/month',
-      cadence: '',
-      description: 'Combine lost-enquiry recovery oversight with the wider CareOps command centre rhythm.',
-      cta: 'Start Command + Recovery',
-      href: careOpsPaymentLinks.commandRecoveryMonitoring,
-      bullets: ['Recovery monitoring', 'Weekly action planning', 'Operational risk visibility'],
-    },
   ];
 
   const [enquiriesPerMonth, setEnquiriesPerMonth] = useState(12);
@@ -1153,26 +1144,27 @@ const CareOpsLostEnquiryRecoveryPage = ({ onStartIntake }: { onStartIntake: () =
           <div className="mx-auto grid max-w-[1320px] gap-8 lg:grid-cols-[0.85fr_1.15fr]">
             <div>
               <span className="section-eyebrow text-[#C8A24A]">Worked example</span>
-              <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">One missed private client.</h2>
-              <p className="mt-4 text-[15px] leading-6 text-white/64">A family rings on a Saturday about daily visits for their father. No answer, no callback. That one enquiry can carry more value than the audit itself.</p>
+              <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">A simple missed-enquiry leakage example.</h2>
+              <p className="mt-4 text-[15px] leading-6 text-white/64">If a provider receives 12 enquiries a month, misses proper follow-up on 15%, and only 25% of those would have converted, the annual leakage is still material.</p>
             </div>
             <div className="overflow-hidden rounded-xl border border-[#C8A24A]/26 bg-[#020817]">
               {[
-                ['Package', '2 visits/day'],
-                ['Hours per week', '14 hrs'],
-                ['Rate', '£32/hr'],
-                ['Weekly value', '£448'],
-                ['Annual value', '£23,296'],
+                ['Example', '12 enquiries/month'],
+                ['Missed follow-up', '15% missed'],
+                ['Likely conversion', '25% conversion'],
+                ['Estimated leakage', '£44,928/year'],
+                ['Audit cost', '£495'],
+                ['Potential recovery', '£22,464/year'],
               ].map(([label, value]) => (
                 <div key={label} className="grid grid-cols-[1fr_auto] gap-4 border-b border-white/8 px-4 py-4 last:border-b-0 sm:px-5">
                   <span className="text-[13px] font-bold text-white/62">{label}</span>
-                  <span className={`text-right text-[14px] font-black ${label === 'Annual value' ? 'text-[#C8A24A]' : 'text-white'}`}>{value}</span>
+                  <span className={`text-right text-[14px] font-black ${label === 'Estimated leakage' || label === 'Potential recovery' ? 'text-[#C8A24A]' : 'text-white'}`}>{value}</span>
                 </div>
               ))}
             </div>
           </div>
           <div className="mx-auto mt-6 max-w-[1320px] rounded-lg border border-white/10 bg-white/[0.045] p-5">
-            <p className="text-[15px] leading-7 text-white/70">A £495-£750 audit makes sense when one missed private enquiry can represent £23,296/year. The point is not to buy software first. The point is to prove where revenue is leaking, then close the biggest gap.</p>
+            <p className="text-[15px] leading-7 text-white/70">The point is not to buy software first. The point is to prove where revenue is leaking, then close the biggest gap.</p>
           </div>
         </section>
 
@@ -1202,6 +1194,27 @@ const CareOpsLostEnquiryRecoveryPage = ({ onStartIntake }: { onStartIntake: () =
         </section>
 
         <section className="px-4 pb-14 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-14 grid max-w-[1320px] gap-8 rounded-xl border border-white/10 bg-white/[0.035] p-6 sm:p-8 lg:grid-cols-[0.85fr_1.15fr]">
+            <div>
+              <span className="section-eyebrow text-[#C8A24A]">After the audit</span>
+              <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">What happens after the audit?</h2>
+              <p className="mt-4 text-[15px] leading-6 text-white/66">Many providers choose to install a recovery workflow after they see the evidence. Implementation only happens after the audit proves where enquiries are leaking and the provider chooses to close the gap.</p>
+            </div>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {[
+                'AI Receptionist',
+                'Instant SMS response',
+                'Missed-call recovery',
+                'Callback workflow',
+                'Team handover process',
+              ].map((item) => (
+                <div key={item} className="flex gap-2 rounded-lg border border-white/10 bg-[#020817]/60 p-4 text-[13px] font-bold leading-5 text-white/76">
+                  <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[#66D06F]" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
           <div className="mx-auto max-w-[980px] rounded-xl border border-[#C8A24A]/30 bg-[#C8A24A]/10 p-6 text-center sm:p-8">
             <span className="section-eyebrow text-[#C8A24A]">Audit review</span>
             <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">See where your enquiries are being lost.</h2>
@@ -1220,6 +1233,18 @@ const CareOpsLostEnquiryRecoveryPage = ({ onStartIntake }: { onStartIntake: () =
               <p className="mt-4 text-[15px] leading-6 text-white/64">Begin with the audit. If there is no meaningful leak, you do not need a bigger engagement. If there is, we show you how to close it.</p>
             </div>
             <CareOpsPricingGrid options={pricing} />
+          </div>
+        </section>
+
+        <section className="px-4 pb-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-[980px] rounded-xl border border-white/10 bg-white/[0.045] p-6 text-center sm:p-8">
+            <span className="section-eyebrow text-[#C8A24A]">CareOps Command Centre</span>
+            <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">Need weekly operational visibility too?</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-6 text-white/66">CareOps Command Centre gives managers a weekly operating view across staffing, DBS, training, rota gaps, compliance evidence and enquiry follow-up.</p>
+            <CareOpsRouteLink href="/careops/command-centre" className="mt-6 inline-flex items-center justify-center gap-2 rounded-md border border-[#C8A24A] bg-[#C8A24A] px-5 py-3 text-[11px] font-black uppercase tracking-[0.16em] text-[#06101E] no-underline transition hover:bg-[#E1BE5A]">
+              View Command Centre
+              <ArrowRight size={14} />
+            </CareOpsRouteLink>
           </div>
         </section>
       </main>
@@ -1276,6 +1301,28 @@ const CareOpsCommandCentrePage = ({ onStartIntake }: { onStartIntake: () => void
     window.scrollTo({ top: 0, behavior: 'auto' });
   }, []);
 
+  const scrollToCommandSection = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const commandSignals = [
+    'Action planning',
+    'Risk visibility',
+    'Team communication',
+    'Staff readiness',
+    'DBS and training oversight',
+    'Rota gap visibility',
+    'Compliance evidence',
+    'Missed enquiry visibility',
+  ];
+  const commandFeatures = [
+    { title: 'Risk intelligence', copy: 'Score and sort operational issues so urgent tasks move first.' },
+    { title: 'Action planning', copy: 'Create a weekly list the team can act on without dashboard fatigue.' },
+    { title: 'Staff readiness', copy: 'See who is ready to work, who is blocked, and what needs fixing.' },
+    { title: 'DBS and training oversight', copy: 'Track expiry risks before they become compliance gaps.' },
+    { title: 'Rota gaps', copy: 'Spot unfilled shifts and staffing pressure before they escalate.' },
+    { title: 'Compliance evidence', copy: 'Keep documents, training records and inspection evidence visible.' },
+    { title: 'Enquiry follow-up', copy: 'Connect operational visibility with missed enquiry recovery.' },
+    { title: 'Team handover', copy: 'Give managers and coordinators one shared operating rhythm.' },
+  ];
+
   return (
     <div className="min-h-screen bg-[#020817] text-white">
       <Navbar onStartIntake={onStartIntake} />
@@ -1283,18 +1330,21 @@ const CareOpsCommandCentrePage = ({ onStartIntake }: { onStartIntake: () => void
         <section className="px-4 pb-16 pt-28 sm:px-6 lg:px-8 lg:pb-20">
           <div className="mx-auto grid max-w-[1320px] items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
             <div>
-              <span className="section-eyebrow text-[#C8A24A]">CareOps Command Centre</span>
+              <span className="section-eyebrow text-[#C8A24A]">CAREOPS COMMAND CENTRE</span>
               <h1 className="mt-4 max-w-3xl text-4xl font-black tracking-[-0.05em] text-white sm:text-5xl lg:text-6xl">A weekly operating view for care providers that need faster action.</h1>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-white/70">CareOps brings provider risks, action planning, team communication, and enquiry recovery into one command rhythm without replacing the care team or their compliance responsibilities.</p>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-white/70">CareOps brings provider risks, action planning, team communication and enquiry recovery into one command rhythm without replacing the care team or their compliance responsibilities.</p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <a href={careOpsDemoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-md border border-[#C8A24A] bg-[#C8A24A] px-5 py-3 text-[11px] font-black uppercase tracking-[0.16em] text-[#06101E] no-underline transition hover:bg-[#E1BE5A]">
                   Open Demo
                   <ArrowUpRight size={14} />
                 </a>
-                <CareOpsCheckoutAction href={careOpsPaymentLinks.commandSetup} label="Start Setup" className="border border-white/14 bg-white/[0.045] text-white hover:border-[#C8A24A]/42 hover:bg-white/8" />
+                <button type="button" onClick={() => scrollToCommandSection('command-pricing')} className="inline-flex items-center justify-center gap-2 rounded-md border border-white/14 bg-white/[0.045] px-5 py-3 text-[11px] font-black uppercase tracking-[0.16em] text-white transition hover:border-[#C8A24A]/42 hover:bg-white/8">
+                  Start Setup
+                  <ArrowRight size={14} />
+                </button>
               </div>
-              <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                {['Action planning', 'Risk visibility', 'Team communication'].map((item) => (
+              <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {commandSignals.map((item) => (
                   <div key={item} className="rounded-lg border border-white/10 bg-white/[0.045] p-4">
                     <CheckCircle2 size={18} className="text-[#66D06F]" />
                     <p className="mt-3 text-sm font-bold text-white">{item}</p>
@@ -1311,19 +1361,10 @@ const CareOpsCommandCentrePage = ({ onStartIntake }: { onStartIntake: () => void
             <div>
               <span className="section-eyebrow text-[#C8A24A]">Command rhythm</span>
               <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">Turn scattered operational signals into this week's actions.</h2>
-              <p className="mt-4 text-[15px] leading-6 text-white/64">The command centre is built for care operators who need visibility, ownership, and momentum across staffing, training, rota gaps, evidence, and enquiry follow-up.</p>
-              <CareOpsRouteLink href="/careops/lost-enquiry-recovery" className="mt-6 inline-flex items-center gap-2 rounded-md border border-[#C8A24A]/32 px-4 py-3 text-[11px] font-black uppercase tracking-[0.16em] text-[#C8A24A] no-underline transition hover:border-[#C8A24A]/52 hover:bg-[#C8A24A]/10 hover:text-white">
-                View Lost Enquiry Recovery
-                <ArrowRight size={14} />
-              </CareOpsRouteLink>
+              <p className="mt-4 text-[15px] leading-6 text-white/64">The command centre is built for care operators who need visibility, ownership and momentum across staffing, training, rota gaps, evidence and enquiry follow-up.</p>
             </div>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {[
-                { title: 'Risk intelligence', copy: 'Score and sort operational issues so urgent tasks move first.' },
-                { title: 'Action planning', copy: 'Create a weekly list the team can act on without dashboard fatigue.' },
-                { title: 'Team communication', copy: 'Keep updates, escalations, and follow-up ownership visible.' },
-                { title: 'Performance insight', copy: 'Track trends and improve the operating process over time.' },
-              ].map((item) => (
+              {commandFeatures.map((item) => (
                 <article key={item.title} className="rounded-xl border border-white/10 bg-white/[0.045] p-5">
                   <ShieldCheck size={22} className="text-[#C8A24A]" />
                   <h3 className="mt-4 text-lg font-black tracking-[-0.035em] text-white">{item.title}</h3>
@@ -1335,12 +1376,36 @@ const CareOpsCommandCentrePage = ({ onStartIntake }: { onStartIntake: () => void
         </section>
 
         <section className="px-4 py-14 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-[980px] rounded-xl border border-[#C8A24A]/30 bg-[#C8A24A]/10 p-6 text-center sm:p-8">
+            <span className="section-eyebrow text-[#C8A24A]">Live demo</span>
+            <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">See the Command Centre in action.</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-6 text-white/66">The demo shows how CareOps turns scattered operational issues into a clear action board for the week.</p>
+            <a href={careOpsDemoUrl} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center justify-center gap-2 rounded-md border border-[#C8A24A] bg-[#C8A24A] px-5 py-3 text-[11px] font-black uppercase tracking-[0.16em] text-[#06101E] no-underline transition hover:bg-[#E1BE5A]">
+              Open Live Demo
+              <ArrowUpRight size={14} />
+            </a>
+          </div>
+        </section>
+
+        <section id="command-pricing" className="scroll-mt-24 px-4 py-14 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-[1320px]">
             <div className="mb-8 max-w-2xl">
               <span className="section-eyebrow text-[#C8A24A]">Pricing</span>
               <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">Start with setup, monthly oversight, or the combined recovery package.</h2>
             </div>
             <CareOpsPricingGrid options={pricing} />
+          </div>
+        </section>
+
+        <section className="px-4 pb-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-[980px] rounded-xl border border-white/10 bg-white/[0.045] p-6 text-center sm:p-8">
+            <span className="section-eyebrow text-[#C8A24A]">Lost Enquiry Recovery</span>
+            <h2 className="mt-3 text-3xl font-black tracking-[-0.045em] text-white sm:text-[40px]">Losing enquiries before they become clients?</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-6 text-white/66">Lost Enquiry Recovery focuses specifically on missed calls, slow responses, weak follow-up and revenue leakage from private-pay enquiries.</p>
+            <CareOpsRouteLink href="/careops/lost-enquiry-recovery" className="mt-6 inline-flex items-center justify-center gap-2 rounded-md border border-[#C8A24A] bg-[#C8A24A] px-5 py-3 text-[11px] font-black uppercase tracking-[0.16em] text-[#06101E] no-underline transition hover:bg-[#E1BE5A]">
+              View Lost Enquiry Recovery
+              <ArrowRight size={14} />
+            </CareOpsRouteLink>
           </div>
         </section>
       </main>
