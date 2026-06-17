@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Request your free lost-enquiry check — CareOps</title>
+<link rel="icon" href="/assets/favicon-32.png">
+<link rel="shortcut icon" href="/assets/favicon-32.png">
 <style>
   :root {
     --navy: #0a1a2f;
@@ -155,8 +157,9 @@
 <body>
 
 <header class="top">
-  <div class="wrap">
-    <p class="eyebrow" style="margin:0;">CareOps · a Lion Tech Innovations service</p>
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+    <a href="https://liontechinnovations.co.uk/careops/lost-enquiry-recovery" style="text-decoration:none;"><p class="eyebrow" style="margin:0;">CareOps · a Lion Tech Innovations service</p></a>
+    <a href="https://liontechinnovations.co.uk/careops/lost-enquiry-recovery" style="color:var(--muted);font-size:14px;text-decoration:none;white-space:nowrap;">← Back to CareOps</a>
   </div>
 </header>
 
@@ -181,6 +184,7 @@
   <input type="hidden" name="_subject" value="New CareOps free-check request — Lost Enquiry Recovery">
   <input type="hidden" name="form_source" value="careops-free-check-intake">
   <input type="hidden" name="lead_type" value="Lost Enquiry Recovery">
+  <input type="hidden" name="_next" value="https://liontechinnovations.co.uk/careops/free-check/thanks.html">
 
   <!-- 1 -->
   <fieldset>
@@ -334,8 +338,25 @@
     </label>
   </fieldset>
 
-  <button class="submit" type="submit">Request my free check →</button>
+  <button class="submit" id="submitBtn" type="submit">Request my free check →</button>
 </form>
+
+<script>
+  (function () {
+    var form = document.querySelector('form');
+    var btn = document.getElementById('submitBtn');
+    if (form && btn) {
+      form.addEventListener('submit', function () {
+        // Only fires when the browser's native validation has passed,
+        // so this won't disable the button while required fields are still empty.
+        btn.disabled = true;
+        btn.textContent = 'Sending… please wait';
+        btn.style.opacity = '0.7';
+        btn.style.cursor = 'wait';
+      });
+    }
+  })();
+</script>
 
 <div class="foot wrap">
   <p><strong>CareOps</strong> — a Lion Tech Innovations Ltd service. Your details are used only to carry out and discuss your free check. This is not regulated advice and makes no CQC outcome guarantees.</p>

@@ -21,6 +21,10 @@
       "destination": "/careops/free-check/index.html"
     },
     {
+      "source": "/careops/free-check/thanks.html",
+      "destination": "/careops/free-check/thanks.html"
+    },
+    {
       "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
