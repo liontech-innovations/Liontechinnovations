@@ -13,6 +13,14 @@
   ],
   "rewrites": [
     {
+      "source": "/careops/free-check",
+      "destination": "/careops/free-check/index.html"
+    },
+    {
+      "source": "/careops/free-check/",
+      "destination": "/careops/free-check/index.html"
+    },
+    {
       "source": "/((?!api/).*)",
       "destination": "/index.html"
     }

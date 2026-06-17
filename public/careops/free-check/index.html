@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request your free lost-enquiry check — CareOps</title>
+<style>
+  :root {
+    --navy: #0a1a2f;
+    --navy-soft: #0f2238;
+    --card: #111f33;
+    --line: rgba(255,255,255,0.10);
+    --line-soft: rgba(255,255,255,0.06);
+    --paper: #f7f5f0;
+    --muted: #9fb0c3;
+    --gold: #c9a24a;
+    --gold-soft: rgba(201,162,74,0.12);
+    --green: #5bbf8a;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--navy);
+    color: var(--paper);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 0 20px; }
+
+  header.top {
+    border-bottom: 1px solid var(--line-soft);
+    padding: 18px 0;
+  }
+  .eyebrow {
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin: 0 0 10px;
+  }
+  h1 { font-size: 30px; line-height: 1.15; margin: 0 0 12px; }
+  .lede { color: var(--muted); font-size: 16px; margin: 0 0 8px; max-width: 70ch; }
+
+  .intro { padding: 40px 0 8px; }
+
+  .note {
+    background: var(--gold-soft);
+    border: 1px solid rgba(201,162,74,0.3);
+    border-radius: 10px;
+    padding: 14px 16px;
+    color: #e8d9b0;
+    font-size: 14px;
+    margin: 22px 0 0;
+  }
+
+  form { padding: 8px 0 60px; }
+
+  fieldset {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--card);
+    padding: 22px;
+    margin: 18px 0;
+  }
+  legend {
+    font-size: 17px;
+    font-weight: 700;
+    padding: 0 8px;
+    color: var(--paper);
+  }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field { margin: 14px 0; }
+  label.q {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 7px;
+    color: var(--paper);
+  }
+  label.q .req { color: var(--gold); }
+  label.q .opt { color: var(--muted); font-weight: 400; }
+
+  input[type="text"], input[type="email"], input[type="tel"], textarea, select {
+    width: 100%;
+    background: var(--navy-soft);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    color: var(--paper);
+    font: inherit;
+    padding: 11px 12px;
+  }
+  input:focus, textarea:focus, select:focus {
+    outline: 2px solid var(--gold);
+    outline-offset: 1px;
+    border-color: var(--gold);
+  }
+  textarea { min-height: 90px; resize: vertical; }
+
+  .checks { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  @media (max-width: 620px) { .checks { grid-template-columns: 1fr 1fr; } .grid2 { grid-template-columns: 1fr; } h1 { font-size: 25px; } }
+  .check {
+    display: flex; align-items: center; gap: 9px;
+    background: var(--navy-soft);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    padding: 10px 12px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .check input { accent-color: var(--gold); width: 16px; height: 16px; }
+
+  .radio-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .radio {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--navy-soft);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    padding: 10px 16px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .radio input { accent-color: var(--gold); }
+
+  .confirm {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14px; color: var(--muted);
+    margin-top: 6px;
+  }
+  .confirm input { accent-color: var(--gold); width: 17px; height: 17px; margin-top: 2px; }
+
+  .submit {
+    background: var(--gold);
+    color: #1a1205;
+    border: none;
+    border-radius: 10px;
+    font: inherit;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 15px;
+    padding: 15px 30px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  .submit:hover { filter: brightness(1.05); }
+
+  .foot { color: var(--muted); font-size: 13px; padding: 0 0 50px; }
+  .foot strong { color: var(--paper); }
+  a { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow" style="margin:0;">CareOps · a Lion Tech Innovations service</p>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="wrap">
+    <p class="eyebrow">Free lost-enquiry check</p>
+    <h1>Request your free check.</h1>
+    <p class="lede">Answer a few quick questions about how enquiries reach you today. We'll run a short, no-obligation check on your enquiry front door and walk you through what we find. No payment, no sales pitch — if nothing's leaking, you'll know your setup is solid.</p>
+    <div class="note">Takes about 3 minutes. Nothing is charged. We'll reply to arrange a short call or send your findings by email — whichever suits you.</div>
+  </div>
+</section>
+
+<!--
+  FORMSPREE SETUP (do this before going live):
+  1. Sign up at formspree.io (free tier), verify careops@liontechinnovations.co.uk as the destination.
+  2. Create a new form -> copy its endpoint, e.g. https://formspree.io/f/abcdwxyz
+  3. Replace YOUR_FORM_ID below in the form action.
+  4. (Optional) In Formspree settings set the email subject + reply-to to the submitter's email.
+-->
+<form class="wrap" action="https://formspree.io/f/xykaagwo" method="POST">
+
+  <input type="hidden" name="_subject" value="New CareOps free-check request — Lost Enquiry Recovery">
+  <input type="hidden" name="form_source" value="careops-free-check-intake">
+  <input type="hidden" name="lead_type" value="Lost Enquiry Recovery">
+
+  <!-- 1 -->
+  <fieldset>
+    <legend>1. Your details</legend>
+    <div class="grid2">
+      <div class="field">
+        <label class="q" for="name">Your name <span class="req">*</span></label>
+        <input type="text" id="name" name="contact_name" required>
+      </div>
+      <div class="field">
+        <label class="q" for="role">Your role <span class="req">*</span></label>
+        <select id="role" name="role" required>
+          <option value="">Select…</option>
+          <option>Owner / Director</option>
+          <option>Registered Manager</option>
+          <option>Care Coordinator</option>
+          <option>Office / Admin</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="field">
+        <label class="q" for="email">Email <span class="req">*</span></label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="field">
+        <label class="q" for="phone">Phone <span class="req">*</span></label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+    </div>
+    <div class="field">
+      <label class="q" for="agency">Agency name <span class="req">*</span></label>
+      <input type="text" id="agency" name="agency_name" required>
+    </div>
+    <div class="field">
+      <label class="q" for="area">Main area / town you cover <span class="opt">(optional)</span></label>
+      <input type="text" id="area" name="area_covered">
+    </div>
+  </fieldset>
+
+  <!-- 2 -->
+  <fieldset>
+    <legend>2. How enquiries reach you</legend>
+    <div class="field">
+      <label class="q">Which channels do enquiries come through? <span class="opt">(tick all that apply)</span></label>
+      <div class="checks">
+        <label class="check"><input type="checkbox" name="channels" value="Phone"> Phone calls</label>
+        <label class="check"><input type="checkbox" name="channels" value="Website form"> Website form</label>
+        <label class="check"><input type="checkbox" name="channels" value="Email"> Email</label>
+        <label class="check"><input type="checkbox" name="channels" value="Hospital discharge"> Hospital discharge</label>
+        <label class="check"><input type="checkbox" name="channels" value="LA referrals"> Local authority</label>
+        <label class="check"><input type="checkbox" name="channels" value="Word of mouth"> Word of mouth</label>
+        <label class="check"><input type="checkbox" name="channels" value="Directories"> Directories (homecare.co.uk etc.)</label>
+        <label class="check"><input type="checkbox" name="channels" value="Social"> Social media</label>
+        <label class="check"><input type="checkbox" name="channels" value="Other"> Other</label>
+      </div>
+    </div>
+    <div class="field">
+      <label class="q">Roughly how many enquiries arrive a month?</label>
+      <div class="radio-row">
+        <label class="radio"><input type="radio" name="enquiries_per_month" value="Under 10"> Under 10</label>
+        <label class="radio"><input type="radio" name="enquiries_per_month" value="10-25"> 10–25</label>
+        <label class="radio"><input type="radio" name="enquiries_per_month" value="25-50"> 25–50</label>
+        <label class="radio"><input type="radio" name="enquiries_per_month" value="50-100"> 50–100</label>
+        <label class="radio"><input type="radio" name="enquiries_per_month" value="100+"> 100+</label>
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- 3 -->
+  <fieldset>
+    <legend>3. Who handles them</legend>
+    <div class="field">
+      <label class="q">Who owns enquiry follow-up day to day?</label>
+      <div class="radio-row">
+        <label class="radio"><input type="radio" name="who_follows_up" value="One named person"> One named person</label>
+        <label class="radio"><input type="radio" name="who_follows_up" value="Shared between team"> Shared between team</label>
+        <label class="radio"><input type="radio" name="who_follows_up" value="No one set"> No one set</label>
+        <label class="radio"><input type="radio" name="who_follows_up" value="Not sure"> Not sure</label>
+      </div>
+    </div>
+    <div class="field">
+      <label class="q">How quickly do you usually get back to a new enquiry?</label>
+      <div class="radio-row">
+        <label class="radio"><input type="radio" name="response_time" value="Within an hour"> Within an hour</label>
+        <label class="radio"><input type="radio" name="response_time" value="Same day"> Same day</label>
+        <label class="radio"><input type="radio" name="response_time" value="Next day"> Next day</label>
+        <label class="radio"><input type="radio" name="response_time" value="Varies a lot"> Varies a lot</label>
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- 4 -->
+  <fieldset>
+    <legend>4. Where things slip</legend>
+    <div class="field">
+      <label class="q">What happens to an enquiry that comes in after hours or at the weekend?</label>
+      <div class="radio-row">
+        <label class="radio"><input type="radio" name="out_of_hours" value="Answered / on-call"> Answered (on-call)</label>
+        <label class="radio"><input type="radio" name="out_of_hours" value="Voicemail, returned next day"> Voicemail, next day</label>
+        <label class="radio"><input type="radio" name="out_of_hours" value="Often missed"> Often missed</label>
+        <label class="radio"><input type="radio" name="out_of_hours" value="Not sure"> Not sure</label>
+      </div>
+    </div>
+    <div class="field">
+      <label class="q">Do you currently track where enquiries come from and how many convert?</label>
+      <div class="radio-row">
+        <label class="radio"><input type="radio" name="tracking" value="Yes, properly"> Yes, properly</label>
+        <label class="radio"><input type="radio" name="tracking" value="Roughly"> Roughly</label>
+        <label class="radio"><input type="radio" name="tracking" value="No"> No</label>
+      </div>
+    </div>
+    <div class="field">
+      <label class="q">Be honest — do enquiries ever get lost or forgotten? <span class="opt">(optional, tell us when)</span></label>
+      <textarea name="lost_enquiries_detail" placeholder="e.g. busy weeks, weekends, when the coordinator is off…"></textarea>
+    </div>
+  </fieldset>
+
+  <!-- 5 -->
+  <fieldset>
+    <legend>5. Value &amp; systems</legend>
+    <div class="field">
+      <label class="q">Roughly what is one new private client worth to you over a year? <span class="opt">(optional)</span></label>
+      <input type="text" name="client_value" placeholder="e.g. £8,000+">
+    </div>
+    <div class="field">
+      <label class="q">What do you use to manage enquiries / rota today? <span class="opt">(optional)</span></label>
+      <input type="text" name="current_systems" placeholder="e.g. inbox + WhatsApp, a spreadsheet, Birdie, Access, CarePlanner…">
+    </div>
+    <div class="field">
+      <label class="q">Have you looked at any enquiry/CRM tools, and if so what were they quoting? <span class="opt">(optional)</span></label>
+      <input type="text" name="competitor_seen" placeholder="Helps us understand what you've already considered">
+    </div>
+  </fieldset>
+
+  <!-- 6 -->
+  <fieldset>
+    <legend>6. Anything else</legend>
+    <div class="field">
+      <label class="q">Anything specific you'd like us to look at? <span class="opt">(optional)</span></label>
+      <textarea name="notes" placeholder="Anything on your mind about enquiries, follow-up or growth."></textarea>
+    </div>
+    <div class="field">
+      <label class="q">Best time to reach you <span class="opt">(optional)</span></label>
+      <input type="text" name="best_time" placeholder="e.g. weekday mornings">
+    </div>
+    <label class="confirm">
+      <input type="checkbox" name="consent" required>
+      <span>I'm happy for CareOps (Lion Tech Innovations Ltd) to contact me about my free check. <span class="req">*</span></span>
+    </label>
+  </fieldset>
+
+  <button class="submit" type="submit">Request my free check →</button>
+</form>
+
+<div class="foot wrap">
+  <p><strong>CareOps</strong> — a Lion Tech Innovations Ltd service. Your details are used only to carry out and discuss your free check. This is not regulated advice and makes no CQC outcome guarantees.</p>
+</div>
+
+</body>
+</html>

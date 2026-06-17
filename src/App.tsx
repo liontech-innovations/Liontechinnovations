@@ -970,10 +970,10 @@ const CareOpsLostEnquiryRecoveryPage = ({ onStartIntake }: { onStartIntake: () =
                   See what it's costing you
                   <ArrowRight size={14} />
                 </button>
-                <button type="button" onClick={() => scrollToLostSection('careops-problem')} className="inline-flex items-center justify-center gap-2 rounded-md border border-white/14 px-5 py-3 text-[11px] font-black uppercase tracking-[0.16em] text-white transition hover:border-[#C8A24A]/42 hover:bg-white/8">
-                  See where enquiries are lost
+                <a href="/careops/free-check" className="inline-flex items-center justify-center gap-2 rounded-md border border-white/14 px-5 py-3 text-[11px] font-black uppercase tracking-[0.16em] text-white no-underline transition hover:border-[#C8A24A]/42 hover:bg-white/8">
+                  Request your free check
                   <ArrowRight size={14} />
-                </button>
+                </a>
               </div>
               <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
                 {['Website enquiries', 'Family enquiries', 'Referral follow-up'].map((item) => (
@@ -1301,7 +1301,6 @@ const CareOpsCommandCentrePage = ({ onStartIntake }: { onStartIntake: () => void
     window.scrollTo({ top: 0, behavior: 'auto' });
   }, []);
 
-  const scrollToCommandSection = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   const commandSignals = [
     'Action planning',
     'Risk visibility',
@@ -1338,10 +1337,10 @@ const CareOpsCommandCentrePage = ({ onStartIntake }: { onStartIntake: () => void
                   Open Demo
                   <ArrowUpRight size={14} />
                 </a>
-                <button type="button" onClick={() => scrollToCommandSection('command-pricing')} className="inline-flex items-center justify-center gap-2 rounded-md border border-white/14 bg-white/[0.045] px-5 py-3 text-[11px] font-black uppercase tracking-[0.16em] text-white transition hover:border-[#C8A24A]/42 hover:bg-white/8">
-                  Start Setup
+                <a href="/careops/free-check" className="inline-flex items-center justify-center gap-2 rounded-md border border-white/14 bg-white/[0.045] px-5 py-3 text-[11px] font-black uppercase tracking-[0.16em] text-white no-underline transition hover:border-[#C8A24A]/42 hover:bg-white/8">
+                  Request your free check
                   <ArrowRight size={14} />
-                </button>
+                </a>
               </div>
               <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {commandSignals.map((item) => (
