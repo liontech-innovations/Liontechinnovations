@@ -20,7 +20,7 @@ export function SiteHeader() {
     <header className="lt-site-header">
       <div className="lt-header-inner">
         <RouteLink className="lt-logo-link" href="/" aria-label="LionTech Innovations home">
-          <img src="/assets/liontechlogo.png" alt="LionTech Innovations" />
+          <img src="/assets/liontechlogo.png" alt="LionTech Innovations" className="nav-logo" />
         </RouteLink>
 
         <nav className="lt-desktop-nav" aria-label="Primary navigation">
