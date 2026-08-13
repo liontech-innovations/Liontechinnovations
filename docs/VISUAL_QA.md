@@ -55,3 +55,13 @@ Every viewport reported zero horizontal overflow and a visible primary hero acti
 - `docs/qa/baseline-*.png`
 - `docs/qa/refero-primary-mercury.png`
 - `docs/qa/refero-secondary-joby-aviation.png`
+
+## Vercel preview
+
+- Deployment: `https://liontechinnovations-50lq8igfs-lion-tech-innovations.vercel.app`
+- Deployment state: READY
+- Target: preview (`null`), not production
+- Access: protected by the project's Vercel Authentication policy
+- Authenticated response checks: homepage, Snapshot route and preserved CareOps route pass
+- Deployed API checks: GET 405, invalid POST 400, honeypot POST 200 without provider send
+- Visual evidence: captured against the same production build locally because the browser session is not authenticated to the protected preview
