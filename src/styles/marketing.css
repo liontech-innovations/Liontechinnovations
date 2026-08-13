@@ -1504,7 +1504,7 @@
 .lt-desktop-nav a {
   color: rgba(255, 255, 255, 0.74);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
@@ -1514,7 +1514,7 @@
   border-radius: 6px;
   padding: 0.75rem 1.5rem;
   font-size: 11px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1539,9 +1539,9 @@
   max-width: 650px;
   margin-bottom: 1rem;
   font-size: clamp(2.9rem, 4.5vw, 4.6rem);
-  font-weight: 900;
-  letter-spacing: -0.042em;
-  line-height: 1.02;
+  font-weight: 700;
+  letter-spacing: -0.032em;
+  line-height: 1.04;
 }
 
 .lt-hero-copy {
@@ -1576,15 +1576,37 @@
 .marketing-site .section-dark-connected h2,
 .marketing-site .section-contact-connected h2 {
   font-size: clamp(2rem, 3.5vw, 2.5rem);
-  font-weight: 900;
-  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
 }
 
 .marketing-site .section-light-connected h3,
 .marketing-site .section-light-muted h3,
 .marketing-site .section-dark-connected h3,
 .marketing-site .section-contact-connected h3 {
-  font-weight: 800;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.18;
+}
+
+.marketing-site .section-eyebrow {
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+
+.marketing-site .platform-badge,
+.marketing-site .platform-live {
+  font-weight: 750;
+}
+
+.lt-uniform-grid {
+  align-items: stretch;
+  grid-auto-rows: 1fr;
+}
+
+.lt-uniform-grid > * {
+  height: 100%;
 }
 
 .lt-restored-gates {
@@ -1600,24 +1622,29 @@
 }
 
 .lt-restored-gates li:nth-child(4) {
-  grid-column: 2 / span 2;
+  grid-column: 1 / span 3;
 }
 
 .lt-restored-gates li:nth-child(5) {
-  grid-column: 4 / span 2;
+  grid-column: 4 / span 3;
+}
+
+.lt-restored-gates li,
+.lt-evidence-cards article {
+  height: 100%;
 }
 
 .lt-snapshot-restored {
   display: grid;
-  grid-template-columns: minmax(250px, 0.72fr) minmax(0, 1.6fr);
+  grid-template-columns: minmax(225px, 0.62fr) minmax(0, 1.6fr);
 }
 
 .lt-snapshot-price-panel {
   display: flex;
   min-height: 100%;
-  padding: clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(1.35rem, 3vw, 2.25rem);
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   border-right: 1px solid rgba(200, 162, 74, 0.16);
   background: radial-gradient(circle at 25% 25%, rgba(200, 162, 74, 0.13), transparent 42%);
 }
@@ -1627,7 +1654,7 @@
 }
 
 .lt-snapshot-content-panel {
-  padding: clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(1.35rem, 3vw, 2.25rem);
 }
 
 .lt-evidence-cards {
@@ -1641,11 +1668,11 @@
 }
 
 .lt-evidence-cards article:nth-child(4) {
-  grid-column: 2 / span 2;
+  grid-column: 1 / span 3;
 }
 
 .lt-evidence-cards article:nth-child(5) {
-  grid-column: 4 / span 2;
+  grid-column: 4 / span 3;
 }
 
 .lt-brain-diagram {
@@ -1718,7 +1745,7 @@
   margin: 0;
   color: #0B1F35;
   font-size: 11px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0.2em;
   line-height: 1.4;
   text-transform: uppercase;
@@ -1745,13 +1772,18 @@
 }
 
 @media (max-width: 900px) {
+  .lt-restored-gates,
+  .lt-evidence-cards {
+    grid-template-columns: 1fr;
+  }
+
   .lt-restored-gates li,
   .lt-restored-gates li:nth-child(4),
   .lt-restored-gates li:nth-child(5),
   .lt-evidence-cards article,
   .lt-evidence-cards article:nth-child(4),
   .lt-evidence-cards article:nth-child(5) {
-    grid-column: span 3;
+    grid-column: 1;
   }
 
   .lt-snapshot-restored {
