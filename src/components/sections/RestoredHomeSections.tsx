@@ -61,19 +61,19 @@ export function BuyerBehaviour() {
   ];
 
   return (
-    <section className="section-light-muted py-16 sm:py-20">
+    <section className="lt-typography-polish section-light-muted py-16 sm:py-20">
       <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
         <div className="grid items-end gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div>
             <span className="section-eyebrow text-[#C8A24A]">The Buyer Shift</span>
-            <h2 className="mt-3 max-w-2xl text-3xl font-bold tracking-[-0.03em] text-white sm:text-[40px]">{homepage.shift.title}</h2>
+            <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-[-0.025em] sm:text-[40px]">{homepage.shift.title}</h2>
             <p className="mt-4 max-w-2xl text-base leading-7 text-white/72">{homepage.shift.description}</p>
           </div>
           <div className="lt-uniform-grid lt-buyer-cards grid gap-3 sm:grid-cols-2">
             {steps.map(([title, copy], index) => (
               <div key={title} className="light-card flex items-start gap-3 p-4">
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-[#C8A24A]/16 bg-white/5 text-[11px] font-bold text-[#C8A24A]">0{index + 1}</span>
-                <div><h3 className="text-base font-bold text-white">{title}</h3><p className="mt-1 text-[13px] leading-5 text-white/62">{copy}</p></div>
+                <div><h3 className="text-base font-medium">{title}</h3><p className="mt-1 text-[13px] leading-5">{copy}</p></div>
               </div>
             ))}
           </div>
@@ -85,19 +85,19 @@ export function BuyerBehaviour() {
 
 export function FiveGates() {
   return (
-    <section id="how-it-works" className="scroll-target section-light-connected py-16 sm:py-20">
+    <section id="how-it-works" className="lt-typography-polish scroll-target section-light-connected py-16 sm:py-20">
       <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <span className="section-eyebrow text-[#C8A24A]">The Five Gates Method</span>
-          <h2 className="mt-3 text-3xl font-bold tracking-[-0.03em] text-white sm:text-[40px]">{homepage.methodologyTitle}</h2>
+          <h2 className="mt-3 text-3xl font-semibold tracking-[-0.025em] sm:text-[40px]">{homepage.methodologyTitle}</h2>
           <p className="mt-4 text-base leading-7 text-white/72">A practical readiness profile built from the questions real buyers ask and the evidence AI systems surface.</p>
         </div>
         <ol className="lt-restored-gates mt-9">
           {fiveGates.map((gate, index) => (
             <li key={gate.name} className="light-card p-5">
               <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#C8A24A]">Gate 0{index + 1}</span>
-              <h3 className="mt-3 text-xl font-bold tracking-[-0.02em] text-white">{gate.name}</h3>
-              <p className="mt-2.5 text-[14px] leading-6 text-white/72">{gate.question}</p>
+              <h3 className="mt-3 text-xl font-medium tracking-[-0.015em]">{gate.name}</h3>
+              <p className="mt-2.5 text-[14px] leading-6">{gate.question}</p>
             </li>
           ))}
         </ol>
@@ -111,31 +111,34 @@ export function FiveGates() {
 
 export function SnapshotOffer() {
   return (
-    <section id="services" className="scroll-target section-dark-connected py-16 text-white sm:py-20">
+    <section id="services" className="lt-typography-polish lt-snapshot-section-polished scroll-target section-dark-connected py-12 sm:py-14">
       <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
-        <div className="lt-snapshot-restored platform-card">
-          <div className="lt-snapshot-price-panel">
-            <span className="platform-badge">Founding offer</span>
-            <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.18em] text-white/48">AI Visibility Snapshot</p>
-            <strong className="mt-2 block text-4xl font-bold tracking-[-0.035em] text-white">{snapshotOffer.foundingPrice}</strong>
-            <p className="mt-2 max-w-xs text-[13px] leading-5 text-white/58">{snapshotOffer.standardPrice} standard {snapshotOffer.standardPriceTiming}</p>
-            <div className="mt-4 border-t border-white/10 pt-4 text-[11px] font-semibold uppercase tracking-[0.1em] text-[#E9D491]">{snapshotOffer.turnaround}</div>
-          </div>
-          <div className="lt-snapshot-content-panel">
-            <span className="section-eyebrow text-[#C8A24A]">Evidence first. Priority fixes next.</span>
-            <h2 className="mt-3 max-w-2xl text-3xl font-bold tracking-[-0.03em] text-white sm:text-[40px]">See exactly what AI says about your business.</h2>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-white/72">{snapshotOffer.shortScope}</p>
-            <ul className="mt-5 grid gap-2.5 sm:grid-cols-2">
-              {snapshotOffer.inclusions.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-[14px] leading-6 text-white/76"><Check aria-hidden="true" className="mt-1 shrink-0 text-[#C8A24A]" size={16} />{item}</li>
-              ))}
-            </ul>
-            <div className="mt-5 rounded-md border border-[#C8A24A]/18 bg-[#C8A24A]/6 p-3.5 text-[13px] leading-6 text-white/68">
-              <strong className="text-white">Minimum-5 Guarantee:</strong> {snapshotOffer.guarantee}
+        <article className="lt-snapshot-restored platform-card">
+          <div className="lt-snapshot-top">
+            <div className="lt-snapshot-price-panel">
+              <span className="platform-badge">Founding offer</span>
+              <p className="lt-snapshot-product-name">AI Visibility Snapshot</p>
+              <strong className="lt-snapshot-price">{snapshotOffer.foundingPrice}</strong>
+              <p className="lt-snapshot-standard-price">{snapshotOffer.standardPrice} standard {snapshotOffer.standardPriceTiming}</p>
+              <div className="lt-snapshot-turnaround">{snapshotOffer.turnaround}</div>
             </div>
-            <PrimaryCta className="mt-5" />
+            <div className="lt-snapshot-content-panel">
+              <span className="section-eyebrow text-[#C8A24A]">Evidence first. Priority fixes next.</span>
+              <h2>See exactly what AI says about your business.</h2>
+              <p className="lt-snapshot-scope">{snapshotOffer.shortScope}</p>
+            </div>
           </div>
-        </div>
+          <ul className="lt-snapshot-features">
+            {snapshotOffer.inclusions.map((item) => (
+              <li key={item}><Check aria-hidden="true" size={14} />{item}</li>
+            ))}
+          </ul>
+          <div className="lt-snapshot-guarantee">
+            <strong>Minimum-5 Guarantee</strong>
+            <p>{snapshotOffer.guarantee}</p>
+          </div>
+          <PrimaryCta className="lt-snapshot-cta" />
+        </article>
       </div>
     </section>
   );
@@ -143,18 +146,18 @@ export function SnapshotOffer() {
 
 export function EvidenceFindings() {
   return (
-    <section className="section-light-muted py-16 sm:py-20">
+    <section className="lt-typography-polish section-light-muted py-16 sm:py-20">
       <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <span className="section-eyebrow text-[#C8A24A]">Illustrative Finding Types</span>
-          <h2 className="mt-3 text-3xl font-bold tracking-[-0.03em] text-white sm:text-[40px]">Evidence, not theory.</h2>
+          <h2 className="mt-3 text-3xl font-semibold tracking-[-0.025em] sm:text-[40px]">Evidence, not theory.</h2>
           <p className="mt-4 text-base leading-7 text-white/64">Examples of the categories LionTech reviews. These are not claimed client outcomes.</p>
         </div>
         <div className="lt-evidence-cards mt-9">
           {homepage.evidenceTypes.map((item, index) => (
             <article key={item} className="light-card p-5">
               <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#C8A24A]">Finding {String(index + 1).padStart(2, '0')}</span>
-              <p className="mt-4 text-base font-bold leading-6 text-white">{item}</p>
+              <p className="lt-evidence-title mt-4 text-base leading-6">{item}</p>
             </article>
           ))}
         </div>
@@ -171,23 +174,23 @@ export function FixSprint() {
   ];
 
   return (
-    <section className="section-light-connected py-16 sm:py-20">
+    <section className="lt-typography-polish section-light-connected py-16 sm:py-20">
       <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <span className="section-eyebrow text-[#C8A24A]">Readiness Fix Sprint</span>
-          <h2 className="mt-3 text-3xl font-bold tracking-[-0.03em] text-white sm:text-[40px]">Finding the gap is useful. Fixing it is where the value begins.</h2>
+          <h2 className="mt-3 text-3xl font-semibold tracking-[-0.025em] sm:text-[40px]">Finding the gap is useful. Fixing it is where the value begins.</h2>
         </div>
         <div className="lt-uniform-grid lt-fix-cards mt-9 grid gap-4 md:grid-cols-3">
           {capabilities.map(({ icon: Icon, title, copy }) => (
-            <article key={title} className="light-card p-5">
+            <article key={title} className="lt-card-layout light-card p-5">
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md border border-[#C8A24A]/14 bg-white/5 text-[#C8A24A]"><Icon aria-hidden="true" size={24} /></div>
-              <h3 className="text-lg font-bold tracking-[-0.03em] text-white">{title}</h3>
-              <p className="mt-2.5 text-[14px] leading-6 text-white/72">{copy}</p>
+              <h3 className="text-lg font-medium tracking-[-0.02em]">{title}</h3>
+              <p className="mt-2.5 text-[14px] leading-6">{copy}</p>
             </article>
           ))}
         </div>
-        <div className="mt-6 flex flex-col justify-between gap-5 rounded-lg border border-[#C8A24A]/14 bg-[#020817]/72 p-5 sm:flex-row sm:items-center">
-          <div><strong className="text-xl text-white">{fixSprintOffer.price}</strong><p className="mt-1 text-[13px] leading-5 text-white/62">{fixSprintOffer.scope} {fixSprintOffer.duration}. {fixSprintOffer.credit}</p></div>
+        <div className="lt-fix-price-strip mt-5 flex flex-col justify-between gap-4 rounded-lg border border-[#C8A24A]/14 bg-[#020817]/72 sm:flex-row sm:items-center">
+          <div><strong>{fixSprintOffer.price}</strong><p>{fixSprintOffer.scope} {fixSprintOffer.duration}. {fixSprintOffer.credit}</p></div>
           <RouteLink className="lt-button lt-button-secondary shrink-0" href="/readiness-fix-sprint">Explore the Fix Sprint</RouteLink>
         </div>
       </div>
@@ -197,20 +200,20 @@ export function FixSprint() {
 
 export function ContinuityOffers() {
   return (
-    <section className="section-dark-connected py-16 text-white sm:py-20">
+    <section className="lt-typography-polish section-dark-connected py-16 sm:py-20">
       <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl"><span className="section-eyebrow text-[#C8A24A]">Ongoing Readiness</span><h2 className="mt-3 text-3xl font-bold tracking-[-0.03em] sm:text-[40px]">Stay accurate. Become actionable.</h2></div>
+        <div className="max-w-2xl"><span className="section-eyebrow text-[#C8A24A]">Ongoing Readiness</span><h2 className="mt-3 text-3xl font-semibold tracking-[-0.025em] sm:text-[40px]">Stay accurate. Become actionable.</h2></div>
         <div className="lt-uniform-grid lt-continuity-cards mt-9 grid gap-4 md:grid-cols-2">
-          <article className="dark-card p-6">
+          <article className="lt-continuity-card dark-card p-6">
             <ShieldCheck aria-hidden="true" className="text-[#C8A24A]" size={27} strokeWidth={1.5} />
-            <h3 className="mt-5 text-xl font-bold">AI Visibility Monitoring</h3><p className="mt-3 text-[14px] leading-6 text-white/66">{monitoringOffer.scope}</p>
-            <strong className="mt-5 block text-lg text-white">{monitoringOffer.price}</strong>
+            <h3 className="mt-5 text-xl font-medium">AI Visibility Monitoring</h3><p className="mt-3 text-[14px] leading-6">{monitoringOffer.scope}</p>
+            <strong className="lt-service-price mt-5 block">{monitoringOffer.price}</strong>
             <RouteLink className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#C8A24A] no-underline" href="/monitoring">Explore monitoring <ArrowRight size={14} /></RouteLink>
           </article>
-          <article className="dark-card p-6">
+          <article className="lt-continuity-card dark-card p-6">
             <Waypoints aria-hidden="true" className="text-[#C8A24A]" size={27} strokeWidth={1.5} />
-            <h3 className="mt-5 text-xl font-bold">Agent Action Sprints</h3><p className="mt-3 text-[14px] leading-6 text-white/66">Improve quote, booking, enquiry, availability or information paths when a documented business case exists.</p>
-            <strong className="mt-5 block text-lg text-white">£1,500-£3,500 per workflow</strong>
+            <h3 className="mt-5 text-xl font-medium">Agent Action Sprints</h3><p className="mt-3 text-[14px] leading-6">Improve quote, booking, enquiry, availability or information paths when a documented business case exists.</p>
+            <strong className="lt-service-price mt-5 block">£1,500-£3,500 per workflow</strong>
             <RouteLink className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#C8A24A] no-underline" href="/ai-business-readiness">See the readiness path <ArrowRight size={14} /></RouteLink>
           </article>
         </div>
@@ -264,9 +267,9 @@ export function CompanyBrain() {
   ];
 
   return (
-    <section className="section-light-muted py-16 sm:py-20">
+    <section className="lt-typography-polish section-light-muted py-16 sm:py-20">
       <div className="mx-auto grid max-w-[1320px] items-center gap-9 px-4 sm:px-6 lg:grid-cols-[0.82fr_1.18fr] lg:px-8">
-        <div><span className="section-eyebrow text-[#C8A24A]">{companyBrainOffer.stage}</span><h2 className="mt-3 text-3xl font-bold tracking-[-0.03em] text-white sm:text-[40px]">When your business is ready to bring AI inside.</h2><p className="mt-4 text-base leading-7 text-white/72">{companyBrainOffer.scope}</p><RouteLink className="lt-button lt-button-secondary mt-6" href="/company-brain">Explore Company Brain</RouteLink></div>
+        <div><span className="section-eyebrow text-[#C8A24A]">{companyBrainOffer.stage}</span><h2 className="mt-3 text-3xl font-semibold tracking-[-0.025em] sm:text-[40px]">When your business is ready to bring AI inside.</h2><p className="mt-4 text-base leading-7">{companyBrainOffer.scope}</p><RouteLink className="lt-button lt-button-secondary mt-6" href="/company-brain">Explore Company Brain</RouteLink></div>
         <div className="dark-card p-5 sm:p-7" aria-label="Company Brain operating layer diagram">
           <div className="lt-brain-diagram">
             {nodes.map(({ icon: Icon, label }, index) => (
@@ -290,11 +293,11 @@ export function CompanyTrust() {
   ];
 
   return (
-    <section id="company" className="scroll-target section-light-connected py-16 sm:py-20">
+    <section id="company" className="lt-typography-polish scroll-target section-light-connected py-16 sm:py-20">
       <div className="mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-9 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
-        <div><span className="section-eyebrow text-[#C8A24A]">Company</span><h2 className="mt-3 max-w-2xl text-3xl font-bold tracking-[-0.03em] text-white sm:text-[40px]">Engineered for Serious Business</h2><p className="mt-4 max-w-2xl text-base leading-7 text-white/72">Lion Tech Innovations Ltd tests how AI systems understand a business, documents the evidence, and implements approved fixes with production-grade discipline.</p></div>
+        <div><span className="section-eyebrow text-[#C8A24A]">Company</span><h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-[-0.025em] sm:text-[40px]">Engineered for Serious Business</h2><p className="mt-4 max-w-2xl text-base leading-7">Lion Tech Innovations Ltd tests how AI systems understand a business, documents the evidence, and implements approved fixes with production-grade discipline.</p></div>
         <div className="lt-uniform-grid lt-company-proof-grid grid gap-3.5 sm:grid-cols-2">
-          {highlights.map((item) => <div key={item} className="company-card flex items-start gap-3 p-4"><span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#C8A24A]/14 bg-white/5 text-[#C8A24A]"><CheckCircle2 aria-hidden="true" size={14} /></span><p className="text-[14px] font-semibold leading-6 text-white/72">{item}</p></div>)}
+          {highlights.map((item) => <div key={item} className="company-card flex items-start gap-3 p-4"><span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#C8A24A]/14 bg-white/5 text-[#C8A24A]"><CheckCircle2 aria-hidden="true" size={14} /></span><p className="text-[14px] font-medium leading-6">{item}</p></div>)}
         </div>
       </div>
     </section>
