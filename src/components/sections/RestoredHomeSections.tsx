@@ -189,9 +189,9 @@ export function FixSprint() {
             </article>
           ))}
         </div>
-        <div className="lt-fix-price-strip mt-5 flex flex-col justify-between gap-4 rounded-lg border border-[#C8A24A]/14 bg-[#020817]/72 sm:flex-row sm:items-center">
+        <div className="lt-offer-card lt-fix-price-strip mt-5 flex flex-col justify-between gap-4 rounded-lg border border-[#C8A24A]/14 bg-[#020817]/72 sm:flex-row sm:items-center">
           <div><strong>{fixSprintOffer.price}</strong><p>{fixSprintOffer.scope} {fixSprintOffer.duration}. {fixSprintOffer.credit}</p></div>
-          <RouteLink className="lt-button lt-button-secondary shrink-0" href="/readiness-fix-sprint">Explore the Fix Sprint</RouteLink>
+          <RouteLink className="lt-button lt-button-primary lt-fix-cta shrink-0" href="/readiness-fix-sprint">Explore the Fix Sprint</RouteLink>
         </div>
       </div>
     </section>
@@ -204,13 +204,13 @@ export function ContinuityOffers() {
       <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl"><span className="section-eyebrow text-[#C8A24A]">Ongoing Readiness</span><h2 className="mt-3 text-3xl font-semibold tracking-[-0.025em] sm:text-[40px]">Stay accurate. Become actionable.</h2></div>
         <div className="lt-uniform-grid lt-continuity-cards mt-9 grid gap-4 md:grid-cols-2">
-          <article className="lt-continuity-card dark-card p-6">
+          <article className="lt-offer-card lt-continuity-card dark-card p-6">
             <ShieldCheck aria-hidden="true" className="text-[#C8A24A]" size={27} strokeWidth={1.5} />
             <h3 className="mt-5 text-xl font-medium">AI Visibility Monitoring</h3><p className="mt-3 text-[14px] leading-6">{monitoringOffer.scope}</p>
             <strong className="lt-service-price mt-5 block">{monitoringOffer.price}</strong>
             <RouteLink className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#C8A24A] no-underline" href="/monitoring">Explore monitoring <ArrowRight size={14} /></RouteLink>
           </article>
-          <article className="lt-continuity-card dark-card p-6">
+          <article className="lt-offer-card lt-continuity-card dark-card p-6">
             <Waypoints aria-hidden="true" className="text-[#C8A24A]" size={27} strokeWidth={1.5} />
             <h3 className="mt-5 text-xl font-medium">Agent Action Sprints</h3><p className="mt-3 text-[14px] leading-6">Improve quote, booking, enquiry, availability or information paths when a documented business case exists.</p>
             <strong className="lt-service-price mt-5 block">£1,500-£3,500 per workflow</strong>
