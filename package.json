@@ -8,6 +8,7 @@
     "build": "vite build && node scripts/prerender.mjs",
     "preview": "vite preview",
     "test:browser-console": "npm run build && node scripts/check-browser-console.mjs",
+    "test:snapshot-url": "npm run build && node scripts/check-snapshot-url-normalisation.mjs",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit"
   },

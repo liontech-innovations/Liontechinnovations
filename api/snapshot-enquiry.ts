@@ -1,3 +1,5 @@
+import { normalizeWebsiteUrl } from '../src/lib/normalizeWebsiteUrl.js';
+
 type SnapshotEnquiry = {
   name?: unknown;
   email?: unknown;
@@ -41,15 +43,6 @@ function isEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
-function isPublicHttpUrl(value: string) {
-  try {
-    const url = new URL(value);
-    return (url.protocol === 'http:' || url.protocol === 'https:') && Boolean(url.hostname);
-  } catch {
-    return false;
-  }
-}
-
 export default async function handler(request: Request): Promise<Response> {
   if (request.method !== 'POST') return json({ ok: false, error: 'Method not allowed' }, 405);
 
@@ -72,7 +65,7 @@ export default async function handler(request: Request): Promise<Response> {
     name: clean(body.name, 100),
     email: clean(body.email, 180).toLowerCase(),
     company: clean(body.company, 160),
-    websiteUrl: clean(body.websiteUrl, 500),
+    websiteUrl: normalizeWebsiteUrl(clean(body.websiteUrl, 500)) || '',
     primaryService: clean(body.primaryService, 220),
     primaryLocation: clean(body.primaryLocation, 180),
     competitor: clean(body.competitor, 220),
@@ -82,7 +75,7 @@ export default async function handler(request: Request): Promise<Response> {
     !enquiry.name ||
     !isEmail(enquiry.email) ||
     !enquiry.company ||
-    !isPublicHttpUrl(enquiry.websiteUrl) ||
+    !enquiry.websiteUrl ||
     !enquiry.primaryService ||
     !enquiry.primaryLocation ||
     body.consent !== true

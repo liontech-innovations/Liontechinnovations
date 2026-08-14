@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { normalizeWebsiteUrl } from '../lib/normalizeWebsiteUrl.js';
 import { RouteLink } from './ui/RouteLink';
 
-type FormState = 'idle' | 'submitting' | 'success' | 'error';
+type FormState = 'idle' | 'submitting' | 'success' | 'error' | 'website-error';
 
 const initialValues = {
   name: '',
@@ -21,13 +22,19 @@ export function SnapshotEnquiryForm() {
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const websiteUrl = normalizeWebsiteUrl(values.websiteUrl);
+    if (!websiteUrl) {
+      setState('website-error');
+      return;
+    }
+
     setState('submitting');
 
     try {
       const response = await fetch('/api/snapshot-enquiry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ ...values, websiteUrl }),
       });
       setState(response.ok ? 'success' : 'error');
       if (response.ok) setValues(initialValues);
@@ -64,8 +71,8 @@ export function SnapshotEnquiryForm() {
           <input name="company" required autoComplete="organization" value={values.company} onChange={(event) => setValues({ ...values, company: event.target.value })} />
         </label>
         <label>
-          Website URL
-          <input name="websiteUrl" required type="url" inputMode="url" placeholder="https://" value={values.websiteUrl} onChange={(event) => setValues({ ...values, websiteUrl: event.target.value })} />
+          Website or domain
+          <input name="websiteUrl" required type="text" inputMode="url" placeholder="example.co.uk" value={values.websiteUrl} onChange={(event) => setValues({ ...values, websiteUrl: event.target.value })} />
         </label>
         <label>
           Primary service
@@ -99,6 +106,12 @@ export function SnapshotEnquiryForm() {
       {state === 'error' && (
         <p className="lt-form-error" role="alert">
           We could not send the request. Email contact@liontechinnovations.co.uk instead.
+        </p>
+      )}
+
+      {state === 'website-error' && (
+        <p className="lt-form-error" role="alert">
+          Enter a valid website or domain, such as example.co.uk.
         </p>
       )}
 
