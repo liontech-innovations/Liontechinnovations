@@ -80,6 +80,15 @@ Operational instruction outside the codebase:
 
 ## Pre-merge gate
 
+Hydration and browser-console regression gate:
+
+```bash
+npx playwright install chromium
+npm run test:browser-console
+```
+
+This production-preview check must cover every core marketing route plus the legal and CareOps direct-load routes, and must finish with zero React hydration errors, browser console errors and page errors.
+
 - [x] Expected starting head `9cd3ebde2b1cec0730086c243d2832791735c2c7` verified locally and on origin before review.
 - [x] `npm run lint` passed.
 - [x] `npm run build` passed and prerendered nine core marketing routes.

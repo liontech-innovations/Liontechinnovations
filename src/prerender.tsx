@@ -3,14 +3,27 @@ import { renderToString } from 'react-dom/server';
 import App from './App';
 import { company } from './content/company';
 import { routeSeo, type MarketingRoutePath } from './content/routeSeo';
+import { routeMeta } from './legacy/LegacySite';
 
 type RuntimeWithWindow = typeof globalThis & { window?: Window & typeof globalThis };
 
 const runtime = globalThis as RuntimeWithWindow;
 
-export const prerenderRoutes = Object.keys(routeSeo) as MarketingRoutePath[];
+const legacyPrerenderRoutes = [
+  '/privacy-policy',
+  '/terms-and-conditions',
+  '/careops/lost-enquiry-recovery',
+  '/careops/command-centre',
+] as const;
 
-function createPrerenderWindow(pathname: MarketingRoutePath) {
+type PrerenderRoutePath = MarketingRoutePath | (typeof legacyPrerenderRoutes)[number];
+
+export const prerenderRoutes: PrerenderRoutePath[] = [
+  ...(Object.keys(routeSeo) as MarketingRoutePath[]),
+  ...legacyPrerenderRoutes,
+];
+
+function createPrerenderWindow(pathname: PrerenderRoutePath) {
   return {
     location: {
       hash: '',
@@ -26,8 +39,10 @@ function createPrerenderWindow(pathname: MarketingRoutePath) {
   } as unknown as Window & typeof globalThis;
 }
 
-export function renderMarketingRoute(pathname: MarketingRoutePath) {
-  const seo = routeSeo[pathname];
+export function renderMarketingRoute(pathname: PrerenderRoutePath) {
+  const seo = pathname in routeSeo
+    ? routeSeo[pathname as MarketingRoutePath]
+    : { ...routeMeta[pathname as keyof typeof routeMeta], path: pathname };
   if (!seo) throw new Error(`Missing SEO configuration for ${pathname}`);
 
   const previousWindow = runtime.window;

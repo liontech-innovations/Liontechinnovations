@@ -46,6 +46,22 @@
       "destination": "/contact/index.html"
     },
     {
+      "source": "/privacy-policy",
+      "destination": "/privacy-policy/index.html"
+    },
+    {
+      "source": "/terms-and-conditions",
+      "destination": "/terms-and-conditions/index.html"
+    },
+    {
+      "source": "/careops/lost-enquiry-recovery",
+      "destination": "/careops/lost-enquiry-recovery/index.html"
+    },
+    {
+      "source": "/careops/command-centre",
+      "destination": "/careops/command-centre/index.html"
+    },
+    {
       "source": "/careops/free-check",
       "destination": "/careops/free-check/index.html"
     },
