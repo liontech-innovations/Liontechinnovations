@@ -52,7 +52,7 @@ const careOpsPaymentLinks = {
   commandRecoveryMonitoring: process.env.NEXT_PUBLIC_STRIPE_CAREOPS_COMMAND_RECOVERY_MONITORING_URL || '',
 };
 
-const routeMeta = {
+export const routeMeta = {
   '/': {
     title: 'Lion Tech Innovations | UK AI Infrastructure Operator',
     description: 'Lion Tech Innovations Ltd is a UK AI infrastructure company building operational automation systems, SaaS platforms, and production-ready digital workflows.',

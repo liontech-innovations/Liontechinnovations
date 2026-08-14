@@ -73,7 +73,7 @@ try {
     await writeFile(outputPath, rendered, 'utf8');
   }
 
-  process.stdout.write(`Prerendered ${prerenderRoutes.length} marketing routes.\n`);
+  process.stdout.write(`Prerendered ${prerenderRoutes.length} routes.\n`);
 } finally {
   await vite.close();
 }
