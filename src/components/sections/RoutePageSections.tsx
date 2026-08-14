@@ -91,7 +91,7 @@ type OfferCardProps = {
   price?: string;
   href: string;
   ctaLabel: string;
-  featured?: boolean;
+  variant?: "entry" | "recommended" | "continuity" | "advanced" | "premium";
   summaryRows?: readonly string[];
 };
 
@@ -102,11 +102,11 @@ export function OfferCard({
   price,
   href,
   ctaLabel,
-  featured = false,
+  variant,
   summaryRows = [],
 }: OfferCardProps) {
   return (
-    <article className={`lt-commercial-card lt-route-offer-card${featured ? " is-featured" : ""}`}>
+    <article className={`lt-commercial-card lt-route-offer-card${variant ? ` is-${variant}` : ""}`}>
       <div className="lt-route-offer-card-copy">
         {eyebrow ? <p className="lt-route-card-label">{eyebrow}</p> : null}
         <h3>{title}</h3>

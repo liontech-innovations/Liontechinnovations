@@ -27,23 +27,24 @@ export function MonitoringPage() {
         <RouteHeading eyebrow="CONTINUITY AND ACTION" title="Two ways to keep moving" description="Monitor the questions that matter, then improve a proven customer action path when the evidence supports it." />
         <div className="lt-route-continuity-grid">
           <OfferCard
-            eyebrow="MONTHLY CONTINUITY"
+            eyebrow="MONTHLY OVERSIGHT"
             title="AI Visibility Monitoring"
             description={monitoringOffer.scope}
             price={monitoringOffer.price}
             summaryRows={['Agreed priority buyer questions', 'Material factual and competitor movement', 'Concise monthly report']}
             href="/contact"
-            ctaLabel="Discuss monitoring"
-            featured
+            ctaLabel="Add Monitoring"
+            variant="continuity"
           />
           <OfferCard
-            eyebrow="FOCUSED WORKFLOW"
+            eyebrow="ADVANCED WORKFLOW"
             title="Agent Action Sprints"
             description="Improve a proven quote, booking, enquiry, availability or information retrieval path."
             price="£1,500-£3,500 per workflow"
             summaryRows={['Focused customer action path', 'Separately scoped and approved', 'Clear human ownership']}
             href="/contact"
-            ctaLabel="Discuss an Agent Action"
+            ctaLabel="Build an Action Path"
+            variant="advanced"
           />
         </div>
       </RouteSection>

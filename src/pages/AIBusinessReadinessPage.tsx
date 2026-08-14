@@ -44,55 +44,59 @@ export function AIBusinessReadinessPage() {
       <RouteSection>
         <RouteHeading
           eyebrow="A CONTROLLED PATH"
-          title="The business readiness path"
-          description="Start with what customer-facing AI systems can see now. Progress only when the evidence and commercial case support the next step."
+          title="Start small. Fix what matters. Build deeper when the case is proven."
+          description="Begin with a low-risk Snapshot, then move into implementation, monitoring and advanced AI infrastructure only where the evidence supports it."
         />
         <div className="lt-route-offer-grid">
           <OfferCard
-            eyebrow="01 · EVIDENCE"
+            eyebrow="START HERE"
             title={snapshotOffer.name}
             description="See the evidence and the priority gaps."
             price={snapshotOffer.foundingPrice}
-            summaryRows={[snapshotOffer.turnaround, snapshotOffer.inclusions[0], snapshotOffer.inclusions[4]]}
+            summaryRows={[snapshotOffer.turnaround, snapshotOffer.inclusions[0], fixSprintOffer.credit]}
             href="/ai-visibility-snapshot"
-            ctaLabel="Explore the Snapshot"
-            featured
+            ctaLabel="Start with Snapshot"
+            variant="entry"
           />
           <OfferCard
-            eyebrow="02 · IMPLEMENT"
+            eyebrow="RECOMMENDED NEXT STEP"
             title={fixSprintOffer.name}
             description="Implement up to five agreed priority fixes."
             price={fixSprintOffer.price}
             summaryRows={[fixSprintOffer.duration, fixSprintOffer.scope, fixSprintOffer.credit]}
             href="/readiness-fix-sprint"
             ctaLabel="Explore the Fix Sprint"
+            variant="recommended"
           />
           <OfferCard
-            eyebrow="03 · MONITOR"
+            eyebrow="MONTHLY OVERSIGHT"
             title={monitoringOffer.name}
             description="Track agreed questions and material movement."
             price={monitoringOffer.price}
             summaryRows={['Agreed priority buyer questions', 'Material factual and competitor movement', 'Concise monthly report']}
             href="/monitoring"
             ctaLabel="Explore Monitoring"
+            variant="continuity"
           />
           <OfferCard
-            eyebrow="04 · ACT"
+            eyebrow="ADVANCED WORKFLOW"
             title="Agent Action Sprints"
             description="Improve a proven quote, booking, enquiry or information path."
             price="£1,500-£3,500 per workflow"
             summaryRows={['Quote, booking or enquiry path', 'Separately scoped and approved', 'Human-owned workflow boundaries']}
             href="/monitoring"
             ctaLabel="See Agent Actions"
+            variant="advanced"
           />
           <OfferCard
-            eyebrow="05 · OPERATE"
+            eyebrow="PHASE 4 · CUSTOM"
             title={companyBrainOffer.name}
-            description="Bring persistent knowledge and approved workflows inside."
+            description="A relationship-led operating layer after readiness work."
             price={companyBrainOffer.stage}
             summaryRows={['Persistent company knowledge', 'Approved workflows and decisions', 'Role-scoped access']}
             href="/company-brain"
             ctaLabel="Explore Company Brain"
+            variant="premium"
           />
         </div>
       </RouteSection>
