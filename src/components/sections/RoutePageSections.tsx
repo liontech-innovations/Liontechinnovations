@@ -72,7 +72,7 @@ type FeatureCardProps = {
 
 export function FeatureCard({ title, children, icon: Icon, className = "" }: FeatureCardProps) {
   return (
-    <article className={`lt-route-card ${className}`.trim()}>
+    <article className={`lt-standard-card lt-route-card ${className}`.trim()}>
       {Icon ? (
         <span className="lt-route-card-icon" aria-hidden="true">
           <Icon size={21} strokeWidth={1.8} />
@@ -92,6 +92,7 @@ type OfferCardProps = {
   href: string;
   ctaLabel: string;
   featured?: boolean;
+  summaryRows?: readonly string[];
 };
 
 export function OfferCard({
@@ -102,17 +103,28 @@ export function OfferCard({
   href,
   ctaLabel,
   featured = false,
+  summaryRows = [],
 }: OfferCardProps) {
   return (
-    <article className={`lt-route-offer-card${featured ? " is-featured" : ""}`}>
-      <div>
+    <article className={`lt-commercial-card lt-route-offer-card${featured ? " is-featured" : ""}`}>
+      <div className="lt-route-offer-card-copy">
         {eyebrow ? <p className="lt-route-card-label">{eyebrow}</p> : null}
         <h3>{title}</h3>
         <p>{description}</p>
       </div>
+      {price ? <strong className="lt-route-offer-price">{price}</strong> : null}
+      {summaryRows.length > 0 ? (
+        <ul className="lt-route-offer-summary">
+          {summaryRows.map((row) => (
+            <li key={row}>
+              <Check size={14} aria-hidden="true" />
+              <span>{row}</span>
+            </li>
+          ))}
+        </ul>
+      ) : null}
       <div className="lt-route-offer-card-action">
-        {price ? <strong>{price}</strong> : null}
-        <RouteLink href={href} className="lt-route-text-link">
+        <RouteLink href={href} className="lt-button lt-button-primary lt-route-offer-cta">
           {ctaLabel}
           <ArrowRight size={16} aria-hidden="true" />
         </RouteLink>
@@ -125,7 +137,7 @@ export function FiveGatesGrid() {
   return (
     <div className="lt-route-gates-grid">
       {fiveGates.map((gate, index) => (
-        <article className="lt-route-gate" key={gate.name}>
+        <article className="lt-standard-card lt-route-gate" key={gate.name}>
           <span>{String(index + 1).padStart(2, "0")}</span>
           <h3>{gate.name}</h3>
           <p>{gate.question}</p>
@@ -155,7 +167,7 @@ export function RouteCta({
   return (
     <section className="lt-route-cta-section">
       <div className="lt-shell">
-        <div className="lt-route-cta">
+        <div className="lt-large-panel lt-route-cta">
           <div>
             <p className="lt-kicker">{eyebrow}</p>
             <h2>{title}</h2>
@@ -177,7 +189,7 @@ export function RouteCta({
 
 export function SnapshotPricingCard() {
   return (
-    <article className="lt-route-pricing-card">
+    <article className="lt-commercial-card lt-route-pricing-card">
       <div className="lt-route-pricing-card-main">
         <p className="lt-route-card-label">Founding offer</p>
         <h3>{snapshotOffer.name}</h3>

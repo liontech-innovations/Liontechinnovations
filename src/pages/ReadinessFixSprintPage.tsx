@@ -36,12 +36,17 @@ export function ReadinessFixSprintPage() {
           </FeatureCard>
         </div>
 
-        <div className="lt-route-price-strip">
-          <div><span>Starting at</span><strong>£2,750</strong></div>
-          <div><span>Delivery cap</span><strong>Up to five priority fixes</strong></div>
-          <div><span>Delivery window</span><strong>Ten-business-day delivery cap</strong></div>
+        <article className="lt-commercial-card lt-route-price-strip">
+          <p className="lt-route-card-label">IMPLEMENTATION OFFER</p>
+          <h3>{fixSprintOffer.name}</h3>
+          <p>{fixSprintOffer.scope}</p>
+          <div className="lt-route-price-facts">
+            <div><span>Investment</span><strong>{fixSprintOffer.price}</strong></div>
+            <div><span>Delivery cap</span><strong>Up to five priority fixes</strong></div>
+            <div><span>Delivery window</span><strong>{fixSprintOffer.duration}</strong></div>
+          </div>
           <PrimaryCta label="Request a Snapshot First" />
-        </div>
+        </article>
       </RouteSection>
 
       <RouteSection tone="soft">

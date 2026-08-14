@@ -19,11 +19,11 @@ export function ContactPage() {
           </div>
           <aside className="lt-route-contact-aside">
             <RouteHeading eyebrow="AI VISIBILITY SNAPSHOT" title="Start with the minimum details" description={`${snapshotOffer.foundingPrice} founding price. ${snapshotOffer.turnaround}.`} />
-            <div className="lt-route-contact-card">
+            <div className="lt-standard-card lt-route-contact-card">
               <Mail size={20} aria-hidden="true" />
               <div><span>Email</span><a href={`mailto:${company.email}`}>{company.email}</a></div>
             </div>
-            <div className="lt-route-contact-card">
+            <div className="lt-standard-card lt-route-contact-card">
               <MapPin size={20} aria-hidden="true" />
               <div><span>Location</span><strong>{company.location}</strong></div>
             </div>

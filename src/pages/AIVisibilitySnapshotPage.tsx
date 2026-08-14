@@ -56,7 +56,7 @@ export function AIVisibilitySnapshotPage() {
       </RouteSection>
 
       <RouteSection>
-        <div className="lt-route-guarantee">
+        <div className="lt-large-panel lt-route-guarantee">
           <p className="lt-route-card-label">MINIMUM-5 GUARANTEE</p>
           <h2>A useful finding threshold, written into the offer.</h2>
           <p>{snapshotOffer.guarantee}</p>

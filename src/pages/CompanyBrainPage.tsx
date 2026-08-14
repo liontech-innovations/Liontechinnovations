@@ -36,7 +36,7 @@ export function CompanyBrainPage() {
           {flow.map((item, index) => {
             const Icon = item.icon;
             return (
-              <div className="lt-route-brain-node" key={item.title}>
+              <div className="lt-standard-card lt-route-brain-node" key={item.title}>
                 <span><Icon size={21} strokeWidth={1.8} aria-hidden="true" /></span>
                 <strong>{item.title}</strong>
                 {index < flow.length - 1 ? <ArrowRight className="lt-route-brain-arrow" size={18} aria-hidden="true" /> : null}
@@ -57,7 +57,7 @@ export function CompanyBrainPage() {
               <li>A defined operational use case</li>
             </ul>
           </div>
-          <div className="lt-route-relationship-panel">
+          <div className="lt-large-panel lt-route-relationship-panel">
             <p className="lt-route-card-label">RELATIONSHIP-LED DELIVERY</p>
             <h2>Scoped with the business, not sold as a login.</h2>
             <p>The operating layer is shaped around real people, approved knowledge and repeated workflows. It is not a speculative product imposed before the business case is clear.</p>

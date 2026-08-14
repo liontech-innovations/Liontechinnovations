@@ -1,11 +1,31 @@
 import { Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { navigation } from '../../content/navigation';
+import { getActiveNavigationHref, navigation } from '../../content/navigation';
 import { PrimaryCta } from '../ui/PrimaryCta';
 import { RouteLink } from '../ui/RouteLink';
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [currentLocation, setCurrentLocation] = useState(() => ({
+    pathname: window.location.pathname,
+    hash: window.location.hash,
+  }));
+
+  const activeHref = getActiveNavigationHref(currentLocation.pathname, currentLocation.hash);
+
+  useEffect(() => {
+    const updateLocation = () => setCurrentLocation({
+      pathname: window.location.pathname,
+      hash: window.location.hash,
+    });
+
+    window.addEventListener('popstate', updateLocation);
+    window.addEventListener('hashchange', updateLocation);
+    return () => {
+      window.removeEventListener('popstate', updateLocation);
+      window.removeEventListener('hashchange', updateLocation);
+    };
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -25,7 +45,12 @@ export function SiteHeader() {
 
         <nav className="lt-desktop-nav" aria-label="Primary navigation">
           {navigation.map((item) => (
-            <RouteLink key={item.href} href={item.href}>
+            <RouteLink
+              key={item.href}
+              href={item.href}
+              className={activeHref === item.href ? 'is-active' : undefined}
+              aria-current={activeHref === item.href ? 'page' : undefined}
+            >
               {item.label}
             </RouteLink>
           ))}
@@ -50,7 +75,13 @@ export function SiteHeader() {
       {open && (
         <nav id="mobile-navigation" className="lt-mobile-nav" aria-label="Mobile navigation">
           {navigation.map((item) => (
-            <RouteLink key={item.href} href={item.href} onClick={() => setOpen(false)}>
+            <RouteLink
+              key={item.href}
+              href={item.href}
+              className={activeHref === item.href ? 'is-active' : undefined}
+              aria-current={activeHref === item.href ? 'page' : undefined}
+              onClick={() => setOpen(false)}
+            >
               {item.label}
             </RouteLink>
           ))}

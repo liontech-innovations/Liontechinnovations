@@ -3462,3 +3462,508 @@
     gap: 0.45rem;
   }
 }
+
+/* Global LionTech design lock
+   Centralises the standard card, commercial offer and large-panel language. */
+
+.marketing-site .lt-desktop-nav a {
+  position: relative;
+  padding-block: 0.65rem;
+}
+
+.marketing-site .lt-desktop-nav a::after {
+  position: absolute;
+  right: 0;
+  bottom: 0.2rem;
+  left: 0;
+  height: 2px;
+  background: var(--lt-gold);
+  content: '';
+  opacity: 0;
+  transform: scaleX(0.35);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.marketing-site .lt-desktop-nav a.is-active {
+  color: var(--lt-gold-light);
+}
+
+.marketing-site .lt-desktop-nav a.is-active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.marketing-site .lt-desktop-nav a:not(.is-active):hover,
+.marketing-site .lt-desktop-nav a:not(.is-active):focus-visible {
+  color: var(--lt-text);
+}
+
+.marketing-site .lt-standard-card {
+  border: 1px solid rgba(224, 191, 109, 0.24) !important;
+  border-top: 3px solid var(--lt-gold) !important;
+  border-radius: 10px !important;
+  background: linear-gradient(155deg, rgba(16, 36, 58, 0.94), rgba(7, 23, 39, 0.92)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035), 0 14px 34px rgba(0, 0, 0, 0.12);
+}
+
+.marketing-site .lt-standard-card h3 {
+  color: var(--lt-heading-soft) !important;
+}
+
+.marketing-site .lt-standard-card p:not(.lt-evidence-title) {
+  color: var(--lt-body) !important;
+}
+
+.marketing-site .lt-company-proof-grid .lt-standard-card p,
+.marketing-site .lt-standard-card .lt-evidence-title {
+  color: var(--lt-heading-soft) !important;
+}
+
+.marketing-site .lt-commercial-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(224, 191, 109, 0.34) !important;
+  border-top: 3px solid var(--lt-gold) !important;
+  border-radius: 10px !important;
+  background:
+    linear-gradient(145deg, rgba(200, 162, 74, 0.07), transparent 42%),
+    linear-gradient(155deg, rgba(16, 34, 56, 0.98), rgba(5, 17, 30, 0.98)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055), 0 18px 44px rgba(0, 0, 0, 0.2);
+}
+
+.marketing-site .lt-commercial-card.lt-offer-card::before {
+  display: none;
+}
+
+.marketing-site .lt-large-panel {
+  border: 1px solid rgba(224, 191, 109, 0.38) !important;
+  border-radius: 12px !important;
+  background:
+    radial-gradient(circle at 88% 10%, rgba(200, 162, 74, 0.13), transparent 18rem),
+    linear-gradient(135deg, rgba(16, 34, 56, 0.98), rgba(3, 12, 22, 0.98)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045), 0 20px 52px rgba(0, 0, 0, 0.17);
+}
+
+.lt-route-section {
+  padding-block: clamp(4rem, 5.5vw, 5.5rem);
+}
+
+.marketing-site .lt-route-hero h1 {
+  font-size: clamp(2.5rem, 3.5vw, 3.7rem);
+  font-weight: 560;
+  line-height: 1.02;
+}
+
+.marketing-site .lt-route-heading h2,
+.marketing-site .lt-route-cta h2,
+.marketing-site .lt-route-guarantee h2,
+.marketing-site .lt-route-relationship-panel h2,
+.marketing-site .lt-route-claims-panel h2 {
+  font-size: clamp(1.9rem, 2.8vw, 2.8rem);
+  font-weight: 560;
+  line-height: 1.07;
+}
+
+.lt-route-offer-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  align-items: stretch;
+}
+
+.lt-route-offer-card,
+.lt-route-offer-card:last-child {
+  min-height: 0;
+  height: 100%;
+  padding: 1.15rem;
+  grid-column: auto;
+  justify-content: flex-start;
+  gap: 0.85rem;
+}
+
+.lt-route-offer-card.is-featured {
+  border-color: rgba(224, 191, 109, 0.62) !important;
+}
+
+.lt-route-offer-card-copy {
+  display: flex;
+  min-height: 142px;
+  flex-direction: column;
+}
+
+.lt-route-offer-card .lt-route-card-label {
+  margin-bottom: 0.7rem;
+  font-size: 0.62rem;
+}
+
+.marketing-site .lt-route-offer-card h3 {
+  min-height: 2.75em;
+  margin-bottom: 0.55rem;
+  color: var(--lt-heading-soft);
+  font-size: clamp(1.12rem, 1.4vw, 1.32rem);
+  font-weight: 620;
+  line-height: 1.2;
+}
+
+.lt-route-offer-card-copy > p:last-child {
+  color: var(--lt-body);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.lt-route-offer-price {
+  display: block;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(224, 191, 109, 0.18);
+  color: var(--lt-price);
+  font-family: var(--lt-display-font);
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.lt-route-offer-summary {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  gap: 0.4rem;
+  list-style: none;
+}
+
+.lt-route-offer-summary li {
+  display: flex;
+  min-height: 38px;
+  padding: 0.45rem 0.5rem;
+  align-items: flex-start;
+  gap: 0.45rem;
+  border: 1px solid rgba(224, 191, 109, 0.12);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--lt-body);
+  font-size: 0.68rem;
+  line-height: 1.38;
+}
+
+.lt-route-offer-summary svg {
+  margin-top: 0.1rem;
+  flex: 0 0 auto;
+  color: var(--lt-gold);
+}
+
+.lt-route-offer-card-action {
+  width: 100%;
+  margin-top: auto;
+  align-items: stretch;
+}
+
+.lt-route-offer-cta {
+  width: 100%;
+  min-height: 40px;
+  padding-inline: 0.7rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  white-space: normal;
+}
+
+.lt-route-card,
+.lt-route-status-card {
+  padding: 1.3rem;
+}
+
+.lt-route-gate {
+  min-height: 205px;
+  padding: 1.25rem;
+}
+
+.lt-route-pricing-card {
+  grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+}
+
+.lt-route-pricing-card-main,
+.lt-route-pricing-card-aside {
+  padding: clamp(1.4rem, 2.5vw, 2rem);
+}
+
+.marketing-site .lt-route-pricing-card h3 {
+  margin-bottom: 0.9rem;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+}
+
+.lt-route-pricing-line strong {
+  font-size: clamp(1.75rem, 2.8vw, 2.35rem);
+  letter-spacing: -0.035em;
+}
+
+.lt-route-pricing-card-aside {
+  display: flex;
+  flex-direction: column;
+}
+
+.lt-route-pricing-card-aside .lt-button {
+  margin-top: auto;
+}
+
+.lt-route-price-strip {
+  display: flex;
+  width: min(100%, 720px);
+  margin: 1.25rem auto 0;
+  padding: 1.35rem;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.8rem;
+}
+
+.lt-route-price-strip > .lt-route-card-label {
+  margin-bottom: 0;
+}
+
+.marketing-site .lt-route-price-strip h3 {
+  margin: 0;
+  color: var(--lt-heading-soft);
+  font-size: 1.4rem;
+  font-weight: 620;
+}
+
+.lt-route-price-strip > p:not(.lt-route-card-label) {
+  margin: 0;
+  color: var(--lt-body);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.lt-route-price-strip > .lt-route-price-facts {
+  display: grid;
+  padding: 0;
+  grid-template-columns: 1fr;
+  gap: 0.4rem;
+  border: 0;
+}
+
+.lt-route-price-facts > div {
+  display: grid;
+  min-height: 46px;
+  padding: 0.55rem 0.65rem;
+  grid-template-columns: minmax(115px, 0.35fr) 1fr;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid rgba(224, 191, 109, 0.12);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.lt-route-price-strip .lt-button {
+  width: 100%;
+  margin: 0;
+}
+
+.lt-route-price-strip .lt-button span {
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
+.lt-fix-price-strip {
+  max-width: 1040px;
+  min-height: 0;
+  padding: 1.25rem;
+  align-items: stretch !important;
+}
+
+.lt-fix-price-strip .lt-route-card-label {
+  margin-bottom: 0.55rem;
+}
+
+.lt-fix-price-strip .lt-fix-cta {
+  width: 100%;
+}
+
+.lt-continuity-card {
+  min-height: 285px;
+}
+
+.lt-continuity-card > .lt-continuity-cta {
+  min-height: 42px;
+  margin-top: 0.8rem;
+  justify-content: center;
+  border-color: var(--lt-gold);
+  background: var(--lt-gold) !important;
+  color: var(--lt-ink-on-gold) !important;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+}
+
+.lt-route-process-line {
+  gap: 0.75rem;
+}
+
+.lt-route-process-line article,
+.lt-route-process-line article:first-child,
+.lt-route-process-line article:last-child {
+  min-height: 195px;
+  border-radius: 10px;
+}
+
+.lt-route-relationship-panel,
+.lt-route-claims-panel,
+.lt-route-guarantee {
+  padding: clamp(1.6rem, 3vw, 2.5rem);
+}
+
+.lt-route-cta-section {
+  padding-block: clamp(4rem, 5.5vw, 5.5rem);
+}
+
+.lt-route-cta {
+  padding: clamp(1.75rem, 3.5vw, 3rem);
+}
+
+.lt-final-cta-section {
+  padding-block: clamp(4rem, 6vw, 5.5rem);
+  border-top: 1px solid rgba(200, 162, 74, 0.16);
+  background: #020817;
+}
+
+.lt-final-cta {
+  padding: clamp(1.8rem, 4vw, 3.25rem);
+  color: var(--lt-text);
+}
+
+.lt-final-cta h2,
+.lt-final-cta p {
+  color: var(--lt-text);
+}
+
+.lt-final-cta .lt-button-primary {
+  border-color: var(--lt-gold);
+  background: var(--lt-gold);
+  color: var(--lt-ink-on-gold) !important;
+}
+
+/* Legacy and platform routes retain their assets and layout while sharing the
+   LionTech navigation hierarchy and controlled type scale. */
+
+.legacy-site {
+  --lt-legacy-heading: #f2eee5;
+  --lt-legacy-body: #b8c2cb;
+  --lt-legacy-gold: #c8a24a;
+  color: var(--lt-legacy-body);
+  font-family: "Segoe UI Variable Text", "Avenir Next", "Aptos", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+}
+
+.legacy-site .legacy-navbar {
+  min-height: 72px;
+}
+
+.legacy-site .legacy-nav-link {
+  position: relative;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.legacy-site .legacy-nav-link.is-active {
+  color: #e0bf6d;
+}
+
+.legacy-site .legacy-nav-link.is-active::after {
+  position: absolute;
+  right: 0;
+  bottom: -0.35rem;
+  left: 0;
+  height: 2px;
+  background: var(--lt-legacy-gold);
+  content: '';
+}
+
+.legacy-site main h1 {
+  max-width: 880px;
+  color: var(--lt-legacy-heading) !important;
+  font-size: clamp(2.1rem, 3.35vw, 2.9rem) !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.035em !important;
+  line-height: 1.06 !important;
+}
+
+.legacy-site main h2 {
+  color: var(--lt-legacy-heading) !important;
+  font-size: clamp(1.65rem, 2.65vw, 2.35rem) !important;
+  font-weight: 630 !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.12 !important;
+}
+
+.legacy-site main h3 {
+  color: var(--lt-legacy-heading) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.legacy-site main > section:first-child {
+  padding-top: clamp(6.25rem, 7vw, 7rem) !important;
+  padding-bottom: clamp(3rem, 4.5vw, 4rem) !important;
+}
+
+.legacy-site main.mx-auto {
+  padding-top: 6.75rem !important;
+}
+
+@media (max-width: 1180px) {
+  .lt-route-offer-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .marketing-site .lt-mobile-nav > a:not(.lt-button).is-active {
+    border-left: 3px solid var(--lt-gold);
+    background: rgba(200, 162, 74, 0.08);
+    padding-left: 1rem;
+    color: var(--lt-gold-light);
+  }
+
+  .legacy-site .legacy-nav-link.is-active {
+    box-shadow: inset 3px 0 0 var(--lt-legacy-gold);
+    background: rgba(200, 162, 74, 0.08);
+    padding-left: 1rem;
+  }
+
+  .legacy-site .legacy-nav-link.is-active::after {
+    display: none;
+  }
+
+  .lt-route-offer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lt-route-pricing-card {
+    grid-template-columns: 1fr;
+  }
+
+  .lt-route-offer-card-copy {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .lt-route-offer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lt-route-offer-card,
+  .lt-route-offer-card:last-child {
+    min-height: 0;
+  }
+
+  .lt-route-price-facts > div {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+
+  .lt-route-pricing-card-main,
+  .lt-route-pricing-card-aside {
+    padding: 1.25rem;
+  }
+
+  .legacy-site main h1 {
+    font-size: clamp(2rem, 10vw, 2.6rem) !important;
+  }
+}

@@ -71,7 +71,7 @@ export function BuyerBehaviour() {
           </div>
           <div className="lt-uniform-grid lt-buyer-cards grid gap-3 sm:grid-cols-2">
             {steps.map(([title, copy], index) => (
-              <div key={title} className="light-card flex items-start gap-3 p-4">
+              <div key={title} className="lt-standard-card light-card flex items-start gap-3 p-4">
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-[#C8A24A]/16 bg-white/5 text-[11px] font-bold text-[#C8A24A]">0{index + 1}</span>
                 <div><h3 className="text-base font-medium">{title}</h3><p className="mt-1 text-[13px] leading-5">{copy}</p></div>
               </div>
@@ -94,7 +94,7 @@ export function FiveGates() {
         </div>
         <ol className="lt-restored-gates mt-9">
           {fiveGates.map((gate, index) => (
-            <li key={gate.name} className="light-card p-5">
+            <li key={gate.name} className="lt-standard-card light-card p-5">
               <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#C8A24A]">Gate 0{index + 1}</span>
               <h3 className="mt-3 text-xl font-medium tracking-[-0.015em]">{gate.name}</h3>
               <p className="mt-2.5 text-[14px] leading-6">{gate.question}</p>
@@ -113,7 +113,7 @@ export function SnapshotOffer() {
   return (
     <section id="services" className="lt-typography-polish lt-snapshot-section-polished scroll-target section-dark-connected py-12 sm:py-14">
       <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
-        <article className="lt-snapshot-restored platform-card">
+        <article className="lt-commercial-card lt-snapshot-restored platform-card">
           <div className="lt-snapshot-top">
             <div className="lt-snapshot-price-panel">
               <span className="platform-badge">Founding offer</span>
@@ -155,7 +155,7 @@ export function EvidenceFindings() {
         </div>
         <div className="lt-evidence-cards mt-9">
           {homepage.evidenceTypes.map((item, index) => (
-            <article key={item} className="light-card p-5">
+            <article key={item} className="lt-standard-card light-card p-5">
               <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#C8A24A]">Finding {String(index + 1).padStart(2, '0')}</span>
               <p className="lt-evidence-title mt-4 text-base leading-6">{item}</p>
             </article>
@@ -182,15 +182,15 @@ export function FixSprint() {
         </div>
         <div className="lt-uniform-grid lt-fix-cards mt-9 grid gap-4 md:grid-cols-3">
           {capabilities.map(({ icon: Icon, title, copy }) => (
-            <article key={title} className="lt-card-layout light-card p-5">
+            <article key={title} className="lt-standard-card lt-card-layout light-card p-5">
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-md border border-[#C8A24A]/14 bg-white/5 text-[#C8A24A]"><Icon aria-hidden="true" size={24} /></div>
               <h3 className="text-lg font-medium tracking-[-0.02em]">{title}</h3>
               <p className="mt-2.5 text-[14px] leading-6">{copy}</p>
             </article>
           ))}
         </div>
-        <div className="lt-offer-card lt-fix-price-strip mt-5 flex flex-col justify-between gap-4 rounded-lg border border-[#C8A24A]/14 bg-[#020817]/72 sm:flex-row sm:items-center">
-          <div><strong>{fixSprintOffer.price}</strong><p>{fixSprintOffer.scope} {fixSprintOffer.duration}. {fixSprintOffer.credit}</p></div>
+        <div className="lt-commercial-card lt-offer-card lt-fix-price-strip mt-5 flex flex-col justify-between gap-4 rounded-lg border border-[#C8A24A]/14 bg-[#020817]/72">
+          <div><span className="lt-route-card-label">IMPLEMENTATION OFFER</span><strong>{fixSprintOffer.price}</strong><p>{fixSprintOffer.scope} {fixSprintOffer.duration}. {fixSprintOffer.credit}</p></div>
           <RouteLink className="lt-button lt-button-primary lt-fix-cta shrink-0" href="/readiness-fix-sprint">Explore the Fix Sprint</RouteLink>
         </div>
       </div>
@@ -204,17 +204,17 @@ export function ContinuityOffers() {
       <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl"><span className="section-eyebrow text-[#C8A24A]">Ongoing Readiness</span><h2 className="mt-3 text-3xl font-semibold tracking-[-0.025em] sm:text-[40px]">Stay accurate. Become actionable.</h2></div>
         <div className="lt-uniform-grid lt-continuity-cards mt-9 grid gap-4 md:grid-cols-2">
-          <article className="lt-offer-card lt-continuity-card dark-card p-6">
+          <article className="lt-commercial-card lt-offer-card lt-continuity-card dark-card p-6">
             <ShieldCheck aria-hidden="true" className="text-[#C8A24A]" size={27} strokeWidth={1.5} />
             <h3 className="mt-5 text-xl font-medium">AI Visibility Monitoring</h3><p className="mt-3 text-[14px] leading-6">{monitoringOffer.scope}</p>
             <strong className="lt-service-price mt-5 block">{monitoringOffer.price}</strong>
-            <RouteLink className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#C8A24A] no-underline" href="/monitoring">Explore monitoring <ArrowRight size={14} /></RouteLink>
+            <RouteLink className="lt-button lt-button-primary lt-continuity-cta mt-4" href="/monitoring">Explore monitoring <ArrowRight size={14} /></RouteLink>
           </article>
-          <article className="lt-offer-card lt-continuity-card dark-card p-6">
+          <article className="lt-commercial-card lt-offer-card lt-continuity-card dark-card p-6">
             <Waypoints aria-hidden="true" className="text-[#C8A24A]" size={27} strokeWidth={1.5} />
             <h3 className="mt-5 text-xl font-medium">Agent Action Sprints</h3><p className="mt-3 text-[14px] leading-6">Improve quote, booking, enquiry, availability or information paths when a documented business case exists.</p>
             <strong className="lt-service-price mt-5 block">£1,500-£3,500 per workflow</strong>
-            <RouteLink className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#C8A24A] no-underline" href="/ai-business-readiness">See the readiness path <ArrowRight size={14} /></RouteLink>
+            <RouteLink className="lt-button lt-button-primary lt-continuity-cta mt-4" href="/ai-business-readiness">See the readiness path <ArrowRight size={14} /></RouteLink>
           </article>
         </div>
       </div>
@@ -270,7 +270,7 @@ export function CompanyBrain() {
     <section className="lt-typography-polish section-light-muted py-16 sm:py-20">
       <div className="mx-auto grid max-w-[1320px] items-center gap-9 px-4 sm:px-6 lg:grid-cols-[0.82fr_1.18fr] lg:px-8">
         <div><span className="section-eyebrow text-[#C8A24A]">{companyBrainOffer.stage}</span><h2 className="mt-3 text-3xl font-semibold tracking-[-0.025em] sm:text-[40px]">When your business is ready to bring AI inside.</h2><p className="mt-4 text-base leading-7">{companyBrainOffer.scope}</p><RouteLink className="lt-button lt-button-secondary mt-6" href="/company-brain">Explore Company Brain</RouteLink></div>
-        <div className="dark-card p-5 sm:p-7" aria-label="Company Brain operating layer diagram">
+        <div className="lt-large-panel dark-card p-5 sm:p-7" aria-label="Company Brain operating layer diagram">
           <div className="lt-brain-diagram">
             {nodes.map(({ icon: Icon, label }, index) => (
               <div key={label} className="lt-brain-node"><Icon aria-hidden="true" size={22} /><span>{label}</span>{index < nodes.length - 1 && <ArrowRight className="lt-brain-arrow" aria-hidden="true" size={16} />}</div>
@@ -297,7 +297,7 @@ export function CompanyTrust() {
       <div className="mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-9 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
         <div><span className="section-eyebrow text-[#C8A24A]">Company</span><h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-[-0.025em] sm:text-[40px]">Engineered for Serious Business</h2><p className="mt-4 max-w-2xl text-base leading-7">Lion Tech Innovations Ltd tests how AI systems understand a business, documents the evidence, and implements approved fixes with production-grade discipline.</p></div>
         <div className="lt-uniform-grid lt-company-proof-grid grid gap-3.5 sm:grid-cols-2">
-          {highlights.map((item) => <div key={item} className="company-card flex items-start gap-3 p-4"><span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#C8A24A]/14 bg-white/5 text-[#C8A24A]"><CheckCircle2 aria-hidden="true" size={14} /></span><p className="text-[14px] font-medium leading-6">{item}</p></div>)}
+          {highlights.map((item) => <div key={item} className="lt-standard-card company-card flex items-start gap-3 p-4"><span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#C8A24A]/14 bg-white/5 text-[#C8A24A]"><CheckCircle2 aria-hidden="true" size={14} /></span><p className="text-[14px] font-medium leading-6">{item}</p></div>)}
         </div>
       </div>
     </section>
@@ -311,8 +311,8 @@ export function ContactSection() {
       <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
         <span className="section-eyebrow text-[#C8A24A]">Contact</span><h2 className="mt-3 text-3xl font-bold tracking-[-0.03em] sm:text-[40px]">See What AI Says About Your Business</h2><p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-white/64">Start with an evidence-led AI Visibility Snapshot, reviewed by a human and delivered from Manchester for businesses across the UK.</p>
         <div className="mx-auto mt-9 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2">
-          <a href="mailto:contact@liontechinnovations.co.uk" className="dark-card p-5 text-left no-underline"><Mail className="mb-4 text-[#C8A24A]" size={22} /><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/44">Email</p><p className="mt-2 break-words text-[15px] font-semibold text-white">contact@liontechinnovations.co.uk</p></a>
-          <div className="dark-card p-5 text-left"><MapPin className="mb-4 text-[#C8A24A]" size={22} /><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/44">Location</p><p className="mt-2 text-[15px] font-semibold text-white">Manchester, United Kingdom</p></div>
+          <a href="mailto:contact@liontechinnovations.co.uk" className="lt-standard-card dark-card p-5 text-left no-underline"><Mail className="mb-4 text-[#C8A24A]" size={22} /><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/44">Email</p><p className="mt-2 break-words text-[15px] font-semibold text-white">contact@liontechinnovations.co.uk</p></a>
+          <div className="lt-standard-card dark-card p-5 text-left"><MapPin className="mb-4 text-[#C8A24A]" size={22} /><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/44">Location</p><p className="mt-2 text-[15px] font-semibold text-white">Manchester, United Kingdom</p></div>
         </div>
         <PrimaryCta className="mt-8" />
       </div>

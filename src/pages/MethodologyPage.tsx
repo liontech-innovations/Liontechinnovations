@@ -39,7 +39,7 @@ export function MethodologyPage() {
         <RouteHeading eyebrow="STATUS MODEL" title="A profile, not a public score" description="The founding Snapshot uses four plain-language statuses. A public 0-100 benchmark remains blocked pending Customer Zero and further validation." />
         <div className="lt-route-status-grid">
           {readinessStatuses.map((status, index) => (
-            <article className={`lt-route-status-card lt-route-status-${index + 1}`} key={status}>
+            <article className={`lt-standard-card lt-route-status-card lt-route-status-${index + 1}`} key={status}>
               <span>{String(index + 1).padStart(2, '0')}</span>
               <h3>{status}</h3>
               <p>{statusCopy[index]}</p>
@@ -76,7 +76,7 @@ export function MethodologyPage() {
             ['04', 'Prioritise', 'Map the findings to the Five Gates and the top five fixes.'],
             ['05', 'Act', 'Deliver a practical 30-day plan and review call.'],
           ].map(([number, title, description]) => (
-            <article key={number}>
+            <article className="lt-standard-card" key={number}>
               <span>{number}</span>
               <h3>{title}</h3>
               <p>{description}</p>

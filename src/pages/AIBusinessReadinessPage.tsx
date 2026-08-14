@@ -48,11 +48,52 @@ export function AIBusinessReadinessPage() {
           description="Start with what customer-facing AI systems can see now. Progress only when the evidence and commercial case support the next step."
         />
         <div className="lt-route-offer-grid">
-          <OfferCard eyebrow="01 · EVIDENCE" title={snapshotOffer.name} description="See the evidence and the priority gaps." price={snapshotOffer.foundingPrice} href="/ai-visibility-snapshot" ctaLabel="Explore the Snapshot" featured />
-          <OfferCard eyebrow="02 · IMPLEMENT" title={fixSprintOffer.name} description="Implement up to five agreed priority fixes." price={fixSprintOffer.price} href="/readiness-fix-sprint" ctaLabel="Explore the Fix Sprint" />
-          <OfferCard eyebrow="03 · MONITOR" title={monitoringOffer.name} description="Track agreed questions and material movement." price={monitoringOffer.price} href="/monitoring" ctaLabel="Explore Monitoring" />
-          <OfferCard eyebrow="04 · ACT" title="Agent Action Sprints" description="Improve a proven quote, booking, enquiry or information path." price="£1,500-£3,500 per workflow" href="/monitoring" ctaLabel="See Agent Actions" />
-          <OfferCard eyebrow="05 · OPERATE" title={companyBrainOffer.name} description="Bring persistent knowledge and approved workflows inside." price={companyBrainOffer.stage} href="/company-brain" ctaLabel="Explore Company Brain" />
+          <OfferCard
+            eyebrow="01 · EVIDENCE"
+            title={snapshotOffer.name}
+            description="See the evidence and the priority gaps."
+            price={snapshotOffer.foundingPrice}
+            summaryRows={[snapshotOffer.turnaround, snapshotOffer.inclusions[0], snapshotOffer.inclusions[4]]}
+            href="/ai-visibility-snapshot"
+            ctaLabel="Explore the Snapshot"
+            featured
+          />
+          <OfferCard
+            eyebrow="02 · IMPLEMENT"
+            title={fixSprintOffer.name}
+            description="Implement up to five agreed priority fixes."
+            price={fixSprintOffer.price}
+            summaryRows={[fixSprintOffer.duration, fixSprintOffer.scope, fixSprintOffer.credit]}
+            href="/readiness-fix-sprint"
+            ctaLabel="Explore the Fix Sprint"
+          />
+          <OfferCard
+            eyebrow="03 · MONITOR"
+            title={monitoringOffer.name}
+            description="Track agreed questions and material movement."
+            price={monitoringOffer.price}
+            summaryRows={['Agreed priority buyer questions', 'Material factual and competitor movement', 'Concise monthly report']}
+            href="/monitoring"
+            ctaLabel="Explore Monitoring"
+          />
+          <OfferCard
+            eyebrow="04 · ACT"
+            title="Agent Action Sprints"
+            description="Improve a proven quote, booking, enquiry or information path."
+            price="£1,500-£3,500 per workflow"
+            summaryRows={['Quote, booking or enquiry path', 'Separately scoped and approved', 'Human-owned workflow boundaries']}
+            href="/monitoring"
+            ctaLabel="See Agent Actions"
+          />
+          <OfferCard
+            eyebrow="05 · OPERATE"
+            title={companyBrainOffer.name}
+            description="Bring persistent knowledge and approved workflows inside."
+            price={companyBrainOffer.stage}
+            summaryRows={['Persistent company knowledge', 'Approved workflows and decisions', 'Role-scoped access']}
+            href="/company-brain"
+            ctaLabel="Explore Company Brain"
+          />
         </div>
       </RouteSection>
 
