@@ -24,7 +24,7 @@ export default async function handler(req: Request): Promise<Response> {
 
   const secretKey = process.env.STRIPE_SECRET_KEY;
   if (!secretKey) {
-    return json({ ok: false, error: 'STRIPE_SECRET_KEY is missing' }, 500);
+    return json({ ok: false, error: 'Payment service is unavailable' }, 503);
   }
 
   const stripeResponse = await fetch(`https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(sessionId)}`, {

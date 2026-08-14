@@ -9,7 +9,7 @@ export default async function handler(req: Request): Promise<Response> {
 
   const secretKey = process.env.STRIPE_SECRET_KEY;
   if (!secretKey) {
-    return new Response('STRIPE_SECRET_KEY is missing. Cannot create server-side Checkout Sessions.', { status: 500 });
+    return new Response('Payment service is unavailable.', { status: 503 });
   }
 
   const params = new URLSearchParams();
