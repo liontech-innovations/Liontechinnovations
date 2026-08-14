@@ -1,4 +1,4 @@
-import { BookOpenCheck, Eye, FileCheck2, SearchCheck, ShieldCheck } from 'lucide-react';
+import { Eye, FileCheck2, SearchCheck, ShieldCheck } from 'lucide-react';
 import {
   FeatureCard,
   FiveGatesGrid,
@@ -49,26 +49,20 @@ export function MethodologyPage() {
       </RouteSection>
 
       <RouteSection>
-        <div className="lt-route-two-column">
-          <div>
-            <RouteHeading eyebrow="EVIDENCE STANDARDS" title="Observed, captured and human-reviewed" description="Findings remain tied to the agreed sampled tests and the public information available at the time of review." />
-            <div className="lt-route-stacked-cards">
-              <FeatureCard title="Observed outputs" icon={Eye}><p>LionTech records what the selected AI systems returned for agreed buyer questions.</p></FeatureCard>
-              <FeatureCard title="Captured sources" icon={SearchCheck}><p>Relevant facts, sources and competitor appearances are documented for review.</p></FeatureCard>
-              <FeatureCard title="Human-reviewed findings" icon={FileCheck2}><p>Recommendations are checked for factual relevance and practical business use.</p></FeatureCard>
-            </div>
-          </div>
-          <div className="lt-route-claims-panel">
-            <span className="lt-route-card-icon"><ShieldCheck size={23} aria-hidden="true" /></span>
-            <p className="lt-route-card-label">WHAT LIONTECH DOES NOT CLAIM</p>
-            <h2>No invented authority. No future ranking guarantee.</h2>
+        <RouteHeading eyebrow="EVIDENCE STANDARDS" title="Observed, captured and human-reviewed" description="Findings remain tied to the agreed sampled tests and the public information available at the time of review." />
+        <div className="lt-route-evidence-grid">
+          <FeatureCard title="Observed outputs" icon={Eye}><p>LionTech records what the selected AI systems returned for agreed buyer questions.</p></FeatureCard>
+          <FeatureCard title="Captured sources" icon={SearchCheck}><p>Relevant facts, sources and competitor appearances are documented for review.</p></FeatureCard>
+          <FeatureCard title="Human-reviewed findings" icon={FileCheck2}><p>Recommendations are checked for factual relevance and practical business use.</p></FeatureCard>
+          <FeatureCard title="What LionTech does not claim" icon={ShieldCheck} className="lt-route-evidence-claims">
+            <p className="lt-route-evidence-claim">No invented authority. No future ranking guarantee.</p>
             <ul className="lt-route-plain-list">
               <li>No control over third-party AI systems</li>
               <li>No guarantee of future recommendations or rankings</li>
               <li>No unqualified public 0-100 readiness score</li>
               <li>No findings detached from the sampled evidence</li>
             </ul>
-          </div>
+          </FeatureCard>
         </div>
       </RouteSection>
 

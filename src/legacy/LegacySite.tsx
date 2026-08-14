@@ -17,6 +17,7 @@ import {
   Zap,
 } from 'lucide-react';
 import IntakeDialog from '../components/IntakeDialog';
+import { SiteFooter } from '../components/layout/SiteFooter';
 
 const navLinks = [
   { label: 'Services', id: 'services' },
@@ -451,24 +452,12 @@ const Contact = ({ onStartIntake }: { onStartIntake: () => void }) => (
   </section>
 );
 
-const Footer = () => (
-  <footer className="border-t border-[#E2D3A6] bg-white py-8">
-    <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-7 px-4 sm:px-6 md:grid-cols-[1.2fr_0.8fr_0.8fr_1fr] lg:px-8">
-      <div><a href="/" className="flex items-center no-underline" onClick={(event) => { event.preventDefault(); navigateTo('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}><img src="/assets/liontechlogo.png" alt="LionTech Innovations" className="footer-logo" /></a><p className="mt-3 max-w-xs text-[13px] leading-6 text-[#455A6E]">Digital infrastructure, automation systems, SaaS platforms, and AI-powered business tools.</p></div>
-      <div><h3 className="footer-heading">Solutions</h3><div className="mt-4 space-y-3">{['Web Infrastructure', 'AI Automation', 'SaaS Platforms', 'Payment Systems'].map((item) => <button key={item} onClick={() => scrollToSection('services')} className="footer-link block">{item}</button>)}</div></div>
-      <div><h3 className="footer-heading">Platforms</h3><div className="mt-4 space-y-3">{[['ClearVisa UK', platformLinks.clearVisa], ['CalcFee', platformLinks.calcFee], ['Lead Recovery', platformLinks.leadRecovery]].map(([label, href]) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="footer-link inline-flex items-center gap-1.5 no-underline">{label}<ExternalLink size={12} /></a>)}</div></div>
-      <div><h3 className="footer-heading">Contact</h3><div className="mt-4 space-y-3 text-sm text-[#455A6E]"><a href="mailto:contact@liontechinnovations.co.uk" className="footer-link flex items-center gap-2 no-underline"><Mail size={15} /><span className="break-all">contact@liontechinnovations.co.uk</span></a><p className="flex items-center gap-2"><MapPin size={15} className="text-[#5B76FF]" />Manchester, United Kingdom</p></div></div>
-    </div>
-    <div className="mx-auto mt-8 flex max-w-[1320px] flex-col gap-3 border-t border-[#E2D3A6] px-4 pt-5 text-[10px] font-semibold uppercase tracking-[0.13em] text-[#455A6E]/68 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
-      <p>&copy; {new Date().getFullYear()} Lion Tech Innovations Ltd. All rights reserved.</p>
-      <div className="flex gap-5"><a href="/privacy-policy" onClick={(event) => { event.preventDefault(); navigateTo('/privacy-policy'); }} className="text-[#455A6E]/68 no-underline transition hover:text-[#0B1F35]">Privacy Policy</a><a href="/terms-and-conditions" onClick={(event) => { event.preventDefault(); navigateTo('/terms-and-conditions'); }} className="text-[#455A6E]/68 no-underline transition hover:text-[#0B1F35]">Terms & Conditions</a></div>
-      <p>Company registered in England &amp; Wales &mdash; No. 17068390</p>
-    </div>
-  </footer>
-);
+const Footer = SiteFooter;
 
 const LegalPage = ({ title, children, onStartIntake }: { title: string; children: React.ReactNode; onStartIntake: () => void }) => {
-  useEffect(() => window.scrollTo(0, 0), []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="min-h-screen bg-[#020817]">
       <Navbar onStartIntake={onStartIntake} />
@@ -484,7 +473,9 @@ const LegalPage = ({ title, children, onStartIntake }: { title: string; children
 };
 
 const CapabilityPage = ({ eyebrow, title, intro, children, onStartIntake }: { eyebrow: string; title: string; intro: string; children: React.ReactNode; onStartIntake: () => void }) => {
-  useEffect(() => window.scrollTo(0, 0), []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="min-h-screen bg-[#020817]">
       <Navbar onStartIntake={onStartIntake} />

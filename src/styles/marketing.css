@@ -2248,7 +2248,7 @@
 
 .lt-route-hero-compact .lt-route-hero-inner {
   padding-top: clamp(7.25rem, 8.5vw, 8rem);
-  padding-bottom: clamp(2.25rem, 3.5vw, 3.25rem);
+  padding-bottom: clamp(1.75rem, 2.5vw, 2.25rem);
 }
 
 .marketing-site .lt-route-hero-compact h1 {
@@ -2458,20 +2458,28 @@
 .lt-route-gates-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  align-items: stretch;
   gap: 0.75rem;
 }
 
 .lt-route-gate {
+  display: flex;
   min-height: 220px;
-  padding: 1.35rem;
+  height: 100%;
+  padding: 1.4rem;
+  flex-direction: column;
   border: 1px solid var(--lt-line);
+  border-top: 3px solid var(--lt-gold);
   border-radius: 14px;
-  background: rgba(11, 29, 48, 0.78);
+  background: linear-gradient(155deg, rgba(16, 36, 58, 0.94), rgba(7, 23, 39, 0.92));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
 }
 
 .lt-route-gate > span {
   display: block;
-  margin-bottom: 2.5rem;
+  margin-bottom: auto;
+  padding-bottom: 2.25rem;
   color: var(--lt-gold-light);
   font-size: 0.72rem;
   font-weight: 750;
@@ -2780,6 +2788,34 @@
   min-height: 0;
 }
 
+.lt-route-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.lt-route-evidence-grid .lt-route-card {
+  height: 100%;
+  border-color: rgba(224, 191, 109, 0.24);
+  background: linear-gradient(145deg, rgba(16, 34, 56, 0.9), rgba(7, 22, 38, 0.92));
+}
+
+.lt-route-evidence-claims {
+  border-top: 3px solid var(--lt-gold);
+}
+
+.lt-route-evidence-claim {
+  color: var(--lt-text) !important;
+  font-size: 1.03rem !important;
+  font-weight: 650;
+  line-height: 1.45 !important;
+}
+
+.lt-route-evidence-claims .lt-route-plain-list {
+  margin-top: 1rem;
+}
+
 .lt-route-process-line {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -2917,7 +2953,7 @@
 }
 
 .lt-route-contact-section {
-  padding-block: clamp(2.5rem, 4.5vw, 4rem);
+  padding-block: clamp(1.75rem, 3vw, 2.625rem);
 }
 
 .lt-route-form-anchor {
@@ -3026,6 +3062,14 @@
 }
 
 .lt-unified-footer {
+  --lt-line: rgba(218, 226, 233, 0.16);
+  --lt-text: #eef1f3;
+  --lt-body: #b8c2cb;
+  --lt-support: #8795a2;
+  --lt-gold: #c8a24a;
+  --lt-gold-light: #e0bf6d;
+  color: var(--lt-text);
+  font-family: "Segoe UI Variable Text", "Avenir Next", "Aptos", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
   padding-top: clamp(3.5rem, 6vw, 5.5rem);
   border-top: 1px solid rgba(224, 191, 109, 0.34);
   background:
@@ -3065,7 +3109,7 @@
   text-transform: uppercase;
 }
 
-.marketing-site .lt-unified-footer h2 {
+.lt-unified-footer h2 {
   margin: 0 0 1.1rem;
   color: var(--lt-gold-light);
   font-size: 0.72rem;
@@ -3237,8 +3281,13 @@
 
   .lt-route-process-grid,
   .lt-route-boundary-grid,
-  .lt-route-principles-grid {
+  .lt-route-principles-grid,
+  .lt-route-evidence-grid {
     grid-template-columns: 1fr;
+  }
+
+  .lt-route-evidence-grid {
+    grid-template-rows: none;
   }
 
   .lt-route-cta .lt-route-actions {
@@ -3287,7 +3336,7 @@
 
   .lt-route-hero-compact .lt-route-hero-inner {
     padding-top: 7.25rem;
-    padding-bottom: 2.5rem;
+    padding-bottom: 1.75rem;
   }
 
   .marketing-site .lt-route-hero-compact h1 {
@@ -3309,7 +3358,7 @@
   }
 
   .lt-route-contact-section {
-    padding-block: 2.5rem;
+    padding-block: 2rem;
   }
 
   .lt-route-offer-grid,
@@ -3328,6 +3377,8 @@
   .lt-route-offer-card,
   .lt-route-offer-card:last-child,
   .lt-route-gate,
+  .lt-route-gate:nth-child(4),
+  .lt-route-gate:nth-child(5),
   .lt-route-brain-node,
   .lt-route-brain-node:nth-child(4),
   .lt-route-brain-node:nth-child(5),
@@ -3358,6 +3409,7 @@
   .marketing-site .lt-route-process-line h3 {
     margin-top: 0;
     margin-bottom: 1.4rem;
+    padding-bottom: 0;
   }
 
   .lt-route-check-list,
