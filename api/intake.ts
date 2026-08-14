@@ -9,8 +9,16 @@ const MAX_INPUT_CHARS = 4000;
 export default async function handler(req: Request): Promise<Response> {
   if (req.method !== "POST") return new Response("Method not allowed", { status: 405 });
 
-  let body: { messages: Array<{ role: "user" | "assistant"; content: string }> };
-  try { body = await req.json(); } catch { return new Response("Invalid JSON", { status: 400 }); }
+  let body: { messages?: unknown };
+  try {
+    const parsed = await req.json() as unknown;
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      return new Response("Invalid JSON", { status: 400 });
+    }
+    body = parsed as { messages?: unknown };
+  } catch {
+    return new Response("Invalid JSON", { status: 400 });
+  }
 
   const messages = Array.isArray(body.messages) ? body.messages : [];
   if (messages.length === 0 || messages.length > MAX_TURNS) {

@@ -74,7 +74,7 @@ export default async function handler(req: Request): Promise<Response> {
   ].filter(Boolean);
 
   if (missing.length) {
-    return json({ ok: false, error: 'Missing required email environment variables', missing }, 500);
+    return json({ ok: false, error: 'Brief service is unavailable' }, 503);
   }
 
   let body: BriefBody;

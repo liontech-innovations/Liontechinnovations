@@ -134,12 +134,18 @@ function useHistoryRoute() {
   return route;
 }
 
-function usePageMeta(title: string, description: string) {
+function usePageMeta(title: string, description: string, path: Route) {
   useEffect(() => {
+    const canonical = new URL(path, 'https://liontechinnovations.co.uk').toString();
     document.title = title;
-    const desc = document.querySelector('meta[name="description"]');
-    if (desc) desc.setAttribute('content', description);
-  }, [title, description]);
+    setMeta('meta[name="description"]', 'content', description);
+    setMeta('meta[property="og:title"]', 'content', title);
+    setMeta('meta[property="og:description"]', 'content', description);
+    setMeta('meta[property="og:url"]', 'content', canonical);
+    setMeta('meta[name="twitter:title"]', 'content', title);
+    setMeta('meta[name="twitter:description"]', 'content', description);
+    setMeta('link[rel="canonical"]', 'href', canonical);
+  }, [title, description, path]);
 }
 
 function setMeta(selector: string, attr: string, value: string) {
@@ -518,7 +524,7 @@ const CapabilityPage = ({ eyebrow, title, intro, children, onStartIntake }: { ey
 };
 
 const UkAiInfrastructure = ({ onStartIntake }: { onStartIntake: () => void }) => {
-  usePageMeta(routeMeta['/uk-ai-infrastructure'].title, routeMeta['/uk-ai-infrastructure'].description);
+  usePageMeta(routeMeta['/uk-ai-infrastructure'].title, routeMeta['/uk-ai-infrastructure'].description, '/uk-ai-infrastructure');
 
   return (
     <CapabilityPage
@@ -563,7 +569,7 @@ const UkAiInfrastructure = ({ onStartIntake }: { onStartIntake: () => void }) =>
 };
 
 const SaasPlatformDevelopment = ({ onStartIntake }: { onStartIntake: () => void }) => {
-  usePageMeta(routeMeta['/saas-platform-development'].title, routeMeta['/saas-platform-development'].description);
+  usePageMeta(routeMeta['/saas-platform-development'].title, routeMeta['/saas-platform-development'].description, '/saas-platform-development');
 
   return (
     <CapabilityPage
@@ -619,7 +625,7 @@ const SaasPlatformDevelopment = ({ onStartIntake }: { onStartIntake: () => void 
 };
 
 const AiIntakeSystems = ({ onStartIntake }: { onStartIntake: () => void }) => {
-  usePageMeta(routeMeta['/ai-intake-systems'].title, routeMeta['/ai-intake-systems'].description);
+  usePageMeta(routeMeta['/ai-intake-systems'].title, routeMeta['/ai-intake-systems'].description, '/ai-intake-systems');
 
   return (
     <CapabilityPage
@@ -679,7 +685,7 @@ const AiIntakeSystems = ({ onStartIntake }: { onStartIntake: () => void }) => {
 };
 
 const PrivacyPolicy = ({ onStartIntake }: { onStartIntake: () => void }) => {
-  usePageMeta(routeMeta['/privacy-policy'].title, routeMeta['/privacy-policy'].description);
+  usePageMeta(routeMeta['/privacy-policy'].title, routeMeta['/privacy-policy'].description, '/privacy-policy');
 
   return (
   <LegalPage title="Privacy Policy" onStartIntake={onStartIntake}>
@@ -749,7 +755,7 @@ const PrivacyPolicy = ({ onStartIntake }: { onStartIntake: () => void }) => {
 };
 
 const TermsAndConditions = ({ onStartIntake }: { onStartIntake: () => void }) => {
-  usePageMeta(routeMeta['/terms-and-conditions'].title, routeMeta['/terms-and-conditions'].description);
+  usePageMeta(routeMeta['/terms-and-conditions'].title, routeMeta['/terms-and-conditions'].description, '/terms-and-conditions');
 
   return (
   <LegalPage title="Terms & Conditions" onStartIntake={onStartIntake}>
@@ -796,7 +802,7 @@ const TermsAndConditions = ({ onStartIntake }: { onStartIntake: () => void }) =>
 };
 
 const HomePage = ({ onStartIntake }: { onStartIntake: () => void }) => {
-  usePageMeta(routeMeta['/'].title, routeMeta['/'].description);
+  usePageMeta(routeMeta['/'].title, routeMeta['/'].description, '/');
 
   return (
   <div className="min-h-screen bg-[#F4F7FB]">
@@ -956,7 +962,7 @@ const CareOpsLostEnquiryRecoveryPage = ({ onStartIntake }: { onStartIntake: () =
     : '0 clients';
   const scrollToLostSection = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-  usePageMeta(meta.title, meta.description);
+  usePageMeta(meta.title, meta.description, '/careops/lost-enquiry-recovery');
 
   useEffect(() => {
     setMeta('meta[property="og:title"]', 'content', meta.title);
@@ -1302,7 +1308,7 @@ const CareOpsCommandCentrePage = ({ onStartIntake }: { onStartIntake: () => void
     },
   ];
 
-  usePageMeta(meta.title, meta.description);
+  usePageMeta(meta.title, meta.description, '/careops/command-centre');
 
   useEffect(() => {
     setMeta('meta[property="og:title"]', 'content', meta.title);
@@ -1532,7 +1538,7 @@ const RoofingBriefPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
     confirmAccurate: false,
   }));
 
-  usePageMeta(meta.title, meta.description);
+  usePageMeta(meta.title, meta.description, '/roofing-brief');
   useEffect(() => {
     setMeta('meta[property="og:title"]', 'content', meta.title);
     setMeta('meta[property="og:description"]', 'content', meta.description);
@@ -1875,7 +1881,7 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
     ['Can I use my own business name and branding?', 'Yes. The website is built around your roofing business name, branding, phone number, and service areas.'],
   ];
 
-  usePageMeta(meta.title, meta.description);
+  usePageMeta(meta.title, meta.description, '/lead-recovery');
   useEffect(() => {
     setMeta('meta[property="og:title"]', 'content', meta.title);
     setMeta('meta[property="og:description"]', 'content', meta.description);

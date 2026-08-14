@@ -57,7 +57,11 @@ export default async function handler(request: Request): Promise<Response> {
   try {
     const rawBody = await request.text();
     if (rawBody.length > 12_000) return json({ ok: false, error: 'Request is too large' }, 413);
-    body = JSON.parse(rawBody) as SnapshotEnquiry;
+    const parsed = JSON.parse(rawBody) as unknown;
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+      return json({ ok: false, error: 'Invalid request' }, 400);
+    }
+    body = parsed as SnapshotEnquiry;
   } catch {
     return json({ ok: false, error: 'Invalid request' }, 400);
   }
