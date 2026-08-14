@@ -12,16 +12,11 @@ import { PrimaryCta } from '../components/ui/PrimaryCta';
 import { RouteLink } from '../components/ui/RouteLink';
 import { homepage } from '../content/homepage';
 import { companyBrainOffer, fixSprintOffer, monitoringOffer, snapshotOffer } from '../content/offers';
-import { breadcrumbSchema } from '../lib/schema';
+import { routeSeo } from '../content/routeSeo';
 import { useSeo } from '../lib/seo';
 
 export function AIBusinessReadinessPage() {
-  useSeo({
-    title: 'AI Business Readiness Services | LionTech Innovations',
-    description: 'A practical path from AI visibility evidence to priority fixes, monitoring, agent actions and a relationship-led Company Brain.',
-    path: '/ai-business-readiness',
-    schema: breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'AI Business Readiness', path: '/ai-business-readiness' }]),
-  });
+  useSeo(routeSeo['/ai-business-readiness']);
 
   const buyerSteps = [
     { title: 'Discover', description: 'Find providers for real buyer questions.', icon: Search },

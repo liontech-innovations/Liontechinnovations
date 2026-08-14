@@ -9,11 +9,11 @@ import {
 import { PrimaryCta } from '../components/ui/PrimaryCta';
 import { RouteLink } from '../components/ui/RouteLink';
 import { fixSprintOffer } from '../content/offers';
-import { breadcrumbSchema } from '../lib/schema';
+import { routeSeo } from '../content/routeSeo';
 import { useSeo } from '../lib/seo';
 
 export function ReadinessFixSprintPage() {
-  useSeo({ title: 'Readiness Fix Sprint | LionTech Innovations', description: 'Implement up to five agreed AI readiness fixes within a defined 10-business-day delivery cap.', path: '/readiness-fix-sprint', schema: breadcrumbSchema([{ name: 'Home', path: '/' }, { name: fixSprintOffer.name, path: '/readiness-fix-sprint' }]) });
+  useSeo(routeSeo['/readiness-fix-sprint']);
 
   return (
     <>

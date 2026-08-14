@@ -3,11 +3,11 @@ import { SnapshotEnquiryForm } from '../components/SnapshotEnquiryForm';
 import { PageHero, RouteHeading, RouteSection } from '../components/sections/RoutePageSections';
 import { company } from '../content/company';
 import { snapshotOffer } from '../content/offers';
-import { breadcrumbSchema } from '../lib/schema';
+import { routeSeo } from '../content/routeSeo';
 import { useSeo } from '../lib/seo';
 
 export function ContactPage() {
-  useSeo({ title: 'Request an AI Visibility Snapshot | LionTech', description: 'Send LionTech the minimum business details needed to review a founding AI Visibility Snapshot request.', path: '/contact', schema: breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }]) });
+  useSeo(routeSeo['/contact']);
 
   return (
     <>

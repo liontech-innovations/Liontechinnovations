@@ -1,4 +1,5 @@
 {
+  "trailingSlash": false,
   "redirects": [
     {
       "source": "/MANAGED_SETUP_PAYMENT_LINK_HERE",
@@ -12,6 +13,38 @@
     }
   ],
   "rewrites": [
+    {
+      "source": "/ai-business-readiness",
+      "destination": "/ai-business-readiness/index.html"
+    },
+    {
+      "source": "/ai-visibility-snapshot",
+      "destination": "/ai-visibility-snapshot/index.html"
+    },
+    {
+      "source": "/readiness-fix-sprint",
+      "destination": "/readiness-fix-sprint/index.html"
+    },
+    {
+      "source": "/monitoring",
+      "destination": "/monitoring/index.html"
+    },
+    {
+      "source": "/company-brain",
+      "destination": "/company-brain/index.html"
+    },
+    {
+      "source": "/methodology",
+      "destination": "/methodology/index.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about/index.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact/index.html"
+    },
     {
       "source": "/careops/free-check",
       "destination": "/careops/free-check/index.html"

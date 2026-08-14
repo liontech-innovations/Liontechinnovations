@@ -12,16 +12,11 @@ import { PrimaryCta } from '../components/ui/PrimaryCta';
 import { RouteLink } from '../components/ui/RouteLink';
 import { snapshotFaq } from '../content/faq';
 import { snapshotOffer } from '../content/offers';
-import { breadcrumbSchema, snapshotFaqSchema, snapshotServiceSchema } from '../lib/schema';
+import { routeSeo } from '../content/routeSeo';
 import { useSeo } from '../lib/seo';
 
 export function AIVisibilitySnapshotPage() {
-  useSeo({
-    title: 'AI Visibility Snapshot | LionTech Innovations',
-    description: 'See how leading AI systems describe, compare and surface your business, with evidence and a practical 30-day action plan.',
-    path: '/ai-visibility-snapshot',
-    schema: [snapshotServiceSchema, snapshotFaqSchema, breadcrumbSchema([{ name: 'Home', path: '/' }, { name: snapshotOffer.name, path: '/ai-visibility-snapshot' }])],
-  });
+  useSeo(routeSeo['/ai-visibility-snapshot']);
 
   const deliverables = [
     { title: snapshotOffer.inclusions[0], icon: FileSearch },

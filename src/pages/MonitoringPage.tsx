@@ -10,11 +10,11 @@ import {
 import { PrimaryCta } from '../components/ui/PrimaryCta';
 import { RouteLink } from '../components/ui/RouteLink';
 import { monitoringOffer } from '../content/offers';
-import { breadcrumbSchema } from '../lib/schema';
+import { routeSeo } from '../content/routeSeo';
 import { useSeo } from '../lib/seo';
 
 export function MonitoringPage() {
-  useSeo({ title: 'AI Visibility Monitoring | LionTech Innovations', description: 'Track agreed priority AI buyer questions, factual changes and competitor movement with a concise monthly report.', path: '/monitoring', schema: breadcrumbSchema([{ name: 'Home', path: '/' }, { name: monitoringOffer.name, path: '/monitoring' }]) });
+  useSeo(routeSeo['/monitoring']);
 
   return (
     <>

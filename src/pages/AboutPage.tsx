@@ -10,11 +10,11 @@ import { PrimaryCta } from '../components/ui/PrimaryCta';
 import { RouteLink } from '../components/ui/RouteLink';
 import { company } from '../content/company';
 import { platforms } from '../content/platforms';
-import { breadcrumbSchema, organizationSchema } from '../lib/schema';
+import { routeSeo } from '../content/routeSeo';
 import { useSeo } from '../lib/seo';
 
 export function AboutPage() {
-  useSeo({ title: 'About LionTech Innovations | Manchester, UK', description: `${company.legalName} is a Manchester-based AI Business Readiness and production systems company.`, path: '/about', schema: [organizationSchema, breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }])] });
+  useSeo(routeSeo['/about']);
 
   const principles = [
     { title: 'Evidence before hype', description: 'Start with observed outputs, facts and practical buyer questions.', icon: Eye },
@@ -27,7 +27,7 @@ export function AboutPage() {
 
   return (
     <>
-      <PageHero eyebrow="ABOUT LIONTECH" title="Evidence-led readiness. Production engineering." description={`${company.legalName} is based in Manchester and serves UK businesses remotely.`}>
+      <PageHero eyebrow="ABOUT LIONTECH" title="Evidence-led readiness. Production engineering." description={`${company.legalName} is ${company.location}.`}>
         <PrimaryCta />
         <RouteLink className="lt-button lt-button-secondary" href="/ai-business-readiness">See the readiness path</RouteLink>
       </PageHero>
@@ -35,7 +35,9 @@ export function AboutPage() {
       <RouteSection>
         <div className="lt-route-about-intro">
           <RouteHeading eyebrow="PRACTICAL BY DESIGN" title="Built for practical decisions" description="LionTech helps businesses understand what customer-facing AI systems currently say, then turns material gaps into a controlled implementation plan." />
-          <p>The operating proof is a portfolio of live platforms across visa risk intelligence, fee calculation, care operations and local-services lead recovery.</p>
+          <p>
+            The operating proof is a portfolio of live platforms across visa risk intelligence, fee calculation, care operations and local-services lead recovery. {company.legalName} is registered in England and Wales, company number {company.companiesHouseNumber}. Registered office: {company.registeredOffice.formatted}. <RouteLink href={company.companiesHouseUrl}>View the Companies House record</RouteLink>.
+          </p>
         </div>
       </RouteSection>
 

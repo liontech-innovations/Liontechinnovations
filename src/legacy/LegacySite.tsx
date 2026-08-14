@@ -470,7 +470,7 @@ const Contact = ({ onStartIntake }: { onStartIntake: () => void }) => (
       <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-white/64">Schedule a consultation to discuss your digital infrastructure, automation, or platform requirements.</p>
       <div className="mx-auto mt-9 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2">
         <a href="mailto:contact@liontechinnovations.co.uk" className="dark-card p-5 text-left no-underline"><Mail className="mb-4 text-[#C8A24A]" size={22} /><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/44">Email</p><p className="mt-2 break-words text-[15px] font-semibold text-white">contact@liontechinnovations.co.uk</p></a>
-        <div className="dark-card p-5 text-left"><MapPin className="mb-4 text-[#C8A24A]" size={22} /><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/44">Location</p><p className="mt-2 text-[15px] font-semibold text-white">Manchester, United Kingdom</p></div>
+        <div className="dark-card p-5 text-left"><MapPin className="mb-4 text-[#C8A24A]" size={22} /><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/44">Location</p><p className="mt-2 text-[15px] font-semibold text-white">Manchester-based, serving UK businesses remotely</p></div>
       </div>
       <button type="button" onClick={onStartIntake} className="btn-primary mt-8 rounded-md px-7 py-3 text-[11px] uppercase tracking-[0.16em] no-underline">Submit a Brief <ArrowRight size={15} /></button>
     </div>
@@ -556,7 +556,7 @@ const UkAiInfrastructure = ({ onStartIntake }: { onStartIntake: () => void }) =>
       <p>We currently take a small number of engagements per year. Selectivity is not a marketing pose — it is how we maintain operational quality on the platforms we already run.</p>
 
       <h2>Where we are</h2>
-      <p>Manchester, United Kingdom. Registered in England and Wales (Company No. 17068390). All contracts governed by English and Welsh law.</p>
+      <p>Manchester-based, serving UK businesses remotely. Lion Tech Innovations Ltd is registered in England and Wales, company number 17068390. All contracts are governed by English and Welsh law.</p>
       <p>We work primarily with UK organisations. We accept engagements from EU and overseas clients on a case-by-case basis where the work is interesting and the data residency model fits.</p>
     </CapabilityPage>
   );
@@ -742,7 +742,7 @@ const PrivacyPolicy = ({ onStartIntake }: { onStartIntake: () => void }) => {
     <ul>
       <li>Data protection enquiries and rights requests: <a href="mailto:privacy@liontechinnovations.co.uk">privacy@liontechinnovations.co.uk</a></li>
       <li>General contact: <a href="mailto:contact@liontechinnovations.co.uk">contact@liontechinnovations.co.uk</a></li>
-      <li>Postal: Lion Tech Innovations Ltd, Manchester, United Kingdom (full registered office available on request).</li>
+      <li>Postal: Lion Tech Innovations Ltd, 37 Hope Street North, Horwich, Bolton, Lancashire, BL6 7LL.</li>
     </ul>
   </LegalPage>
   );

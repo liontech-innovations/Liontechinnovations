@@ -42,7 +42,7 @@ export function SiteFooter() {
       <div className="lt-shell lt-unified-footer-bottom">
         <p>© {new Date().getFullYear()} {company.legalName}. All rights reserved.</p>
         <div><RouteLink href="/privacy-policy">Privacy Policy</RouteLink><RouteLink href="/terms-and-conditions">Terms and Conditions</RouteLink></div>
-        <p>Registered in England and Wales. No. {company.companiesHouseNumber}</p>
+        <p><RouteLink href={company.companiesHouseUrl}>{company.legalName} · Registered in England and Wales · Company no. {company.companiesHouseNumber}</RouteLink></p>
       </div>
     </footer>
   );

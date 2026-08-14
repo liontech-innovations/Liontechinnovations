@@ -9,11 +9,11 @@ import {
 import { PrimaryCta } from '../components/ui/PrimaryCta';
 import { RouteLink } from '../components/ui/RouteLink';
 import { companyBrainOffer } from '../content/offers';
-import { breadcrumbSchema } from '../lib/schema';
+import { routeSeo } from '../content/routeSeo';
 import { useSeo } from '../lib/seo';
 
 export function CompanyBrainPage() {
-  useSeo({ title: 'Company Brain | LionTech Innovations', description: 'A relationship-led operating layer for persistent knowledge, SOPs, decisions, approved workflows and role-scoped access.', path: '/company-brain', schema: breadcrumbSchema([{ name: 'Home', path: '/' }, { name: companyBrainOffer.name, path: '/company-brain' }]) });
+  useSeo(routeSeo['/company-brain']);
 
   const flow = [
     { title: 'Approved facts', icon: DatabaseZap },

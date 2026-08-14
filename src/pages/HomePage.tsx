@@ -15,9 +15,8 @@ import {
 import { StackStrip } from '../components/sections/StackStrip';
 import { PrimaryCta } from '../components/ui/PrimaryCta';
 import { RouteLink } from '../components/ui/RouteLink';
-import { company } from '../content/company';
 import { homepage } from '../content/homepage';
-import { organizationSchema, snapshotServiceSchema } from '../lib/schema';
+import { routeSeo } from '../content/routeSeo';
 import { useSeo } from '../lib/seo';
 
 function CinematicHero() {
@@ -79,12 +78,7 @@ function CinematicHero() {
 }
 
 export function HomePage() {
-  useSeo({
-    title: 'LionTech AI Business Readiness | See What AI Says About Your Business',
-    description: company.description,
-    path: '/',
-    schema: [organizationSchema, snapshotServiceSchema],
-  });
+  useSeo(routeSeo['/']);
 
   return (
     <>

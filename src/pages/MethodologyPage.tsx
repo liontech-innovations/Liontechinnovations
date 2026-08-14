@@ -10,11 +10,11 @@ import {
 import { PrimaryCta } from '../components/ui/PrimaryCta';
 import { RouteLink } from '../components/ui/RouteLink';
 import { readinessStatuses } from '../content/methodology';
-import { breadcrumbSchema } from '../lib/schema';
+import { routeSeo } from '../content/routeSeo';
 import { useSeo } from '../lib/seo';
 
 export function MethodologyPage() {
-  useSeo({ title: 'Five Gates AI Readiness Methodology | LionTech Innovations', description: 'Discover, Describe, Trust, Compare and Act: a human-reviewed framework for practical AI Business Readiness.', path: '/methodology', schema: breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Methodology', path: '/methodology' }]) });
+  useSeo(routeSeo['/methodology']);
 
   const statusCopy = [
     'The sampled evidence supports the buyer question clearly.',

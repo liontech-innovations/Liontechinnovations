@@ -18,6 +18,7 @@ import {
   Wrench,
   Zap,
 } from 'lucide-react';
+import { company } from '../../content/company';
 import { homepage } from '../../content/homepage';
 import { fiveGates } from '../../content/methodology';
 import { companyBrainOffer, fixSprintOffer, monitoringOffer, snapshotOffer } from '../../content/offers';
@@ -312,7 +313,7 @@ export function ContactSection() {
         <span className="section-eyebrow text-[#C8A24A]">Contact</span><h2 className="mt-3 text-3xl font-bold tracking-[-0.03em] sm:text-[40px]">See What AI Says About Your Business</h2><p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-white/64">Start with an evidence-led AI Visibility Snapshot, reviewed by a human and delivered from Manchester for businesses across the UK.</p>
         <div className="mx-auto mt-9 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2">
           <a href="mailto:contact@liontechinnovations.co.uk" className="lt-standard-card dark-card p-5 text-left no-underline"><Mail className="mb-4 text-[#C8A24A]" size={22} /><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/44">Email</p><p className="mt-2 break-words text-[15px] font-semibold text-white">contact@liontechinnovations.co.uk</p></a>
-          <div className="lt-standard-card dark-card p-5 text-left"><MapPin className="mb-4 text-[#C8A24A]" size={22} /><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/44">Location</p><p className="mt-2 text-[15px] font-semibold text-white">Manchester, United Kingdom</p></div>
+          <div className="lt-standard-card dark-card p-5 text-left"><MapPin className="mb-4 text-[#C8A24A]" size={22} /><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/44">Location</p><p className="mt-2 text-[15px] font-semibold text-white">{company.location}</p></div>
         </div>
         <PrimaryCta className="mt-8" />
       </div>

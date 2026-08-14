@@ -1,11 +1,13 @@
-# LionTech Innovations
+# Lion Tech Innovations Ltd
 
-> LionTech is a UK AI Business Readiness company based in Manchester. It helps businesses see what leading AI systems currently say, review the evidence, and fix priority gaps.
+> Lion Tech Innovations Ltd is a Manchester-based AI Business Readiness company serving UK businesses remotely. It helps businesses see what leading AI systems currently say, review the evidence, and fix priority gaps.
 
 Website: https://liontechinnovations.co.uk
 Contact: contact@liontechinnovations.co.uk
 Service area: UK-based, serving businesses remotely
-Companies House: 17068390
+Company number: 17068390
+Companies House: https://find-and-update.company-information.service.gov.uk/company/17068390
+Registered office: 37 Hope Street North, Horwich, Bolton, Lancashire, BL6 7LL
 
 ## Primary service
 
@@ -14,6 +16,7 @@ Companies House: 17068390
   - Buyer-intent tests across leading AI systems, with competitor benchmarking
   - Evidence-led report, Five Gates Readiness Profile, top five fixes and 30-day action plan
   - 48-hour delivery after completed onboarding and business verification
+  - Minimum-5 Guarantee: if LionTech cannot identify at least five concrete, evidenced inaccuracies, omissions, competitor gaps or actionable readiness improvements in the agreed sampled tests, the Snapshot fee is refunded
 
 ## Readiness services
 
@@ -31,4 +34,4 @@ Companies House: 17068390
 4. Compare
 5. Act
 
-LionTech does not guarantee AI rankings, AI recommendations, leads or sales. Third-party AI outputs can change. Findings are human-reviewed observations, not control over any AI system.
+This file is an additional machine-readable source, not a guarantee of AI visibility. LionTech does not guarantee AI rankings, AI recommendations, leads or sales. Third-party AI outputs can change. Findings are human-reviewed observations, not control over any AI system.
