@@ -2,6 +2,12 @@ export function isExternalHref(href: string) {
   return /^https?:\/\//i.test(href);
 }
 
+export function scrollToHash(hash: string, behavior: ScrollBehavior = 'auto') {
+  const id = decodeURIComponent(hash.replace(/^#/, ''));
+  if (!id) return;
+  document.getElementById(id)?.scrollIntoView({ behavior, block: 'start' });
+}
+
 export function navigate(href: string) {
   if (isExternalHref(href)) {
     window.location.assign(href);
@@ -19,7 +25,7 @@ export function navigate(href: string) {
 
   if (url.hash) {
     window.requestAnimationFrame(() => {
-      document.querySelector(url.hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.requestAnimationFrame(() => scrollToHash(url.hash));
     });
   } else {
     window.scrollTo({ top: 0, behavior: 'auto' });

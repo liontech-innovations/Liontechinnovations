@@ -11,6 +11,7 @@ import { MethodologyPage } from '../pages/MethodologyPage';
 import { MonitoringPage } from '../pages/MonitoringPage';
 import { ReadinessFixSprintPage } from '../pages/ReadinessFixSprintPage';
 import { RouteLink } from '../components/ui/RouteLink';
+import { scrollToHash } from '../lib/navigation';
 import { useSeo } from '../lib/seo';
 
 const marketingRoutes = {
@@ -49,6 +50,22 @@ function usePathname() {
   return pathname;
 }
 
+function useRouteHashScroll(pathname: string) {
+  useEffect(() => {
+    if (!window.location.hash) return;
+
+    let secondFrame = 0;
+    const firstFrame = window.requestAnimationFrame(() => {
+      secondFrame = window.requestAnimationFrame(() => scrollToHash(window.location.hash));
+    });
+
+    return () => {
+      window.cancelAnimationFrame(firstFrame);
+      if (secondFrame) window.cancelAnimationFrame(secondFrame);
+    };
+  }, [pathname]);
+}
+
 function NotFoundPage() {
   useSeo({ title: 'Page Not Found | LionTech Innovations', description: 'The requested LionTech page could not be found.', path: window.location.pathname });
   return (
@@ -67,6 +84,7 @@ function NotFoundPage() {
 
 export function AppRoutes() {
   const pathname = usePathname();
+  useRouteHashScroll(pathname);
 
   if (legacyRoutes.has(pathname)) return <LegacySite />;
 

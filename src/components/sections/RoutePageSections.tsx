@@ -11,11 +11,12 @@ type PageHeroProps = {
   title: string;
   description: string;
   children?: ReactNode;
+  compact?: boolean;
 };
 
-export function PageHero({ eyebrow, title, description, children }: PageHeroProps) {
+export function PageHero({ eyebrow, title, description, children, compact = false }: PageHeroProps) {
   return (
-    <section className="lt-route-hero">
+    <section className={`lt-route-hero${compact ? ' lt-route-hero-compact' : ''}`}>
       <div className="lt-shell lt-route-hero-inner">
         <p className="lt-kicker">{eyebrow}</p>
         <h1>{title}</h1>
