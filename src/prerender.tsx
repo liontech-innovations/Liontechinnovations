@@ -6,6 +6,7 @@ import { routeSeo, type MarketingRoutePath } from './content/routeSeo';
 import { routeMeta } from './legacy/LegacySite';
 import { industriesDirectorySeo, industryRouteSeo } from './content/industries/seo';
 import { programmaticRoutes } from './content/industries';
+import { signatureInstallSeo } from './content/emailSignature';
 
 type RuntimeWithWindow = typeof globalThis & { window?: Window & typeof globalThis };
 
@@ -18,11 +19,12 @@ const legacyPrerenderRoutes = [
   '/careops/command-centre',
 ] as const;
 
-type PrerenderRoutePath = MarketingRoutePath | (typeof legacyPrerenderRoutes)[number] | '/industries' | (typeof programmaticRoutes)[number];
+type PrerenderRoutePath = MarketingRoutePath | (typeof legacyPrerenderRoutes)[number] | '/email/signature-install' | '/industries' | (typeof programmaticRoutes)[number];
 
 export const prerenderRoutes: PrerenderRoutePath[] = [
   ...(Object.keys(routeSeo) as MarketingRoutePath[]),
   ...legacyPrerenderRoutes,
+  '/email/signature-install',
   '/industries',
   ...programmaticRoutes,
 ];
@@ -46,6 +48,8 @@ function createPrerenderWindow(pathname: string) {
 export function renderMarketingRoute(pathname: PrerenderRoutePath) {
   const seo = pathname in routeSeo
     ? routeSeo[pathname as MarketingRoutePath]
+    : pathname === '/email/signature-install'
+      ? signatureInstallSeo
     : pathname === '/industries'
       ? industriesDirectorySeo
       : industryRouteSeo.get(pathname)

@@ -40,6 +40,7 @@ function applyHead(html, seo) {
   output = replaceMeta(output, 'property', 'og:url', canonical);
   output = replaceMeta(output, 'name', 'twitter:title', seo.title);
   output = replaceMeta(output, 'name', 'twitter:description', seo.description);
+  output = replaceMeta(output, 'name', 'robots', seo.robots ?? 'index,follow');
   output = output.replace(/<link\s+rel="canonical"[\s\S]*?>/i, `<link rel="canonical" href="${escapeHtml(canonical)}" />`);
   output = output.includes('<!-- route-structured-data -->')
     ? output.replace('<!-- route-structured-data -->', schemaTag)

@@ -54,6 +54,10 @@
       "destination": "/contact/index.html"
     },
     {
+      "source": "/email/signature-install",
+      "destination": "/email/signature-install/index.html"
+    },
+    {
       "source": "/privacy-policy",
       "destination": "/privacy-policy/index.html"
     },

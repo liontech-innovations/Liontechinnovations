@@ -12,6 +12,7 @@ import { MonitoringPage } from '../pages/MonitoringPage';
 import { ReadinessFixSprintPage } from '../pages/ReadinessFixSprintPage';
 import { IndustriesDirectoryPage } from '../pages/IndustriesDirectoryPage';
 import { IndustryPage } from '../pages/IndustryPage';
+import { SignatureInstallPage } from '../pages/SignatureInstallPage';
 import { industriesDirectorySeo, createIndustrySeo } from '../content/industries/seo';
 import { industryPageByPath, programmaticRoutes } from '../content/industries';
 import { RouteLink } from '../components/ui/RouteLink';
@@ -104,6 +105,8 @@ export function AppRoutes() {
 
   if (legacyRoutes.has(pathname)) return <LegacySite />;
 
+  if (pathname === '/email/signature-install') return <SignatureInstallPage />;
+
   if (pathname === '/industries') {
     return <MarketingLayout><IndustriesRoutePage /></MarketingLayout>;
   }
@@ -126,5 +129,6 @@ export const routeInventory = {
   marketing: Object.keys(marketingRoutes),
   legacy: Array.from(legacyRoutes),
   static: ['/careops/free-check', '/careops/free-check/thanks.html'],
+  internal: ['/email/signature-install'],
   programmatic: ['/industries', ...programmaticRoutes],
 } as const;

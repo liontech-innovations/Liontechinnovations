@@ -8,6 +8,7 @@ export type SeoConfig = {
   type?: 'website' | 'article';
   alternateJson?: string;
   schema?: Record<string, unknown> | Array<Record<string, unknown>>;
+  robots?: string;
 };
 
 function setMeta(selector: string, attribute: 'content' | 'href', value: string) {
@@ -15,7 +16,7 @@ function setMeta(selector: string, attribute: 'content' | 'href', value: string)
   element?.setAttribute(attribute, value);
 }
 
-export function useSeo({ title, description, path, type = 'website', alternateJson, schema }: SeoConfig) {
+export function useSeo({ title, description, path, type = 'website', alternateJson, schema, robots = 'index,follow' }: SeoConfig) {
   useEffect(() => {
     const canonical = new URL(path, company.website).toString();
     document.title = title;
@@ -26,6 +27,7 @@ export function useSeo({ title, description, path, type = 'website', alternateJs
     setMeta('meta[property="og:url"]', 'content', canonical);
     setMeta('meta[name="twitter:title"]', 'content', title);
     setMeta('meta[name="twitter:description"]', 'content', description);
+    setMeta('meta[name="robots"]', 'content', robots);
     setMeta('link[rel="canonical"]', 'href', canonical);
 
     const alternateId = 'route-alternate-json';
@@ -53,5 +55,5 @@ export function useSeo({ title, description, path, type = 'website', alternateJs
       document.getElementById(id)?.remove();
       document.getElementById(alternateId)?.remove();
     };
-  }, [alternateJson, description, path, schema, title, type]);
+  }, [alternateJson, description, path, robots, schema, title, type]);
 }
