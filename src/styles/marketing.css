@@ -34,17 +34,17 @@
 }
 
 .lt-industry-hero {
-  padding: clamp(6.5rem, 7.5vw, 7.5rem) 0 clamp(2.6rem, 4vw, 3.8rem);
+  padding: clamp(6rem, 6.8vw, 6.9rem) 0 clamp(2.2rem, 3.2vw, 3rem);
   border-bottom: 1px solid var(--lt-line);
   background: linear-gradient(145deg, var(--lt-canvas-deep) 0%, #0a1d33 62%, #102945 100%);
 }
 
 .lt-industry-hero h1 {
   max-width: 900px;
-  margin: 0.9rem 0 1.25rem;
+  margin: 0.75rem 0 1.05rem;
   color: var(--lt-heading);
   font-family: var(--lt-display-font);
-  font-size: clamp(2.4rem, 3.45vw, 3.65rem);
+  font-size: clamp(2.05rem, 2.8vw, 3.05rem);
   font-weight: 560;
   line-height: 1.02;
   letter-spacing: -0.045em;
@@ -52,7 +52,7 @@
 
 .lt-industry-directory-hero h1 {
   max-width: 1050px;
-  font-size: clamp(2.35rem, 3.2vw, 3.45rem);
+  font-size: clamp(2.1rem, 2.8vw, 3rem);
 }
 
 .lt-industry-answer,
@@ -60,7 +60,7 @@
   max-width: 930px;
   color: var(--lt-body);
   font-size: clamp(1rem, 1.2vw, 1.12rem);
-  line-height: 1.68;
+  line-height: 1.62;
 }
 
 .lt-industry-directory .lt-industry-answer {
@@ -72,18 +72,18 @@
   max-width: 980px;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.55rem;
 }
 
 .lt-industry-inventory {
-  margin: 1.25rem 0 0;
+  margin: 1rem 0 0;
   color: var(--lt-body);
   font-size: 0.9rem;
 }
 
 .lt-industry-inventory strong,
 .lt-industry-inventory span {
-  padding: 0.48rem 0.72rem;
+  padding: 0.4rem 0.65rem;
   border: 1px solid var(--lt-line);
   border-radius: 999px;
   background: rgba(3, 12, 22, 0.28);
@@ -96,17 +96,17 @@
 
 .lt-industry-guide-filter {
   display: grid;
-  padding: clamp(1.25rem, 2.4vw, 1.8rem);
+  padding: clamp(1rem, 1.7vw, 1.3rem) clamp(1.1rem, 2vw, 1.5rem);
   grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.28fr);
   align-items: end;
-  gap: 1rem 1.75rem;
+  gap: 0.8rem 1.4rem;
   border: 1px solid rgba(224, 191, 109, 0.24);
   border-radius: 10px;
   background: linear-gradient(145deg, rgba(16, 34, 56, 0.82), rgba(5, 17, 30, 0.9));
 }
 
 .lt-industry-guide-filter .lt-kicker {
-  margin-bottom: 0.55rem;
+  margin-bottom: 0.4rem;
 }
 
 .lt-industry-guide-filter h2 {
@@ -114,7 +114,7 @@
   margin: 0;
   color: var(--lt-heading);
   font-family: var(--lt-display-font);
-  font-size: clamp(1.55rem, 2.2vw, 2.05rem);
+  font-size: clamp(1.55rem, 1.8vw, 1.95rem);
   font-weight: 560;
   letter-spacing: -0.03em;
   line-height: 1.12;
@@ -192,19 +192,19 @@
 
 .lt-industry-body {
   display: grid;
-  gap: clamp(2.8rem, 4.5vw, 4.6rem);
-  padding-top: clamp(2.8rem, 4.5vw, 4.6rem);
-  padding-bottom: clamp(4rem, 6vw, 6rem);
+  gap: clamp(2.4rem, 3.7vw, 3.8rem);
+  padding-top: clamp(2.4rem, 3.7vw, 3.8rem);
+  padding-bottom: clamp(3.4rem, 5vw, 5rem);
 }
 
 .lt-industry-panel > h2,
 .lt-industry-directory-group > h2,
 .lt-industry-cta h2 {
   max-width: 850px;
-  margin: 0.65rem 0 1.4rem;
+  margin: 0.55rem 0 1.15rem;
   color: var(--lt-heading);
   font-family: var(--lt-display-font);
-  font-size: clamp(1.85rem, 2.7vw, 2.75rem);
+  font-size: clamp(1.7rem, 2.15vw, 2.35rem);
   font-weight: 560;
   line-height: 1.07;
   letter-spacing: -0.035em;
@@ -212,7 +212,7 @@
 
 .lt-industry-directory-group > h2 {
   max-width: 720px;
-  font-size: clamp(1.75rem, 2.4vw, 2.4rem);
+  font-size: clamp(1.7rem, 2.05vw, 2.25rem);
 }
 
 .lt-industry-fact-grid,
@@ -222,7 +222,7 @@
 .lt-industry-directory-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 0.8rem;
 }
 
 .lt-industry-gates > :last-child,
@@ -233,14 +233,14 @@
 .lt-industry-panel .lt-standard-card,
 .lt-industry-evidence-grid .lt-industry-evidence-card {
   height: 100%;
-  padding: clamp(1.2rem, 2vw, 1.75rem);
+  padding: clamp(1.05rem, 1.65vw, 1.5rem);
 }
 
 .lt-industry-panel h3,
 .lt-industry-directory-grid h3 {
-  margin: 0.35rem 0 0.7rem;
+  margin: 0.3rem 0 0.6rem;
   color: var(--lt-heading);
-  font-size: 1.12rem;
+  font-size: clamp(1.15rem, 1.7vw, 1.5rem);
   font-weight: 620;
   line-height: 1.35;
 }
@@ -257,7 +257,7 @@
 .lt-industry-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem 1.1rem;
+  gap: 0.65rem 0.9rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -266,8 +266,8 @@
 .lt-industry-list li {
   display: flex;
   align-items: flex-start;
-  gap: 0.65rem;
-  padding: 1rem;
+  gap: 0.55rem;
+  padding: 0.82rem;
   border: 1px solid var(--lt-line);
   border-radius: 9px;
   background: var(--lt-surface);
@@ -298,7 +298,7 @@
 .lt-industry-evidence-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 0.8rem;
 }
 
 .lt-industry-evidence-grid a,
@@ -423,12 +423,12 @@
 
 .lt-industry-directory-group {
   display: grid;
-  gap: 0.85rem;
+  gap: 0.72rem;
 }
 
 .lt-industry-directory-card {
   display: flex;
-  min-height: 300px;
+  min-height: 255px;
   height: 100%;
   padding: 0 !important;
   overflow: hidden;
@@ -445,7 +445,7 @@
 .lt-industry-primary-link {
   display: flex;
   min-width: 0;
-  padding: clamp(1.25rem, 2vw, 1.6rem) clamp(1.25rem, 2vw, 1.6rem) 1.05rem;
+  padding: clamp(1.05rem, 1.7vw, 1.35rem) clamp(1.05rem, 1.7vw, 1.35rem) 0.9rem;
   flex: 1 1 auto;
   flex-direction: column;
   color: inherit !important;
@@ -457,7 +457,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.8rem;
   color: var(--lt-heading-soft);
 }
 
@@ -465,7 +465,7 @@
   margin: 0;
   color: inherit;
   font-family: var(--lt-display-font);
-  font-size: clamp(1.3rem, 1.8vw, 1.55rem);
+  font-size: clamp(1.2rem, 1.7vw, 1.5rem);
   font-weight: 590;
   letter-spacing: -0.025em;
   line-height: 1.2;
@@ -479,17 +479,17 @@
 }
 
 .lt-industry-primary-link > p {
-  margin: 0.85rem 0 0;
+  margin: 0.7rem 0 0;
   color: var(--lt-body) !important;
-  font-size: 0.92rem;
-  line-height: 1.62;
+  font-size: 0.9rem;
+  line-height: 1.58;
 }
 
 .lt-industry-primary-action {
   display: inline-flex;
   width: fit-content;
   margin-top: auto;
-  padding-top: 1.2rem;
+  padding-top: 1.05rem;
   align-items: center;
   gap: 0.4rem;
   color: var(--lt-gold-light);
@@ -519,9 +519,9 @@
 .lt-industry-secondary-actions {
   display: grid;
   margin-top: auto;
-  padding: 0 1.25rem 1.25rem;
+  padding: 0 1.05rem 1.05rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.55rem;
+  gap: 0.5rem;
 }
 
 .lt-industry-secondary-actions a {
@@ -557,7 +557,7 @@
 
 .lt-industry-directory-grid > .lt-industry-directory-card:last-child:nth-child(odd) {
   grid-column: 1 / -1;
-  min-height: 260px;
+  min-height: 255px;
 }
 
 .lt-industry-directory-grid > .lt-industry-directory-card:last-child:nth-child(odd) .lt-industry-secondary-actions {
@@ -3481,17 +3481,49 @@
   min-height: 0;
 }
 
+.lt-route-section.lt-route-evidence-section {
+  padding-block: clamp(3.4rem, 4.6vw, 4.6rem);
+}
+
+.lt-route-evidence-section .lt-route-heading {
+  margin-bottom: clamp(1.8rem, 3.2vw, 2.7rem);
+}
+
+.marketing-site .lt-route-evidence-section .lt-route-heading h2 {
+  font-size: clamp(1.7rem, 2.15vw, 2.35rem);
+}
+
 .lt-route-evidence-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-rows: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  grid-template-rows: none;
+  grid-auto-rows: auto;
+  gap: 0.75rem;
 }
 
 .lt-route-evidence-grid .lt-route-card {
+  min-height: 170px;
   height: 100%;
+  padding: 1.5rem;
   border-color: rgba(224, 191, 109, 0.24);
   background: linear-gradient(145deg, rgba(16, 34, 56, 0.9), rgba(7, 22, 38, 0.92));
+}
+
+.lt-route-evidence-grid .lt-route-card-icon {
+  width: 38px;
+  height: 38px;
+  margin-bottom: 0.9rem;
+}
+
+.marketing-site .lt-route-evidence-grid .lt-route-card h3 {
+  margin-bottom: 0.45rem;
+  font-size: 1.06rem;
+}
+
+.lt-route-evidence-grid .lt-route-card-copy,
+.lt-route-evidence-grid .lt-route-card-copy p {
+  font-size: 0.92rem;
+  line-height: 1.58;
 }
 
 .lt-route-evidence-claims {
@@ -3506,7 +3538,7 @@
 }
 
 .lt-route-evidence-claims .lt-route-plain-list {
-  margin-top: 1rem;
+  margin-top: 0.75rem;
 }
 
 .lt-route-process-line {
@@ -4767,14 +4799,34 @@
 .marketing-site .lt-industry-page .lt-industry-hero h1 {
   max-width: 900px;
   font-family: var(--lt-display-font);
-  font-size: clamp(2.4rem, 3.45vw, 3.65rem);
+  font-size: clamp(2.05rem, 2.8vw, 3.05rem);
   font-weight: 560;
   line-height: 1.02;
 }
 
 .marketing-site .lt-industry-directory .lt-industry-directory-hero h1 {
   max-width: 1050px;
-  font-size: clamp(2.35rem, 3.2vw, 3.45rem);
+  font-size: clamp(2.1rem, 2.8vw, 3rem);
+}
+
+.marketing-site .lt-industry-guide-filter h2 {
+  font-size: clamp(1.55rem, 1.8vw, 1.95rem);
+}
+
+.marketing-site .lt-industry-panel > h2 {
+  font-size: clamp(1.7rem, 2.15vw, 2.35rem);
+}
+
+.marketing-site .lt-industry-directory-group > h2 {
+  font-size: clamp(1.7rem, 2.05vw, 2.25rem);
+}
+
+.marketing-site .lt-industry-panel h3 {
+  font-size: clamp(1.15rem, 1.7vw, 1.5rem);
+}
+
+.marketing-site .lt-industry-primary-heading h3 {
+  font-size: clamp(1.2rem, 1.7vw, 1.5rem);
 }
 
 @media (max-width: 640px) {

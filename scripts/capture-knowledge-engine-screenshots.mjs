@@ -7,13 +7,18 @@ import { preview } from 'vite';
 const projectRoot = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const distDirectory = join(projectRoot, 'dist');
 const phase = process.argv[2];
+const suite = process.argv[3] || 'knowledge-engine';
 const port = Number(process.env.KNOWLEDGE_ENGINE_SCREENSHOT_PORT || 4194);
 
 if (!['before', 'after'].includes(phase)) {
   throw new Error('Pass a screenshot phase: before or after.');
 }
 
-const screenshotDirectory = join(projectRoot, 'qa-artifacts', 'knowledge-engine', phase);
+if (!/^[a-z0-9-]+$/.test(suite)) {
+  throw new Error('Screenshot suite must contain only lowercase letters, numbers and hyphens.');
+}
+
+const screenshotDirectory = join(projectRoot, 'qa-artifacts', suite, phase);
 const desktop = { width: 1440, height: 900 };
 const mobile = { width: 390, height: 844 };
 
@@ -63,10 +68,16 @@ try {
 
   const desktopCaptures = [
     { route: '/industries', filename: 'desktop-industries-hero.png', locator: '.lt-industry-hero' },
+    { route: '/industries', filename: 'desktop-guide-types-panel.png', locator: '.lt-industry-guide-filter' },
     { route: '/industries', filename: 'desktop-health-care-cards.png', locator: '.lt-industry-directory-group:nth-of-type(2)' },
     { route: '/industries', filename: 'desktop-professional-financial-cards.png', locator: '.lt-industry-directory-group:nth-of-type(3)' },
     { route: '/industries', filename: 'desktop-local-home-cards.png', locator: '.lt-industry-directory-group:nth-of-type(4)' },
     { route: '/industries', filename: 'desktop-business-services-cards.png', locator: '.lt-industry-directory-group:nth-of-type(5)' },
+    { route: '/industries/dental-practices', filename: 'desktop-five-gates.png', locator: '.lt-industry-panel:has(.lt-industry-gates)' },
+    { route: '/industries/dental-practices', filename: 'desktop-readiness-checks.png', locator: '.lt-industry-body > .lt-industry-panel:nth-of-type(3)' },
+    { route: '/industries/dental-practices', filename: 'desktop-buyer-questions.png', locator: '.lt-industry-panel:has(.lt-industry-question-grid)' },
+    { route: '/methodology', filename: 'desktop-evidence-standards.png', locator: '.lt-route-section:has(.lt-route-evidence-grid)' },
+    { route: '/methodology', filename: 'desktop-testing-process.png', locator: '.lt-route-section:has(.lt-route-process-line)' },
     { route: '/industries/dental-practices', filename: 'desktop-industry-hub.png', fullPage: true },
     { route: '/industries/aesthetics-clinics/ai-visibility', filename: 'desktop-supporting-guide.png', fullPage: true },
   ];
@@ -78,8 +89,11 @@ try {
   const cardSelector = '[data-industry-directory-entry="aesthetics-clinics"]';
   const mobileCaptures = [
     { route: '/industries', filename: 'mobile-industries-hero.png', locator: '.lt-industry-hero' },
+    { route: '/industries', filename: 'mobile-guide-types-panel.png', locator: '.lt-industry-guide-filter' },
     { route: '/industries', filename: 'mobile-industry-card.png', locator: cardSelector },
     { route: '/industries', filename: 'mobile-secondary-actions.png', locator: `${cardSelector} .lt-industry-secondary-actions, ${cardSelector} > div` },
+    { route: '/industries/recruitment-agencies', filename: 'mobile-representative-guide-section.png', locator: '.lt-industry-panel:has(.lt-industry-gates)' },
+    { route: '/methodology', filename: 'mobile-evidence-standards.png', locator: '.lt-route-section:has(.lt-route-evidence-grid)' },
     { route: '/industries/aesthetics-clinics/ai-visibility', filename: 'mobile-supporting-guide.png', fullPage: true },
   ];
 

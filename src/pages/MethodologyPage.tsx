@@ -56,7 +56,7 @@ export function MethodologyPage() {
         </div>
       </RouteSection>
 
-      <RouteSection id="evidence-standards">
+      <RouteSection id="evidence-standards" className="lt-route-evidence-section">
         <RouteHeading eyebrow="EVIDENCE STANDARDS" title="Observed, captured and human-reviewed" description="Findings remain tied to the agreed sampled tests and the public information available at the time of review." />
         <div className="lt-route-evidence-grid">
           <FeatureCard title="Observed outputs" icon={Eye}><p>LionTech records what the selected AI systems returned for agreed buyer questions.</p></FeatureCard>

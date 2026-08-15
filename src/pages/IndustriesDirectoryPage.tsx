@@ -43,7 +43,7 @@ export function IndustriesDirectoryPage() {
         <section className="lt-industry-guide-filter" aria-labelledby="guide-filter-heading" data-guide-filter>
           <div>
             <p className="lt-kicker">GUIDE TYPES</p>
-            <h2 id="guide-filter-heading">Choose a supporting guide to prioritise</h2>
+            <h2 id="guide-filter-heading">Choose a supporting guide</h2>
           </div>
           <div className="lt-industry-filter-controls" role="group" aria-label="Prioritise a guide type">
             {guideFilters.map((filter) => (
