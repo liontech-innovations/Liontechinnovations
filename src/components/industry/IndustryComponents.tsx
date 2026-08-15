@@ -11,7 +11,7 @@ export function IndustryCta({ placement, title, description }: { placement: 'her
         <h2>{title}</h2>
         <p>{description}</p>
       </div>
-      <RouteLink href={snapshotActionPath} className="lt-button lt-button-primary">
+      <RouteLink href={snapshotActionPath} className="lt-button lt-button-primary" aria-label={`Get AI Snapshot: ${title}`}>
         GET AI SNAPSHOT <ArrowRight size={16} aria-hidden="true" />
       </RouteLink>
     </div>
