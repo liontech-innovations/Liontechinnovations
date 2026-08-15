@@ -101,6 +101,7 @@ try {
           ? {
               anchorTop: anchorRect?.top ?? null,
               fields: [...form.elements].map((element) => element.name).filter(Boolean),
+              sections: [...form.querySelectorAll('legend')].map((legend) => legend.textContent?.trim()),
               hasConsent: Boolean(form.querySelector('input[name="consent"][type="checkbox"]')),
               submitText: form.querySelector('button[type="submit"]')?.textContent?.trim() || null,
             }
@@ -132,11 +133,14 @@ try {
     }
 
     if (route === '/contact#snapshot-enquiry') {
-      const expectedFields = ['name', 'email', 'company', 'websiteUrl', 'primaryService', 'primaryLocation', 'competitor', 'website', 'consent'];
+      const expectedFields = ['name', 'email', 'company', 'websiteUrl', 'jobTitle', 'department', 'companySize', 'primaryService', 'primaryLocation', 'competitor', 'website', 'consent'];
       if (!state.form || state.form.anchorTop === null || state.form.anchorTop < 0 || state.form.anchorTop >= 900) {
         throw new Error('Snapshot enquiry form is not visible at the direct hash route');
       }
       if (JSON.stringify(state.form.fields) !== JSON.stringify(expectedFields)) throw new Error('Snapshot enquiry form fields changed');
+      if (JSON.stringify(state.form.sections) !== JSON.stringify(['Your details', 'Company', 'Snapshot context'])) {
+        throw new Error('Snapshot enquiry form sections changed');
+      }
       if (!state.form.hasConsent || state.form.submitText !== 'Request a Founding Snapshot') {
         throw new Error('Snapshot enquiry form consent or submit behaviour changed');
       }
