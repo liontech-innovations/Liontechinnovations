@@ -11,6 +11,7 @@
     "test:snapshot-url": "npm run build && node scripts/check-snapshot-url-normalisation.mjs",
     "test:public-privacy": "node scripts/check-public-company-privacy.mjs",
     "test:email-signature": "node scripts/check-email-signature.mjs",
+    "test:og-card": "node scripts/check-og-social-card.mjs",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
     "seo:generate-assets": "node scripts/generate-programmatic-assets.mjs",

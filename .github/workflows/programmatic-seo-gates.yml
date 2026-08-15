@@ -23,6 +23,7 @@ jobs:
       - run: npm run build
       - run: npm run test:public-privacy
       - run: npm run test:email-signature
+      - run: npm run test:og-card
       - run: node scripts/check-ai-crawlers.mjs
       - run: node scripts/check-programmatic-routes.mjs
       - run: npm run seo:indexnow:dry-run
