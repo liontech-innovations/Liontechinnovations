@@ -3,6 +3,7 @@ node_modules/
 build/
 dist/
 coverage/
+qa-artifacts/
 .seo-cache/
 .DS_Store
 *.log

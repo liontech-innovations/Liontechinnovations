@@ -5,12 +5,18 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "vite build && node scripts/prerender.mjs",
+    "build": "npm run seo:generate-assets && vite build && node scripts/prerender.mjs && node scripts/check-programmatic-content.mjs && node scripts/check-seo-artifacts.mjs",
     "preview": "vite preview",
     "test:browser-console": "npm run build && node scripts/check-browser-console.mjs",
     "test:snapshot-url": "npm run build && node scripts/check-snapshot-url-normalisation.mjs",
     "clean": "rm -rf dist",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "seo:generate-assets": "node scripts/generate-programmatic-assets.mjs",
+    "seo:indexnow:dry-run": "node scripts/indexnow.mjs",
+    "seo:indexnow:submit": "node scripts/indexnow.mjs --submit",
+    "test:programmatic-content": "npm run build",
+    "test:ai-crawlers": "npm run build && node scripts/check-ai-crawlers.mjs",
+    "test:programmatic-routes": "npm run build && node scripts/check-programmatic-routes.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.14",
