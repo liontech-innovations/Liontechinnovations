@@ -1,0 +1,211 @@
+{
+  "schemaVersion": "1.1.0",
+  "entity": {
+    "legalName": "Lion Tech Innovations Ltd",
+    "companyNumber": "17068390",
+    "website": "https://liontechinnovations.co.uk",
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
+  },
+  "slug": "landscaping-companies",
+  "name": "Landscaping companies",
+  "shortDescription": "Garden design, build and maintenance companies whose service mix, design credentials, coverage, waste handling and quote process need clear separation.",
+  "pageAudience": [
+    "landscaping business owners",
+    "garden designers",
+    "grounds-maintenance teams"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking garden design",
+    "customers comparing hard landscaping",
+    "organisations needing soft landscaping"
+  ],
+  "fiveGates": {
+    "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
+    "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
+    "trust": "Can material facts be checked against current first-party and applicable authoritative evidence?",
+    "compare": "Can buyers inspect relevant differences using factual criteria rather than unsupported superlatives?",
+    "act": "Can a buyer complete a clear next step with suitable confirmation, escalation and human control?"
+  },
+  "commonServices": [
+    "garden design",
+    "hard landscaping",
+    "soft landscaping",
+    "patios and paving",
+    "fencing",
+    "planting schemes",
+    "grounds maintenance",
+    "drainage and irrigation"
+  ],
+  "buyerQuestions": [
+    {
+      "intent": "discover",
+      "question": "Which landscaping companies provide garden design for buyers seeking garden design?",
+      "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
+    },
+    {
+      "intent": "discover",
+      "question": "Where can a buyer find a landscaping company offering hard landscaping and soft landscaping?",
+      "whyItMatters": "AI systems need a crawlable connection between the service, the provider entity and the area actually served."
+    },
+    {
+      "intent": "describe",
+      "question": "Does this landscaping company clearly explain whether design, construction or maintenance is in scope?",
+      "whyItMatters": "A precise answer prevents an AI summary from filling gaps with assumptions or outdated third-party text."
+    },
+    {
+      "intent": "describe",
+      "question": "What should a customer expect when asking about patios and paving?",
+      "whyItMatters": "Scope, process and boundaries should be visible before a buyer shares detailed information."
+    },
+    {
+      "intent": "trust",
+      "question": "Which official evidence supports service area and minimum project size?",
+      "whyItMatters": "Public registers and first-party facts should agree so that a buyer can verify rather than merely trust a marketing claim."
+    },
+    {
+      "intent": "trust",
+      "question": "How does the provider evidence designer or trade-body credentials where claimed?",
+      "whyItMatters": "Named sources, responsible people and current policies create a traceable trust path."
+    },
+    {
+      "intent": "compare",
+      "question": "How should buyers compare providers on survey, concept and quotation stages?",
+      "whyItMatters": "Comparable facts help buyers distinguish genuine service differences without relying on unverified superlatives."
+    },
+    {
+      "intent": "compare",
+      "question": "What makes one provider clearer than another about materials, waste and subcontractor responsibilities?",
+      "whyItMatters": "Completeness, freshness and evidence are safer comparison signals than promotional volume."
+    },
+    {
+      "intent": "act",
+      "question": "Can a buyer request a garden consultation or submit photographs and measurements without searching across several pages?",
+      "whyItMatters": "The next step should be explicit, accessible and connected to the relevant service context."
+    },
+    {
+      "intent": "act",
+      "question": "What information is needed to ask for a maintenance proposal or book a site survey?",
+      "whyItMatters": "A structured action route reduces avoidable back-and-forth while preserving human approval where it matters."
+    }
+  ],
+  "trustedSources": [
+    {
+      "label": "BALI member directory",
+      "url": "https://www.bali.org.uk/find-a-member/",
+      "sourceType": "professional-body",
+      "supports": [
+        "landscape professional member discovery where applicable"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Landscape Institute directory",
+      "url": "https://my.landscapeinstitute.org/directory",
+      "sourceType": "official-directory",
+      "supports": [
+        "registered practice and professional discovery"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "RHS Find a designer",
+      "url": "https://www.rhs.org.uk/advice/find-a-professional",
+      "sourceType": "professional-body",
+      "supports": [
+        "garden professional discovery and consumer guidance"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "HSE agriculture and horticulture guidance",
+      "url": "https://www.hse.gov.uk/agriculture/topics/landscaping.htm",
+      "sourceType": "government",
+      "supports": [
+        "landscaping health and safety guidance"
+      ],
+      "checkedAt": "2026-08-15"
+    }
+  ],
+  "factsAIShouldUnderstand": [
+    "Landscaping companies may offer different combinations of garden design, hard landscaping and soft landscaping; a provider should state its actual scope rather than rely on the industry category alone.",
+    "This LionTech guide is written for landscaping business owners, garden designers, grounds-maintenance teams, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking garden design, customers comparing hard landscaping, organisations needing soft landscaping, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with an owner-manager, a design director, or a contracts manager, so named roles and contact ownership help a buyer understand who is accountable.",
+    "BALI member directory is a relevant public evidence source for landscape professional member discovery where applicable.",
+    "Landscape Institute directory can support verification of registered practice and professional discovery.",
+    "A useful description separates patios and paving and fencing from adjacent services that may require different expertise, evidence or approval.",
+    "The action journey should make it clear how to request a garden consultation, how to submit photographs and measurements, and when a human will review the request.",
+    "Public information should address seasonal availability and maintenance options without implying that a generic web answer replaces case-specific professional judgement."
+  ],
+  "commonVisibilityGaps": [
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm whether design, construction or maintenance is in scope; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm service area and minimum project size; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm designer or trade-body credentials where claimed; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm survey, concept and quotation stages; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm materials, waste and subcontractor responsibilities; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm seasonal availability and maintenance options; verify the evidence before treating this as a finding."
+  ],
+  "comparisonCriteria": [
+    "Relevant service fit across garden design, hard landscaping and soft landscaping",
+    "Clarity about whether design, construction or maintenance is in scope",
+    "Verifiable evidence from BALI member directory or another applicable official source",
+    "Transparent explanation of survey, concept and quotation stages",
+    "A usable route to request a garden consultation",
+    "Responsible boundaries for seasonal availability and maintenance options"
+  ],
+  "trustSignals": [
+    "A current, matching record or guidance reference from BALI member directory",
+    "A relevant verification route through Landscape Institute directory",
+    "Consistent provider, location and service facts alongside RHS Find a designer",
+    "Careful use of claims supported by HSE agriculture and horticulture guidance",
+    "Named responsible people or roles for planting schemes and grounds maintenance",
+    "Visible terms, privacy information and a clear process to submit photographs and measurements"
+  ],
+  "actionPaths": [
+    "request a garden consultation",
+    "submit photographs and measurements",
+    "ask for a maintenance proposal",
+    "book a site survey"
+  ],
+  "agentReadinessOpportunities": [
+    "Collect the minimum structured facts needed to request a garden consultation, then pass the request to the responsible human.",
+    "Route enquiries about patios and paving and fencing to the correct team without presenting a final professional judgement.",
+    "Check that location, availability and service-scope fields are complete before allowing a buyer to ask for a maintenance proposal.",
+    "Acknowledge a request to book a site survey, provide the next expected step and preserve an auditable handoff."
+  ],
+  "automationBoundaries": [
+    "design and drainage decisions require site-specific review",
+    "planning, ecology and tree constraints may require specialist advice",
+    "waste-carrier and professional membership claims must be verified"
+  ],
+  "structuredDataRecommendations": [
+    "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
+    "Describe garden design, patios and paving and drainage and irrigation with visible Service information only where the provider genuinely offers them.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
+    "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
+  ],
+  "riskNotes": [
+    "Landscaping companies guidance on this site is general information, not professional advice about a particular business or customer.",
+    "design and drainage decisions require site-specific review",
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
+  ],
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
+  "canonicalPageUrls": {
+    "hub": "https://liontechinnovations.co.uk/industries/landscaping-companies",
+    "aiVisibility": "https://liontechinnovations.co.uk/industries/landscaping-companies/ai-visibility",
+    "howAiCompares": "https://liontechinnovations.co.uk/industries/landscaping-companies/how-ai-compares",
+    "agentReadiness": "https://liontechinnovations.co.uk/industries/landscaping-companies/agent-readiness",
+    "checklist": "https://liontechinnovations.co.uk/industries/landscaping-companies/checklist"
+  },
+  "primaryAction": {
+    "label": "Get AI Snapshot",
+    "url": "https://liontechinnovations.co.uk/contact#snapshot-enquiry",
+    "actionType": "snapshot-enquiry"
+  }
+}

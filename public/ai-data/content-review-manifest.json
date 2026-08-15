@@ -1,0 +1,608 @@
+{
+  "schemaVersion": "1.1.0",
+  "status": "awaiting-freejoy-content-and-release-approval",
+  "approvedRouteCount": 0,
+  "pendingRouteCount": 100,
+  "routes": [
+    {
+      "path": "/industries/aesthetics-clinics",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/aesthetics-clinics/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/aesthetics-clinics/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/aesthetics-clinics/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/aesthetics-clinics/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/dental-practices",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/dental-practices/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/dental-practices/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/dental-practices/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/dental-practices/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/domiciliary-care-providers",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/domiciliary-care-providers/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/domiciliary-care-providers/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/domiciliary-care-providers/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/domiciliary-care-providers/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/physiotherapy-clinics",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/physiotherapy-clinics/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/physiotherapy-clinics/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/physiotherapy-clinics/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/physiotherapy-clinics/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/private-medical-clinics",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/private-medical-clinics/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/private-medical-clinics/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/private-medical-clinics/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/private-medical-clinics/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/veterinary-practices",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/veterinary-practices/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/veterinary-practices/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/veterinary-practices/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/veterinary-practices/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/accountancy-firms",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/accountancy-firms/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/accountancy-firms/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/accountancy-firms/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/accountancy-firms/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/solicitors",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/solicitors/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/solicitors/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/solicitors/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/solicitors/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/estate-agents",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/estate-agents/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/estate-agents/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/estate-agents/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/estate-agents/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/mortgage-brokers",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/mortgage-brokers/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/mortgage-brokers/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/mortgage-brokers/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/mortgage-brokers/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/financial-advisers",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/financial-advisers/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/financial-advisers/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/financial-advisers/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/financial-advisers/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/recruitment-agencies",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/recruitment-agencies/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/recruitment-agencies/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/recruitment-agencies/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/recruitment-agencies/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/managed-it-service-providers",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/managed-it-service-providers/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/managed-it-service-providers/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/managed-it-service-providers/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/managed-it-service-providers/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/training-providers",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/training-providers/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/training-providers/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/training-providers/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/training-providers/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/plumbing-heating-firms",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/plumbing-heating-firms/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/plumbing-heating-firms/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/plumbing-heating-firms/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/plumbing-heating-firms/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/electrical-contractors",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/electrical-contractors/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/electrical-contractors/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/electrical-contractors/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/electrical-contractors/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/roofing-contractors",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/roofing-contractors/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/roofing-contractors/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/roofing-contractors/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/roofing-contractors/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/building-contractors",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/building-contractors/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/building-contractors/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/building-contractors/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/building-contractors/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/landscaping-companies",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/landscaping-companies/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/landscaping-companies/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/landscaping-companies/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/landscaping-companies/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/commercial-cleaning-companies",
+      "pageType": "hub",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/commercial-cleaning-companies/ai-visibility",
+      "pageType": "ai-visibility",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/commercial-cleaning-companies/how-ai-compares",
+      "pageType": "how-ai-compares",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/commercial-cleaning-companies/agent-readiness",
+      "pageType": "agent-readiness",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    },
+    {
+      "path": "/industries/commercial-cleaning-companies/checklist",
+      "pageType": "checklist",
+      "approvalStatus": "pending",
+      "sourceCheckedAt": "2026-08-15"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import { Eye, FileCheck2, LockKeyhole, MapPin, Network, Wrench } from 'lucide-react';
+import { ArrowRight, Eye, FileCheck2, LockKeyhole, MapPin, Network, Wrench } from 'lucide-react';
 import {
   FeatureCard,
   PageHero,
@@ -39,6 +39,7 @@ export function AboutPage() {
             Lion Tech Innovations Ltd is registered in England and Wales under company number <strong>{company.companiesHouseNumber}</strong>.{' '}
             <a href={company.companiesHouseUrl} target="_blank" rel="noreferrer">Verify the company record on Companies House</a>.
           </p>
+          <RouteLink className="lt-route-text-link" href="/industries">Explore the industry guides <ArrowRight size={15} aria-hidden="true" /></RouteLink>
         </div>
       </RouteSection>
 

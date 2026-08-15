@@ -6,7 +6,9 @@ export type SeoConfig = {
   description: string;
   path: string;
   type?: 'website' | 'article';
+  alternateJson?: string;
   schema?: Record<string, unknown> | Array<Record<string, unknown>>;
+  robots?: string;
 };
 
 function setMeta(selector: string, attribute: 'content' | 'href', value: string) {
@@ -14,7 +16,7 @@ function setMeta(selector: string, attribute: 'content' | 'href', value: string)
   element?.setAttribute(attribute, value);
 }
 
-export function useSeo({ title, description, path, type = 'website', schema }: SeoConfig) {
+export function useSeo({ title, description, path, type = 'website', alternateJson, schema, robots = 'index,follow' }: SeoConfig) {
   useEffect(() => {
     const canonical = new URL(path, company.website).toString();
     document.title = title;
@@ -25,7 +27,19 @@ export function useSeo({ title, description, path, type = 'website', schema }: S
     setMeta('meta[property="og:url"]', 'content', canonical);
     setMeta('meta[name="twitter:title"]', 'content', title);
     setMeta('meta[name="twitter:description"]', 'content', description);
+    setMeta('meta[name="robots"]', 'content', robots);
     setMeta('link[rel="canonical"]', 'href', canonical);
+
+    const alternateId = 'route-alternate-json';
+    document.getElementById(alternateId)?.remove();
+    if (alternateJson) {
+      const link = document.createElement('link');
+      link.id = alternateId;
+      link.rel = 'alternate';
+      link.type = 'application/json';
+      link.href = alternateJson;
+      document.head.appendChild(link);
+    }
 
     const id = 'route-structured-data';
     document.getElementById(id)?.remove();
@@ -37,6 +51,9 @@ export function useSeo({ title, description, path, type = 'website', schema }: S
       document.head.appendChild(script);
     }
 
-    return () => document.getElementById(id)?.remove();
-  }, [description, path, schema, title, type]);
+    return () => {
+      document.getElementById(id)?.remove();
+      document.getElementById(alternateId)?.remove();
+    };
+  }, [alternateJson, description, path, robots, schema, title, type]);
 }

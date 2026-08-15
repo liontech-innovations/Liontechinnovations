@@ -1,0 +1,211 @@
+{
+  "schemaVersion": "1.1.0",
+  "entity": {
+    "legalName": "Lion Tech Innovations Ltd",
+    "companyNumber": "17068390",
+    "website": "https://liontechinnovations.co.uk",
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
+  },
+  "slug": "estate-agents",
+  "name": "Estate agents",
+  "shortDescription": "Sales, lettings and property-management firms whose branch coverage, services, fees, redress membership and valuation or viewing routes must remain current.",
+  "pageAudience": [
+    "independent agencies",
+    "multi-branch estate agents",
+    "lettings teams"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking residential sales",
+    "customers comparing lettings",
+    "organisations needing property management"
+  ],
+  "fiveGates": {
+    "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
+    "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
+    "trust": "Can material facts be checked against current first-party and applicable authoritative evidence?",
+    "compare": "Can buyers inspect relevant differences using factual criteria rather than unsupported superlatives?",
+    "act": "Can a buyer complete a clear next step with suitable confirmation, escalation and human control?"
+  },
+  "commonServices": [
+    "residential sales",
+    "lettings",
+    "property management",
+    "market appraisals",
+    "tenant finding",
+    "new homes sales",
+    "auction services",
+    "landlord compliance support"
+  ],
+  "buyerQuestions": [
+    {
+      "intent": "discover",
+      "question": "Which estate agents provide residential sales for buyers seeking residential sales?",
+      "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
+    },
+    {
+      "intent": "discover",
+      "question": "Where can a buyer find an estate agency offering lettings and property management?",
+      "whyItMatters": "AI systems need a crawlable connection between the service, the provider entity and the area actually served."
+    },
+    {
+      "intent": "describe",
+      "question": "Does this estate agency clearly explain which branches and postcodes the agency covers?",
+      "whyItMatters": "A precise answer prevents an AI summary from filling gaps with assumptions or outdated third-party text."
+    },
+    {
+      "intent": "describe",
+      "question": "What should a customer expect when asking about market appraisals?",
+      "whyItMatters": "Scope, process and boundaries should be visible before a buyer shares detailed information."
+    },
+    {
+      "intent": "trust",
+      "question": "Which official evidence supports whether it handles sales, lettings or both?",
+      "whyItMatters": "Public registers and first-party facts should agree so that a buyer can verify rather than merely trust a marketing claim."
+    },
+    {
+      "intent": "trust",
+      "question": "How does the provider evidence fees and service inclusions?",
+      "whyItMatters": "Named sources, responsible people and current policies create a traceable trust path."
+    },
+    {
+      "intent": "compare",
+      "question": "How should buyers compare providers on redress-scheme membership and complaints route?",
+      "whyItMatters": "Comparable facts help buyers distinguish genuine service differences without relying on unverified superlatives."
+    },
+    {
+      "intent": "compare",
+      "question": "What makes one provider clearer than another about how valuations and viewings are arranged?",
+      "whyItMatters": "Completeness, freshness and evidence are safer comparison signals than promotional volume."
+    },
+    {
+      "intent": "act",
+      "question": "Can a buyer request a market appraisal or book a property viewing without searching across several pages?",
+      "whyItMatters": "The next step should be explicit, accessible and connected to the relevant service context."
+    },
+    {
+      "intent": "act",
+      "question": "What information is needed to register as a buyer or tenant or ask for landlord service details?",
+      "whyItMatters": "A structured action route reduces avoidable back-and-forth while preserving human approval where it matters."
+    }
+  ],
+  "trustedSources": [
+    {
+      "label": "GOV.UK property-agent redress guidance",
+      "url": "https://www.gov.uk/redress-scheme-estate-agencies",
+      "sourceType": "government",
+      "supports": [
+        "approved redress-scheme requirements"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "The Property Ombudsman member search",
+      "url": "https://www.tpos.co.uk/find-a-member",
+      "sourceType": "official-directory",
+      "supports": [
+        "member agency verification"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Property Redress Scheme member list",
+      "url": "https://www.theprs.co.uk/consumer/members/",
+      "sourceType": "official-directory",
+      "supports": [
+        "member agency verification"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "National Trading Standards Estate and Letting Agency Team",
+      "url": "https://www.nationaltradingstandards.uk/work-areas/estate-agency/",
+      "sourceType": "regulator",
+      "supports": [
+        "estate-agency enforcement and material-information guidance"
+      ],
+      "checkedAt": "2026-08-15"
+    }
+  ],
+  "factsAIShouldUnderstand": [
+    "Estate agents may offer different combinations of residential sales, lettings and property management; a provider should state its actual scope rather than rely on the industry category alone.",
+    "This LionTech guide is written for independent agencies, multi-branch estate agents, lettings teams, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking residential sales, customers comparing lettings, organisations needing property management, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with an agency owner, a branch director, or a marketing director, so named roles and contact ownership help a buyer understand who is accountable.",
+    "GOV.UK property-agent redress guidance is a relevant public evidence source for approved redress-scheme requirements.",
+    "The Property Ombudsman member search can support verification of member agency verification.",
+    "A useful description separates market appraisals and tenant finding from adjacent services that may require different expertise, evidence or approval.",
+    "The action journey should make it clear how to request a market appraisal, how to book a property viewing, and when a human will review the request.",
+    "Public information should address how property particulars and availability stay current without implying that a generic web answer replaces case-specific professional judgement."
+  ],
+  "commonVisibilityGaps": [
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm which branches and postcodes the agency covers; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm whether it handles sales, lettings or both; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm fees and service inclusions; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm redress-scheme membership and complaints route; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm how valuations and viewings are arranged; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how property particulars and availability stay current; verify the evidence before treating this as a finding."
+  ],
+  "comparisonCriteria": [
+    "Relevant service fit across residential sales, lettings and property management",
+    "Clarity about which branches and postcodes the agency covers",
+    "Verifiable evidence from GOV.UK property-agent redress guidance or another applicable official source",
+    "Transparent explanation of redress-scheme membership and complaints route",
+    "A usable route to request a market appraisal",
+    "Responsible boundaries for how property particulars and availability stay current"
+  ],
+  "trustSignals": [
+    "A current, matching record or guidance reference from GOV.UK property-agent redress guidance",
+    "A relevant verification route through The Property Ombudsman member search",
+    "Consistent provider, location and service facts alongside Property Redress Scheme member list",
+    "Careful use of claims supported by National Trading Standards Estate and Letting Agency Team",
+    "Named responsible people or roles for new homes sales and auction services",
+    "Visible terms, privacy information and a clear process to book a property viewing"
+  ],
+  "actionPaths": [
+    "request a market appraisal",
+    "book a property viewing",
+    "register as a buyer or tenant",
+    "ask for landlord service details"
+  ],
+  "agentReadinessOpportunities": [
+    "Collect the minimum structured facts needed to request a market appraisal, then pass the request to the responsible human.",
+    "Route enquiries about market appraisals and tenant finding to the correct team without presenting a final professional judgement.",
+    "Check that location, availability and service-scope fields are complete before allowing a buyer to register as a buyer or tenant.",
+    "Acknowledge a request to ask for landlord service details, provide the next expected step and preserve an auditable handoff."
+  ],
+  "automationBoundaries": [
+    "valuations require property-specific professional judgement",
+    "property availability and offer status must be confirmed against the live system",
+    "identity, anti-money-laundering and tenancy checks require controlled processes"
+  ],
+  "structuredDataRecommendations": [
+    "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
+    "Describe residential sales, market appraisals and landlord compliance support with visible Service information only where the provider genuinely offers them.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
+    "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
+  ],
+  "riskNotes": [
+    "Estate agents guidance on this site is general information, not professional advice about a particular business or customer.",
+    "valuations require property-specific professional judgement",
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
+  ],
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
+  "canonicalPageUrls": {
+    "hub": "https://liontechinnovations.co.uk/industries/estate-agents",
+    "aiVisibility": "https://liontechinnovations.co.uk/industries/estate-agents/ai-visibility",
+    "howAiCompares": "https://liontechinnovations.co.uk/industries/estate-agents/how-ai-compares",
+    "agentReadiness": "https://liontechinnovations.co.uk/industries/estate-agents/agent-readiness",
+    "checklist": "https://liontechinnovations.co.uk/industries/estate-agents/checklist"
+  },
+  "primaryAction": {
+    "label": "Get AI Snapshot",
+    "url": "https://liontechinnovations.co.uk/contact#snapshot-enquiry",
+    "actionType": "snapshot-enquiry"
+  }
+}

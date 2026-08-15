@@ -1,0 +1,552 @@
+{
+  "generatedAt": "2026-08-15",
+  "routeCount": 100,
+  "wordCount": {
+    "minimum": 1157,
+    "maximum": 1405,
+    "pages": [
+      {
+        "route": "/industries/aesthetics-clinics",
+        "words": 1364
+      },
+      {
+        "route": "/industries/aesthetics-clinics/ai-visibility",
+        "words": 1389
+      },
+      {
+        "route": "/industries/aesthetics-clinics/how-ai-compares",
+        "words": 1216
+      },
+      {
+        "route": "/industries/aesthetics-clinics/agent-readiness",
+        "words": 1259
+      },
+      {
+        "route": "/industries/aesthetics-clinics/checklist",
+        "words": 1392
+      },
+      {
+        "route": "/industries/dental-practices",
+        "words": 1339
+      },
+      {
+        "route": "/industries/dental-practices/ai-visibility",
+        "words": 1372
+      },
+      {
+        "route": "/industries/dental-practices/how-ai-compares",
+        "words": 1196
+      },
+      {
+        "route": "/industries/dental-practices/agent-readiness",
+        "words": 1257
+      },
+      {
+        "route": "/industries/dental-practices/checklist",
+        "words": 1365
+      },
+      {
+        "route": "/industries/domiciliary-care-providers",
+        "words": 1368
+      },
+      {
+        "route": "/industries/domiciliary-care-providers/ai-visibility",
+        "words": 1376
+      },
+      {
+        "route": "/industries/domiciliary-care-providers/how-ai-compares",
+        "words": 1218
+      },
+      {
+        "route": "/industries/domiciliary-care-providers/agent-readiness",
+        "words": 1247
+      },
+      {
+        "route": "/industries/domiciliary-care-providers/checklist",
+        "words": 1391
+      },
+      {
+        "route": "/industries/physiotherapy-clinics",
+        "words": 1339
+      },
+      {
+        "route": "/industries/physiotherapy-clinics/ai-visibility",
+        "words": 1360
+      },
+      {
+        "route": "/industries/physiotherapy-clinics/how-ai-compares",
+        "words": 1198
+      },
+      {
+        "route": "/industries/physiotherapy-clinics/agent-readiness",
+        "words": 1244
+      },
+      {
+        "route": "/industries/physiotherapy-clinics/checklist",
+        "words": 1361
+      },
+      {
+        "route": "/industries/private-medical-clinics",
+        "words": 1378
+      },
+      {
+        "route": "/industries/private-medical-clinics/ai-visibility",
+        "words": 1401
+      },
+      {
+        "route": "/industries/private-medical-clinics/how-ai-compares",
+        "words": 1223
+      },
+      {
+        "route": "/industries/private-medical-clinics/agent-readiness",
+        "words": 1277
+      },
+      {
+        "route": "/industries/private-medical-clinics/checklist",
+        "words": 1405
+      },
+      {
+        "route": "/industries/veterinary-practices",
+        "words": 1306
+      },
+      {
+        "route": "/industries/veterinary-practices/ai-visibility",
+        "words": 1326
+      },
+      {
+        "route": "/industries/veterinary-practices/how-ai-compares",
+        "words": 1166
+      },
+      {
+        "route": "/industries/veterinary-practices/agent-readiness",
+        "words": 1212
+      },
+      {
+        "route": "/industries/veterinary-practices/checklist",
+        "words": 1320
+      },
+      {
+        "route": "/industries/accountancy-firms",
+        "words": 1335
+      },
+      {
+        "route": "/industries/accountancy-firms/ai-visibility",
+        "words": 1366
+      },
+      {
+        "route": "/industries/accountancy-firms/how-ai-compares",
+        "words": 1190
+      },
+      {
+        "route": "/industries/accountancy-firms/agent-readiness",
+        "words": 1247
+      },
+      {
+        "route": "/industries/accountancy-firms/checklist",
+        "words": 1365
+      },
+      {
+        "route": "/industries/solicitors",
+        "words": 1308
+      },
+      {
+        "route": "/industries/solicitors/ai-visibility",
+        "words": 1366
+      },
+      {
+        "route": "/industries/solicitors/how-ai-compares",
+        "words": 1162
+      },
+      {
+        "route": "/industries/solicitors/agent-readiness",
+        "words": 1258
+      },
+      {
+        "route": "/industries/solicitors/checklist",
+        "words": 1348
+      },
+      {
+        "route": "/industries/estate-agents",
+        "words": 1310
+      },
+      {
+        "route": "/industries/estate-agents/ai-visibility",
+        "words": 1335
+      },
+      {
+        "route": "/industries/estate-agents/how-ai-compares",
+        "words": 1166
+      },
+      {
+        "route": "/industries/estate-agents/agent-readiness",
+        "words": 1226
+      },
+      {
+        "route": "/industries/estate-agents/checklist",
+        "words": 1340
+      },
+      {
+        "route": "/industries/mortgage-brokers",
+        "words": 1365
+      },
+      {
+        "route": "/industries/mortgage-brokers/ai-visibility",
+        "words": 1376
+      },
+      {
+        "route": "/industries/mortgage-brokers/how-ai-compares",
+        "words": 1208
+      },
+      {
+        "route": "/industries/mortgage-brokers/agent-readiness",
+        "words": 1240
+      },
+      {
+        "route": "/industries/mortgage-brokers/checklist",
+        "words": 1391
+      },
+      {
+        "route": "/industries/financial-advisers",
+        "words": 1364
+      },
+      {
+        "route": "/industries/financial-advisers/ai-visibility",
+        "words": 1364
+      },
+      {
+        "route": "/industries/financial-advisers/how-ai-compares",
+        "words": 1199
+      },
+      {
+        "route": "/industries/financial-advisers/agent-readiness",
+        "words": 1237
+      },
+      {
+        "route": "/industries/financial-advisers/checklist",
+        "words": 1380
+      },
+      {
+        "route": "/industries/recruitment-agencies",
+        "words": 1359
+      },
+      {
+        "route": "/industries/recruitment-agencies/ai-visibility",
+        "words": 1361
+      },
+      {
+        "route": "/industries/recruitment-agencies/how-ai-compares",
+        "words": 1201
+      },
+      {
+        "route": "/industries/recruitment-agencies/agent-readiness",
+        "words": 1233
+      },
+      {
+        "route": "/industries/recruitment-agencies/checklist",
+        "words": 1376
+      },
+      {
+        "route": "/industries/managed-it-service-providers",
+        "words": 1361
+      },
+      {
+        "route": "/industries/managed-it-service-providers/ai-visibility",
+        "words": 1389
+      },
+      {
+        "route": "/industries/managed-it-service-providers/how-ai-compares",
+        "words": 1230
+      },
+      {
+        "route": "/industries/managed-it-service-providers/agent-readiness",
+        "words": 1274
+      },
+      {
+        "route": "/industries/managed-it-service-providers/checklist",
+        "words": 1385
+      },
+      {
+        "route": "/industries/training-providers",
+        "words": 1324
+      },
+      {
+        "route": "/industries/training-providers/ai-visibility",
+        "words": 1344
+      },
+      {
+        "route": "/industries/training-providers/how-ai-compares",
+        "words": 1182
+      },
+      {
+        "route": "/industries/training-providers/agent-readiness",
+        "words": 1234
+      },
+      {
+        "route": "/industries/training-providers/checklist",
+        "words": 1343
+      },
+      {
+        "route": "/industries/plumbing-heating-firms",
+        "words": 1370
+      },
+      {
+        "route": "/industries/plumbing-heating-firms/ai-visibility",
+        "words": 1393
+      },
+      {
+        "route": "/industries/plumbing-heating-firms/how-ai-compares",
+        "words": 1219
+      },
+      {
+        "route": "/industries/plumbing-heating-firms/agent-readiness",
+        "words": 1259
+      },
+      {
+        "route": "/industries/plumbing-heating-firms/checklist",
+        "words": 1398
+      },
+      {
+        "route": "/industries/electrical-contractors",
+        "words": 1320
+      },
+      {
+        "route": "/industries/electrical-contractors/ai-visibility",
+        "words": 1329
+      },
+      {
+        "route": "/industries/electrical-contractors/how-ai-compares",
+        "words": 1162
+      },
+      {
+        "route": "/industries/electrical-contractors/agent-readiness",
+        "words": 1203
+      },
+      {
+        "route": "/industries/electrical-contractors/checklist",
+        "words": 1335
+      },
+      {
+        "route": "/industries/roofing-contractors",
+        "words": 1318
+      },
+      {
+        "route": "/industries/roofing-contractors/ai-visibility",
+        "words": 1339
+      },
+      {
+        "route": "/industries/roofing-contractors/how-ai-compares",
+        "words": 1180
+      },
+      {
+        "route": "/industries/roofing-contractors/agent-readiness",
+        "words": 1219
+      },
+      {
+        "route": "/industries/roofing-contractors/checklist",
+        "words": 1329
+      },
+      {
+        "route": "/industries/building-contractors",
+        "words": 1309
+      },
+      {
+        "route": "/industries/building-contractors/ai-visibility",
+        "words": 1345
+      },
+      {
+        "route": "/industries/building-contractors/how-ai-compares",
+        "words": 1163
+      },
+      {
+        "route": "/industries/building-contractors/agent-readiness",
+        "words": 1233
+      },
+      {
+        "route": "/industries/building-contractors/checklist",
+        "words": 1337
+      },
+      {
+        "route": "/industries/landscaping-companies",
+        "words": 1307
+      },
+      {
+        "route": "/industries/landscaping-companies/ai-visibility",
+        "words": 1328
+      },
+      {
+        "route": "/industries/landscaping-companies/how-ai-compares",
+        "words": 1157
+      },
+      {
+        "route": "/industries/landscaping-companies/agent-readiness",
+        "words": 1211
+      },
+      {
+        "route": "/industries/landscaping-companies/checklist",
+        "words": 1325
+      },
+      {
+        "route": "/industries/commercial-cleaning-companies",
+        "words": 1347
+      },
+      {
+        "route": "/industries/commercial-cleaning-companies/ai-visibility",
+        "words": 1356
+      },
+      {
+        "route": "/industries/commercial-cleaning-companies/how-ai-compares",
+        "words": 1200
+      },
+      {
+        "route": "/industries/commercial-cleaning-companies/agent-readiness",
+        "words": 1231
+      },
+      {
+        "route": "/industries/commercial-cleaning-companies/checklist",
+        "words": 1366
+      }
+    ]
+  },
+  "top20": [
+    {
+      "left": "/industries/mortgage-brokers",
+      "right": "/industries/financial-advisers",
+      "score": 0.4572901325478645,
+      "siblings": false,
+      "descriptionOverlap": 0.4444444444444444
+    },
+    {
+      "left": "/industries/private-medical-clinics/ai-visibility",
+      "right": "/industries/private-medical-clinics/agent-readiness",
+      "score": 0.43672627235213207,
+      "siblings": true,
+      "descriptionOverlap": 0.16666666666666666
+    },
+    {
+      "left": "/industries/solicitors/ai-visibility",
+      "right": "/industries/solicitors/agent-readiness",
+      "score": 0.43356643356643354,
+      "siblings": true,
+      "descriptionOverlap": 0.21052631578947367
+    },
+    {
+      "left": "/industries/plumbing-heating-firms/ai-visibility",
+      "right": "/industries/plumbing-heating-firms/agent-readiness",
+      "score": 0.4333791208791209,
+      "siblings": true,
+      "descriptionOverlap": 0.2
+    },
+    {
+      "left": "/industries/managed-it-service-providers/ai-visibility",
+      "right": "/industries/managed-it-service-providers/agent-readiness",
+      "score": 0.43308167467398767,
+      "siblings": true,
+      "descriptionOverlap": 0.2
+    },
+    {
+      "left": "/industries/accountancy-firms/ai-visibility",
+      "right": "/industries/accountancy-firms/agent-readiness",
+      "score": 0.43127629733520334,
+      "siblings": true,
+      "descriptionOverlap": 0.14285714285714285
+    },
+    {
+      "left": "/industries/mortgage-brokers/ai-visibility",
+      "right": "/industries/mortgage-brokers/agent-readiness",
+      "score": 0.43126308443824146,
+      "siblings": true,
+      "descriptionOverlap": 0.16666666666666666
+    },
+    {
+      "left": "/industries/aesthetics-clinics/ai-visibility",
+      "right": "/industries/aesthetics-clinics/agent-readiness",
+      "score": 0.43104643104643103,
+      "siblings": true,
+      "descriptionOverlap": 0.10526315789473684
+    },
+    {
+      "left": "/industries/dental-practices/ai-visibility",
+      "right": "/industries/dental-practices/agent-readiness",
+      "score": 0.4309507286606523,
+      "siblings": true,
+      "descriptionOverlap": 0.17647058823529413
+    },
+    {
+      "left": "/industries/financial-advisers/ai-visibility",
+      "right": "/industries/financial-advisers/agent-readiness",
+      "score": 0.4308659217877095,
+      "siblings": true,
+      "descriptionOverlap": 0.10526315789473684
+    },
+    {
+      "left": "/industries/physiotherapy-clinics/ai-visibility",
+      "right": "/industries/physiotherapy-clinics/agent-readiness",
+      "score": 0.4307692307692308,
+      "siblings": true,
+      "descriptionOverlap": 0.17647058823529413
+    },
+    {
+      "left": "/industries/domiciliary-care-providers/ai-visibility",
+      "right": "/industries/domiciliary-care-providers/agent-readiness",
+      "score": 0.42966042966042967,
+      "siblings": true,
+      "descriptionOverlap": 0.17647058823529413
+    },
+    {
+      "left": "/industries/recruitment-agencies/ai-visibility",
+      "right": "/industries/recruitment-agencies/agent-readiness",
+      "score": 0.42907058001397624,
+      "siblings": true,
+      "descriptionOverlap": 0.17647058823529413
+    },
+    {
+      "left": "/industries/training-providers/ai-visibility",
+      "right": "/industries/training-providers/agent-readiness",
+      "score": 0.428169014084507,
+      "siblings": true,
+      "descriptionOverlap": 0.2777777777777778
+    },
+    {
+      "left": "/industries/building-contractors/ai-visibility",
+      "right": "/industries/building-contractors/agent-readiness",
+      "score": 0.42746478873239435,
+      "siblings": true,
+      "descriptionOverlap": 0.15789473684210525
+    },
+    {
+      "left": "/industries/commercial-cleaning-companies/ai-visibility",
+      "right": "/industries/commercial-cleaning-companies/agent-readiness",
+      "score": 0.42697414395527605,
+      "siblings": true,
+      "descriptionOverlap": 0.23529411764705882
+    },
+    {
+      "left": "/industries/landscaping-companies/ai-visibility",
+      "right": "/industries/landscaping-companies/agent-readiness",
+      "score": 0.42452161587526577,
+      "siblings": true,
+      "descriptionOverlap": 0.17647058823529413
+    },
+    {
+      "left": "/industries/veterinary-practices/ai-visibility",
+      "right": "/industries/veterinary-practices/agent-readiness",
+      "score": 0.42441447835344215,
+      "siblings": true,
+      "descriptionOverlap": 0.2
+    },
+    {
+      "left": "/industries/estate-agents/ai-visibility",
+      "right": "/industries/estate-agents/agent-readiness",
+      "score": 0.42362093352192365,
+      "siblings": true,
+      "descriptionOverlap": 0.15789473684210525
+    },
+    {
+      "left": "/industries/roofing-contractors/ai-visibility",
+      "right": "/industries/roofing-contractors/agent-readiness",
+      "score": 0.4230225988700565,
+      "siblings": true,
+      "descriptionOverlap": 0.15789473684210525
+    }
+  ]
+}

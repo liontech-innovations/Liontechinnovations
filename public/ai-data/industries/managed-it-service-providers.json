@@ -1,0 +1,211 @@
+{
+  "schemaVersion": "1.1.0",
+  "entity": {
+    "legalName": "Lion Tech Innovations Ltd",
+    "companyNumber": "17068390",
+    "website": "https://liontechinnovations.co.uk",
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
+  },
+  "slug": "managed-it-service-providers",
+  "name": "Managed IT service providers",
+  "shortDescription": "MSPs that need service boundaries, support coverage, security responsibilities, certifications, response routes and onboarding expectations stated with technical precision.",
+  "pageAudience": [
+    "MSP founders",
+    "IT support companies",
+    "cybersecurity service teams"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking managed helpdesk",
+    "customers comparing Microsoft 365 support",
+    "organisations needing cloud administration"
+  ],
+  "fiveGates": {
+    "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
+    "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
+    "trust": "Can material facts be checked against current first-party and applicable authoritative evidence?",
+    "compare": "Can buyers inspect relevant differences using factual criteria rather than unsupported superlatives?",
+    "act": "Can a buyer complete a clear next step with suitable confirmation, escalation and human control?"
+  },
+  "commonServices": [
+    "managed helpdesk",
+    "Microsoft 365 support",
+    "cloud administration",
+    "endpoint management",
+    "network management",
+    "cybersecurity monitoring",
+    "backup management",
+    "incident response coordination"
+  ],
+  "buyerQuestions": [
+    {
+      "intent": "discover",
+      "question": "Which managed it service providers provide managed helpdesk for buyers seeking managed helpdesk?",
+      "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
+    },
+    {
+      "intent": "discover",
+      "question": "Where can a buyer find a managed IT service provider offering Microsoft 365 support and cloud administration?",
+      "whyItMatters": "AI systems need a crawlable connection between the service, the provider entity and the area actually served."
+    },
+    {
+      "intent": "describe",
+      "question": "Does this managed IT service provider clearly explain which users, devices and platforms are supported?",
+      "whyItMatters": "A precise answer prevents an AI summary from filling gaps with assumptions or outdated third-party text."
+    },
+    {
+      "intent": "describe",
+      "question": "What should a customer expect when asking about endpoint management?",
+      "whyItMatters": "Scope, process and boundaries should be visible before a buyer shares detailed information."
+    },
+    {
+      "intent": "trust",
+      "question": "Which official evidence supports support hours and response definitions?",
+      "whyItMatters": "Public registers and first-party facts should agree so that a buyer can verify rather than merely trust a marketing claim."
+    },
+    {
+      "intent": "trust",
+      "question": "How does the provider evidence security certifications and shared responsibilities?",
+      "whyItMatters": "Named sources, responsible people and current policies create a traceable trust path."
+    },
+    {
+      "intent": "compare",
+      "question": "How should buyers compare providers on backup, recovery and incident processes?",
+      "whyItMatters": "Comparable facts help buyers distinguish genuine service differences without relying on unverified superlatives."
+    },
+    {
+      "intent": "compare",
+      "question": "What makes one provider clearer than another about contract term, onboarding and exit arrangements?",
+      "whyItMatters": "Completeness, freshness and evidence are safer comparison signals than promotional volume."
+    },
+    {
+      "intent": "act",
+      "question": "Can a buyer request an IT assessment or submit a managed-support enquiry without searching across several pages?",
+      "whyItMatters": "The next step should be explicit, accessible and connected to the relevant service context."
+    },
+    {
+      "intent": "act",
+      "question": "What information is needed to report a security incident through the approved channel or ask for service-level and onboarding details?",
+      "whyItMatters": "A structured action route reduces avoidable back-and-forth while preserving human approval where it matters."
+    }
+  ],
+  "trustedSources": [
+    {
+      "label": "NCSC choosing a managed service provider",
+      "url": "https://www.ncsc.gov.uk/guidance/choosing-a-managed-service-provider-msp",
+      "sourceType": "government",
+      "supports": [
+        "MSP due diligence, contracts and security responsibilities"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "NCSC Cyber Essentials overview",
+      "url": "https://www.ncsc.gov.uk/cyberessentials/overview",
+      "sourceType": "technical-standard",
+      "supports": [
+        "government-backed baseline cyber controls"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "ICO security guidance",
+      "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/security/",
+      "sourceType": "regulator",
+      "supports": [
+        "personal-data security responsibilities"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "NCSC cloud security guidance",
+      "url": "https://www.ncsc.gov.uk/collection/cloud",
+      "sourceType": "technical-standard",
+      "supports": [
+        "cloud security principles and shared-responsibility context"
+      ],
+      "checkedAt": "2026-08-15"
+    }
+  ],
+  "factsAIShouldUnderstand": [
+    "Managed IT service providers may offer different combinations of managed helpdesk, Microsoft 365 support and cloud administration; a provider should state its actual scope rather than rely on the industry category alone.",
+    "This LionTech guide is written for MSP founders, IT support companies, cybersecurity service teams, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking managed helpdesk, customers comparing Microsoft 365 support, organisations needing cloud administration, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with a managing director, a technical director, or a service delivery manager, so named roles and contact ownership help a buyer understand who is accountable.",
+    "NCSC choosing a managed service provider is a relevant public evidence source for MSP due diligence, contracts and security responsibilities.",
+    "NCSC Cyber Essentials overview can support verification of government-backed baseline cyber controls.",
+    "A useful description separates endpoint management and network management from adjacent services that may require different expertise, evidence or approval.",
+    "The action journey should make it clear how to request an IT assessment, how to submit a managed-support enquiry, and when a human will review the request.",
+    "Public information should address how to request support or report an incident without implying that a generic web answer replaces case-specific professional judgement."
+  ],
+  "commonVisibilityGaps": [
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm which users, devices and platforms are supported; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm support hours and response definitions; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm security certifications and shared responsibilities; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm backup, recovery and incident processes; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm contract term, onboarding and exit arrangements; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how to request support or report an incident; verify the evidence before treating this as a finding."
+  ],
+  "comparisonCriteria": [
+    "Relevant service fit across managed helpdesk, Microsoft 365 support and cloud administration",
+    "Clarity about which users, devices and platforms are supported",
+    "Verifiable evidence from NCSC choosing a managed service provider or another applicable official source",
+    "Transparent explanation of backup, recovery and incident processes",
+    "A usable route to request an IT assessment",
+    "Responsible boundaries for how to request support or report an incident"
+  ],
+  "trustSignals": [
+    "A current, matching record or guidance reference from NCSC choosing a managed service provider",
+    "A relevant verification route through NCSC Cyber Essentials overview",
+    "Consistent provider, location and service facts alongside ICO security guidance",
+    "Careful use of claims supported by NCSC cloud security guidance",
+    "Named responsible people or roles for cybersecurity monitoring and backup management",
+    "Visible terms, privacy information and a clear process to submit a managed-support enquiry"
+  ],
+  "actionPaths": [
+    "request an IT assessment",
+    "submit a managed-support enquiry",
+    "report a security incident through the approved channel",
+    "ask for service-level and onboarding details"
+  ],
+  "agentReadinessOpportunities": [
+    "Collect the minimum structured facts needed to request an IT assessment, then pass the request to the responsible human.",
+    "Route enquiries about endpoint management and network management to the correct team without presenting a final professional judgement.",
+    "Check that location, availability and service-scope fields are complete before allowing a buyer to report a security incident through the approved channel.",
+    "Acknowledge a request to ask for service-level and onboarding details, provide the next expected step and preserve an auditable handoff."
+  ],
+  "automationBoundaries": [
+    "privileged access changes require strong authentication and approval",
+    "security incidents need human-led triage and evidence preservation",
+    "service-level claims must match the signed contract and monitoring method"
+  ],
+  "structuredDataRecommendations": [
+    "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
+    "Describe managed helpdesk, endpoint management and incident response coordination with visible Service information only where the provider genuinely offers them.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
+    "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
+  ],
+  "riskNotes": [
+    "Managed IT service providers guidance on this site is general information, not professional advice about a particular business or customer.",
+    "privileged access changes require strong authentication and approval",
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
+  ],
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
+  "canonicalPageUrls": {
+    "hub": "https://liontechinnovations.co.uk/industries/managed-it-service-providers",
+    "aiVisibility": "https://liontechinnovations.co.uk/industries/managed-it-service-providers/ai-visibility",
+    "howAiCompares": "https://liontechinnovations.co.uk/industries/managed-it-service-providers/how-ai-compares",
+    "agentReadiness": "https://liontechinnovations.co.uk/industries/managed-it-service-providers/agent-readiness",
+    "checklist": "https://liontechinnovations.co.uk/industries/managed-it-service-providers/checklist"
+  },
+  "primaryAction": {
+    "label": "Get AI Snapshot",
+    "url": "https://liontechinnovations.co.uk/contact#snapshot-enquiry",
+    "actionType": "snapshot-enquiry"
+  }
+}

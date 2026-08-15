@@ -1,0 +1,211 @@
+{
+  "schemaVersion": "1.1.0",
+  "entity": {
+    "legalName": "Lion Tech Innovations Ltd",
+    "companyNumber": "17068390",
+    "website": "https://liontechinnovations.co.uk",
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
+  },
+  "slug": "recruitment-agencies",
+  "name": "Recruitment agencies",
+  "shortDescription": "Recruiters whose sector coverage, permanent or temporary model, worker terms, employer process and live vacancy actions need separate, current explanations.",
+  "pageAudience": [
+    "recruitment founders",
+    "agency directors",
+    "specialist staffing teams"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking permanent recruitment",
+    "customers comparing temporary staffing",
+    "organisations needing contract recruitment"
+  ],
+  "fiveGates": {
+    "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
+    "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
+    "trust": "Can material facts be checked against current first-party and applicable authoritative evidence?",
+    "compare": "Can buyers inspect relevant differences using factual criteria rather than unsupported superlatives?",
+    "act": "Can a buyer complete a clear next step with suitable confirmation, escalation and human control?"
+  },
+  "commonServices": [
+    "permanent recruitment",
+    "temporary staffing",
+    "contract recruitment",
+    "executive search",
+    "candidate sourcing",
+    "payroll coordination",
+    "workforce planning",
+    "recruitment process outsourcing"
+  ],
+  "buyerQuestions": [
+    {
+      "intent": "discover",
+      "question": "Which recruitment agencies provide permanent recruitment for buyers seeking permanent recruitment?",
+      "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
+    },
+    {
+      "intent": "discover",
+      "question": "Where can a buyer find a recruitment agency offering temporary staffing and contract recruitment?",
+      "whyItMatters": "AI systems need a crawlable connection between the service, the provider entity and the area actually served."
+    },
+    {
+      "intent": "describe",
+      "question": "Does this recruitment agency clearly explain which sectors, roles and locations the agency covers?",
+      "whyItMatters": "A precise answer prevents an AI summary from filling gaps with assumptions or outdated third-party text."
+    },
+    {
+      "intent": "describe",
+      "question": "What should a customer expect when asking about executive search?",
+      "whyItMatters": "Scope, process and boundaries should be visible before a buyer shares detailed information."
+    },
+    {
+      "intent": "trust",
+      "question": "Which official evidence supports whether it acts as an employment agency or employment business?",
+      "whyItMatters": "Public registers and first-party facts should agree so that a buyer can verify rather than merely trust a marketing claim."
+    },
+    {
+      "intent": "trust",
+      "question": "How does the provider evidence candidate and hirer terms?",
+      "whyItMatters": "Named sources, responsible people and current policies create a traceable trust path."
+    },
+    {
+      "intent": "compare",
+      "question": "How should buyers compare providers on live-vacancy accuracy and application routes?",
+      "whyItMatters": "Comparable facts help buyers distinguish genuine service differences without relying on unverified superlatives."
+    },
+    {
+      "intent": "compare",
+      "question": "What makes one provider clearer than another about screening, qualification and reference processes?",
+      "whyItMatters": "Completeness, freshness and evidence are safer comparison signals than promotional volume."
+    },
+    {
+      "intent": "act",
+      "question": "Can a buyer submit a vacancy brief or apply for a live role without searching across several pages?",
+      "whyItMatters": "The next step should be explicit, accessible and connected to the relevant service context."
+    },
+    {
+      "intent": "act",
+      "question": "What information is needed to register as a candidate or ask about temporary staffing availability?",
+      "whyItMatters": "A structured action route reduces avoidable back-and-forth while preserving human approval where it matters."
+    }
+  ],
+  "trustedSources": [
+    {
+      "label": "GOV.UK employment agencies and businesses",
+      "url": "https://www.gov.uk/employment-agencies-and-businesses/overview",
+      "sourceType": "government",
+      "supports": [
+        "rules for employment agencies and employment businesses"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Employment Agency Standards Inspectorate",
+      "url": "https://www.gov.uk/government/organisations/employment-agency-standards-inspectorate",
+      "sourceType": "regulator",
+      "supports": [
+        "sector enforcement and worker complaint information"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Recruitment and Employment Confederation directory",
+      "url": "https://www.rec.uk.com/recruiters/member-directory",
+      "sourceType": "professional-body",
+      "supports": [
+        "REC member discovery where applicable"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "ICO employment practices and data protection",
+      "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/employment/",
+      "sourceType": "regulator",
+      "supports": [
+        "worker and candidate data-protection guidance"
+      ],
+      "checkedAt": "2026-08-15"
+    }
+  ],
+  "factsAIShouldUnderstand": [
+    "Recruitment agencies may offer different combinations of permanent recruitment, temporary staffing and contract recruitment; a provider should state its actual scope rather than rely on the industry category alone.",
+    "This LionTech guide is written for recruitment founders, agency directors, specialist staffing teams, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking permanent recruitment, customers comparing temporary staffing, organisations needing contract recruitment, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with a managing director, an operations director, or a marketing lead, so named roles and contact ownership help a buyer understand who is accountable.",
+    "GOV.UK employment agencies and businesses is a relevant public evidence source for rules for employment agencies and employment businesses.",
+    "Employment Agency Standards Inspectorate can support verification of sector enforcement and worker complaint information.",
+    "A useful description separates executive search and candidate sourcing from adjacent services that may require different expertise, evidence or approval.",
+    "The action journey should make it clear how to submit a vacancy brief, how to apply for a live role, and when a human will review the request.",
+    "Public information should address how personal data and candidate records are handled without implying that a generic web answer replaces case-specific professional judgement."
+  ],
+  "commonVisibilityGaps": [
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm which sectors, roles and locations the agency covers; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm whether it acts as an employment agency or employment business; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm candidate and hirer terms; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm live-vacancy accuracy and application routes; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm screening, qualification and reference processes; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how personal data and candidate records are handled; verify the evidence before treating this as a finding."
+  ],
+  "comparisonCriteria": [
+    "Relevant service fit across permanent recruitment, temporary staffing and contract recruitment",
+    "Clarity about which sectors, roles and locations the agency covers",
+    "Verifiable evidence from GOV.UK employment agencies and businesses or another applicable official source",
+    "Transparent explanation of live-vacancy accuracy and application routes",
+    "A usable route to submit a vacancy brief",
+    "Responsible boundaries for how personal data and candidate records are handled"
+  ],
+  "trustSignals": [
+    "A current, matching record or guidance reference from GOV.UK employment agencies and businesses",
+    "A relevant verification route through Employment Agency Standards Inspectorate",
+    "Consistent provider, location and service facts alongside Recruitment and Employment Confederation directory",
+    "Careful use of claims supported by ICO employment practices and data protection",
+    "Named responsible people or roles for payroll coordination and workforce planning",
+    "Visible terms, privacy information and a clear process to apply for a live role"
+  ],
+  "actionPaths": [
+    "submit a vacancy brief",
+    "apply for a live role",
+    "register as a candidate",
+    "ask about temporary staffing availability"
+  ],
+  "agentReadinessOpportunities": [
+    "Collect the minimum structured facts needed to submit a vacancy brief, then pass the request to the responsible human.",
+    "Route enquiries about executive search and candidate sourcing to the correct team without presenting a final professional judgement.",
+    "Check that location, availability and service-scope fields are complete before allowing a buyer to register as a candidate.",
+    "Acknowledge a request to ask about temporary staffing availability, provide the next expected step and preserve an auditable handoff."
+  ],
+  "automationBoundaries": [
+    "final hiring and suitability decisions require accountable humans",
+    "candidate screening must avoid unlawful discrimination and opaque automated rejection",
+    "right-to-work, qualification and reference evidence requires controlled verification"
+  ],
+  "structuredDataRecommendations": [
+    "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
+    "Describe permanent recruitment, executive search and recruitment process outsourcing with visible Service information only where the provider genuinely offers them.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
+    "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
+  ],
+  "riskNotes": [
+    "Recruitment agencies guidance on this site is general information, not professional advice about a particular business or customer.",
+    "final hiring and suitability decisions require accountable humans",
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
+  ],
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
+  "canonicalPageUrls": {
+    "hub": "https://liontechinnovations.co.uk/industries/recruitment-agencies",
+    "aiVisibility": "https://liontechinnovations.co.uk/industries/recruitment-agencies/ai-visibility",
+    "howAiCompares": "https://liontechinnovations.co.uk/industries/recruitment-agencies/how-ai-compares",
+    "agentReadiness": "https://liontechinnovations.co.uk/industries/recruitment-agencies/agent-readiness",
+    "checklist": "https://liontechinnovations.co.uk/industries/recruitment-agencies/checklist"
+  },
+  "primaryAction": {
+    "label": "Get AI Snapshot",
+    "url": "https://liontechinnovations.co.uk/contact#snapshot-enquiry",
+    "actionType": "snapshot-enquiry"
+  }
+}

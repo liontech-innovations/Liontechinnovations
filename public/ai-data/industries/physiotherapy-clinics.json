@@ -1,0 +1,211 @@
+{
+  "schemaVersion": "1.1.0",
+  "entity": {
+    "legalName": "Lion Tech Innovations Ltd",
+    "companyNumber": "17068390",
+    "website": "https://liontechinnovations.co.uk",
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
+  },
+  "slug": "physiotherapy-clinics",
+  "name": "Physiotherapy clinics",
+  "shortDescription": "Clinics where protected professional titles, practitioner credentials, treatment specialisms, referral requirements and appointment pathways should be unambiguous.",
+  "pageAudience": [
+    "clinic owners",
+    "lead physiotherapists",
+    "multi-site therapy groups"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking musculoskeletal assessment",
+    "customers comparing sports injury rehabilitation",
+    "organisations needing post-operative rehabilitation"
+  ],
+  "fiveGates": {
+    "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
+    "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
+    "trust": "Can material facts be checked against current first-party and applicable authoritative evidence?",
+    "compare": "Can buyers inspect relevant differences using factual criteria rather than unsupported superlatives?",
+    "act": "Can a buyer complete a clear next step with suitable confirmation, escalation and human control?"
+  },
+  "commonServices": [
+    "musculoskeletal assessment",
+    "sports injury rehabilitation",
+    "post-operative rehabilitation",
+    "pelvic health physiotherapy",
+    "neurological physiotherapy",
+    "respiratory physiotherapy",
+    "workplace assessments",
+    "home visits"
+  ],
+  "buyerQuestions": [
+    {
+      "intent": "discover",
+      "question": "Which physiotherapy clinics provide musculoskeletal assessment for buyers seeking musculoskeletal assessment?",
+      "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
+    },
+    {
+      "intent": "discover",
+      "question": "Where can a buyer find a physiotherapy clinic offering sports injury rehabilitation and post-operative rehabilitation?",
+      "whyItMatters": "AI systems need a crawlable connection between the service, the provider entity and the area actually served."
+    },
+    {
+      "intent": "describe",
+      "question": "Does this physiotherapy clinic clearly explain whether the practitioner is on the relevant professional register?",
+      "whyItMatters": "A precise answer prevents an AI summary from filling gaps with assumptions or outdated third-party text."
+    },
+    {
+      "intent": "describe",
+      "question": "What should a customer expect when asking about pelvic health physiotherapy?",
+      "whyItMatters": "Scope, process and boundaries should be visible before a buyer shares detailed information."
+    },
+    {
+      "intent": "trust",
+      "question": "Which official evidence supports which clinical specialisms are available?",
+      "whyItMatters": "Public registers and first-party facts should agree so that a buyer can verify rather than merely trust a marketing claim."
+    },
+    {
+      "intent": "trust",
+      "question": "How does the provider evidence whether self-referral is accepted?",
+      "whyItMatters": "Named sources, responsible people and current policies create a traceable trust path."
+    },
+    {
+      "intent": "compare",
+      "question": "How should buyers compare providers on appointment location, format and accessibility?",
+      "whyItMatters": "Comparable facts help buyers distinguish genuine service differences without relying on unverified superlatives."
+    },
+    {
+      "intent": "compare",
+      "question": "What makes one provider clearer than another about fees, insurance recognition and cancellation terms?",
+      "whyItMatters": "Completeness, freshness and evidence are safer comparison signals than promotional volume."
+    },
+    {
+      "intent": "act",
+      "question": "Can a buyer book an initial assessment or ask about a clinical specialism without searching across several pages?",
+      "whyItMatters": "The next step should be explicit, accessible and connected to the relevant service context."
+    },
+    {
+      "intent": "act",
+      "question": "What information is needed to submit an insurer or professional referral or request a home or workplace visit?",
+      "whyItMatters": "A structured action route reduces avoidable back-and-forth while preserving human approval where it matters."
+    }
+  ],
+  "trustedSources": [
+    {
+      "label": "HCPC check the register",
+      "url": "https://www.hcpc-uk.org/check-the-register/",
+      "sourceType": "regulator",
+      "supports": [
+        "registration of physiotherapists using the protected title"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Chartered Society of Physiotherapy directory",
+      "url": "https://www.csp.org.uk/public-patient/find-physiotherapist",
+      "sourceType": "professional-body",
+      "supports": [
+        "chartered physiotherapist discovery and practice information"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Care Quality Commission service finder",
+      "url": "https://www.cqc.org.uk/care-services",
+      "sourceType": "regulator",
+      "supports": [
+        "provider information where regulated activities bring a service into scope"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "NICE musculoskeletal guidance",
+      "url": "https://www.nice.org.uk/guidance/conditions-and-diseases/musculoskeletal-conditions",
+      "sourceType": "technical-standard",
+      "supports": [
+        "evidence-based guidance relevant to musculoskeletal pathways"
+      ],
+      "checkedAt": "2026-08-15"
+    }
+  ],
+  "factsAIShouldUnderstand": [
+    "Physiotherapy clinics may offer different combinations of musculoskeletal assessment, sports injury rehabilitation and post-operative rehabilitation; a provider should state its actual scope rather than rely on the industry category alone.",
+    "This LionTech guide is written for clinic owners, lead physiotherapists, multi-site therapy groups, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking musculoskeletal assessment, customers comparing sports injury rehabilitation, organisations needing post-operative rehabilitation, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with a clinical director, a practice manager, or a founder, so named roles and contact ownership help a buyer understand who is accountable.",
+    "HCPC check the register is a relevant public evidence source for registration of physiotherapists using the protected title.",
+    "Chartered Society of Physiotherapy directory can support verification of chartered physiotherapist discovery and practice information.",
+    "A useful description separates pelvic health physiotherapy and neurological physiotherapy from adjacent services that may require different expertise, evidence or approval.",
+    "The action journey should make it clear how to book an initial assessment, how to ask about a clinical specialism, and when a human will review the request.",
+    "Public information should address how urgent or unsuitable symptoms are redirected without implying that a generic web answer replaces case-specific professional judgement."
+  ],
+  "commonVisibilityGaps": [
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm whether the practitioner is on the relevant professional register; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm which clinical specialisms are available; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm whether self-referral is accepted; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm appointment location, format and accessibility; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm fees, insurance recognition and cancellation terms; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how urgent or unsuitable symptoms are redirected; verify the evidence before treating this as a finding."
+  ],
+  "comparisonCriteria": [
+    "Relevant service fit across musculoskeletal assessment, sports injury rehabilitation and post-operative rehabilitation",
+    "Clarity about whether the practitioner is on the relevant professional register",
+    "Verifiable evidence from HCPC check the register or another applicable official source",
+    "Transparent explanation of appointment location, format and accessibility",
+    "A usable route to book an initial assessment",
+    "Responsible boundaries for how urgent or unsuitable symptoms are redirected"
+  ],
+  "trustSignals": [
+    "A current, matching record or guidance reference from HCPC check the register",
+    "A relevant verification route through Chartered Society of Physiotherapy directory",
+    "Consistent provider, location and service facts alongside Care Quality Commission service finder",
+    "Careful use of claims supported by NICE musculoskeletal guidance",
+    "Named responsible people or roles for respiratory physiotherapy and workplace assessments",
+    "Visible terms, privacy information and a clear process to ask about a clinical specialism"
+  ],
+  "actionPaths": [
+    "book an initial assessment",
+    "ask about a clinical specialism",
+    "submit an insurer or professional referral",
+    "request a home or workplace visit"
+  ],
+  "agentReadinessOpportunities": [
+    "Collect the minimum structured facts needed to book an initial assessment, then pass the request to the responsible human.",
+    "Route enquiries about pelvic health physiotherapy and neurological physiotherapy to the correct team without presenting a final professional judgement.",
+    "Check that location, availability and service-scope fields are complete before allowing a buyer to submit an insurer or professional referral.",
+    "Acknowledge a request to request a home or workplace visit, provide the next expected step and preserve an auditable handoff."
+  ],
+  "automationBoundaries": [
+    "clinical diagnosis and treatment planning require a registered professional",
+    "red-flag symptoms need human triage and appropriate escalation",
+    "insurance eligibility must be confirmed rather than inferred"
+  ],
+  "structuredDataRecommendations": [
+    "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
+    "Describe musculoskeletal assessment, pelvic health physiotherapy and home visits with visible Service information only where the provider genuinely offers them.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
+    "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
+  ],
+  "riskNotes": [
+    "Physiotherapy clinics guidance on this site is general information, not professional advice about a particular business or customer.",
+    "clinical diagnosis and treatment planning require a registered professional",
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
+  ],
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
+  "canonicalPageUrls": {
+    "hub": "https://liontechinnovations.co.uk/industries/physiotherapy-clinics",
+    "aiVisibility": "https://liontechinnovations.co.uk/industries/physiotherapy-clinics/ai-visibility",
+    "howAiCompares": "https://liontechinnovations.co.uk/industries/physiotherapy-clinics/how-ai-compares",
+    "agentReadiness": "https://liontechinnovations.co.uk/industries/physiotherapy-clinics/agent-readiness",
+    "checklist": "https://liontechinnovations.co.uk/industries/physiotherapy-clinics/checklist"
+  },
+  "primaryAction": {
+    "label": "Get AI Snapshot",
+    "url": "https://liontechinnovations.co.uk/contact#snapshot-enquiry",
+    "actionType": "snapshot-enquiry"
+  }
+}

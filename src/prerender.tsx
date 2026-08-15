@@ -4,6 +4,9 @@ import App from './App';
 import { company } from './content/company';
 import { routeSeo, type MarketingRoutePath } from './content/routeSeo';
 import { routeMeta } from './legacy/LegacySite';
+import { industriesDirectorySeo, industryRouteSeo } from './content/industries/seo';
+import { programmaticRoutes } from './content/industries';
+import { signatureInstallSeo } from './content/emailSignature';
 
 type RuntimeWithWindow = typeof globalThis & { window?: Window & typeof globalThis };
 
@@ -16,14 +19,17 @@ const legacyPrerenderRoutes = [
   '/careops/command-centre',
 ] as const;
 
-type PrerenderRoutePath = MarketingRoutePath | (typeof legacyPrerenderRoutes)[number];
+type PrerenderRoutePath = MarketingRoutePath | (typeof legacyPrerenderRoutes)[number] | '/email/signature-install' | '/industries' | (typeof programmaticRoutes)[number];
 
 export const prerenderRoutes: PrerenderRoutePath[] = [
   ...(Object.keys(routeSeo) as MarketingRoutePath[]),
   ...legacyPrerenderRoutes,
+  '/email/signature-install',
+  '/industries',
+  ...programmaticRoutes,
 ];
 
-function createPrerenderWindow(pathname: PrerenderRoutePath) {
+function createPrerenderWindow(pathname: string) {
   return {
     location: {
       hash: '',
@@ -42,7 +48,12 @@ function createPrerenderWindow(pathname: PrerenderRoutePath) {
 export function renderMarketingRoute(pathname: PrerenderRoutePath) {
   const seo = pathname in routeSeo
     ? routeSeo[pathname as MarketingRoutePath]
-    : { ...routeMeta[pathname as keyof typeof routeMeta], path: pathname };
+    : pathname === '/email/signature-install'
+      ? signatureInstallSeo
+    : pathname === '/industries'
+      ? industriesDirectorySeo
+      : industryRouteSeo.get(pathname)
+        ?? { ...routeMeta[pathname as keyof typeof routeMeta], path: pathname };
   if (!seo) throw new Error(`Missing SEO configuration for ${pathname}`);
 
   const previousWindow = runtime.window;

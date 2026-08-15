@@ -1,0 +1,211 @@
+{
+  "schemaVersion": "1.1.0",
+  "entity": {
+    "legalName": "Lion Tech Innovations Ltd",
+    "companyNumber": "17068390",
+    "website": "https://liontechinnovations.co.uk",
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
+  },
+  "slug": "roofing-contractors",
+  "name": "Roofing contractors",
+  "shortDescription": "Roofing firms whose roof-system experience, inspection process, work-at-height controls, scheme status, guarantees and quote pathway need disciplined evidence.",
+  "pageAudience": [
+    "roofing business owners",
+    "specialist contractors",
+    "regional roofing teams"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking roof inspections",
+    "customers comparing slate roof repairs",
+    "organisations needing tile roof repairs"
+  ],
+  "fiveGates": {
+    "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
+    "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
+    "trust": "Can material facts be checked against current first-party and applicable authoritative evidence?",
+    "compare": "Can buyers inspect relevant differences using factual criteria rather than unsupported superlatives?",
+    "act": "Can a buyer complete a clear next step with suitable confirmation, escalation and human control?"
+  },
+  "commonServices": [
+    "roof inspections",
+    "slate roof repairs",
+    "tile roof repairs",
+    "flat roofing",
+    "leadwork",
+    "gutter replacement",
+    "roof replacement",
+    "commercial roof maintenance"
+  ],
+  "buyerQuestions": [
+    {
+      "intent": "discover",
+      "question": "Which roofing contractors provide roof inspections for buyers seeking roof inspections?",
+      "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
+    },
+    {
+      "intent": "discover",
+      "question": "Where can a buyer find a roofing contractor offering slate roof repairs and tile roof repairs?",
+      "whyItMatters": "AI systems need a crawlable connection between the service, the provider entity and the area actually served."
+    },
+    {
+      "intent": "describe",
+      "question": "Does this roofing contractor clearly explain which roof systems and building types the contractor handles?",
+      "whyItMatters": "A precise answer prevents an AI summary from filling gaps with assumptions or outdated third-party text."
+    },
+    {
+      "intent": "describe",
+      "question": "What should a customer expect when asking about flat roofing?",
+      "whyItMatters": "Scope, process and boundaries should be visible before a buyer shares detailed information."
+    },
+    {
+      "intent": "trust",
+      "question": "Which official evidence supports survey and quotation process?",
+      "whyItMatters": "Public registers and first-party facts should agree so that a buyer can verify rather than merely trust a marketing claim."
+    },
+    {
+      "intent": "trust",
+      "question": "How does the provider evidence trade-body or scheme membership where claimed?",
+      "whyItMatters": "Named sources, responsible people and current policies create a traceable trust path."
+    },
+    {
+      "intent": "compare",
+      "question": "How should buyers compare providers on insurance, guarantees and subcontracting arrangements?",
+      "whyItMatters": "Comparable facts help buyers distinguish genuine service differences without relying on unverified superlatives."
+    },
+    {
+      "intent": "compare",
+      "question": "What makes one provider clearer than another about safe access and work-at-height planning?",
+      "whyItMatters": "Completeness, freshness and evidence are safer comparison signals than promotional volume."
+    },
+    {
+      "intent": "act",
+      "question": "Can a buyer request a roof inspection or submit photographs for initial triage without searching across several pages?",
+      "whyItMatters": "The next step should be explicit, accessible and connected to the relevant service context."
+    },
+    {
+      "intent": "act",
+      "question": "What information is needed to ask for a replacement quotation or report an urgent leak?",
+      "whyItMatters": "A structured action route reduces avoidable back-and-forth while preserving human approval where it matters."
+    }
+  ],
+  "trustedSources": [
+    {
+      "label": "NFRC Find a Member",
+      "url": "https://www.nfrc.co.uk/find-a-member",
+      "sourceType": "professional-body",
+      "supports": [
+        "NFRC member contractor discovery where applicable"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "CompetentRoofer",
+      "url": "https://www.competentroofer.co.uk/find-a-roofer/",
+      "sourceType": "official-directory",
+      "supports": [
+        "scheme member discovery and relevant self-certification"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "TrustMark business directory",
+      "url": "https://www.trustmark.org.uk/homeowner/find-a-tradesperson",
+      "sourceType": "official-directory",
+      "supports": [
+        "government-endorsed quality-scheme business discovery"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "HSE work at height guidance",
+      "url": "https://www.hse.gov.uk/construction/faq-height.htm",
+      "sourceType": "government",
+      "supports": [
+        "work-at-height planning and competence expectations"
+      ],
+      "checkedAt": "2026-08-15"
+    }
+  ],
+  "factsAIShouldUnderstand": [
+    "Roofing contractors may offer different combinations of roof inspections, slate roof repairs and tile roof repairs; a provider should state its actual scope rather than rely on the industry category alone.",
+    "This LionTech guide is written for roofing business owners, specialist contractors, regional roofing teams, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking roof inspections, customers comparing slate roof repairs, organisations needing tile roof repairs, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with an owner-manager, a contracts director, or a surveying lead, so named roles and contact ownership help a buyer understand who is accountable.",
+    "NFRC Find a Member is a relevant public evidence source for NFRC member contractor discovery where applicable.",
+    "CompetentRoofer can support verification of scheme member discovery and relevant self-certification.",
+    "A useful description separates flat roofing and leadwork from adjacent services that may require different expertise, evidence or approval.",
+    "The action journey should make it clear how to request a roof inspection, how to submit photographs for initial triage, and when a human will review the request.",
+    "Public information should address service area and emergency weather response without implying that a generic web answer replaces case-specific professional judgement."
+  ],
+  "commonVisibilityGaps": [
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm which roof systems and building types the contractor handles; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm survey and quotation process; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm trade-body or scheme membership where claimed; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm insurance, guarantees and subcontracting arrangements; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm safe access and work-at-height planning; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm service area and emergency weather response; verify the evidence before treating this as a finding."
+  ],
+  "comparisonCriteria": [
+    "Relevant service fit across roof inspections, slate roof repairs and tile roof repairs",
+    "Clarity about which roof systems and building types the contractor handles",
+    "Verifiable evidence from NFRC Find a Member or another applicable official source",
+    "Transparent explanation of insurance, guarantees and subcontracting arrangements",
+    "A usable route to request a roof inspection",
+    "Responsible boundaries for service area and emergency weather response"
+  ],
+  "trustSignals": [
+    "A current, matching record or guidance reference from NFRC Find a Member",
+    "A relevant verification route through CompetentRoofer",
+    "Consistent provider, location and service facts alongside TrustMark business directory",
+    "Careful use of claims supported by HSE work at height guidance",
+    "Named responsible people or roles for gutter replacement and roof replacement",
+    "Visible terms, privacy information and a clear process to submit photographs for initial triage"
+  ],
+  "actionPaths": [
+    "request a roof inspection",
+    "submit photographs for initial triage",
+    "ask for a replacement quotation",
+    "report an urgent leak"
+  ],
+  "agentReadinessOpportunities": [
+    "Collect the minimum structured facts needed to request a roof inspection, then pass the request to the responsible human.",
+    "Route enquiries about flat roofing and leadwork to the correct team without presenting a final professional judgement.",
+    "Check that location, availability and service-scope fields are complete before allowing a buyer to ask for a replacement quotation.",
+    "Acknowledge a request to report an urgent leak, provide the next expected step and preserve an auditable handoff."
+  ],
+  "automationBoundaries": [
+    "roof condition and safe access require a competent site assessment",
+    "membership, insurance and guarantee claims must be verified",
+    "storm response and temporary works depend on weather and safe availability"
+  ],
+  "structuredDataRecommendations": [
+    "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
+    "Describe roof inspections, flat roofing and commercial roof maintenance with visible Service information only where the provider genuinely offers them.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
+    "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
+  ],
+  "riskNotes": [
+    "Roofing contractors guidance on this site is general information, not professional advice about a particular business or customer.",
+    "roof condition and safe access require a competent site assessment",
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
+  ],
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
+  "canonicalPageUrls": {
+    "hub": "https://liontechinnovations.co.uk/industries/roofing-contractors",
+    "aiVisibility": "https://liontechinnovations.co.uk/industries/roofing-contractors/ai-visibility",
+    "howAiCompares": "https://liontechinnovations.co.uk/industries/roofing-contractors/how-ai-compares",
+    "agentReadiness": "https://liontechinnovations.co.uk/industries/roofing-contractors/agent-readiness",
+    "checklist": "https://liontechinnovations.co.uk/industries/roofing-contractors/checklist"
+  },
+  "primaryAction": {
+    "label": "Get AI Snapshot",
+    "url": "https://liontechinnovations.co.uk/contact#snapshot-enquiry",
+    "actionType": "snapshot-enquiry"
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "schemaVersion": "1.1.0",
+  "entity": {
+    "legalName": "Lion Tech Innovations Ltd",
+    "companyNumber": "17068390",
+    "website": "https://liontechinnovations.co.uk",
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
+  },
+  "slug": "private-medical-clinics",
+  "name": "Private medical clinics",
+  "shortDescription": "Independent clinics that must distinguish consultation scope, clinician credentials, regulated locations, fees and onward-care pathways without making unsupported outcome claims.",
+  "pageAudience": [
+    "clinic owners",
+    "medical directors",
+    "independent healthcare groups"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking general medical consultations",
+    "customers comparing specialist consultations",
+    "organisations needing diagnostic testing"
+  ],
+  "fiveGates": {
+    "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
+    "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
+    "trust": "Can material facts be checked against current first-party and applicable authoritative evidence?",
+    "compare": "Can buyers inspect relevant differences using factual criteria rather than unsupported superlatives?",
+    "act": "Can a buyer complete a clear next step with suitable confirmation, escalation and human control?"
+  },
+  "commonServices": [
+    "general medical consultations",
+    "specialist consultations",
+    "diagnostic testing",
+    "health screening",
+    "minor procedures",
+    "vaccination services",
+    "occupational health",
+    "follow-up care"
+  ],
+  "buyerQuestions": [
+    {
+      "intent": "discover",
+      "question": "Which private medical clinics provide general medical consultations for buyers seeking general medical consultations?",
+      "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
+    },
+    {
+      "intent": "discover",
+      "question": "Where can a buyer find a private medical clinic offering specialist consultations and diagnostic testing?",
+      "whyItMatters": "AI systems need a crawlable connection between the service, the provider entity and the area actually served."
+    },
+    {
+      "intent": "describe",
+      "question": "Does this private medical clinic clearly explain which clinician and speciality will handle the enquiry?",
+      "whyItMatters": "A precise answer prevents an AI summary from filling gaps with assumptions or outdated third-party text."
+    },
+    {
+      "intent": "describe",
+      "question": "What should a customer expect when asking about health screening?",
+      "whyItMatters": "Scope, process and boundaries should be visible before a buyer shares detailed information."
+    },
+    {
+      "intent": "trust",
+      "question": "Which official evidence supports whether the location and activity are appropriately registered?",
+      "whyItMatters": "Public registers and first-party facts should agree so that a buyer can verify rather than merely trust a marketing claim."
+    },
+    {
+      "intent": "trust",
+      "question": "How does the provider evidence what is included in the stated fee?",
+      "whyItMatters": "Named sources, responsible people and current policies create a traceable trust path."
+    },
+    {
+      "intent": "compare",
+      "question": "How should buyers compare providers on how tests, prescriptions and follow-up are arranged?",
+      "whyItMatters": "Comparable facts help buyers distinguish genuine service differences without relying on unverified superlatives."
+    },
+    {
+      "intent": "compare",
+      "question": "What makes one provider clearer than another about whether insurer authorisation is required?",
+      "whyItMatters": "Completeness, freshness and evidence are safer comparison signals than promotional volume."
+    },
+    {
+      "intent": "act",
+      "question": "Can a buyer request a consultation or upload or arrange a referral without searching across several pages?",
+      "whyItMatters": "The next step should be explicit, accessible and connected to the relevant service context."
+    },
+    {
+      "intent": "act",
+      "question": "What information is needed to ask for fee and test information or contact the clinic about follow-up care?",
+      "whyItMatters": "A structured action route reduces avoidable back-and-forth while preserving human approval where it matters."
+    }
+  ],
+  "trustedSources": [
+    {
+      "label": "General Medical Council medical register",
+      "url": "https://www.gmc-uk.org/registration-and-licensing/the-medical-register",
+      "sourceType": "regulator",
+      "supports": [
+        "doctor registration, licence and specialist or GP register information"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Care Quality Commission service finder",
+      "url": "https://www.cqc.org.uk/care-services",
+      "sourceType": "regulator",
+      "supports": [
+        "registered provider, location, inspection and rating information in England"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "NHS service search",
+      "url": "https://www.nhs.uk/service-search/",
+      "sourceType": "official-directory",
+      "supports": [
+        "public healthcare service information and onward routes"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "CMA private healthcare market investigation",
+      "url": "https://www.gov.uk/cma-cases/private-healthcare-market-investigation",
+      "sourceType": "government",
+      "supports": [
+        "competition and information requirements in private healthcare"
+      ],
+      "checkedAt": "2026-08-15"
+    }
+  ],
+  "factsAIShouldUnderstand": [
+    "Private medical clinics may offer different combinations of general medical consultations, specialist consultations and diagnostic testing; a provider should state its actual scope rather than rely on the industry category alone.",
+    "This LionTech guide is written for clinic owners, medical directors, independent healthcare groups, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking general medical consultations, customers comparing specialist consultations, organisations needing diagnostic testing, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with a medical director, a registered manager, or an operations lead, so named roles and contact ownership help a buyer understand who is accountable.",
+    "General Medical Council medical register is a relevant public evidence source for doctor registration, licence and specialist or GP register information.",
+    "Care Quality Commission service finder can support verification of registered provider, location, inspection and rating information in England.",
+    "A useful description separates health screening and minor procedures from adjacent services that may require different expertise, evidence or approval.",
+    "The action journey should make it clear how to request a consultation, how to upload or arrange a referral, and when a human will review the request.",
+    "Public information should address how urgent symptoms and emergencies are handled without implying that a generic web answer replaces case-specific professional judgement."
+  ],
+  "commonVisibilityGaps": [
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm which clinician and speciality will handle the enquiry; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm whether the location and activity are appropriately registered; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm what is included in the stated fee; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how tests, prescriptions and follow-up are arranged; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm whether insurer authorisation is required; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how urgent symptoms and emergencies are handled; verify the evidence before treating this as a finding."
+  ],
+  "comparisonCriteria": [
+    "Relevant service fit across general medical consultations, specialist consultations and diagnostic testing",
+    "Clarity about which clinician and speciality will handle the enquiry",
+    "Verifiable evidence from General Medical Council medical register or another applicable official source",
+    "Transparent explanation of how tests, prescriptions and follow-up are arranged",
+    "A usable route to request a consultation",
+    "Responsible boundaries for how urgent symptoms and emergencies are handled"
+  ],
+  "trustSignals": [
+    "A current, matching record or guidance reference from General Medical Council medical register",
+    "A relevant verification route through Care Quality Commission service finder",
+    "Consistent provider, location and service facts alongside NHS service search",
+    "Careful use of claims supported by CMA private healthcare market investigation",
+    "Named responsible people or roles for vaccination services and occupational health",
+    "Visible terms, privacy information and a clear process to upload or arrange a referral"
+  ],
+  "actionPaths": [
+    "request a consultation",
+    "upload or arrange a referral",
+    "ask for fee and test information",
+    "contact the clinic about follow-up care"
+  ],
+  "agentReadinessOpportunities": [
+    "Collect the minimum structured facts needed to request a consultation, then pass the request to the responsible human.",
+    "Route enquiries about health screening and minor procedures to the correct team without presenting a final professional judgement.",
+    "Check that location, availability and service-scope fields are complete before allowing a buyer to ask for fee and test information.",
+    "Acknowledge a request to contact the clinic about follow-up care, provide the next expected step and preserve an auditable handoff."
+  ],
+  "automationBoundaries": [
+    "clinical diagnosis, prescribing and treatment decisions require an authorised clinician",
+    "urgent symptoms need a clear emergency redirection rather than automated reassurance",
+    "insurance and test costs require case-specific confirmation"
+  ],
+  "structuredDataRecommendations": [
+    "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
+    "Describe general medical consultations, health screening and follow-up care with visible Service information only where the provider genuinely offers them.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
+    "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
+  ],
+  "riskNotes": [
+    "Private medical clinics guidance on this site is general information, not professional advice about a particular business or customer.",
+    "clinical diagnosis, prescribing and treatment decisions require an authorised clinician",
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
+  ],
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
+  "canonicalPageUrls": {
+    "hub": "https://liontechinnovations.co.uk/industries/private-medical-clinics",
+    "aiVisibility": "https://liontechinnovations.co.uk/industries/private-medical-clinics/ai-visibility",
+    "howAiCompares": "https://liontechinnovations.co.uk/industries/private-medical-clinics/how-ai-compares",
+    "agentReadiness": "https://liontechinnovations.co.uk/industries/private-medical-clinics/agent-readiness",
+    "checklist": "https://liontechinnovations.co.uk/industries/private-medical-clinics/checklist"
+  },
+  "primaryAction": {
+    "label": "Get AI Snapshot",
+    "url": "https://liontechinnovations.co.uk/contact#snapshot-enquiry",
+    "actionType": "snapshot-enquiry"
+  }
+}

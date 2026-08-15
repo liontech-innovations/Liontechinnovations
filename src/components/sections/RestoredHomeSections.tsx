@@ -102,9 +102,14 @@ export function FiveGates() {
             </li>
           ))}
         </ol>
-        <RouteLink className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#C8A24A] no-underline hover:text-[#E9D491]" href="/methodology">
-          Read the methodology <ArrowRight aria-hidden="true" size={15} />
-        </RouteLink>
+        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+          <RouteLink className="inline-flex items-center gap-2 text-sm font-bold text-[#C8A24A] no-underline hover:text-[#E9D491]" href="/methodology">
+            Read the methodology <ArrowRight aria-hidden="true" size={15} />
+          </RouteLink>
+          <RouteLink className="inline-flex items-center gap-2 text-sm font-bold text-[#C8A24A] no-underline hover:text-[#E9D491]" href="/industries">
+            Explore industry guides <ArrowRight aria-hidden="true" size={15} />
+          </RouteLink>
+        </div>
       </div>
     </section>
   );

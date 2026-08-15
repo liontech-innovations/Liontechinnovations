@@ -10,6 +10,11 @@ import { HomePage } from '../pages/HomePage';
 import { MethodologyPage } from '../pages/MethodologyPage';
 import { MonitoringPage } from '../pages/MonitoringPage';
 import { ReadinessFixSprintPage } from '../pages/ReadinessFixSprintPage';
+import { IndustriesDirectoryPage } from '../pages/IndustriesDirectoryPage';
+import { IndustryPage } from '../pages/IndustryPage';
+import { SignatureInstallPage } from '../pages/SignatureInstallPage';
+import { industriesDirectorySeo, createIndustrySeo } from '../content/industries/seo';
+import { industryPageByPath, programmaticRoutes } from '../content/industries';
 import { RouteLink } from '../components/ui/RouteLink';
 import { scrollToHash } from '../lib/navigation';
 import { useSeo } from '../lib/seo';
@@ -82,11 +87,33 @@ function NotFoundPage() {
   );
 }
 
+function IndustriesRoutePage() {
+  useSeo(industriesDirectorySeo);
+  return <IndustriesDirectoryPage />;
+}
+
+function ProgrammaticIndustryRoute({ pathname }: { pathname: string }) {
+  const page = industryPageByPath.get(pathname);
+  if (!page) return <NotFoundPage />;
+  useSeo(createIndustrySeo(page));
+  return <IndustryPage page={page} />;
+}
+
 export function AppRoutes() {
   const pathname = usePathname();
   useRouteHashScroll(pathname);
 
   if (legacyRoutes.has(pathname)) return <LegacySite />;
+
+  if (pathname === '/email/signature-install') return <SignatureInstallPage />;
+
+  if (pathname === '/industries') {
+    return <MarketingLayout><IndustriesRoutePage /></MarketingLayout>;
+  }
+
+  if (industryPageByPath.has(pathname)) {
+    return <MarketingLayout><ProgrammaticIndustryRoute pathname={pathname} /></MarketingLayout>;
+  }
 
   const Page = marketingRoutes[pathname as keyof typeof marketingRoutes];
   if (!Page) return <NotFoundPage />;
@@ -102,4 +129,6 @@ export const routeInventory = {
   marketing: Object.keys(marketingRoutes),
   legacy: Array.from(legacyRoutes),
   static: ['/careops/free-check', '/careops/free-check/thanks.html'],
+  internal: ['/email/signature-install'],
+  programmatic: ['/industries', ...programmaticRoutes],
 } as const;

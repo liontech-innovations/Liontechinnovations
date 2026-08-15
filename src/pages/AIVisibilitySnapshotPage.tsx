@@ -19,14 +19,22 @@ export function AIVisibilitySnapshotPage() {
   useSeo(routeSeo['/ai-visibility-snapshot']);
 
   const deliverables = [
-    { title: snapshotOffer.inclusions[0], icon: FileSearch },
-    { title: snapshotOffer.inclusions[1], icon: SearchCheck },
-    { title: snapshotOffer.inclusions[2], icon: BarChart3 },
-    { title: snapshotOffer.inclusions[3], icon: CheckCircle2 },
-    { title: snapshotOffer.inclusions[4], icon: ListChecks },
-    { title: snapshotOffer.inclusions[5], icon: CalendarClock },
-    { title: snapshotOffer.inclusions[6], icon: MessageSquareText },
+    { title: snapshotOffer.inclusions[0], icon: FileSearch, href: '/methodology#evidence-standards', linkLabel: 'Review evidence standards' },
+    { title: snapshotOffer.inclusions[1], icon: SearchCheck, href: '/methodology#evidence-standards', linkLabel: 'See the evidence method' },
+    { title: snapshotOffer.inclusions[2], icon: BarChart3, href: '/industries', linkLabel: 'Explore industry comparisons' },
+    { title: snapshotOffer.inclusions[3], icon: CheckCircle2, href: '/methodology#five-gates', linkLabel: 'See the Five Gates' },
+    { title: snapshotOffer.inclusions[4], icon: ListChecks, href: '/readiness-fix-sprint', linkLabel: 'See the implementation path' },
+    { title: snapshotOffer.inclusions[5], icon: CalendarClock, href: '/readiness-fix-sprint', linkLabel: 'Review the Fix Sprint' },
+    { title: snapshotOffer.inclusions[6], icon: MessageSquareText, href: '/contact#snapshot-enquiry', linkLabel: 'Request the review' },
   ];
+
+  const gateDestinations = {
+    Discover: { href: '/industries', label: 'Browse industries' },
+    Describe: { href: '/industries', label: 'See industry facts' },
+    Trust: { href: '/methodology#evidence-standards', label: 'Review evidence standards' },
+    Compare: { href: '/industries', label: 'Explore comparisons' },
+    Act: { href: '/contact#snapshot-enquiry', label: 'Request a Snapshot' },
+  } as const;
 
   return (
     <>
@@ -43,7 +51,7 @@ export function AIVisibilitySnapshotPage() {
         <RouteHeading eyebrow="THE DELIVERABLE" title="What you receive" description="A concise, human-reviewed evidence pack built for practical decisions rather than another generic AI score." />
         <div className="lt-route-feature-grid">
           {deliverables.map((item) => (
-            <FeatureCard key={item.title} title={item.title} icon={item.icon}>
+            <FeatureCard key={item.title} title={item.title} icon={item.icon} href={item.href} linkLabel={item.linkLabel}>
               <p>Included in the founding AI Visibility Snapshot.</p>
             </FeatureCard>
           ))}
@@ -64,7 +72,7 @@ export function AIVisibilitySnapshotPage() {
           title="Evidence organised through the Five Gates"
           description="The public deliverable uses Strong, Workable, At Risk and Material Gap. It does not present an unqualified 0-100 score."
         />
-        <FiveGatesGrid />
+        <FiveGatesGrid destinations={gateDestinations} />
       </RouteSection>
 
       <RouteSection>

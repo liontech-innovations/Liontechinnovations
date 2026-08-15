@@ -1,0 +1,506 @@
+{
+  "schemaVersion": "1.1.0",
+  "name": "LionTech AI-first industry knowledge base",
+  "description": "Evidence-led guidance for 20 UK business industries across the Discover, Describe, Trust, Compare and Act gates.",
+  "entity": {
+    "legalName": "Lion Tech Innovations Ltd",
+    "companyNumber": "17068390",
+    "website": "https://liontechinnovations.co.uk",
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
+  },
+  "directoryUrl": "https://liontechinnovations.co.uk/industries",
+  "primaryAction": {
+    "label": "Get AI Snapshot",
+    "url": "https://liontechinnovations.co.uk/contact#snapshot-enquiry",
+    "actionType": "snapshot-enquiry"
+  },
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
+  "industries": [
+    {
+      "slug": "aesthetics-clinics",
+      "name": "Aesthetics clinics",
+      "group": "Health and care",
+      "shortDescription": "Clinics offering non-surgical cosmetic consultations and treatments where practitioner identity, treatment scope, product information and safe enquiry routes must be clear.",
+      "pageAudience": [
+        "clinic owners",
+        "practice managers",
+        "responsible clinicians"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking anti-wrinkle consultations",
+        "customers comparing dermal filler treatments",
+        "organisations needing skin consultations"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/aesthetics-clinics.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/aesthetics-clinics",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/aesthetics-clinics/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/aesthetics-clinics/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/aesthetics-clinics/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/aesthetics-clinics/checklist"
+      }
+    },
+    {
+      "slug": "dental-practices",
+      "name": "Dental practices",
+      "group": "Health and care",
+      "shortDescription": "NHS, private and mixed dental practices that need treatment scope, clinician registration, access arrangements and booking information to remain consistent across public sources.",
+      "pageAudience": [
+        "practice owners",
+        "practice managers",
+        "dental groups"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking routine examinations",
+        "customers comparing hygiene appointments",
+        "organisations needing restorative dentistry"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/dental-practices.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/dental-practices",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/dental-practices/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/dental-practices/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/dental-practices/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/dental-practices/checklist"
+      }
+    },
+    {
+      "slug": "domiciliary-care-providers",
+      "name": "Domiciliary care providers",
+      "group": "Health and care",
+      "shortDescription": "Home-care organisations whose regulated activity, service area, care scope, inspection evidence and referral pathway must be easy for families and commissioners to verify.",
+      "pageAudience": [
+        "registered providers",
+        "care operations teams",
+        "home-care branches"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking personal care visits",
+        "customers comparing medication support",
+        "organisations needing meal preparation"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/domiciliary-care-providers.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/domiciliary-care-providers",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/domiciliary-care-providers/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/domiciliary-care-providers/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/domiciliary-care-providers/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/domiciliary-care-providers/checklist"
+      }
+    },
+    {
+      "slug": "physiotherapy-clinics",
+      "name": "Physiotherapy clinics",
+      "group": "Health and care",
+      "shortDescription": "Clinics where protected professional titles, practitioner credentials, treatment specialisms, referral requirements and appointment pathways should be unambiguous.",
+      "pageAudience": [
+        "clinic owners",
+        "lead physiotherapists",
+        "multi-site therapy groups"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking musculoskeletal assessment",
+        "customers comparing sports injury rehabilitation",
+        "organisations needing post-operative rehabilitation"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/physiotherapy-clinics.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/physiotherapy-clinics",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/physiotherapy-clinics/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/physiotherapy-clinics/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/physiotherapy-clinics/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/physiotherapy-clinics/checklist"
+      }
+    },
+    {
+      "slug": "private-medical-clinics",
+      "name": "Private medical clinics",
+      "group": "Health and care",
+      "shortDescription": "Independent clinics that must distinguish consultation scope, clinician credentials, regulated locations, fees and onward-care pathways without making unsupported outcome claims.",
+      "pageAudience": [
+        "clinic owners",
+        "medical directors",
+        "independent healthcare groups"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking general medical consultations",
+        "customers comparing specialist consultations",
+        "organisations needing diagnostic testing"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/private-medical-clinics.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/private-medical-clinics",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/private-medical-clinics/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/private-medical-clinics/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/private-medical-clinics/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/private-medical-clinics/checklist"
+      }
+    },
+    {
+      "slug": "veterinary-practices",
+      "name": "Veterinary practices",
+      "group": "Health and care",
+      "shortDescription": "Practices where species coverage, clinical services, emergency arrangements, professional registration and medicine boundaries need to be explicit for animal owners.",
+      "pageAudience": [
+        "practice owners",
+        "practice managers",
+        "veterinary groups"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking routine consultations",
+        "customers comparing vaccinations",
+        "organisations needing preventive health plans"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/veterinary-practices.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/veterinary-practices",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/veterinary-practices/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/veterinary-practices/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/veterinary-practices/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/veterinary-practices/checklist"
+      }
+    },
+    {
+      "slug": "accountancy-firms",
+      "name": "Accountancy firms",
+      "group": "Professional and financial services",
+      "shortDescription": "Firms that need service scope, professional memberships, sector experience, fee basis and secure client-onboarding routes to be described precisely.",
+      "pageAudience": [
+        "accountancy practice owners",
+        "tax advisers",
+        "outsourced finance teams"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking annual accounts",
+        "customers comparing self assessment",
+        "organisations needing corporation tax"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/accountancy-firms.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/accountancy-firms",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/accountancy-firms/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/accountancy-firms/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/accountancy-firms/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/accountancy-firms/checklist"
+      }
+    },
+    {
+      "slug": "solicitors",
+      "name": "Solicitors",
+      "group": "Professional and financial services",
+      "shortDescription": "Legal practices where regulated identity, areas of law, jurisdiction, lawyer credentials, costs information and enquiry boundaries need careful, verifiable wording.",
+      "pageAudience": [
+        "law firm partners",
+        "practice managers",
+        "legal operations teams"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking conveyancing",
+        "customers comparing family law",
+        "organisations needing employment law"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/solicitors.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/solicitors",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/solicitors/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/solicitors/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/solicitors/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/solicitors/checklist"
+      }
+    },
+    {
+      "slug": "estate-agents",
+      "name": "Estate agents",
+      "group": "Professional and financial services",
+      "shortDescription": "Sales, lettings and property-management firms whose branch coverage, services, fees, redress membership and valuation or viewing routes must remain current.",
+      "pageAudience": [
+        "independent agencies",
+        "multi-branch estate agents",
+        "lettings teams"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking residential sales",
+        "customers comparing lettings",
+        "organisations needing property management"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/estate-agents.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/estate-agents",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/estate-agents/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/estate-agents/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/estate-agents/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/estate-agents/checklist"
+      }
+    },
+    {
+      "slug": "mortgage-brokers",
+      "name": "Mortgage brokers",
+      "group": "Professional and financial services",
+      "shortDescription": "Mortgage advisers whose regulated status, market scope, fees, lender access, customer types and enquiry process need accurate qualification language.",
+      "pageAudience": [
+        "brokerage owners",
+        "appointed representatives",
+        "mortgage advisory teams"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking first-time buyer mortgages",
+        "customers comparing home mover mortgages",
+        "organisations needing remortgages"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/mortgage-brokers.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/mortgage-brokers",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/mortgage-brokers/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/mortgage-brokers/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/mortgage-brokers/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/mortgage-brokers/checklist"
+      }
+    },
+    {
+      "slug": "financial-advisers",
+      "name": "Financial advisers",
+      "group": "Professional and financial services",
+      "shortDescription": "Advice firms that must present regulatory permissions, client scope, adviser credentials, charging basis and advice boundaries without implying outcomes.",
+      "pageAudience": [
+        "financial advice firms",
+        "independent advisers",
+        "wealth-planning practices"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking retirement planning",
+        "customers comparing investment advice",
+        "organisations needing pension advice"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/financial-advisers.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/financial-advisers",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/financial-advisers/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/financial-advisers/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/financial-advisers/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/financial-advisers/checklist"
+      }
+    },
+    {
+      "slug": "recruitment-agencies",
+      "name": "Recruitment agencies",
+      "group": "Business services",
+      "shortDescription": "Recruiters whose sector coverage, permanent or temporary model, worker terms, employer process and live vacancy actions need separate, current explanations.",
+      "pageAudience": [
+        "recruitment founders",
+        "agency directors",
+        "specialist staffing teams"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking permanent recruitment",
+        "customers comparing temporary staffing",
+        "organisations needing contract recruitment"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/recruitment-agencies.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/recruitment-agencies",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/recruitment-agencies/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/recruitment-agencies/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/recruitment-agencies/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/recruitment-agencies/checklist"
+      }
+    },
+    {
+      "slug": "managed-it-service-providers",
+      "name": "Managed IT service providers",
+      "group": "Business services",
+      "shortDescription": "MSPs that need service boundaries, support coverage, security responsibilities, certifications, response routes and onboarding expectations stated with technical precision.",
+      "pageAudience": [
+        "MSP founders",
+        "IT support companies",
+        "cybersecurity service teams"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking managed helpdesk",
+        "customers comparing Microsoft 365 support",
+        "organisations needing cloud administration"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/managed-it-service-providers.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/managed-it-service-providers",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/managed-it-service-providers/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/managed-it-service-providers/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/managed-it-service-providers/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/managed-it-service-providers/checklist"
+      }
+    },
+    {
+      "slug": "training-providers",
+      "name": "Training providers",
+      "group": "Business services",
+      "shortDescription": "Commercial, vocational and regulated learning providers whose course outcomes, awarding relationships, delivery format, eligibility and enrolment routes must be distinguished.",
+      "pageAudience": [
+        "training-company founders",
+        "learning providers",
+        "apprenticeship teams"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking classroom courses",
+        "customers comparing live online training",
+        "organisations needing self-paced learning"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/training-providers.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/training-providers",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/training-providers/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/training-providers/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/training-providers/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/training-providers/checklist"
+      }
+    },
+    {
+      "slug": "plumbing-heating-firms",
+      "name": "Plumbing and heating firms",
+      "group": "Local and home services",
+      "shortDescription": "Local contractors whose gas scope, engineer credentials, coverage area, emergency availability and quote route must be clear without implying unverified accreditation.",
+      "pageAudience": [
+        "plumbing business owners",
+        "heating contractors",
+        "local service teams"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking boiler servicing",
+        "customers comparing boiler replacement",
+        "organisations needing central-heating repairs"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/plumbing-heating-firms.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/plumbing-heating-firms",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/plumbing-heating-firms/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/plumbing-heating-firms/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/plumbing-heating-firms/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/plumbing-heating-firms/checklist"
+      }
+    },
+    {
+      "slug": "electrical-contractors",
+      "name": "Electrical contractors",
+      "group": "Local and home services",
+      "shortDescription": "Domestic and commercial electrical firms whose registration, work categories, service area, certification and fault-reporting routes must be accurately represented.",
+      "pageAudience": [
+        "electrical business owners",
+        "approved contractors",
+        "local electrical teams"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking electrical inspections",
+        "customers comparing consumer-unit replacement",
+        "organisations needing fault finding"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/electrical-contractors.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/electrical-contractors",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/electrical-contractors/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/electrical-contractors/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/electrical-contractors/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/electrical-contractors/checklist"
+      }
+    },
+    {
+      "slug": "roofing-contractors",
+      "name": "Roofing contractors",
+      "group": "Local and home services",
+      "shortDescription": "Roofing firms whose roof-system experience, inspection process, work-at-height controls, scheme status, guarantees and quote pathway need disciplined evidence.",
+      "pageAudience": [
+        "roofing business owners",
+        "specialist contractors",
+        "regional roofing teams"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking roof inspections",
+        "customers comparing slate roof repairs",
+        "organisations needing tile roof repairs"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/roofing-contractors.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/roofing-contractors",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/roofing-contractors/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/roofing-contractors/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/roofing-contractors/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/roofing-contractors/checklist"
+      }
+    },
+    {
+      "slug": "building-contractors",
+      "name": "Building contractors",
+      "group": "Local and home services",
+      "shortDescription": "Residential and commercial builders whose project scope, geographic coverage, permissions, trade responsibilities and estimate-to-contract pathway need transparent boundaries.",
+      "pageAudience": [
+        "building company owners",
+        "main contractors",
+        "design-and-build teams"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking home extensions",
+        "customers comparing renovations",
+        "organisations needing loft conversions"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/building-contractors.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/building-contractors",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/building-contractors/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/building-contractors/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/building-contractors/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/building-contractors/checklist"
+      }
+    },
+    {
+      "slug": "landscaping-companies",
+      "name": "Landscaping companies",
+      "group": "Local and home services",
+      "shortDescription": "Garden design, build and maintenance companies whose service mix, design credentials, coverage, waste handling and quote process need clear separation.",
+      "pageAudience": [
+        "landscaping business owners",
+        "garden designers",
+        "grounds-maintenance teams"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking garden design",
+        "customers comparing hard landscaping",
+        "organisations needing soft landscaping"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/landscaping-companies.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/landscaping-companies",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/landscaping-companies/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/landscaping-companies/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/landscaping-companies/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/landscaping-companies/checklist"
+      }
+    },
+    {
+      "slug": "commercial-cleaning-companies",
+      "name": "Commercial cleaning companies",
+      "group": "Business services",
+      "shortDescription": "Contract cleaning providers whose premises coverage, cleaning specification, staffing model, chemical controls, service hours and site-survey route must be explicit.",
+      "pageAudience": [
+        "cleaning-company owners",
+        "facilities-service providers",
+        "contract cleaning teams"
+      ],
+      "endCustomerSegments": [
+        "buyers seeking office cleaning",
+        "customers comparing clinical-area cleaning",
+        "organisations needing school cleaning"
+      ],
+      "dataUrl": "https://liontechinnovations.co.uk/ai-data/industries/commercial-cleaning-companies.json",
+      "canonicalPageUrls": {
+        "hub": "https://liontechinnovations.co.uk/industries/commercial-cleaning-companies",
+        "aiVisibility": "https://liontechinnovations.co.uk/industries/commercial-cleaning-companies/ai-visibility",
+        "howAiCompares": "https://liontechinnovations.co.uk/industries/commercial-cleaning-companies/how-ai-compares",
+        "agentReadiness": "https://liontechinnovations.co.uk/industries/commercial-cleaning-companies/agent-readiness",
+        "checklist": "https://liontechinnovations.co.uk/industries/commercial-cleaning-companies/checklist"
+      }
+    }
+  ]
+}

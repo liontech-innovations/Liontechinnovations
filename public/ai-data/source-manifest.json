@@ -1,0 +1,888 @@
+{
+  "schemaVersion": "1.1.0",
+  "status": "source-reference-checks-only-not-a-provider-audit",
+  "checkedAt": "2026-08-15",
+  "sourceCount": 72,
+  "sources": [
+    {
+      "label": "Environment Agency waste carrier register",
+      "url": "https://environment.data.gov.uk/public-register/view/search-waste-carriers-brokers",
+      "sourceType": "official-directory",
+      "supports": [
+        "waste carrier and broker registration where applicable"
+      ],
+      "industries": [
+        "commercial-cleaning-companies"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Companies House service",
+      "url": "https://find-and-update.company-information.service.gov.uk/",
+      "sourceType": "government",
+      "supports": [
+        "legal entity and filing information"
+      ],
+      "industries": [
+        "accountancy-firms"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "ICAEW Find a Chartered Accountant",
+      "url": "https://find.icaew.com/",
+      "sourceType": "official-directory",
+      "supports": [
+        "ICAEW member and firm discovery where applicable"
+      ],
+      "industries": [
+        "accountancy-firms"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "GOV.UK Find apprenticeship training",
+      "url": "https://findapprenticeshiptraining.apprenticeships.education.gov.uk/",
+      "sourceType": "official-directory",
+      "supports": [
+        "approved apprenticeship training options"
+      ],
+      "industries": [
+        "training-providers"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "RCVS Find a Vet",
+      "url": "https://findavet.rcvs.org.uk/home/",
+      "sourceType": "official-directory",
+      "supports": [
+        "registered veterinary practices and professionals"
+      ],
+      "industries": [
+        "veterinary-practices"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "ICO employment practices and data protection",
+      "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/employment/",
+      "sourceType": "regulator",
+      "supports": [
+        "worker and candidate data-protection guidance"
+      ],
+      "industries": [
+        "recruitment-agencies"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "ICO security guidance",
+      "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/security/",
+      "sourceType": "regulator",
+      "supports": [
+        "personal-data security responsibilities"
+      ],
+      "industries": [
+        "managed-it-service-providers"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Landscape Institute directory",
+      "url": "https://my.landscapeinstitute.org/directory",
+      "sourceType": "official-directory",
+      "supports": [
+        "registered practice and professional discovery"
+      ],
+      "industries": [
+        "landscaping-companies"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "NICEIC contractor search",
+      "url": "https://niceic.com/find-a-tradesperson/",
+      "sourceType": "official-directory",
+      "supports": [
+        "NICEIC-certified business discovery where applicable"
+      ],
+      "industries": [
+        "electrical-contractors"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "General Dental Council register",
+      "url": "https://olr.gdc-uk.org/",
+      "sourceType": "regulator",
+      "supports": [
+        "dental professional registration and specialist-list status"
+      ],
+      "industries": [
+        "dental-practices"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "FCA Financial Services Register",
+      "url": "https://register.fca.org.uk/s/",
+      "sourceType": "regulator",
+      "supports": [
+        "authorisation, permissions and individual status",
+        "firm, individual and appointed-representative status"
+      ],
+      "industries": [
+        "financial-advisers",
+        "mortgage-brokers"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Ofqual Register of Regulated Qualifications",
+      "url": "https://register.ofqual.gov.uk/",
+      "sourceType": "regulator",
+      "supports": [
+        "regulated qualifications and awarding organisations"
+      ],
+      "industries": [
+        "training-providers"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "NAPIT member search",
+      "url": "https://search.napit.org.uk/",
+      "sourceType": "official-directory",
+      "supports": [
+        "NAPIT member verification where applicable"
+      ],
+      "industries": [
+        "electrical-contractors"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Law Society Find a Solicitor",
+      "url": "https://solicitors.lawsociety.org.uk/",
+      "sourceType": "official-directory",
+      "supports": [
+        "practice areas, locations and accredited services where listed"
+      ],
+      "industries": [
+        "solicitors"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "ACCA Find an accountant",
+      "url": "https://www.accaglobal.com/gb/en/member/find-an-accountant.html",
+      "sourceType": "official-directory",
+      "supports": [
+        "ACCA member and firm discovery where applicable"
+      ],
+      "industries": [
+        "accountancy-firms"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Advertising Standards Authority cosmetic interventions guidance",
+      "url": "https://www.asa.org.uk/advice-online/cosmetic-interventions.html",
+      "sourceType": "regulator",
+      "supports": [
+        "responsible advertising boundaries for cosmetic interventions"
+      ],
+      "industries": [
+        "aesthetics-clinics"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "BALI member directory",
+      "url": "https://www.bali.org.uk/find-a-member/",
+      "sourceType": "professional-body",
+      "supports": [
+        "landscape professional member discovery where applicable"
+      ],
+      "industries": [
+        "landscaping-companies"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "British Institute of Cleaning Science",
+      "url": "https://www.bics.org.uk/",
+      "sourceType": "professional-body",
+      "supports": [
+        "professional standards, training and sector resources"
+      ],
+      "industries": [
+        "commercial-cleaning-companies"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "CIPHE Find a plumber",
+      "url": "https://www.ciphe.org.uk/professional-members/find-a-plumber/",
+      "sourceType": "professional-body",
+      "supports": [
+        "professional member discovery where applicable"
+      ],
+      "industries": [
+        "plumbing-heating-firms"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "CompetentRoofer",
+      "url": "https://www.competentroofer.co.uk/find-a-roofer/",
+      "sourceType": "official-directory",
+      "supports": [
+        "scheme member discovery and relevant self-certification"
+      ],
+      "industries": [
+        "roofing-contractors"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Care Quality Commission service finder",
+      "url": "https://www.cqc.org.uk/care-services",
+      "sourceType": "regulator",
+      "supports": [
+        "inspection reports, ratings, service locations and provider identity",
+        "provider information where regulated activities bring a service into scope",
+        "provider registration, inspection information and locations in England",
+        "registered provider identity and inspection information where CQC regulation applies",
+        "registered provider, location, inspection and rating information in England"
+      ],
+      "industries": [
+        "aesthetics-clinics",
+        "dental-practices",
+        "domiciliary-care-providers",
+        "physiotherapy-clinics",
+        "private-medical-clinics"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "CQC personal care registration guidance",
+      "url": "https://www.cqc.org.uk/guidance-regulation/providers/registration/personal-care-registration-homecare-agencies",
+      "sourceType": "regulator",
+      "supports": [
+        "registration expectations for home-care agencies providing personal care"
+      ],
+      "industries": [
+        "domiciliary-care-providers"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Chartered Society of Physiotherapy directory",
+      "url": "https://www.csp.org.uk/public-patient/find-physiotherapist",
+      "sourceType": "professional-body",
+      "supports": [
+        "chartered physiotherapist discovery and practice information"
+      ],
+      "industries": [
+        "physiotherapy-clinics"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Electrical Competent Person register",
+      "url": "https://www.electricalcompetentperson.co.uk/",
+      "sourceType": "official-directory",
+      "supports": [
+        "registered electrical businesses and work categories"
+      ],
+      "industries": [
+        "electrical-contractors"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Electrical Safety First",
+      "url": "https://www.electricalsafetyfirst.org.uk/find-an-electrician/",
+      "sourceType": "professional-body",
+      "supports": [
+        "consumer guidance for finding registered electricians"
+      ],
+      "industries": [
+        "electrical-contractors"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Financial Ombudsman Service investments",
+      "url": "https://www.financial-ombudsman.org.uk/consumers/complaints-can-help/investments",
+      "sourceType": "regulator",
+      "supports": [
+        "complaint routes for investment and advice services"
+      ],
+      "industries": [
+        "financial-advisers"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Financial Ombudsman Service mortgages",
+      "url": "https://www.financial-ombudsman.org.uk/consumers/complaints-can-help/mortgages",
+      "sourceType": "regulator",
+      "supports": [
+        "mortgage complaint scope and consumer routes"
+      ],
+      "industries": [
+        "mortgage-brokers"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Financial Services Compensation Scheme",
+      "url": "https://www.fscs.org.uk/check/check-your-money-is-protected/",
+      "sourceType": "official-directory",
+      "supports": [
+        "consumer protection checks where applicable",
+        "protection checks where applicable"
+      ],
+      "industries": [
+        "financial-advisers",
+        "mortgage-brokers"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Gas Safe Register",
+      "url": "https://www.gassaferegister.co.uk/find-an-engineer-or-check-the-register/",
+      "sourceType": "official-directory",
+      "supports": [
+        "engineer and business registration for in-scope gas work"
+      ],
+      "industries": [
+        "plumbing-heating-firms"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "General Dental Council standards and guidance",
+      "url": "https://www.gdc-uk.org/standards-guidance",
+      "sourceType": "regulator",
+      "supports": [
+        "professional standards and scope guidance"
+      ],
+      "industries": [
+        "dental-practices"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "General Medical Council medical register",
+      "url": "https://www.gmc-uk.org/registration-and-licensing/the-medical-register",
+      "sourceType": "regulator",
+      "supports": [
+        "doctor registration, licence and specialist or GP register information"
+      ],
+      "industries": [
+        "private-medical-clinics"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "GOV.UK Competent Person Register",
+      "url": "https://www.gov.uk/building-regulations-competent-person-schemes",
+      "sourceType": "government",
+      "supports": [
+        "self-certification scheme information for relevant building work",
+        "self-certification scheme information for relevant work"
+      ],
+      "industries": [
+        "building-contractors",
+        "plumbing-heating-firms"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "GOV.UK legal aid finder",
+      "url": "https://www.gov.uk/check-legal-aid",
+      "sourceType": "government",
+      "supports": [
+        "official legal-aid eligibility and service routes"
+      ],
+      "industries": [
+        "solicitors"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "CMA private healthcare market investigation",
+      "url": "https://www.gov.uk/cma-cases/private-healthcare-market-investigation",
+      "sourceType": "government",
+      "supports": [
+        "competition and information requirements in private healthcare"
+      ],
+      "industries": [
+        "private-medical-clinics"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "CMA veterinary services market investigation",
+      "url": "https://www.gov.uk/cma-cases/veterinary-services-market-for-pets-investigation",
+      "sourceType": "government",
+      "supports": [
+        "competition and consumer-information issues in veterinary services"
+      ],
+      "industries": [
+        "veterinary-practices"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "GOV.UK employment agencies and businesses",
+      "url": "https://www.gov.uk/employment-agencies-and-businesses/overview",
+      "sourceType": "government",
+      "supports": [
+        "rules for employment agencies and employment businesses"
+      ],
+      "industries": [
+        "recruitment-agencies"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Employment Agency Standards Inspectorate",
+      "url": "https://www.gov.uk/government/organisations/employment-agency-standards-inspectorate",
+      "sourceType": "regulator",
+      "supports": [
+        "sector enforcement and worker complaint information"
+      ],
+      "industries": [
+        "recruitment-agencies"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Medicines and Healthcare products Regulatory Agency",
+      "url": "https://www.gov.uk/government/organisations/medicines-and-healthcare-products-regulatory-agency",
+      "sourceType": "government",
+      "supports": [
+        "medicine and medical-device safety information"
+      ],
+      "industries": [
+        "aesthetics-clinics"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Veterinary Medicines Directorate",
+      "url": "https://www.gov.uk/government/organisations/veterinary-medicines-directorate",
+      "sourceType": "government",
+      "supports": [
+        "veterinary medicine regulation and safety information"
+      ],
+      "industries": [
+        "veterinary-practices"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "HMRC standard for agents",
+      "url": "https://www.gov.uk/government/publications/hmrc-the-standard-for-agents",
+      "sourceType": "government",
+      "supports": [
+        "minimum standards expected of tax agents"
+      ],
+      "industries": [
+        "accountancy-firms"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "GOV.UK apprenticeship provider guidance",
+      "url": "https://www.gov.uk/guidance/register-of-apprenticeship-training-providers",
+      "sourceType": "government",
+      "supports": [
+        "provider-register expectations and status"
+      ],
+      "industries": [
+        "training-providers"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "GOV.UK property-agent redress guidance",
+      "url": "https://www.gov.uk/redress-scheme-estate-agencies",
+      "sourceType": "government",
+      "supports": [
+        "approved redress-scheme requirements"
+      ],
+      "industries": [
+        "estate-agents"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "HCPC check the register",
+      "url": "https://www.hcpc-uk.org/check-the-register/",
+      "sourceType": "regulator",
+      "supports": [
+        "registration of physiotherapists using the protected title"
+      ],
+      "industries": [
+        "physiotherapy-clinics"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "HSE agriculture and horticulture guidance",
+      "url": "https://www.hse.gov.uk/agriculture/topics/landscaping.htm",
+      "sourceType": "government",
+      "supports": [
+        "landscaping health and safety guidance"
+      ],
+      "industries": [
+        "landscaping-companies"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "HSE construction guidance",
+      "url": "https://www.hse.gov.uk/construction/",
+      "sourceType": "government",
+      "supports": [
+        "construction health and safety duties and guidance"
+      ],
+      "industries": [
+        "building-contractors"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "HSE work at height guidance",
+      "url": "https://www.hse.gov.uk/construction/faq-height.htm",
+      "sourceType": "government",
+      "supports": [
+        "work-at-height planning and competence expectations"
+      ],
+      "industries": [
+        "roofing-contractors"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "HSE COSHH guidance",
+      "url": "https://www.hse.gov.uk/coshh/",
+      "sourceType": "government",
+      "supports": [
+        "control of substances hazardous to health"
+      ],
+      "industries": [
+        "commercial-cleaning-companies"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Joint Council for Cosmetic Practitioners register",
+      "url": "https://www.jccp.org.uk/PractitionerRegister",
+      "sourceType": "professional-body",
+      "supports": [
+        "voluntary practitioner registration where applicable"
+      ],
+      "industries": [
+        "aesthetics-clinics"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Legal Ombudsman",
+      "url": "https://www.legalombudsman.org.uk/",
+      "sourceType": "regulator",
+      "supports": [
+        "consumer complaint routes and service expectations"
+      ],
+      "industries": [
+        "solicitors"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Living Wage Employer directory",
+      "url": "https://www.livingwage.org.uk/accredited-living-wage-employers",
+      "sourceType": "official-directory",
+      "supports": [
+        "accredited Living Wage employer status where claimed"
+      ],
+      "industries": [
+        "commercial-cleaning-companies"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "MoneyHelper choosing a financial adviser",
+      "url": "https://www.moneyhelper.org.uk/en/getting-help-and-advice/financial-advisers/choosing-a-financial-adviser",
+      "sourceType": "government",
+      "supports": [
+        "consumer checks, adviser types and charging questions"
+      ],
+      "industries": [
+        "financial-advisers"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "MoneyHelper mortgage adviser guidance",
+      "url": "https://www.moneyhelper.org.uk/en/homes/buying-a-home/choosing-a-mortgage-shop-around-or-get-advice",
+      "sourceType": "government",
+      "supports": [
+        "consumer guidance on mortgage advice and comparison"
+      ],
+      "industries": [
+        "mortgage-brokers"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "National Trading Standards Estate and Letting Agency Team",
+      "url": "https://www.nationaltradingstandards.uk/work-areas/estate-agency/",
+      "sourceType": "regulator",
+      "supports": [
+        "estate-agency enforcement and material-information guidance"
+      ],
+      "industries": [
+        "estate-agents"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "NCSC cloud security guidance",
+      "url": "https://www.ncsc.gov.uk/collection/cloud",
+      "sourceType": "technical-standard",
+      "supports": [
+        "cloud security principles and shared-responsibility context"
+      ],
+      "industries": [
+        "managed-it-service-providers"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "NCSC Cyber Essentials overview",
+      "url": "https://www.ncsc.gov.uk/cyberessentials/overview",
+      "sourceType": "technical-standard",
+      "supports": [
+        "government-backed baseline cyber controls"
+      ],
+      "industries": [
+        "managed-it-service-providers"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "NCSC choosing a managed service provider",
+      "url": "https://www.ncsc.gov.uk/guidance/choosing-a-managed-service-provider-msp",
+      "sourceType": "government",
+      "supports": [
+        "MSP due diligence, contracts and security responsibilities"
+      ],
+      "industries": [
+        "managed-it-service-providers"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "NFRC Find a Member",
+      "url": "https://www.nfrc.co.uk/find-a-member",
+      "sourceType": "professional-body",
+      "supports": [
+        "NFRC member contractor discovery where applicable"
+      ],
+      "industries": [
+        "roofing-contractors"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "NHS service search",
+      "url": "https://www.nhs.uk/service-search/",
+      "sourceType": "official-directory",
+      "supports": [
+        "public healthcare service information and onward routes"
+      ],
+      "industries": [
+        "private-medical-clinics"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "NHS Find a dentist",
+      "url": "https://www.nhs.uk/service-search/find-a-dentist",
+      "sourceType": "official-directory",
+      "supports": [
+        "public dental service discovery and location information"
+      ],
+      "industries": [
+        "dental-practices"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "NICE musculoskeletal guidance",
+      "url": "https://www.nice.org.uk/guidance/conditions-and-diseases/musculoskeletal-conditions",
+      "sourceType": "technical-standard",
+      "supports": [
+        "evidence-based guidance relevant to musculoskeletal pathways"
+      ],
+      "industries": [
+        "physiotherapy-clinics"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "NICE home care guidance",
+      "url": "https://www.nice.org.uk/guidance/ng21",
+      "sourceType": "technical-standard",
+      "supports": [
+        "person-centred home-care planning and delivery guidance"
+      ],
+      "industries": [
+        "domiciliary-care-providers"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Planning Portal",
+      "url": "https://www.planningportal.co.uk/",
+      "sourceType": "primary-industry-source",
+      "supports": [
+        "planning and building-control information for England and Wales"
+      ],
+      "industries": [
+        "building-contractors"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "RCVS Code of Professional Conduct",
+      "url": "https://www.rcvs.org.uk/setting-standards/advice-and-guidance/code-of-professional-conduct-for-veterinary-surgeons/",
+      "sourceType": "regulator",
+      "supports": [
+        "professional responsibilities and public information boundaries"
+      ],
+      "industries": [
+        "veterinary-practices"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Recruitment and Employment Confederation directory",
+      "url": "https://www.rec.uk.com/recruiters/member-directory",
+      "sourceType": "professional-body",
+      "supports": [
+        "REC member discovery where applicable"
+      ],
+      "industries": [
+        "recruitment-agencies"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "RHS Find a designer",
+      "url": "https://www.rhs.org.uk/advice/find-a-professional",
+      "sourceType": "professional-body",
+      "supports": [
+        "garden professional discovery and consumer guidance"
+      ],
+      "industries": [
+        "landscaping-companies"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Skills for Care",
+      "url": "https://www.skillsforcare.org.uk/",
+      "sourceType": "professional-body",
+      "supports": [
+        "adult social care workforce guidance and sector standards"
+      ],
+      "industries": [
+        "domiciliary-care-providers"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "SRA Solicitors Register",
+      "url": "https://www.sra.org.uk/consumers/register/",
+      "sourceType": "regulator",
+      "supports": [
+        "regulated firm and solicitor records"
+      ],
+      "industries": [
+        "solicitors"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Property Redress Scheme member list",
+      "url": "https://www.theprs.co.uk/consumer/members/",
+      "sourceType": "official-directory",
+      "supports": [
+        "member agency verification"
+      ],
+      "industries": [
+        "estate-agents"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "The Property Ombudsman member search",
+      "url": "https://www.tpos.co.uk/find-a-member",
+      "sourceType": "official-directory",
+      "supports": [
+        "member agency verification"
+      ],
+      "industries": [
+        "estate-agents"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "TrustMark business directory",
+      "url": "https://www.trustmark.org.uk/homeowner/find-a-tradesperson",
+      "sourceType": "official-directory",
+      "supports": [
+        "government-endorsed quality-scheme business discovery",
+        "scheme business discovery where applicable"
+      ],
+      "industries": [
+        "building-contractors",
+        "roofing-contractors"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "UK Register of Learning Providers",
+      "url": "https://www.ukrlp.co.uk/",
+      "sourceType": "official-directory",
+      "supports": [
+        "learning-provider reference records"
+      ],
+      "industries": [
+        "training-providers"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "WaterSafe approved plumber directory",
+      "url": "https://www.watersafe.org.uk/find-a-plumber/",
+      "sourceType": "official-directory",
+      "supports": [
+        "approved plumbing businesses where listed"
+      ],
+      "industries": [
+        "plumbing-heating-firms"
+      ],
+      "checkedAt": "2026-08-15"
+    }
+  ]
+}

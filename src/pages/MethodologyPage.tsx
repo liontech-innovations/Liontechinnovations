@@ -23,6 +23,14 @@ export function MethodologyPage() {
     'A significant evidence, accuracy or action-path issue requires attention.',
   ];
 
+  const gateDestinations = {
+    Discover: { href: '/industries', label: 'Browse industries' },
+    Describe: { href: '/industries', label: 'See industry facts' },
+    Trust: { href: '#evidence-standards', label: 'Review evidence standards' },
+    Compare: { href: '/industries', label: 'Explore comparisons' },
+    Act: { href: '/contact#snapshot-enquiry', label: 'Request a Snapshot' },
+  } as const;
+
   return (
     <>
       <PageHero eyebrow="THE FIVE GATES METHOD" title="A clear way to inspect AI readiness." description="LionTech observes how AI systems find, explain, support, compare and act on public business information.">
@@ -30,9 +38,9 @@ export function MethodologyPage() {
         <RouteLink className="lt-button lt-button-secondary" href="/ai-business-readiness">See the readiness path</RouteLink>
       </PageHero>
 
-      <RouteSection>
+      <RouteSection id="five-gates">
         <RouteHeading eyebrow="THE FRAMEWORK" title="Five buyer gates, reviewed with evidence" description="Each gate asks a practical question about what customer-facing AI systems can currently understand and support." />
-        <FiveGatesGrid />
+        <FiveGatesGrid destinations={gateDestinations} />
       </RouteSection>
 
       <RouteSection tone="soft">
@@ -48,7 +56,7 @@ export function MethodologyPage() {
         </div>
       </RouteSection>
 
-      <RouteSection>
+      <RouteSection id="evidence-standards" className="lt-route-evidence-section">
         <RouteHeading eyebrow="EVIDENCE STANDARDS" title="Observed, captured and human-reviewed" description="Findings remain tied to the agreed sampled tests and the public information available at the time of review." />
         <div className="lt-route-evidence-grid">
           <FeatureCard title="Observed outputs" icon={Eye}><p>LionTech records what the selected AI systems returned for agreed buyer questions.</p></FeatureCard>

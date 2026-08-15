@@ -14,6 +14,14 @@
   ],
   "rewrites": [
     {
+      "source": "/industries",
+      "destination": "/industries/index.html"
+    },
+    {
+      "source": "/industries/:path*",
+      "destination": "/industries/:path*/index.html"
+    },
+    {
       "source": "/ai-business-readiness",
       "destination": "/ai-business-readiness/index.html"
     },
@@ -44,6 +52,10 @@
     {
       "source": "/contact",
       "destination": "/contact/index.html"
+    },
+    {
+      "source": "/email/signature-install",
+      "destination": "/email/signature-install/index.html"
     },
     {
       "source": "/privacy-policy",

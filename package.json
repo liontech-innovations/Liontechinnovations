@@ -5,13 +5,21 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "vite build && node scripts/prerender.mjs && node scripts/check-public-company-privacy.mjs",
+    "build": "npm run seo:generate-assets && vite build && node scripts/prerender.mjs && node scripts/check-programmatic-content.mjs && node scripts/check-seo-artifacts.mjs && node scripts/check-public-company-privacy.mjs",
     "preview": "vite preview",
     "test:browser-console": "npm run build && node scripts/check-browser-console.mjs",
     "test:snapshot-url": "npm run build && node scripts/check-snapshot-url-normalisation.mjs",
     "test:public-privacy": "node scripts/check-public-company-privacy.mjs",
+    "test:email-signature": "node scripts/check-email-signature.mjs",
     "clean": "rm -rf dist",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "seo:generate-assets": "node scripts/generate-programmatic-assets.mjs",
+    "seo:indexnow:dry-run": "node scripts/indexnow.mjs --all",
+    "seo:indexnow:dry-run:cohort": "node scripts/indexnow.mjs --cohort 01-industry-hubs",
+    "seo:indexnow:submit": "node scripts/indexnow.mjs --submit",
+    "test:programmatic-content": "npm run build",
+    "test:ai-crawlers": "npm run build && node scripts/check-ai-crawlers.mjs",
+    "test:programmatic-routes": "npm run build && node scripts/check-programmatic-routes.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.14",
@@ -26,6 +34,8 @@
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
     "playwright": "^1.62.1",
     "tailwindcss": "^4.1.14",
     "typescript": "~5.8.2",

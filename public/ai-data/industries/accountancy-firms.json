@@ -1,0 +1,211 @@
+{
+  "schemaVersion": "1.1.0",
+  "entity": {
+    "legalName": "Lion Tech Innovations Ltd",
+    "companyNumber": "17068390",
+    "website": "https://liontechinnovations.co.uk",
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
+  },
+  "slug": "accountancy-firms",
+  "name": "Accountancy firms",
+  "shortDescription": "Firms that need service scope, professional memberships, sector experience, fee basis and secure client-onboarding routes to be described precisely.",
+  "pageAudience": [
+    "accountancy practice owners",
+    "tax advisers",
+    "outsourced finance teams"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking annual accounts",
+    "customers comparing self assessment",
+    "organisations needing corporation tax"
+  ],
+  "fiveGates": {
+    "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
+    "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
+    "trust": "Can material facts be checked against current first-party and applicable authoritative evidence?",
+    "compare": "Can buyers inspect relevant differences using factual criteria rather than unsupported superlatives?",
+    "act": "Can a buyer complete a clear next step with suitable confirmation, escalation and human control?"
+  },
+  "commonServices": [
+    "annual accounts",
+    "self assessment",
+    "corporation tax",
+    "VAT returns",
+    "payroll",
+    "bookkeeping",
+    "management accounts",
+    "business advisory"
+  ],
+  "buyerQuestions": [
+    {
+      "intent": "discover",
+      "question": "Which accountancy firms provide annual accounts for buyers seeking annual accounts?",
+      "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
+    },
+    {
+      "intent": "discover",
+      "question": "Where can a buyer find an accountancy firm offering self assessment and corporation tax?",
+      "whyItMatters": "AI systems need a crawlable connection between the service, the provider entity and the area actually served."
+    },
+    {
+      "intent": "describe",
+      "question": "Does this accountancy firm clearly explain which client types and sectors the firm serves?",
+      "whyItMatters": "A precise answer prevents an AI summary from filling gaps with assumptions or outdated third-party text."
+    },
+    {
+      "intent": "describe",
+      "question": "What should a customer expect when asking about VAT returns?",
+      "whyItMatters": "Scope, process and boundaries should be visible before a buyer shares detailed information."
+    },
+    {
+      "intent": "trust",
+      "question": "Which official evidence supports which professional bodies or authorisations apply?",
+      "whyItMatters": "Public registers and first-party facts should agree so that a buyer can verify rather than merely trust a marketing claim."
+    },
+    {
+      "intent": "trust",
+      "question": "How does the provider evidence whether tax, audit or insolvency work is within scope?",
+      "whyItMatters": "Named sources, responsible people and current policies create a traceable trust path."
+    },
+    {
+      "intent": "compare",
+      "question": "How should buyers compare providers on how fees and engagement terms are structured?",
+      "whyItMatters": "Comparable facts help buyers distinguish genuine service differences without relying on unverified superlatives."
+    },
+    {
+      "intent": "compare",
+      "question": "What makes one provider clearer than another about what software and records are supported?",
+      "whyItMatters": "Completeness, freshness and evidence are safer comparison signals than promotional volume."
+    },
+    {
+      "intent": "act",
+      "question": "Can a buyer request an initial consultation or ask for a fee proposal without searching across several pages?",
+      "whyItMatters": "The next step should be explicit, accessible and connected to the relevant service context."
+    },
+    {
+      "intent": "act",
+      "question": "What information is needed to send a secure onboarding enquiry or switch accountant and arrange records transfer?",
+      "whyItMatters": "A structured action route reduces avoidable back-and-forth while preserving human approval where it matters."
+    }
+  ],
+  "trustedSources": [
+    {
+      "label": "HMRC standard for agents",
+      "url": "https://www.gov.uk/government/publications/hmrc-the-standard-for-agents",
+      "sourceType": "government",
+      "supports": [
+        "minimum standards expected of tax agents"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "ICAEW Find a Chartered Accountant",
+      "url": "https://find.icaew.com/",
+      "sourceType": "official-directory",
+      "supports": [
+        "ICAEW member and firm discovery where applicable"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "ACCA Find an accountant",
+      "url": "https://www.accaglobal.com/gb/en/member/find-an-accountant.html",
+      "sourceType": "official-directory",
+      "supports": [
+        "ACCA member and firm discovery where applicable"
+      ],
+      "checkedAt": "2026-08-15"
+    },
+    {
+      "label": "Companies House service",
+      "url": "https://find-and-update.company-information.service.gov.uk/",
+      "sourceType": "government",
+      "supports": [
+        "legal entity and filing information"
+      ],
+      "checkedAt": "2026-08-15"
+    }
+  ],
+  "factsAIShouldUnderstand": [
+    "Accountancy firms may offer different combinations of annual accounts, self assessment and corporation tax; a provider should state its actual scope rather than rely on the industry category alone.",
+    "This LionTech guide is written for accountancy practice owners, tax advisers, outsourced finance teams, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking annual accounts, customers comparing self assessment, organisations needing corporation tax, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with a managing partner, a practice director, or a marketing partner, so named roles and contact ownership help a buyer understand who is accountable.",
+    "HMRC standard for agents is a relevant public evidence source for minimum standards expected of tax agents.",
+    "ICAEW Find a Chartered Accountant can support verification of ICAEW member and firm discovery where applicable.",
+    "A useful description separates VAT returns and payroll from adjacent services that may require different expertise, evidence or approval.",
+    "The action journey should make it clear how to request an initial consultation, how to ask for a fee proposal, and when a human will review the request.",
+    "Public information should address how confidential documents are exchanged securely without implying that a generic web answer replaces case-specific professional judgement."
+  ],
+  "commonVisibilityGaps": [
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm which client types and sectors the firm serves; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm which professional bodies or authorisations apply; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm whether tax, audit or insolvency work is within scope; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how fees and engagement terms are structured; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm what software and records are supported; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how confidential documents are exchanged securely; verify the evidence before treating this as a finding."
+  ],
+  "comparisonCriteria": [
+    "Relevant service fit across annual accounts, self assessment and corporation tax",
+    "Clarity about which client types and sectors the firm serves",
+    "Verifiable evidence from HMRC standard for agents or another applicable official source",
+    "Transparent explanation of how fees and engagement terms are structured",
+    "A usable route to request an initial consultation",
+    "Responsible boundaries for how confidential documents are exchanged securely"
+  ],
+  "trustSignals": [
+    "A current, matching record or guidance reference from HMRC standard for agents",
+    "A relevant verification route through ICAEW Find a Chartered Accountant",
+    "Consistent provider, location and service facts alongside ACCA Find an accountant",
+    "Careful use of claims supported by Companies House service",
+    "Named responsible people or roles for bookkeeping and management accounts",
+    "Visible terms, privacy information and a clear process to ask for a fee proposal"
+  ],
+  "actionPaths": [
+    "request an initial consultation",
+    "ask for a fee proposal",
+    "send a secure onboarding enquiry",
+    "switch accountant and arrange records transfer"
+  ],
+  "agentReadinessOpportunities": [
+    "Collect the minimum structured facts needed to request an initial consultation, then pass the request to the responsible human.",
+    "Route enquiries about VAT returns and payroll to the correct team without presenting a final professional judgement.",
+    "Check that location, availability and service-scope fields are complete before allowing a buyer to send a secure onboarding enquiry.",
+    "Acknowledge a request to switch accountant and arrange records transfer, provide the next expected step and preserve an auditable handoff."
+  ],
+  "automationBoundaries": [
+    "tax positions and filings require professional review and client approval",
+    "professional membership or audit status must never be inferred",
+    "confidential financial records require an approved secure channel"
+  ],
+  "structuredDataRecommendations": [
+    "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
+    "Describe annual accounts, VAT returns and business advisory with visible Service information only where the provider genuinely offers them.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
+    "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
+  ],
+  "riskNotes": [
+    "Accountancy firms guidance on this site is general information, not professional advice about a particular business or customer.",
+    "tax positions and filings require professional review and client approval",
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
+  ],
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
+  "canonicalPageUrls": {
+    "hub": "https://liontechinnovations.co.uk/industries/accountancy-firms",
+    "aiVisibility": "https://liontechinnovations.co.uk/industries/accountancy-firms/ai-visibility",
+    "howAiCompares": "https://liontechinnovations.co.uk/industries/accountancy-firms/how-ai-compares",
+    "agentReadiness": "https://liontechinnovations.co.uk/industries/accountancy-firms/agent-readiness",
+    "checklist": "https://liontechinnovations.co.uk/industries/accountancy-firms/checklist"
+  },
+  "primaryAction": {
+    "label": "Get AI Snapshot",
+    "url": "https://liontechinnovations.co.uk/contact#snapshot-enquiry",
+    "actionType": "snapshot-enquiry"
+  }
+}
