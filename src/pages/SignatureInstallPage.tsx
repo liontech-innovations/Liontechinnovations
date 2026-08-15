@@ -96,7 +96,7 @@ export function SignatureInstallPage() {
           <section className="lt-signature-preview-section" aria-labelledby="signature-preview-title">
             <div className="lt-signature-preview-heading">
               <h2 id="signature-preview-title">Signature preview</h2>
-              <p>The full banner is clickable and opens the Snapshot enquiry form.</p>
+              <p>The full banner is clickable and opens the LionTech homepage.</p>
             </div>
             <div className="lt-signature-preview" aria-label="Rendered LionTech email signature preview">
               <div dangerouslySetInnerHTML={{ __html: signaturePreviewHtml }} />

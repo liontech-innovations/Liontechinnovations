@@ -86,6 +86,8 @@ for (const expectedSource of ["'text/html'", "'text/plain'", 'navigator.clipboar
 }
 assert(installerSource.includes('COPY SIGNATURE FOR GMAIL'), 'installer copy button missing');
 assert(installerSource.includes('dangerouslySetInnerHTML'), 'installer rendered preview missing');
+assert(installerSource.includes('opens the LionTech homepage.'), 'installer banner destination guidance changed');
+assert(!installerSource.includes('opens the Snapshot enquiry form.'), 'installer contains the retired Snapshot banner guidance');
 assert(!/<pre\b|<textarea\b/i.test(installerSource), 'installer exposes raw HTML in a text container');
 
 const routeSource = await readFile(join(projectRoot, 'src', 'routes', 'AppRoutes.tsx'), 'utf8');
