@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "vite build && node scripts/prerender.mjs",
+    "build": "vite build && node scripts/prerender.mjs && node scripts/check-public-company-privacy.mjs",
     "preview": "vite preview",
     "test:browser-console": "npm run build && node scripts/check-browser-console.mjs",
     "test:snapshot-url": "npm run build && node scripts/check-snapshot-url-normalisation.mjs",
+    "test:public-privacy": "node scripts/check-public-company-privacy.mjs",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit"
   },

@@ -17,13 +17,12 @@ The AI Visibility Snapshot is sellable at the £395 founding price once the rele
 
 - 15-prompt buyer-intent test set.
 - Raw HTML checks using curl, plus sitemap and JSON-LD validation.
-- Companies House company-number and registered-office cross-check.
+- Verify the legal entity through company number 17068390 and the Companies House link. Do not republish the registered-office address on LionTech-controlled surfaces.
 
 ## Release patch requirements
 
 - Use `Lion Tech Innovations Ltd`, company number `17068390`, and `liontechinnovations.co.uk` consistently.
 - State that LionTech is Manchester-based and serves UK businesses remotely.
-- Use the registered office exactly as recorded: `37 Hope Street North, Horwich, Bolton, Lancashire, BL6 7LL`.
 - Pre-render the core marketing routes without changing the approved Vite/React visual implementation.
 - Preserve the Snapshot form fields and `/contact#snapshot-enquiry` behaviour.
 - Keep Google Business Profile and LinkedIn company-page creation as future Founder actions. Do not add links until those profiles exist and are approved.
