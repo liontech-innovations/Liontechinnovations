@@ -79,6 +79,8 @@ try {
     industries,
     industryPageDescriptors,
     industryPageTypes,
+    programmaticContentStatus,
+    programmaticNoGuaranteeDisclaimer,
     snapshotActionPath,
     snapshotActionUrl,
     validateIndustryRecords,
@@ -125,12 +127,27 @@ try {
     if ((article.match(/GET AI SNAPSHOT/g) ?? []).length !== 3) failures.push(`${route}: primary CTA label is missing or changed`);
     if ((article.match(/<details>/g) ?? []).length !== 3) failures.push(`${route}: requires three visible FAQs`);
     if ((extract(article, /data-contextual-links="true">([\s\S]*?)<\/div>/, 'contextual links', route).match(/<a /g) ?? []).length < 4) failures.push(`${route}: requires at least four contextual links`);
-    if (!article.includes('data-source-list="true"') || !article.includes('data-reviewed-date="true"')) failures.push(`${route}: source list or reviewed date missing`);
+    if (!article.includes('data-source-list="true"') || !article.includes('data-source-check-date="true"')) failures.push(`${route}: source list or source-check date missing`);
     if (!html.includes(`href="/ai-data/industries/${descriptor.industry.slug}.json"`)) failures.push(`${route}: alternate industry JSON endpoint missing`);
     if (html.includes('noindex')) failures.push(`${route}: contains noindex`);
     if (/vercel\.app|localhost|127\.0\.0\.1/i.test(`${canonical} ${description}`)) failures.push(`${route}: preview or local URL found in metadata`);
     if (!canonical.startsWith('https://liontechinnovations.co.uk/')) failures.push(`${route}: canonical is not production-domain HTTPS`);
+    if (title.length < 35 || title.length > 70) failures.push(`${route}: title length ${title.length} is outside 35–70 characters`);
+    if (description.length < 120 || description.length > 160) failures.push(`${route}: description length ${description.length} is outside 120–160 characters`);
+    const semanticTitlePatterns = {
+      hub: /readiness/i,
+      'ai-visibility': /visibility/i,
+      'how-ai-compares': /compare/i,
+      'agent-readiness': /agent readiness/i,
+      checklist: /checklist/i,
+    };
+    if (!title.includes(descriptor.industry.name) || !semanticTitlePatterns[descriptor.pageType].test(title)) failures.push(`${route}: title does not identify its industry and page intent`);
+    if (!description.startsWith(`${descriptor.industry.name}:`)) failures.push(`${route}: description does not lead with the industry entity`);
     if (/stripe\.com|buy\.stripe/i.test(article)) failures.push(`${route}: public Stripe reference found`);
+    if (/human-reviewed/i.test(article)) failures.push(`${route}: premature human-review claim found before approval manifest`);
+    if (!article.includes(programmaticNoGuaranteeDisclaimer)) failures.push(`${route}: stable no-guarantee disclaimer missing`);
+    if (!article.includes(`data-content-review-status="${programmaticContentStatus}"`)) failures.push(`${route}: pending content-review status missing`);
+    if (/^[aeiou]/i.test(descriptor.industry.singularName) && new RegExp(`\\ba ${descriptor.industry.singularName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i').test(decode(article))) failures.push(`${route}: incorrect a/an article for industry singular name`);
     for (const entityFact of ['Lion Tech Innovations Ltd', '17068390', 'Manchester-based, serving UK businesses remotely']) {
       if (!html.includes(entityFact)) failures.push(`${route}: canonical entity fact missing (${entityFact})`);
     }
@@ -168,25 +185,51 @@ try {
   }
 
   const directory = await readFile(join(distDirectory, 'industries', 'index.html'), 'utf8');
+  const directoryArticle = directory.slice(directory.indexOf('<article class="lt-industry-directory"'), directory.indexOf('</article></main>') + '</article>'.length);
+  const directoryGuideLinks = [...directoryArticle.matchAll(/<a\s+([^>]*data-guide-type[^>]*)>/g)].map((match) => match[1].match(/href="([^"]+)"/)?.[1]).filter(Boolean);
+  if (directoryGuideLinks.length !== 100 || new Set(directoryGuideLinks).size !== 100) failures.push(`/industries: expected 100 unique visible guide links, received ${directoryGuideLinks.length}/${new Set(directoryGuideLinks).size}`);
+  if ((directory.match(/data-industry-directory-entry=/g) ?? []).length !== 20) failures.push('/industries: expected 20 visible industry entries');
+  if ((directory.match(/data-industry-jump-nav="true"/g) ?? []).length !== 1 || (directory.match(/href="#[^"]+"/g) ?? []).length < 5) failures.push('/industries: five-type jump navigation missing');
+  for (const inventoryFact of ['20 industries', '5 page types', '100 substantial guides']) if (!directory.includes(inventoryFact)) failures.push(`/industries: inventory fact missing (${inventoryFact})`);
   if ((directory.match(/href="\/industries\/[^"]+"/g) ?? []).length < 100) failures.push('/industries: does not link to all 100 programmatic routes');
   if ((directory.match(/data-cta-placement="(?:hero|final)"/g) ?? []).length !== 2) failures.push('/industries: required CTA placements missing');
   if (!directory.includes(snapshotActionPath) || !directory.includes('GET AI SNAPSHOT')) failures.push('/industries: canonical Snapshot action missing');
   if (/stripe\.com|buy\.stripe/i.test(directory)) failures.push('/industries: public Stripe reference found');
+  if (/human-reviewed/i.test(directoryArticle)) failures.push('/industries: premature human-review claim found');
 
   const publicIndex = JSON.parse(await readFile(join(projectRoot, 'public', 'ai-data', 'index.json'), 'utf8'));
   if (publicIndex.industries.length !== 20 || publicIndex.primaryAction.url !== snapshotActionUrl) failures.push('AI-data index inventory or primary action is invalid');
+  const allowedEntityKeys = ['companiesHouseUrl', 'companyNumber', 'legalName', 'location', 'website'];
+  if (JSON.stringify(Object.keys(publicIndex.entity).sort()) !== JSON.stringify(allowedEntityKeys)) failures.push('AI-data index entity fields are not privacy-safe and canonical');
+  if (publicIndex.contentReviewStatus !== programmaticContentStatus || !publicIndex.sourceManifestUrl || !publicIndex.contentReviewManifestUrl || !publicIndex.releaseCohortManifestUrl) failures.push('AI-data index review/source/release manifest metadata is incomplete');
   for (const industry of industries) {
     const record = JSON.parse(await readFile(join(projectRoot, 'public', 'ai-data', 'industries', `${industry.slug}.json`), 'utf8'));
-    const required = ['schemaVersion', 'slug', 'name', 'shortDescription', 'fiveGates', 'commonServices', 'buyerQuestions', 'trustedSources', 'factsAIShouldUnderstand', 'commonVisibilityGaps', 'comparisonCriteria', 'trustSignals', 'actionPaths', 'agentReadinessOpportunities', 'automationBoundaries', 'structuredDataRecommendations', 'riskNotes', 'reviewedAt', 'reviewedBy', 'canonicalPageUrls', 'primaryAction'];
+    const required = ['schemaVersion', 'slug', 'name', 'shortDescription', 'pageAudience', 'endCustomerSegments', 'fiveGates', 'commonServices', 'buyerQuestions', 'trustedSources', 'factsAIShouldUnderstand', 'commonVisibilityGaps', 'comparisonCriteria', 'trustSignals', 'actionPaths', 'agentReadinessOpportunities', 'automationBoundaries', 'structuredDataRecommendations', 'riskNotes', 'sourceCheckedAt', 'contentReviewStatus', 'disclaimer', 'sourceManifestUrl', 'contentReviewManifestUrl', 'releaseCohortManifestUrl', 'canonicalPageUrls', 'primaryAction'];
     for (const key of required) if (!(key in record)) failures.push(`${industry.slug}.json: missing ${key}`);
+    if ('reviewedBy' in record || 'registeredOffice' in record.entity) failures.push(`${industry.slug}.json: prohibited review or location field found`);
+    if (record.contentReviewStatus !== programmaticContentStatus || record.disclaimer !== programmaticNoGuaranteeDisclaimer) failures.push(`${industry.slug}.json: content status or disclaimer mismatch`);
+    if (!record.commonVisibilityGaps.every((gap) => /^If /i.test(gap) && /verify the evidence before treating this as a finding/i.test(gap))) failures.push(`${industry.slug}.json: visibility gaps are not conditional`);
+    if (!record.pageAudience.length || !record.endCustomerSegments.length || record.pageAudience.some((audience) => record.endCustomerSegments.includes(audience))) failures.push(`${industry.slug}.json: page and end-customer audiences are not separated`);
     if (record.primaryAction.url !== snapshotActionUrl || record.primaryAction.actionType !== 'snapshot-enquiry') failures.push(`${industry.slug}.json: primary action mismatch`);
     if (record.trustedSources.length < 4 || record.trustedSources.some((source) => !source.url.startsWith('https://'))) failures.push(`${industry.slug}.json: source coverage invalid`);
   }
 
+  const sourceManifest = JSON.parse(await readFile(join(projectRoot, 'public', 'ai-data', 'source-manifest.json'), 'utf8'));
+  const allowedSourceTypes = new Set(['regulator', 'government', 'professional-body', 'official-directory', 'technical-standard', 'primary-industry-source']);
+  if (sourceManifest.sourceCount !== sourceManifest.sources.length || sourceManifest.sourceCount < 40) failures.push('Source manifest inventory is incomplete');
+  if (sourceManifest.sources.some((source) => !allowedSourceTypes.has(source.sourceType) || !source.url.startsWith('https://') || !source.industries.length || !source.supports.length || !source.checkedAt)) failures.push('Source manifest taxonomy or audit fields are invalid');
+
+  const reviewManifest = JSON.parse(await readFile(join(projectRoot, 'public', 'ai-data', 'content-review-manifest.json'), 'utf8'));
+  if (reviewManifest.status !== programmaticContentStatus || reviewManifest.approvedRouteCount !== 0 || reviewManifest.pendingRouteCount !== 100 || reviewManifest.routes.length !== 100 || reviewManifest.routes.some((route) => route.approvalStatus !== 'pending')) failures.push('Content review manifest must keep all 100 routes pending');
+
+  const releaseManifest = JSON.parse(await readFile(join(projectRoot, 'public', 'ai-data', 'release-cohorts.json'), 'utf8'));
+  const cohortRoutes = releaseManifest.cohorts.flatMap((cohort) => cohort.routes);
+  if (releaseManifest.status !== programmaticContentStatus || releaseManifest.cohortCount !== 5 || releaseManifest.routeCount !== 100 || releaseManifest.cohorts.some((cohort) => cohort.routes.length !== 20) || new Set(cohortRoutes).size !== 100) failures.push('Release cohort manifest is incomplete or overlapping');
+
   similarityPairs.sort((a, b) => b.score - a.score);
   await mkdir(join(projectRoot, 'docs'), { recursive: true });
   await writeFile(join(projectRoot, 'docs', 'PROGRAMMATIC_SIMILARITY_REPORT.json'), `${JSON.stringify({
-    reviewedAt: '2026-08-15',
+    generatedAt: '2026-08-15',
     routeCount: rendered.length,
     wordCount: {
       minimum: Math.min(...wordCounts.map((item) => item.words)),

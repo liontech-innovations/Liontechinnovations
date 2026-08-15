@@ -13,7 +13,7 @@ Entity reviewed: 2026-08-15
 - Positioning: Manchester-based, serving UK businesses remotely
 - Canonical website: https://liontechinnovations.co.uk
 - Public enquiry: https://liontechinnovations.co.uk/contact#snapshot-enquiry
-- Registered office: 37 Hope Street North, Horwich, Bolton, Lancashire, BL6 7LL
+- Verification: use company number 17068390 and the Companies House link; do not republish private location data on LionTech-controlled surfaces.
 
 All owned and third-party profiles should use these facts consistently. The trading name “LionTech Innovations” may accompany the legal name but must not replace it where legal identity is expected.
 
@@ -21,7 +21,7 @@ All owned and third-party profiles should use these facts consistently. The trad
 
 1. Complete and verify the Google Business Profile using an eligible real-world business category, accurate service area, current contact details and the canonical website. Do not create virtual offices or keyword-stuffed names.
 2. Complete the LinkedIn company page with the legal name, company number where appropriate, Manchester/UK remote positioning, core services and canonical URL.
-3. Keep a visible Companies House link on the site and reconcile legal-name, company-number and registered-office facts after any filing change.
+3. Keep a visible Companies House link on the site and reconcile legal-name, company-number and canonical-domain facts after any filing change.
 4. Select relevant professional or industry directories only where LionTech genuinely qualifies. Use the same entity facts and link to the most relevant service or industry hub.
 5. Build legitimate Manchester, North West and UK business citations through real memberships, suppliers, partnerships and event participation. Avoid mass directory submissions.
 6. Align founder biographies, social profiles, speaking pages and author references with the company’s actual role, experience and domain.
@@ -39,4 +39,4 @@ All owned and third-party profiles should use these facts consistently. The trad
 
 `Source | Profile URL | Fact set checked | Account owner | Last reviewed | Evidence captured | Correction needed | Next review`
 
-Review quarterly and whenever the legal entity, registered office, offer, price or canonical domain changes.
+Review quarterly and whenever the legal entity, offer, price or canonical domain changes.

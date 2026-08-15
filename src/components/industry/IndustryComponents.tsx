@@ -7,7 +7,7 @@ export function IndustryCta({ placement, title, description }: { placement: 'her
   return (
     <div className={`lt-industry-cta lt-industry-cta-${placement}`} data-cta-placement={placement}>
       <div>
-        <p className="lt-kicker">Evidence-led · Human-reviewed</p>
+        <p className="lt-kicker">Evidence-led · Source-aware</p>
         <h2>{title}</h2>
         <p>{description}</p>
       </div>

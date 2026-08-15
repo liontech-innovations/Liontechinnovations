@@ -14,7 +14,7 @@ export type IndustrySource = {
     | 'technical-standard'
     | 'primary-industry-source';
   supports: string[];
-  reviewedAt: string;
+  checkedAt: string;
 };
 export type BuyerQuestion = {
   intent: FiveGateIntent;
@@ -28,7 +28,8 @@ export type IndustryRecord = {
   singularName: string;
   group: 'Health and care' | 'Professional and financial services' | 'Business services' | 'Local and home services';
   shortDescription: string;
-  primaryAudience: string[];
+  pageAudience: string[];
+  endCustomerSegments: string[];
   decisionMakers: string[];
   commonServices: string[];
   buyerQuestions: BuyerQuestion[];
@@ -47,8 +48,7 @@ export type IndustryRecord = {
   checklistItems: string[];
   relatedIndustries: string[];
   primaryCTA: 'snapshot';
-  reviewedAt: string;
-  reviewedBy: string;
+  sourceCheckedAt: string;
 };
 
 export type IndustrySeed = {
@@ -57,7 +57,7 @@ export type IndustrySeed = {
   singularName: string;
   group: IndustryRecord['group'];
   shortDescription: string;
-  primaryAudience: [string, string, string];
+  pageAudience: [string, string, string];
   decisionMakers: [string, string, string];
   commonServices: [string, string, string, string, string, string, string, string];
   buyerConcerns: [string, string, string, string, string, string];
@@ -76,5 +76,5 @@ export type IndustryPageDescriptor = {
   h1: string;
   directAnswer: string;
   introduction: string;
-  reviewedAt: string;
+  sourceCheckedAt: string;
 };

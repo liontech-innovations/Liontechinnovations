@@ -1,6 +1,7 @@
 import { RouteLink } from '../components/ui/RouteLink';
 import { IndustryCta, IndustryList, IndustryPanel, SourceLink } from '../components/industry/IndustryComponents';
-import { industryPath, industriesBySlug } from '../content/industries';
+import { industryPath, industriesBySlug, programmaticContentStatus, programmaticNoGuaranteeDisclaimer } from '../content/industries';
+import { contentReviewManifestUrl, sourceManifestUrl } from '../content/industries/artifacts';
 import { getGateInterpretations, getIndustryFaqs, getPageSpecificItems, getPracticalChecks, getSourceObservations } from '../content/industries/page-copy';
 import type { IndustryPageDescriptor } from '../content/industries';
 
@@ -107,7 +108,7 @@ export function IndustryPage({ page }: { page: IndustryPageDescriptor }) {
                 <article className="lt-standard-card" key={item.url}>
                   <h3><SourceLink href={item.url} label={item.label} /></h3>
                   <p>{item.supports.join(' ')}</p>
-                  <span>Source reviewed {item.reviewedAt}</span>
+                  <span>Source reference checked {item.checkedAt}</span>
                 </article>
               ))}
             </div>
@@ -132,10 +133,11 @@ export function IndustryPage({ page }: { page: IndustryPageDescriptor }) {
             </div>
           </IndustryPanel>
 
-          <div className="lt-industry-review" data-reviewed-date>
-            <strong>Reviewed by {record.reviewedBy}</strong>
-            <span>Last reviewed: {record.reviewedAt}</span>
-            <p>General industry guidance, not a claim about a specific business and not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, regulatory outcomes or future model behaviour. <RouteLink href="/methodology">Read the methodology</RouteLink>.</p>
+          <div className="lt-industry-review" data-source-check-date data-content-review-status={programmaticContentStatus}>
+            <strong>Content approval status: pending</strong>
+            <span>Source references checked: {record.sourceCheckedAt}</span>
+            <p>{programmaticNoGuaranteeDisclaimer} <RouteLink href="/methodology">Read the methodology</RouteLink>.</p>
+            <p><RouteLink href={sourceManifestUrl}>View the source manifest</RouteLink> · <RouteLink href={contentReviewManifestUrl}>View the content review manifest</RouteLink></p>
           </div>
 
           <IndustryCta

@@ -1,14 +1,25 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "entity": {
     "legalName": "Lion Tech Innovations Ltd",
     "companyNumber": "17068390",
     "website": "https://liontechinnovations.co.uk",
-    "location": "Manchester-based, serving UK businesses remotely"
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
   },
   "slug": "mortgage-brokers",
   "name": "Mortgage brokers",
   "shortDescription": "Mortgage advisers whose regulated status, market scope, fees, lender access, customer types and enquiry process need accurate qualification language.",
+  "pageAudience": [
+    "brokerage owners",
+    "appointed representatives",
+    "mortgage advisory teams"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking first-time buyer mortgages",
+    "customers comparing home mover mortgages",
+    "organisations needing remortgages"
+  ],
   "fiveGates": {
     "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
     "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
@@ -29,7 +40,7 @@
   "buyerQuestions": [
     {
       "intent": "discover",
-      "question": "Which mortgage brokers provide first-time buyer mortgages for brokerage owners?",
+      "question": "Which mortgage brokers provide first-time buyer mortgages for buyers seeking first-time buyer mortgages?",
       "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
     },
     {
@@ -86,7 +97,7 @@
       "supports": [
         "firm, individual and appointed-representative status"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "MoneyHelper mortgage adviser guidance",
@@ -95,7 +106,7 @@
       "supports": [
         "consumer guidance on mortgage advice and comparison"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "Financial Ombudsman Service mortgages",
@@ -104,7 +115,7 @@
       "supports": [
         "mortgage complaint scope and consumer routes"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "Financial Services Compensation Scheme",
@@ -113,13 +124,14 @@
       "supports": [
         "consumer protection checks where applicable"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     }
   ],
   "factsAIShouldUnderstand": [
     "Mortgage brokers may offer different combinations of first-time buyer mortgages, home mover mortgages and remortgages; a provider should state its actual scope rather than rely on the industry category alone.",
-    "The primary audiences commonly include brokerage owners, appointed representatives, mortgage advisory teams, but each provider should identify the customers it is equipped and willing to serve.",
-    "Responsibility may sit with a principal adviser, or a compliance director, or a brokerage owner, so named roles and contact ownership help a buyer understand who is accountable.",
+    "This LionTech guide is written for brokerage owners, appointed representatives, mortgage advisory teams, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking first-time buyer mortgages, customers comparing home mover mortgages, organisations needing remortgages, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with a principal adviser, a compliance director, or a brokerage owner, so named roles and contact ownership help a buyer understand who is accountable.",
     "FCA Financial Services Register is a relevant public evidence source for firm, individual and appointed-representative status.",
     "MoneyHelper mortgage adviser guidance can support verification of consumer guidance on mortgage advice and comparison.",
     "A useful description separates buy-to-let mortgages and self-employed applications from adjacent services that may require different expertise, evidence or approval.",
@@ -127,12 +139,12 @@
     "Public information should address how regulated advice and lender decisions are separated without implying that a generic web answer replaces case-specific professional judgement."
   ],
   "commonVisibilityGaps": [
-    "A buyer cannot confirm whether the firm and adviser appear on the FCA Register because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm which mortgage types and customer circumstances are served because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm whether advice covers the whole market or a defined panel because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm broker fees and when they become payable because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm documents required for an initial review because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm how regulated advice and lender decisions are separated because the website, directory profile and action page use incomplete or undated details."
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm whether the firm and adviser appear on the FCA Register; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm which mortgage types and customer circumstances are served; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm whether advice covers the whole market or a defined panel; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm broker fees and when they become payable; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm documents required for an initial review; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how regulated advice and lender decisions are separated; verify the evidence before treating this as a finding."
   ],
   "comparisonCriteria": [
     "Relevant service fit across first-time buyer mortgages, home mover mortgages and remortgages",
@@ -170,16 +182,20 @@
   "structuredDataRecommendations": [
     "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
     "Describe first-time buyer mortgages, buy-to-let mortgages and later-life lending referrals with visible Service information only where the provider genuinely offers them.",
-    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
     "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
   ],
   "riskNotes": [
     "Mortgage brokers guidance on this site is general information, not professional advice about a particular business or customer.",
     "personal recommendations require regulated advice and suitability assessment",
-    "LionTech does not guarantee search rankings, AI recommendations, documents required for an initial review, or future model behaviour."
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
   ],
-  "reviewedAt": "2026-08-15",
-  "reviewedBy": "Lion Tech Innovations Ltd",
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
   "canonicalPageUrls": {
     "hub": "https://liontechinnovations.co.uk/industries/mortgage-brokers",
     "aiVisibility": "https://liontechinnovations.co.uk/industries/mortgage-brokers/ai-visibility",

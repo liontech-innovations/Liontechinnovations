@@ -1,14 +1,25 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "entity": {
     "legalName": "Lion Tech Innovations Ltd",
     "companyNumber": "17068390",
     "website": "https://liontechinnovations.co.uk",
-    "location": "Manchester-based, serving UK businesses remotely"
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
   },
   "slug": "electrical-contractors",
   "name": "Electrical contractors",
   "shortDescription": "Domestic and commercial electrical firms whose registration, work categories, service area, certification and fault-reporting routes must be accurately represented.",
+  "pageAudience": [
+    "electrical business owners",
+    "approved contractors",
+    "local electrical teams"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking electrical inspections",
+    "customers comparing consumer-unit replacement",
+    "organisations needing fault finding"
+  ],
   "fiveGates": {
     "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
     "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
@@ -29,12 +40,12 @@
   "buyerQuestions": [
     {
       "intent": "discover",
-      "question": "Which electrical contractors provide electrical inspections for electrical business owners?",
+      "question": "Which electrical contractors provide electrical inspections for buyers seeking electrical inspections?",
       "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
     },
     {
       "intent": "discover",
-      "question": "Where can a buyer find a electrical contractor offering consumer-unit replacement and fault finding?",
+      "question": "Where can a buyer find an electrical contractor offering consumer-unit replacement and fault finding?",
       "whyItMatters": "AI systems need a crawlable connection between the service, the provider entity and the area actually served."
     },
     {
@@ -86,7 +97,7 @@
       "supports": [
         "registered electrical businesses and work categories"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "NICEIC contractor search",
@@ -95,7 +106,7 @@
       "supports": [
         "NICEIC-certified business discovery where applicable"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "NAPIT member search",
@@ -104,7 +115,7 @@
       "supports": [
         "NAPIT member verification where applicable"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "Electrical Safety First",
@@ -113,13 +124,14 @@
       "supports": [
         "consumer guidance for finding registered electricians"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     }
   ],
   "factsAIShouldUnderstand": [
     "Electrical contractors may offer different combinations of electrical inspections, consumer-unit replacement and fault finding; a provider should state its actual scope rather than rely on the industry category alone.",
-    "The primary audiences commonly include electrical business owners, approved contractors, local electrical teams, but each provider should identify the customers it is equipped and willing to serve.",
-    "Responsibility may sit with a owner-manager, or a qualified supervisor, or a contracts manager, so named roles and contact ownership help a buyer understand who is accountable.",
+    "This LionTech guide is written for electrical business owners, approved contractors, local electrical teams, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking electrical inspections, customers comparing consumer-unit replacement, organisations needing fault finding, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with an owner-manager, a qualified supervisor, or a contracts manager, so named roles and contact ownership help a buyer understand who is accountable.",
     "Electrical Competent Person register is a relevant public evidence source for registered electrical businesses and work categories.",
     "NICEIC contractor search can support verification of NICEIC-certified business discovery where applicable.",
     "A useful description separates rewiring and lighting installation from adjacent services that may require different expertise, evidence or approval.",
@@ -127,12 +139,12 @@
     "Public information should address how urgent electrical risks are reported without implying that a generic web answer replaces case-specific professional judgement."
   ],
   "commonVisibilityGaps": [
-    "A buyer cannot confirm which work categories and property types are covered because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm whether relevant scheme registration can be verified because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm which areas and response windows apply because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm inspection, certification and notification arrangements because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm how estimates and diagnostic charges work because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm how urgent electrical risks are reported because the website, directory profile and action page use incomplete or undated details."
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm which work categories and property types are covered; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm whether relevant scheme registration can be verified; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm which areas and response windows apply; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm inspection, certification and notification arrangements; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm how estimates and diagnostic charges work; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how urgent electrical risks are reported; verify the evidence before treating this as a finding."
   ],
   "comparisonCriteria": [
     "Relevant service fit across electrical inspections, consumer-unit replacement and fault finding",
@@ -170,16 +182,20 @@
   "structuredDataRecommendations": [
     "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
     "Describe electrical inspections, rewiring and emergency electrical repairs with visible Service information only where the provider genuinely offers them.",
-    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
     "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
   ],
   "riskNotes": [
     "Electrical contractors guidance on this site is general information, not professional advice about a particular business or customer.",
     "electrical safety decisions require a competent person",
-    "LionTech does not guarantee search rankings, AI recommendations, how estimates and diagnostic charges work, or future model behaviour."
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
   ],
-  "reviewedAt": "2026-08-15",
-  "reviewedBy": "Lion Tech Innovations Ltd",
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
   "canonicalPageUrls": {
     "hub": "https://liontechinnovations.co.uk/industries/electrical-contractors",
     "aiVisibility": "https://liontechinnovations.co.uk/industries/electrical-contractors/ai-visibility",

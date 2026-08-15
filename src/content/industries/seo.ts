@@ -12,7 +12,7 @@ const webPageSchema = (page: IndustryPageDescriptor) => ({
   url: `${company.website}${page.path}`,
   name: page.h1,
   description: page.description,
-  dateModified: page.reviewedAt,
+  dateModified: page.sourceCheckedAt,
   about: { '@id': organizationSchema['@id'] },
   publisher: { '@id': organizationSchema['@id'] },
 });
@@ -27,7 +27,7 @@ const pageSpecificSchema = (page: IndustryPageDescriptor): Record<string, unknow
         name: `AI Business Readiness for ${record.name}`,
         provider: { '@id': organizationSchema['@id'] },
         areaServed: 'GB',
-        audience: record.primaryAudience.map((name) => ({ '@type': 'Audience', name })),
+        audience: record.pageAudience.map((name) => ({ '@type': 'Audience', name })),
         offers: { '@type': 'Offer', price: '395', priceCurrency: 'GBP', url: snapshotActionUrl },
       },
       {
@@ -65,7 +65,7 @@ const pageSpecificSchema = (page: IndustryPageDescriptor): Record<string, unknow
       description: page.description,
       mainEntityOfPage: { '@id': `${company.website}${page.path}#webpage` },
       publisher: { '@id': organizationSchema['@id'] },
-      dateModified: page.reviewedAt,
+      dateModified: page.sourceCheckedAt,
     },
     {
       '@context': 'https://schema.org',

@@ -56,6 +56,92 @@
   line-height: 1.75;
 }
 
+.lt-industry-inventory,
+.lt-industry-jump-nav {
+  display: flex;
+  max-width: 980px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.lt-industry-inventory {
+  margin: 1.25rem 0 0;
+  color: var(--lt-body);
+  font-size: 0.9rem;
+}
+
+.lt-industry-inventory strong,
+.lt-industry-inventory span {
+  padding: 0.48rem 0.72rem;
+  border: 1px solid var(--lt-line);
+  border-radius: 999px;
+  background: rgba(3, 12, 22, 0.36);
+}
+
+.lt-industry-inventory strong {
+  color: var(--lt-gold-light);
+}
+
+.lt-industry-jump-nav {
+  margin-top: 1rem;
+}
+
+.lt-industry-jump-nav a {
+  color: var(--lt-gold-light);
+  font-size: 0.8rem;
+  font-weight: 720;
+  text-decoration: none;
+}
+
+.lt-industry-jump-nav a:hover,
+.lt-industry-jump-nav a:focus-visible {
+  color: var(--lt-heading);
+  text-decoration: underline;
+  text-underline-offset: 0.22rem;
+}
+
+.lt-industry-guide-types {
+  scroll-margin-top: 96px;
+}
+
+.lt-industry-guide-types > h2 {
+  max-width: 850px;
+  margin: 0.65rem 0 1.4rem;
+  color: var(--lt-heading);
+  font-size: clamp(1.9rem, 3vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.lt-industry-guide-types dl {
+  display: grid;
+  margin: 0;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.lt-industry-guide-types dl > div {
+  min-width: 0;
+  padding: 1rem;
+  border-top: 2px solid var(--lt-gold);
+  background: rgba(12, 29, 48, 0.62);
+  scroll-margin-top: 96px;
+}
+
+.lt-industry-guide-types dt {
+  color: var(--lt-heading);
+  font-size: 0.9rem;
+  font-weight: 740;
+}
+
+.lt-industry-guide-types dd {
+  margin: 0.45rem 0 0;
+  color: var(--lt-muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
 .lt-industry-breadcrumbs {
   display: flex;
   flex-wrap: wrap;
@@ -286,6 +372,10 @@
   .lt-industry-list,
   .lt-industry-evidence-grid,
   .lt-industry-cta {
+    grid-template-columns: 1fr;
+  }
+
+  .lt-industry-guide-types dl {
     grid-template-columns: 1fr;
   }
 
@@ -2724,6 +2814,42 @@
   background: rgba(12, 29, 48, 0.78);
 }
 
+.lt-route-card-linked,
+.lt-route-gate-linked {
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+}
+
+.lt-route-card-linked {
+  display: flex;
+  flex-direction: column;
+}
+
+.lt-route-card-linked:hover,
+.lt-route-gate-linked:hover {
+  border-color: rgba(224, 191, 109, 0.55);
+  transform: translateY(-2px);
+}
+
+.lt-route-card-linked:focus-visible,
+.lt-route-gate-linked:focus-visible {
+  outline: 3px solid var(--lt-gold-light);
+  outline-offset: 3px;
+}
+
+.lt-route-card-action {
+  display: inline-flex;
+  margin-top: auto;
+  padding-top: 1.2rem;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--lt-gold-light);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+}
+
 .lt-route-card-icon {
   display: inline-flex;
   width: 42px;
@@ -2773,7 +2899,7 @@
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
 }
 
-.lt-route-gate > span {
+.lt-route-gate-number {
   display: block;
   margin-bottom: auto;
   padding-bottom: 2.25rem;
@@ -3702,7 +3828,7 @@
     min-height: 175px;
   }
 
-  .lt-route-gate > span,
+  .lt-route-gate-number,
   .marketing-site .lt-route-process-line h3 {
     margin-top: 0;
     margin-bottom: 1.4rem;

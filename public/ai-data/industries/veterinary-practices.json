@@ -1,14 +1,25 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "entity": {
     "legalName": "Lion Tech Innovations Ltd",
     "companyNumber": "17068390",
     "website": "https://liontechinnovations.co.uk",
-    "location": "Manchester-based, serving UK businesses remotely"
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
   },
   "slug": "veterinary-practices",
   "name": "Veterinary practices",
   "shortDescription": "Practices where species coverage, clinical services, emergency arrangements, professional registration and medicine boundaries need to be explicit for animal owners.",
+  "pageAudience": [
+    "practice owners",
+    "practice managers",
+    "veterinary groups"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking routine consultations",
+    "customers comparing vaccinations",
+    "organisations needing preventive health plans"
+  ],
   "fiveGates": {
     "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
     "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
@@ -29,7 +40,7 @@
   "buyerQuestions": [
     {
       "intent": "discover",
-      "question": "Which veterinary practices provide routine consultations for practice owners?",
+      "question": "Which veterinary practices provide routine consultations for buyers seeking routine consultations?",
       "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
     },
     {
@@ -86,7 +97,7 @@
       "supports": [
         "registered veterinary practices and professionals"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "RCVS Code of Professional Conduct",
@@ -95,7 +106,7 @@
       "supports": [
         "professional responsibilities and public information boundaries"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "CMA veterinary services market investigation",
@@ -104,7 +115,7 @@
       "supports": [
         "competition and consumer-information issues in veterinary services"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "Veterinary Medicines Directorate",
@@ -113,13 +124,14 @@
       "supports": [
         "veterinary medicine regulation and safety information"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     }
   ],
   "factsAIShouldUnderstand": [
     "Veterinary practices may offer different combinations of routine consultations, vaccinations and preventive health plans; a provider should state its actual scope rather than rely on the industry category alone.",
-    "The primary audiences commonly include practice owners, practice managers, veterinary groups, but each provider should identify the customers it is equipped and willing to serve.",
-    "Responsibility may sit with a clinical director, or a practice manager, or a operations director, so named roles and contact ownership help a buyer understand who is accountable.",
+    "This LionTech guide is written for practice owners, practice managers, veterinary groups, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking routine consultations, customers comparing vaccinations, organisations needing preventive health plans, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with a clinical director, a practice manager, or an operations director, so named roles and contact ownership help a buyer understand who is accountable.",
     "RCVS Find a Vet is a relevant public evidence source for registered veterinary practices and professionals.",
     "RCVS Code of Professional Conduct can support verification of professional responsibilities and public information boundaries.",
     "A useful description separates diagnostic imaging and surgery from adjacent services that may require different expertise, evidence or approval.",
@@ -127,12 +139,12 @@
     "Public information should address how to register an animal and book without implying that a generic web answer replaces case-specific professional judgement."
   ],
   "commonVisibilityGaps": [
-    "A buyer cannot confirm which species and conditions the practice can see because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm how out-of-hours emergencies are handled because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm which professionals are registered because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm consultation, treatment and medicine costs because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm availability of diagnostics or referral pathways because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm how to register an animal and book because the website, directory profile and action page use incomplete or undated details."
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm which species and conditions the practice can see; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how out-of-hours emergencies are handled; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm which professionals are registered; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm consultation, treatment and medicine costs; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm availability of diagnostics or referral pathways; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how to register an animal and book; verify the evidence before treating this as a finding."
   ],
   "comparisonCriteria": [
     "Relevant service fit across routine consultations, vaccinations and preventive health plans",
@@ -170,16 +182,20 @@
   "structuredDataRecommendations": [
     "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
     "Describe routine consultations, diagnostic imaging and referrals with visible Service information only where the provider genuinely offers them.",
-    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
     "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
   ],
   "riskNotes": [
     "Veterinary practices guidance on this site is general information, not professional advice about a particular business or customer.",
     "diagnosis, prescribing and clinical advice require a veterinary professional",
-    "LionTech does not guarantee search rankings, AI recommendations, availability of diagnostics or referral pathways, or future model behaviour."
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
   ],
-  "reviewedAt": "2026-08-15",
-  "reviewedBy": "Lion Tech Innovations Ltd",
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
   "canonicalPageUrls": {
     "hub": "https://liontechinnovations.co.uk/industries/veterinary-practices",
     "aiVisibility": "https://liontechinnovations.co.uk/industries/veterinary-practices/ai-visibility",

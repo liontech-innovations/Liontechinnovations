@@ -31,6 +31,7 @@ export function SiteFooter() {
         <div className="lt-unified-footer-company">
           <h2>Company</h2>
           <RouteLink href="/methodology">Methodology</RouteLink>
+          <RouteLink href="/industries">Industry Guides</RouteLink>
           <RouteLink href="/company-brain">Company Brain</RouteLink>
           <RouteLink href="/about">About</RouteLink>
           <RouteLink href="/contact">Contact</RouteLink>

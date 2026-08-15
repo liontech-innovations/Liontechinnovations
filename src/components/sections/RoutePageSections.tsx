@@ -68,11 +68,13 @@ type FeatureCardProps = {
   children: ReactNode;
   icon?: LucideIcon;
   className?: string;
+  href?: string;
+  linkLabel?: string;
 };
 
-export function FeatureCard({ title, children, icon: Icon, className = "" }: FeatureCardProps) {
-  return (
-    <article className={`lt-standard-card lt-route-card ${className}`.trim()}>
+export function FeatureCard({ title, children, icon: Icon, className = "", href, linkLabel = "Learn more" }: FeatureCardProps) {
+  const content = (
+    <>
       {Icon ? (
         <span className="lt-route-card-icon" aria-hidden="true">
           <Icon size={21} strokeWidth={1.8} />
@@ -80,8 +82,15 @@ export function FeatureCard({ title, children, icon: Icon, className = "" }: Fea
       ) : null}
       <h3>{title}</h3>
       <div className="lt-route-card-copy">{children}</div>
-    </article>
+      {href ? <span className="lt-route-card-action">{linkLabel}<ArrowRight size={15} aria-hidden="true" /></span> : null}
+    </>
   );
+
+  if (href) {
+    return <RouteLink href={href} className={`lt-standard-card lt-route-card lt-route-card-linked ${className}`.trim()} data-linked-card>{content}</RouteLink>;
+  }
+
+  return <article className={`lt-standard-card lt-route-card ${className}`.trim()}>{content}</article>;
 }
 
 type OfferCardProps = {
@@ -133,16 +142,29 @@ export function OfferCard({
   );
 }
 
-export function FiveGatesGrid() {
+type GateDestination = { href: string; label: string };
+type GateDestinationStrategy = Partial<Record<(typeof fiveGates)[number]['name'], GateDestination>>;
+
+export function FiveGatesGrid({ destinations }: { destinations?: GateDestinationStrategy } = {}) {
   return (
     <div className="lt-route-gates-grid">
-      {fiveGates.map((gate, index) => (
-        <article className="lt-standard-card lt-route-gate" key={gate.name}>
-          <span>{String(index + 1).padStart(2, "0")}</span>
-          <h3>{gate.name}</h3>
-          <p>{gate.question}</p>
-        </article>
-      ))}
+      {fiveGates.map((gate, index) => {
+        const destination = destinations?.[gate.name];
+        const content = (
+          <>
+            <span className="lt-route-gate-number">{String(index + 1).padStart(2, "0")}</span>
+            <h3>{gate.name}</h3>
+            <p>{gate.question}</p>
+            {destination ? <span className="lt-route-card-action">{destination.label}<ArrowRight size={15} aria-hidden="true" /></span> : null}
+          </>
+        );
+
+        return destination ? (
+          <RouteLink href={destination.href} className="lt-standard-card lt-route-gate lt-route-gate-linked" data-linked-gate={gate.name} key={gate.name}>{content}</RouteLink>
+        ) : (
+          <article className="lt-standard-card lt-route-gate" key={gate.name}>{content}</article>
+        );
+      })}
     </div>
   );
 }

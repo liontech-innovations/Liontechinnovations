@@ -8,7 +8,6 @@ Location: Manchester-based, serving UK businesses remotely
 Service area: UK-based, serving businesses remotely
 Company number: 17068390
 Companies House: https://find-and-update.company-information.service.gov.uk/company/17068390
-Registered office: 37 Hope Street North, Horwich, Bolton, Lancashire, BL6 7LL
 
 ## Primary service
 
@@ -38,10 +37,13 @@ Registered office: 37 Hope Street North, Horwich, Bolton, Lancashire, BL6 7LL
 
 ## AI-first industry knowledge base
 
-The industry knowledge base contains evidence-led public guidance for 20 UK business sectors. Each cluster covers AI visibility, provider comparison, controlled agent readiness and a Five Gates checklist. It is general guidance, not an audit of every provider in an industry.
+The industry knowledge base contains 100 evidence-led public guides across 20 UK business sectors and five page types. Each cluster covers an industry hub, AI visibility, provider comparison, controlled agent readiness and a Five Gates checklist. It is general guidance, not an audit of every provider in an industry. Programmatic content approval remains pending until the published content review manifest changes status.
 
 - Directory: https://liontechinnovations.co.uk/industries
 - Machine-readable index: https://liontechinnovations.co.uk/ai-data/index.json
+- Source manifest: https://liontechinnovations.co.uk/ai-data/source-manifest.json
+- Content review manifest: https://liontechinnovations.co.uk/ai-data/content-review-manifest.json
+- Release cohort manifest: https://liontechinnovations.co.uk/ai-data/release-cohorts.json
 - Aesthetics clinics: https://liontechinnovations.co.uk/industries/aesthetics-clinics
 - Dental practices: https://liontechinnovations.co.uk/industries/dental-practices
 - Domiciliary care providers: https://liontechinnovations.co.uk/industries/domiciliary-care-providers

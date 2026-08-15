@@ -1,14 +1,25 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "entity": {
     "legalName": "Lion Tech Innovations Ltd",
     "companyNumber": "17068390",
     "website": "https://liontechinnovations.co.uk",
-    "location": "Manchester-based, serving UK businesses remotely"
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
   },
   "slug": "financial-advisers",
   "name": "Financial advisers",
   "shortDescription": "Advice firms that must present regulatory permissions, client scope, adviser credentials, charging basis and advice boundaries without implying outcomes.",
+  "pageAudience": [
+    "financial advice firms",
+    "independent advisers",
+    "wealth-planning practices"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking retirement planning",
+    "customers comparing investment advice",
+    "organisations needing pension advice"
+  ],
   "fiveGates": {
     "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
     "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
@@ -29,7 +40,7 @@
   "buyerQuestions": [
     {
       "intent": "discover",
-      "question": "Which financial advisers provide retirement planning for financial advice firms?",
+      "question": "Which financial advisers provide retirement planning for buyers seeking retirement planning?",
       "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
     },
     {
@@ -86,7 +97,7 @@
       "supports": [
         "authorisation, permissions and individual status"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "MoneyHelper choosing a financial adviser",
@@ -95,7 +106,7 @@
       "supports": [
         "consumer checks, adviser types and charging questions"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "Financial Services Compensation Scheme",
@@ -104,7 +115,7 @@
       "supports": [
         "protection checks where applicable"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "Financial Ombudsman Service investments",
@@ -113,13 +124,14 @@
       "supports": [
         "complaint routes for investment and advice services"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     }
   ],
   "factsAIShouldUnderstand": [
     "Financial advisers may offer different combinations of retirement planning, investment advice and pension advice; a provider should state its actual scope rather than rely on the industry category alone.",
-    "The primary audiences commonly include financial advice firms, independent advisers, wealth-planning practices, but each provider should identify the customers it is equipped and willing to serve.",
-    "Responsibility may sit with a principal adviser, or a compliance officer, or a managing director, so named roles and contact ownership help a buyer understand who is accountable.",
+    "This LionTech guide is written for financial advice firms, independent advisers, wealth-planning practices, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking retirement planning, customers comparing investment advice, organisations needing pension advice, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with a principal adviser, a compliance officer, or a managing director, so named roles and contact ownership help a buyer understand who is accountable.",
     "FCA Financial Services Register is a relevant public evidence source for authorisation, permissions and individual status.",
     "MoneyHelper choosing a financial adviser can support verification of consumer checks, adviser types and charging questions.",
     "A useful description separates protection planning and estate planning coordination from adjacent services that may require different expertise, evidence or approval.",
@@ -127,12 +139,12 @@
     "Public information should address how personal recommendations and risk discussions are conducted without implying that a generic web answer replaces case-specific professional judgement."
   ],
   "commonVisibilityGaps": [
-    "A buyer cannot confirm whether the firm and adviser are authorised for the relevant activity because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm which client profiles and advice areas are served because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm independent or restricted advice status because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm initial and ongoing charging structure because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm minimum asset or engagement requirements because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm how personal recommendations and risk discussions are conducted because the website, directory profile and action page use incomplete or undated details."
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm whether the firm and adviser are authorised for the relevant activity; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm which client profiles and advice areas are served; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm independent or restricted advice status; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm initial and ongoing charging structure; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm minimum asset or engagement requirements; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how personal recommendations and risk discussions are conducted; verify the evidence before treating this as a finding."
   ],
   "comparisonCriteria": [
     "Relevant service fit across retirement planning, investment advice and pension advice",
@@ -170,16 +182,20 @@
   "structuredDataRecommendations": [
     "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
     "Describe retirement planning, protection planning and ongoing reviews with visible Service information only where the provider genuinely offers them.",
-    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
     "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
   ],
   "riskNotes": [
     "Financial advisers guidance on this site is general information, not professional advice about a particular business or customer.",
     "personal recommendations require regulated suitability work",
-    "LionTech does not guarantee search rankings, AI recommendations, minimum asset or engagement requirements, or future model behaviour."
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
   ],
-  "reviewedAt": "2026-08-15",
-  "reviewedBy": "Lion Tech Innovations Ltd",
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
   "canonicalPageUrls": {
     "hub": "https://liontechinnovations.co.uk/industries/financial-advisers",
     "aiVisibility": "https://liontechinnovations.co.uk/industries/financial-advisers/ai-visibility",

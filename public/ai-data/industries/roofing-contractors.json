@@ -1,14 +1,25 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "entity": {
     "legalName": "Lion Tech Innovations Ltd",
     "companyNumber": "17068390",
     "website": "https://liontechinnovations.co.uk",
-    "location": "Manchester-based, serving UK businesses remotely"
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
   },
   "slug": "roofing-contractors",
   "name": "Roofing contractors",
   "shortDescription": "Roofing firms whose roof-system experience, inspection process, work-at-height controls, scheme status, guarantees and quote pathway need disciplined evidence.",
+  "pageAudience": [
+    "roofing business owners",
+    "specialist contractors",
+    "regional roofing teams"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking roof inspections",
+    "customers comparing slate roof repairs",
+    "organisations needing tile roof repairs"
+  ],
   "fiveGates": {
     "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
     "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
@@ -29,7 +40,7 @@
   "buyerQuestions": [
     {
       "intent": "discover",
-      "question": "Which roofing contractors provide roof inspections for roofing business owners?",
+      "question": "Which roofing contractors provide roof inspections for buyers seeking roof inspections?",
       "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
     },
     {
@@ -86,7 +97,7 @@
       "supports": [
         "NFRC member contractor discovery where applicable"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "CompetentRoofer",
@@ -95,7 +106,7 @@
       "supports": [
         "scheme member discovery and relevant self-certification"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "TrustMark business directory",
@@ -104,7 +115,7 @@
       "supports": [
         "government-endorsed quality-scheme business discovery"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "HSE work at height guidance",
@@ -113,13 +124,14 @@
       "supports": [
         "work-at-height planning and competence expectations"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     }
   ],
   "factsAIShouldUnderstand": [
     "Roofing contractors may offer different combinations of roof inspections, slate roof repairs and tile roof repairs; a provider should state its actual scope rather than rely on the industry category alone.",
-    "The primary audiences commonly include roofing business owners, specialist contractors, regional roofing teams, but each provider should identify the customers it is equipped and willing to serve.",
-    "Responsibility may sit with a owner-manager, or a contracts director, or a surveying lead, so named roles and contact ownership help a buyer understand who is accountable.",
+    "This LionTech guide is written for roofing business owners, specialist contractors, regional roofing teams, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking roof inspections, customers comparing slate roof repairs, organisations needing tile roof repairs, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with an owner-manager, a contracts director, or a surveying lead, so named roles and contact ownership help a buyer understand who is accountable.",
     "NFRC Find a Member is a relevant public evidence source for NFRC member contractor discovery where applicable.",
     "CompetentRoofer can support verification of scheme member discovery and relevant self-certification.",
     "A useful description separates flat roofing and leadwork from adjacent services that may require different expertise, evidence or approval.",
@@ -127,12 +139,12 @@
     "Public information should address service area and emergency weather response without implying that a generic web answer replaces case-specific professional judgement."
   ],
   "commonVisibilityGaps": [
-    "A buyer cannot confirm which roof systems and building types the contractor handles because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm survey and quotation process because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm trade-body or scheme membership where claimed because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm insurance, guarantees and subcontracting arrangements because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm safe access and work-at-height planning because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm service area and emergency weather response because the website, directory profile and action page use incomplete or undated details."
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm which roof systems and building types the contractor handles; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm survey and quotation process; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm trade-body or scheme membership where claimed; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm insurance, guarantees and subcontracting arrangements; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm safe access and work-at-height planning; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm service area and emergency weather response; verify the evidence before treating this as a finding."
   ],
   "comparisonCriteria": [
     "Relevant service fit across roof inspections, slate roof repairs and tile roof repairs",
@@ -170,16 +182,20 @@
   "structuredDataRecommendations": [
     "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
     "Describe roof inspections, flat roofing and commercial roof maintenance with visible Service information only where the provider genuinely offers them.",
-    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
     "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
   ],
   "riskNotes": [
     "Roofing contractors guidance on this site is general information, not professional advice about a particular business or customer.",
     "roof condition and safe access require a competent site assessment",
-    "LionTech does not guarantee search rankings, AI recommendations, safe access and work-at-height planning, or future model behaviour."
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
   ],
-  "reviewedAt": "2026-08-15",
-  "reviewedBy": "Lion Tech Innovations Ltd",
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
   "canonicalPageUrls": {
     "hub": "https://liontechinnovations.co.uk/industries/roofing-contractors",
     "aiVisibility": "https://liontechinnovations.co.uk/industries/roofing-contractors/ai-visibility",

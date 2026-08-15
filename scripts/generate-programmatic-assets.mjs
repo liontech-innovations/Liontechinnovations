@@ -41,14 +41,20 @@ try {
   const { industries } = industryModule;
   const {
     coreSitemapRoutes,
+    createContentReviewManifest,
     createIndustryIndexRecord,
     createIndustryPublicRecord,
+    createIndustrySourceManifest,
+    createReleaseCohortManifest,
     industrySitemapGroups,
   } = artifactModule;
 
   await rm(aiDataDirectory, { recursive: true, force: true });
   await mkdir(join(aiDataDirectory, 'industries'), { recursive: true });
   await writeFile(join(aiDataDirectory, 'index.json'), `${JSON.stringify(createIndustryIndexRecord(), null, 2)}\n`, 'utf8');
+  await writeFile(join(aiDataDirectory, 'source-manifest.json'), `${JSON.stringify(createIndustrySourceManifest(), null, 2)}\n`, 'utf8');
+  await writeFile(join(aiDataDirectory, 'content-review-manifest.json'), `${JSON.stringify(createContentReviewManifest(), null, 2)}\n`, 'utf8');
+  await writeFile(join(aiDataDirectory, 'release-cohorts.json'), `${JSON.stringify(createReleaseCohortManifest(), null, 2)}\n`, 'utf8');
 
   for (const industry of industries) {
     const target = join(aiDataDirectory, 'industries', `${industry.slug}.json`);
@@ -62,7 +68,7 @@ try {
     await writeFile(join(publicDirectory, `sitemap-industries-${index + 1}.xml`), urlset(pages.map((page) => page.path)), 'utf8');
   }
 
-  process.stdout.write(`Generated 21 AI-data records and ${sitemapFiles.length + 1} sitemap files.\n`);
+  process.stdout.write(`Generated 24 AI-data records and ${sitemapFiles.length + 1} sitemap files.\n`);
 } finally {
   await vite.close();
 }

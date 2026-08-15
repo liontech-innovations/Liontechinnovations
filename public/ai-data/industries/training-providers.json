@@ -1,14 +1,25 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "entity": {
     "legalName": "Lion Tech Innovations Ltd",
     "companyNumber": "17068390",
     "website": "https://liontechinnovations.co.uk",
-    "location": "Manchester-based, serving UK businesses remotely"
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
   },
   "slug": "training-providers",
   "name": "Training providers",
   "shortDescription": "Commercial, vocational and regulated learning providers whose course outcomes, awarding relationships, delivery format, eligibility and enrolment routes must be distinguished.",
+  "pageAudience": [
+    "training-company founders",
+    "learning providers",
+    "apprenticeship teams"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking classroom courses",
+    "customers comparing live online training",
+    "organisations needing self-paced learning"
+  ],
   "fiveGates": {
     "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
     "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
@@ -29,7 +40,7 @@
   "buyerQuestions": [
     {
       "intent": "discover",
-      "question": "Which training providers provide classroom courses for training-company founders?",
+      "question": "Which training providers provide classroom courses for buyers seeking classroom courses?",
       "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
     },
     {
@@ -86,7 +97,7 @@
       "supports": [
         "learning-provider reference records"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "Ofqual Register of Regulated Qualifications",
@@ -95,7 +106,7 @@
       "supports": [
         "regulated qualifications and awarding organisations"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "GOV.UK Find apprenticeship training",
@@ -104,7 +115,7 @@
       "supports": [
         "approved apprenticeship training options"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "GOV.UK apprenticeship provider guidance",
@@ -113,13 +124,14 @@
       "supports": [
         "provider-register expectations and status"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     }
   ],
   "factsAIShouldUnderstand": [
     "Training providers may offer different combinations of classroom courses, live online training and self-paced learning; a provider should state its actual scope rather than rely on the industry category alone.",
-    "The primary audiences commonly include training-company founders, learning providers, apprenticeship teams, but each provider should identify the customers it is equipped and willing to serve.",
-    "Responsibility may sit with a managing director, or a quality director, or a head of enrolment, so named roles and contact ownership help a buyer understand who is accountable.",
+    "This LionTech guide is written for training-company founders, learning providers, apprenticeship teams, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking classroom courses, customers comparing live online training, organisations needing self-paced learning, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with a managing director, a quality director, or a head of enrolment, so named roles and contact ownership help a buyer understand who is accountable.",
     "UK Register of Learning Providers is a relevant public evidence source for learning-provider reference records.",
     "Ofqual Register of Regulated Qualifications can support verification of regulated qualifications and awarding organisations.",
     "A useful description separates vocational qualifications and apprenticeship training from adjacent services that may require different expertise, evidence or approval.",
@@ -127,12 +139,12 @@
     "Public information should address how employers or individuals enrol without implying that a generic web answer replaces case-specific professional judgement."
   ],
   "commonVisibilityGaps": [
-    "A buyer cannot confirm whether the course is accredited, regulated or unregulated because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm entry requirements and learner eligibility because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm delivery dates, location and format because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm total fees and funding availability because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm assessment, certification and completion terms because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm how employers or individuals enrol because the website, directory profile and action page use incomplete or undated details."
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm whether the course is accredited, regulated or unregulated; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm entry requirements and learner eligibility; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm delivery dates, location and format; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm total fees and funding availability; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm assessment, certification and completion terms; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how employers or individuals enrol; verify the evidence before treating this as a finding."
   ],
   "comparisonCriteria": [
     "Relevant service fit across classroom courses, live online training and self-paced learning",
@@ -170,16 +182,20 @@
   "structuredDataRecommendations": [
     "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
     "Describe classroom courses, vocational qualifications and custom employer programmes with visible Service information only where the provider genuinely offers them.",
-    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
     "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
   ],
   "riskNotes": [
     "Training providers guidance on this site is general information, not professional advice about a particular business or customer.",
     "admissions and funding eligibility require evidence-based human checks",
-    "LionTech does not guarantee search rankings, AI recommendations, assessment, certification and completion terms, or future model behaviour."
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
   ],
-  "reviewedAt": "2026-08-15",
-  "reviewedBy": "Lion Tech Innovations Ltd",
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
   "canonicalPageUrls": {
     "hub": "https://liontechinnovations.co.uk/industries/training-providers",
     "aiVisibility": "https://liontechinnovations.co.uk/industries/training-providers/ai-visibility",

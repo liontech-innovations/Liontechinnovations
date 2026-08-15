@@ -19,11 +19,19 @@ export function AIBusinessReadinessPage() {
   useSeo(routeSeo['/ai-business-readiness']);
 
   const buyerSteps = [
-    { title: 'Discover', description: 'Find providers for real buyer questions.', icon: Search },
-    { title: 'Compare', description: 'Compare services, facts and alternatives.', icon: Scale },
-    { title: 'Verify', description: 'Check claims against credible trust signals.', icon: BadgeCheck },
-    { title: 'Contact', description: 'Decide which business deserves the next step.', icon: MousePointerClick },
+    { title: 'Discover', description: 'Find providers for real buyer questions.', icon: Search, href: '/industries', linkLabel: 'Browse industry guides' },
+    { title: 'Compare', description: 'Compare services, facts and alternatives.', icon: Scale, href: '/industries', linkLabel: 'Explore comparison guides' },
+    { title: 'Verify', description: 'Check claims against credible trust signals.', icon: BadgeCheck, href: '/methodology#evidence-standards', linkLabel: 'Review evidence standards' },
+    { title: 'Contact', description: 'Decide which business deserves the next step.', icon: MousePointerClick, href: '/contact#snapshot-enquiry', linkLabel: 'Request a Snapshot' },
   ];
+
+  const gateDestinations = {
+    Discover: { href: '/industries', label: 'Browse industries' },
+    Describe: { href: '/industries', label: 'See industry facts' },
+    Trust: { href: '/methodology#evidence-standards', label: 'Review evidence standards' },
+    Compare: { href: '/industries', label: 'Explore comparisons' },
+    Act: { href: '/contact#snapshot-enquiry', label: 'Request a Snapshot' },
+  } as const;
 
   return (
     <>
@@ -102,7 +110,7 @@ export function AIBusinessReadinessPage() {
         </div>
         <div className="lt-route-feature-grid lt-route-feature-grid-four">
           {buyerSteps.map((step) => (
-            <FeatureCard key={step.title} title={step.title} icon={step.icon}><p>{step.description}</p></FeatureCard>
+            <FeatureCard key={step.title} title={step.title} icon={step.icon} href={step.href} linkLabel={step.linkLabel}><p>{step.description}</p></FeatureCard>
           ))}
         </div>
       </RouteSection>
@@ -113,7 +121,7 @@ export function AIBusinessReadinessPage() {
           title="What LionTech checks"
           description="A human-reviewed framework for how AI systems find, explain, support, compare and act on public business information."
         />
-        <FiveGatesGrid />
+        <FiveGatesGrid destinations={gateDestinations} />
       </RouteSection>
 
       <RouteCta

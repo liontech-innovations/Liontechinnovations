@@ -1,14 +1,25 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "entity": {
     "legalName": "Lion Tech Innovations Ltd",
     "companyNumber": "17068390",
     "website": "https://liontechinnovations.co.uk",
-    "location": "Manchester-based, serving UK businesses remotely"
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
   },
   "slug": "physiotherapy-clinics",
   "name": "Physiotherapy clinics",
   "shortDescription": "Clinics where protected professional titles, practitioner credentials, treatment specialisms, referral requirements and appointment pathways should be unambiguous.",
+  "pageAudience": [
+    "clinic owners",
+    "lead physiotherapists",
+    "multi-site therapy groups"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking musculoskeletal assessment",
+    "customers comparing sports injury rehabilitation",
+    "organisations needing post-operative rehabilitation"
+  ],
   "fiveGates": {
     "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
     "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
@@ -29,7 +40,7 @@
   "buyerQuestions": [
     {
       "intent": "discover",
-      "question": "Which physiotherapy clinics provide musculoskeletal assessment for clinic owners?",
+      "question": "Which physiotherapy clinics provide musculoskeletal assessment for buyers seeking musculoskeletal assessment?",
       "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
     },
     {
@@ -86,7 +97,7 @@
       "supports": [
         "registration of physiotherapists using the protected title"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "Chartered Society of Physiotherapy directory",
@@ -95,7 +106,7 @@
       "supports": [
         "chartered physiotherapist discovery and practice information"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "Care Quality Commission service finder",
@@ -104,7 +115,7 @@
       "supports": [
         "provider information where regulated activities bring a service into scope"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "NICE musculoskeletal guidance",
@@ -113,13 +124,14 @@
       "supports": [
         "evidence-based guidance relevant to musculoskeletal pathways"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     }
   ],
   "factsAIShouldUnderstand": [
     "Physiotherapy clinics may offer different combinations of musculoskeletal assessment, sports injury rehabilitation and post-operative rehabilitation; a provider should state its actual scope rather than rely on the industry category alone.",
-    "The primary audiences commonly include clinic owners, lead physiotherapists, multi-site therapy groups, but each provider should identify the customers it is equipped and willing to serve.",
-    "Responsibility may sit with a clinical director, or a practice manager, or a founder, so named roles and contact ownership help a buyer understand who is accountable.",
+    "This LionTech guide is written for clinic owners, lead physiotherapists, multi-site therapy groups, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking musculoskeletal assessment, customers comparing sports injury rehabilitation, organisations needing post-operative rehabilitation, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with a clinical director, a practice manager, or a founder, so named roles and contact ownership help a buyer understand who is accountable.",
     "HCPC check the register is a relevant public evidence source for registration of physiotherapists using the protected title.",
     "Chartered Society of Physiotherapy directory can support verification of chartered physiotherapist discovery and practice information.",
     "A useful description separates pelvic health physiotherapy and neurological physiotherapy from adjacent services that may require different expertise, evidence or approval.",
@@ -127,12 +139,12 @@
     "Public information should address how urgent or unsuitable symptoms are redirected without implying that a generic web answer replaces case-specific professional judgement."
   ],
   "commonVisibilityGaps": [
-    "A buyer cannot confirm whether the practitioner is on the relevant professional register because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm which clinical specialisms are available because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm whether self-referral is accepted because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm appointment location, format and accessibility because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm fees, insurance recognition and cancellation terms because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm how urgent or unsuitable symptoms are redirected because the website, directory profile and action page use incomplete or undated details."
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm whether the practitioner is on the relevant professional register; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm which clinical specialisms are available; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm whether self-referral is accepted; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm appointment location, format and accessibility; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm fees, insurance recognition and cancellation terms; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how urgent or unsuitable symptoms are redirected; verify the evidence before treating this as a finding."
   ],
   "comparisonCriteria": [
     "Relevant service fit across musculoskeletal assessment, sports injury rehabilitation and post-operative rehabilitation",
@@ -170,16 +182,20 @@
   "structuredDataRecommendations": [
     "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
     "Describe musculoskeletal assessment, pelvic health physiotherapy and home visits with visible Service information only where the provider genuinely offers them.",
-    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
     "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
   ],
   "riskNotes": [
     "Physiotherapy clinics guidance on this site is general information, not professional advice about a particular business or customer.",
     "clinical diagnosis and treatment planning require a registered professional",
-    "LionTech does not guarantee search rankings, AI recommendations, fees, insurance recognition and cancellation terms, or future model behaviour."
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
   ],
-  "reviewedAt": "2026-08-15",
-  "reviewedBy": "Lion Tech Innovations Ltd",
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
   "canonicalPageUrls": {
     "hub": "https://liontechinnovations.co.uk/industries/physiotherapy-clinics",
     "aiVisibility": "https://liontechinnovations.co.uk/industries/physiotherapy-clinics/ai-visibility",

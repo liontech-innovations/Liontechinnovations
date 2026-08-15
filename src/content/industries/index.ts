@@ -1,4 +1,5 @@
 import { industrySeeds } from './catalog';
+import { listWithIndefiniteArticles, withIndefiniteArticle } from './language';
 import { industryPageTypes } from './types';
 import type {
   BuyerQuestion,
@@ -11,8 +12,9 @@ import type {
 
 export * from './types';
 
-export const industryReviewDate = '2026-08-15';
-export const industryReviewer = 'Lion Tech Innovations Ltd';
+export const industrySourceCheckedDate = '2026-08-15';
+export const programmaticContentStatus = 'awaiting-freejoy-content-and-release-approval';
+export const programmaticNoGuaranteeDisclaimer = 'This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.';
 export const snapshotActionPath = '/contact#snapshot-enquiry';
 export const snapshotActionUrl = `https://liontechinnovations.co.uk${snapshotActionPath}`;
 
@@ -30,14 +32,23 @@ const question = (intent: FiveGateIntent, text: string, whyItMatters: string): B
   whyItMatters,
 });
 
-function createBuyerQuestions(seed: IndustrySeed): BuyerQuestion[] {
+function createEndCustomerSegments(seed: IndustrySeed) {
+  const [serviceA, serviceB, serviceC] = seed.commonServices;
+  return [
+    `buyers seeking ${serviceA}`,
+    `customers comparing ${serviceB}`,
+    `organisations needing ${serviceC}`,
+  ];
+}
+
+function createBuyerQuestions(seed: IndustrySeed, endCustomerSegments: string[]): BuyerQuestion[] {
   const [serviceA, serviceB, serviceC, serviceD] = seed.commonServices;
-  const [concernA, concernB, concernC, concernD, concernE, concernF] = seed.buyerConcerns;
+  const [concernA, concernB, concernC, concernD, concernE] = seed.buyerConcerns;
   const [actionA, actionB, actionC, actionD] = seed.actionPaths;
 
   return [
-    question('discover', `Which ${seed.name.toLowerCase()} provide ${serviceA} for ${seed.primaryAudience[0]}?`, `The answer depends on explicit service, audience and location information rather than a broad industry label.`),
-    question('discover', `Where can a buyer find a ${seed.singularName} offering ${serviceB} and ${serviceC}?`, `AI systems need a crawlable connection between the service, the provider entity and the area actually served.`),
+    question('discover', `Which ${seed.name.toLowerCase()} provide ${serviceA} for ${endCustomerSegments[0]}?`, `The answer depends on explicit service, audience and location information rather than a broad industry label.`),
+    question('discover', `Where can a buyer find ${withIndefiniteArticle(seed.singularName)} offering ${serviceB} and ${serviceC}?`, `AI systems need a crawlable connection between the service, the provider entity and the area actually served.`),
     question('describe', `Does this ${seed.singularName} clearly explain ${concernA}?`, `A precise answer prevents an AI summary from filling gaps with assumptions or outdated third-party text.`),
     question('describe', `What should a customer expect when asking about ${serviceD}?`, `Scope, process and boundaries should be visible before a buyer shares detailed information.`),
     question('trust', `Which official evidence supports ${concernB}?`, `Public registers and first-party facts should agree so that a buyer can verify rather than merely trust a marketing claim.`),
@@ -52,13 +63,15 @@ function createBuyerQuestions(seed: IndustrySeed): BuyerQuestion[] {
 function expandSeed(seed: IndustrySeed): IndustryRecord {
   const bodies = seed.trustedSources.map((item) => item.label);
   const [serviceA, serviceB, serviceC, serviceD, serviceE, serviceF, serviceG, serviceH] = seed.commonServices;
-  const [concernA, concernB, concernC, concernD, concernE, concernF] = seed.buyerConcerns;
+  const [concernA, concernB, concernC, concernD, , concernF] = seed.buyerConcerns;
   const [actionA, actionB, actionC, actionD] = seed.actionPaths;
+  const endCustomerSegments = createEndCustomerSegments(seed);
 
   const factsAIShouldUnderstand = [
     `${seed.name} may offer different combinations of ${serviceA}, ${serviceB} and ${serviceC}; a provider should state its actual scope rather than rely on the industry category alone.`,
-    `The primary audiences commonly include ${seed.primaryAudience.join(', ')}, but each provider should identify the customers it is equipped and willing to serve.`,
-    `Responsibility may sit with a ${seed.decisionMakers.join(', or a ')}, so named roles and contact ownership help a buyer understand who is accountable.`,
+    `This LionTech guide is written for ${seed.pageAudience.join(', ')}, who own or influence the provider's public information and customer journey.`,
+    `Providers may serve end customers such as ${endCustomerSegments.join(', ')}, but each provider should identify the groups it is equipped and willing to support.`,
+    `Responsibility may sit with ${listWithIndefiniteArticles(seed.decisionMakers)}, so named roles and contact ownership help a buyer understand who is accountable.`,
     `${bodies[0]} is a relevant public evidence source for ${seed.trustedSources[0].supports[0]}.`,
     `${bodies[1]} can support verification of ${seed.trustedSources[1].supports[0]}.`,
     `A useful description separates ${serviceD} and ${serviceE} from adjacent services that may require different expertise, evidence or approval.`,
@@ -67,7 +80,7 @@ function expandSeed(seed: IndustrySeed): IndustryRecord {
   ];
 
   const commonVisibilityGaps = seed.buyerConcerns.map((concern, index) =>
-    `A buyer cannot confirm ${concern} because the website, directory profile and action page use ${index % 2 === 0 ? 'different wording' : 'incomplete or undated details'}.`,
+    `If a website, directory profile and action page use ${index % 2 === 0 ? 'different wording' : 'incomplete or undated details'}, a buyer may be unable to confirm ${concern}; verify the evidence before treating this as a finding.`,
   );
 
   const comparisonCriteria = [
@@ -98,7 +111,7 @@ function expandSeed(seed: IndustrySeed): IndustryRecord {
   const structuredDataRecommendations = [
     `Use Organization and WebSite identity consistently for the legal provider and canonical domain.`,
     `Describe ${serviceA}, ${serviceD} and ${serviceH} with visible Service information only where the provider genuinely offers them.`,
-    `Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.`,
+    `Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.`,
     `Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML.`,
   ];
 
@@ -140,7 +153,8 @@ function expandSeed(seed: IndustrySeed): IndustryRecord {
 
   return {
     ...seed,
-    buyerQuestions: createBuyerQuestions(seed),
+    endCustomerSegments,
+    buyerQuestions: createBuyerQuestions(seed, endCustomerSegments),
     regulatorsOrBodies: bodies,
     factsAIShouldUnderstand,
     commonVisibilityGaps,
@@ -153,14 +167,13 @@ function expandSeed(seed: IndustrySeed): IndustryRecord {
     riskAndClaimsNotes: [
       `${seed.name} guidance on this site is general information, not professional advice about a particular business or customer.`,
       seed.automationBoundaries[0],
-      `LionTech does not guarantee search rankings, AI recommendations, ${concernE}, or future model behaviour.`,
+      programmaticNoGuaranteeDisclaimer,
     ],
     snapshotChecks,
     checklistItems,
     relatedIndustries: [...seed.relatedIndustries],
     primaryCTA: 'snapshot',
-    reviewedAt: industryReviewDate,
-    reviewedBy: industryReviewer,
+    sourceCheckedAt: industrySourceCheckedDate,
   };
 }
 
@@ -202,6 +215,22 @@ const openingPatterns = [
   'Machine readability matters because human buyers also benefit from structured clarity.',
 ];
 
+function fitMetaDescription(value: string) {
+  let output = value.replace(/\s+/g, ' ').trim();
+  const context = ' Evidence-led guidance for UK business owners and operators.';
+  while (output.length < 120) output += context;
+  if (output.length <= 160) return output;
+
+  const words = output.split(' ');
+  let fitted = '';
+  for (const word of words) {
+    const candidate = fitted ? `${fitted} ${word}` : word;
+    if (candidate.length > 159) break;
+    fitted = candidate;
+  }
+  return `${fitted.replace(/[,:;.!?]+$/, '')}.`;
+}
+
 function descriptorText(industry: IndustryRecord, pageType: IndustryPageType, industryIndex: number) {
   const [serviceA, serviceB, serviceC, serviceD] = industry.commonServices;
   const [concernA, concernB, concernC, concernD] = industry.comparisonCriteria;
@@ -210,17 +239,17 @@ function descriptorText(industry: IndustryRecord, pageType: IndustryPageType, in
   const opening = openingPatterns[industryIndex];
 
   const titles: Record<IndustryPageType, string> = {
-    hub: `AI-First Readiness for ${industry.name}: Services, Evidence and Action | LionTech`,
-    'ai-visibility': `${industry.name} AI Visibility: ${sourceA.label}, Service Facts and Buyer Questions | LionTech`,
-    'how-ai-compares': `How AI Compares ${industry.name}: ${concernA} and Trust Evidence | LionTech`,
-    'agent-readiness': `${industry.name} Agent Readiness: Enquiries, Human Approval and ${actionA} | LionTech`,
-    checklist: `${industry.name} AI Readiness Checklist: ${serviceA}, Evidence and Action | LionTech`,
+    hub: `${industry.name} AI Readiness Guide | LionTech`,
+    'ai-visibility': `${industry.name} AI Visibility Guide | LionTech`,
+    'how-ai-compares': `How AI Compares ${industry.name} | LionTech`,
+    'agent-readiness': `${industry.name} Agent Readiness | LionTech`,
+    checklist: `${industry.name} AI Readiness Checklist | LionTech`,
   };
   const descriptions: Record<IndustryPageType, string> = {
-    hub: `${industry.name}: clarify ${serviceA}, ${serviceD} and ${concernB.toLowerCase()}; verify ${sourceA.supports[0]} through ${sourceA.label}; assign ${industry.decisionMakers[1]} ownership for ${actionA}. The review is framed for ${industry.primaryAudience[1]}.`,
-    'ai-visibility': `${industry.name}: test retrieval of ${serviceB}; reconcile ${sourceA.supports[0]}; explain ${concernB.toLowerCase()}; direct ${industry.primaryAudience[2]} towards ${actionA}. Separate ${industry.commonServices[5]} from ${industry.commonServices[6]}.`,
+    hub: `${industry.name}: clarify ${serviceA}, ${serviceD} and ${concernB.toLowerCase()}; verify relevant evidence through ${sourceA.label}; support ${industry.pageAudience[1]} with a working route to ${actionA}.`,
+    'ai-visibility': `${industry.name}: test retrieval of ${serviceB}; reconcile ${sourceA.supports[0]}; explain ${concernB.toLowerCase()}; help ${industry.endCustomerSegments[2]} reach ${actionA}.`,
     'how-ai-compares': `${industry.name}: weigh ${serviceA} against ${serviceD}; verify ${sourceA.supports[0]}; inspect ${concernC.toLowerCase()}; confirm the route to ${actionA}. AI output remains general, not professional advice. Review lens: ${opening.toLowerCase()}`,
-    'agent-readiness': `${industry.name}: structure ${actionA}; route ${serviceD}; retain ${industry.decisionMakers[0]} approval because ${industry.automationBoundaries[0].toLowerCase()}.`,
+    'agent-readiness': `${industry.name}: ${opening} Use ${sourceB.label} when structuring ${actionA}; route ${serviceD} for ${industry.endCustomerSegments[1]}; retain ${industry.decisionMakers[0]} approval.`,
     checklist: `${industry.name}: audit ${serviceC}, ${serviceD}, ${sourceB.supports[0]}, ${concernD.toLowerCase()}, ${industry.commonServices[7]} and the working journey to ${actionA} through the Five Gates.`,
   };
   const h1s: Record<IndustryPageType, string> = {
@@ -235,7 +264,7 @@ function descriptorText(industry: IndustryRecord, pageType: IndustryPageType, in
     hub: `${industry.name} become more AI-first when their public pages connect real services such as ${serviceA} and ${serviceB} with a consistent provider identity, current evidence and a working enquiry path. The goal is not an automated maturity score. It is to help buyers and customer-facing AI systems discover the provider, describe its actual scope, verify relevant facts, compare meaningful criteria and move safely toward ${actionA}. The evidence should identify a responsible owner and the route to ${actionB}.`,
     'ai-visibility': `AI visibility for ${industry.name.toLowerCase()} depends on accessible, consistent facts about service scope, audience, location, responsible people and the next step. A source such as ${sourceA.label} may support ${sourceA.supports[0]}, while the provider’s own site must explain ${serviceC}, ${concernB.toLowerCase()} and how to ${actionA}. Neither source is sufficient alone; the evidence should agree and remain current. The answer must remain attributable, qualified and human-usable.`,
     'how-ai-compares': `AI systems can compare ${industry.name.toLowerCase()} only through the facts and evidence they can retrieve. Useful criteria include ${concernA.toLowerCase()}, ${concernC.toLowerCase()}, a verifiable source such as ${sourceA.label}, and a clear route to ${actionA}. This does not make an AI comparison a professional recommendation. A responsible comparison keeps those limits visible and points the buyer to source evidence.`,
-    'agent-readiness': `Agent readiness for a ${industry.singularName} means a buyer can move from a question to a controlled next step without the system inventing availability, suitability or an outcome. The public journey should say what is needed to ${actionA}, route questions about ${serviceD}, and stop for human approval at the boundaries that apply. Reliable action starts with accurate identity, evidence and service information, not autonomous decision-making. Every controlled handoff needs a named owner, visible fallback and recorded confirmation.`,
+    'agent-readiness': `Agent readiness for ${withIndefiniteArticle(industry.singularName)} means a buyer can move from a question to a controlled next step without the system inventing availability, suitability or an outcome. The public journey should say what is needed to ${actionA}, route questions about ${serviceD}, and stop for human approval at the boundaries that apply. Reliable action starts with accurate identity, evidence and service information, not autonomous decision-making. Every controlled handoff needs a named owner, visible fallback and recorded confirmation.`,
     checklist: `A useful ${industry.name.toLowerCase()} AI readiness checklist tests five connected outcomes: can the provider be discovered, described accurately, trusted through visible evidence, compared on relevant facts and contacted through a working action path? It should examine ${serviceA}, ${concernD.toLowerCase()}, evidence from ${sourceB.label} and the route to ${actionA}. Passing the checklist improves clarity; it does not guarantee ranking or recommendation. Each result needs a clear source, named owner and retest date.`,
   };
 
@@ -244,12 +273,12 @@ function descriptorText(industry: IndustryRecord, pageType: IndustryPageType, in
     'ai-visibility': `${opening} Visibility for ${industry.name.toLowerCase()} is shaped by how separate sources answer the same buyer question. A service page may describe ${serviceB}; ${sourceA.label} may hold ${sourceA.supports[0]}; and an enquiry page may explain how to ${actionA}. If names, locations, service scope or dates disagree, an AI answer may omit the provider, merge stale facts or respond cautiously. The remedy is not to repeat keywords. It is to publish specific facts, connect them to the relevant provider entity and review them against authoritative sources. This page focuses on the information most likely to be missing: ${concernB.toLowerCase()}, ${concernC.toLowerCase()} and the responsible boundary around ${industry.automationBoundaries[0].toLowerCase()}. These are general industry checks. They do not state that LionTech has audited every provider or that an official directory endorses a business beyond the information it actually records.`,
     'how-ai-compares': `${opening} A comparison involving ${industry.name.toLowerCase()} should help a buyer test fit and evidence, not produce an unsupported league table. The meaningful questions concern ${concernA.toLowerCase()}, ${concernB.toLowerCase()}, ${concernC.toLowerCase()} and whether the provider can support ${actionA}. Some answers belong on first-party service pages; others can be checked through ${sourceA.label} or ${sourceB.label}. A provider becomes easier to compare when it explains the distinction between ${serviceA}, ${serviceC} and ${serviceD}, names the conditions attached to an enquiry, and avoids vague claims such as “best” or “fully approved” without context. AI systems may still produce different outputs because models, indexes and retrieval methods change. The responsible objective is therefore a clear, current evidence trail that a human can inspect and a machine can quote without losing the qualification that makes the fact accurate.`,
     'agent-readiness': `${opening} For ${industry.name.toLowerCase()}, an agent-assisted journey should be deliberately narrower than the full professional service. It can collect structured information for ${actionA}, explain what happens before ${actionB}, and route questions about ${serviceC}. It should not cross the boundary that ${industry.automationBoundaries[0].toLowerCase()}. The website must expose the prerequisites, responsible team, expected response and fallback route in ordinary HTML before an API or automation is considered. Evidence from ${sourceA.label} and ${sourceB.label} helps establish what can be verified, but it does not authorise a transaction or professional decision. LionTech sequences the work accordingly: visibility first, then consistent facts and trust, then a tested action path, with deeper operating integrations only when the business has approved the workflow, data handling, exceptions and human controls. That approach makes action safer and easier to maintain as tools change.`,
-    checklist: `${opening} This checklist turns the Five Gates into a review a ${industry.singularName} can perform against its own public evidence. It asks whether a buyer can find ${serviceA}, understand ${serviceB}, verify relevant facts through sources such as ${sourceA.label}, compare ${concernD.toLowerCase()} and then ${actionA}. Each item should be answered with a URL, screenshot, register entry, form test or named owner rather than an assumption. A failed item is not a public score and does not prove poor service; it identifies information that is missing, inconsistent or difficult to act on. The checklist also preserves boundaries around ${industry.automationBoundaries[1].toLowerCase()}. LionTech uses this evidence-led approach because AI outputs change and no page can guarantee inclusion. The practical outcome is a prioritised set of corrections that improves the experience for human buyers while making the same facts easier for crawlers and AI-assisted systems to retrieve.`,
+    checklist: `${opening} This checklist turns the Five Gates into a review ${withIndefiniteArticle(industry.singularName)} can perform against its own public evidence. It asks whether a buyer can find ${serviceA}, understand ${serviceB}, verify relevant facts through sources such as ${sourceA.label}, compare ${concernD.toLowerCase()} and then ${actionA}. Each item should be answered with a URL, screenshot, register entry, form test or named owner rather than an assumption. A failed item is not a public score and does not prove poor service; it identifies information that is missing, inconsistent or difficult to act on. The checklist also preserves boundaries around ${industry.automationBoundaries[1].toLowerCase()}. LionTech uses this evidence-led approach because AI outputs change and no page can guarantee inclusion. The practical outcome is a prioritised set of corrections that improves the experience for human buyers while making the same facts easier for crawlers and AI-assisted systems to retrieve.`,
   };
 
   return {
     title: titles[pageType],
-    description: descriptions[pageType],
+    description: fitMetaDescription(descriptions[pageType]),
     h1: h1s[pageType],
     directAnswer: directAnswers[pageType],
     introduction: introductions[pageType],
@@ -262,7 +291,7 @@ export const industryPageDescriptors: IndustryPageDescriptor[] = industries.flat
     pageType,
     path: industryPath(industry.slug, pageType),
     ...descriptorText(industry, pageType, industryIndex),
-    reviewedAt: industry.reviewedAt,
+    sourceCheckedAt: industry.sourceCheckedAt,
   })),
 );
 
@@ -272,6 +301,8 @@ export const programmaticRoutes = industryPageDescriptors.map((page) => page.pat
 export function validateIndustryRecords(records: IndustryRecord[] = industries) {
   const errors: string[] = [];
   const expectedCounts: Array<[keyof IndustryRecord, number]> = [
+    ['pageAudience', 3],
+    ['endCustomerSegments', 3],
     ['commonServices', 8],
     ['buyerQuestions', 10],
     ['trustedSources', 4],
@@ -310,12 +341,15 @@ export function validateIndustryRecords(records: IndustryRecord[] = industries) 
       } catch {
         errors.push(`${record.slug} source URL is invalid: ${item.url}`);
       }
-      if (!item.supports.length || item.reviewedAt !== record.reviewedAt) errors.push(`${record.slug} source metadata is incomplete: ${item.label}`);
+      const allowedSourceTypes = new Set(['regulator', 'government', 'professional-body', 'official-directory', 'technical-standard', 'primary-industry-source']);
+      if (!allowedSourceTypes.has(item.sourceType)) errors.push(`${record.slug} source taxonomy is invalid: ${item.label}`);
+      if (!item.supports.length || item.checkedAt !== record.sourceCheckedAt) errors.push(`${record.slug} source metadata is incomplete: ${item.label}`);
     }
     for (const related of record.relatedIndustries) {
       if (!slugs.has(related)) errors.push(`${record.slug} references unknown related industry: ${related}`);
     }
-    if (record.reviewedBy !== industryReviewer || record.primaryCTA !== 'snapshot') errors.push(`${record.slug} review or CTA metadata is invalid`);
+    if (record.pageAudience.some((audience) => record.endCustomerSegments.includes(audience))) errors.push(`${record.slug} page and end-customer audiences must remain distinct`);
+    if ('reviewedBy' in record || record.primaryCTA !== 'snapshot') errors.push(`${record.slug} review state or CTA metadata is invalid`);
   }
 
   if (industryPageDescriptors.length !== 100 || new Set(programmaticRoutes).size !== 100) {

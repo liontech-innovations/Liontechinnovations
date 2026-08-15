@@ -28,7 +28,7 @@ for (const [index, filename] of sitemapFiles.entries()) {
 if (urls.length !== 118 || new Set(urls).size !== 118) failures.push(`Sitemap inventory expected 118 unique URLs, received ${urls.length}/${new Set(urls).size}`);
 
 const llms = await readFile(join(publicDirectory, 'llms.txt'), 'utf8');
-for (const fact of ['Lion Tech Innovations Ltd', '17068390', 'Manchester-based, serving UK businesses remotely', siteUrl, `${siteUrl}/contact#snapshot-enquiry`, `${siteUrl}/ai-data/index.json`]) {
+for (const fact of ['Lion Tech Innovations Ltd', '17068390', 'Manchester-based, serving UK businesses remotely', siteUrl, `${siteUrl}/contact#snapshot-enquiry`, `${siteUrl}/ai-data/index.json`, `${siteUrl}/ai-data/source-manifest.json`, `${siteUrl}/ai-data/content-review-manifest.json`, `${siteUrl}/ai-data/release-cohorts.json`]) {
   if (!llms.includes(fact)) failures.push(`llms.txt: missing canonical fact ${fact}`);
 }
 if ((llms.match(/https:\/\/liontechinnovations\.co\.uk\/industries\/[a-z-]+/g) ?? []).length !== 20) failures.push('llms.txt: expected 20 industry hub links');
@@ -38,12 +38,28 @@ if ((await readFile(join(publicDirectory, `${key}.txt`), 'utf8')).trim() !== key
 
 const industryFiles = await readdir(join(publicDirectory, 'ai-data', 'industries'));
 if (industryFiles.length !== 20) failures.push(`AI-data: expected 20 industry files, received ${industryFiles.length}`);
-for (const filename of ['index.json', ...industryFiles.map((name) => `industries/${name}`)]) {
+const aiDataFiles = ['index.json', 'source-manifest.json', 'content-review-manifest.json', 'release-cohorts.json', ...industryFiles.map((name) => `industries/${name}`)];
+for (const filename of aiDataFiles) {
   const text = await readFile(join(publicDirectory, 'ai-data', filename), 'utf8');
   try { JSON.parse(text); } catch (error) { failures.push(`AI-data ${filename}: ${error.message}`); }
   if (/vercel\.app|localhost|127\.0\.0\.1/i.test(text)) failures.push(`AI-data ${filename}: preview/local URL detected`);
+  if (/registeredOffice|streetAddress|addressLocality|addressRegion|postalCode|PostalAddress/i.test(text)) failures.push(`AI-data ${filename}: prohibited private-location field detected`);
 }
 
-process.stdout.write(`SEO artifacts: sitemapUrls=${urls.length} aiDataFiles=${industryFiles.length + 1} llmsIndustryLinks=20\n`);
+const entityIndex = JSON.parse(await readFile(join(publicDirectory, 'ai-data', 'index.json'), 'utf8'));
+if (JSON.stringify(Object.keys(entityIndex.entity).sort()) !== JSON.stringify(['companiesHouseUrl', 'companyNumber', 'legalName', 'location', 'website'])) failures.push('AI-data index entity key set is invalid');
+
+const releaseManifest = JSON.parse(await readFile(join(publicDirectory, 'ai-data', 'release-cohorts.json'), 'utf8'));
+if (releaseManifest.cohortCount !== 5 || releaseManifest.routeCount !== 100 || releaseManifest.cohorts.length !== 5) failures.push('Release cohort manifest inventory is invalid');
+for (const cohort of releaseManifest.cohorts) {
+  const sitemap = await readFile(join(publicDirectory, cohort.sitemapFile), 'utf8');
+  const sitemapRoutes = [...sitemap.matchAll(/<loc>https:\/\/liontechinnovations\.co\.uk([^<]+)<\/loc>/g)].map((match) => match[1]);
+  if (JSON.stringify(sitemapRoutes) !== JSON.stringify(cohort.routes)) failures.push(`${cohort.id}: sitemap routes do not match the release cohort`);
+}
+
+const reviewManifest = JSON.parse(await readFile(join(publicDirectory, 'ai-data', 'content-review-manifest.json'), 'utf8'));
+if (reviewManifest.approvedRouteCount !== 0 || reviewManifest.pendingRouteCount !== 100 || reviewManifest.routes.some((route) => route.approvalStatus !== 'pending')) failures.push('Content review manifest must keep all routes pending');
+
+process.stdout.write(`SEO artifacts: sitemapUrls=${urls.length} aiDataFiles=${aiDataFiles.length} llmsIndustryLinks=20 releaseCohorts=5\n`);
 process.stdout.write(`SEO artifact failures: ${failures.length}\n`);
 if (failures.length) throw new Error(failures.join('\n'));

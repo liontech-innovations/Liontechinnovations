@@ -1,14 +1,25 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "entity": {
     "legalName": "Lion Tech Innovations Ltd",
     "companyNumber": "17068390",
     "website": "https://liontechinnovations.co.uk",
-    "location": "Manchester-based, serving UK businesses remotely"
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
   },
   "slug": "aesthetics-clinics",
   "name": "Aesthetics clinics",
   "shortDescription": "Clinics offering non-surgical cosmetic consultations and treatments where practitioner identity, treatment scope, product information and safe enquiry routes must be clear.",
+  "pageAudience": [
+    "clinic owners",
+    "practice managers",
+    "responsible clinicians"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking anti-wrinkle consultations",
+    "customers comparing dermal filler treatments",
+    "organisations needing skin consultations"
+  ],
   "fiveGates": {
     "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
     "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
@@ -29,12 +40,12 @@
   "buyerQuestions": [
     {
       "intent": "discover",
-      "question": "Which aesthetics clinics provide anti-wrinkle consultations for clinic owners?",
+      "question": "Which aesthetics clinics provide anti-wrinkle consultations for buyers seeking anti-wrinkle consultations?",
       "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
     },
     {
       "intent": "discover",
-      "question": "Where can a buyer find a aesthetics clinic offering dermal filler treatments and skin consultations?",
+      "question": "Where can a buyer find an aesthetics clinic offering dermal filler treatments and skin consultations?",
       "whyItMatters": "AI systems need a crawlable connection between the service, the provider entity and the area actually served."
     },
     {
@@ -86,7 +97,7 @@
       "supports": [
         "registered provider identity and inspection information where CQC regulation applies"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "Advertising Standards Authority cosmetic interventions guidance",
@@ -95,7 +106,7 @@
       "supports": [
         "responsible advertising boundaries for cosmetic interventions"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "Medicines and Healthcare products Regulatory Agency",
@@ -104,7 +115,7 @@
       "supports": [
         "medicine and medical-device safety information"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "Joint Council for Cosmetic Practitioners register",
@@ -113,13 +124,14 @@
       "supports": [
         "voluntary practitioner registration where applicable"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     }
   ],
   "factsAIShouldUnderstand": [
     "Aesthetics clinics may offer different combinations of anti-wrinkle consultations, dermal filler treatments and skin consultations; a provider should state its actual scope rather than rely on the industry category alone.",
-    "The primary audiences commonly include clinic owners, practice managers, responsible clinicians, but each provider should identify the customers it is equipped and willing to serve.",
-    "Responsibility may sit with a founder or medical director, or a clinic manager, or a marketing lead, so named roles and contact ownership help a buyer understand who is accountable.",
+    "This LionTech guide is written for clinic owners, practice managers, responsible clinicians, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking anti-wrinkle consultations, customers comparing dermal filler treatments, organisations needing skin consultations, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with a founder or medical director, a clinic manager, or a marketing lead, so named roles and contact ownership help a buyer understand who is accountable.",
     "Care Quality Commission service finder is a relevant public evidence source for registered provider identity and inspection information where CQC regulation applies.",
     "Advertising Standards Authority cosmetic interventions guidance can support verification of responsible advertising boundaries for cosmetic interventions.",
     "A useful description separates chemical peels and laser hair reduction from adjacent services that may require different expertise, evidence or approval.",
@@ -127,12 +139,12 @@
     "Public information should address how a prospective patient can ask a clinical question safely without implying that a generic web answer replaces case-specific professional judgement."
   ],
   "commonVisibilityGaps": [
-    "A buyer cannot confirm the qualifications and role of the treating practitioner because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm which treatments are offered at the named location because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm consultation, consent and aftercare arrangements because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm whether promotional claims are responsible and specific because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm how product and medicine information is presented because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm how a prospective patient can ask a clinical question safely because the website, directory profile and action page use incomplete or undated details."
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm the qualifications and role of the treating practitioner; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm which treatments are offered at the named location; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm consultation, consent and aftercare arrangements; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm whether promotional claims are responsible and specific; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm how product and medicine information is presented; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how a prospective patient can ask a clinical question safely; verify the evidence before treating this as a finding."
   ],
   "comparisonCriteria": [
     "Relevant service fit across anti-wrinkle consultations, dermal filler treatments and skin consultations",
@@ -170,16 +182,20 @@
   "structuredDataRecommendations": [
     "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
     "Describe anti-wrinkle consultations, chemical peels and aftercare reviews with visible Service information only where the provider genuinely offers them.",
-    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
     "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
   ],
   "riskNotes": [
     "Aesthetics clinics guidance on this site is general information, not professional advice about a particular business or customer.",
     "clinical suitability decisions require an appropriately qualified human",
-    "LionTech does not guarantee search rankings, AI recommendations, how product and medicine information is presented, or future model behaviour."
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
   ],
-  "reviewedAt": "2026-08-15",
-  "reviewedBy": "Lion Tech Innovations Ltd",
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
   "canonicalPageUrls": {
     "hub": "https://liontechinnovations.co.uk/industries/aesthetics-clinics",
     "aiVisibility": "https://liontechinnovations.co.uk/industries/aesthetics-clinics/ai-visibility",

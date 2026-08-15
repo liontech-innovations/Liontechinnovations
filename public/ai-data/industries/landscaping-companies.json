@@ -1,14 +1,25 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "entity": {
     "legalName": "Lion Tech Innovations Ltd",
     "companyNumber": "17068390",
     "website": "https://liontechinnovations.co.uk",
-    "location": "Manchester-based, serving UK businesses remotely"
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
   },
   "slug": "landscaping-companies",
   "name": "Landscaping companies",
   "shortDescription": "Garden design, build and maintenance companies whose service mix, design credentials, coverage, waste handling and quote process need clear separation.",
+  "pageAudience": [
+    "landscaping business owners",
+    "garden designers",
+    "grounds-maintenance teams"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking garden design",
+    "customers comparing hard landscaping",
+    "organisations needing soft landscaping"
+  ],
   "fiveGates": {
     "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
     "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
@@ -29,7 +40,7 @@
   "buyerQuestions": [
     {
       "intent": "discover",
-      "question": "Which landscaping companies provide garden design for landscaping business owners?",
+      "question": "Which landscaping companies provide garden design for buyers seeking garden design?",
       "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
     },
     {
@@ -86,7 +97,7 @@
       "supports": [
         "landscape professional member discovery where applicable"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "Landscape Institute directory",
@@ -95,7 +106,7 @@
       "supports": [
         "registered practice and professional discovery"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "RHS Find a designer",
@@ -104,7 +115,7 @@
       "supports": [
         "garden professional discovery and consumer guidance"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "HSE agriculture and horticulture guidance",
@@ -113,13 +124,14 @@
       "supports": [
         "landscaping health and safety guidance"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     }
   ],
   "factsAIShouldUnderstand": [
     "Landscaping companies may offer different combinations of garden design, hard landscaping and soft landscaping; a provider should state its actual scope rather than rely on the industry category alone.",
-    "The primary audiences commonly include landscaping business owners, garden designers, grounds-maintenance teams, but each provider should identify the customers it is equipped and willing to serve.",
-    "Responsibility may sit with a owner-manager, or a design director, or a contracts manager, so named roles and contact ownership help a buyer understand who is accountable.",
+    "This LionTech guide is written for landscaping business owners, garden designers, grounds-maintenance teams, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking garden design, customers comparing hard landscaping, organisations needing soft landscaping, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with an owner-manager, a design director, or a contracts manager, so named roles and contact ownership help a buyer understand who is accountable.",
     "BALI member directory is a relevant public evidence source for landscape professional member discovery where applicable.",
     "Landscape Institute directory can support verification of registered practice and professional discovery.",
     "A useful description separates patios and paving and fencing from adjacent services that may require different expertise, evidence or approval.",
@@ -127,12 +139,12 @@
     "Public information should address seasonal availability and maintenance options without implying that a generic web answer replaces case-specific professional judgement."
   ],
   "commonVisibilityGaps": [
-    "A buyer cannot confirm whether design, construction or maintenance is in scope because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm service area and minimum project size because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm designer or trade-body credentials where claimed because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm survey, concept and quotation stages because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm materials, waste and subcontractor responsibilities because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm seasonal availability and maintenance options because the website, directory profile and action page use incomplete or undated details."
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm whether design, construction or maintenance is in scope; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm service area and minimum project size; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm designer or trade-body credentials where claimed; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm survey, concept and quotation stages; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm materials, waste and subcontractor responsibilities; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm seasonal availability and maintenance options; verify the evidence before treating this as a finding."
   ],
   "comparisonCriteria": [
     "Relevant service fit across garden design, hard landscaping and soft landscaping",
@@ -170,16 +182,20 @@
   "structuredDataRecommendations": [
     "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
     "Describe garden design, patios and paving and drainage and irrigation with visible Service information only where the provider genuinely offers them.",
-    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
     "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
   ],
   "riskNotes": [
     "Landscaping companies guidance on this site is general information, not professional advice about a particular business or customer.",
     "design and drainage decisions require site-specific review",
-    "LionTech does not guarantee search rankings, AI recommendations, materials, waste and subcontractor responsibilities, or future model behaviour."
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
   ],
-  "reviewedAt": "2026-08-15",
-  "reviewedBy": "Lion Tech Innovations Ltd",
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
   "canonicalPageUrls": {
     "hub": "https://liontechinnovations.co.uk/industries/landscaping-companies",
     "aiVisibility": "https://liontechinnovations.co.uk/industries/landscaping-companies/ai-visibility",

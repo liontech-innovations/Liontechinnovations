@@ -1,14 +1,25 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "entity": {
     "legalName": "Lion Tech Innovations Ltd",
     "companyNumber": "17068390",
     "website": "https://liontechinnovations.co.uk",
-    "location": "Manchester-based, serving UK businesses remotely"
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
   },
   "slug": "commercial-cleaning-companies",
   "name": "Commercial cleaning companies",
   "shortDescription": "Contract cleaning providers whose premises coverage, cleaning specification, staffing model, chemical controls, service hours and site-survey route must be explicit.",
+  "pageAudience": [
+    "cleaning-company owners",
+    "facilities-service providers",
+    "contract cleaning teams"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking office cleaning",
+    "customers comparing clinical-area cleaning",
+    "organisations needing school cleaning"
+  ],
   "fiveGates": {
     "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
     "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
@@ -29,7 +40,7 @@
   "buyerQuestions": [
     {
       "intent": "discover",
-      "question": "Which commercial cleaning companies provide office cleaning for cleaning-company owners?",
+      "question": "Which commercial cleaning companies provide office cleaning for buyers seeking office cleaning?",
       "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
     },
     {
@@ -86,7 +97,7 @@
       "supports": [
         "professional standards, training and sector resources"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "HSE COSHH guidance",
@@ -95,7 +106,7 @@
       "supports": [
         "control of substances hazardous to health"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "Environment Agency waste carrier register",
@@ -104,7 +115,7 @@
       "supports": [
         "waste carrier and broker registration where applicable"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "Living Wage Employer directory",
@@ -113,13 +124,14 @@
       "supports": [
         "accredited Living Wage employer status where claimed"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     }
   ],
   "factsAIShouldUnderstand": [
     "Commercial cleaning companies may offer different combinations of office cleaning, clinical-area cleaning and school cleaning; a provider should state its actual scope rather than rely on the industry category alone.",
-    "The primary audiences commonly include cleaning-company owners, facilities-service providers, contract cleaning teams, but each provider should identify the customers it is equipped and willing to serve.",
-    "Responsibility may sit with a managing director, or a operations manager, or a contracts manager, so named roles and contact ownership help a buyer understand who is accountable.",
+    "This LionTech guide is written for cleaning-company owners, facilities-service providers, contract cleaning teams, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking office cleaning, customers comparing clinical-area cleaning, organisations needing school cleaning, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with a managing director, an operations manager, or a contracts manager, so named roles and contact ownership help a buyer understand who is accountable.",
     "British Institute of Cleaning Science is a relevant public evidence source for professional standards, training and sector resources.",
     "HSE COSHH guidance can support verification of control of substances hazardous to health.",
     "A useful description separates retail cleaning and industrial cleaning from adjacent services that may require different expertise, evidence or approval.",
@@ -127,12 +139,12 @@
     "Public information should address how to arrange a site survey and proposal without implying that a generic web answer replaces case-specific professional judgement."
   ],
   "commonVisibilityGaps": [
-    "A buyer cannot confirm which premises types and locations are covered because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm how a cleaning specification and frequency are agreed because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm staff vetting, supervision and absence cover because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm chemical, equipment and COSHH controls because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm quality checks, issue escalation and reporting because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm how to arrange a site survey and proposal because the website, directory profile and action page use incomplete or undated details."
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm which premises types and locations are covered; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how a cleaning specification and frequency are agreed; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm staff vetting, supervision and absence cover; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm chemical, equipment and COSHH controls; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm quality checks, issue escalation and reporting; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how to arrange a site survey and proposal; verify the evidence before treating this as a finding."
   ],
   "comparisonCriteria": [
     "Relevant service fit across office cleaning, clinical-area cleaning and school cleaning",
@@ -170,16 +182,20 @@
   "structuredDataRecommendations": [
     "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
     "Describe office cleaning, retail cleaning and washroom services with visible Service information only where the provider genuinely offers them.",
-    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
     "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
   ],
   "riskNotes": [
     "Commercial cleaning companies guidance on this site is general information, not professional advice about a particular business or customer.",
     "pricing requires premises, frequency and access details",
-    "LionTech does not guarantee search rankings, AI recommendations, quality checks, issue escalation and reporting, or future model behaviour."
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
   ],
-  "reviewedAt": "2026-08-15",
-  "reviewedBy": "Lion Tech Innovations Ltd",
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
   "canonicalPageUrls": {
     "hub": "https://liontechinnovations.co.uk/industries/commercial-cleaning-companies",
     "aiVisibility": "https://liontechinnovations.co.uk/industries/commercial-cleaning-companies/ai-visibility",

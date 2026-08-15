@@ -1,14 +1,25 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "entity": {
     "legalName": "Lion Tech Innovations Ltd",
     "companyNumber": "17068390",
     "website": "https://liontechinnovations.co.uk",
-    "location": "Manchester-based, serving UK businesses remotely"
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
   },
   "slug": "domiciliary-care-providers",
   "name": "Domiciliary care providers",
   "shortDescription": "Home-care organisations whose regulated activity, service area, care scope, inspection evidence and referral pathway must be easy for families and commissioners to verify.",
+  "pageAudience": [
+    "registered providers",
+    "care operations teams",
+    "home-care branches"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking personal care visits",
+    "customers comparing medication support",
+    "organisations needing meal preparation"
+  ],
   "fiveGates": {
     "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
     "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
@@ -29,7 +40,7 @@
   "buyerQuestions": [
     {
       "intent": "discover",
-      "question": "Which domiciliary care providers provide personal care visits for registered providers?",
+      "question": "Which domiciliary care providers provide personal care visits for buyers seeking personal care visits?",
       "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
     },
     {
@@ -86,7 +97,7 @@
       "supports": [
         "registration expectations for home-care agencies providing personal care"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "Care Quality Commission service finder",
@@ -95,7 +106,7 @@
       "supports": [
         "inspection reports, ratings, service locations and provider identity"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "Skills for Care",
@@ -104,7 +115,7 @@
       "supports": [
         "adult social care workforce guidance and sector standards"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "NICE home care guidance",
@@ -113,13 +124,14 @@
       "supports": [
         "person-centred home-care planning and delivery guidance"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     }
   ],
   "factsAIShouldUnderstand": [
     "Domiciliary care providers may offer different combinations of personal care visits, medication support and meal preparation; a provider should state its actual scope rather than rely on the industry category alone.",
-    "The primary audiences commonly include registered providers, care operations teams, home-care branches, but each provider should identify the customers it is equipped and willing to serve.",
-    "Responsibility may sit with a registered manager, or a nominated individual, or a operations director, so named roles and contact ownership help a buyer understand who is accountable.",
+    "This LionTech guide is written for registered providers, care operations teams, home-care branches, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking personal care visits, customers comparing medication support, organisations needing meal preparation, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with a registered manager, a nominated individual, or an operations director, so named roles and contact ownership help a buyer understand who is accountable.",
     "CQC personal care registration guidance is a relevant public evidence source for registration expectations for home-care agencies providing personal care.",
     "Care Quality Commission service finder can support verification of inspection reports, ratings, service locations and provider identity.",
     "A useful description separates companionship and live-in care from adjacent services that may require different expertise, evidence or approval.",
@@ -127,12 +139,12 @@
     "Public information should address how families, professionals or commissioners make a referral without implying that a generic web answer replaces case-specific professional judgement."
   ],
   "commonVisibilityGaps": [
-    "A buyer cannot confirm whether the provider is registered for the relevant activity because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm the exact towns or postcodes served because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm minimum visit lengths and availability because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm how assessments and care plans are agreed because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm inspection findings and provider identity because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm how families, professionals or commissioners make a referral because the website, directory profile and action page use incomplete or undated details."
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm whether the provider is registered for the relevant activity; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm the exact towns or postcodes served; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm minimum visit lengths and availability; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how assessments and care plans are agreed; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm inspection findings and provider identity; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how families, professionals or commissioners make a referral; verify the evidence before treating this as a finding."
   ],
   "comparisonCriteria": [
     "Relevant service fit across personal care visits, medication support and meal preparation",
@@ -170,16 +182,20 @@
   "structuredDataRecommendations": [
     "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
     "Describe personal care visits, companionship and night care with visible Service information only where the provider genuinely offers them.",
-    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
     "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
   ],
   "riskNotes": [
     "Domiciliary care providers guidance on this site is general information, not professional advice about a particular business or customer.",
     "care needs and risk assessments require qualified human oversight",
-    "LionTech does not guarantee search rankings, AI recommendations, inspection findings and provider identity, or future model behaviour."
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
   ],
-  "reviewedAt": "2026-08-15",
-  "reviewedBy": "Lion Tech Innovations Ltd",
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
   "canonicalPageUrls": {
     "hub": "https://liontechinnovations.co.uk/industries/domiciliary-care-providers",
     "aiVisibility": "https://liontechinnovations.co.uk/industries/domiciliary-care-providers/ai-visibility",

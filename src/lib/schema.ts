@@ -14,14 +14,6 @@ export const organizationSchema = {
   email: company.email,
   description: company.description,
   areaServed: 'GB',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: company.registeredOffice.streetAddress,
-    addressLocality: company.registeredOffice.addressLocality,
-    addressRegion: company.registeredOffice.addressRegion,
-    postalCode: company.registeredOffice.postalCode,
-    addressCountry: company.registeredOffice.addressCountry,
-  },
   identifier: {
     '@type': 'PropertyValue',
     propertyID: 'Companies House',

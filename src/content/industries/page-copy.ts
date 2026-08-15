@@ -1,4 +1,5 @@
 import type { FiveGateIntent, IndustryPageDescriptor, IndustryPageType } from './types';
+import { withIndefiniteArticle } from './language';
 
 const pageTypeLabels: Record<IndustryPageType, string> = {
   hub: 'AI-first readiness',
@@ -93,7 +94,7 @@ export function getSourceObservations(page: IndustryPageDescriptor) {
   return sources.map((source, index) => ({
     ...source,
     heading: `${lenses[page.pageType][index]}: ${source.label}`,
-    observation: `${source.label} provides an authoritative route for ${source.supports[0]}. On this ${pageTypeLabels[page.pageType]} page, a ${page.industry.singularName} should reference that evidence only where it applies, keep its own service facts current, and avoid turning a listing, membership or guidance source into a broader endorsement claim.`,
+    observation: `${source.label} provides an authoritative route for ${source.supports[0]}. On this ${pageTypeLabels[page.pageType]} page, ${withIndefiniteArticle(page.industry.singularName)} should reference that evidence only where it applies, keep its own service facts current, and avoid turning a listing, membership or guidance source into a broader endorsement claim.`,
   }));
 }
 
@@ -102,7 +103,7 @@ export function getIndustryFaqs(page: IndustryPageDescriptor) {
   const faqs: Record<IndustryPageType, Array<{ question: string; answer: string }>> = {
     hub: [
       {
-        question: `What does AI-first readiness mean for a ${record.singularName}?`,
+        question: `What does AI-first readiness mean for ${withIndefiniteArticle(record.singularName)}?`,
         answer: `It means publishing a consistent provider identity, specific service and audience information, visible evidence, meaningful comparison facts and a working route to ${record.actionPaths[0]}. It does not require an AI maturity score or replacing professional judgement with automation.`,
       },
       {
@@ -110,7 +111,7 @@ export function getIndustryFaqs(page: IndustryPageDescriptor) {
         answer: `No. ${record.trustedSources[0].label} may support ${record.trustedSources[0].supports[0]}, but AI systems use changing indexes and retrieval methods. The provider's website, public profiles and action paths still need accurate, crawlable information.`,
       },
       {
-        question: `Where should a ${record.singularName} start?`,
+        question: `Where should ${withIndefiniteArticle(record.singularName)} start?`,
         answer: `Start by testing real buyer questions about ${record.commonServices[0]}, ${record.comparisonCriteria[1].toLowerCase()} and the route to ${record.actionPaths[0]}. Record the output and source, then prioritise corrections that improve factual accuracy or prevent a buyer from acting.`,
       },
     ],
@@ -144,7 +145,7 @@ export function getIndustryFaqs(page: IndustryPageDescriptor) {
     ],
     'agent-readiness': [
       {
-        question: `What can an agent do for a ${record.singularName}?`,
+        question: `What can an agent do for ${withIndefiniteArticle(record.singularName)}?`,
         answer: `A controlled agent can collect structured information to ${record.actionPaths[0]}, explain the next step, validate required fields and route the request. It should not cross the boundary that ${record.automationBoundaries[0].toLowerCase()}.`,
       },
       {
@@ -158,7 +159,7 @@ export function getIndustryFaqs(page: IndustryPageDescriptor) {
     ],
     checklist: [
       {
-        question: `How should a ${record.singularName} use this checklist?`,
+        question: `How should ${withIndefiniteArticle(record.singularName)} use this checklist?`,
         answer: `Assign an owner to each item and attach evidence such as a public URL, official record, screenshot or completed form test. Mark unknown items for investigation rather than guessing. Recheck material service, trust and action facts when they change.`,
       },
       {

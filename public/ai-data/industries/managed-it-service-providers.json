@@ -1,14 +1,25 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "entity": {
     "legalName": "Lion Tech Innovations Ltd",
     "companyNumber": "17068390",
     "website": "https://liontechinnovations.co.uk",
-    "location": "Manchester-based, serving UK businesses remotely"
+    "location": "Manchester-based, serving UK businesses remotely",
+    "companiesHouseUrl": "https://find-and-update.company-information.service.gov.uk/company/17068390"
   },
   "slug": "managed-it-service-providers",
   "name": "Managed IT service providers",
   "shortDescription": "MSPs that need service boundaries, support coverage, security responsibilities, certifications, response routes and onboarding expectations stated with technical precision.",
+  "pageAudience": [
+    "MSP founders",
+    "IT support companies",
+    "cybersecurity service teams"
+  ],
+  "endCustomerSegments": [
+    "buyers seeking managed helpdesk",
+    "customers comparing Microsoft 365 support",
+    "organisations needing cloud administration"
+  ],
   "fiveGates": {
     "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
     "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
@@ -29,7 +40,7 @@
   "buyerQuestions": [
     {
       "intent": "discover",
-      "question": "Which managed it service providers provide managed helpdesk for MSP founders?",
+      "question": "Which managed it service providers provide managed helpdesk for buyers seeking managed helpdesk?",
       "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
     },
     {
@@ -86,7 +97,7 @@
       "supports": [
         "MSP due diligence, contracts and security responsibilities"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "NCSC Cyber Essentials overview",
@@ -95,7 +106,7 @@
       "supports": [
         "government-backed baseline cyber controls"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "ICO security guidance",
@@ -104,7 +115,7 @@
       "supports": [
         "personal-data security responsibilities"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     },
     {
       "label": "NCSC cloud security guidance",
@@ -113,13 +124,14 @@
       "supports": [
         "cloud security principles and shared-responsibility context"
       ],
-      "reviewedAt": "2026-08-15"
+      "checkedAt": "2026-08-15"
     }
   ],
   "factsAIShouldUnderstand": [
     "Managed IT service providers may offer different combinations of managed helpdesk, Microsoft 365 support and cloud administration; a provider should state its actual scope rather than rely on the industry category alone.",
-    "The primary audiences commonly include MSP founders, IT support companies, cybersecurity service teams, but each provider should identify the customers it is equipped and willing to serve.",
-    "Responsibility may sit with a managing director, or a technical director, or a service delivery manager, so named roles and contact ownership help a buyer understand who is accountable.",
+    "This LionTech guide is written for MSP founders, IT support companies, cybersecurity service teams, who own or influence the provider's public information and customer journey.",
+    "Providers may serve end customers such as buyers seeking managed helpdesk, customers comparing Microsoft 365 support, organisations needing cloud administration, but each provider should identify the groups it is equipped and willing to support.",
+    "Responsibility may sit with a managing director, a technical director, or a service delivery manager, so named roles and contact ownership help a buyer understand who is accountable.",
     "NCSC choosing a managed service provider is a relevant public evidence source for MSP due diligence, contracts and security responsibilities.",
     "NCSC Cyber Essentials overview can support verification of government-backed baseline cyber controls.",
     "A useful description separates endpoint management and network management from adjacent services that may require different expertise, evidence or approval.",
@@ -127,12 +139,12 @@
     "Public information should address how to request support or report an incident without implying that a generic web answer replaces case-specific professional judgement."
   ],
   "commonVisibilityGaps": [
-    "A buyer cannot confirm which users, devices and platforms are supported because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm support hours and response definitions because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm security certifications and shared responsibilities because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm backup, recovery and incident processes because the website, directory profile and action page use incomplete or undated details.",
-    "A buyer cannot confirm contract term, onboarding and exit arrangements because the website, directory profile and action page use different wording.",
-    "A buyer cannot confirm how to request support or report an incident because the website, directory profile and action page use incomplete or undated details."
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm which users, devices and platforms are supported; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm support hours and response definitions; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm security certifications and shared responsibilities; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm backup, recovery and incident processes; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use different wording, a buyer may be unable to confirm contract term, onboarding and exit arrangements; verify the evidence before treating this as a finding.",
+    "If a website, directory profile and action page use incomplete or undated details, a buyer may be unable to confirm how to request support or report an incident; verify the evidence before treating this as a finding."
   ],
   "comparisonCriteria": [
     "Relevant service fit across managed helpdesk, Microsoft 365 support and cloud administration",
@@ -170,16 +182,20 @@
   "structuredDataRecommendations": [
     "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
     "Describe managed helpdesk, endpoint management and incident response coordination with visible Service information only where the provider genuinely offers them.",
-    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Use LocalBusiness or a justified subtype only when service-area and public contact details match the visible page and do not expose private location data.",
     "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
   ],
   "riskNotes": [
     "Managed IT service providers guidance on this site is general information, not professional advice about a particular business or customer.",
     "privileged access changes require strong authentication and approval",
-    "LionTech does not guarantee search rankings, AI recommendations, contract term, onboarding and exit arrangements, or future model behaviour."
+    "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour."
   ],
-  "reviewedAt": "2026-08-15",
-  "reviewedBy": "Lion Tech Innovations Ltd",
+  "sourceCheckedAt": "2026-08-15",
+  "contentReviewStatus": "awaiting-freejoy-content-and-release-approval",
+  "disclaimer": "This guide provides general industry information, not legal, medical, financial, regulatory or compliance advice. LionTech does not guarantee search rankings, AI recommendations, leads, sales, regulatory outcomes or future model behaviour.",
+  "sourceManifestUrl": "https://liontechinnovations.co.uk/ai-data/source-manifest.json",
+  "contentReviewManifestUrl": "https://liontechinnovations.co.uk/ai-data/content-review-manifest.json",
+  "releaseCohortManifestUrl": "https://liontechinnovations.co.uk/ai-data/release-cohorts.json",
   "canonicalPageUrls": {
     "hub": "https://liontechinnovations.co.uk/industries/managed-it-service-providers",
     "aiVisibility": "https://liontechinnovations.co.uk/industries/managed-it-service-providers/ai-visibility",
