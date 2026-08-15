@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "1.0.0",
+  "entity": {
+    "legalName": "Lion Tech Innovations Ltd",
+    "companyNumber": "17068390",
+    "website": "https://liontechinnovations.co.uk",
+    "location": "Manchester-based, serving UK businesses remotely"
+  },
+  "slug": "financial-advisers",
+  "name": "Financial advisers",
+  "shortDescription": "Advice firms that must present regulatory permissions, client scope, adviser credentials, charging basis and advice boundaries without implying outcomes.",
+  "fiveGates": {
+    "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
+    "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
+    "trust": "Can material facts be checked against current first-party and applicable authoritative evidence?",
+    "compare": "Can buyers inspect relevant differences using factual criteria rather than unsupported superlatives?",
+    "act": "Can a buyer complete a clear next step with suitable confirmation, escalation and human control?"
+  },
+  "commonServices": [
+    "retirement planning",
+    "investment advice",
+    "pension advice",
+    "protection planning",
+    "estate planning coordination",
+    "cash-flow planning",
+    "workplace financial education",
+    "ongoing reviews"
+  ],
+  "buyerQuestions": [
+    {
+      "intent": "discover",
+      "question": "Which financial advisers provide retirement planning for financial advice firms?",
+      "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
+    },
+    {
+      "intent": "discover",
+      "question": "Where can a buyer find a financial adviser offering investment advice and pension advice?",
+      "whyItMatters": "AI systems need a crawlable connection between the service, the provider entity and the area actually served."
+    },
+    {
+      "intent": "describe",
+      "question": "Does this financial adviser clearly explain whether the firm and adviser are authorised for the relevant activity?",
+      "whyItMatters": "A precise answer prevents an AI summary from filling gaps with assumptions or outdated third-party text."
+    },
+    {
+      "intent": "describe",
+      "question": "What should a customer expect when asking about protection planning?",
+      "whyItMatters": "Scope, process and boundaries should be visible before a buyer shares detailed information."
+    },
+    {
+      "intent": "trust",
+      "question": "Which official evidence supports which client profiles and advice areas are served?",
+      "whyItMatters": "Public registers and first-party facts should agree so that a buyer can verify rather than merely trust a marketing claim."
+    },
+    {
+      "intent": "trust",
+      "question": "How does the provider evidence independent or restricted advice status?",
+      "whyItMatters": "Named sources, responsible people and current policies create a traceable trust path."
+    },
+    {
+      "intent": "compare",
+      "question": "How should buyers compare providers on initial and ongoing charging structure?",
+      "whyItMatters": "Comparable facts help buyers distinguish genuine service differences without relying on unverified superlatives."
+    },
+    {
+      "intent": "compare",
+      "question": "What makes one provider clearer than another about minimum asset or engagement requirements?",
+      "whyItMatters": "Completeness, freshness and evidence are safer comparison signals than promotional volume."
+    },
+    {
+      "intent": "act",
+      "question": "Can a buyer request an initial discovery meeting or ask for a service and fee guide without searching across several pages?",
+      "whyItMatters": "The next step should be explicit, accessible and connected to the relevant service context."
+    },
+    {
+      "intent": "act",
+      "question": "What information is needed to submit a secure planning enquiry or book an existing-client review?",
+      "whyItMatters": "A structured action route reduces avoidable back-and-forth while preserving human approval where it matters."
+    }
+  ],
+  "trustedSources": [
+    {
+      "label": "FCA Financial Services Register",
+      "url": "https://register.fca.org.uk/s/",
+      "sourceType": "regulator",
+      "supports": [
+        "authorisation, permissions and individual status"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "MoneyHelper choosing a financial adviser",
+      "url": "https://www.moneyhelper.org.uk/en/getting-help-and-advice/financial-advisers/choosing-a-financial-adviser",
+      "sourceType": "government",
+      "supports": [
+        "consumer checks, adviser types and charging questions"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "Financial Services Compensation Scheme",
+      "url": "https://www.fscs.org.uk/check/check-your-money-is-protected/",
+      "sourceType": "official-directory",
+      "supports": [
+        "protection checks where applicable"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "Financial Ombudsman Service investments",
+      "url": "https://www.financial-ombudsman.org.uk/consumers/complaints-can-help/investments",
+      "sourceType": "regulator",
+      "supports": [
+        "complaint routes for investment and advice services"
+      ],
+      "reviewedAt": "2026-08-15"
+    }
+  ],
+  "factsAIShouldUnderstand": [
+    "Financial advisers may offer different combinations of retirement planning, investment advice and pension advice; a provider should state its actual scope rather than rely on the industry category alone.",
+    "The primary audiences commonly include financial advice firms, independent advisers, wealth-planning practices, but each provider should identify the customers it is equipped and willing to serve.",
+    "Responsibility may sit with a principal adviser, or a compliance officer, or a managing director, so named roles and contact ownership help a buyer understand who is accountable.",
+    "FCA Financial Services Register is a relevant public evidence source for authorisation, permissions and individual status.",
+    "MoneyHelper choosing a financial adviser can support verification of consumer checks, adviser types and charging questions.",
+    "A useful description separates protection planning and estate planning coordination from adjacent services that may require different expertise, evidence or approval.",
+    "The action journey should make it clear how to request an initial discovery meeting, how to ask for a service and fee guide, and when a human will review the request.",
+    "Public information should address how personal recommendations and risk discussions are conducted without implying that a generic web answer replaces case-specific professional judgement."
+  ],
+  "commonVisibilityGaps": [
+    "A buyer cannot confirm whether the firm and adviser are authorised for the relevant activity because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm which client profiles and advice areas are served because the website, directory profile and action page use incomplete or undated details.",
+    "A buyer cannot confirm independent or restricted advice status because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm initial and ongoing charging structure because the website, directory profile and action page use incomplete or undated details.",
+    "A buyer cannot confirm minimum asset or engagement requirements because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm how personal recommendations and risk discussions are conducted because the website, directory profile and action page use incomplete or undated details."
+  ],
+  "comparisonCriteria": [
+    "Relevant service fit across retirement planning, investment advice and pension advice",
+    "Clarity about whether the firm and adviser are authorised for the relevant activity",
+    "Verifiable evidence from FCA Financial Services Register or another applicable official source",
+    "Transparent explanation of initial and ongoing charging structure",
+    "A usable route to request an initial discovery meeting",
+    "Responsible boundaries for how personal recommendations and risk discussions are conducted"
+  ],
+  "trustSignals": [
+    "A current, matching record or guidance reference from FCA Financial Services Register",
+    "A relevant verification route through MoneyHelper choosing a financial adviser",
+    "Consistent provider, location and service facts alongside Financial Services Compensation Scheme",
+    "Careful use of claims supported by Financial Ombudsman Service investments",
+    "Named responsible people or roles for cash-flow planning and workplace financial education",
+    "Visible terms, privacy information and a clear process to ask for a service and fee guide"
+  ],
+  "actionPaths": [
+    "request an initial discovery meeting",
+    "ask for a service and fee guide",
+    "submit a secure planning enquiry",
+    "book an existing-client review"
+  ],
+  "agentReadinessOpportunities": [
+    "Collect the minimum structured facts needed to request an initial discovery meeting, then pass the request to the responsible human.",
+    "Route enquiries about protection planning and estate planning coordination to the correct team without presenting a final professional judgement.",
+    "Check that location, availability and service-scope fields are complete before allowing a buyer to submit a secure planning enquiry.",
+    "Acknowledge a request to book an existing-client review, provide the next expected step and preserve an auditable handoff."
+  ],
+  "automationBoundaries": [
+    "personal recommendations require regulated suitability work",
+    "investment performance and outcomes cannot be promised",
+    "sensitive financial information needs a secure, approved collection route"
+  ],
+  "structuredDataRecommendations": [
+    "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
+    "Describe retirement planning, protection planning and ongoing reviews with visible Service information only where the provider genuinely offers them.",
+    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
+  ],
+  "riskNotes": [
+    "Financial advisers guidance on this site is general information, not professional advice about a particular business or customer.",
+    "personal recommendations require regulated suitability work",
+    "LionTech does not guarantee search rankings, AI recommendations, minimum asset or engagement requirements, or future model behaviour."
+  ],
+  "reviewedAt": "2026-08-15",
+  "reviewedBy": "Lion Tech Innovations Ltd",
+  "canonicalPageUrls": {
+    "hub": "https://liontechinnovations.co.uk/industries/financial-advisers",
+    "aiVisibility": "https://liontechinnovations.co.uk/industries/financial-advisers/ai-visibility",
+    "howAiCompares": "https://liontechinnovations.co.uk/industries/financial-advisers/how-ai-compares",
+    "agentReadiness": "https://liontechinnovations.co.uk/industries/financial-advisers/agent-readiness",
+    "checklist": "https://liontechinnovations.co.uk/industries/financial-advisers/checklist"
+  },
+  "primaryAction": {
+    "label": "Get AI Snapshot",
+    "url": "https://liontechinnovations.co.uk/contact#snapshot-enquiry",
+    "actionType": "snapshot-enquiry"
+  }
+}

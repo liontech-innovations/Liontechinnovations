@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "1.0.0",
+  "entity": {
+    "legalName": "Lion Tech Innovations Ltd",
+    "companyNumber": "17068390",
+    "website": "https://liontechinnovations.co.uk",
+    "location": "Manchester-based, serving UK businesses remotely"
+  },
+  "slug": "veterinary-practices",
+  "name": "Veterinary practices",
+  "shortDescription": "Practices where species coverage, clinical services, emergency arrangements, professional registration and medicine boundaries need to be explicit for animal owners.",
+  "fiveGates": {
+    "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
+    "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
+    "trust": "Can material facts be checked against current first-party and applicable authoritative evidence?",
+    "compare": "Can buyers inspect relevant differences using factual criteria rather than unsupported superlatives?",
+    "act": "Can a buyer complete a clear next step with suitable confirmation, escalation and human control?"
+  },
+  "commonServices": [
+    "routine consultations",
+    "vaccinations",
+    "preventive health plans",
+    "diagnostic imaging",
+    "surgery",
+    "dentistry",
+    "emergency care",
+    "referrals"
+  ],
+  "buyerQuestions": [
+    {
+      "intent": "discover",
+      "question": "Which veterinary practices provide routine consultations for practice owners?",
+      "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
+    },
+    {
+      "intent": "discover",
+      "question": "Where can a buyer find a veterinary practice offering vaccinations and preventive health plans?",
+      "whyItMatters": "AI systems need a crawlable connection between the service, the provider entity and the area actually served."
+    },
+    {
+      "intent": "describe",
+      "question": "Does this veterinary practice clearly explain which species and conditions the practice can see?",
+      "whyItMatters": "A precise answer prevents an AI summary from filling gaps with assumptions or outdated third-party text."
+    },
+    {
+      "intent": "describe",
+      "question": "What should a customer expect when asking about diagnostic imaging?",
+      "whyItMatters": "Scope, process and boundaries should be visible before a buyer shares detailed information."
+    },
+    {
+      "intent": "trust",
+      "question": "Which official evidence supports how out-of-hours emergencies are handled?",
+      "whyItMatters": "Public registers and first-party facts should agree so that a buyer can verify rather than merely trust a marketing claim."
+    },
+    {
+      "intent": "trust",
+      "question": "How does the provider evidence which professionals are registered?",
+      "whyItMatters": "Named sources, responsible people and current policies create a traceable trust path."
+    },
+    {
+      "intent": "compare",
+      "question": "How should buyers compare providers on consultation, treatment and medicine costs?",
+      "whyItMatters": "Comparable facts help buyers distinguish genuine service differences without relying on unverified superlatives."
+    },
+    {
+      "intent": "compare",
+      "question": "What makes one provider clearer than another about availability of diagnostics or referral pathways?",
+      "whyItMatters": "Completeness, freshness and evidence are safer comparison signals than promotional volume."
+    },
+    {
+      "intent": "act",
+      "question": "Can a buyer register a pet or book a routine consultation without searching across several pages?",
+      "whyItMatters": "The next step should be explicit, accessible and connected to the relevant service context."
+    },
+    {
+      "intent": "act",
+      "question": "What information is needed to contact the emergency service or request a referral or records transfer?",
+      "whyItMatters": "A structured action route reduces avoidable back-and-forth while preserving human approval where it matters."
+    }
+  ],
+  "trustedSources": [
+    {
+      "label": "RCVS Find a Vet",
+      "url": "https://findavet.rcvs.org.uk/home/",
+      "sourceType": "official-directory",
+      "supports": [
+        "registered veterinary practices and professionals"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "RCVS Code of Professional Conduct",
+      "url": "https://www.rcvs.org.uk/setting-standards/advice-and-guidance/code-of-professional-conduct-for-veterinary-surgeons/",
+      "sourceType": "regulator",
+      "supports": [
+        "professional responsibilities and public information boundaries"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "CMA veterinary services market investigation",
+      "url": "https://www.gov.uk/cma-cases/veterinary-services-market-for-pets-investigation",
+      "sourceType": "government",
+      "supports": [
+        "competition and consumer-information issues in veterinary services"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "Veterinary Medicines Directorate",
+      "url": "https://www.gov.uk/government/organisations/veterinary-medicines-directorate",
+      "sourceType": "government",
+      "supports": [
+        "veterinary medicine regulation and safety information"
+      ],
+      "reviewedAt": "2026-08-15"
+    }
+  ],
+  "factsAIShouldUnderstand": [
+    "Veterinary practices may offer different combinations of routine consultations, vaccinations and preventive health plans; a provider should state its actual scope rather than rely on the industry category alone.",
+    "The primary audiences commonly include practice owners, practice managers, veterinary groups, but each provider should identify the customers it is equipped and willing to serve.",
+    "Responsibility may sit with a clinical director, or a practice manager, or a operations director, so named roles and contact ownership help a buyer understand who is accountable.",
+    "RCVS Find a Vet is a relevant public evidence source for registered veterinary practices and professionals.",
+    "RCVS Code of Professional Conduct can support verification of professional responsibilities and public information boundaries.",
+    "A useful description separates diagnostic imaging and surgery from adjacent services that may require different expertise, evidence or approval.",
+    "The action journey should make it clear how to register a pet, how to book a routine consultation, and when a human will review the request.",
+    "Public information should address how to register an animal and book without implying that a generic web answer replaces case-specific professional judgement."
+  ],
+  "commonVisibilityGaps": [
+    "A buyer cannot confirm which species and conditions the practice can see because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm how out-of-hours emergencies are handled because the website, directory profile and action page use incomplete or undated details.",
+    "A buyer cannot confirm which professionals are registered because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm consultation, treatment and medicine costs because the website, directory profile and action page use incomplete or undated details.",
+    "A buyer cannot confirm availability of diagnostics or referral pathways because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm how to register an animal and book because the website, directory profile and action page use incomplete or undated details."
+  ],
+  "comparisonCriteria": [
+    "Relevant service fit across routine consultations, vaccinations and preventive health plans",
+    "Clarity about which species and conditions the practice can see",
+    "Verifiable evidence from RCVS Find a Vet or another applicable official source",
+    "Transparent explanation of consultation, treatment and medicine costs",
+    "A usable route to register a pet",
+    "Responsible boundaries for how to register an animal and book"
+  ],
+  "trustSignals": [
+    "A current, matching record or guidance reference from RCVS Find a Vet",
+    "A relevant verification route through RCVS Code of Professional Conduct",
+    "Consistent provider, location and service facts alongside CMA veterinary services market investigation",
+    "Careful use of claims supported by Veterinary Medicines Directorate",
+    "Named responsible people or roles for dentistry and emergency care",
+    "Visible terms, privacy information and a clear process to book a routine consultation"
+  ],
+  "actionPaths": [
+    "register a pet",
+    "book a routine consultation",
+    "contact the emergency service",
+    "request a referral or records transfer"
+  ],
+  "agentReadinessOpportunities": [
+    "Collect the minimum structured facts needed to register a pet, then pass the request to the responsible human.",
+    "Route enquiries about diagnostic imaging and surgery to the correct team without presenting a final professional judgement.",
+    "Check that location, availability and service-scope fields are complete before allowing a buyer to contact the emergency service.",
+    "Acknowledge a request to request a referral or records transfer, provide the next expected step and preserve an auditable handoff."
+  ],
+  "automationBoundaries": [
+    "diagnosis, prescribing and clinical advice require a veterinary professional",
+    "emergencies need immediate human-led triage",
+    "medicine availability and pricing must be confirmed for the individual case"
+  ],
+  "structuredDataRecommendations": [
+    "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
+    "Describe routine consultations, diagnostic imaging and referrals with visible Service information only where the provider genuinely offers them.",
+    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
+  ],
+  "riskNotes": [
+    "Veterinary practices guidance on this site is general information, not professional advice about a particular business or customer.",
+    "diagnosis, prescribing and clinical advice require a veterinary professional",
+    "LionTech does not guarantee search rankings, AI recommendations, availability of diagnostics or referral pathways, or future model behaviour."
+  ],
+  "reviewedAt": "2026-08-15",
+  "reviewedBy": "Lion Tech Innovations Ltd",
+  "canonicalPageUrls": {
+    "hub": "https://liontechinnovations.co.uk/industries/veterinary-practices",
+    "aiVisibility": "https://liontechinnovations.co.uk/industries/veterinary-practices/ai-visibility",
+    "howAiCompares": "https://liontechinnovations.co.uk/industries/veterinary-practices/how-ai-compares",
+    "agentReadiness": "https://liontechinnovations.co.uk/industries/veterinary-practices/agent-readiness",
+    "checklist": "https://liontechinnovations.co.uk/industries/veterinary-practices/checklist"
+  },
+  "primaryAction": {
+    "label": "Get AI Snapshot",
+    "url": "https://liontechinnovations.co.uk/contact#snapshot-enquiry",
+    "actionType": "snapshot-enquiry"
+  }
+}

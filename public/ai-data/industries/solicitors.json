@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "1.0.0",
+  "entity": {
+    "legalName": "Lion Tech Innovations Ltd",
+    "companyNumber": "17068390",
+    "website": "https://liontechinnovations.co.uk",
+    "location": "Manchester-based, serving UK businesses remotely"
+  },
+  "slug": "solicitors",
+  "name": "Solicitors",
+  "shortDescription": "Legal practices where regulated identity, areas of law, jurisdiction, lawyer credentials, costs information and enquiry boundaries need careful, verifiable wording.",
+  "fiveGates": {
+    "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
+    "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
+    "trust": "Can material facts be checked against current first-party and applicable authoritative evidence?",
+    "compare": "Can buyers inspect relevant differences using factual criteria rather than unsupported superlatives?",
+    "act": "Can a buyer complete a clear next step with suitable confirmation, escalation and human control?"
+  },
+  "commonServices": [
+    "conveyancing",
+    "family law",
+    "employment law",
+    "commercial contracts",
+    "dispute resolution",
+    "wills and probate",
+    "immigration law",
+    "criminal defence"
+  ],
+  "buyerQuestions": [
+    {
+      "intent": "discover",
+      "question": "Which solicitors provide conveyancing for law firm partners?",
+      "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
+    },
+    {
+      "intent": "discover",
+      "question": "Where can a buyer find a solicitors firm offering family law and employment law?",
+      "whyItMatters": "AI systems need a crawlable connection between the service, the provider entity and the area actually served."
+    },
+    {
+      "intent": "describe",
+      "question": "Does this solicitors firm clearly explain whether the firm and individual are regulated?",
+      "whyItMatters": "A precise answer prevents an AI summary from filling gaps with assumptions or outdated third-party text."
+    },
+    {
+      "intent": "describe",
+      "question": "What should a customer expect when asking about commercial contracts?",
+      "whyItMatters": "Scope, process and boundaries should be visible before a buyer shares detailed information."
+    },
+    {
+      "intent": "trust",
+      "question": "Which official evidence supports which areas of law and jurisdictions are covered?",
+      "whyItMatters": "Public registers and first-party facts should agree so that a buyer can verify rather than merely trust a marketing claim."
+    },
+    {
+      "intent": "trust",
+      "question": "How does the provider evidence who will handle the matter?",
+      "whyItMatters": "Named sources, responsible people and current policies create a traceable trust path."
+    },
+    {
+      "intent": "compare",
+      "question": "How should buyers compare providers on how costs and funding options are explained?",
+      "whyItMatters": "Comparable facts help buyers distinguish genuine service differences without relying on unverified superlatives."
+    },
+    {
+      "intent": "compare",
+      "question": "What makes one provider clearer than another about whether the firm accepts the type and urgency of matter?",
+      "whyItMatters": "Completeness, freshness and evidence are safer comparison signals than promotional volume."
+    },
+    {
+      "intent": "act",
+      "question": "Can a buyer request an initial legal consultation or submit a confidential matter summary without searching across several pages?",
+      "whyItMatters": "The next step should be explicit, accessible and connected to the relevant service context."
+    },
+    {
+      "intent": "act",
+      "question": "What information is needed to ask about costs and funding or contact the firm about an urgent deadline?",
+      "whyItMatters": "A structured action route reduces avoidable back-and-forth while preserving human approval where it matters."
+    }
+  ],
+  "trustedSources": [
+    {
+      "label": "SRA Solicitors Register",
+      "url": "https://www.sra.org.uk/consumers/register/",
+      "sourceType": "regulator",
+      "supports": [
+        "regulated firm and solicitor records"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "Law Society Find a Solicitor",
+      "url": "https://solicitors.lawsociety.org.uk/",
+      "sourceType": "official-directory",
+      "supports": [
+        "practice areas, locations and accredited services where listed"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "Legal Ombudsman",
+      "url": "https://www.legalombudsman.org.uk/",
+      "sourceType": "regulator",
+      "supports": [
+        "consumer complaint routes and service expectations"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "GOV.UK legal aid finder",
+      "url": "https://www.gov.uk/check-legal-aid",
+      "sourceType": "government",
+      "supports": [
+        "official legal-aid eligibility and service routes"
+      ],
+      "reviewedAt": "2026-08-15"
+    }
+  ],
+  "factsAIShouldUnderstand": [
+    "Solicitors may offer different combinations of conveyancing, family law and employment law; a provider should state its actual scope rather than rely on the industry category alone.",
+    "The primary audiences commonly include law firm partners, practice managers, legal operations teams, but each provider should identify the customers it is equipped and willing to serve.",
+    "Responsibility may sit with a managing partner, or a practice manager, or a business development director, so named roles and contact ownership help a buyer understand who is accountable.",
+    "SRA Solicitors Register is a relevant public evidence source for regulated firm and solicitor records.",
+    "Law Society Find a Solicitor can support verification of practice areas, locations and accredited services where listed.",
+    "A useful description separates commercial contracts and dispute resolution from adjacent services that may require different expertise, evidence or approval.",
+    "The action journey should make it clear how to request an initial legal consultation, how to submit a confidential matter summary, and when a human will review the request.",
+    "Public information should address how conflicts checks and confidential intake begin without implying that a generic web answer replaces case-specific professional judgement."
+  ],
+  "commonVisibilityGaps": [
+    "A buyer cannot confirm whether the firm and individual are regulated because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm which areas of law and jurisdictions are covered because the website, directory profile and action page use incomplete or undated details.",
+    "A buyer cannot confirm who will handle the matter because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm how costs and funding options are explained because the website, directory profile and action page use incomplete or undated details.",
+    "A buyer cannot confirm whether the firm accepts the type and urgency of matter because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm how conflicts checks and confidential intake begin because the website, directory profile and action page use incomplete or undated details."
+  ],
+  "comparisonCriteria": [
+    "Relevant service fit across conveyancing, family law and employment law",
+    "Clarity about whether the firm and individual are regulated",
+    "Verifiable evidence from SRA Solicitors Register or another applicable official source",
+    "Transparent explanation of how costs and funding options are explained",
+    "A usable route to request an initial legal consultation",
+    "Responsible boundaries for how conflicts checks and confidential intake begin"
+  ],
+  "trustSignals": [
+    "A current, matching record or guidance reference from SRA Solicitors Register",
+    "A relevant verification route through Law Society Find a Solicitor",
+    "Consistent provider, location and service facts alongside Legal Ombudsman",
+    "Careful use of claims supported by GOV.UK legal aid finder",
+    "Named responsible people or roles for wills and probate and immigration law",
+    "Visible terms, privacy information and a clear process to submit a confidential matter summary"
+  ],
+  "actionPaths": [
+    "request an initial legal consultation",
+    "submit a confidential matter summary",
+    "ask about costs and funding",
+    "contact the firm about an urgent deadline"
+  ],
+  "agentReadinessOpportunities": [
+    "Collect the minimum structured facts needed to request an initial legal consultation, then pass the request to the responsible human.",
+    "Route enquiries about commercial contracts and dispute resolution to the correct team without presenting a final professional judgement.",
+    "Check that location, availability and service-scope fields are complete before allowing a buyer to ask about costs and funding.",
+    "Acknowledge a request to contact the firm about an urgent deadline, provide the next expected step and preserve an auditable handoff."
+  ],
+  "automationBoundaries": [
+    "legal advice and case acceptance require an authorised human",
+    "conflicts checks must occur before confidential detail is invited or relied upon",
+    "outcomes, timescales and costs cannot be guaranteed by an automated response"
+  ],
+  "structuredDataRecommendations": [
+    "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
+    "Describe conveyancing, commercial contracts and criminal defence with visible Service information only where the provider genuinely offers them.",
+    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
+  ],
+  "riskNotes": [
+    "Solicitors guidance on this site is general information, not professional advice about a particular business or customer.",
+    "legal advice and case acceptance require an authorised human",
+    "LionTech does not guarantee search rankings, AI recommendations, whether the firm accepts the type and urgency of matter, or future model behaviour."
+  ],
+  "reviewedAt": "2026-08-15",
+  "reviewedBy": "Lion Tech Innovations Ltd",
+  "canonicalPageUrls": {
+    "hub": "https://liontechinnovations.co.uk/industries/solicitors",
+    "aiVisibility": "https://liontechinnovations.co.uk/industries/solicitors/ai-visibility",
+    "howAiCompares": "https://liontechinnovations.co.uk/industries/solicitors/how-ai-compares",
+    "agentReadiness": "https://liontechinnovations.co.uk/industries/solicitors/agent-readiness",
+    "checklist": "https://liontechinnovations.co.uk/industries/solicitors/checklist"
+  },
+  "primaryAction": {
+    "label": "Get AI Snapshot",
+    "url": "https://liontechinnovations.co.uk/contact#snapshot-enquiry",
+    "actionType": "snapshot-enquiry"
+  }
+}

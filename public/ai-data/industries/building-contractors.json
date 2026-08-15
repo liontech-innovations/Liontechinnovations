@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "1.0.0",
+  "entity": {
+    "legalName": "Lion Tech Innovations Ltd",
+    "companyNumber": "17068390",
+    "website": "https://liontechinnovations.co.uk",
+    "location": "Manchester-based, serving UK businesses remotely"
+  },
+  "slug": "building-contractors",
+  "name": "Building contractors",
+  "shortDescription": "Residential and commercial builders whose project scope, geographic coverage, permissions, trade responsibilities and estimate-to-contract pathway need transparent boundaries.",
+  "fiveGates": {
+    "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
+    "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
+    "trust": "Can material facts be checked against current first-party and applicable authoritative evidence?",
+    "compare": "Can buyers inspect relevant differences using factual criteria rather than unsupported superlatives?",
+    "act": "Can a buyer complete a clear next step with suitable confirmation, escalation and human control?"
+  },
+  "commonServices": [
+    "home extensions",
+    "renovations",
+    "loft conversions",
+    "new-build projects",
+    "commercial fit-outs",
+    "structural alterations",
+    "project management",
+    "planned maintenance"
+  ],
+  "buyerQuestions": [
+    {
+      "intent": "discover",
+      "question": "Which building contractors provide home extensions for building company owners?",
+      "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
+    },
+    {
+      "intent": "discover",
+      "question": "Where can a buyer find a building contractor offering renovations and loft conversions?",
+      "whyItMatters": "AI systems need a crawlable connection between the service, the provider entity and the area actually served."
+    },
+    {
+      "intent": "describe",
+      "question": "Does this building contractor clearly explain which project sizes, sectors and locations are served?",
+      "whyItMatters": "A precise answer prevents an AI summary from filling gaps with assumptions or outdated third-party text."
+    },
+    {
+      "intent": "describe",
+      "question": "What should a customer expect when asking about new-build projects?",
+      "whyItMatters": "Scope, process and boundaries should be visible before a buyer shares detailed information."
+    },
+    {
+      "intent": "trust",
+      "question": "Which official evidence supports who manages design, permissions and building control?",
+      "whyItMatters": "Public registers and first-party facts should agree so that a buyer can verify rather than merely trust a marketing claim."
+    },
+    {
+      "intent": "trust",
+      "question": "How does the provider evidence how estimates, allowances and variations are handled?",
+      "whyItMatters": "Named sources, responsible people and current policies create a traceable trust path."
+    },
+    {
+      "intent": "compare",
+      "question": "How should buyers compare providers on insurance, warranties and subcontractor responsibilities?",
+      "whyItMatters": "Comparable facts help buyers distinguish genuine service differences without relying on unverified superlatives."
+    },
+    {
+      "intent": "compare",
+      "question": "What makes one provider clearer than another about programme, access and site-safety expectations?",
+      "whyItMatters": "Completeness, freshness and evidence are safer comparison signals than promotional volume."
+    },
+    {
+      "intent": "act",
+      "question": "Can a buyer submit a project brief or request a site visit without searching across several pages?",
+      "whyItMatters": "The next step should be explicit, accessible and connected to the relevant service context."
+    },
+    {
+      "intent": "act",
+      "question": "What information is needed to ask for budget and programme guidance or start a tender or pre-construction conversation?",
+      "whyItMatters": "A structured action route reduces avoidable back-and-forth while preserving human approval where it matters."
+    }
+  ],
+  "trustedSources": [
+    {
+      "label": "TrustMark business directory",
+      "url": "https://www.trustmark.org.uk/homeowner/find-a-tradesperson",
+      "sourceType": "official-directory",
+      "supports": [
+        "scheme business discovery where applicable"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "GOV.UK Competent Person Register",
+      "url": "https://www.gov.uk/building-regulations-competent-person-schemes",
+      "sourceType": "government",
+      "supports": [
+        "self-certification scheme information for relevant work"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "Planning Portal",
+      "url": "https://www.planningportal.co.uk/",
+      "sourceType": "primary-industry-source",
+      "supports": [
+        "planning and building-control information for England and Wales"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "HSE construction guidance",
+      "url": "https://www.hse.gov.uk/construction/",
+      "sourceType": "government",
+      "supports": [
+        "construction health and safety duties and guidance"
+      ],
+      "reviewedAt": "2026-08-15"
+    }
+  ],
+  "factsAIShouldUnderstand": [
+    "Building contractors may offer different combinations of home extensions, renovations and loft conversions; a provider should state its actual scope rather than rely on the industry category alone.",
+    "The primary audiences commonly include building company owners, main contractors, design-and-build teams, but each provider should identify the customers it is equipped and willing to serve.",
+    "Responsibility may sit with a managing director, or a contracts manager, or a commercial manager, so named roles and contact ownership help a buyer understand who is accountable.",
+    "TrustMark business directory is a relevant public evidence source for scheme business discovery where applicable.",
+    "GOV.UK Competent Person Register can support verification of self-certification scheme information for relevant work.",
+    "A useful description separates new-build projects and commercial fit-outs from adjacent services that may require different expertise, evidence or approval.",
+    "The action journey should make it clear how to submit a project brief, how to request a site visit, and when a human will review the request.",
+    "Public information should address how to submit plans and request an initial review without implying that a generic web answer replaces case-specific professional judgement."
+  ],
+  "commonVisibilityGaps": [
+    "A buyer cannot confirm which project sizes, sectors and locations are served because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm who manages design, permissions and building control because the website, directory profile and action page use incomplete or undated details.",
+    "A buyer cannot confirm how estimates, allowances and variations are handled because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm insurance, warranties and subcontractor responsibilities because the website, directory profile and action page use incomplete or undated details.",
+    "A buyer cannot confirm programme, access and site-safety expectations because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm how to submit plans and request an initial review because the website, directory profile and action page use incomplete or undated details."
+  ],
+  "comparisonCriteria": [
+    "Relevant service fit across home extensions, renovations and loft conversions",
+    "Clarity about which project sizes, sectors and locations are served",
+    "Verifiable evidence from TrustMark business directory or another applicable official source",
+    "Transparent explanation of insurance, warranties and subcontractor responsibilities",
+    "A usable route to submit a project brief",
+    "Responsible boundaries for how to submit plans and request an initial review"
+  ],
+  "trustSignals": [
+    "A current, matching record or guidance reference from TrustMark business directory",
+    "A relevant verification route through GOV.UK Competent Person Register",
+    "Consistent provider, location and service facts alongside Planning Portal",
+    "Careful use of claims supported by HSE construction guidance",
+    "Named responsible people or roles for structural alterations and project management",
+    "Visible terms, privacy information and a clear process to request a site visit"
+  ],
+  "actionPaths": [
+    "submit a project brief",
+    "request a site visit",
+    "ask for budget and programme guidance",
+    "start a tender or pre-construction conversation"
+  ],
+  "agentReadinessOpportunities": [
+    "Collect the minimum structured facts needed to submit a project brief, then pass the request to the responsible human.",
+    "Route enquiries about new-build projects and commercial fit-outs to the correct team without presenting a final professional judgement.",
+    "Check that location, availability and service-scope fields are complete before allowing a buyer to ask for budget and programme guidance.",
+    "Acknowledge a request to start a tender or pre-construction conversation, provide the next expected step and preserve an auditable handoff."
+  ],
+  "automationBoundaries": [
+    "project feasibility and pricing require drawings, site evidence and professional review",
+    "planning permission and building-control approval cannot be promised",
+    "structural, safety and contractual decisions require qualified humans"
+  ],
+  "structuredDataRecommendations": [
+    "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
+    "Describe home extensions, new-build projects and planned maintenance with visible Service information only where the provider genuinely offers them.",
+    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
+  ],
+  "riskNotes": [
+    "Building contractors guidance on this site is general information, not professional advice about a particular business or customer.",
+    "project feasibility and pricing require drawings, site evidence and professional review",
+    "LionTech does not guarantee search rankings, AI recommendations, programme, access and site-safety expectations, or future model behaviour."
+  ],
+  "reviewedAt": "2026-08-15",
+  "reviewedBy": "Lion Tech Innovations Ltd",
+  "canonicalPageUrls": {
+    "hub": "https://liontechinnovations.co.uk/industries/building-contractors",
+    "aiVisibility": "https://liontechinnovations.co.uk/industries/building-contractors/ai-visibility",
+    "howAiCompares": "https://liontechinnovations.co.uk/industries/building-contractors/how-ai-compares",
+    "agentReadiness": "https://liontechinnovations.co.uk/industries/building-contractors/agent-readiness",
+    "checklist": "https://liontechinnovations.co.uk/industries/building-contractors/checklist"
+  },
+  "primaryAction": {
+    "label": "Get AI Snapshot",
+    "url": "https://liontechinnovations.co.uk/contact#snapshot-enquiry",
+    "actionType": "snapshot-enquiry"
+  }
+}

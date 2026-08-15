@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "1.0.0",
+  "entity": {
+    "legalName": "Lion Tech Innovations Ltd",
+    "companyNumber": "17068390",
+    "website": "https://liontechinnovations.co.uk",
+    "location": "Manchester-based, serving UK businesses remotely"
+  },
+  "slug": "domiciliary-care-providers",
+  "name": "Domiciliary care providers",
+  "shortDescription": "Home-care organisations whose regulated activity, service area, care scope, inspection evidence and referral pathway must be easy for families and commissioners to verify.",
+  "fiveGates": {
+    "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
+    "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
+    "trust": "Can material facts be checked against current first-party and applicable authoritative evidence?",
+    "compare": "Can buyers inspect relevant differences using factual criteria rather than unsupported superlatives?",
+    "act": "Can a buyer complete a clear next step with suitable confirmation, escalation and human control?"
+  },
+  "commonServices": [
+    "personal care visits",
+    "medication support",
+    "meal preparation",
+    "companionship",
+    "live-in care",
+    "respite care",
+    "hospital discharge support",
+    "night care"
+  ],
+  "buyerQuestions": [
+    {
+      "intent": "discover",
+      "question": "Which domiciliary care providers provide personal care visits for registered providers?",
+      "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
+    },
+    {
+      "intent": "discover",
+      "question": "Where can a buyer find a domiciliary care provider offering medication support and meal preparation?",
+      "whyItMatters": "AI systems need a crawlable connection between the service, the provider entity and the area actually served."
+    },
+    {
+      "intent": "describe",
+      "question": "Does this domiciliary care provider clearly explain whether the provider is registered for the relevant activity?",
+      "whyItMatters": "A precise answer prevents an AI summary from filling gaps with assumptions or outdated third-party text."
+    },
+    {
+      "intent": "describe",
+      "question": "What should a customer expect when asking about companionship?",
+      "whyItMatters": "Scope, process and boundaries should be visible before a buyer shares detailed information."
+    },
+    {
+      "intent": "trust",
+      "question": "Which official evidence supports the exact towns or postcodes served?",
+      "whyItMatters": "Public registers and first-party facts should agree so that a buyer can verify rather than merely trust a marketing claim."
+    },
+    {
+      "intent": "trust",
+      "question": "How does the provider evidence minimum visit lengths and availability?",
+      "whyItMatters": "Named sources, responsible people and current policies create a traceable trust path."
+    },
+    {
+      "intent": "compare",
+      "question": "How should buyers compare providers on how assessments and care plans are agreed?",
+      "whyItMatters": "Comparable facts help buyers distinguish genuine service differences without relying on unverified superlatives."
+    },
+    {
+      "intent": "compare",
+      "question": "What makes one provider clearer than another about inspection findings and provider identity?",
+      "whyItMatters": "Completeness, freshness and evidence are safer comparison signals than promotional volume."
+    },
+    {
+      "intent": "act",
+      "question": "Can a buyer request a care assessment or make a professional referral without searching across several pages?",
+      "whyItMatters": "The next step should be explicit, accessible and connected to the relevant service context."
+    },
+    {
+      "intent": "act",
+      "question": "What information is needed to ask about service-area availability or raise a safeguarding or service concern?",
+      "whyItMatters": "A structured action route reduces avoidable back-and-forth while preserving human approval where it matters."
+    }
+  ],
+  "trustedSources": [
+    {
+      "label": "CQC personal care registration guidance",
+      "url": "https://www.cqc.org.uk/guidance-regulation/providers/registration/personal-care-registration-homecare-agencies",
+      "sourceType": "regulator",
+      "supports": [
+        "registration expectations for home-care agencies providing personal care"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "Care Quality Commission service finder",
+      "url": "https://www.cqc.org.uk/care-services",
+      "sourceType": "regulator",
+      "supports": [
+        "inspection reports, ratings, service locations and provider identity"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "Skills for Care",
+      "url": "https://www.skillsforcare.org.uk/",
+      "sourceType": "professional-body",
+      "supports": [
+        "adult social care workforce guidance and sector standards"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "NICE home care guidance",
+      "url": "https://www.nice.org.uk/guidance/ng21",
+      "sourceType": "technical-standard",
+      "supports": [
+        "person-centred home-care planning and delivery guidance"
+      ],
+      "reviewedAt": "2026-08-15"
+    }
+  ],
+  "factsAIShouldUnderstand": [
+    "Domiciliary care providers may offer different combinations of personal care visits, medication support and meal preparation; a provider should state its actual scope rather than rely on the industry category alone.",
+    "The primary audiences commonly include registered providers, care operations teams, home-care branches, but each provider should identify the customers it is equipped and willing to serve.",
+    "Responsibility may sit with a registered manager, or a nominated individual, or a operations director, so named roles and contact ownership help a buyer understand who is accountable.",
+    "CQC personal care registration guidance is a relevant public evidence source for registration expectations for home-care agencies providing personal care.",
+    "Care Quality Commission service finder can support verification of inspection reports, ratings, service locations and provider identity.",
+    "A useful description separates companionship and live-in care from adjacent services that may require different expertise, evidence or approval.",
+    "The action journey should make it clear how to request a care assessment, how to make a professional referral, and when a human will review the request.",
+    "Public information should address how families, professionals or commissioners make a referral without implying that a generic web answer replaces case-specific professional judgement."
+  ],
+  "commonVisibilityGaps": [
+    "A buyer cannot confirm whether the provider is registered for the relevant activity because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm the exact towns or postcodes served because the website, directory profile and action page use incomplete or undated details.",
+    "A buyer cannot confirm minimum visit lengths and availability because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm how assessments and care plans are agreed because the website, directory profile and action page use incomplete or undated details.",
+    "A buyer cannot confirm inspection findings and provider identity because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm how families, professionals or commissioners make a referral because the website, directory profile and action page use incomplete or undated details."
+  ],
+  "comparisonCriteria": [
+    "Relevant service fit across personal care visits, medication support and meal preparation",
+    "Clarity about whether the provider is registered for the relevant activity",
+    "Verifiable evidence from CQC personal care registration guidance or another applicable official source",
+    "Transparent explanation of how assessments and care plans are agreed",
+    "A usable route to request a care assessment",
+    "Responsible boundaries for how families, professionals or commissioners make a referral"
+  ],
+  "trustSignals": [
+    "A current, matching record or guidance reference from CQC personal care registration guidance",
+    "A relevant verification route through Care Quality Commission service finder",
+    "Consistent provider, location and service facts alongside Skills for Care",
+    "Careful use of claims supported by NICE home care guidance",
+    "Named responsible people or roles for respite care and hospital discharge support",
+    "Visible terms, privacy information and a clear process to make a professional referral"
+  ],
+  "actionPaths": [
+    "request a care assessment",
+    "make a professional referral",
+    "ask about service-area availability",
+    "raise a safeguarding or service concern"
+  ],
+  "agentReadinessOpportunities": [
+    "Collect the minimum structured facts needed to request a care assessment, then pass the request to the responsible human.",
+    "Route enquiries about companionship and live-in care to the correct team without presenting a final professional judgement.",
+    "Check that location, availability and service-scope fields are complete before allowing a buyer to ask about service-area availability.",
+    "Acknowledge a request to raise a safeguarding or service concern, provide the next expected step and preserve an auditable handoff."
+  ],
+  "automationBoundaries": [
+    "care needs and risk assessments require qualified human oversight",
+    "safeguarding concerns must reach the designated human process",
+    "availability cannot be promised until staffing and care requirements are reviewed"
+  ],
+  "structuredDataRecommendations": [
+    "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
+    "Describe personal care visits, companionship and night care with visible Service information only where the provider genuinely offers them.",
+    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
+  ],
+  "riskNotes": [
+    "Domiciliary care providers guidance on this site is general information, not professional advice about a particular business or customer.",
+    "care needs and risk assessments require qualified human oversight",
+    "LionTech does not guarantee search rankings, AI recommendations, inspection findings and provider identity, or future model behaviour."
+  ],
+  "reviewedAt": "2026-08-15",
+  "reviewedBy": "Lion Tech Innovations Ltd",
+  "canonicalPageUrls": {
+    "hub": "https://liontechinnovations.co.uk/industries/domiciliary-care-providers",
+    "aiVisibility": "https://liontechinnovations.co.uk/industries/domiciliary-care-providers/ai-visibility",
+    "howAiCompares": "https://liontechinnovations.co.uk/industries/domiciliary-care-providers/how-ai-compares",
+    "agentReadiness": "https://liontechinnovations.co.uk/industries/domiciliary-care-providers/agent-readiness",
+    "checklist": "https://liontechinnovations.co.uk/industries/domiciliary-care-providers/checklist"
+  },
+  "primaryAction": {
+    "label": "Get AI Snapshot",
+    "url": "https://liontechinnovations.co.uk/contact#snapshot-enquiry",
+    "actionType": "snapshot-enquiry"
+  }
+}

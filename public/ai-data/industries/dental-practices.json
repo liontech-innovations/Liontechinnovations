@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "1.0.0",
+  "entity": {
+    "legalName": "Lion Tech Innovations Ltd",
+    "companyNumber": "17068390",
+    "website": "https://liontechinnovations.co.uk",
+    "location": "Manchester-based, serving UK businesses remotely"
+  },
+  "slug": "dental-practices",
+  "name": "Dental practices",
+  "shortDescription": "NHS, private and mixed dental practices that need treatment scope, clinician registration, access arrangements and booking information to remain consistent across public sources.",
+  "fiveGates": {
+    "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
+    "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
+    "trust": "Can material facts be checked against current first-party and applicable authoritative evidence?",
+    "compare": "Can buyers inspect relevant differences using factual criteria rather than unsupported superlatives?",
+    "act": "Can a buyer complete a clear next step with suitable confirmation, escalation and human control?"
+  },
+  "commonServices": [
+    "routine examinations",
+    "hygiene appointments",
+    "restorative dentistry",
+    "root canal treatment",
+    "crowns and bridges",
+    "dental implants",
+    "orthodontic treatment",
+    "emergency dental appointments"
+  ],
+  "buyerQuestions": [
+    {
+      "intent": "discover",
+      "question": "Which dental practices provide routine examinations for practice owners?",
+      "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
+    },
+    {
+      "intent": "discover",
+      "question": "Where can a buyer find a dental practice offering hygiene appointments and restorative dentistry?",
+      "whyItMatters": "AI systems need a crawlable connection between the service, the provider entity and the area actually served."
+    },
+    {
+      "intent": "describe",
+      "question": "Does this dental practice clearly explain whether the practice accepts new NHS, private or mixed patients?",
+      "whyItMatters": "A precise answer prevents an AI summary from filling gaps with assumptions or outdated third-party text."
+    },
+    {
+      "intent": "describe",
+      "question": "What should a customer expect when asking about root canal treatment?",
+      "whyItMatters": "Scope, process and boundaries should be visible before a buyer shares detailed information."
+    },
+    {
+      "intent": "trust",
+      "question": "Which official evidence supports which clinicians provide a named treatment?",
+      "whyItMatters": "Public registers and first-party facts should agree so that a buyer can verify rather than merely trust a marketing claim."
+    },
+    {
+      "intent": "trust",
+      "question": "How does the provider evidence current opening hours and emergency access?",
+      "whyItMatters": "Named sources, responsible people and current policies create a traceable trust path."
+    },
+    {
+      "intent": "compare",
+      "question": "How should buyers compare providers on treatment fees and consultation steps?",
+      "whyItMatters": "Comparable facts help buyers distinguish genuine service differences without relying on unverified superlatives."
+    },
+    {
+      "intent": "compare",
+      "question": "What makes one provider clearer than another about accessibility and location information?",
+      "whyItMatters": "Completeness, freshness and evidence are safer comparison signals than promotional volume."
+    },
+    {
+      "intent": "act",
+      "question": "Can a buyer request a new-patient appointment or book an emergency assessment without searching across several pages?",
+      "whyItMatters": "The next step should be explicit, accessible and connected to the relevant service context."
+    },
+    {
+      "intent": "act",
+      "question": "What information is needed to ask about a named treatment or contact the practice about access needs?",
+      "whyItMatters": "A structured action route reduces avoidable back-and-forth while preserving human approval where it matters."
+    }
+  ],
+  "trustedSources": [
+    {
+      "label": "General Dental Council register",
+      "url": "https://olr.gdc-uk.org/",
+      "sourceType": "regulator",
+      "supports": [
+        "dental professional registration and specialist-list status"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "Care Quality Commission service finder",
+      "url": "https://www.cqc.org.uk/care-services",
+      "sourceType": "regulator",
+      "supports": [
+        "provider registration, inspection information and locations in England"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "NHS Find a dentist",
+      "url": "https://www.nhs.uk/service-search/find-a-dentist",
+      "sourceType": "official-directory",
+      "supports": [
+        "public dental service discovery and location information"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "General Dental Council standards and guidance",
+      "url": "https://www.gdc-uk.org/standards-guidance",
+      "sourceType": "regulator",
+      "supports": [
+        "professional standards and scope guidance"
+      ],
+      "reviewedAt": "2026-08-15"
+    }
+  ],
+  "factsAIShouldUnderstand": [
+    "Dental practices may offer different combinations of routine examinations, hygiene appointments and restorative dentistry; a provider should state its actual scope rather than rely on the industry category alone.",
+    "The primary audiences commonly include practice owners, practice managers, dental groups, but each provider should identify the customers it is equipped and willing to serve.",
+    "Responsibility may sit with a principal dentist, or a practice manager, or a operations director, so named roles and contact ownership help a buyer understand who is accountable.",
+    "General Dental Council register is a relevant public evidence source for dental professional registration and specialist-list status.",
+    "Care Quality Commission service finder can support verification of provider registration, inspection information and locations in England.",
+    "A useful description separates root canal treatment and crowns and bridges from adjacent services that may require different expertise, evidence or approval.",
+    "The action journey should make it clear how to request a new-patient appointment, how to book an emergency assessment, and when a human will review the request.",
+    "Public information should address how to book, change or cancel an appointment without implying that a generic web answer replaces case-specific professional judgement."
+  ],
+  "commonVisibilityGaps": [
+    "A buyer cannot confirm whether the practice accepts new NHS, private or mixed patients because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm which clinicians provide a named treatment because the website, directory profile and action page use incomplete or undated details.",
+    "A buyer cannot confirm current opening hours and emergency access because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm treatment fees and consultation steps because the website, directory profile and action page use incomplete or undated details.",
+    "A buyer cannot confirm accessibility and location information because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm how to book, change or cancel an appointment because the website, directory profile and action page use incomplete or undated details."
+  ],
+  "comparisonCriteria": [
+    "Relevant service fit across routine examinations, hygiene appointments and restorative dentistry",
+    "Clarity about whether the practice accepts new NHS, private or mixed patients",
+    "Verifiable evidence from General Dental Council register or another applicable official source",
+    "Transparent explanation of treatment fees and consultation steps",
+    "A usable route to request a new-patient appointment",
+    "Responsible boundaries for how to book, change or cancel an appointment"
+  ],
+  "trustSignals": [
+    "A current, matching record or guidance reference from General Dental Council register",
+    "A relevant verification route through Care Quality Commission service finder",
+    "Consistent provider, location and service facts alongside NHS Find a dentist",
+    "Careful use of claims supported by General Dental Council standards and guidance",
+    "Named responsible people or roles for dental implants and orthodontic treatment",
+    "Visible terms, privacy information and a clear process to book an emergency assessment"
+  ],
+  "actionPaths": [
+    "request a new-patient appointment",
+    "book an emergency assessment",
+    "ask about a named treatment",
+    "contact the practice about access needs"
+  ],
+  "agentReadinessOpportunities": [
+    "Collect the minimum structured facts needed to request a new-patient appointment, then pass the request to the responsible human.",
+    "Route enquiries about root canal treatment and crowns and bridges to the correct team without presenting a final professional judgement.",
+    "Check that location, availability and service-scope fields are complete before allowing a buyer to ask about a named treatment.",
+    "Acknowledge a request to contact the practice about access needs, provide the next expected step and preserve an auditable handoff."
+  ],
+  "automationBoundaries": [
+    "diagnosis and treatment suitability require a registered dental professional",
+    "urgent pain, swelling or trauma needs appropriate clinical triage",
+    "fee estimates must not be presented as a final clinical treatment plan"
+  ],
+  "structuredDataRecommendations": [
+    "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
+    "Describe routine examinations, root canal treatment and emergency dental appointments with visible Service information only where the provider genuinely offers them.",
+    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
+  ],
+  "riskNotes": [
+    "Dental practices guidance on this site is general information, not professional advice about a particular business or customer.",
+    "diagnosis and treatment suitability require a registered dental professional",
+    "LionTech does not guarantee search rankings, AI recommendations, accessibility and location information, or future model behaviour."
+  ],
+  "reviewedAt": "2026-08-15",
+  "reviewedBy": "Lion Tech Innovations Ltd",
+  "canonicalPageUrls": {
+    "hub": "https://liontechinnovations.co.uk/industries/dental-practices",
+    "aiVisibility": "https://liontechinnovations.co.uk/industries/dental-practices/ai-visibility",
+    "howAiCompares": "https://liontechinnovations.co.uk/industries/dental-practices/how-ai-compares",
+    "agentReadiness": "https://liontechinnovations.co.uk/industries/dental-practices/agent-readiness",
+    "checklist": "https://liontechinnovations.co.uk/industries/dental-practices/checklist"
+  },
+  "primaryAction": {
+    "label": "Get AI Snapshot",
+    "url": "https://liontechinnovations.co.uk/contact#snapshot-enquiry",
+    "actionType": "snapshot-enquiry"
+  }
+}

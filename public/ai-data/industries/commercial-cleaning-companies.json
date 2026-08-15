@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "1.0.0",
+  "entity": {
+    "legalName": "Lion Tech Innovations Ltd",
+    "companyNumber": "17068390",
+    "website": "https://liontechinnovations.co.uk",
+    "location": "Manchester-based, serving UK businesses remotely"
+  },
+  "slug": "commercial-cleaning-companies",
+  "name": "Commercial cleaning companies",
+  "shortDescription": "Contract cleaning providers whose premises coverage, cleaning specification, staffing model, chemical controls, service hours and site-survey route must be explicit.",
+  "fiveGates": {
+    "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
+    "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
+    "trust": "Can material facts be checked against current first-party and applicable authoritative evidence?",
+    "compare": "Can buyers inspect relevant differences using factual criteria rather than unsupported superlatives?",
+    "act": "Can a buyer complete a clear next step with suitable confirmation, escalation and human control?"
+  },
+  "commonServices": [
+    "office cleaning",
+    "clinical-area cleaning",
+    "school cleaning",
+    "retail cleaning",
+    "industrial cleaning",
+    "window cleaning",
+    "deep cleaning",
+    "washroom services"
+  ],
+  "buyerQuestions": [
+    {
+      "intent": "discover",
+      "question": "Which commercial cleaning companies provide office cleaning for cleaning-company owners?",
+      "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
+    },
+    {
+      "intent": "discover",
+      "question": "Where can a buyer find a commercial cleaning company offering clinical-area cleaning and school cleaning?",
+      "whyItMatters": "AI systems need a crawlable connection between the service, the provider entity and the area actually served."
+    },
+    {
+      "intent": "describe",
+      "question": "Does this commercial cleaning company clearly explain which premises types and locations are covered?",
+      "whyItMatters": "A precise answer prevents an AI summary from filling gaps with assumptions or outdated third-party text."
+    },
+    {
+      "intent": "describe",
+      "question": "What should a customer expect when asking about retail cleaning?",
+      "whyItMatters": "Scope, process and boundaries should be visible before a buyer shares detailed information."
+    },
+    {
+      "intent": "trust",
+      "question": "Which official evidence supports how a cleaning specification and frequency are agreed?",
+      "whyItMatters": "Public registers and first-party facts should agree so that a buyer can verify rather than merely trust a marketing claim."
+    },
+    {
+      "intent": "trust",
+      "question": "How does the provider evidence staff vetting, supervision and absence cover?",
+      "whyItMatters": "Named sources, responsible people and current policies create a traceable trust path."
+    },
+    {
+      "intent": "compare",
+      "question": "How should buyers compare providers on chemical, equipment and COSHH controls?",
+      "whyItMatters": "Comparable facts help buyers distinguish genuine service differences without relying on unverified superlatives."
+    },
+    {
+      "intent": "compare",
+      "question": "What makes one provider clearer than another about quality checks, issue escalation and reporting?",
+      "whyItMatters": "Completeness, freshness and evidence are safer comparison signals than promotional volume."
+    },
+    {
+      "intent": "act",
+      "question": "Can a buyer request a site survey or submit a cleaning specification without searching across several pages?",
+      "whyItMatters": "The next step should be explicit, accessible and connected to the relevant service context."
+    },
+    {
+      "intent": "act",
+      "question": "What information is needed to ask for a mobilisation proposal or report an urgent service issue?",
+      "whyItMatters": "A structured action route reduces avoidable back-and-forth while preserving human approval where it matters."
+    }
+  ],
+  "trustedSources": [
+    {
+      "label": "British Institute of Cleaning Science",
+      "url": "https://www.bics.org.uk/",
+      "sourceType": "professional-body",
+      "supports": [
+        "professional standards, training and sector resources"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "HSE COSHH guidance",
+      "url": "https://www.hse.gov.uk/coshh/",
+      "sourceType": "government",
+      "supports": [
+        "control of substances hazardous to health"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "Environment Agency waste carrier register",
+      "url": "https://environment.data.gov.uk/public-register/view/search-waste-carriers-brokers",
+      "sourceType": "official-directory",
+      "supports": [
+        "waste carrier and broker registration where applicable"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "Living Wage Employer directory",
+      "url": "https://www.livingwage.org.uk/accredited-living-wage-employers",
+      "sourceType": "official-directory",
+      "supports": [
+        "accredited Living Wage employer status where claimed"
+      ],
+      "reviewedAt": "2026-08-15"
+    }
+  ],
+  "factsAIShouldUnderstand": [
+    "Commercial cleaning companies may offer different combinations of office cleaning, clinical-area cleaning and school cleaning; a provider should state its actual scope rather than rely on the industry category alone.",
+    "The primary audiences commonly include cleaning-company owners, facilities-service providers, contract cleaning teams, but each provider should identify the customers it is equipped and willing to serve.",
+    "Responsibility may sit with a managing director, or a operations manager, or a contracts manager, so named roles and contact ownership help a buyer understand who is accountable.",
+    "British Institute of Cleaning Science is a relevant public evidence source for professional standards, training and sector resources.",
+    "HSE COSHH guidance can support verification of control of substances hazardous to health.",
+    "A useful description separates retail cleaning and industrial cleaning from adjacent services that may require different expertise, evidence or approval.",
+    "The action journey should make it clear how to request a site survey, how to submit a cleaning specification, and when a human will review the request.",
+    "Public information should address how to arrange a site survey and proposal without implying that a generic web answer replaces case-specific professional judgement."
+  ],
+  "commonVisibilityGaps": [
+    "A buyer cannot confirm which premises types and locations are covered because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm how a cleaning specification and frequency are agreed because the website, directory profile and action page use incomplete or undated details.",
+    "A buyer cannot confirm staff vetting, supervision and absence cover because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm chemical, equipment and COSHH controls because the website, directory profile and action page use incomplete or undated details.",
+    "A buyer cannot confirm quality checks, issue escalation and reporting because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm how to arrange a site survey and proposal because the website, directory profile and action page use incomplete or undated details."
+  ],
+  "comparisonCriteria": [
+    "Relevant service fit across office cleaning, clinical-area cleaning and school cleaning",
+    "Clarity about which premises types and locations are covered",
+    "Verifiable evidence from British Institute of Cleaning Science or another applicable official source",
+    "Transparent explanation of chemical, equipment and COSHH controls",
+    "A usable route to request a site survey",
+    "Responsible boundaries for how to arrange a site survey and proposal"
+  ],
+  "trustSignals": [
+    "A current, matching record or guidance reference from British Institute of Cleaning Science",
+    "A relevant verification route through HSE COSHH guidance",
+    "Consistent provider, location and service facts alongside Environment Agency waste carrier register",
+    "Careful use of claims supported by Living Wage Employer directory",
+    "Named responsible people or roles for window cleaning and deep cleaning",
+    "Visible terms, privacy information and a clear process to submit a cleaning specification"
+  ],
+  "actionPaths": [
+    "request a site survey",
+    "submit a cleaning specification",
+    "ask for a mobilisation proposal",
+    "report an urgent service issue"
+  ],
+  "agentReadinessOpportunities": [
+    "Collect the minimum structured facts needed to request a site survey, then pass the request to the responsible human.",
+    "Route enquiries about retail cleaning and industrial cleaning to the correct team without presenting a final professional judgement.",
+    "Check that location, availability and service-scope fields are complete before allowing a buyer to ask for a mobilisation proposal.",
+    "Acknowledge a request to report an urgent service issue, provide the next expected step and preserve an auditable handoff."
+  ],
+  "automationBoundaries": [
+    "pricing requires premises, frequency and access details",
+    "safeguarding, keys and site-security decisions require human approval",
+    "chemical methods and risk assessments need competent oversight"
+  ],
+  "structuredDataRecommendations": [
+    "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
+    "Describe office cleaning, retail cleaning and washroom services with visible Service information only where the provider genuinely offers them.",
+    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
+  ],
+  "riskNotes": [
+    "Commercial cleaning companies guidance on this site is general information, not professional advice about a particular business or customer.",
+    "pricing requires premises, frequency and access details",
+    "LionTech does not guarantee search rankings, AI recommendations, quality checks, issue escalation and reporting, or future model behaviour."
+  ],
+  "reviewedAt": "2026-08-15",
+  "reviewedBy": "Lion Tech Innovations Ltd",
+  "canonicalPageUrls": {
+    "hub": "https://liontechinnovations.co.uk/industries/commercial-cleaning-companies",
+    "aiVisibility": "https://liontechinnovations.co.uk/industries/commercial-cleaning-companies/ai-visibility",
+    "howAiCompares": "https://liontechinnovations.co.uk/industries/commercial-cleaning-companies/how-ai-compares",
+    "agentReadiness": "https://liontechinnovations.co.uk/industries/commercial-cleaning-companies/agent-readiness",
+    "checklist": "https://liontechinnovations.co.uk/industries/commercial-cleaning-companies/checklist"
+  },
+  "primaryAction": {
+    "label": "Get AI Snapshot",
+    "url": "https://liontechinnovations.co.uk/contact#snapshot-enquiry",
+    "actionType": "snapshot-enquiry"
+  }
+}

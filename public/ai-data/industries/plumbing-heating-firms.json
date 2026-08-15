@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "1.0.0",
+  "entity": {
+    "legalName": "Lion Tech Innovations Ltd",
+    "companyNumber": "17068390",
+    "website": "https://liontechinnovations.co.uk",
+    "location": "Manchester-based, serving UK businesses remotely"
+  },
+  "slug": "plumbing-heating-firms",
+  "name": "Plumbing and heating firms",
+  "shortDescription": "Local contractors whose gas scope, engineer credentials, coverage area, emergency availability and quote route must be clear without implying unverified accreditation.",
+  "fiveGates": {
+    "discover": "Can a buyer or crawler connect the provider to the relevant service, audience and area served?",
+    "describe": "Can the service scope, process and boundaries be explained accurately without filling gaps by assumption?",
+    "trust": "Can material facts be checked against current first-party and applicable authoritative evidence?",
+    "compare": "Can buyers inspect relevant differences using factual criteria rather than unsupported superlatives?",
+    "act": "Can a buyer complete a clear next step with suitable confirmation, escalation and human control?"
+  },
+  "commonServices": [
+    "boiler servicing",
+    "boiler replacement",
+    "central-heating repairs",
+    "general plumbing repairs",
+    "leak diagnosis",
+    "bathroom plumbing",
+    "hot-water cylinder work",
+    "emergency call-outs"
+  ],
+  "buyerQuestions": [
+    {
+      "intent": "discover",
+      "question": "Which plumbing and heating firms provide boiler servicing for plumbing business owners?",
+      "whyItMatters": "The answer depends on explicit service, audience and location information rather than a broad industry label."
+    },
+    {
+      "intent": "discover",
+      "question": "Where can a buyer find a plumbing and heating firm offering boiler replacement and central-heating repairs?",
+      "whyItMatters": "AI systems need a crawlable connection between the service, the provider entity and the area actually served."
+    },
+    {
+      "intent": "describe",
+      "question": "Does this plumbing and heating firm clearly explain whether gas work is carried out by an appropriately registered engineer?",
+      "whyItMatters": "A precise answer prevents an AI summary from filling gaps with assumptions or outdated third-party text."
+    },
+    {
+      "intent": "describe",
+      "question": "What should a customer expect when asking about general plumbing repairs?",
+      "whyItMatters": "Scope, process and boundaries should be visible before a buyer shares detailed information."
+    },
+    {
+      "intent": "trust",
+      "question": "Which official evidence supports which towns and postcodes are served?",
+      "whyItMatters": "Public registers and first-party facts should agree so that a buyer can verify rather than merely trust a marketing claim."
+    },
+    {
+      "intent": "trust",
+      "question": "How does the provider evidence emergency hours and call-out terms?",
+      "whyItMatters": "Named sources, responsible people and current policies create a traceable trust path."
+    },
+    {
+      "intent": "compare",
+      "question": "How should buyers compare providers on whether the firm handles the specific appliance or system?",
+      "whyItMatters": "Comparable facts help buyers distinguish genuine service differences without relying on unverified superlatives."
+    },
+    {
+      "intent": "compare",
+      "question": "What makes one provider clearer than another about how estimates, diagnostics and parts are charged?",
+      "whyItMatters": "Completeness, freshness and evidence are safer comparison signals than promotional volume."
+    },
+    {
+      "intent": "act",
+      "question": "Can a buyer request a repair visit or ask for a boiler quote without searching across several pages?",
+      "whyItMatters": "The next step should be explicit, accessible and connected to the relevant service context."
+    },
+    {
+      "intent": "act",
+      "question": "What information is needed to book planned servicing or contact the emergency call-out line?",
+      "whyItMatters": "A structured action route reduces avoidable back-and-forth while preserving human approval where it matters."
+    }
+  ],
+  "trustedSources": [
+    {
+      "label": "Gas Safe Register",
+      "url": "https://www.gassaferegister.co.uk/find-an-engineer-or-check-the-register/",
+      "sourceType": "official-directory",
+      "supports": [
+        "engineer and business registration for in-scope gas work"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "WaterSafe approved plumber directory",
+      "url": "https://www.watersafe.org.uk/find-a-plumber/",
+      "sourceType": "official-directory",
+      "supports": [
+        "approved plumbing businesses where listed"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "CIPHE Find a plumber",
+      "url": "https://www.ciphe.org.uk/professional-members/find-a-plumber/",
+      "sourceType": "professional-body",
+      "supports": [
+        "professional member discovery where applicable"
+      ],
+      "reviewedAt": "2026-08-15"
+    },
+    {
+      "label": "GOV.UK Competent Person Register",
+      "url": "https://www.gov.uk/building-regulations-competent-person-schemes",
+      "sourceType": "government",
+      "supports": [
+        "self-certification scheme information for relevant building work"
+      ],
+      "reviewedAt": "2026-08-15"
+    }
+  ],
+  "factsAIShouldUnderstand": [
+    "Plumbing and heating firms may offer different combinations of boiler servicing, boiler replacement and central-heating repairs; a provider should state its actual scope rather than rely on the industry category alone.",
+    "The primary audiences commonly include plumbing business owners, heating contractors, local service teams, but each provider should identify the customers it is equipped and willing to serve.",
+    "Responsibility may sit with a owner-manager, or a operations manager, or a service coordinator, so named roles and contact ownership help a buyer understand who is accountable.",
+    "Gas Safe Register is a relevant public evidence source for engineer and business registration for in-scope gas work.",
+    "WaterSafe approved plumber directory can support verification of approved plumbing businesses where listed.",
+    "A useful description separates general plumbing repairs and leak diagnosis from adjacent services that may require different expertise, evidence or approval.",
+    "The action journey should make it clear how to request a repair visit, how to ask for a boiler quote, and when a human will review the request.",
+    "Public information should address how to request a visit and provide safe access information without implying that a generic web answer replaces case-specific professional judgement."
+  ],
+  "commonVisibilityGaps": [
+    "A buyer cannot confirm whether gas work is carried out by an appropriately registered engineer because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm which towns and postcodes are served because the website, directory profile and action page use incomplete or undated details.",
+    "A buyer cannot confirm emergency hours and call-out terms because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm whether the firm handles the specific appliance or system because the website, directory profile and action page use incomplete or undated details.",
+    "A buyer cannot confirm how estimates, diagnostics and parts are charged because the website, directory profile and action page use different wording.",
+    "A buyer cannot confirm how to request a visit and provide safe access information because the website, directory profile and action page use incomplete or undated details."
+  ],
+  "comparisonCriteria": [
+    "Relevant service fit across boiler servicing, boiler replacement and central-heating repairs",
+    "Clarity about whether gas work is carried out by an appropriately registered engineer",
+    "Verifiable evidence from Gas Safe Register or another applicable official source",
+    "Transparent explanation of whether the firm handles the specific appliance or system",
+    "A usable route to request a repair visit",
+    "Responsible boundaries for how to request a visit and provide safe access information"
+  ],
+  "trustSignals": [
+    "A current, matching record or guidance reference from Gas Safe Register",
+    "A relevant verification route through WaterSafe approved plumber directory",
+    "Consistent provider, location and service facts alongside CIPHE Find a plumber",
+    "Careful use of claims supported by GOV.UK Competent Person Register",
+    "Named responsible people or roles for bathroom plumbing and hot-water cylinder work",
+    "Visible terms, privacy information and a clear process to ask for a boiler quote"
+  ],
+  "actionPaths": [
+    "request a repair visit",
+    "ask for a boiler quote",
+    "book planned servicing",
+    "contact the emergency call-out line"
+  ],
+  "agentReadinessOpportunities": [
+    "Collect the minimum structured facts needed to request a repair visit, then pass the request to the responsible human.",
+    "Route enquiries about general plumbing repairs and leak diagnosis to the correct team without presenting a final professional judgement.",
+    "Check that location, availability and service-scope fields are complete before allowing a buyer to book planned servicing.",
+    "Acknowledge a request to contact the emergency call-out line, provide the next expected step and preserve an auditable handoff."
+  ],
+  "automationBoundaries": [
+    "gas safety and diagnosis require a competent registered engineer where applicable",
+    "emergency availability must be confirmed rather than assumed",
+    "quotes may need an inspection before scope and price are final"
+  ],
+  "structuredDataRecommendations": [
+    "Use Organization and WebSite identity consistently for the legal provider and canonical domain.",
+    "Describe boiler servicing, general plumbing repairs and emergency call-outs with visible Service information only where the provider genuinely offers them.",
+    "Use LocalBusiness or a justified subtype only when address, service area and public contact details match the visible page.",
+    "Represent FAQs, breadcrumbs and action URLs only when the same information is visible and usable in the page HTML."
+  ],
+  "riskNotes": [
+    "Plumbing and heating firms guidance on this site is general information, not professional advice about a particular business or customer.",
+    "gas safety and diagnosis require a competent registered engineer where applicable",
+    "LionTech does not guarantee search rankings, AI recommendations, how estimates, diagnostics and parts are charged, or future model behaviour."
+  ],
+  "reviewedAt": "2026-08-15",
+  "reviewedBy": "Lion Tech Innovations Ltd",
+  "canonicalPageUrls": {
+    "hub": "https://liontechinnovations.co.uk/industries/plumbing-heating-firms",
+    "aiVisibility": "https://liontechinnovations.co.uk/industries/plumbing-heating-firms/ai-visibility",
+    "howAiCompares": "https://liontechinnovations.co.uk/industries/plumbing-heating-firms/how-ai-compares",
+    "agentReadiness": "https://liontechinnovations.co.uk/industries/plumbing-heating-firms/agent-readiness",
+    "checklist": "https://liontechinnovations.co.uk/industries/plumbing-heating-firms/checklist"
+  },
+  "primaryAction": {
+    "label": "Get AI Snapshot",
+    "url": "https://liontechinnovations.co.uk/contact#snapshot-enquiry",
+    "actionType": "snapshot-enquiry"
+  }
+}
