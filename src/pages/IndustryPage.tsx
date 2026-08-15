@@ -83,7 +83,7 @@ export function IndustryPage({ page }: { page: IndustryPageDescriptor }) {
           <IndustryPanel eyebrow="EVIDENCE" title="Page-specific evidence observations">
             <div className="lt-industry-evidence-grid">
               {sourceObservations.map((item) => (
-                <article className="lt-large-panel" data-source-observation key={item.heading}>
+                <article className="lt-standard-card lt-industry-evidence-card" data-source-observation key={item.heading}>
                   <h3>{item.heading}</h3>
                   <p>{item.observation}</p>
                   <SourceLink href={item.url} label={`Review ${item.label}`} />

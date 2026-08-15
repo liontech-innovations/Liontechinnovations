@@ -94,6 +94,15 @@ try {
       footerIndustryGuides: Boolean(document.querySelector('.lt-unified-footer a[href="/industries"]')),
       footerCompanyBrain: Boolean(document.querySelector('.lt-unified-footer a[href="/company-brain"]')),
       directoryGuideLinks: isDirectory ? new Set([...document.querySelectorAll('[data-guide-type]')].map((link) => link.getAttribute('href'))).size : null,
+      directoryEntries: isDirectory ? document.querySelectorAll('[data-industry-directory-entry]').length : null,
+      directoryPrimaryLinks: isDirectory ? document.querySelectorAll('[data-industry-directory-entry] > .lt-industry-primary-link[data-guide-type="hub"]').length : null,
+      directorySecondaryLinks: isDirectory ? document.querySelectorAll('[data-industry-directory-entry] .lt-industry-secondary-actions a[data-guide-type]').length : null,
+      directoryFilterButtons: isDirectory ? document.querySelectorAll('[data-guide-filter-button]').length : null,
+      directoryHierarchyValid: isDirectory ? [...document.querySelectorAll('[data-industry-directory-entry]')].every((entry) => (
+        entry.querySelectorAll(':scope > a.lt-industry-primary-link[data-guide-type="hub"]').length === 1
+        && entry.querySelectorAll(':scope > nav.lt-industry-secondary-actions > a').length === 4
+        && [...entry.querySelectorAll(':scope > nav.lt-industry-secondary-actions > a')].every((link) => link.tagName === 'A')
+      )) : null,
       nestedInteractions: document.querySelectorAll('a a, a button, button a').length,
       invalidHrefs: [...document.querySelectorAll('a')].map((link) => link.getAttribute('href') || '').filter((href) => !href || href === '#' || /vercel\.app|localhost|127\.0\.0\.1/i.test(href)),
       brokenImages: [...document.images].filter((image) => image.complete && image.naturalWidth === 0).map((image) => image.src),
@@ -110,6 +119,7 @@ try {
     if (!state.industriesPrimaryNav || state.companyBrainPrimaryNav || !state.industriesActive) failures.push(`${route}: primary Industries navigation or active state is incorrect`);
     if (!state.footerIndustryGuides || !state.footerCompanyBrain) failures.push(`${route}: footer Industry Guides or Company Brain link missing`);
     if (route === '/industries' && state.directoryGuideLinks !== 100) failures.push(`/industries: expected 100 unique visible guide destinations, received ${state.directoryGuideLinks}`);
+    if (route === '/industries' && (state.directoryEntries !== 20 || state.directoryPrimaryLinks !== 20 || state.directorySecondaryLinks !== 80 || state.directoryFilterButtons !== 5 || !state.directoryHierarchyValid)) failures.push(`/industries: directory hierarchy is invalid (${state.directoryEntries} entries, ${state.directoryPrimaryLinks} primary, ${state.directorySecondaryLinks} secondary, ${state.directoryFilterButtons} filters)`);
     if (state.nestedInteractions) failures.push(`${route}: nested interactive elements found (${state.nestedInteractions})`);
     if (state.invalidHrefs.length) failures.push(`${route}: invalid public hrefs ${state.invalidHrefs.join(', ')}`);
     if (state.brokenImages.length) failures.push(`${route}: broken images ${state.brokenImages.join(', ')}`);
@@ -121,6 +131,82 @@ try {
     await testRoute();
   };
   await Promise.all(Array.from({ length: 6 }, () => testRoute()));
+
+  const directoryPage = await context.newPage();
+  directoryPage.on('console', (message) => { if (message.type() === 'error') consoleMessages.push(`/industries interaction: ${message.text()}`); });
+  directoryPage.on('pageerror', (error) => pageMessages.push(`/industries interaction: ${error.message}`));
+  await directoryPage.goto(`${baseUrl}/industries`, { waitUntil: 'domcontentloaded' });
+  await directoryPage.waitForTimeout(100);
+
+  const initialDirectoryLayout = await directoryPage.evaluate(() => {
+    const hero = document.querySelector('.lt-industry-hero');
+    const heading = document.querySelector('.lt-industry-hero h1');
+    const cards = [...document.querySelectorAll('[data-industry-directory-entry]')];
+    const professionalCards = [...document.querySelectorAll('[data-industry-group="Professional and financial services"] [data-industry-directory-entry]')];
+    const firstCardWidth = cards[0]?.getBoundingClientRect().width ?? 0;
+    const oddCardWidth = professionalCards.at(-1)?.getBoundingClientRect().width ?? 0;
+    return {
+      heroBottom: hero?.getBoundingClientRect().bottom ?? Number.POSITIVE_INFINITY,
+      h1FontSize: heading ? Number.parseFloat(getComputedStyle(heading).fontSize) : Number.POSITIVE_INFINITY,
+      cardsUnclipped: cards.every((card) => card.scrollHeight <= card.clientHeight + 2),
+      actionsContained: cards.every((card) => {
+        const cardRect = card.getBoundingClientRect();
+        return [...card.querySelectorAll('.lt-industry-secondary-actions a')].every((link) => {
+          const rect = link.getBoundingClientRect();
+          return rect.left >= cardRect.left - 1 && rect.right <= cardRect.right + 1 && rect.top >= cardRect.top - 1 && rect.bottom <= cardRect.bottom + 1;
+        });
+      }),
+      targetSizesValid: cards.every((card) => [...card.querySelectorAll('.lt-industry-secondary-actions a')].every((link) => link.getBoundingClientRect().height >= 44)),
+      oddCardIntentional: firstCardWidth > 0 && oddCardWidth >= firstCardWidth * 1.75,
+    };
+  });
+  if (initialDirectoryLayout.heroBottom > 900 || initialDirectoryLayout.h1FontSize > 60) failures.push(`/industries: desktop hero exceeds core-page scale (${initialDirectoryLayout.heroBottom}px, ${initialDirectoryLayout.h1FontSize}px)`);
+  if (!initialDirectoryLayout.cardsUnclipped || !initialDirectoryLayout.actionsContained || !initialDirectoryLayout.targetSizesValid || !initialDirectoryLayout.oddCardIntentional) failures.push('/industries: desktop card geometry, action containment or odd-card handling failed');
+
+  for (const filter of ['ai-visibility', 'how-ai-compares', 'agent-readiness', 'checklist']) {
+    const button = directoryPage.locator(`[data-guide-filter-button="${filter}"]`);
+    await button.click();
+    const filterState = await directoryPage.evaluate((selectedFilter) => ({
+      selected: document.querySelector(`[data-guide-filter-button="${selectedFilter}"]`)?.getAttribute('aria-pressed'),
+      pressedCount: document.querySelectorAll('[data-guide-filter-button][aria-pressed="true"]').length,
+      entries: document.querySelectorAll('[data-industry-directory-entry]').length,
+      links: document.querySelectorAll('[data-industry-directory-entry] [data-guide-type]').length,
+      prioritised: document.querySelectorAll(`.lt-industry-secondary-actions [data-guide-type="${selectedFilter}"].is-prioritised`).length,
+      statusText: document.querySelector('.lt-industry-filter-status')?.textContent ?? '',
+    }), filter);
+    if (filterState.selected !== 'true' || filterState.pressedCount !== 1 || filterState.entries !== 20 || filterState.links !== 100 || filterState.prioritised !== 20 || !filterState.statusText.trim()) failures.push(`/industries: ${filter} filter state is not accessible or visually applied`);
+  }
+
+  const keyboardFilter = directoryPage.locator('[data-guide-filter-button="ai-visibility"]');
+  await keyboardFilter.focus();
+  await keyboardFilter.press('Space');
+  if (await keyboardFilter.getAttribute('aria-pressed') !== 'true') failures.push('/industries: guide filter is not keyboard operable');
+
+  for (const selector of ['.lt-industry-primary-link', '.lt-industry-secondary-actions a', '[data-guide-filter-button]']) {
+    const control = directoryPage.locator(selector).first();
+    await control.focus();
+    const focusState = await control.evaluate((element) => ({
+      active: document.activeElement === element,
+      cursor: getComputedStyle(element).cursor,
+      outline: getComputedStyle(element).outlineStyle,
+    }));
+    if (!focusState.active || focusState.cursor !== 'pointer' || focusState.outline === 'none') failures.push(`/industries: ${selector} lacks pointer or keyboard focus affordance`);
+  }
+
+  const navigationCases = [
+    { guideType: 'hub', expectedPath: '/industries/aesthetics-clinics' },
+    { guideType: 'ai-visibility', expectedPath: '/industries/aesthetics-clinics/ai-visibility' },
+    { guideType: 'how-ai-compares', expectedPath: '/industries/aesthetics-clinics/how-ai-compares' },
+    { guideType: 'agent-readiness', expectedPath: '/industries/aesthetics-clinics/agent-readiness' },
+    { guideType: 'checklist', expectedPath: '/industries/aesthetics-clinics/checklist' },
+  ];
+  for (const navigationCase of navigationCases) {
+    await directoryPage.goto(`${baseUrl}/industries`, { waitUntil: 'domcontentloaded' });
+    await directoryPage.locator(`[data-industry-directory-entry="aesthetics-clinics"] [data-guide-type="${navigationCase.guideType}"]`).click();
+    await directoryPage.waitForTimeout(80);
+    if (new URL(directoryPage.url()).pathname !== navigationCase.expectedPath) failures.push(`/industries: ${navigationCase.guideType} interaction navigated to ${new URL(directoryPage.url()).pathname}`);
+  }
+  await directoryPage.close();
 
   for (const spec of discoveryRoutes) {
     const page = await context.newPage();
@@ -177,6 +263,30 @@ try {
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 2);
       if (overflow) failures.push(`${route}: horizontal overflow at ${viewport.width}px`);
       if (viewport.name === 'mobile' && !(await page.getByRole('button', { name: 'Open navigation' }).isVisible())) failures.push(`${route}: mobile navigation control missing`);
+      if (route === '/industries') {
+        const directoryLayout = await page.evaluate((viewportHeight) => {
+          const hero = document.querySelector('.lt-industry-hero');
+          const heading = document.querySelector('.lt-industry-hero h1');
+          const cards = [...document.querySelectorAll('[data-industry-directory-entry]')];
+          return {
+            heroBottom: hero?.getBoundingClientRect().bottom ?? Number.POSITIVE_INFINITY,
+            h1FontSize: heading ? Number.parseFloat(getComputedStyle(heading).fontSize) : Number.POSITIVE_INFINITY,
+            cardsUnclipped: cards.every((card) => card.scrollHeight <= card.clientHeight + 2),
+            actionsContained: cards.every((card) => {
+              const cardRect = card.getBoundingClientRect();
+              return [...card.querySelectorAll('.lt-industry-secondary-actions a')].every((link) => {
+                const rect = link.getBoundingClientRect();
+                return rect.left >= cardRect.left - 1 && rect.right <= cardRect.right + 1 && rect.bottom <= cardRect.bottom + 1;
+              });
+            }),
+            targetsValid: [...document.querySelectorAll('.lt-industry-secondary-actions a, [data-guide-filter-button]')].every((control) => control.getBoundingClientRect().height >= 44),
+            singleColumn: cards.length > 1 && Math.abs(cards[0].getBoundingClientRect().left - cards[1].getBoundingClientRect().left) <= 2,
+            heroFits: (hero?.getBoundingClientRect().bottom ?? Number.POSITIVE_INFINITY) <= viewportHeight + 24,
+          };
+        }, viewport.height);
+        const mobileLayoutInvalid = viewport.name === 'mobile' && (directoryLayout.h1FontSize > 38 || !directoryLayout.singleColumn || !directoryLayout.heroFits);
+        if (mobileLayoutInvalid || !directoryLayout.cardsUnclipped || !directoryLayout.actionsContained || !directoryLayout.targetsValid) failures.push(`/industries: ${viewport.name} hero or card layout assertions failed`);
+      }
       const filename = `${route.slice(1).replaceAll('/', '--') || 'home'}--${viewport.name}.png`;
       await page.screenshot({ path: join(screenshotDirectory, filename), fullPage: true });
       await page.close();

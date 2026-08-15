@@ -4,6 +4,17 @@ import { snapshotActionPath } from '../../content/industries';
 import { RouteLink } from '../ui/RouteLink';
 
 export function IndustryCta({ placement, title, description }: { placement: 'hero' | 'contextual' | 'final'; title: string; description: string }) {
+  if (placement === 'hero') {
+    return (
+      <aside className="lt-industry-cta lt-industry-cta-hero" data-cta-placement={placement} aria-label="AI Visibility Snapshot">
+        <p><strong>{title}</strong>{description ? ` ${description}` : ''}</p>
+        <RouteLink href={snapshotActionPath} className="lt-button lt-button-primary" aria-label={`Get AI Snapshot: ${title}`}>
+          GET AI SNAPSHOT <ArrowRight size={16} aria-hidden="true" />
+        </RouteLink>
+      </aside>
+    );
+  }
+
   return (
     <div className={`lt-industry-cta lt-industry-cta-${placement}`} data-cta-placement={placement}>
       <div>

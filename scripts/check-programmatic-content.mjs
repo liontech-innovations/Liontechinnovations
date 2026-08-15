@@ -189,7 +189,10 @@ try {
   const directoryGuideLinks = [...directoryArticle.matchAll(/<a\s+([^>]*data-guide-type[^>]*)>/g)].map((match) => match[1].match(/href="([^"]+)"/)?.[1]).filter(Boolean);
   if (directoryGuideLinks.length !== 100 || new Set(directoryGuideLinks).size !== 100) failures.push(`/industries: expected 100 unique visible guide links, received ${directoryGuideLinks.length}/${new Set(directoryGuideLinks).size}`);
   if ((directory.match(/data-industry-directory-entry=/g) ?? []).length !== 20) failures.push('/industries: expected 20 visible industry entries');
-  if ((directory.match(/data-industry-jump-nav="true"/g) ?? []).length !== 1 || (directory.match(/href="#[^"]+"/g) ?? []).length < 5) failures.push('/industries: five-type jump navigation missing');
+  if ((directory.match(/data-guide-filter="true"/g) ?? []).length !== 1 || (directory.match(/data-guide-filter-button=/g) ?? []).length !== 5) failures.push('/industries: accessible guide-type filter missing');
+  if ((directory.match(/data-guide-type="hub"/g) ?? []).length !== 20) failures.push('/industries: expected one primary hub link per industry');
+  if ((directory.match(/data-guide-type="(?:ai-visibility|how-ai-compares|agent-readiness|checklist)"/g) ?? []).length !== 80) failures.push('/industries: expected four secondary links per industry');
+  if ((directory.match(/class="lt-industry-primary-link"/g) ?? []).length !== 20 || (directory.match(/class="lt-industry-secondary-actions"/g) ?? []).length !== 20) failures.push('/industries: primary and secondary directory hierarchy missing');
   for (const inventoryFact of ['20 industries', '5 page types', '100 substantial guides']) if (!directory.includes(inventoryFact)) failures.push(`/industries: inventory fact missing (${inventoryFact})`);
   if ((directory.match(/href="\/industries\/[^"]+"/g) ?? []).length < 100) failures.push('/industries: does not link to all 100 programmatic routes');
   if ((directory.match(/data-cta-placement="(?:hero|final)"/g) ?? []).length !== 2) failures.push('/industries: required CTA placements missing');
