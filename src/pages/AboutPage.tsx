@@ -36,7 +36,8 @@ export function AboutPage() {
         <div className="lt-route-about-intro">
           <RouteHeading eyebrow="PRACTICAL BY DESIGN" title="Built for practical decisions" description="LionTech helps businesses understand what customer-facing AI systems currently say, then turns material gaps into a controlled implementation plan." />
           <p>
-            The operating proof is a portfolio of live platforms across visa risk intelligence, fee calculation, care operations and local-services lead recovery. {company.legalName} is registered in England and Wales, company number {company.companiesHouseNumber}. Registered office: {company.registeredOffice.formatted}. <RouteLink href={company.companiesHouseUrl}>View the Companies House record</RouteLink>.
+            Lion Tech Innovations Ltd is registered in England and Wales under company number <strong>{company.companiesHouseNumber}</strong>.{' '}
+            <a href={company.companiesHouseUrl} target="_blank" rel="noreferrer">Verify the company record on Companies House</a>.
           </p>
         </div>
       </RouteSection>

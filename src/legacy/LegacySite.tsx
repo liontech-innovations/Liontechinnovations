@@ -748,7 +748,6 @@ const PrivacyPolicy = ({ onStartIntake }: { onStartIntake: () => void }) => {
     <ul>
       <li>Data protection enquiries and rights requests: <a href="mailto:privacy@liontechinnovations.co.uk">privacy@liontechinnovations.co.uk</a></li>
       <li>General contact: <a href="mailto:contact@liontechinnovations.co.uk">contact@liontechinnovations.co.uk</a></li>
-      <li>Postal: Lion Tech Innovations Ltd, 37 Hope Street North, Horwich, Bolton, Lancashire, BL6 7LL.</li>
     </ul>
   </LegalPage>
   );

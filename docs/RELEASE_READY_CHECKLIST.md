@@ -34,7 +34,7 @@ The PR head must be re-read from GitHub immediately before merge and must match 
 - [x] Public API error responses do not expose secret values or environment-variable names.
 - [x] `/api/` remains disallowed in `robots.txt`.
 - [x] Canonicals, sitemap and `llms.txt` use `https://liontechinnovations.co.uk`; no protected-preview URL is used as metadata.
-- [x] Companies House company `17068390`, the registered office and the Manchester/UK service position are consistent.
+- [x] Verify the legal entity through company number 17068390 and the Companies House link. Do not republish the registered-office address on LionTech-controlled surfaces.
 
 ### Residual launch conditions
 
