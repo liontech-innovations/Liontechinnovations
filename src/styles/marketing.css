@@ -214,6 +214,7 @@
 .lt-button:focus-visible,
 .lt-menu-toggle:focus-visible,
 .lt-enquiry-form input:focus-visible,
+.lt-enquiry-form select:focus-visible,
 .lt-faq summary:focus-visible {
   outline: 3px solid rgba(224, 191, 109, 0.58);
   outline-offset: 3px;
@@ -1051,6 +1052,27 @@
   gap: 1.2rem;
 }
 
+.lt-form-sections {
+  display: grid;
+  gap: 1.35rem;
+}
+
+.lt-form-section {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.lt-form-section legend {
+  margin-bottom: 0.85rem;
+  color: var(--lt-gold-light);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
 .lt-enquiry-form label {
   display: grid;
   gap: 0.45rem;
@@ -1059,13 +1081,15 @@
   font-weight: 600;
 }
 
-.lt-enquiry-form input:not([type='checkbox']) {
+.lt-enquiry-form input:not([type='checkbox']),
+.lt-enquiry-form select {
   width: 100%;
   min-height: 48px;
   border: 1px solid var(--lt-line-strong);
   border-radius: 8px;
   background: var(--lt-surface);
   color: var(--lt-text);
+  font: inherit;
   padding: 0.75rem 0.9rem;
 }
 

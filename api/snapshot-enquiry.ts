@@ -5,12 +5,21 @@ type SnapshotEnquiry = {
   email?: unknown;
   company?: unknown;
   websiteUrl?: unknown;
+  jobTitle?: unknown;
+  department?: unknown;
+  companySize?: unknown;
   primaryService?: unknown;
   primaryLocation?: unknown;
   competitor?: unknown;
   consent?: unknown;
   website?: unknown;
 };
+
+const departments = new Set([
+  'Founder / Leadership', 'Operations', 'Marketing', 'Sales / Business Development', 'Customer Service',
+  'Finance', 'HR / People', 'IT / Technology', 'Clinical / Practice Management', 'Other',
+]);
+const companySizes = new Set(['1', '2–5', '6–10', '11–25', '26–50', '51–100', '101–250', '251–500', '500+']);
 
 function json(data: unknown, status = 200) {
   return new Response(JSON.stringify(data), {
@@ -66,6 +75,9 @@ export default async function handler(request: Request): Promise<Response> {
     email: clean(body.email, 180).toLowerCase(),
     company: clean(body.company, 160),
     websiteUrl: normalizeWebsiteUrl(clean(body.websiteUrl, 500)) || '',
+    jobTitle: clean(body.jobTitle, 160),
+    department: clean(body.department, 80),
+    companySize: clean(body.companySize, 20),
     primaryService: clean(body.primaryService, 220),
     primaryLocation: clean(body.primaryLocation, 180),
     competitor: clean(body.competitor, 220),
@@ -76,6 +88,9 @@ export default async function handler(request: Request): Promise<Response> {
     !isEmail(enquiry.email) ||
     !enquiry.company ||
     !enquiry.websiteUrl ||
+    !enquiry.jobTitle ||
+    !departments.has(enquiry.department) ||
+    !companySizes.has(enquiry.companySize) ||
     !enquiry.primaryService ||
     !enquiry.primaryLocation ||
     body.consent !== true
@@ -89,10 +104,13 @@ export default async function handler(request: Request): Promise<Response> {
   if (!apiKey) return json({ ok: false, error: 'Enquiry service is unavailable' }, 500);
 
   const rows = [
-    ['Name', enquiry.name],
-    ['Email', enquiry.email],
+    ['Full name', enquiry.name],
+    ['Work email', enquiry.email],
     ['Company', enquiry.company],
     ['Website', enquiry.websiteUrl],
+    ['Job title / role', enquiry.jobTitle],
+    ['Department', enquiry.department],
+    ['Company size', enquiry.companySize],
     ['Primary service', enquiry.primaryService],
     ['Primary location', enquiry.primaryLocation],
     ['Optional competitor', enquiry.competitor || 'Not supplied'],
