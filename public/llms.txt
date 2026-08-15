@@ -4,6 +4,7 @@
 
 Website: https://liontechinnovations.co.uk
 Contact: contact@liontechinnovations.co.uk
+Location: Manchester-based, serving UK businesses remotely
 Service area: UK-based, serving businesses remotely
 Company number: 17068390
 Companies House: https://find-and-update.company-information.service.gov.uk/company/17068390
@@ -17,6 +18,7 @@ Registered office: 37 Hope Street North, Horwich, Bolton, Lancashire, BL6 7LL
   - Evidence-led report, Five Gates Readiness Profile, top five fixes and 30-day action plan
   - 48-hour delivery after completed onboarding and business verification
   - Minimum-5 Guarantee: if LionTech cannot identify at least five concrete, evidenced inaccuracies, omissions, competitor gaps or actionable readiness improvements in the agreed sampled tests, the Snapshot fee is refunded
+  - Enquiry: https://liontechinnovations.co.uk/contact#snapshot-enquiry
 
 ## Readiness services
 
@@ -34,4 +36,33 @@ Registered office: 37 Hope Street North, Horwich, Bolton, Lancashire, BL6 7LL
 4. Compare
 5. Act
 
-This file is an additional machine-readable source, not a guarantee of AI visibility. LionTech does not guarantee AI rankings, AI recommendations, leads or sales. Third-party AI outputs can change. Findings are human-reviewed observations, not control over any AI system.
+## AI-first industry knowledge base
+
+The industry knowledge base contains evidence-led public guidance for 20 UK business sectors. Each cluster covers AI visibility, provider comparison, controlled agent readiness and a Five Gates checklist. It is general guidance, not an audit of every provider in an industry.
+
+- Directory: https://liontechinnovations.co.uk/industries
+- Machine-readable index: https://liontechinnovations.co.uk/ai-data/index.json
+- Aesthetics clinics: https://liontechinnovations.co.uk/industries/aesthetics-clinics
+- Dental practices: https://liontechinnovations.co.uk/industries/dental-practices
+- Domiciliary care providers: https://liontechinnovations.co.uk/industries/domiciliary-care-providers
+- Physiotherapy clinics: https://liontechinnovations.co.uk/industries/physiotherapy-clinics
+- Private medical clinics: https://liontechinnovations.co.uk/industries/private-medical-clinics
+- Veterinary practices: https://liontechinnovations.co.uk/industries/veterinary-practices
+- Accountancy firms: https://liontechinnovations.co.uk/industries/accountancy-firms
+- Solicitors: https://liontechinnovations.co.uk/industries/solicitors
+- Estate agents: https://liontechinnovations.co.uk/industries/estate-agents
+- Mortgage brokers: https://liontechinnovations.co.uk/industries/mortgage-brokers
+- Financial advisers: https://liontechinnovations.co.uk/industries/financial-advisers
+- Recruitment agencies: https://liontechinnovations.co.uk/industries/recruitment-agencies
+- Managed IT service providers: https://liontechinnovations.co.uk/industries/managed-it-service-providers
+- Training providers: https://liontechinnovations.co.uk/industries/training-providers
+- Plumbing and heating firms: https://liontechinnovations.co.uk/industries/plumbing-heating-firms
+- Electrical contractors: https://liontechinnovations.co.uk/industries/electrical-contractors
+- Roofing contractors: https://liontechinnovations.co.uk/industries/roofing-contractors
+- Building contractors: https://liontechinnovations.co.uk/industries/building-contractors
+- Landscaping companies: https://liontechinnovations.co.uk/industries/landscaping-companies
+- Commercial cleaning companies: https://liontechinnovations.co.uk/industries/commercial-cleaning-companies
+
+## Limits
+
+This file and the linked industry records are additional machine-readable sources, not guarantees of crawl, index, ranking, citation, recommendation, leads or sales. LionTech does not control third-party AI systems, and their outputs can change. Industry guidance is general information, not legal, medical, financial, regulatory or compliance advice. Findings in a commissioned Snapshot are human-reviewed observations.

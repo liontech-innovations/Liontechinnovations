@@ -1,5 +1,21 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /admin/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
 
 Sitemap: https://liontechinnovations.co.uk/sitemap.xml
