@@ -7,9 +7,9 @@ import { createServer, preview } from 'vite';
 const projectRoot = resolve(import.meta.dirname, '..');
 const publicAssetPath = join(projectRoot, 'public', 'brand', 'liontech-email-signature-20260815.png');
 const distAssetPath = join(projectRoot, 'dist', 'brand', 'liontech-email-signature-20260815.png');
-const expectedHash = '6752069bb140b2663de872be177459492df040c05e7db796686186da8e36e659';
+const expectedHash = 'ce0773f56647a3e594766dbe0223415de22cf6bef8ef0b51d3216d008e79d33b';
 const expectedImageUrl = 'https://liontechinnovations.co.uk/brand/liontech-email-signature-20260815.png';
-const expectedDestinationUrl = 'https://liontechinnovations.co.uk/contact#snapshot-enquiry';
+const expectedDestinationUrl = 'https://liontechinnovations.co.uk/';
 const expectedHomepageUrl = 'https://liontechinnovations.co.uk';
 const expectedPlainText = `Kind regards,
 
@@ -27,8 +27,8 @@ const escapeRegex = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 function inspectPng(buffer, label) {
   assert(buffer.subarray(0, 8).toString('hex') === '89504e470d0a1a0a', `${label}: invalid PNG signature`);
-  assert(buffer.readUInt32BE(16) === 2048, `${label}: expected width 2048, received ${buffer.readUInt32BE(16)}`);
-  assert(buffer.readUInt32BE(20) === 682, `${label}: expected height 682, received ${buffer.readUInt32BE(20)}`);
+  assert(buffer.readUInt32BE(16) === 2172, `${label}: expected width 2172, received ${buffer.readUInt32BE(16)}`);
+  assert(buffer.readUInt32BE(20) === 724, `${label}: expected height 724, received ${buffer.readUInt32BE(20)}`);
   assert(createHash('sha256').update(buffer).digest('hex') === expectedHash, `${label}: SHA-256 mismatch`);
 }
 
@@ -167,7 +167,7 @@ try {
   assert(response?.ok(), `installer returned HTTP ${response?.status() ?? 'unknown'}`);
   const browserState = await formattedPage.evaluate(() => {
     const preview = document.querySelector('.lt-signature-preview');
-    const banner = preview?.querySelector('a[href="https://liontechinnovations.co.uk/contact#snapshot-enquiry"]');
+    const banner = preview?.querySelector('a[href="https://liontechinnovations.co.uk/"]');
     const image = banner?.querySelector('img');
     return {
       bodyText: document.body.innerText,
@@ -189,7 +189,7 @@ try {
   assert(browserState.bannerOnlyWrapsImage, 'preview banner anchor does not directly wrap the image');
   assert(browserState.imageWidthAttribute === '600', 'preview image width attribute changed');
   assert(Math.abs((browserState.imageRenderedWidth ?? 0) - 600) <= 1, `preview banner rendered at ${browserState.imageRenderedWidth}px instead of 600px`);
-  assert(browserState.imageNaturalWidth === 2048, 'preview banner did not load the approved asset');
+  assert(browserState.imageNaturalWidth === 2172, 'preview banner did not load the approved asset');
   assert(browserState.imageSource === '/brand/liontech-email-signature-20260815.png', 'preview does not use the local approved static asset');
   assert(browserState.homepageLink === expectedHomepageUrl, 'preview homepage link changed');
   assert(browserState.emailLink === 'mailto:admin@liontechinnovations.co.uk', 'preview email link changed');
@@ -226,7 +226,7 @@ try {
   await previewServer?.httpServer.close();
 }
 
-process.stdout.write(`Email signature asset: 2048x682 sha256=${expectedHash}\n`);
+process.stdout.write(`Email signature asset: 2172x724 sha256=${expectedHash}\n`);
 process.stdout.write(`Email signature installer: route=1 formattedClipboard=1 plainTextFallback=1\n`);
 process.stdout.write(`Email signature failures: ${failures.length}\n`);
 if (failures.length) throw new Error(failures.join('\n'));
