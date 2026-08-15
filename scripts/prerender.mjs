@@ -28,6 +28,9 @@ function applyHead(html, seo) {
   const schema = seo.schema ?? [];
   const serializedSchema = JSON.stringify(schema).replaceAll('<', '\\u003c');
   const schemaTag = `<script id="route-structured-data" type="application/ld+json">${serializedSchema}</script>`;
+  const alternateJsonTag = seo.alternateJson
+    ? `<link id="route-alternate-json" rel="alternate" type="application/json" href="${escapeHtml(seo.alternateJson)}" />`
+    : '';
 
   let output = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(seo.title)}</title>`);
   output = replaceMeta(output, 'name', 'description', seo.description);
@@ -41,6 +44,7 @@ function applyHead(html, seo) {
   output = output.includes('<!-- route-structured-data -->')
     ? output.replace('<!-- route-structured-data -->', schemaTag)
     : output.replace('</head>', `    ${schemaTag}\n  </head>`);
+  if (alternateJsonTag) output = output.replace('</head>', `    ${alternateJsonTag}\n  </head>`);
 
   return output;
 }

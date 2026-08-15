@@ -14,6 +14,14 @@
   ],
   "rewrites": [
     {
+      "source": "/industries",
+      "destination": "/industries/index.html"
+    },
+    {
+      "source": "/industries/:path*",
+      "destination": "/industries/:path*/index.html"
+    },
+    {
       "source": "/ai-business-readiness",
       "destination": "/ai-business-readiness/index.html"
     },

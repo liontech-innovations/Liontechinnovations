@@ -117,4 +117,3 @@ export const coreSitemapRoutes = [
 export const industrySitemapGroups = Array.from({ length: 5 }, (_, index) =>
   industryPageDescriptors.slice(index * 20, (index + 1) * 20),
 );
-
