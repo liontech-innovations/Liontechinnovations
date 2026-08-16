@@ -12,6 +12,7 @@
     "test:public-privacy": "node scripts/check-public-company-privacy.mjs",
     "test:email-signature": "node scripts/check-email-signature.mjs",
     "test:og-card": "node scripts/check-og-social-card.mjs",
+    "test:locked-report-assets": "node scripts/check-locked-report-assets.mjs",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
     "seo:generate-assets": "node scripts/generate-programmatic-assets.mjs",
