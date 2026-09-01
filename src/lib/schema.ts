@@ -1,6 +1,7 @@
 import { company } from '../content/company';
 import { snapshotFaq } from '../content/faq';
 import { snapshotOffer } from '../content/offers';
+import { zimbabwe, zimbabweFaq, zimbabweOffers } from '../content/zimbabwe';
 
 export const organizationSchema = {
   '@context': 'https://schema.org',
@@ -83,3 +84,25 @@ export function breadcrumbSchema(items: Array<{ name: string; path: string }>) {
     })),
   };
 }
+
+// The same legal entity and @id; this route uses its Zimbabwe engagement contact.
+export const zimbabweOrganizationSchema = {
+  ...organizationSchema,
+  email: zimbabwe.email,
+  description: 'Lion Tech Innovations Ltd is a UK-registered technology company helping established organisations modernise digital foundations and adopt practical AI safely.',
+  areaServed: ['GB', 'Zimbabwe'],
+  contactPoint: { ...organizationSchema.contactPoint, email: zimbabwe.email, areaServed: ['GB', 'Zimbabwe'] },
+};
+
+export const zimbabweServiceSchema = {
+  '@context': 'https://schema.org', '@type': 'Service',
+  name: zimbabweOffers[0].title, description: zimbabweOffers[0].description,
+  provider: { '@id': organizationSchema['@id'], name: company.legalName },
+  areaServed: 'Zimbabwe',
+  offers: { '@type': 'Offer', price: '750', priceCurrency: 'USD', url: `${company.website}/zimbabwe#zimbabwe-enquiry` },
+};
+
+export const zimbabweFaqSchema = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: zimbabweFaq.map(({ question, answer }) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })),
+};

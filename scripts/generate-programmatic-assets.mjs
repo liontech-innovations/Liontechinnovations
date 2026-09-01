@@ -7,6 +7,7 @@ const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const publicDirectory = join(projectRoot, 'public');
 const aiDataDirectory = join(publicDirectory, 'ai-data');
 const reviewedAt = '2026-08-15';
+const routeLastModified = { '/zimbabwe': '2026-09-01' };
 const siteUrl = 'https://liontechinnovations.co.uk';
 
 const escapeXml = (value) => value
@@ -18,13 +19,13 @@ const escapeXml = (value) => value
 
 const urlset = (paths) => `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${paths.map((path) => `  <url><loc>${escapeXml(new URL(path, siteUrl).toString())}</loc><lastmod>${reviewedAt}</lastmod></url>`).join('\n')}
+${paths.map((path) => `  <url><loc>${escapeXml(new URL(path, siteUrl).toString())}</loc><lastmod>${routeLastModified[path] ?? reviewedAt}</lastmod></url>`).join('\n')}
 </urlset>
 `;
 
 const sitemapIndex = (files) => `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${files.map((file) => `  <sitemap><loc>${siteUrl}/${file}</loc><lastmod>${reviewedAt}</lastmod></sitemap>`).join('\n')}
+${files.map((file) => `  <sitemap><loc>${siteUrl}/${file}</loc><lastmod>${file === 'sitemap-core.xml' ? '2026-09-01' : reviewedAt}</lastmod></sitemap>`).join('\n')}
 </sitemapindex>
 `;
 

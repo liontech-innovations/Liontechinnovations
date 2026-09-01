@@ -1,4 +1,9 @@
 {
+  "git": {
+    "deploymentEnabled": {
+      "feat/zimbabwe-corporate-market-page": false
+    }
+  },
   "trailingSlash": false,
   "redirects": [
     {
@@ -13,6 +18,10 @@
     }
   ],
   "rewrites": [
+    {
+      "source": "/zimbabwe",
+      "destination": "/zimbabwe/index.html"
+    },
     {
       "source": "/industries",
       "destination": "/industries/index.html"

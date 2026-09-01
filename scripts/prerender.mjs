@@ -38,6 +38,15 @@ function applyHead(html, seo) {
   output = replaceMeta(output, 'property', 'og:description', seo.description);
   output = replaceMeta(output, 'property', 'og:type', seo.type ?? 'website');
   output = replaceMeta(output, 'property', 'og:url', canonical);
+  if (seo.image) {
+    const imageUrl = new URL(seo.image.path, siteUrl).toString();
+    for (const [key, value] of Object.entries({ image: imageUrl, 'image:type': seo.image.type, 'image:width': String(seo.image.width), 'image:height': String(seo.image.height), 'image:alt': seo.image.alt })) {
+      output = replaceMeta(output, 'property', `og:${key}`, value);
+    }
+    output = replaceMeta(output, 'name', 'twitter:image', imageUrl);
+    output = replaceMeta(output, 'name', 'twitter:image:alt', seo.image.alt);
+  }
+  if (seo.path === '/zimbabwe') output = output.replace(/<link\s+rel="preload"[^>]*liontech-hero-poster\.jpg[^>]*>/i, '');
   output = replaceMeta(output, 'name', 'twitter:title', seo.title);
   output = replaceMeta(output, 'name', 'twitter:description', seo.description);
   output = replaceMeta(output, 'name', 'robots', seo.robots ?? 'index,follow');

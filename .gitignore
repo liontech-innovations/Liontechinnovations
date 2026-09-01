@@ -4,6 +4,7 @@ build/
 dist/
 coverage/
 qa-artifacts/
+artifacts/zimbabwe-page/
 .seo-cache/
 .DS_Store
 *.log
