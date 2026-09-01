@@ -31,7 +31,7 @@ if (all) {
     const xml = await readFile(join(projectRoot, 'public', filename), 'utf8');
     for (const match of xml.matchAll(/<loc>(https:\/\/liontechinnovations\.co\.uk\/[^<]*)<\/loc>/g)) urls.push(match[1]);
   }
-  if (urls.length !== 118) throw new Error(`Expected 118 public URLs for the all-routes scope, received ${urls.length}.`);
+  if (urls.length !== 119) throw new Error(`Expected 119 public URLs for the all-routes scope, received ${urls.length}.`);
   scope = 'all-public-routes';
 } else {
   const manifest = JSON.parse(await readFile(join(projectRoot, 'public', 'ai-data', 'release-cohorts.json'), 'utf8'));
