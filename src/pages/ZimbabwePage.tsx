@@ -33,7 +33,17 @@ function HarareImage({ name, alt, hero = false, fullBleed = false }: { name: str
 }
 
 function MarketMark() {
-  return <img className="lt-zimbabwe-map" src="/assets/zimbabwe/zimbabwe-map-flag.jpg" alt="Map of Zimbabwe filled with the national flag" width={128} height={108} decoding="async" />;
+  return <img className="lt-zimbabwe-map" src="/assets/zimbabwe/zimbabwe-market-marker-320.png" srcSet="/assets/zimbabwe/zimbabwe-market-marker-320.png 320w, /assets/zimbabwe/zimbabwe-market-marker-640.png 640w" sizes="(max-width: 767px) 72px, 100px" alt="Map of Zimbabwe filled with the national flag" width={320} height={294} decoding="async" />;
+}
+
+function VictoriaFallsImage() {
+  const base = '/assets/zimbabwe/victoria-falls';
+  const sizes = '(max-width: 1200px) 100vw, 820px';
+  return <picture className="lt-zimbabwe-picture">
+    <source type="image/avif" srcSet={`${base}-480.avif 480w, ${base}-960.avif 960w, ${base}-1920.avif 1920w`} sizes={sizes} />
+    <source type="image/webp" srcSet={`${base}-480.webp 480w, ${base}-960.webp 960w, ${base}-1920.webp 1920w`} sizes={sizes} />
+    <img src={`${base}-1920.jpg`} srcSet={`${base}-480.jpg 480w, ${base}-960.jpg 960w, ${base}-1920.jpg 1920w`} sizes={sizes} alt="Aerial view of Victoria Falls and the Zambezi River" width={1920} height={1100} loading="lazy" decoding="async" />
+  </picture>;
 }
 
 function ReviewLink({ children = 'Request an Executive Review', secondary = false }: { children?: React.ReactNode; secondary?: boolean }) {
@@ -116,7 +126,7 @@ export function ZimbabwePage() {
     </RouteSection>
 
     <section className="lt-zimbabwe-closing" id="zimbabwe-final-cta" aria-labelledby="zw-closing-title">
-      <HarareImage name="harare-infrastructure-cta" alt="Harare city road, pedestrian bridge and commercial skyline" fullBleed />
+      <VictoriaFallsImage />
       <div className="lt-zimbabwe-scrim" aria-hidden="true" />
       <div className="lt-shell lt-zimbabwe-closing-inner"><MarketMark /><h2 id="zw-closing-title">Your organisation does not need more AI hype.</h2><p>It needs to know what is worth fixing, what is worth automating and what should remain under human control.</p><strong>Start with the US$750 Corporate AI &amp; Digital Readiness Review</strong><div className="lt-route-actions"><ReviewLink /><a className="lt-button lt-button-secondary" href={`mailto:${zimbabwe.email}`}>Email LionTech</a></div></div>
     </section>
