@@ -7,6 +7,7 @@ import { AIVisibilitySnapshotPage } from '../pages/AIVisibilitySnapshotPage';
 import { CompanyBrainPage } from '../pages/CompanyBrainPage';
 import { ContactPage } from '../pages/ContactPage';
 import { HomePage } from '../pages/HomePage';
+import { ZimbabwePage } from '../pages/ZimbabwePage';
 import { MethodologyPage } from '../pages/MethodologyPage';
 import { MonitoringPage } from '../pages/MonitoringPage';
 import { ReadinessFixSprintPage } from '../pages/ReadinessFixSprintPage';
@@ -29,6 +30,7 @@ const marketingRoutes = {
   '/methodology': MethodologyPage,
   '/about': AboutPage,
   '/contact': ContactPage,
+  '/zimbabwe': ZimbabwePage,
 } as const;
 
 const legacyRoutes = new Set([
@@ -119,7 +121,7 @@ export function AppRoutes() {
   if (!Page) return <NotFoundPage />;
 
   return (
-    <MarketingLayout>
+    <MarketingLayout market={pathname === '/zimbabwe' ? 'zimbabwe' : undefined}>
       <Page />
     </MarketingLayout>
   );

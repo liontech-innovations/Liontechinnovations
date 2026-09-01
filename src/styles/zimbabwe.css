@@ -1,0 +1,135 @@
+/* Zimbabwe page compositions reuse the global LionTech palette and component system. */
+.lt-zimbabwe-page h1, .lt-zimbabwe-page h2, .lt-zimbabwe-page h3 { font-family: var(--lt-display-font); }
+.lt-zimbabwe-page p { color: var(--lt-body); }
+.lt-zimbabwe-hero, .lt-zimbabwe-closing { position: relative; isolation: isolate; overflow: hidden; background: var(--lt-canvas-deep); }
+.lt-zimbabwe-picture { display: block; height: 100%; }
+.lt-zimbabwe-picture img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.lt-zimbabwe-hero > .lt-zimbabwe-picture, .lt-zimbabwe-closing > .lt-zimbabwe-picture { position: absolute; inset: 0; z-index: -2; }
+.lt-zimbabwe-hero > .lt-zimbabwe-picture img { object-position: 50% 51%; }
+.lt-zimbabwe-scrim { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(3,10,20,.96) 0%, rgba(3,10,20,.85) 40%, rgba(3,10,20,.32) 75%, rgba(3,10,20,.2)), linear-gradient(0deg, var(--lt-canvas-deep), transparent 22%); }
+.lt-zimbabwe-hero-inner { padding-block: 116px 42px; min-height: 690px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
+.lt-zimbabwe-market { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; max-width: 610px; }
+.lt-zimbabwe-map { width: 62px; height: auto; flex: 0 0 auto; padding: 4px; border: 1px solid var(--lt-gold); border-radius: 6px; background: white; }
+.lt-zimbabwe-market .lt-kicker { margin: 0; color: var(--lt-gold-light); font-size: 12px; line-height: 1.5; }
+.marketing-site .lt-zimbabwe-hero h1 { max-width: 680px; font-size: clamp(2.2rem, 3.8vw, 3.5rem); font-weight: 560; line-height: 1.07; letter-spacing: -.04em; color: var(--lt-heading); margin: 0 0 22px; }
+.lt-zimbabwe-hero-copy { max-width: 610px; font-size: 17px; line-height: 1.65; margin: 0; }
+.lt-zimbabwe-trust { max-width: 665px; font-size: 13px; line-height: 1.7; margin: 26px 0 0; }
+.lt-zimbabwe-page .lt-route-actions { margin-top: 25px; }
+.lt-zimbabwe-sector-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.lt-zimbabwe-page .lt-route-card { padding: 24px; }
+.lt-zimbabwe-page .lt-route-card h3 { font-size: 20px; line-height: 1.2; }
+.lt-zimbabwe-page .lt-route-card p { font-size: 15px; line-height: 1.65; }
+.lt-zimbabwe-editorial { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+.lt-zimbabwe-editorial-image { height: 660px; overflow: hidden; border-radius: 10px; border: 1px solid var(--lt-line-strong); }
+.lt-zimbabwe-editorial .lt-route-heading { margin-bottom: 30px; }
+.lt-zimbabwe-editorial h3 { font-size: 20px; margin: 0 0 16px; }
+.lt-zimbabwe-review-areas, .lt-zimbabwe-offer ul, .lt-zimbabwe-controls ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.lt-zimbabwe-review-areas li, .lt-zimbabwe-offer li, .lt-zimbabwe-controls li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: var(--lt-body); }
+.lt-zimbabwe-page li > svg { flex: 0 0 auto; margin-top: 4px; color: var(--lt-gold-light); }
+.lt-zimbabwe-estate-flow { display: flex; align-items: center; list-style: none; padding: 28px 0; margin: 36px 0 0; border-block: 1px solid var(--lt-line); gap: 18px; }
+.lt-zimbabwe-estate-flow li { display: flex; align-items: center; gap: 18px; flex: 1; font-size: 13px; font-weight: 650; color: var(--lt-heading-soft); }
+.lt-zimbabwe-flow-note { font-size: 14px; margin: 16px 0 0; }
+.lt-zimbabwe-offers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
+.lt-zimbabwe-offer { padding: 28px; display: flex; flex-direction: column; gap: 20px; }
+.marketing-site .lt-zimbabwe-offer h3 { font-size: 24px; line-height: 1.18; margin: 0; }
+.lt-zimbabwe-price { font-size: 30px; line-height: 1.15; color: var(--lt-price); font-weight: 650; }
+.lt-zimbabwe-offer p { font-size: 15px; margin: 0; line-height: 1.65; }
+.lt-zimbabwe-qualification { border-left: 2px solid var(--lt-gold); padding-left: 15px; }
+.lt-zimbabwe-offer-action { margin-top: auto; padding-top: 12px; }
+.lt-zimbabwe-offer .lt-button { width: 100%; padding-inline: 12px; font-size: 11px; letter-spacing: .015em; }
+.lt-zimbabwe-foundation { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .8fr); gap: 60px; align-items: center; }
+.lt-zimbabwe-future-image { position: relative; height: 590px; overflow: hidden; border: 1px solid var(--lt-line-strong); border-radius: 10px; }
+.lt-zimbabwe-network { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(3,10,20,.6), rgba(3,10,20,.15)); pointer-events: none; }
+.lt-zimbabwe-network svg { width: 100%; height: 100%; fill: none; stroke: var(--lt-gold-light); stroke-width: 1; opacity: .65; }
+.lt-zimbabwe-node { position: absolute; padding: 7px 10px; border: 1px solid var(--lt-line-strong); border-radius: 6px; background: rgba(3,10,20,.9); color: var(--lt-heading-soft); font-size: 12px; }
+.lt-zimbabwe-node-0 { top: 12%; left: 6%; }.lt-zimbabwe-node-1 { top: 29%; right: 5%; }.lt-zimbabwe-node-2 { top: 47%; left: 8%; }.lt-zimbabwe-node-3 { top: 62%; right: 6%; }.lt-zimbabwe-node-4 { bottom: 13%; left: 5%; }.lt-zimbabwe-node-5 { top: 5%; right: 9%; }.lt-zimbabwe-node-6 { bottom: 4%; right: 10%; }
+.lt-zimbabwe-architecture { list-style: none; padding: 0; margin: 0; display: grid; gap: 13px; }
+.lt-zimbabwe-architecture li { display: flex; flex-direction: column; align-items: flex-start; gap: 13px; font-size: 18px; font-weight: 600; color: var(--lt-heading-soft); }
+.lt-zimbabwe-architecture li:last-child { color: var(--lt-gold-light); }
+.lt-zimbabwe-delivery { list-style: none; margin: 0 0 48px; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; counter-reset: delivery; }
+.lt-zimbabwe-delivery li { border-top: 1px solid var(--lt-gold); padding-top: 18px; counter-increment: delivery; }
+.lt-zimbabwe-delivery li::before { content: counter(delivery, decimal-leading-zero); font-size: 13px; color: var(--lt-gold-light); }
+.lt-zimbabwe-delivery h3 { font-size: 19px; margin: 12px 0; line-height: 1.3; }
+.lt-zimbabwe-delivery p { font-size: 15px; line-height: 1.6; margin: 0; }
+.lt-zimbabwe-security-layout { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); align-items: start; gap: 48px; }
+.lt-zimbabwe-security-copy { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
+.lt-zimbabwe-security-copy h3 { font-size: 20px; line-height: 1.2; margin: 0 0 12px; }
+.lt-zimbabwe-security-copy p { font-size: 15px; line-height: 1.65; margin: 0; }
+.lt-zimbabwe-controls { padding: 30px; }
+.lt-zimbabwe-controls > svg { color: var(--lt-gold-light); margin-bottom: 20px; }
+.lt-zimbabwe-controls h3 { font-size: 23px; line-height: 1.2; margin: 0 0 15px; }
+.lt-zimbabwe-controls p { font-size: 15px; margin: 0 0 22px; }
+.lt-zimbabwe-company-record { display: flex; flex-wrap: wrap; gap: 12px 26px; margin-top: 32px; padding-top: 25px; border-top: 1px solid var(--lt-line); color: var(--lt-body); font-size: 14px; }
+.lt-zimbabwe-company-record strong { color: var(--lt-heading-soft); }
+.lt-zimbabwe-faq { max-width: 960px; }
+.lt-zimbabwe-faq details { border-top: 1px solid var(--lt-line); }
+.lt-zimbabwe-faq details:last-child { border-bottom: 1px solid var(--lt-line); }
+.lt-zimbabwe-faq summary { list-style: none; display: flex; gap: 20px; align-items: center; justify-content: space-between; padding: 22px 2px; cursor: pointer; font-size: 18px; font-weight: 600; color: var(--lt-heading-soft); line-height: 1.4; }
+.lt-zimbabwe-faq summary::-webkit-details-marker { display: none; }
+.lt-zimbabwe-faq summary svg { flex-shrink: 0; color: var(--lt-gold-light); }
+.lt-zimbabwe-faq details[open] summary svg { transform: rotate(45deg); }
+.lt-zimbabwe-faq details p { margin: 0; padding: 0 38px 24px 2px; max-width: 850px; font-size: 16px; line-height: 1.7; }
+.lt-zimbabwe-support { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.lt-zimbabwe-closing > .lt-zimbabwe-picture img { object-position: 50% 80%; }
+.lt-zimbabwe-closing-inner { padding-block: 64px; min-height: 535px; }
+.lt-zimbabwe-closing .lt-zimbabwe-map { width: 52px; margin-bottom: 22px; }
+.marketing-site .lt-zimbabwe-closing h2 { max-width: 630px; font-size: clamp(2rem, 3.3vw, 3.2rem); line-height: 1.1; margin: 0 0 20px; }
+.lt-zimbabwe-closing p { max-width: 610px; font-size: 18px; line-height: 1.65; margin: 0 0 24px; }
+.lt-zimbabwe-closing strong { display: block; max-width: 630px; color: var(--lt-gold-light); font-size: 16px; }
+.lt-zimbabwe-enquiry-section { scroll-margin-top: 92px; }
+.lt-zimbabwe-enquiry-section .lt-shell { max-width: 960px; }
+.lt-zimbabwe-page .lt-zimbabwe-form input:not([type='checkbox']), .lt-zimbabwe-page .lt-zimbabwe-form select, .lt-zimbabwe-page .lt-zimbabwe-form textarea { font-size: 16px; min-width: 0; }
+.lt-zimbabwe-form textarea { width: 100%; border: 1px solid var(--lt-line-strong); border-radius: 8px; background: var(--lt-surface); color: var(--lt-text); padding: 12px 14px; resize: vertical; font-family: inherit; }
+.lt-zimbabwe-form-note { font-size: 14px; margin: 16px 0 0; }
+.lt-zimbabwe-form .lt-form-error a { color: inherit; text-decoration: underline; }
+.lt-zimbabwe-form .lt-consent input { flex: 0 0 auto; }
+.lt-zimbabwe-page .lt-route-platform-card span { display: inline-flex; align-items: center; gap: 8px; }
+
+@media (max-width: 1200px) {
+  .lt-zimbabwe-offers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lt-zimbabwe-offer-entry { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
+  .lt-zimbabwe-offer-entry h3 { grid-column: 1; }.lt-zimbabwe-offer-entry .lt-zimbabwe-price { grid-column: 2; grid-row: 1; }
+  .lt-zimbabwe-offer-entry .lt-zimbabwe-offer-action { grid-column: 2; }
+  .lt-zimbabwe-support { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .lt-zimbabwe-sector-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lt-zimbabwe-editorial, .lt-zimbabwe-foundation, .lt-zimbabwe-security-layout { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .lt-zimbabwe-editorial-image { height: 500px; }.lt-zimbabwe-future-image { height: 580px; }
+  .lt-zimbabwe-architecture { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lt-zimbabwe-estate-flow { flex-wrap: wrap; }.lt-zimbabwe-estate-flow li { flex: 1 0 28%; }
+  .lt-zimbabwe-delivery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 767px) {
+  .lt-zimbabwe-hero-inner { min-height: 790px; padding-block: 104px 34px; justify-content: flex-start; }
+  .lt-zimbabwe-hero > .lt-zimbabwe-picture img { object-position: 58% 50%; }
+  .lt-zimbabwe-scrim { background: linear-gradient(180deg, rgba(3,10,20,.8) 0%, rgba(3,10,20,.79) 48%, rgba(3,10,20,.3) 78%, var(--lt-canvas-deep)); }
+  .lt-zimbabwe-market { gap: 12px; margin-bottom: 22px; }.lt-zimbabwe-map { width: 50px; }
+  .lt-zimbabwe-market .lt-kicker { font-size: 10px; letter-spacing: .12em; }
+  .marketing-site .lt-zimbabwe-hero h1 { font-size: clamp(2rem, 8vw, 2.6rem); max-width: 570px; }
+  .lt-zimbabwe-hero-copy { font-size: 16px; line-height: 1.6; }
+  .lt-zimbabwe-trust { font-size: 13px; max-width: 510px; }
+  .lt-zimbabwe-page .lt-route-actions { gap: 12px; }
+  .lt-zimbabwe-sector-grid, .lt-zimbabwe-offers, .lt-zimbabwe-support, .lt-zimbabwe-security-copy, .lt-zimbabwe-form .lt-form-grid { grid-template-columns: minmax(0, 1fr); }
+  .lt-zimbabwe-offer-entry { grid-column: auto; display: flex; }.lt-zimbabwe-offer-entry .lt-zimbabwe-offer-action { grid-column: auto; }
+  .lt-zimbabwe-offer { padding: 24px; }.lt-zimbabwe-offer .lt-button { font-size: 11px; }
+  .lt-zimbabwe-editorial-image { height: 460px; }.lt-zimbabwe-editorial-image img { object-position: 50% 65%; }
+  .lt-zimbabwe-estate-flow { display: grid; grid-template-columns: 1fr; gap: 15px; padding-block: 24px; }.lt-zimbabwe-estate-flow li { justify-content: space-between; }.lt-zimbabwe-estate-flow li svg { transform: rotate(90deg); }
+  .lt-zimbabwe-future-image { height: 470px; }.lt-zimbabwe-node { font-size: 10px; padding: 6px; }
+  .lt-zimbabwe-architecture { grid-template-columns: 1fr; gap: 12px; }.lt-zimbabwe-architecture li { font-size: 17px; }
+  .lt-zimbabwe-delivery { gap: 25px 18px; }.lt-zimbabwe-delivery h3 { font-size: 17px; }.lt-zimbabwe-delivery p { font-size: 14px; }
+  .lt-zimbabwe-controls { padding: 24px; }.lt-zimbabwe-security-copy { gap: 26px; }
+  .lt-zimbabwe-faq summary { font-size: 16px; padding-block: 20px; }.lt-zimbabwe-faq details p { padding-right: 8px; }
+  .lt-zimbabwe-closing-inner { padding-block: 48px; min-height: 660px; }.lt-zimbabwe-closing .lt-zimbabwe-scrim { background: rgba(3,10,20,.82); }
+  .lt-zimbabwe-closing p { font-size: 17px; }.lt-zimbabwe-closing strong { font-size: 16px; }
+  .lt-zimbabwe-form { padding: 20px; }.lt-zimbabwe-form select { text-overflow: ellipsis; }.lt-zimbabwe-form .lt-consent { font-size: 14px; }
+}
+@media (max-width: 430px) {
+  .lt-zimbabwe-page .lt-route-actions { align-items: stretch; flex-direction: column; width: 100%; }
+  .lt-zimbabwe-page .lt-button { font-size: 11px; letter-spacing: .035em; padding-inline: 12px; }
+  .lt-zimbabwe-form > .lt-button { width: 100%; font-size: 10px; }
+  .lt-zimbabwe-offer { padding: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lt-zimbabwe-page *, .lt-zimbabwe-page *::before, .lt-zimbabwe-page *::after { scroll-behavior: auto; transition: none; animation: none; }
+}

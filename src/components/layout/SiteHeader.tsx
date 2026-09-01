@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react';
 import { getActiveNavigationHref, navigation } from '../../content/navigation';
 import { PrimaryCta } from '../ui/PrimaryCta';
 import { RouteLink } from '../ui/RouteLink';
+import { zimbabwe } from '../../content/zimbabwe';
 
-export function SiteHeader() {
+export function SiteHeader({ market }: { market?: 'zimbabwe' }) {
   const [open, setOpen] = useState(false);
   const [currentLocation, setCurrentLocation] = useState(() => ({
     pathname: window.location.pathname,
@@ -12,6 +13,9 @@ export function SiteHeader() {
   }));
 
   const activeHref = getActiveNavigationHref(currentLocation.pathname, currentLocation.hash);
+  const enquiryAction = market === 'zimbabwe'
+    ? <RouteLink className="lt-button lt-button-primary" href={zimbabwe.enquiryHref} onClick={() => setOpen(false)}>Request an Executive Review</RouteLink>
+    : <PrimaryCta label="Get AI Snapshot" />;
 
   useEffect(() => {
     const updateLocation = () => setCurrentLocation({
@@ -47,7 +51,7 @@ export function SiteHeader() {
           {navigation.map((item) => (
             <RouteLink
               key={item.href}
-              href={item.href}
+              href={market === 'zimbabwe' && item.href === '/contact' ? zimbabwe.enquiryHref : item.href}
               className={activeHref === item.href ? 'is-active' : undefined}
               aria-current={activeHref === item.href ? 'page' : undefined}
             >
@@ -57,7 +61,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="lt-header-action">
-          <PrimaryCta label="Get AI Snapshot" />
+          {enquiryAction}
         </div>
 
         <button
@@ -77,7 +81,7 @@ export function SiteHeader() {
           {navigation.map((item) => (
             <RouteLink
               key={item.href}
-              href={item.href}
+              href={market === 'zimbabwe' && item.href === '/contact' ? zimbabwe.enquiryHref : item.href}
               className={activeHref === item.href ? 'is-active' : undefined}
               aria-current={activeHref === item.href ? 'page' : undefined}
               onClick={() => setOpen(false)}
@@ -85,7 +89,7 @@ export function SiteHeader() {
               {item.label}
             </RouteLink>
           ))}
-          <PrimaryCta label="Get AI Snapshot" />
+          {enquiryAction}
         </nav>
       )}
     </header>

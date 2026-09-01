@@ -4,6 +4,7 @@ export const navigation = [
   { label: 'Services', href: '/ai-business-readiness' },
   { label: 'Platforms', href: '/#platforms' },
   { label: 'Industries', href: '/industries' },
+  { label: 'Zimbabwe', href: '/zimbabwe' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ] as const;
@@ -34,6 +35,7 @@ export function getActiveNavigationHref(pathname: string, hash = ''): Navigation
   if (serviceRoutes.has(path)) return '/ai-business-readiness';
   if (platformRoutes.has(path)) return '/#platforms';
   if (path === '/industries' || path.startsWith('/industries/')) return '/industries';
+  if (path === '/zimbabwe') return '/zimbabwe';
   if (path === '/about') return '/about';
   if (path === '/contact' || path === '/roofing-brief') return '/contact';
 

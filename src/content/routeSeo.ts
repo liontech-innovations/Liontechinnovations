@@ -5,13 +5,24 @@ import {
   organizationSchema,
   snapshotFaqSchema,
   snapshotServiceSchema,
+  zimbabweOrganizationSchema,
+  zimbabweServiceSchema,
+  zimbabweFaqSchema,
 } from '../lib/schema';
 import { company } from './company';
 import { companyBrainOffer, fixSprintOffer, monitoringOffer, snapshotOffer } from './offers';
+import { zimbabwe } from './zimbabwe';
 
 const withOrganization = (...schemas: Array<Record<string, unknown>>) => [organizationSchema, ...schemas];
 
 export const routeSeo = {
+  '/zimbabwe': {
+    title: zimbabwe.seoTitle,
+    description: zimbabwe.seoDescription,
+    path: '/zimbabwe',
+    image: { path: '/assets/zimbabwe/zimbabwe-og.png', width: 1200, height: 630, type: 'image/png', alt: 'LionTech Zimbabwe: Corporate AI & Digital Modernisation. UK Registered · Zimbabwe Focus.' },
+    schema: [zimbabweOrganizationSchema, zimbabweServiceSchema, zimbabweFaqSchema, breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Zimbabwe', path: '/zimbabwe' }])],
+  },
   '/': {
     title: 'LionTech AI Business Readiness | See What AI Says About Your Business',
     description: company.description,

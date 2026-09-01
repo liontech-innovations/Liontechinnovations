@@ -17,15 +17,16 @@ const urls = [];
 for (const [index, filename] of sitemapFiles.entries()) {
   const xml = await readFile(join(publicDirectory, filename), 'utf8');
   const entries = [...xml.matchAll(/<url><loc>([^<]+)<\/loc><lastmod>([^<]+)<\/lastmod><\/url>/g)];
-  const expected = index === 0 ? 18 : 20;
+  const expected = index === 0 ? 19 : 20;
   if (entries.length !== expected) failures.push(`${filename}: expected ${expected} URLs, received ${entries.length}`);
   for (const [, url, lastmod] of entries) {
     if (!url.startsWith(`${siteUrl}/`) || /#|vercel\.app|localhost|127\.0\.0\.1/i.test(url)) failures.push(`${filename}: invalid public URL ${url}`);
-    if (lastmod !== reviewedAt) failures.push(`${filename}: invalid lastmod ${lastmod}`);
+    const expectedLastmod = url === `${siteUrl}/zimbabwe` ? '2026-09-01' : reviewedAt;
+    if (lastmod !== expectedLastmod) failures.push(`${filename}: invalid lastmod ${lastmod}`);
     urls.push(url);
   }
 }
-if (urls.length !== 118 || new Set(urls).size !== 118) failures.push(`Sitemap inventory expected 118 unique URLs, received ${urls.length}/${new Set(urls).size}`);
+if (urls.length !== 119 || new Set(urls).size !== 119) failures.push(`Sitemap inventory expected 119 unique URLs, received ${urls.length}/${new Set(urls).size}`);
 
 const llms = await readFile(join(publicDirectory, 'llms.txt'), 'utf8');
 for (const fact of ['Lion Tech Innovations Ltd', '17068390', 'Manchester-based, serving UK businesses remotely', siteUrl, `${siteUrl}/contact#snapshot-enquiry`, `${siteUrl}/ai-data/index.json`, `${siteUrl}/ai-data/source-manifest.json`, `${siteUrl}/ai-data/content-review-manifest.json`, `${siteUrl}/ai-data/release-cohorts.json`]) {

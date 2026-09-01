@@ -205,6 +205,7 @@ export function createReleaseCohortManifest() {
 }
 
 export const coreSitemapRoutes = [
+  '/zimbabwe',
   '/',
   '/ai-visibility-snapshot',
   '/ai-business-readiness',

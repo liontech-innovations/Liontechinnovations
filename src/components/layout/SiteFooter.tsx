@@ -1,8 +1,11 @@
 import { ExternalLink, Mail, MapPin } from 'lucide-react';
 import { company } from '../../content/company';
 import { RouteLink } from '../ui/RouteLink';
+import { zimbabwe } from '../../content/zimbabwe';
 
-export function SiteFooter() {
+export function SiteFooter({ market }: { market?: 'zimbabwe' }) {
+  const isZimbabwe = market === 'zimbabwe';
+  const email = isZimbabwe ? zimbabwe.email : company.email;
   return (
     <footer className="lt-unified-footer">
       <div className="lt-shell lt-unified-footer-grid">
@@ -14,7 +17,7 @@ export function SiteFooter() {
 
         <nav aria-label="Footer solutions">
           <h2>Solutions</h2>
-          <RouteLink href="/ai-visibility-snapshot">AI Visibility Snapshot</RouteLink>
+          {isZimbabwe ? <RouteLink href={zimbabwe.enquiryHref}>Corporate Readiness Review</RouteLink> : <RouteLink href="/ai-visibility-snapshot">AI Visibility Snapshot</RouteLink>}
           <RouteLink href="/readiness-fix-sprint">Readiness Fix Sprint</RouteLink>
           <RouteLink href="/monitoring">Monitoring</RouteLink>
           <RouteLink href="/ai-business-readiness">Business Readiness</RouteLink>
@@ -32,11 +35,12 @@ export function SiteFooter() {
           <h2>Company</h2>
           <RouteLink href="/methodology">Methodology</RouteLink>
           <RouteLink href="/industries">Industry Guides</RouteLink>
+          <RouteLink href="/zimbabwe">Zimbabwe → Corporate AI &amp; Digital Modernisation</RouteLink>
           <RouteLink href="/company-brain">Company Brain</RouteLink>
           <RouteLink href="/about">About</RouteLink>
-          <RouteLink href="/contact">Contact</RouteLink>
-          <a href={`mailto:${company.email}`}><Mail size={15} aria-hidden="true" /> <span>{company.email}</span></a>
-          <p><MapPin size={15} aria-hidden="true" /> {company.location}</p>
+          <RouteLink href={isZimbabwe ? zimbabwe.enquiryHref : '/contact'}>Contact</RouteLink>
+          <a href={`mailto:${email}`}><Mail size={15} aria-hidden="true" /> <span>{email}</span></a>
+          <p><MapPin size={15} aria-hidden="true" /> {isZimbabwe ? 'United Kingdom · Zimbabwe engagements' : company.location}</p>
         </div>
       </div>
 

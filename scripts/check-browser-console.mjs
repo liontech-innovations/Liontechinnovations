@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { preview } from 'vite';
 
 const routes = [
+  '/zimbabwe',
   '/',
   '/ai-visibility-snapshot',
   '/ai-business-readiness',
@@ -21,6 +22,7 @@ const routes = [
 ];
 
 const expectedText = {
+  '/zimbabwe': "Built in the UK. Designed for Zimbabwe's next generation of business.",
   '/': 'See What AI Tells Your Customers About You. Then Fix It.',
   '/ai-visibility-snapshot': 'See what AI says. Know what to fix.',
   '/ai-business-readiness': 'See it. Fix it. Stay ready.',

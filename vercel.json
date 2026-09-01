@@ -14,6 +14,10 @@
   ],
   "rewrites": [
     {
+      "source": "/zimbabwe",
+      "destination": "/zimbabwe/index.html"
+    },
+    {
       "source": "/industries",
       "destination": "/industries/index.html"
     },

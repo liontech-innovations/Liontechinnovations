@@ -22,6 +22,9 @@ jobs:
       - run: npm run lint
       - run: npm run build
       - run: npm run test:public-privacy
+      - run: npm run test:zimbabwe-copy
+      - run: npm run test:zimbabwe-enquiry
+      - run: npm run test:zimbabwe-browser
       - run: npm run test:email-signature
       - run: npm run test:og-card
       - run: node scripts/check-ai-crawlers.mjs
