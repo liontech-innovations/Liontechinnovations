@@ -5,10 +5,13 @@
 .lt-zimbabwe-picture { display: block; height: 100%; }
 .lt-zimbabwe-picture img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .lt-zimbabwe-hero > .lt-zimbabwe-picture, .lt-zimbabwe-closing > .lt-zimbabwe-picture { position: absolute; inset: 0; z-index: -2; }
-.lt-zimbabwe-hero > .lt-zimbabwe-picture img { object-position: 50% 57%; filter: none; opacity: 1; }
+/* A bounded equal split keeps the authentic portrait generous without stretching it. */
+.lt-zimbabwe-hero { max-width: 1360px; margin-inline: auto; }
+.lt-zimbabwe-hero > .lt-zimbabwe-picture { left: 50%; width: 50%; }
+.lt-zimbabwe-hero > .lt-zimbabwe-picture img { object-position: 100% 100%; filter: none; opacity: 1; }
 .lt-zimbabwe-scrim { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(3,10,20,.96) 0%, rgba(3,10,20,.85) 40%, rgba(3,10,20,.32) 75%, rgba(3,10,20,.2)), linear-gradient(0deg, var(--lt-canvas-deep), transparent 22%); }
-.lt-zimbabwe-hero > .lt-zimbabwe-scrim { background: linear-gradient(90deg, rgba(3,12,27,.90) 0%, rgba(3,12,27,.78) 28%, rgba(3,12,27,.48) 43%, rgba(3,12,27,.18) 56%, rgba(3,12,27,.04) 66%, rgba(3,12,27,0) 76%); }
-.lt-zimbabwe-hero-inner { padding-block: 116px 42px; min-height: 690px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
+.lt-zimbabwe-hero > .lt-zimbabwe-scrim { background: linear-gradient(90deg, rgba(3,10,20,1) 50%, rgba(3,10,20,.85) 54%, rgba(3,10,20,.35) 60%, rgba(3,10,20,0) 68%); }
+.lt-zimbabwe-hero-inner { padding-block: 116px 42px; min-height: clamp(690px, 79.3515vw, 1080px); display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
 .lt-zimbabwe-market { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; max-width: 610px; }
 .lt-zimbabwe-map { width: 62px; height: auto; flex: 0 0 auto; padding: 4px; border: 1px solid var(--lt-gold); border-radius: 6px; background: white; }
 .lt-zimbabwe-market .lt-kicker { margin: 0; color: var(--lt-gold-light); font-size: 12px; line-height: 1.5; }
@@ -103,7 +106,8 @@
 }
 @media (max-width: 767px) {
   .lt-zimbabwe-hero-inner { min-height: 790px; padding-block: 104px 34px; justify-content: flex-start; }
-  .lt-zimbabwe-hero > .lt-zimbabwe-picture img { object-position: 35% 50%; }
+  .lt-zimbabwe-hero > .lt-zimbabwe-picture { left: 0; width: 100%; }
+  .lt-zimbabwe-hero > .lt-zimbabwe-scrim { background: linear-gradient(180deg, rgba(3,10,20,.56) 0%, rgba(3,10,20,.72) 55%, rgba(3,10,20,.70) 76%, rgba(3,10,20,.12) 88%, rgba(3,10,20,0) 95%); }
   .lt-zimbabwe-scrim { background: linear-gradient(180deg, rgba(3,10,20,.8) 0%, rgba(3,10,20,.79) 48%, rgba(3,10,20,.3) 78%, var(--lt-canvas-deep)); }
   .lt-zimbabwe-market { gap: 12px; margin-bottom: 22px; }.lt-zimbabwe-map { width: 50px; }
   .lt-zimbabwe-market .lt-kicker { font-size: 10px; letter-spacing: .12em; }

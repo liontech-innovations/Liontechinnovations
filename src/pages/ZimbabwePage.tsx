@@ -13,11 +13,22 @@ const sectorIcons = [Landmark, ShieldCheck, Hotel, Building2, Truck, Building2];
 
 function HarareImage({ name, alt, hero = false, fullBleed = false }: { name: string; alt: string; hero?: boolean; fullBleed?: boolean }) {
   const base = `/assets/zimbabwe/${name}`;
-  const sizes = hero || fullBleed ? '100vw' : '(min-width: 900px) 50vw, 100vw';
+  if (hero) {
+    const sizes = '(min-width: 1360px) 680px, (min-width: 768px) 50vw, 100vw';
+    return <picture className="lt-zimbabwe-picture">
+      <source media="(min-width: 768px)" type="image/avif" srcSet={`${base}-desktop-480.avif 480w, ${base}-desktop-586.avif 586w`} sizes={sizes} width={586} height={930} />
+      <source media="(min-width: 768px)" type="image/webp" srcSet={`${base}-desktop-480.webp 480w, ${base}-desktop-586.webp 586w`} sizes={sizes} width={586} height={930} />
+      <source media="(min-width: 768px)" srcSet={`${base}-desktop-480.jpg 480w, ${base}-desktop.jpg 586w`} sizes={sizes} width={586} height={930} />
+      <source type="image/avif" srcSet={`${base}-mobile-480.avif 480w, ${base}-mobile-586.avif 586w`} sizes={sizes} />
+      <source type="image/webp" srcSet={`${base}-mobile-480.webp 480w, ${base}-mobile-586.webp 586w`} sizes={sizes} />
+      <img src={`${base}-mobile.jpg`} srcSet={`${base}-mobile-480.jpg 480w, ${base}-mobile.jpg 586w`} sizes={sizes} alt={alt} width={586} height={1280} loading="eager" fetchPriority="high" decoding="async" />
+    </picture>;
+  }
+  const sizes = fullBleed ? '100vw' : '(min-width: 900px) 50vw, 100vw';
   return <picture className="lt-zimbabwe-picture">
     <source type="image/avif" srcSet={`${base}-480.avif 480w, ${base}-960.avif 960w`} sizes={sizes} />
     <source type="image/webp" srcSet={`${base}-480.webp 480w, ${base}-960.webp 960w`} sizes={sizes} />
-    <img src={`${base}.jpg`} srcSet={`${base}-480.jpg 480w, ${base}.jpg 960w`} sizes={sizes} alt={alt} width={960} height={1280} loading={hero ? 'eager' : 'lazy'} fetchPriority={hero ? 'high' : 'auto'} decoding="async" />
+    <img src={`${base}.jpg`} srcSet={`${base}-480.jpg 480w, ${base}.jpg 960w`} sizes={sizes} alt={alt} width={960} height={1280} loading="lazy" fetchPriority="auto" decoding="async" />
   </picture>;
 }
 

@@ -1,4 +1,9 @@
 {
+  "git": {
+    "deploymentEnabled": {
+      "feat/zimbabwe-corporate-market-page": false
+    }
+  },
   "trailingSlash": false,
   "redirects": [
     {
