@@ -46,7 +46,7 @@ function applyHead(html, seo) {
     output = replaceMeta(output, 'name', 'twitter:image', imageUrl);
     output = replaceMeta(output, 'name', 'twitter:image:alt', seo.image.alt);
   }
-  if (seo.path === '/zimbabwe') output = output.replace(/<link\s+rel="preload"[^>]*liontech-hero-poster\.jpg[^>]*>/i, '');
+  if (seo.path === '/zimbabwe' || seo.path.startsWith('/zimbabwe/')) output = output.replace(/<link\s+rel="preload"[^>]*liontech-hero-poster\.jpg[^>]*>/i, '');
   output = replaceMeta(output, 'name', 'twitter:title', seo.title);
   output = replaceMeta(output, 'name', 'twitter:description', seo.description);
   output = replaceMeta(output, 'name', 'robots', seo.robots ?? 'index,follow');

@@ -7,26 +7,26 @@ const publicDirectory = join(projectRoot, 'public');
 const failures = [];
 const siteUrl = 'https://liontechinnovations.co.uk';
 const reviewedAt = '2026-08-15';
-const sitemapFiles = ['sitemap-core.xml', 'sitemap-industries-1.xml', 'sitemap-industries-2.xml', 'sitemap-industries-3.xml', 'sitemap-industries-4.xml', 'sitemap-industries-5.xml'];
+const sitemapFiles = ['sitemap-core.xml', 'sitemap-industries-1.xml', 'sitemap-industries-2.xml', 'sitemap-industries-3.xml', 'sitemap-industries-4.xml', 'sitemap-industries-5.xml', 'sitemap-zimbabwe.xml'];
 
 const sitemapIndex = await readFile(join(publicDirectory, 'sitemap.xml'), 'utf8');
 for (const filename of sitemapFiles) if (!sitemapIndex.includes(`${siteUrl}/${filename}`)) failures.push(`sitemap.xml: missing ${filename}`);
-if ((sitemapIndex.match(/<sitemap>/g) ?? []).length !== 6) failures.push('sitemap.xml: expected six sitemap entries');
+if ((sitemapIndex.match(/<sitemap>/g) ?? []).length !== 7) failures.push('sitemap.xml: expected seven sitemap entries');
 
 const urls = [];
 for (const [index, filename] of sitemapFiles.entries()) {
   const xml = await readFile(join(publicDirectory, filename), 'utf8');
   const entries = [...xml.matchAll(/<url><loc>([^<]+)<\/loc><lastmod>([^<]+)<\/lastmod><\/url>/g)];
-  const expected = index === 0 ? 19 : 20;
+  const expected = index === 0 ? 19 : filename === 'sitemap-zimbabwe.xml' ? 26 : 20;
   if (entries.length !== expected) failures.push(`${filename}: expected ${expected} URLs, received ${entries.length}`);
   for (const [, url, lastmod] of entries) {
     if (!url.startsWith(`${siteUrl}/`) || /#|vercel\.app|localhost|127\.0\.0\.1/i.test(url)) failures.push(`${filename}: invalid public URL ${url}`);
-    const expectedLastmod = url === `${siteUrl}/zimbabwe` ? '2026-09-01' : reviewedAt;
+    const expectedLastmod = url === `${siteUrl}/zimbabwe` || url.startsWith(`${siteUrl}/zimbabwe/`) ? '2026-09-02' : reviewedAt;
     if (lastmod !== expectedLastmod) failures.push(`${filename}: invalid lastmod ${lastmod}`);
     urls.push(url);
   }
 }
-if (urls.length !== 119 || new Set(urls).size !== 119) failures.push(`Sitemap inventory expected 119 unique URLs, received ${urls.length}/${new Set(urls).size}`);
+if (urls.length !== 145 || new Set(urls).size !== 145) failures.push(`Sitemap inventory expected 145 unique URLs, received ${urls.length}/${new Set(urls).size}`);
 
 const llms = await readFile(join(publicDirectory, 'llms.txt'), 'utf8');
 for (const fact of ['Lion Tech Innovations Ltd', '17068390', 'Manchester-based, serving UK businesses remotely', siteUrl, `${siteUrl}/contact#snapshot-enquiry`, `${siteUrl}/ai-data/index.json`, `${siteUrl}/ai-data/source-manifest.json`, `${siteUrl}/ai-data/content-review-manifest.json`, `${siteUrl}/ai-data/release-cohorts.json`]) {

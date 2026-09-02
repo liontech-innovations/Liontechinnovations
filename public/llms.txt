@@ -65,6 +65,19 @@ The industry knowledge base contains 100 evidence-led public guides across 20 UK
 - Landscaping companies: https://liontechinnovations.co.uk/industries/landscaping-companies
 - Commercial cleaning companies: https://liontechinnovations.co.uk/industries/commercial-cleaning-companies
 
+## Zimbabwe industry guidance
+
+LionTech supports Zimbabwe-facing engagements from the United Kingdom. The Zimbabwe review is the US$750 Corporate AI & Digital Readiness Review; it uses the dedicated Zimbabwe enquiry path, not the UK Snapshot funnel. Sector pages describe possible work, not client results or institutional endorsements.
+
+- Zimbabwe market and all 26 sectors: https://liontechinnovations.co.uk/zimbabwe#zimbabwe-industries
+- Zimbabwe executive review enquiry: https://liontechinnovations.co.uk/zimbabwe#zimbabwe-enquiry
+- Zimbabwe sector sitemap: https://liontechinnovations.co.uk/sitemap-zimbabwe.xml
+- Banking and financial services: https://liontechinnovations.co.uk/zimbabwe/banking-financial-services
+- Travel and tourism: https://liontechinnovations.co.uk/zimbabwe/travel-tourism
+- Construction companies: https://liontechinnovations.co.uk/zimbabwe/construction-companies
+- Logistics and distribution: https://liontechinnovations.co.uk/zimbabwe/logistics-distribution
+- Sports, stadiums and sports organisations: https://liontechinnovations.co.uk/zimbabwe/sports-stadiums-organisations
+
 ## Limits
 
 This file and the linked industry records are additional machine-readable sources, not guarantees of crawl, index, ranking, citation, recommendation, leads or sales. LionTech does not control third-party AI systems, and their outputs can change. Industry guidance is general information, not legal, medical, financial, regulatory or compliance advice. Findings in a commissioned Snapshot are human-reviewed observations.

@@ -7,6 +7,8 @@ import { routeMeta } from './legacy/LegacySite';
 import { industriesDirectorySeo, industryRouteSeo } from './content/industries/seo';
 import { programmaticRoutes } from './content/industries';
 import { signatureInstallSeo } from './content/emailSignature';
+import { zimbabweIndustryRoutes } from './content/zimbabweIndustries';
+import { zimbabweIndustrySeo } from './content/zimbabweIndustrySeo';
 
 type RuntimeWithWindow = typeof globalThis & { window?: Window & typeof globalThis };
 
@@ -27,6 +29,7 @@ export const prerenderRoutes: PrerenderRoutePath[] = [
   '/email/signature-install',
   '/industries',
   ...programmaticRoutes,
+  ...zimbabweIndustryRoutes,
 ];
 
 function createPrerenderWindow(pathname: string) {
@@ -52,7 +55,7 @@ export function renderMarketingRoute(pathname: PrerenderRoutePath) {
       ? signatureInstallSeo
     : pathname === '/industries'
       ? industriesDirectorySeo
-      : industryRouteSeo.get(pathname)
+      : zimbabweIndustrySeo.get(pathname) ?? industryRouteSeo.get(pathname)
         ?? { ...routeMeta[pathname as keyof typeof routeMeta], path: pathname };
   if (!seo) throw new Error(`Missing SEO configuration for ${pathname}`);
 

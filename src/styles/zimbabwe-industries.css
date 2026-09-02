@@ -1,0 +1,63 @@
+/* Sector pages extend the existing LionTech reading, section and action system. */
+.lt-zw-industry-page { --zw-section-space: clamp(36px, 4vw, 60px); }
+.lt-zw-sector-hero { padding-block: 110px 44px; }
+.lt-zw-breadcrumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 14px; color: var(--lt-body); margin-bottom: 30px; }
+.lt-zw-breadcrumbs a { color: var(--lt-gold-light); padding-block: 8px; }
+.lt-zw-sector-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 44px; align-items: center; }
+.marketing-site .lt-zw-sector-intro h1 { font-size: clamp(30px, 3.1vw, 44px); line-height: 1.12; letter-spacing: -.035em; font-weight: 560; margin: 0 0 20px; }
+.lt-zw-industry-page p, .lt-zw-industry-page dd { font-size: 17px; line-height: 1.65; }
+.lt-zw-sector-summary { margin: 0; }
+.lt-zw-sector-intro .lt-route-actions { display: flex; align-items: flex-start; flex-direction: column; gap: 16px; }
+.lt-zw-sector-figure { margin: 0; min-width: 0; }
+.lt-zw-sector-figure picture { display: block; border: 1px solid var(--lt-line-strong); border-radius: 10px; overflow: hidden; background: var(--lt-canvas-deep); }
+.lt-zw-sector-figure img { display: block; width: 100%; height: auto; max-height: 390px; object-fit: contain; }
+.lt-zw-sector-figure figcaption { color: var(--lt-body); font-size: 13px; line-height: 1.55; margin-top: 12px; }
+.lt-zw-reading { max-width: 850px; }
+.lt-zw-reading p { margin: 0 0 18px; }
+.lt-zw-reading p:last-child { margin-bottom: 0; }
+.lt-zw-industry-page .lt-route-heading { margin-bottom: 22px; }
+.lt-zw-editorial-row { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.3fr); gap: 64px; align-items: start; }
+.lt-zw-editorial-points { margin: 0; display: grid; gap: 22px; }
+.lt-zw-editorial-points > div { border-top: 1px solid var(--lt-line-strong); padding-top: 16px; }
+.lt-zw-editorial-points dt { color: var(--lt-heading); font-size: 21px; font-weight: 600; line-height: 1.25; margin-bottom: 8px; }
+.lt-zw-editorial-points dd { margin: 0; color: var(--lt-body); }
+.lt-zw-text-link { display: inline-flex; gap: 10px; align-items: center; color: var(--lt-gold-light); min-height: 44px; font-size: 15px; text-underline-offset: 4px; }
+.lt-zw-text-link:hover { text-decoration: underline; }
+.lt-zw-text-link svg { flex-shrink: 0; }
+.lt-zw-gates { margin-top: 36px; border-top: 1px solid var(--lt-gold); padding-top: 24px; }
+.lt-zw-gates h3 { margin: 0 0 20px; font-size: 23px; }
+.lt-zw-gates dl { margin: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 22px; }
+.lt-zw-gates dt { color: var(--lt-gold); font-size: 14px; text-transform: uppercase; letter-spacing: .08em; font-weight: 600; margin-bottom: 8px; }
+.lt-zw-gates dd { margin: 0; font-size: 15px; color: var(--lt-body); }
+.lt-zw-reference { margin: 24px 0 0; max-width: 900px; }
+.lt-zw-reference a { color: var(--lt-gold-light); text-decoration: underline; text-underline-offset: 3px; }
+.lt-zw-review { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .85fr); gap: 60px; }
+.lt-zw-review .lt-route-heading { margin-bottom: 12px; }
+.lt-zw-review .lt-zimbabwe-price { font-size: 34px; }
+.lt-zw-review aside { border-left: 1px solid var(--lt-line-strong); padding-left: 30px; }
+.lt-zw-review h3 { font-size: 22px; margin: 0 0 18px; }
+.lt-zw-review aside strong { display: block; color: var(--lt-price); margin-top: 5px; font-size: 23px; }
+.lt-zw-related-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 30px; margin-bottom: 16px; }
+.lt-zw-related-links a { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid var(--lt-line-strong); padding: 16px 0; color: var(--lt-heading-soft); }
+.lt-zw-related-links svg { flex-shrink: 0; color: var(--lt-gold); }
+.lt-zw-banknote-preview { margin: 28px 0 0; max-width: 500px; padding: 20px; border: 1px solid var(--lt-gold); }
+.lt-zw-banknote-preview img { display: block; max-width: 100%; height: auto; }
+.lt-zw-banknote-preview figcaption { color: var(--lt-gold-light); margin-top: 16px; }
+@media (max-width: 900px) {
+  .lt-zw-sector-intro { gap: 26px; }
+  .lt-zw-editorial-row { grid-template-columns: 1fr; gap: 0; }
+  .lt-zw-gates dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lt-zw-review { gap: 30px; }
+}
+@media (max-width: 767px) {
+  .lt-zw-sector-hero { padding-block: 92px 32px; }
+  .lt-zw-breadcrumbs { margin-bottom: 18px; }
+  .lt-zw-sector-intro, .lt-zw-review, .lt-zw-related-links { grid-template-columns: 1fr; }
+  .marketing-site .lt-zw-sector-intro h1 { font-size: 32px; }
+  .lt-zw-sector-figure img { max-height: 320px; }
+  .lt-zw-gates dl { grid-template-columns: 1fr; gap: 14px; }
+  .lt-zw-gates dl > div { border-bottom: 1px solid var(--lt-line); padding-bottom: 14px; }
+  .lt-zw-gates dd { font-size: 17px; }
+  .lt-zw-review aside { border-left: 0; border-top: 1px solid var(--lt-line-strong); padding: 22px 0 0; }
+  .lt-zw-review .lt-button { width: 100%; }
+}

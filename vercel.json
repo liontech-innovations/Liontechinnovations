@@ -19,6 +19,10 @@
   ],
   "rewrites": [
     {
+      "source": "/zimbabwe/:sector",
+      "destination": "/zimbabwe/:sector/index.html"
+    },
+    {
       "source": "/zimbabwe",
       "destination": "/zimbabwe/index.html"
     },

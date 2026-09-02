@@ -6,6 +6,15 @@
 .lt-zimbabwe-page .lt-route-heading > p:last-child { font-size: 16px; line-height: 1.6; }
 .lt-zimbabwe-page h1, .lt-zimbabwe-page h2, .lt-zimbabwe-page h3 { font-family: var(--lt-display-font); }
 .lt-zimbabwe-page p { color: var(--lt-body); }
+.lt-zimbabwe-page .lt-kicker, .lt-zimbabwe-page .lt-form-section legend {
+  color: var(--lt-gold);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.lt-zimbabwe-page .lt-kicker { margin-bottom: 12px; }
 .lt-zimbabwe-hero, .lt-zimbabwe-closing { position: relative; isolation: isolate; overflow: hidden; background: var(--lt-canvas-deep); }
 .lt-zimbabwe-picture { display: block; height: 100%; }
 .lt-zimbabwe-picture img { display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -19,12 +28,19 @@
 .lt-zimbabwe-hero-inner { padding-block: 88px 28px; min-height: clamp(680px, 63.52vw, 864px); display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
 .lt-zimbabwe-market { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; max-width: 610px; }
 .lt-zimbabwe-map { width: 100px; height: auto; flex: 0 0 auto; padding: 4px; border: 1px solid var(--lt-gold); border-radius: 6px; background: white; }
-.lt-zimbabwe-market .lt-kicker { margin: 0; color: var(--lt-gold-light); font-size: 12px; line-height: 1.5; }
+.lt-zimbabwe-market .lt-kicker { margin: 0; }
 .marketing-site .lt-zimbabwe-hero h1 { max-width: 600px; font-size: clamp(2.1rem, 3.05vw, 2.8rem); font-weight: 560; line-height: 1.07; letter-spacing: -.04em; color: var(--lt-heading); margin: 0 0 16px; }
 .lt-zimbabwe-hero-copy { max-width: 580px; font-size: 16px; line-height: 1.6; margin: 0; }
 .lt-zimbabwe-page .lt-zimbabwe-trust { max-width: 600px; font-size: 13px; line-height: 1.55; margin: 12px 0 0; }
 .lt-zimbabwe-page .lt-route-actions { margin-top: 20px; }
 .lt-zimbabwe-sector-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.lt-zimbabwe-directory-title { font-size: 23px; margin: 0 0 20px; }
+.lt-zimbabwe-sector-directory .lt-route-card { min-height: 0; }
+.lt-zimbabwe-sector-directory .lt-route-card-action { margin-top: 14px; }
+.lt-zimbabwe-more-industries { margin-top: 32px; border-top: 1px solid var(--lt-line-strong); padding-top: 24px; }
+.lt-zimbabwe-more-industries h3 { font-size: 21px; margin: 0 0 14px; }
+.lt-zimbabwe-more-industries > div { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.lt-zimbabwe-more-industries a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: 15px; color: var(--lt-gold-light); }
 .lt-zimbabwe-page .lt-route-card { padding: 20px; }
 .lt-zimbabwe-page .lt-route-card h3 { font-size: 18px; line-height: 1.2; }
 .lt-zimbabwe-page .lt-route-card p { font-size: 15px; line-height: 1.6; }
@@ -131,15 +147,15 @@
   .lt-zimbabwe-delivery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (min-width: 768px) and (max-width: 1100px) {
+  .lt-zimbabwe-market { max-width: 55%; }
   .marketing-site .lt-zimbabwe-hero h1, .lt-zimbabwe-hero-copy, .lt-zimbabwe-page .lt-zimbabwe-trust { max-width: 55%; }
 }
 @media (max-width: 767px) {
   .lt-zimbabwe-hero-inner { min-height: 680px; padding-block: 88px 24px; justify-content: flex-start; }
   .lt-zimbabwe-hero > .lt-zimbabwe-picture { left: 0; width: 100%; }
-  .lt-zimbabwe-hero > .lt-zimbabwe-scrim { background: linear-gradient(180deg, rgba(3,10,20,.56) 0%, rgba(3,10,20,.72) 55%, rgba(3,10,20,.70) 76%, rgba(3,10,20,.12) 88%, rgba(3,10,20,0) 95%); }
+  .lt-zimbabwe-hero > .lt-zimbabwe-scrim { background: linear-gradient(180deg, rgba(3,10,20,.56) 0%, rgba(3,10,20,.76) 55%, rgba(3,10,20,.76) 83%, rgba(3,10,20,.12) 90%, rgba(3,10,20,0) 96%); }
   .lt-zimbabwe-scrim { background: linear-gradient(180deg, rgba(3,10,20,.8) 0%, rgba(3,10,20,.79) 48%, rgba(3,10,20,.3) 78%, var(--lt-canvas-deep)); }
   .lt-zimbabwe-market { gap: 12px; margin-bottom: 12px; }.lt-zimbabwe-map { width: 72px; }
-  .lt-zimbabwe-market .lt-kicker { font-size: 10px; letter-spacing: .12em; }
   .marketing-site .lt-zimbabwe-hero h1 { font-size: clamp(1.75rem, 7.2vw, 2rem); max-width: 570px; }
   .lt-zimbabwe-hero-copy { font-size: 15.5px; line-height: 1.55; }
   .lt-zimbabwe-page .lt-route-actions { gap: 10px; margin-top: 16px; }
@@ -166,4 +182,50 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .lt-zimbabwe-page *, .lt-zimbabwe-page *::before, .lt-zimbabwe-page *::after { scroll-behavior: auto; transition: none; animation: none; }
+}
+
+/* Mobile refinement only; preserve the approved desktop composition and imagery. */
+@media (max-width: 767px) {
+  .lt-zimbabwe-page { --zw-section-space: 34px; --zw-block-gap: 22px; }
+  .marketing-site .lt-zimbabwe-page .lt-route-heading h2 { font-size: 30px; line-height: 1.14; }
+  .marketing-site .lt-zimbabwe-hero h1 { font-size: clamp(26px, 7.1vw, 30px); }
+  .lt-zimbabwe-page .lt-route-heading > p:last-child,
+  .lt-zimbabwe-hero-copy, .lt-zimbabwe-page .lt-route-card p,
+  .lt-zimbabwe-offer p, .lt-zimbabwe-delivery p, .lt-zimbabwe-security-copy p,
+  .lt-zimbabwe-controls p, .lt-zimbabwe-faq details p { font-size: 17px; line-height: 1.6; }
+  .lt-zimbabwe-page .lt-route-card h3, .lt-zimbabwe-delivery h3,
+  .lt-zimbabwe-security-copy h3 { font-size: 21px; line-height: 1.25; }
+  .lt-zimbabwe-page .lt-route-card { padding: 17px; }
+  .lt-zimbabwe-sector-directory { gap: 12px; }
+  .lt-zimbabwe-sector-directory .lt-route-card h3 { margin-bottom: 8px; }
+  .lt-zimbabwe-sector-directory .lt-route-card-action { margin-top: 10px; }
+  .lt-zimbabwe-page .lt-kicker, .lt-zimbabwe-page .lt-form-section legend { font-size: 12px; }
+  /* Protect the small company record without changing the approved photo or crop. */
+  .lt-zimbabwe-page .lt-zimbabwe-trust { background: rgba(3, 10, 20, .84); border-radius: 4px; padding: 4px 8px; }
+  .lt-zimbabwe-price { font-size: 30px; }
+  .lt-zimbabwe-offer { gap: 14px; padding: 18px; }
+  .lt-zimbabwe-offer li, .lt-zimbabwe-review-areas li, .lt-zimbabwe-controls li { font-size: 16px; line-height: 1.55; }
+  .lt-zimbabwe-delivery { grid-template-columns: 1fr; gap: 16px; margin-bottom: 28px; }
+  .lt-zimbabwe-delivery li { padding-top: 12px; }
+  .lt-zimbabwe-delivery h3 { margin: 6px 0; }
+  .lt-zimbabwe-delivery li::before { font-size: 14px; }
+  .lt-zimbabwe-security-copy article + article { border-top: 1px solid var(--lt-line); padding-top: 18px; }
+  .lt-zimbabwe-security-copy h3 { margin-bottom: 8px; }
+  .lt-zimbabwe-controls { padding: 18px; }
+  .lt-zimbabwe-controls > svg { margin-bottom: 12px; }
+  .lt-zimbabwe-controls ul { gap: 12px; }
+  .lt-zimbabwe-node { font-size: 12px; padding: 7px; }
+  .lt-zimbabwe-node-5, .lt-zimbabwe-node-6 { display: none; }
+  .lt-zimbabwe-faq summary { font-size: 17px; min-height: 48px; }
+  .lt-zimbabwe-faq details p { padding-bottom: 16px; }
+  .lt-zimbabwe-page .lt-zimbabwe-form input:not([type='checkbox']),
+  .lt-zimbabwe-page .lt-zimbabwe-form select { min-height: 48px; width: 100%; }
+  .lt-zimbabwe-page .lt-zimbabwe-form label { font-size: 15px; }
+  .lt-zimbabwe-page .lt-zimbabwe-form-note { font-size: 15px; line-height: 1.55; border-left: 2px solid var(--lt-gold); padding-left: 12px; }
+  .lt-zimbabwe-form > .lt-button { width: 100%; min-height: 48px; font-size: 11px; }
+  .marketing-site[data-market='zimbabwe'] .lt-unified-footer { padding-top: 34px; }
+  .marketing-site[data-market='zimbabwe'] .lt-unified-footer p,
+  .marketing-site[data-market='zimbabwe'] .lt-unified-footer a { font-size: 14px; line-height: 1.6; }
+  .marketing-site[data-market='zimbabwe'] .lt-unified-footer nav a,
+  .marketing-site[data-market='zimbabwe'] .lt-unified-footer-company > a { min-height: 44px; padding-block: 8px; }
 }

@@ -1,15 +1,14 @@
-import { ArrowDown, ArrowRight, Building2, Check, Hotel, Landmark, LockKeyhole, Plus, ShieldCheck, Truck } from 'lucide-react';
+import { ArrowDown, ArrowRight, Check, LockKeyhole, Plus } from 'lucide-react';
 import { ZimbabweEnquiryForm } from '../components/ZimbabweEnquiryForm';
 import { FeatureCard, RouteHeading, RouteSection } from '../components/sections/RoutePageSections';
 import { RouteLink } from '../components/ui/RouteLink';
 import { company } from '../content/company';
 import { platforms } from '../content/platforms';
 import { routeSeo } from '../content/routeSeo';
-import { zimbabwe, zimbabweArchitecture, zimbabweControls, zimbabweDelivery, zimbabweEstateFlow, zimbabweFaq, zimbabweNodes, zimbabweOffers, zimbabweReviewAreas, zimbabweSectors, zimbabweSecurity, zimbabweSupport } from '../content/zimbabwe';
+import { zimbabwe, zimbabweArchitecture, zimbabweControls, zimbabweDelivery, zimbabweEstateFlow, zimbabweFaq, zimbabweNodes, zimbabweOffers, zimbabweReviewAreas, zimbabweSecurity, zimbabweSupport } from '../content/zimbabwe';
+import { zimbabweIndustries, zimbabweIndustryPath } from '../content/zimbabweIndustries';
 import { useSeo } from '../lib/seo';
 import '../styles/zimbabwe.css';
-
-const sectorIcons = [Landmark, ShieldCheck, Hotel, Building2, Truck, Building2];
 
 function HarareImage({ name, alt, hero = false, fullBleed = false }: { name: string; alt: string; hero?: boolean; fullBleed?: boolean }) {
   const base = `/assets/zimbabwe/${name}`;
@@ -31,6 +30,14 @@ function HarareImage({ name, alt, hero = false, fullBleed = false }: { name: str
     <img src={`${base}.jpg`} srcSet={`${base}-480.jpg 480w, ${base}.jpg 960w`} sizes={sizes} alt={alt} width={960} height={1280} loading="lazy" fetchPriority="auto" decoding="async" />
   </picture>;
 }
+
+// Reserve the real artwork proportions before lazy loading; final card styling is unchanged.
+const platformImageDimensions: Record<(typeof platforms)[number]['name'], readonly [number, number]> = {
+  'ClearVisa UK': [841, 1536],
+  CalcFee: [853, 1536],
+  'Lead Recovery': [852, 1536],
+  CareOps: [1280, 853],
+};
 
 function MarketMark() {
   return <img className="lt-zimbabwe-map" src="/assets/zimbabwe/zimbabwe-market-marker-320.png" srcSet="/assets/zimbabwe/zimbabwe-market-marker-320.png 320w, /assets/zimbabwe/zimbabwe-market-marker-640.png 640w" sizes="(max-width: 767px) 72px, 100px" alt="Map of Zimbabwe filled with the national flag" width={320} height={294} decoding="async" />;
@@ -65,9 +72,10 @@ export function ZimbabwePage() {
       </div>
     </section>
 
-    <RouteSection>
+    <RouteSection id="zimbabwe-industries">
       <RouteHeading eyebrow="ZIMBABWE CORPORATE FOCUS" title="Built for organisations where digital quality, trust and operational efficiency matter." description="LionTech focuses on established organisations with customer-facing systems, multi-team operations or information that needs to stay accurate across websites, staff and digital channels." />
-      <div className="lt-zimbabwe-sector-grid">{zimbabweSectors.map((sector, index) => <FeatureCard key={sector.title} title={sector.title} icon={sectorIcons[index]}><p>{sector.description}</p></FeatureCard>)}</div>
+      <h3 className="lt-zimbabwe-directory-title">Industries we support in Zimbabwe</h3>
+      <div className="lt-zimbabwe-sector-grid lt-zimbabwe-sector-directory">{zimbabweIndustries.map(sector => <FeatureCard key={sector.slug} title={sector.title} href={zimbabweIndustryPath(sector.slug)} linkLabel="Explore sector page"><p>{sector.benefit}</p></FeatureCard>)}</div>
     </RouteSection>
 
     <RouteSection tone="soft" id="business-today">
@@ -111,7 +119,7 @@ export function ZimbabwePage() {
 
     <RouteSection tone="soft" id="platform-proof">
       <RouteHeading title="We build systems, not just reports." description="Before we ask an organisation to change anything, we show what we observed, where we found it and why we think it deserves attention. Implementation is then scoped separately." />
-      <div className="lt-route-platform-grid">{platforms.map((platform) => <RouteLink className="lt-route-platform-card" href={platform.href} key={platform.name}><div className="lt-route-platform-image"><img src={platform.image} alt={`${platform.name} platform preview`} width={640} height={360} loading="lazy" decoding="async" /></div><div><h3>{platform.name}</h3><p>{platform.description}</p><span>View platform <ArrowRight size={15} aria-hidden="true" /></span></div></RouteLink>)}</div>
+      <div className="lt-route-platform-grid">{platforms.map((platform) => <RouteLink className="lt-route-platform-card" href={platform.href} key={platform.name}><div className="lt-route-platform-image"><img src={platform.image} alt={`${platform.name} platform preview`} width={platformImageDimensions[platform.name][0]} height={platformImageDimensions[platform.name][1]} loading="lazy" decoding="async" /></div><div><h3>{platform.name}</h3><p>{platform.description}</p><span>View platform <ArrowRight size={15} aria-hidden="true" /></span></div></RouteLink>)}</div>
       <div className="lt-zimbabwe-company-record"><strong>{company.legalName}</strong><span>Registered in England and Wales</span><span>Company No. {company.companiesHouseNumber}</span><span>United Kingdom</span></div>
     </RouteSection>
 
@@ -123,6 +131,7 @@ export function ZimbabwePage() {
     <RouteSection tone="soft">
       <RouteHeading eyebrow="UK COMPANY · ZIMBABWE ENGAGEMENT" title="UK delivery. Zimbabwe business context." />
       <div className="lt-zimbabwe-support">{zimbabweSupport.map(([title, description]) => <FeatureCard title={title} key={title}><p>{description}</p></FeatureCard>)}</div>
+      <nav className="lt-zimbabwe-more-industries" aria-label="Explore more Zimbabwe industries"><h3>Explore more Zimbabwe industries</h3><div>{['banking-financial-services', 'travel-tourism', 'construction-companies', 'logistics-distribution', 'sports-stadiums-organisations', 'corporate-groups-holdings'].map(slug => { const sector = zimbabweIndustries.find(item => item.slug === slug)!; return <RouteLink href={zimbabweIndustryPath(slug)} key={slug}>{sector.shortTitle}<ArrowRight size={15} aria-hidden="true" /></RouteLink>; })}<RouteLink href="/zimbabwe#zimbabwe-industries">All Zimbabwe sectors<ArrowRight size={15} aria-hidden="true" /></RouteLink></div></nav>
     </RouteSection>
 
     <section className="lt-zimbabwe-closing" id="zimbabwe-final-cta" aria-labelledby="zw-closing-title">

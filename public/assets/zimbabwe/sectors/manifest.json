@@ -1,0 +1,310 @@
+[
+  {
+    "key": "agriculture",
+    "sourceSha256": "1a603730f725986ab88559113ebdbb2d9961bf14003ca164ad9219a30a16460c",
+    "sourceWidth": 1280,
+    "sourceHeight": 523,
+    "files": [
+      {
+        "file": "agriculture-480.jpg",
+        "width": 480,
+        "height": 196,
+        "bytes": 41066
+      },
+      {
+        "file": "agriculture-480.webp",
+        "width": 480,
+        "height": 196,
+        "bytes": 37032
+      },
+      {
+        "file": "agriculture-480.avif",
+        "width": 480,
+        "height": 196,
+        "bytes": 29388
+      },
+      {
+        "file": "agriculture-960.jpg",
+        "width": 960,
+        "height": 392,
+        "bytes": 120176
+      },
+      {
+        "file": "agriculture-960.webp",
+        "width": 960,
+        "height": 392,
+        "bytes": 98178
+      },
+      {
+        "file": "agriculture-960.avif",
+        "width": 960,
+        "height": 392,
+        "bytes": 76762
+      }
+    ]
+  },
+  {
+    "key": "mining",
+    "sourceSha256": "84fff7e9c4839b4f8041f082a80a2c548fe54f562dd1f29264917349c005d648",
+    "sourceWidth": 1280,
+    "sourceHeight": 717,
+    "files": [
+      {
+        "file": "mining-480.jpg",
+        "width": 480,
+        "height": 269,
+        "bytes": 50223
+      },
+      {
+        "file": "mining-480.webp",
+        "width": 480,
+        "height": 269,
+        "bytes": 43800
+      },
+      {
+        "file": "mining-480.avif",
+        "width": 480,
+        "height": 269,
+        "bytes": 34689
+      },
+      {
+        "file": "mining-960.jpg",
+        "width": 960,
+        "height": 538,
+        "bytes": 148504
+      },
+      {
+        "file": "mining-960.webp",
+        "width": 960,
+        "height": 538,
+        "bytes": 114032
+      },
+      {
+        "file": "mining-960.avif",
+        "width": 960,
+        "height": 538,
+        "bytes": 89511
+      }
+    ]
+  },
+  {
+    "key": "banking",
+    "sourceSha256": "d7ebfbdcac89f7608abd2efa46d63f3961fcc93f3b90f9d5e67a6ca5f58e3a80",
+    "sourceWidth": 1280,
+    "sourceHeight": 667,
+    "files": [
+      {
+        "file": "banking-480.jpg",
+        "width": 480,
+        "height": 250,
+        "bytes": 38317
+      },
+      {
+        "file": "banking-480.webp",
+        "width": 480,
+        "height": 250,
+        "bytes": 27220
+      },
+      {
+        "file": "banking-480.avif",
+        "width": 480,
+        "height": 250,
+        "bytes": 21565
+      },
+      {
+        "file": "banking-960.jpg",
+        "width": 960,
+        "height": 500,
+        "bytes": 100965
+      },
+      {
+        "file": "banking-960.webp",
+        "width": 960,
+        "height": 500,
+        "bytes": 60490
+      },
+      {
+        "file": "banking-960.avif",
+        "width": 960,
+        "height": 500,
+        "bytes": 48555
+      }
+    ]
+  },
+  {
+    "key": "public-enterprise",
+    "sourceSha256": "1dd76cc2b6859011b4c46c0b3f631f25e3f6466cede750f082312fe0ebda95bc",
+    "sourceWidth": 1280,
+    "sourceHeight": 854,
+    "files": [
+      {
+        "file": "public-enterprise-480.jpg",
+        "width": 480,
+        "height": 320,
+        "bytes": 39874
+      },
+      {
+        "file": "public-enterprise-480.webp",
+        "width": 480,
+        "height": 320,
+        "bytes": 26682
+      },
+      {
+        "file": "public-enterprise-480.avif",
+        "width": 480,
+        "height": 320,
+        "bytes": 22178
+      },
+      {
+        "file": "public-enterprise-960.jpg",
+        "width": 960,
+        "height": 640,
+        "bytes": 110667
+      },
+      {
+        "file": "public-enterprise-960.webp",
+        "width": 960,
+        "height": 640,
+        "bytes": 61134
+      },
+      {
+        "file": "public-enterprise-960.avif",
+        "width": 960,
+        "height": 640,
+        "bytes": 54430
+      }
+    ]
+  },
+  {
+    "key": "logistics",
+    "sourceSha256": "89d3d2f4c05d17fb8a9022e8db62e302a33b5ad84b47338e372aa13be4afe756",
+    "sourceWidth": 1276,
+    "sourceHeight": 1280,
+    "files": [
+      {
+        "file": "logistics-480.jpg",
+        "width": 480,
+        "height": 482,
+        "bytes": 54660
+      },
+      {
+        "file": "logistics-480.webp",
+        "width": 480,
+        "height": 482,
+        "bytes": 35036
+      },
+      {
+        "file": "logistics-480.avif",
+        "width": 480,
+        "height": 482,
+        "bytes": 30473
+      },
+      {
+        "file": "logistics-960.jpg",
+        "width": 960,
+        "height": 963,
+        "bytes": 148005
+      },
+      {
+        "file": "logistics-960.webp",
+        "width": 960,
+        "height": 963,
+        "bytes": 77038
+      },
+      {
+        "file": "logistics-960.avif",
+        "width": 960,
+        "height": 963,
+        "bytes": 70577
+      }
+    ]
+  },
+  {
+    "key": "city",
+    "sourceSha256": "c5412d75ced230a1fc11d08f450012ad39487ad02797d654664527b9ff925620",
+    "sourceWidth": 1280,
+    "sourceHeight": 687,
+    "files": [
+      {
+        "file": "city-480.jpg",
+        "width": 480,
+        "height": 258,
+        "bytes": 39292
+      },
+      {
+        "file": "city-480.webp",
+        "width": 480,
+        "height": 258,
+        "bytes": 30426
+      },
+      {
+        "file": "city-480.avif",
+        "width": 480,
+        "height": 258,
+        "bytes": 24711
+      },
+      {
+        "file": "city-960.jpg",
+        "width": 960,
+        "height": 515,
+        "bytes": 115482
+      },
+      {
+        "file": "city-960.webp",
+        "width": 960,
+        "height": 515,
+        "bytes": 77284
+      },
+      {
+        "file": "city-960.avif",
+        "width": 960,
+        "height": 515,
+        "bytes": 64786
+      }
+    ]
+  },
+  {
+    "key": "sports",
+    "sourceSha256": "6b51c148b041604760baf8bfa6743489f5a94e75e0c118224f48158acbf58c27",
+    "sourceWidth": 1280,
+    "sourceHeight": 690,
+    "files": [
+      {
+        "file": "sports-480.jpg",
+        "width": 480,
+        "height": 259,
+        "bytes": 33991
+      },
+      {
+        "file": "sports-480.webp",
+        "width": 480,
+        "height": 259,
+        "bytes": 22280
+      },
+      {
+        "file": "sports-480.avif",
+        "width": 480,
+        "height": 259,
+        "bytes": 19073
+      },
+      {
+        "file": "sports-960.jpg",
+        "width": 960,
+        "height": 518,
+        "bytes": 85067
+      },
+      {
+        "file": "sports-960.webp",
+        "width": 960,
+        "height": 518,
+        "bytes": 48756
+      },
+      {
+        "file": "sports-960.avif",
+        "width": 960,
+        "height": 518,
+        "bytes": 44057
+      }
+    ]
+  }
+]

@@ -8,6 +8,8 @@ import { CompanyBrainPage } from '../pages/CompanyBrainPage';
 import { ContactPage } from '../pages/ContactPage';
 import { HomePage } from '../pages/HomePage';
 import { ZimbabwePage } from '../pages/ZimbabwePage';
+import { ZimbabweIndustryPage } from '../pages/ZimbabweIndustryPage';
+import { zimbabweIndustryByPath, zimbabweIndustryRoutes } from '../content/zimbabweIndustries';
 import { MethodologyPage } from '../pages/MethodologyPage';
 import { MonitoringPage } from '../pages/MonitoringPage';
 import { ReadinessFixSprintPage } from '../pages/ReadinessFixSprintPage';
@@ -113,6 +115,11 @@ export function AppRoutes() {
     return <MarketingLayout><IndustriesRoutePage /></MarketingLayout>;
   }
 
+  const zimbabweIndustry = zimbabweIndustryByPath.get(pathname);
+  if (zimbabweIndustry) {
+    return <MarketingLayout market="zimbabwe"><ZimbabweIndustryPage industry={zimbabweIndustry} /></MarketingLayout>;
+  }
+
   if (industryPageByPath.has(pathname)) {
     return <MarketingLayout><ProgrammaticIndustryRoute pathname={pathname} /></MarketingLayout>;
   }
@@ -132,5 +139,5 @@ export const routeInventory = {
   legacy: Array.from(legacyRoutes),
   static: ['/careops/free-check', '/careops/free-check/thanks.html'],
   internal: ['/email/signature-install'],
-  programmatic: ['/industries', ...programmaticRoutes],
+  programmatic: ['/industries', ...programmaticRoutes, ...zimbabweIndustryRoutes],
 } as const;

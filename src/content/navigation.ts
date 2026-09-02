@@ -35,7 +35,7 @@ export function getActiveNavigationHref(pathname: string, hash = ''): Navigation
   if (serviceRoutes.has(path)) return '/ai-business-readiness';
   if (platformRoutes.has(path)) return '/#platforms';
   if (path === '/industries' || path.startsWith('/industries/')) return '/industries';
-  if (path === '/zimbabwe') return '/zimbabwe';
+  if (path === '/zimbabwe' || path.startsWith('/zimbabwe/')) return '/zimbabwe';
   if (path === '/about') return '/about';
   if (path === '/contact' || path === '/roofing-brief') return '/contact';
 
