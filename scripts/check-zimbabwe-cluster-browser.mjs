@@ -54,8 +54,9 @@ try {
       assert.equal(await page.locator('.lt-desktop-nav [aria-current="page"]').textContent(),'Zimbabwe');
       if(route==='/zimbabwe'){
         assert.equal(await page.locator('#zimbabwe-industries .lt-route-card-linked').count(),26);
-        for(const img of await page.locator('.lt-route-platform-image img').all()){
-          assert.ok(await img.evaluate(i=>Math.abs(Number(i.getAttribute('width'))/Number(i.getAttribute('height'))-i.naturalWidth/i.naturalHeight)<0.002),'Reserve the artwork aspect ratio before lazy loading');
+        assert.equal(await page.locator('#platform-proof .platform-card').count(),4);
+        for(const frame of await page.locator('#platform-proof .platform-preview').all()){
+          assert.equal(await frame.evaluate(e=>getComputedStyle(e).aspectRatio),'16 / 8.6','Shared homepage frame reserves space before lazy loading');
         }
         if(variant.viewport.width<768){
           assert.equal(await page.locator('.lt-zimbabwe-delivery').evaluate(e=>getComputedStyle(e).gridTemplateColumns.split(' ').length),1);

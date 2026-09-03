@@ -16,6 +16,7 @@
     "test:zimbabwe-copy": "node scripts/check-zimbabwe-client-copy.mjs",
     "test:zimbabwe-cluster": "node scripts/check-zimbabwe-cluster.mjs",
     "test:zimbabwe-cluster-browser": "node scripts/check-zimbabwe-cluster-browser.mjs",
+    "test:zimbabwe-brand-parity": "node scripts/check-zimbabwe-brand-parity.mjs",
     "test:zimbabwe-enquiry": "node scripts/check-zimbabwe-enquiry.mjs",
     "test:zimbabwe-browser": "node scripts/check-zimbabwe-browser.mjs",
     "clean": "rm -rf dist",
