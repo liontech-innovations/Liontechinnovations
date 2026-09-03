@@ -117,9 +117,6 @@
 .lt-zimbabwe-form-note { font-size: 14px; margin: 16px 0 0; }
 .lt-zimbabwe-form .lt-form-error a { color: inherit; text-decoration: underline; }
 .lt-zimbabwe-form .lt-consent input { flex: 0 0 auto; }
-.lt-zimbabwe-page .lt-route-platform-card span { display: inline-flex; align-items: center; gap: 8px; }
-.lt-zimbabwe-page .lt-route-platform-image { min-height: 176px; }
-.lt-zimbabwe-page .lt-route-platform-card > div:last-child { padding: 20px; }
 
 @media (max-width: 1200px) {
   /* Keep the complete waterfall span below the copy instead of cover-cropping a tall frame. */
@@ -129,9 +126,6 @@
   .lt-zimbabwe-closing > .lt-zimbabwe-picture::after { content: ''; position: absolute; inset: 0 0 auto; height: 32px; background: linear-gradient(var(--lt-canvas-deep), transparent); pointer-events: none; }
   .lt-zimbabwe-closing > .lt-zimbabwe-scrim { display: none; }
   .lt-zimbabwe-closing .lt-zimbabwe-closing-inner { min-height: 0; }
-  /* Bound tall product previews without cropping or distorting the existing artwork. */
-  .lt-zimbabwe-page .lt-route-platform-image { min-height: 0; }
-  .lt-zimbabwe-page .lt-route-platform-image img { display: block; height: auto; max-height: clamp(320px, 110vw, 460px); object-fit: contain; }
   .lt-zimbabwe-offers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .lt-zimbabwe-offer-entry { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
   .lt-zimbabwe-offer-entry h3 { grid-column: 1; }.lt-zimbabwe-offer-entry .lt-zimbabwe-price { grid-column: 2; grid-row: 1; }

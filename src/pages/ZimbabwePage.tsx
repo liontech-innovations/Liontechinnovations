@@ -1,9 +1,9 @@
 import { ArrowDown, ArrowRight, Check, LockKeyhole, Plus } from 'lucide-react';
 import { ZimbabweEnquiryForm } from '../components/ZimbabweEnquiryForm';
 import { FeatureCard, RouteHeading, RouteSection } from '../components/sections/RoutePageSections';
+import { PlatformShowcase } from '../components/sections/RestoredHomeSections';
 import { RouteLink } from '../components/ui/RouteLink';
 import { company } from '../content/company';
-import { platforms } from '../content/platforms';
 import { routeSeo } from '../content/routeSeo';
 import { zimbabwe, zimbabweArchitecture, zimbabweControls, zimbabweDelivery, zimbabweEstateFlow, zimbabweFaq, zimbabweNodes, zimbabweOffers, zimbabweReviewAreas, zimbabweSecurity, zimbabweSupport } from '../content/zimbabwe';
 import { zimbabweIndustries, zimbabweIndustryPath } from '../content/zimbabweIndustries';
@@ -31,14 +31,6 @@ function HarareImage({ name, alt, hero = false, fullBleed = false }: { name: str
   </picture>;
 }
 
-// Reserve the real artwork proportions before lazy loading; final card styling is unchanged.
-const platformImageDimensions: Record<(typeof platforms)[number]['name'], readonly [number, number]> = {
-  'ClearVisa UK': [841, 1536],
-  CalcFee: [853, 1536],
-  'Lead Recovery': [852, 1536],
-  CareOps: [1280, 853],
-};
-
 function MarketMark() {
   return <img className="lt-zimbabwe-map" src="/assets/zimbabwe/zimbabwe-market-marker-320.png" srcSet="/assets/zimbabwe/zimbabwe-market-marker-320.png 320w, /assets/zimbabwe/zimbabwe-market-marker-640.png 640w" sizes="(max-width: 767px) 72px, 100px" alt="Map of Zimbabwe filled with the national flag" width={320} height={294} decoding="async" />;
 }
@@ -59,7 +51,7 @@ function ReviewLink({ children = 'Request an Executive Review', secondary = fals
 
 export function ZimbabwePage() {
   useSeo(routeSeo['/zimbabwe']);
-  return <div className="lt-zimbabwe-page">
+  return <><div className="lt-zimbabwe-page">
     <section className="lt-zimbabwe-hero" aria-labelledby="zw-title">
       <HarareImage name="harare-hero" alt="Harare central business district skyline, Zimbabwe" hero />
       <div className="lt-zimbabwe-scrim" aria-hidden="true" />
@@ -117,11 +109,11 @@ export function ZimbabwePage() {
       </div>
     </RouteSection>
 
-    <RouteSection tone="soft" id="platform-proof">
-      <RouteHeading title="We build systems, not just reports." description="Before we ask an organisation to change anything, we show what we observed, where we found it and why we think it deserves attention. Implementation is then scoped separately." />
-      <div className="lt-route-platform-grid">{platforms.map((platform) => <RouteLink className="lt-route-platform-card" href={platform.href} key={platform.name}><div className="lt-route-platform-image"><img src={platform.image} alt={`${platform.name} platform preview`} width={platformImageDimensions[platform.name][0]} height={platformImageDimensions[platform.name][1]} loading="lazy" decoding="async" /></div><div><h3>{platform.name}</h3><p>{platform.description}</p><span>View platform <ArrowRight size={15} aria-hidden="true" /></span></div></RouteLink>)}</div>
-      <div className="lt-zimbabwe-company-record"><strong>{company.legalName}</strong><span>Registered in England and Wales</span><span>Company No. {company.companiesHouseNumber}</span><span>United Kingdom</span></div>
-    </RouteSection>
+  </div>
+    {/* Keep the shared homepage section outside Zimbabwe's local typography scope. */}
+    <div id="platform-proof"><PlatformShowcase /></div>
+  <div className="lt-zimbabwe-page">
+    <div className="lt-shell"><div className="lt-zimbabwe-company-record"><strong>{company.legalName}</strong><span>Registered in England and Wales</span><span>Company No. {company.companiesHouseNumber}</span><span>United Kingdom</span></div></div>
 
     <RouteSection id="zimbabwe-faq">
       <RouteHeading title="Questions before we begin" description="Straight answers about the review, access and delivery." />
@@ -144,5 +136,5 @@ export function ZimbabwePage() {
       <RouteHeading title="Request a Zimbabwe Executive Review" description="Share the business details first. LionTech will review the enquiry and reply by email. Scope and payment arrangements are agreed after qualification." />
       <ZimbabweEnquiryForm />
     </RouteSection>
-  </div>;
+  </div></>;
 }
