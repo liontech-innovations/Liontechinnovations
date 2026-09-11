@@ -70,6 +70,14 @@ try {
   }
   report.baseUrl = new URL(process.env.FOUNDER_BASE_URL || 'http://127.0.0.1:4176').origin;
   browser = await chromium.launch();
+  const referencePage = await browser.newPage();
+  await referencePage.goto(report.baseUrl);
+  const boxAppearance = element => {
+    const style = getComputedStyle(element);
+    return ['backgroundImage', 'backgroundColor', 'borderTopWidth', 'borderTopColor', 'borderRadius', 'boxShadow'].map(key => style[key]);
+  };
+  const approvedBoxAppearance = await referencePage.locator('.lt-company-proof-grid .lt-standard-card').first().evaluate(boxAppearance);
+  await referencePage.close();
   for (const width of [1440, 1024, 768, 390, 320]) {
     const context = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion: 'reduce' });
     const page = await context.newPage();
@@ -92,6 +100,21 @@ try {
     assert.equal(sections[index - 1].heading, 'Built for practical decisions');
     assert.equal(sections[index + 1].heading, 'Production systems, not presentation concepts');
     assert.equal(await page.locator('h1').count(), 1);
+    assert.deepEqual(await section.locator('.lt-about-development-box p').allTextContents(), [
+      'AI Ethics', 'Human Oversight', 'Transparency', 'Accountability', 'Human Rights', 'Judicial Transparency', 'Access to Justice',
+    ]);
+    assert.deepEqual(await section.locator('.lt-about-capability-box h4').allTextContents(), [
+      'MILITARY OPERATIONAL DISCIPLINE', 'PRACTICAL ENGINEERING', 'RESPONSIBLE AI & GOVERNANCE',
+    ]);
+    assert.equal(await section.locator('.lt-about-founder-column .lt-about-capabilities').count(), 1);
+    assert(await section.locator('#founder-capabilities-title').evaluate(el => parseFloat(getComputedStyle(el).fontSize) <= 14), 'Capability heading must remain a compact label');
+    for (const box of await section.locator('.lt-about-development-box, .lt-about-capability-box').all()) {
+      assert.deepEqual(await box.evaluate(boxAppearance), approvedBoxAppearance, 'Founder boxes must reuse the homepage treatment');
+    }
+    assert(await section.evaluate(el => {
+      const grid = el.querySelector('.lt-about-development-grid').getBoundingClientRect();
+      return grid.bottom <= el.querySelector('iframe').getBoundingClientRect().top;
+    }), 'Development areas must precede the certificate');
     const geometry = await section.evaluate(el => {
       const viewport = document.documentElement.clientWidth;
       const overflow = [...el.querySelectorAll('*')].filter(child => !(child instanceof SVGElement)).filter(child => {

@@ -1,4 +1,4 @@
-import { ArrowRight, ExternalLink, Eye, FileCheck2, LockKeyhole, MapPin, Network, Wrench } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ExternalLink, Eye, FileCheck2, LockKeyhole, MapPin, Network, Wrench } from 'lucide-react';
 import {
   FeatureCard,
   PageHero,
@@ -25,6 +25,39 @@ const FOUNDER_CREDENTIAL_VERIFICATION_URL =
 // Cross-origin iframe load/error events alone cannot reliably prove a CSP/X-Frame-Options block.
 const FOUNDER_CREDENTIAL_EMBED_ENABLED = true;
 
+const professionalDevelopmentAreas = [
+  'AI Ethics',
+  'Human Oversight',
+  'Transparency',
+  'Accountability',
+  'Human Rights',
+  'Judicial Transparency',
+  'Access to Justice',
+];
+
+const founderCapabilities = [
+  {
+    title: 'MILITARY OPERATIONAL DISCIPLINE',
+    description: 'British Army experience shaped a disciplined approach to accountability, reliability and operational delivery.',
+  },
+  {
+    title: 'PRACTICAL ENGINEERING',
+    description: 'Production-focused implementation built around useful systems, clear controls and measurable business outcomes.',
+  },
+  {
+    title: 'RESPONSIBLE AI & GOVERNANCE',
+    description: 'Professional development covering AI ethics, transparency, accountability, human oversight, human rights and responsible decision-making.',
+  },
+];
+
+function FounderProofIcon() {
+  return (
+    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#C8A24A]/14 bg-white/5 text-[#C8A24A]">
+      <CheckCircle2 aria-hidden="true" size={14} />
+    </span>
+  );
+}
+
 function FounderCredentialDetails() {
   return (
     <>
@@ -40,6 +73,17 @@ function FounderCredentialDetails() {
           <dd>Saïd Business School<br />University of Oxford</dd>
         </div>
       </dl>
+      <div className="lt-about-development" aria-labelledby="founder-development-title">
+        <h4 className="lt-about-credential-label" id="founder-development-title">AREAS OF PROFESSIONAL DEVELOPMENT</h4>
+        <ul className="lt-about-development-grid">
+          {professionalDevelopmentAreas.map(area => (
+            <li className="lt-standard-card lt-about-development-box" key={area}>
+              <FounderProofIcon />
+              <p className="lt-evidence-title">{area}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }
@@ -120,6 +164,7 @@ export function AboutPage() {
           description="LionTech is founded by Freejoy Masimba Chimbizi, combining operational experience with practical AI implementation, governance and production engineering."
         />
         <div className="lt-about-founder-grid">
+          <div className="lt-about-founder-column">
           <article className="lt-about-founder-card" aria-labelledby="founder-profile-title">
             <h3 id="founder-profile-title">Freejoy Masimba Chimbizi</h3>
             <p className="lt-about-founder-role">Founder &amp; CEO</p>
@@ -149,6 +194,21 @@ export function AboutPage() {
               </>
             )}
           </article>
+            <div className="lt-about-capabilities" aria-labelledby="founder-capabilities-title">
+              <h3 className="lt-about-credential-label" id="founder-capabilities-title">FOUNDER CAPABILITY</h3>
+              <ul className="lt-about-capability-grid">
+                {founderCapabilities.map(capability => (
+                  <li className="lt-standard-card lt-about-capability-box" key={capability.title}>
+                    <FounderProofIcon />
+                    <div>
+                      <h4>{capability.title}</h4>
+                      <p>{capability.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
           <FounderCredentialCard />
         </div>
       </RouteSection>
