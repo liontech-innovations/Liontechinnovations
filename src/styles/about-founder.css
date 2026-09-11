@@ -1,0 +1,339 @@
+/* About-page composition and founder proof; inherit the approved LionTech tokens. */
+.lt-about-page .lt-route-hero-compact .lt-route-hero-inner {
+  padding-top: 6rem;
+  padding-bottom: 1.5rem;
+}
+
+.marketing-site .lt-about-page .lt-route-hero h1 {
+  font-size: 2rem;
+}
+
+.lt-about-page .lt-route-hero .lt-route-actions {
+  margin-top: 1rem;
+}
+
+.lt-about-page .lt-about-founder {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.lt-about-page .lt-about-company-proof {
+  padding-block: 2rem;
+}
+
+.lt-about-company-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.55fr) minmax(0, 0.45fr);
+  gap: 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--lt-line-strong);
+  border-top: 2px solid var(--lt-gold);
+  border-radius: 10px;
+  background: var(--lt-surface);
+}
+
+.lt-about-company-panel > div {
+  min-width: 0;
+}
+
+.lt-about-company-panel .lt-route-heading {
+  margin-bottom: 1rem;
+}
+
+.marketing-site .lt-about-page .lt-about-company-panel h2 {
+  font-size: 1.5rem;
+  letter-spacing: 0;
+}
+
+.lt-about-company-verification > p:not(.lt-kicker) {
+  margin-bottom: 1rem;
+  color: var(--lt-body);
+  line-height: 1.65;
+}
+
+.lt-about-company-panel .lt-route-text-link svg {
+  flex-shrink: 0;
+}
+
+@media (min-width: 1280px) {
+  .lt-about-page .lt-route-hero-compact .lt-route-hero-inner {
+    padding-top: 7rem;
+  }
+
+  .marketing-site .lt-about-page .lt-route-hero h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .lt-about-page .lt-route-cta {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .lt-about-page .lt-route-cta .lt-button {
+    white-space: normal;
+  }
+
+  .lt-about-page .lt-route-cta .lt-button svg {
+    flex-shrink: 0;
+  }
+
+  .lt-about-company-panel {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    padding: 1.25rem;
+  }
+}
+
+.lt-about-founder {
+  border-block: 1px solid var(--lt-line);
+}
+
+.lt-about-founder-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.38fr) minmax(0, 0.62fr);
+  align-items: start;
+  gap: clamp(1.25rem, 2.6vw, 2rem);
+}
+
+.lt-about-founder-column {
+  min-width: 0;
+}
+
+.lt-about-founder .lt-about-client-reassurance {
+  margin-top: 1.5rem;
+}
+
+.lt-about-founder .lt-about-client-reassurance p {
+  margin: 0 0 0.75rem;
+  color: var(--lt-body);
+  line-height: 1.6;
+}
+
+.lt-about-founder .lt-about-client-reassurance .lt-about-client-reassurance-emphasis {
+  margin-bottom: 0;
+  color: var(--lt-heading-soft);
+  font-weight: 500;
+}
+
+.lt-about-development,
+.lt-about-capabilities {
+  margin-top: 1.5rem;
+}
+
+.lt-about-development-grid,
+.lt-about-capability-grid {
+  display: grid;
+  gap: 0.875rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lt-about-development-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.lt-about-development-box:last-child {
+  grid-column: 1 / -1;
+}
+
+.lt-about-development-box,
+.lt-about-capability-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 1rem;
+}
+
+.lt-about-founder .lt-about-development-box p,
+.lt-about-founder .lt-about-capability-box p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.lt-about-founder .lt-about-development-box p {
+  font-weight: 500;
+}
+
+.lt-about-founder .lt-about-capability-box h4 {
+  margin: 0 0 0.5rem;
+  color: var(--lt-heading-soft);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.lt-about-founder-card,
+.lt-about-credential-card {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  padding: clamp(1.25rem, 2.8vw, 2rem);
+  border: 1px solid var(--lt-line-strong);
+  border-radius: 10px;
+  background: var(--lt-surface);
+}
+
+.lt-about-founder-card {
+  border-top: 2px solid var(--lt-gold);
+}
+
+.lt-about-credential-card {
+  container-type: inline-size;
+}
+
+.marketing-site .lt-about-founder-card h3,
+.marketing-site .lt-about-credential-card h3 {
+  margin: 0 0 1rem;
+  color: var(--lt-heading);
+  font-family: var(--lt-display-font);
+  font-size: 1.5rem;
+  font-weight: 560;
+  letter-spacing: 0;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.lt-about-founder-role {
+  margin: 0;
+  color: var(--lt-heading-soft);
+  font-weight: 600;
+}
+
+.lt-about-founder-company {
+  margin: 0.25rem 0 0;
+  color: var(--lt-body);
+}
+
+.lt-about-founder-summary {
+  margin: 1.5rem 0 0;
+  color: var(--lt-body);
+  line-height: 1.6;
+}
+
+.lt-about-founder .lt-about-founder-link {
+  max-width: 100%;
+  margin-top: 1.5rem;
+  justify-content: flex-start;
+  white-space: normal;
+  text-align: left;
+}
+
+.lt-about-founder-link svg {
+  flex-shrink: 0;
+}
+
+.lt-about-founder .lt-about-founder-link:disabled {
+  border-color: var(--lt-line);
+  background: var(--lt-canvas-deep);
+  color: var(--lt-muted);
+  opacity: 1;
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
+}
+
+.lt-about-founder-link-note {
+  margin: 0.75rem 0 0;
+  color: var(--lt-muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.lt-about-founder .lt-about-credential-label {
+  margin: 0 0 0.75rem;
+  color: var(--lt-gold-light);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+
+.lt-about-credential-meta {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 1rem;
+  margin: 0;
+}
+
+.lt-about-credential-meta dt {
+  color: var(--lt-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.lt-about-credential-meta dd {
+  margin: 0.3rem 0 0;
+  color: var(--lt-body);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.lt-about-credential-frame {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  /* Keep a 16:11 certificate area plus room for the provider's viewer header. */
+  height: calc(100cqw * 11 / 16 + 120px);
+  aspect-ratio: 16 / 11;
+  min-height: 360px;
+  margin-top: 1.5rem;
+  border: 1px solid var(--lt-line-strong);
+  border-radius: 6px;
+  background: var(--lt-canvas-deep);
+  box-shadow: 0 10px 28px rgb(0 0 0 / 18%);
+}
+
+.lt-about-credential-card .lt-about-credential-verify {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 100%;
+  margin-top: 1.25rem;
+  color: var(--lt-gold-light);
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.lt-about-credential-linked {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.lt-about-credential-linked:hover {
+  border-color: var(--lt-gold);
+}
+
+.lt-about-credential-verify:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.lt-about-founder a:focus-visible {
+  outline: 3px solid var(--lt-gold-light);
+  outline-offset: 4px;
+}
+
+@media (max-width: 767px) {
+  .lt-about-founder-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .lt-about-credential-frame {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lt-about-development-grid,
+  .lt-about-credential-meta {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
