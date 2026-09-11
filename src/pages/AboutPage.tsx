@@ -9,7 +9,6 @@ import {
 import { PrimaryCta } from '../components/ui/PrimaryCta';
 import { RouteLink } from '../components/ui/RouteLink';
 import { company } from '../content/company';
-import { platforms } from '../content/platforms';
 import { routeSeo } from '../content/routeSeo';
 import { useSeo } from '../lib/seo';
 import '../styles/about-founder.css';
@@ -145,22 +144,11 @@ export function AboutPage() {
   ];
 
   return (
-    <>
-      <PageHero eyebrow="ABOUT LIONTECH" title="Evidence-led readiness. Production engineering." description={`${company.legalName} is ${company.location}.`}>
+    <div className="lt-about-page">
+      <PageHero compact eyebrow="ABOUT LIONTECH" title="Evidence-led readiness. Production engineering." description={`${company.legalName} is ${company.location}.`}>
         <PrimaryCta />
         <RouteLink className="lt-button lt-button-secondary" href="/ai-business-readiness">See the readiness path</RouteLink>
       </PageHero>
-
-      <RouteSection>
-        <div className="lt-route-about-intro">
-          <RouteHeading eyebrow="PRACTICAL BY DESIGN" title="Built for practical decisions" description="LionTech helps businesses understand what customer-facing AI systems currently say, then turns material gaps into a controlled implementation plan." />
-          <p>
-            Lion Tech Innovations Ltd is registered in England and Wales under company number <strong>{company.companiesHouseNumber}</strong>.{' '}
-            <a href={company.companiesHouseUrl} target="_blank" rel="noreferrer">Verify the company record on Companies House</a>.
-          </p>
-          <RouteLink className="lt-route-text-link" href="/industries">Explore the industry guides <ArrowRight size={15} aria-hidden="true" /></RouteLink>
-        </div>
-      </RouteSection>
 
       <RouteSection id="founder-credentials" tone="navy" className="lt-about-founder">
         <RouteHeading
@@ -218,19 +206,17 @@ export function AboutPage() {
         </div>
       </RouteSection>
 
-      <RouteSection tone="navy">
-        <RouteHeading eyebrow="PLATFORM PROOF" title="Production systems, not presentation concepts" description="Four existing LionTech platforms demonstrate the ability to build and operate real customer journeys." />
-        <div className="lt-route-platform-grid">
-          {platforms.map((platform) => (
-            <RouteLink className="lt-route-platform-card" href={platform.href} key={platform.name}>
-              <div className="lt-route-platform-image"><img src={platform.image} alt={`${platform.name} platform preview`} /></div>
-              <div>
-                <h3>{platform.name}</h3>
-                <p>{platform.description}</p>
-                <span>View platform</span>
-              </div>
-            </RouteLink>
-          ))}
+      <RouteSection className="lt-about-company-proof">
+        <div className="lt-about-company-panel">
+          <div>
+            <RouteHeading eyebrow="PRACTICAL BY DESIGN" title="Built for practical decisions" description="LionTech helps businesses understand what customer-facing AI systems currently say, then turns material gaps into a controlled implementation plan." />
+            <RouteLink className="lt-route-text-link" href="/industries">Explore the industry guides <ArrowRight size={15} aria-hidden="true" /></RouteLink>
+          </div>
+          <div className="lt-about-company-verification">
+            <p className="lt-kicker">COMPANY VERIFICATION</p>
+            <p>Lion Tech Innovations Ltd is registered in England and Wales under company number <strong>{company.companiesHouseNumber}</strong>.</p>
+            <a className="lt-route-text-link" href={company.companiesHouseUrl} target="_blank" rel="noreferrer">Verify the company record on Companies House <ExternalLink size={15} aria-hidden="true" /></a>
+          </div>
         </div>
       </RouteSection>
 
@@ -250,6 +236,6 @@ export function AboutPage() {
         secondaryHref="/contact"
         secondaryLabel="Contact LionTech"
       />
-    </>
+    </div>
   );
 }

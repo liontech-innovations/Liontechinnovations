@@ -24,9 +24,10 @@ function existingSections(source) {
   function visit(node) {
     if (ts.isJsxElement(node) || ts.isJsxSelfClosingElement(node)) {
       const opening = ts.isJsxElement(node) ? node.openingElement : node;
-      if (['PageHero', 'RouteSection', 'RouteCta'].includes(opening.tagName.getText(file)) &&
-          !opening.attributes.properties.some(attr => ts.isJsxAttribute(attr) && attr.name.getText(file) === 'id' && attr.initializer?.text === 'founder-credentials')) {
-        sections.push(node.getText(file).replaceAll('\r\n', '\n'));
+      if (['PageHero', 'RouteCta'].includes(opening.tagName.getText(file)) ||
+          opening.tagName.getText(file) === 'RouteSection' &&
+          (opening.attributes.properties.some(attr => ts.isJsxAttribute(attr) && attr.name.getText(file) === 'id' && attr.initializer?.text === 'founder-credentials') || node.getText(file).includes('OPERATING PRINCIPLES'))) {
+        sections.push(node.getText(file).replaceAll('\r\n', '\n').replace('<PageHero compact ', '<PageHero '));
       }
     }
     ts.forEachChild(node, visit);
@@ -53,10 +54,21 @@ function recordError(width, message, source = '') {
 }
 
 try {
-  const baseline = execFileSync('git', ['show', '215a95e16f976a2f1982b3223d60d1abcd494b89:src/pages/AboutPage.tsx'], { cwd: root, encoding: 'utf8' });
+  const baseline = execFileSync('git', ['show', '76558033c4d1b1b738b07fe5a2a084aa93559e6e:src/pages/AboutPage.tsx'], { cwd: root, encoding: 'utf8' });
   const current = await readFile(resolve(root, 'src/pages/AboutPage.tsx'), 'utf8');
   assert.deepEqual(existingSections(current), existingSections(baseline), 'Existing About sections changed');
-  report.existingSections = 'Unchanged from approved baseline';
+  report.existingSections = 'Hero copy/CTAs, founder section, operating principles markup and final CTA unchanged from approved baseline';
+  const sourceFile = source => ts.createSourceFile('AboutPage.tsx', source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  const declarations = source => {
+    const nodes = [];
+    function visit(node) {
+      if (ts.isVariableDeclaration(node)) nodes.push(node.getText().replaceAll('\r\n', '\n'));
+      ts.forEachChild(node, visit);
+    }
+    visit(sourceFile(source));
+    return nodes;
+  };
+  assert.deepEqual(declarations(current), declarations(baseline), 'Approved credentials, capability copy and principle data must not change');
   if (!process.env.FOUNDER_BASE_URL) {
     const config = JSON.parse(await readFile(resolve(root, 'vercel.json'), 'utf8'));
     const rewrites = new Map(config.rewrites.filter(({ source }) => !/[(:]/.test(source)).map(({ source, destination }) => [source, destination]));
@@ -95,10 +107,38 @@ try {
     const section = page.locator('#founder-credentials');
     await section.waitFor({ state: 'visible' });
     await section.scrollIntoViewIfNeeded();
-    const sections = await page.locator('main section').evaluateAll(els => els.map(el => ({ id: el.id, heading: el.querySelector('h2')?.textContent })));
-    const index = sections.findIndex(s => s.id === 'founder-credentials');
-    assert.equal(sections[index - 1].heading, 'Built for practical decisions');
-    assert.equal(sections[index + 1].heading, 'Production systems, not presentation concepts');
+    const sections = await page.locator('main section').evaluateAll(els => els.map(el => el.querySelector('h1, h2')?.textContent));
+    assert.deepEqual(sections, [
+      'Evidence-led readiness. Production engineering.',
+      'Built with practical experience. Grounded in responsible AI.',
+      'Built for practical decisions',
+      'The standard behind the work',
+      'Start with what customer-facing AI can see now.',
+    ]);
+    assert.equal(await page.locator('.lt-route-platform-grid').count(), 0);
+    assert.equal(await page.getByText('PLATFORM PROOF', { exact: true }).count(), 0);
+    const heroHeight = await page.locator('.lt-route-hero').evaluate(el => el.getBoundingClientRect().height);
+    const originalHeroHeights = { 320: 583.953125, 390: 543.15625, 768: 429.25, 1024: 389.890625, 1440: 521.125 };
+    assert(heroHeight <= originalHeroHeights[width] * 0.75 && heroHeight >= originalHeroHeights[width] * 0.6, 'About hero must be materially shorter than its measured approved baseline');
+    const companyProof = page.locator('.lt-about-company-panel');
+    assert.equal(await companyProof.locator('h2').evaluate(el => getComputedStyle(el).fontSize), '24px');
+    const companyColumns = await companyProof.locator(':scope > div').evaluateAll(els => els.map(el => el.getBoundingClientRect().toJSON()));
+    if (width >= 768) {
+      assert(Math.abs(companyColumns[0].y - companyColumns[1].y) < 2);
+      assert(Math.abs(companyColumns[0].width / (companyColumns[0].width + companyColumns[1].width) - 0.55) < 0.01);
+    } else assert(companyColumns[1].y >= companyColumns[0].bottom);
+    const companiesHouse = companyProof.getByRole('link', { name: 'Verify the company record on Companies House' });
+    assert.equal(await companiesHouse.getAttribute('href'), 'https://find-and-update.company-information.service.gov.uk/company/17068390');
+    if (width === 1440) {
+      const popupPromise = page.waitForEvent('popup');
+      await companiesHouse.click();
+      const registry = await popupPromise;
+      await registry.waitForLoadState('domcontentloaded');
+      assert.match(await registry.locator('body').innerText(), /LION TECH INNOVATIONS LTD/);
+      assert.match(await registry.locator('body').innerText(), /17068390/);
+      report.companiesHouse = 'Canonical company record opens and renders';
+      await registry.close();
+    }
     assert.equal(await page.locator('h1').count(), 1);
     assert.equal(await section.locator('.lt-route-heading > p').last().textContent(), 'LionTech is founded by Freejoy Masimba Chimbizi, whose background includes more than seven years in the British Army as a Supply Chain Specialist, where discipline, accountability and reliable operational delivery were fundamental. He combines that experience with practical AI implementation, production engineering and professional development in responsible AI and governance. Together, these experiences shape LionTech’s approach to building useful AI systems with clear controls, human oversight and operational discipline.');
     assert.equal(await section.locator('.lt-about-founder-summary').textContent(), 'Operational experience, practical engineering and responsible AI governance applied to LionTech’s work.');
@@ -132,9 +172,10 @@ try {
     }), 'Development areas must precede the certificate');
     const geometry = await section.evaluate(el => {
       const viewport = document.documentElement.clientWidth;
-      const overflow = [...el.querySelectorAll('*')].filter(child => !(child instanceof SVGElement)).filter(child => {
+      const overflow = [...document.querySelectorAll('main *')].filter(child => !(child instanceof SVGElement)).filter(child => {
         const r = child.getBoundingClientRect();
-        return r.width && (r.left < -1 || r.right > viewport + 1 || child.scrollWidth > child.clientWidth + 2 && getComputedStyle(child).display !== 'inline');
+        const style = getComputedStyle(child);
+        return r.width && (r.left < -1 || r.right > viewport + 1 || child.scrollWidth > child.clientWidth + 2 && style.display !== 'inline' && style.overflowX === 'visible');
       }).map(child => child.className);
       return { viewport, scrollWidth: document.documentElement.scrollWidth, overflow, cards: [...el.querySelector('.lt-about-founder-grid').children].map(child => child.getBoundingClientRect().toJSON()) };
     });
@@ -179,6 +220,7 @@ try {
       assert.match(await link.getAttribute('rel'), /noopener/);
       assert.match(await link.getAttribute('rel'), /noreferrer/);
     }
+    await page.keyboard.press('Tab');
     await linkedIn.focus();
     assert.equal(await linkedIn.evaluate(el => getComputedStyle(el).outlineStyle), 'solid');
     const linkedInPopup = page.waitForEvent('popup');
@@ -214,7 +256,7 @@ try {
     await page.locator('main .lt-button-primary').first().click();
     await page.waitForURL('**/contact#snapshot-enquiry');
     await Promise.all(responseTasks);
-    report.viewports.push({ width, geometry, frameGeometry, navigation: 'PASS', keyboardAndLinks: 'PASS', linkedInStatus, certificate: 'Rendered; full certificate visible after provider overlays dismissed' });
+    report.viewports.push({ width, heroHeight, heroReduction: 1 - heroHeight / originalHeroHeights[width], companyColumns, geometry, frameGeometry, navigation: 'PASS', keyboardAndLinks: 'PASS', linkedInStatus, certificate: 'Rendered; full certificate visible after provider overlays dismissed' });
     await context.close();
   }
   assert.equal(report.firstPartyErrors.length, 0, 'First-party or unattributed errors require review');

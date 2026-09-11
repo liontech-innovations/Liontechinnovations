@@ -1,4 +1,90 @@
-/* About-page founder proof only; inherit the approved LionTech design tokens. */
+/* About-page composition and founder proof; inherit the approved LionTech tokens. */
+.lt-about-page .lt-route-hero-compact .lt-route-hero-inner {
+  padding-top: 6rem;
+  padding-bottom: 1.5rem;
+}
+
+.marketing-site .lt-about-page .lt-route-hero h1 {
+  font-size: 2rem;
+}
+
+.lt-about-page .lt-route-hero .lt-route-actions {
+  margin-top: 1rem;
+}
+
+.lt-about-page .lt-about-founder {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.lt-about-page .lt-about-company-proof {
+  padding-block: 2rem;
+}
+
+.lt-about-company-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.55fr) minmax(0, 0.45fr);
+  gap: 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--lt-line-strong);
+  border-top: 2px solid var(--lt-gold);
+  border-radius: 10px;
+  background: var(--lt-surface);
+}
+
+.lt-about-company-panel > div {
+  min-width: 0;
+}
+
+.lt-about-company-panel .lt-route-heading {
+  margin-bottom: 1rem;
+}
+
+.marketing-site .lt-about-page .lt-about-company-panel h2 {
+  font-size: 1.5rem;
+  letter-spacing: 0;
+}
+
+.lt-about-company-verification > p:not(.lt-kicker) {
+  margin-bottom: 1rem;
+  color: var(--lt-body);
+  line-height: 1.65;
+}
+
+.lt-about-company-panel .lt-route-text-link svg {
+  flex-shrink: 0;
+}
+
+@media (min-width: 1280px) {
+  .lt-about-page .lt-route-hero-compact .lt-route-hero-inner {
+    padding-top: 7rem;
+  }
+
+  .marketing-site .lt-about-page .lt-route-hero h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .lt-about-page .lt-route-cta {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .lt-about-page .lt-route-cta .lt-button {
+    white-space: normal;
+  }
+
+  .lt-about-page .lt-route-cta .lt-button svg {
+    flex-shrink: 0;
+  }
+
+  .lt-about-company-panel {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    padding: 1.25rem;
+  }
+}
+
 .lt-about-founder {
   border-block: 1px solid var(--lt-line);
 }
