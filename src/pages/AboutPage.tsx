@@ -1,4 +1,4 @@
-import { ArrowRight, Eye, FileCheck2, LockKeyhole, MapPin, Network, Wrench } from 'lucide-react';
+import { ArrowRight, ExternalLink, Eye, FileCheck2, LockKeyhole, MapPin, Network, Wrench } from 'lucide-react';
 import {
   FeatureCard,
   PageHero,
@@ -12,6 +12,76 @@ import { company } from '../content/company';
 import { platforms } from '../content/platforms';
 import { routeSeo } from '../content/routeSeo';
 import { useSeo } from '../lib/seo';
+import '../styles/about-founder.css';
+
+const FOUNDER_LINKEDIN_URL: string | null = 'https://www.linkedin.com/in/freejoy-chimbizi-544157a7/';
+
+const FOUNDER_CREDENTIAL_EMBED_URL =
+  'https://certify.sbs.ox.ac.uk/embed/ba50fb87-4576-4f98-a03a-bfc7ee6cae91';
+// Public destination confirmed by the official credential page's og:url metadata.
+const FOUNDER_CREDENTIAL_VERIFICATION_URL =
+  'https://certify.sbs.ox.ac.uk/ba50fb87-4576-4f98-a03a-bfc7ee6cae91';
+// Set false only after browser verification confirms that the provider blocks embedding.
+// Cross-origin iframe load/error events alone cannot reliably prove a CSP/X-Frame-Options block.
+const FOUNDER_CREDENTIAL_EMBED_ENABLED = true;
+
+function FounderCredentialDetails() {
+  return (
+    <>
+      <p className="lt-about-credential-label">PROFESSIONAL DEVELOPMENT</p>
+      <h3 id="founder-credential-title">AI, Justice, and the Rule of Law</h3>
+      <dl className="lt-about-credential-meta">
+        <div>
+          <dt>Issued</dt>
+          <dd><time dateTime="2026-09-11">11 September 2026</time></dd>
+        </div>
+        <div>
+          <dt>Developed by</dt>
+          <dd>Saïd Business School<br />University of Oxford</dd>
+        </div>
+      </dl>
+    </>
+  );
+}
+
+function FounderCredentialCard() {
+  if (!FOUNDER_CREDENTIAL_EMBED_ENABLED) {
+    return (
+      <a
+        className="lt-about-credential-card lt-about-credential-linked"
+        href={FOUNDER_CREDENTIAL_VERIFICATION_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="View verified credential: AI, Justice, and the Rule of Law (opens in a new tab)"
+      >
+        <FounderCredentialDetails />
+        <span className="lt-about-credential-verify">View verified credential <span aria-hidden="true">↗</span></span>
+      </a>
+    );
+  }
+
+  return (
+    <article className="lt-about-credential-card" aria-labelledby="founder-credential-title">
+      <FounderCredentialDetails />
+      <iframe
+        className="lt-about-credential-frame"
+        src={FOUNDER_CREDENTIAL_EMBED_URL}
+        title="Freejoy Masimba Chimbizi — AI, Justice, and the Rule of Law credential"
+        loading="lazy"
+        allowFullScreen
+      />
+      <a
+        className="lt-route-text-link lt-about-credential-verify"
+        href={FOUNDER_CREDENTIAL_VERIFICATION_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="View verified credential (opens in a new tab)"
+      >
+        View verified credential <span aria-hidden="true">↗</span>
+      </a>
+    </article>
+  );
+}
 
 export function AboutPage() {
   useSeo(routeSeo['/about']);
@@ -40,6 +110,46 @@ export function AboutPage() {
             <a href={company.companiesHouseUrl} target="_blank" rel="noreferrer">Verify the company record on Companies House</a>.
           </p>
           <RouteLink className="lt-route-text-link" href="/industries">Explore the industry guides <ArrowRight size={15} aria-hidden="true" /></RouteLink>
+        </div>
+      </RouteSection>
+
+      <RouteSection id="founder-credentials" tone="navy" className="lt-about-founder">
+        <RouteHeading
+          eyebrow="FOUNDER & PROFESSIONAL CREDENTIALS"
+          title="Built with practical experience. Grounded in responsible AI."
+          description="LionTech is founded by Freejoy Masimba Chimbizi, combining operational experience with practical AI implementation, governance and production engineering."
+        />
+        <div className="lt-about-founder-grid">
+          <article className="lt-about-founder-card" aria-labelledby="founder-profile-title">
+            <h3 id="founder-profile-title">Freejoy Masimba Chimbizi</h3>
+            <p className="lt-about-founder-role">Founder &amp; CEO</p>
+            <p className="lt-about-founder-company">Lion Tech Innovations Ltd</p>
+            <p className="lt-about-founder-summary">Founder profile, professional background and current LionTech work.</p>
+            {FOUNDER_LINKEDIN_URL ? (
+              <a
+                className="lt-button lt-button-secondary lt-about-founder-link"
+                href={FOUNDER_LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View LinkedIn Profile (opens in a new tab)"
+              >
+                <span>View LinkedIn Profile</span><ExternalLink size={16} aria-hidden="true" />
+              </a>
+            ) : (
+              <>
+                <button
+                  className="lt-button lt-button-secondary lt-about-founder-link"
+                  type="button"
+                  disabled
+                  aria-describedby="founder-linkedin-status"
+                >
+                  <span>View LinkedIn Profile</span><ExternalLink size={16} aria-hidden="true" />
+                </button>
+                <p className="lt-about-founder-link-note" id="founder-linkedin-status">Profile link awaiting confirmation.</p>
+              </>
+            )}
+          </article>
+          <FounderCredentialCard />
         </div>
       </RouteSection>
 
