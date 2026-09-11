@@ -100,6 +100,21 @@ try {
     assert.equal(sections[index - 1].heading, 'Built for practical decisions');
     assert.equal(sections[index + 1].heading, 'Production systems, not presentation concepts');
     assert.equal(await page.locator('h1').count(), 1);
+    assert.equal(await section.locator('.lt-route-heading > p').last().textContent(), 'LionTech is founded by Freejoy Masimba Chimbizi, whose background includes more than seven years in the British Army as a Supply Chain Specialist, where discipline, accountability and reliable operational delivery were fundamental. He combines that experience with practical AI implementation, production engineering and professional development in responsible AI and governance. Together, these experiences shape LionTech’s approach to building useful AI systems with clear controls, human oversight and operational discipline.');
+    assert.equal(await section.locator('.lt-about-founder-summary').textContent(), 'Operational experience, practical engineering and responsible AI governance applied to LionTech’s work.');
+    assert.equal(await section.locator('#founder-client-reassurance-title').textContent(), 'WHY THIS MATTERS FOR CLIENTS');
+    assert.deepEqual(await section.locator('.lt-about-client-reassurance p').allTextContents(), [
+      'AI systems can affect customers, staff, data and business decisions. This professional development strengthens LionTech’s approach to AI ethics, transparency, accountability, human oversight and responsible decision-making.',
+      'For clients, that means LionTech approaches AI not simply as technology to deploy, but as an operational capability that should be understandable, reviewable and responsibly governed.',
+    ]);
+    assert(await section.evaluate(el => {
+      const reassurance = el.querySelector('.lt-about-client-reassurance');
+      const bounds = reassurance.getBoundingClientRect();
+      const paragraphs = reassurance.querySelectorAll('p');
+      return bounds.top >= el.querySelector('.lt-about-credential-meta').getBoundingClientRect().bottom &&
+        bounds.bottom <= el.querySelector('.lt-about-development').getBoundingClientRect().top &&
+        Number(getComputedStyle(paragraphs[1]).fontWeight) > Number(getComputedStyle(paragraphs[0]).fontWeight);
+    }), 'Client reassurance must follow metadata, precede development areas and subtly emphasize its second paragraph');
     assert.deepEqual(await section.locator('.lt-about-development-box p').allTextContents(), [
       'AI Ethics', 'Human Oversight', 'Transparency', 'Accountability', 'Human Rights', 'Judicial Transparency', 'Access to Justice',
     ]);

@@ -73,6 +73,11 @@ function FounderCredentialDetails() {
           <dd>Saïd Business School<br />University of Oxford</dd>
         </div>
       </dl>
+      <div className="lt-about-client-reassurance" aria-labelledby="founder-client-reassurance-title">
+        <h4 className="lt-about-credential-label" id="founder-client-reassurance-title">WHY THIS MATTERS FOR CLIENTS</h4>
+        <p>AI systems can affect customers, staff, data and business decisions. This professional development strengthens LionTech’s approach to AI ethics, transparency, accountability, human oversight and responsible decision-making.</p>
+        <p className="lt-about-client-reassurance-emphasis">For clients, that means LionTech approaches AI not simply as technology to deploy, but as an operational capability that should be understandable, reviewable and responsibly governed.</p>
+      </div>
       <div className="lt-about-development" aria-labelledby="founder-development-title">
         <h4 className="lt-about-credential-label" id="founder-development-title">AREAS OF PROFESSIONAL DEVELOPMENT</h4>
         <ul className="lt-about-development-grid">
@@ -161,7 +166,7 @@ export function AboutPage() {
         <RouteHeading
           eyebrow="FOUNDER & PROFESSIONAL CREDENTIALS"
           title="Built with practical experience. Grounded in responsible AI."
-          description="LionTech is founded by Freejoy Masimba Chimbizi, combining operational experience with practical AI implementation, governance and production engineering."
+          description="LionTech is founded by Freejoy Masimba Chimbizi, whose background includes more than seven years in the British Army as a Supply Chain Specialist, where discipline, accountability and reliable operational delivery were fundamental. He combines that experience with practical AI implementation, production engineering and professional development in responsible AI and governance. Together, these experiences shape LionTech’s approach to building useful AI systems with clear controls, human oversight and operational discipline."
         />
         <div className="lt-about-founder-grid">
           <div className="lt-about-founder-column">
@@ -169,7 +174,7 @@ export function AboutPage() {
             <h3 id="founder-profile-title">Freejoy Masimba Chimbizi</h3>
             <p className="lt-about-founder-role">Founder &amp; CEO</p>
             <p className="lt-about-founder-company">Lion Tech Innovations Ltd</p>
-            <p className="lt-about-founder-summary">Founder profile, professional background and current LionTech work.</p>
+            <p className="lt-about-founder-summary">Operational experience, practical engineering and responsible AI governance applied to LionTech’s work.</p>
             {FOUNDER_LINKEDIN_URL ? (
               <a
                 className="lt-button lt-button-secondary lt-about-founder-link"

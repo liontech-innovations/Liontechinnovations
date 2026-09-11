@@ -14,6 +14,22 @@
   min-width: 0;
 }
 
+.lt-about-founder .lt-about-client-reassurance {
+  margin-top: 1.5rem;
+}
+
+.lt-about-founder .lt-about-client-reassurance p {
+  margin: 0 0 0.75rem;
+  color: var(--lt-body);
+  line-height: 1.6;
+}
+
+.lt-about-founder .lt-about-client-reassurance .lt-about-client-reassurance-emphasis {
+  margin-bottom: 0;
+  color: var(--lt-heading-soft);
+  font-weight: 500;
+}
+
 .lt-about-development,
 .lt-about-capabilities {
   margin-top: 1.5rem;
