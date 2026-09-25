@@ -692,13 +692,13 @@ const PrivacyPolicy = ({ onStartIntake }: { onStartIntake: () => void }) => {
     <p><strong>Last updated: 25 September 2026</strong></p>
 
     <h2>1. Introduction</h2>
-    <p>Lion Tech Innovations Ltd ("LionTech", "we", "our", "us"), registered in England and Wales (Company No. 17068390), is committed to protecting personal data. This policy explains what information we may collect through our website, services, business communications and relevant business-to-business outreach, where that information may come from, how we use it, and your rights under UK data protection law.</p>
+    <p>Lion Tech Innovations Ltd ("LionTech", "we", "our", "us"), registered in England and Wales (Company No. 17068390), is the controller of the personal data described in this policy. This policy explains what information we may collect through our website, services, business communications and relevant business-to-business outreach, where that information may come from, how we use it, and your rights under UK data protection law.</p>
 
     <h2>2. Information We May Collect</h2>
     <ul>
       <li>Contact information you provide directly, such as your name, business email address, company and role.</li>
-      <li>Relevant business contact information used for B2B outreach, such as a work email address, business name, role, website, sector and publicly available professional information.</li>
-      <li>Source and campaign-accountability information, including where business contact information was obtained, correspondence history, objections, bounces and suppression status.</li>
+      <li>Relevant business contact information used for B2B outreach, such as your name, work email address, business or company, role, business website or domain, sector and publicly available professional or business information.</li>
+      <li>Records of where business contact information was obtained, correspondence and marketing preferences, including objections and suppression information.</li>
       <li>Information submitted through our website, intake systems or agreed service workflows.</li>
       <li>Technical information generated when our website or systems are used, such as device, browser, IP address, timestamps and security logs where applicable.</li>
       <li>Records of correspondence with LionTech.</li>
@@ -722,20 +722,20 @@ const PrivacyPolicy = ({ onStartIntake }: { onStartIntake: () => void }) => {
       <li>responding to enquiries and requested communications;</li>
       <li>providing and administering agreed services;</li>
       <li>conducting relevant B2B outreach to organisations where our services may reasonably be relevant;</li>
-      <li>maintaining records of correspondence, objections, suppression and campaign accountability;</li>
+      <li>maintaining records of correspondence, objections and suppression to respect marketing preferences and demonstrate accountability;</li>
       <li>operating, securing and improving our website and business systems; and</li>
       <li>meeting applicable legal, tax, accounting and regulatory obligations.</li>
     </ul>
     <p>Depending on the activity, our lawful basis may include legitimate interests, contractual necessity, legal obligation or consent.</p>
 
     <h2>5. Legitimate Interests and B2B Outreach</h2>
-    <p>Where we rely on legitimate interests for relevant corporate B2B outreach, our interest is in presenting LionTech services to organisations where there is a reasonable connection between the organisation's activities and the service offered.</p>
+    <p>Where appropriate, we may rely on legitimate interests for relevant corporate B2B outreach. Our interest is in presenting LionTech services to organisations where there is a reasonable connection between the organisation's activities and the service offered.</p>
     <p>We consider the nature of the information, the professional context in which it was made available, the relevance of the communication and the individual's rights and reasonable expectations.</p>
     <p>We do not sell personal data. We do not use business-contact data for behavioural advertising. We do not make solely automated decisions about individuals that produce legal or similarly significant effects.</p>
 
     <h2>6. Your Right to Object to Direct Marketing</h2>
-    <p>You can object to promotional contact at any time. You may reply to a LionTech outreach email with <strong>no thanks</strong>, use another opt-out method stated in the communication, or email <a href="mailto:privacy@liontechinnovations.co.uk">privacy@liontechinnovations.co.uk</a>.</p>
-    <p>When you object, we will stop promotional contact to that business contact. We may retain the minimum suppression information necessary to ensure that your objection continues to be honoured.</p>
+    <p>You have an absolute right to object to the use of your personal data for direct marketing at any time. You may reply to a LionTech promotional email with <strong>no thanks</strong>, use another opt-out method stated in the communication, or email <a href="mailto:privacy@liontechinnovations.co.uk">privacy@liontechinnovations.co.uk</a>.</p>
+    <p>When you object, we will stop using your personal data for direct marketing and stop promotional contact with you. We may retain the minimum suppression information necessary to ensure that your objection continues to be honoured.</p>
 
     <h2>7. Service Providers</h2>
     <p>We use service providers to support activities such as website hosting, business email, document production, AI-assisted research and reporting, business-data enrichment, payments and operational recordkeeping.</p>
