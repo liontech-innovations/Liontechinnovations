@@ -71,15 +71,15 @@ export const routeMeta = {
   },
   '/saas-platform-development': {
     title: 'SaaS Platform Development | Lion Tech Innovations',
-    description: 'We architect and ship production SaaS for regulated UK markets. The patterns behind ClearVisa UK and CalcFee — applied to your domain.',
+    description: 'We architect and ship production SaaS for regulated UK markets. The patterns behind ClearVisa UK and CalcFee â€” applied to your domain.',
   },
   '/ai-intake-systems': {
     title: 'AI Intake Systems | Lion Tech Innovations',
     description: "Real conversational intake powered by streaming LLMs. The architecture behind LionTech's own AI intake, available for your domain.",
   },
   '/lead-recovery': {
-    title: 'Emergency Roofing Lead Capture System — From £495 | Lion Tech Innovations',
-    description: 'Capture emergency roofing leads via SMS. Live in 5 working days. £495 setup + £199/mo managed, or £1,995 one-off. Built for UK roofing companies.',
+    title: 'Emergency Roofing Lead Capture System â€” From Â£495 | Lion Tech Innovations',
+    description: 'Capture emergency roofing leads via SMS. Live in 5 working days. Â£495 setup + Â£199/mo managed, or Â£1,995 one-off. Built for UK roofing companies.',
   },
   '/roofing-brief': {
     title: 'Roofing Website Build Brief | Lion Tech Innovations',
@@ -411,7 +411,7 @@ const Platforms = () => {
 
 const Services = () => {
   const services = [
-    { icon: <Zap size={25} />, title: 'SaaS Platform Development', href: '/saas-platform-development' as Route, description: 'Production-ready software platforms with secure architecture, intuitive flows, and operational reliability — the stack behind ClearVisa UK and CalcFee.' },
+    { icon: <Zap size={25} />, title: 'SaaS Platform Development', href: '/saas-platform-development' as Route, description: 'Production-ready software platforms with secure architecture, intuitive flows, and operational reliability â€” the stack behind ClearVisa UK and CalcFee.' },
     { icon: <Cpu size={25} />, title: 'AI Automation Systems', href: '/ai-intake-systems' as Route, description: 'Workflow automation, intake systems, and operational AI integrations that reduce manual processing and scale operations.' },
     { icon: <Server size={25} />, title: 'API & Payment Infrastructure', description: 'Reliable integrations, payment flows, webhooks, and backend services for production business systems.' },
   ];
@@ -433,7 +433,7 @@ const Services = () => {
                 <h3 className="text-lg font-bold tracking-[-0.03em] text-white">{service.title}</h3>
                 <p className="mt-2.5 text-[14px] leading-6 text-white/72">{service.description}</p>
                 <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#C8A24A]">
-                  Read more <span className="transition-transform group-hover:translate-x-0.5">→</span>
+                  Read more <span className="transition-transform group-hover:translate-x-0.5">â†’</span>
                 </span>
               </a>
             ) : (
@@ -536,8 +536,8 @@ const UkAiInfrastructure = ({ onStartIntake }: { onStartIntake: () => void }) =>
       <h2>What we operate</h2>
       <p>We maintain a portfolio of production UK technology platforms. Two are currently public:</p>
       <ul>
-        <li><strong>ClearVisa UK</strong> — Compliance SaaS. AI-powered immigration risk analysis. Helps applicants assess UK visa refusal risk before submission, using classification models trained on Home Office decision patterns and policy guidance. Live.</li>
-        <li><strong>CalcFee</strong> — Fintech tool. Real-time financial calculation and reporting platform with secure data processing pipelines and structured PDF output generation. Live.</li>
+        <li><strong>ClearVisa UK</strong> â€” Compliance SaaS. AI-powered immigration risk analysis. Helps applicants assess UK visa refusal risk before submission, using classification models trained on Home Office decision patterns and policy guidance. Live.</li>
+        <li><strong>CalcFee</strong> â€” Fintech tool. Real-time financial calculation and reporting platform with secure data processing pipelines and structured PDF output generation. Live.</li>
       </ul>
       <p>Each platform is operated by us, on our infrastructure, end to end. We design, deploy, secure, monitor, and maintain. The same engineering rigour applies to any partner engagement.</p>
 
@@ -548,7 +548,7 @@ const UkAiInfrastructure = ({ onStartIntake }: { onStartIntake: () => void }) =>
       <p><strong>UK jurisdiction.</strong> Subject to UK GDPR, the Data Protection Act 2018, and English and Welsh law. Data flows are designed with UK and EU data residency in mind. International transfers documented and contracted under Standard Contractual Clauses where applicable.</p>
 
       <h2>What we build for partners</h2>
-      <p>We selectively undertake infrastructure engagements with organisations that need production systems, not marketing collateral. Three capability lanes — each built on what we already operate:</p>
+      <p>We selectively undertake infrastructure engagements with organisations that need production systems, not marketing collateral. Three capability lanes â€” each built on what we already operate:</p>
       <ul>
         <li><a href="/saas-platform-development" onClick={(event) => { event.preventDefault(); navigateTo('/saas-platform-development'); }}>SaaS Platform Development</a>. Architecting and shipping production SaaS for regulated UK markets. The patterns behind ClearVisa and CalcFee, applied to your domain.</li>
         <li><a href="/ai-intake-systems" onClick={(event) => { event.preventDefault(); navigateTo('/ai-intake-systems'); }}>AI Automation Systems</a>. Operational AI: intake systems, document processing, classification pipelines, workflow automation. We integrate with your existing stack rather than ask you to adopt ours.</li>
@@ -557,9 +557,9 @@ const UkAiInfrastructure = ({ onStartIntake }: { onStartIntake: () => void }) =>
       <p>What we do not do: marketing campaigns, SEO consulting, social media management, freelance hourly work, generic agency engagements, app cloning, ghostwriting, content writing. If those are what you need, we are not a fit.</p>
 
       <h2>How we engage</h2>
-      <p>Engagement is initiated through our AI intake assistant — a real conversational interface, not a form. It captures requirements in your own words and generates a structured brief for our engineering team to review within one business day.</p>
+      <p>Engagement is initiated through our AI intake assistant â€” a real conversational interface, not a form. It captures requirements in your own words and generates a structured brief for our engineering team to review within one business day.</p>
       <p>If your brief fits how we work, we follow up with a discovery call to clarify constraints. After that, we issue a written engagement agreement with scope, fees, timelines, deliverables, and liability terms. No work begins outside a signed scope.</p>
-      <p>We currently take a small number of engagements per year. Selectivity is not a marketing pose — it is how we maintain operational quality on the platforms we already run.</p>
+      <p>We currently take a small number of engagements per year. Selectivity is not a marketing pose â€” it is how we maintain operational quality on the platforms we already run.</p>
 
       <h2>Where we are</h2>
       <p>Manchester-based, serving UK businesses remotely. Lion Tech Innovations Ltd is registered in England and Wales, company number 17068390. All contracts are governed by English and Welsh law.</p>
@@ -585,7 +585,7 @@ const SaasPlatformDevelopment = ({ onStartIntake }: { onStartIntake: () => void 
         <li><strong>Audit logging on every state change.</strong> Who did what, when, with what payload. Retained for the legally required period. Queryable.</li>
         <li><strong>Observability before launch.</strong> Structured logs with request IDs propagated across all services. Alert thresholds set before traffic arrives, not retrofitted after incidents.</li>
         <li><strong>Idempotent transactional flows.</strong> Every payment, every webhook, every state transition designed to handle replay safely. Network failures should not produce duplicate charges or orphaned records.</li>
-        <li><strong>GDPR-compliant data handling.</strong> Lawful basis documented per data category. Subject access, rectification, and erasure flows in place from launch — not added under pressure during a complaint.</li>
+        <li><strong>GDPR-compliant data handling.</strong> Lawful basis documented per data category. Subject access, rectification, and erasure flows in place from launch â€” not added under pressure during a complaint.</li>
       </ul>
 
       <h2>Stack discipline</h2>
@@ -603,8 +603,8 @@ const SaasPlatformDevelopment = ({ onStartIntake }: { onStartIntake: () => void 
       <p>This stack is deliberately narrow. Deep expertise across few tools is more useful than shallow coverage of many.</p>
 
       <h2>Our shipped platforms</h2>
-      <p><strong>ClearVisa UK</strong> — compliance SaaS in the UK immigration risk-analysis space. Built around a classification model, a document handling pipeline, and an outcome scoring presentation layer. Multi-tenant, GDPR-compliant, and operating in a regulated category.</p>
-      <p><strong>CalcFee</strong> — fintech tool. Real-time calculation engine, secure financial data pipeline, structured PDF report generation. Stripe-integrated billing.</p>
+      <p><strong>ClearVisa UK</strong> â€” compliance SaaS in the UK immigration risk-analysis space. Built around a classification model, a document handling pipeline, and an outcome scoring presentation layer. Multi-tenant, GDPR-compliant, and operating in a regulated category.</p>
+      <p><strong>CalcFee</strong> â€” fintech tool. Real-time calculation engine, secure financial data pipeline, structured PDF report generation. Stripe-integrated billing.</p>
       <p>The architectural patterns across both are the same. Multi-tenancy, RLS, audit logs, idempotent transactions, observability, structured PDF output. We build to one standard.</p>
 
       <h2>What an engagement looks like</h2>
@@ -618,7 +618,7 @@ const SaasPlatformDevelopment = ({ onStartIntake }: { onStartIntake: () => void 
       <p>We do not run hourly billing. Engagements are fixed-scope or platform-operated, with clear deliverables and timelines.</p>
 
       <h2>What we don't build</h2>
-      <p>We do not build: marketing sites with 'SaaS' in the page title, NFT mints, crypto exchanges, gambling platforms, dating apps, AI image generators, copywriting tools, generic CRMs, or one-off WordPress builds. We have no problem with these markets — they're not where our engineering value is concentrated.</p>
+      <p>We do not build: marketing sites with 'SaaS' in the page title, NFT mints, crypto exchanges, gambling platforms, dating apps, AI image generators, copywriting tools, generic CRMs, or one-off WordPress builds. We have no problem with these markets â€” they're not where our engineering value is concentrated.</p>
       <p>Part of <a href="/uk-ai-infrastructure" onClick={(event) => { event.preventDefault(); navigateTo('/uk-ai-infrastructure'); }}>LionTech's UK AI infrastructure</a>.</p>
     </CapabilityPage>
   );
@@ -635,7 +635,7 @@ const AiIntakeSystems = ({ onStartIntake }: { onStartIntake: () => void }) => {
       onStartIntake={onStartIntake}
     >
       <h2>Why conversational beats form</h2>
-      <p>Forms work when the user already knows what they want. For complex purchases — software, legal services, financial products, infrastructure work — the user is exploring, and a form makes them feel interrogated.</p>
+      <p>Forms work when the user already knows what they want. For complex purchases â€” software, legal services, financial products, infrastructure work â€” the user is exploring, and a form makes them feel interrogated.</p>
       <p>Conversational intake inverts this. The user describes their problem in natural language. The AI captures intent, asks at most one clarifying question, and produces a structured brief for the receiving team. The user does less work; the team gets richer information.</p>
       <p>Compared to a typical multi-step form:</p>
       <ul>
@@ -647,19 +647,19 @@ const AiIntakeSystems = ({ onStartIntake }: { onStartIntake: () => void }) => {
 
       <h2>Architecture (the intake on this site)</h2>
       <p>The AI intake you can try via the Submit a Brief button on this site uses the following architecture. The same pattern is what we deploy for partners.</p>
-      <p><strong>Frontend.</strong> React component with streaming response rendering. The user types, sends with Enter, and watches the assistant's response stream in character by character — the streaming itself is most of what makes the experience feel intelligent.</p>
+      <p><strong>Frontend.</strong> React component with streaming response rendering. The user types, sends with Enter, and watches the assistant's response stream in character by character â€” the streaming itself is most of what makes the experience feel intelligent.</p>
       <p><strong>API endpoint.</strong> Vercel Edge function. Receives the conversation history, applies a system prompt that defines the AI's voice and behaviour, and streams the response back from the upstream model.</p>
       <p><strong>Model.</strong> Anthropic Claude (currently Sonnet 4.6) accessed via OpenRouter. OpenRouter abstracts model providers, so the system can switch providers without code changes if pricing, latency, or capability requires it.</p>
       <p><strong>System prompt.</strong> The system prompt IS the product. It defines voice (engineer, terse, no filler), turn rules (maximum one clarifying question, brief on second response), decline filters (explicit budget or scope misfit), and output format (structured JSON brief).</p>
       <p><strong>Brief generation.</strong> When the conversation has enough signal, the assistant responds with JSON in a strict schema: project, problem, current state, capabilities required, constraints, urgency, suggested next step.</p>
       <p><strong>Submission endpoint.</strong> A second Vercel Edge function receives the user-confirmed brief plus contact details, formats it as HTML email, and dispatches via Resend to the receiving team. Reply-to is set to the visitor's email so team replies go directly to them.</p>
-      <p><strong>No database.</strong> Conversation transcripts are not stored. The brief lives only in the email record. This is deliberate — minimum-data-retention by design.</p>
+      <p><strong>No database.</strong> Conversation transcripts are not stored. The brief lives only in the email record. This is deliberate â€” minimum-data-retention by design.</p>
 
       <h2>Engineering details we get asked about</h2>
       <p><strong>Streaming.</strong> We use a fetch with ReadableStream consumed character-by-character on the client. No fake typing animation.</p>
       <p><strong>JSON suppression.</strong> When the assistant generates the brief JSON, the client detects JSON mode on the first non-whitespace character and replaces the streamed text with a placeholder, then transitions to the brief preview UI when streaming completes. The raw JSON is never visible to the user.</p>
       <p><strong>Turn budget.</strong> The system prompt enforces a maximum of one clarifying question. Backend logic enforces a maximum of three visitor messages. After that, the model must produce a brief regardless of how thin the input is.</p>
-      <p><strong>Decline filter.</strong> Only specific signals trigger a decline: explicit budget under £15K, hobby framing, requests for services we don't offer. Short answers, terse phrasing, or thin input do not trigger a decline.</p>
+      <p><strong>Decline filter.</strong> Only specific signals trigger a decline: explicit budget under Â£15K, hobby framing, requests for services we don't offer. Short answers, terse phrasing, or thin input do not trigger a decline.</p>
       <p><strong>Rate limiting.</strong> Per-IP rate limits at the edge prevent abuse. Cost-bounded per conversation.</p>
 
       <h2>Where this applies</h2>
@@ -678,7 +678,7 @@ const AiIntakeSystems = ({ onStartIntake }: { onStartIntake: () => void }) => {
         <li><strong>Drop-in intake.</strong> We build a customised version of the intake on your site, with your system prompt, your branding, your structured brief schema, and your email delivery target. Typical delivery: two to three weeks.</li>
         <li><strong>Operated intake.</strong> As above, but we host, monitor, and maintain the system long term. Includes a monthly cost cap, model upgrades as they ship, and quarterly system prompt iteration based on conversation logs.</li>
       </ol>
-      <p>Both engagement models include conversation flow design — choosing what the AI should and shouldn't ask is more important than the implementation. The system prompt is the product.</p>
+      <p>Both engagement models include conversation flow design â€” choosing what the AI should and shouldn't ask is more important than the implementation. The system prompt is the product.</p>
       <p>Part of <a href="/uk-ai-infrastructure" onClick={(event) => { event.preventDefault(); navigateTo('/uk-ai-infrastructure'); }}>LionTech's UK AI infrastructure</a>.</p>
     </CapabilityPage>
   );
@@ -689,65 +689,95 @@ const PrivacyPolicy = ({ onStartIntake }: { onStartIntake: () => void }) => {
 
   return (
   <LegalPage title="Privacy Policy" onStartIntake={onStartIntake}>
+    <p><strong>Last updated: 25 September 2026</strong></p>
+
     <h2>1. Introduction</h2>
-    <p>Lion Tech Innovations Ltd ("LionTech", "we", "our", "us"), registered in England and Wales (Company No. 17068390), is committed to protecting the privacy of individuals who interact with our website, services, and products. This policy explains what information we collect, how we use it, and the rights you have under UK GDPR and the Data Protection Act 2018.</p>
-    <h2>2. Information We Collect</h2>
-    <p>We collect the following categories of personal data:</p>
+    <p>Lion Tech Innovations Ltd ("LionTech", "we", "our", "us"), registered in England and Wales (Company No. 17068390), is committed to protecting personal data. This policy explains what information we may collect through our website, services, business communications and relevant business-to-business outreach, where that information may come from, how we use it, and your rights under UK data protection law.</p>
+
+    <h2>2. Information We May Collect</h2>
     <ul>
-      <li>Contact information you provide voluntarily (name, email address, company, role) when submitting a brief through our AI intake assistant or contacting us directly.</li>
-      <li>Conversation data from the AI intake assistant, including the messages you send and the structured brief generated from those messages.</li>
-      <li>Technical data automatically logged when you visit the site: IP address, browser type, device type, referring page, and timestamps.</li>
-      <li>Communication records from any subsequent correspondence with our team.</li>
+      <li>Contact information you provide directly, such as your name, business email address, company and role.</li>
+      <li>Relevant business contact information used for B2B outreach, such as a work email address, business name, role, website, sector and publicly available professional information.</li>
+      <li>Source and campaign-accountability information, including where business contact information was obtained, correspondence history, objections, bounces and suppression status.</li>
+      <li>Information submitted through our website, intake systems or agreed service workflows.</li>
+      <li>Technical information generated when our website or systems are used, such as device, browser, IP address, timestamps and security logs where applicable.</li>
+      <li>Records of correspondence with LionTech.</li>
     </ul>
-    <p>We do not knowingly collect special category data, financial details, or information from children under 16.</p>
-    <h2>3. How We Use Your Information</h2>
-    <p>We process personal data on the following lawful bases under UK GDPR:</p>
+    <p>Please do not send sensitive personal information unless it is necessary for an agreed service and we have asked for it through an appropriate channel.</p>
+
+    <h2>3. Where Business Contact Information May Come From</h2>
+    <p>Where we have not collected business contact information directly from you, it may come from sources including:</p>
     <ul>
-      <li>Legitimate interests: to respond to enquiries, evaluate fit for engagements, operate our infrastructure, and improve our services.</li>
-      <li>Contractual necessity: where you become a customer or engagement partner.</li>
-      <li>Legal obligation: to comply with applicable UK laws, including tax, company, and data protection legislation.</li>
+      <li>public company and business websites;</li>
+      <li>public registers and official business records;</li>
+      <li>publicly available professional or business information;</li>
+      <li>business directories and relevant sector-specific public sources; and</li>
+      <li>third-party business-data and enrichment providers.</li>
     </ul>
-    <p>We do not sell personal data. We do not use personal data for advertising or profiling.</p>
-    <h2>4. Third-Party Processors</h2>
-    <p>We use the following processors to deliver our services. Each is bound by data protection contracts and processes data only on our instructions:</p>
+    <p>We use these sources to identify relevant organisations and appropriate business contacts. Public availability does not itself amount to consent, and we provide a clear right to object to promotional contact.</p>
+
+    <h2>4. How We Use Personal Data</h2>
+    <p>Depending on the context, we may process personal data for the following purposes:</p>
     <ul>
-      <li>OpenRouter (OpenRouter, Inc., USA) — routes the AI intake conversation to the Anthropic Claude language model.</li>
-      <li>Anthropic, PBC (USA) — provides the underlying Claude language model used for the intake assistant. Anthropic's API data usage policy applies.</li>
-      <li>Resend (Resend, Inc., USA) — delivers transactional email notifications. Hosted in Ireland (EU).</li>
-      <li>Vercel Inc. (USA) — hosts our website infrastructure on its Edge network.</li>
-      <li>Google LLC (USA / Ireland) — provides Google Workspace for our email and document infrastructure.</li>
-      <li>GoDaddy.com, LLC (USA) — registers our domain.</li>
+      <li>responding to enquiries and requested communications;</li>
+      <li>providing and administering agreed services;</li>
+      <li>conducting relevant B2B outreach to organisations where our services may reasonably be relevant;</li>
+      <li>maintaining records of correspondence, objections, suppression and campaign accountability;</li>
+      <li>operating, securing and improving our website and business systems; and</li>
+      <li>meeting applicable legal, tax, accounting and regulatory obligations.</li>
     </ul>
-    <p>International transfers to the USA are protected by Standard Contractual Clauses (SCCs) and the EU–US Data Privacy Framework where applicable.</p>
-    <h2>5. Data Retention</h2>
+    <p>Depending on the activity, our lawful basis may include legitimate interests, contractual necessity, legal obligation or consent.</p>
+
+    <h2>5. Legitimate Interests and B2B Outreach</h2>
+    <p>Where we rely on legitimate interests for relevant corporate B2B outreach, our interest is in presenting LionTech services to organisations where there is a reasonable connection between the organisation's activities and the service offered.</p>
+    <p>We consider the nature of the information, the professional context in which it was made available, the relevance of the communication and the individual's rights and reasonable expectations.</p>
+    <p>We do not sell personal data. We do not use business-contact data for behavioural advertising. We do not make solely automated decisions about individuals that produce legal or similarly significant effects.</p>
+
+    <h2>6. Your Right to Object to Direct Marketing</h2>
+    <p>You can object to promotional contact at any time. You may reply to a LionTech outreach email with <strong>no thanks</strong>, use another opt-out method stated in the communication, or email <a href="mailto:privacy@liontechinnovations.co.uk">privacy@liontechinnovations.co.uk</a>.</p>
+    <p>When you object, we will stop promotional contact to that business contact. We may retain the minimum suppression information necessary to ensure that your objection continues to be honoured.</p>
+
+    <h2>7. Service Providers</h2>
+    <p>We use service providers to support activities such as website hosting, business email, document production, AI-assisted research and reporting, business-data enrichment, payments and operational recordkeeping.</p>
+    <p>Depending on the service, these providers may process limited personal data on our behalf or under their own applicable terms. Our infrastructure may include providers such as Vercel, Google Workspace, Stripe, GitHub, AI model or routing providers used for authorised workflows, and business-data providers used for relevant B2B prospecting.</p>
+    <p>Where international transfers require safeguards, we use an appropriate lawful transfer mechanism.</p>
+
+    <h2>8. Data Retention</h2>
+    <p>We keep personal data only for as long as reasonably necessary for the purpose for which it was collected and for applicable legal, accounting, security, dispute-handling and business-record requirements.</p>
     <ul>
-      <li>AI intake conversation transcripts are transmitted in-memory during the conversation. Once a brief is generated and emailed to our team, the transcript is retained only as part of that email record. We do not store transcripts in a database.</li>
-      <li>Email correspondence is retained for up to 7 years for legitimate business and tax purposes, then deleted.</li>
-      <li>Technical logs are retained for up to 30 days for security and operational purposes, then deleted.</li>
-      <li>Customer records are retained for the duration of the engagement plus 7 years thereafter.</li>
+      <li>Business outreach records are retained only while reasonably required for outreach, accountability and dispute handling.</li>
+      <li>Suppression information may be retained for longer where necessary to ensure an objection or opt-out continues to be honoured.</li>
+      <li>Customer, transaction and accounting records may be retained for applicable statutory or business-record periods.</li>
+      <li>Technical and security logs are retained only for the period reasonably required for operational and security purposes.</li>
     </ul>
-    <h2>6. Your Rights</h2>
-    <p>Under UK GDPR you have the right to:</p>
+
+    <h2>9. Your Rights</h2>
+    <p>Depending on the circumstances, UK data protection law may give you rights including:</p>
     <ul>
-      <li>Access the personal data we hold about you.</li>
-      <li>Request correction of inaccurate data.</li>
-      <li>Request deletion of your data where applicable.</li>
-      <li>Request restriction of, or object to, processing.</li>
-      <li>Request data portability in a structured, machine-readable format.</li>
-      <li>Withdraw consent where processing is based on consent.</li>
-      <li>Lodge a complaint with the UK Information Commissioner's Office (ICO) at ico.org.uk.</li>
+      <li>access to personal data we hold about you;</li>
+      <li>correction of inaccurate personal data;</li>
+      <li>deletion where applicable;</li>
+      <li>restriction of processing where applicable;</li>
+      <li>objection to processing, including the right to object to direct marketing;</li>
+      <li>data portability where the legal conditions apply;</li>
+      <li>withdrawal of consent where processing is based on consent; and</li>
+      <li>the right to complain to the UK Information Commissioner's Office.</li>
     </ul>
-    <p>To exercise any of these rights, email <a href="mailto:privacy@liontechinnovations.co.uk">privacy@liontechinnovations.co.uk</a>. We will respond within one calendar month.</p>
-    <h2>7. Cookies</h2>
-    <p>Our website uses only essential cookies required for site function. We do not use advertising, analytics, or tracking cookies. You can control cookie preferences through your browser settings.</p>
-    <h2>8. Security</h2>
-    <p>We apply reasonable technical and organisational measures to protect personal data, including encrypted transport (HTTPS), least-privilege access controls, and segregation of production credentials. We will notify affected individuals and the ICO of any qualifying data breach within 72 hours of discovery.</p>
-    <h2>9. Changes to This Policy</h2>
-    <p>We may update this policy from time to time. Material changes will be reflected in the "Last updated" date at the top.</p>
-    <h2>10. Contact</h2>
+    <p>To exercise a right or raise a privacy question, email <a href="mailto:privacy@liontechinnovations.co.uk">privacy@liontechinnovations.co.uk</a>.</p>
+
+    <h2>10. Cookies and Similar Technologies</h2>
+    <p>We use cookies and similar technologies required for the website and features currently enabled. Where non-essential technologies require consent, appropriate controls will be provided.</p>
+
+    <h2>11. Security</h2>
+    <p>We use reasonable technical and organisational measures designed to protect personal data, including encrypted transport, access controls and appropriate credential management.</p>
+
+    <h2>12. Changes to This Policy</h2>
+    <p>We may update this policy when our services, processing activities or legal requirements change. Material changes will be reflected in the date shown above.</p>
+
+    <h2>13. Contact</h2>
     <ul>
-      <li>Data protection enquiries and rights requests: <a href="mailto:privacy@liontechinnovations.co.uk">privacy@liontechinnovations.co.uk</a></li>
-      <li>General contact: <a href="mailto:contact@liontechinnovations.co.uk">contact@liontechinnovations.co.uk</a></li>
+      <li>Privacy enquiries, marketing objections and rights requests: <a href="mailto:privacy@liontechinnovations.co.uk">privacy@liontechinnovations.co.uk</a></li>
+      <li>General enquiries: <a href="mailto:contact@liontechinnovations.co.uk">contact@liontechinnovations.co.uk</a></li>
     </ul>
   </LegalPage>
   );
@@ -761,7 +791,7 @@ const TermsAndConditions = ({ onStartIntake }: { onStartIntake: () => void }) =>
     <h2>1. Introduction</h2>
     <p>These Terms govern your use of the website operated by Lion Tech Innovations Ltd ("LionTech", "we", "our", "us"), a company registered in England and Wales (Company No. 17068390). By accessing this website or using our services, you agree to these Terms.</p>
     <h2>2. Services</h2>
-    <p>LionTech operates a portfolio of UK technology platforms — including ClearVisa UK and CalcFee — and selectively undertakes infrastructure engagements with organisations that need production-grade systems work. We do not offer freelance services, hourly billing, marketing services, or generic agency work.</p>
+    <p>LionTech operates a portfolio of UK technology platforms â€” including ClearVisa UK and CalcFee â€” and selectively undertakes infrastructure engagements with organisations that need production-grade systems work. We do not offer freelance services, hourly billing, marketing services, or generic agency work.</p>
     <h2>3. Engagement Process</h2>
     <ul>
       <li>Submissions via our AI intake assistant ("Submit a Brief") are evaluated by our engineering team within one business day.</li>
@@ -778,7 +808,7 @@ const TermsAndConditions = ({ onStartIntake }: { onStartIntake: () => void }) =>
     </ul>
     <p>We reserve the right to refuse service, block access, or terminate engagements at our discretion.</p>
     <h2>5. Intellectual Property</h2>
-    <p>All content on this website — including text, graphics, logos, the "LionTech Innovations" name, product branding (ClearVisa UK, CalcFee), and source code — is the property of Lion Tech Innovations Ltd or its licensors and is protected by UK copyright and trademark law. Use, reproduction, or distribution without prior written permission is prohibited.</p>
+    <p>All content on this website â€” including text, graphics, logos, the "LionTech Innovations" name, product branding (ClearVisa UK, CalcFee), and source code â€” is the property of Lion Tech Innovations Ltd or its licensors and is protected by UK copyright and trademark law. Use, reproduction, or distribution without prior written permission is prohibited.</p>
     <h2>6. Products</h2>
     <p>ClearVisa UK and CalcFee are each operated under their own terms of service available on the respective product website. Those product terms govern use of those products and take precedence over these Terms for matters specific to the product.</p>
     <h2>7. Disclaimers</h2>
@@ -908,7 +938,7 @@ const CareOpsLostEnquiryRecoveryPage = ({ onStartIntake }: { onStartIntake: () =
   const pricing: CareOpsPricingOption[] = [
     {
       title: 'Lost Enquiry Recovery Audit',
-      price: '£495 one-off',
+      price: 'Â£495 one-off',
       cadence: '',
       description: 'Find where enquiries are being missed, delayed, or dropped before they turn into lost revenue.',
       cta: 'Start Audit',
@@ -917,7 +947,7 @@ const CareOpsLostEnquiryRecoveryPage = ({ onStartIntake }: { onStartIntake: () =
     },
     {
       title: 'Implementation Sprint',
-      price: '£1,500 one-off',
+      price: 'Â£1,500 one-off',
       cadence: '',
       description: 'Install the recovery workflow, response routes, and handover process around the provider team.',
       cta: 'Book Implementation',
@@ -926,7 +956,7 @@ const CareOpsLostEnquiryRecoveryPage = ({ onStartIntake }: { onStartIntake: () =
     },
     {
       title: 'Monitoring',
-      price: '£750/month',
+      price: 'Â£750/month',
       cadence: '',
       description: 'Keep recovery activity visible with weekly oversight and response-gap checks.',
       cta: 'Start Monitoring',
@@ -935,7 +965,7 @@ const CareOpsLostEnquiryRecoveryPage = ({ onStartIntake }: { onStartIntake: () =
     },
     {
       title: 'Founding Provider Package',
-      price: '£1,995 one-off',
+      price: 'Â£1,995 one-off',
       cadence: '',
       description: 'Best entry package for providers who want audit, setup, and launch support in one engagement.',
       cta: 'Start Founding Package',
@@ -955,7 +985,7 @@ const CareOpsLostEnquiryRecoveryPage = ({ onStartIntake }: { onStartIntake: () =
   const annualRevenueLeakage = lostClientsPerYear * annualClientValue;
   const recoverableValue = annualRevenueLeakage / 2;
   const auditComparison = recoverableValue > 0 ? Math.max(1, Math.round(recoverableValue / auditPrice)) : 0;
-  const gbp = (value: number) => `£${Math.round(value).toLocaleString('en-GB')}`;
+  const gbp = (value: number) => `Â£${Math.round(value).toLocaleString('en-GB')}`;
   const clientLossLabel = lostClientsPerYear > 0
     ? `~${lostClientsPerYear < 10 ? lostClientsPerYear.toFixed(1) : Math.round(lostClientsPerYear)} ${lostClientsPerYear === 1 ? 'client' : 'clients'}`
     : '0 clients';
@@ -1106,7 +1136,7 @@ const CareOpsLostEnquiryRecoveryPage = ({ onStartIntake }: { onStartIntake: () =
                     onChange={(event) => setAnnualClientValue(Math.max(0, Number(event.target.value) || 0))}
                     className="mt-2 w-full rounded-md border border-white/14 bg-[#020817] px-3 py-3 text-base font-bold text-white outline-none transition focus:border-[#C8A24A]"
                   />
-                  <span className="mt-2 block text-xs leading-5 text-white/48">A 5 hrs/week package is around £8,320/year.</span>
+                  <span className="mt-2 block text-xs leading-5 text-white/48">A 5 hrs/week package is around Â£8,320/year.</span>
                 </label>
                 <label className="block rounded-lg border border-white/10 bg-white/[0.045] p-4">
                   <span className="flex items-center justify-between gap-3 text-[13px] font-bold text-white">
@@ -1146,7 +1176,7 @@ const CareOpsLostEnquiryRecoveryPage = ({ onStartIntake }: { onStartIntake: () =
                 { label: 'Potential clients lost per year', value: clientLossLabel, tone: 'text-white' },
                 { label: 'Annual revenue leakage', value: gbp(annualRevenueLeakage), tone: 'text-[#F2A84A]' },
                 { label: 'Recoverable value if halved', value: gbp(recoverableValue), tone: 'text-[#66D06F]' },
-                { label: 'Recoverable value vs. £495 audit', value: auditComparison > 0 ? `${auditComparison}x` : '0x', tone: 'text-[#C8A24A]' },
+                { label: 'Recoverable value vs. Â£495 audit', value: auditComparison > 0 ? `${auditComparison}x` : '0x', tone: 'text-[#C8A24A]' },
               ].map((item) => (
                 <div key={item.label} className="rounded-lg border border-white/10 bg-white/[0.055] p-4">
                   <p className="text-[11px] font-black uppercase tracking-[0.14em] text-white/54">{item.label}</p>
@@ -1173,9 +1203,9 @@ const CareOpsLostEnquiryRecoveryPage = ({ onStartIntake }: { onStartIntake: () =
                 ['Example', '12 enquiries/month'],
                 ['Missed follow-up', '15% missed'],
                 ['Likely conversion', '25% conversion'],
-                ['Estimated leakage', '£44,928/year'],
-                ['Audit cost', '£495'],
-                ['Potential recovery', '£22,464/year'],
+                ['Estimated leakage', 'Â£44,928/year'],
+                ['Audit cost', 'Â£495'],
+                ['Potential recovery', 'Â£22,464/year'],
               ].map(([label, value]) => (
                 <div key={label} className="grid grid-cols-[1fr_auto] gap-4 border-b border-white/8 px-4 py-4 last:border-b-0 sm:px-5">
                   <span className="text-[13px] font-bold text-white/62">{label}</span>
@@ -1279,7 +1309,7 @@ const CareOpsCommandCentrePage = ({ onStartIntake }: { onStartIntake: () => void
   const pricing: CareOpsPricingOption[] = [
     {
       title: 'Command Centre Setup',
-      price: '£750 one-off',
+      price: 'Â£750 one-off',
       cadence: '',
       description: 'Configure the weekly action board, provider view, risk categories, and team handover structure.',
       cta: 'Start Setup',
@@ -1288,7 +1318,7 @@ const CareOpsCommandCentrePage = ({ onStartIntake }: { onStartIntake: () => void
     },
     {
       title: 'Command Centre Monthly',
-      price: '£299/month',
+      price: 'Â£299/month',
       cadence: '',
       description: 'Keep weekly oversight running with clear action lists, risk visibility, and follow-up prompts.',
       cta: 'Start Command Centre',
@@ -1297,7 +1327,7 @@ const CareOpsCommandCentrePage = ({ onStartIntake }: { onStartIntake: () => void
     },
     {
       title: 'Command + Recovery Monitoring',
-      price: '£995/month',
+      price: 'Â£995/month',
       cadence: '',
       description: 'Add lost-enquiry recovery monitoring to the command centre operating rhythm.',
       cta: 'Start Command + Recovery',
@@ -1852,8 +1882,8 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
   const tweakExamples = ['Updating your phone number', 'Changing opening hours', 'Updating a short paragraph', 'Changing a service area', 'Swapping one image', 'Adding one short customer testimonial', 'Updating a small offer or seasonal message'];
   const paidExtras = ['Uploading lots of extra photographs', 'Adding new website pages', 'Full page redesigns', 'Rewriting large sections of the website', 'Adding new services that need new copy or layout', 'SEO campaigns', 'Google Ads management', 'Social media posting', 'Photography', 'Logo design from scratch', 'CRM setup', 'Complex integrations', 'Extra automation work', 'Major design changes', 'Rebuilding the site after the roofer changes direction'];
   const comparisonRows = [
-    ['Price today', '£495 setup', '£1,995 one-off'],
-    ['Monthly cost', '£199/month from launch', '£0'],
+    ['Price today', 'Â£495 setup', 'Â£1,995 one-off'],
+    ['Monthly cost', 'Â£199/month from launch', 'Â£0'],
     ['Website build', 'Included', 'Included'],
     ['Live in 5 working days', 'Yes, after intake details received', 'Yes, after intake details received'],
     ['Business branding', 'Included', 'Included'],
@@ -1866,15 +1896,15 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
     ['Best for', 'Roofers who want it handled', 'Roofers who want to manage it themselves'],
   ];
   const faqs = [
-    ['What do I pay today?', 'For the managed plan, you pay £495 today. The £199/month managed plan starts from launch day.'],
-    ['When does the £199/month start?', 'It starts on launch day, after the website is live.'],
+    ['What do I pay today?', 'For the managed plan, you pay Â£495 today. The Â£199/month managed plan starts from launch day.'],
+    ['When does the Â£199/month start?', 'It starts on launch day, after the website is live.'],
     ['Is there a minimum term?', 'Yes. The managed plan has a 12-month minimum term. After that, you can cancel any time.'],
     ['When will my website go live?', 'The target is 5 working days after we receive your required business details, including your business name, phone number, service areas, and any branding or photos you want used.'],
     ['Do I need to know anything technical?', 'No. The managed plan is designed for roofers who want the technical side handled for them.'],
     ['What happens after launch?', 'On the managed plan, hosting, SMS lead routing, basic maintenance, security updates, and one small website tweak per month are included.'],
     ['What counts as a small tweak?', 'A small tweak is a simple change that takes under 30 minutes, such as changing a phone number, swapping one image, updating opening hours, or editing a short paragraph.'],
     ['What is not included?', 'Bigger changes such as new pages, full redesigns, SEO campaigns, Google Ads, lots of photo uploads, major rewrites, or complex integrations are charged separately.'],
-    ['How are extras charged?', 'Extra work is charged at £75/hour or as a fixed quote agreed before work starts. You are never charged for extra work without approval.'],
+    ['How are extras charged?', 'Extra work is charged at Â£75/hour or as a fixed quote agreed before work starts. You are never charged for extra work without approval.'],
     ['What is the difference between managed and one-off?', 'Managed means we build the website and keep the basics running for you. One-off means we build it, hand it over, and you manage it yourself after completion.'],
     ['Are there hidden fees?', 'No. The page clearly shows what is included, what is not included, and how extra work is charged.'],
     ['Can I use my own business name and branding?', 'Yes. The website is built around your roofing business name, branding, phone number, and service areas.'],
@@ -1944,10 +1974,10 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
             <div>
               <span className="section-eyebrow text-[#C8A24A]">Roofing Lead Infrastructure</span>
               <h1 className="mt-4 text-[34px] font-black leading-[1.05] tracking-[-0.045em] text-white sm:text-5xl lg:text-[56px]">Premium Emergency Roofing Websites, Built in 5 Working Days</h1>
-              <p className="mt-5 max-w-2xl text-[17px] leading-7 text-white/70 sm:text-lg sm:leading-8">Capture qualified emergency roofing enquiries with SMS lead alerts, postcode coverage intelligence, and conversion-focused design — deployed under your brand in 5 working days.</p>
+              <p className="mt-5 max-w-2xl text-[17px] leading-7 text-white/70 sm:text-lg sm:leading-8">Capture qualified emergency roofing enquiries with SMS lead alerts, postcode coverage intelligence, and conversion-focused design â€” deployed under your brand in 5 working days.</p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <a href={managedLink} className="btn-primary min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Start Managed Plan — £495 →</a>
-                <a href="https://leadrecovery.co.uk/" target="_blank" rel="noopener noreferrer" className="btn-secondary-dark min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">See It Live ↗</a>
+                <a href={managedLink} className="btn-primary min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Start Managed Plan â€” Â£495 â†’</a>
+                <a href="https://leadrecovery.co.uk/" target="_blank" rel="noopener noreferrer" className="btn-secondary-dark min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">See It Live â†—</a>
               </div>
               <div className="mt-7 grid gap-3 text-[13px] font-semibold text-white/72 sm:grid-cols-2">
                 {['Live in 5 working days', 'Built around your roofing business', 'Calls and enquiries sent to your phone', 'No technical setup needed'].map((item) => (
@@ -1968,12 +1998,12 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
                 <span className="absolute right-5 top-5 rounded-full bg-[#C8A24A] px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-[#020817]">Recommended</span>
                 <p className="pr-32 text-[13px] font-semibold leading-6 text-white/62">Same website, fully managed for you.</p>
                 <h3 className="mt-5 text-2xl font-black tracking-[-0.035em] text-white">Managed Website</h3>
-                <p className="mt-2 text-3xl font-black tracking-[-0.04em] text-[#C8A24A]">£495 setup + £199/month from launch day</p>
+                <p className="mt-2 text-3xl font-black tracking-[-0.04em] text-[#C8A24A]">Â£495 setup + Â£199/month from launch day</p>
                 <p className="mt-3 text-[15px] leading-6 text-white/70">Best for roofers who want the website built, hosted, maintained, and managed for them.</p>
                 <ul className="mt-5 grid gap-2">{managedIncludes.map((item) => <CheckItem key={item}>{item}</CheckItem>)}</ul>
                 <p className="mt-5 text-[13px] font-semibold text-white/70">12-month minimum term. Cancel any time after the first 12 months.</p>
-                <a href={managedLink} className="btn-primary mt-5 inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Start Managed Plan — £495 →</a>
-                <p className="mt-3 text-[12px] leading-5 text-white/50">The £199/month managed plan starts from launch day.</p>
+                <a href={managedLink} className="btn-primary mt-5 inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Start Managed Plan â€” Â£495 â†’</a>
+                <p className="mt-3 text-[12px] leading-5 text-white/50">The Â£199/month managed plan starts from launch day.</p>
                 <a href="/roofing-brief?plan=managed&source=pricing-card" onClick={(event) => goToBrief(event, '/roofing-brief?plan=managed&source=pricing-card')} className="mt-3 block text-[13px] font-bold text-[#C8A24A] no-underline transition hover:text-[#D4B05A] hover:underline">Paid already? Submit managed brief &rarr;</a>
               </article>
 
@@ -1981,10 +2011,10 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
                 <span className="w-fit rounded-full border border-white/12 bg-white/[0.04] px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-white/70">One-off</span>
                 <p className="mt-4 text-[13px] font-semibold leading-6 text-white/62">Same website, handed over after completion.</p>
                 <h3 className="mt-5 text-2xl font-black tracking-[-0.035em] text-white">Build & Handoff</h3>
-                <p className="mt-2 text-3xl font-black tracking-[-0.04em] text-white">£1,995 one-off build and handoff</p>
+                <p className="mt-2 text-3xl font-black tracking-[-0.04em] text-white">Â£1,995 one-off build and handoff</p>
                 <p className="mt-3 text-[15px] leading-6 text-white/70">Best for roofers who want to own the website outright and manage it themselves after launch.</p>
                 <ul className="mt-5 grid gap-2">{oneOffIncludes.map((item) => <CheckItem key={item}>{item}</CheckItem>)}</ul>
-                <a href={oneOffLink} className="btn-secondary-dark mt-5 inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Choose One-Off Build — £1,995 →</a>
+                <a href={oneOffLink} className="btn-secondary-dark mt-5 inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Choose One-Off Build â€” Â£1,995 â†’</a>
                 <p className="mt-3 text-[12px] leading-5 text-white/50">Future changes or support are charged separately.</p>
                 <a href="/roofing-brief?plan=oneoff&source=pricing-card" onClick={(event) => goToBrief(event, '/roofing-brief?plan=oneoff&source=pricing-card')} className="mt-3 block text-[13px] font-bold text-[#C8A24A] no-underline transition hover:text-[#D4B05A] hover:underline">Paid already? Submit one-off brief &rarr;</a>
               </article>
@@ -2062,7 +2092,7 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
               <p className="mt-4 text-[13px] font-semibold text-white/50">Unused tweaks do not roll over.</p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
-              {tweakExamples.map((item) => <p key={item} className="rounded-lg border border-white/10 bg-[#071426]/72 p-4 text-[14px] font-semibold leading-6 text-white/72"><span className="mr-2 text-[#C8A24A]">→</span>{item}</p>)}
+              {tweakExamples.map((item) => <p key={item} className="rounded-lg border border-white/10 bg-[#071426]/72 p-4 text-[14px] font-semibold leading-6 text-white/72"><span className="mr-2 text-[#C8A24A]">â†’</span>{item}</p>)}
             </div>
           </div>
         </section>
@@ -2072,7 +2102,7 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
             <span className="section-eyebrow text-[#C8A24A]">No Hidden Extras</span>
             <h2 className="mt-3 max-w-3xl text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">Bigger changes are agreed before any extra charge.</h2>
             <p className="mt-4 max-w-3xl text-[16px] leading-7 text-white/70">Some work sits outside the managed plan. If you need extra work, we agree the price with you first. You are never charged for extra work without approval.</p>
-            <p className="mt-5 rounded-xl border border-[#C8A24A]/24 bg-[#C8A24A]/10 p-4 text-[16px] font-bold leading-7 text-white">Extra work is charged at £75/hour or as a fixed quote agreed before work starts.</p>
+            <p className="mt-5 rounded-xl border border-[#C8A24A]/24 bg-[#C8A24A]/10 p-4 text-[16px] font-bold leading-7 text-white">Extra work is charged at Â£75/hour or as a fixed quote agreed before work starts.</p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {paidExtras.map((item) => <p key={item} className="rounded-lg border border-white/10 bg-[#071426]/72 p-4 text-[14px] leading-6 text-white/68">{item}</p>)}
             </div>
@@ -2111,10 +2141,10 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
               <span className="section-eyebrow text-[#C8A24A]">One-Off Option</span>
               <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">Want to own it outright?</h2>
               <p className="mt-4 text-[16px] leading-7 text-white/70">Some roofers prefer to pay once and manage everything themselves. The one-off option gives you the same custom emergency roofing website, then it is handed over after completion.</p>
-              <p className="mt-5 text-3xl font-black tracking-[-0.04em] text-[#C8A24A]">£1,995 one-off build and handoff</p>
+              <p className="mt-5 text-3xl font-black tracking-[-0.04em] text-[#C8A24A]">Â£1,995 one-off build and handoff</p>
               <p className="mt-4 rounded-xl border border-white/10 bg-[#071426]/72 p-4 text-[14px] leading-6 text-white/70">After handoff, you are responsible for hosting, domain, SMS account, database, updates, and future changes.</p>
-              <a href={oneOffLink} className="btn-secondary-dark mt-5 inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Choose One-Off Build — £1,995</a>
-              <p className="mt-3 text-[12px] leading-5 text-white/50">Post-handoff support is charged at £75/hour or by fixed quote agreed before work starts.</p>
+              <a href={oneOffLink} className="btn-secondary-dark mt-5 inline-flex min-h-11 items-center justify-center rounded-md px-5 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Choose One-Off Build â€” Â£1,995</a>
+              <p className="mt-3 text-[12px] leading-5 text-white/50">Post-handoff support is charged at Â£75/hour or by fixed quote agreed before work starts.</p>
             </div>
             <div className="rounded-xl border border-[#C8A24A]/14 bg-[#071426]/72 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_20px_54px_rgba(0,0,0,0.22)]">
               <h3 className="text-lg font-black tracking-[-0.03em] text-white">Included</h3>
@@ -2162,10 +2192,10 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
         <section className="hidden border-b border-white/8 py-14 text-center sm:py-18">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-black tracking-[-0.04em] text-white sm:text-[40px]">Ready to get your roofing lead website built?</h2>
-            <p className="mx-auto mt-5 max-w-2xl text-[16px] leading-7 text-white/70">Start with the £495 managed setup payment. Your website is built around your business and launched within 5 working days after your intake details are received.</p>
+            <p className="mx-auto mt-5 max-w-2xl text-[16px] leading-7 text-white/70">Start with the Â£495 managed setup payment. Your website is built around your business and launched within 5 working days after your intake details are received.</p>
             <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-              <a href={managedLink} className="btn-primary min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Start Managed Plan — £495 Setup</a>
-              <a href={oneOffLink} className="btn-secondary-dark min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Choose One-Off Build — £1,995</a>
+              <a href={managedLink} className="btn-primary min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Start Managed Plan â€” Â£495 Setup</a>
+              <a href={oneOffLink} className="btn-secondary-dark min-h-11 rounded-md px-6 py-3 text-center text-[11px] uppercase tracking-[0.14em] no-underline">Choose One-Off Build â€” Â£1,995</a>
             </div>
             <p className="mx-auto mt-4 max-w-xl text-[13px] leading-6 text-white/50">Payment processed securely by Stripe. Intake form and next steps sent by email.</p>
           </div>
@@ -2173,7 +2203,7 @@ const LeadRecoveryPage = ({ onStartIntake }: { onStartIntake: () => void }) => {
 
         <section className="py-6 text-center">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            <p className="text-[13px] leading-6 text-white/60">Built by Lion Tech Innovations — Manchester-based digital infrastructure company. Companies House 17068390.</p>
+            <p className="text-[13px] leading-6 text-white/60">Built by Lion Tech Innovations â€” Manchester-based digital infrastructure company. Companies House 17068390.</p>
           </div>
         </section>
       </main>
