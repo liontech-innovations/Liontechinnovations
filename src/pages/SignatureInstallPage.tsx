@@ -1,6 +1,8 @@
 import { Check, ClipboardCopy } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import {
+  FIX_SIGNATURE_HTML,
+  FIX_SIGNATURE_PLAIN_TEXT,
   SIGNATURE_HTML,
   SIGNATURE_IMAGE_URL,
   SIGNATURE_PLAIN_TEXT,
@@ -18,15 +20,27 @@ const copyStatusMessage: Record<CopyStatus, string> = {
   error: 'Clipboard access failed. Check browser permissions and try again.',
 };
 
-const signaturePreviewHtml = SIGNATURE_HTML.replace(SIGNATURE_IMAGE_URL, new URL(SIGNATURE_IMAGE_URL).pathname);
+const defaultSignaturePreviewHtml = SIGNATURE_HTML.replace(SIGNATURE_IMAGE_URL, new URL(SIGNATURE_IMAGE_URL).pathname);
+
+function subscribeToLocation(onChange: () => void) {
+  window.addEventListener('popstate', onChange);
+  return () => window.removeEventListener('popstate', onChange);
+}
+
+const getFixVariant = () => new URLSearchParams(window.location.search).get('variant') === 'fix';
+const getPrerenderVariant = () => false;
 
 export function SignatureInstallPage() {
   useSeo(signatureInstallSeo);
+  const isFixSignature = useSyncExternalStore(subscribeToLocation, getFixVariant, getPrerenderVariant);
+  const signatureHtml = isFixSignature ? FIX_SIGNATURE_HTML : SIGNATURE_HTML;
+  const signaturePlainText = isFixSignature ? FIX_SIGNATURE_PLAIN_TEXT : SIGNATURE_PLAIN_TEXT;
+  const signaturePreviewHtml = isFixSignature ? FIX_SIGNATURE_HTML : defaultSignaturePreviewHtml;
   const [copyStatus, setCopyStatus] = useState<CopyStatus>('ready');
 
   async function copyPlainTextFallback() {
     if (!navigator.clipboard?.writeText) throw new Error('Plain-text clipboard access is unavailable');
-    await navigator.clipboard.writeText(SIGNATURE_PLAIN_TEXT);
+    await navigator.clipboard.writeText(signaturePlainText);
     setCopyStatus('plain');
   }
 
@@ -40,8 +54,8 @@ export function SignatureInstallPage() {
       }
 
       const clipboardItem = new ClipboardItem({
-        'text/html': new Blob([SIGNATURE_HTML], { type: 'text/html' }),
-        'text/plain': new Blob([SIGNATURE_PLAIN_TEXT], { type: 'text/plain' }),
+        'text/html': new Blob([signatureHtml], { type: 'text/html' }),
+        'text/plain': new Blob([signaturePlainText], { type: 'text/plain' }),
       });
       await navigator.clipboard.write([clipboardItem]);
       setCopyStatus('formatted');
@@ -67,7 +81,7 @@ export function SignatureInstallPage() {
       <main id="main-content" className="lt-signature-main">
         <div className="lt-signature-intro">
           <p className="lt-eyebrow">GMAIL SIGNATURE INSTALLER</p>
-          <h1>Install the approved LionTech signature.</h1>
+          <h1>{isFixSignature ? 'LionTech Founder — Automation Fix' : 'Install the approved LionTech signature.'}</h1>
           <p>Copy the formatted signature once, paste it into Gmail and save. The image and every required link are already configured.</p>
         </div>
 
@@ -86,7 +100,7 @@ export function SignatureInstallPage() {
               disabled={copyStatus === 'copying'}
             >
               {copyStatus === 'formatted' ? <Check aria-hidden="true" /> : <ClipboardCopy aria-hidden="true" />}
-              COPY SIGNATURE FOR GMAIL
+              {isFixSignature ? 'COPY SIGNATURE' : 'COPY SIGNATURE FOR GMAIL'}
             </button>
             <p className={`lt-signature-copy-status is-${copyStatus}`} role="status" aria-live="polite">
               {copyStatusMessage[copyStatus]}

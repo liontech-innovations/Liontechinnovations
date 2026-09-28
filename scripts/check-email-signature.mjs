@@ -50,6 +50,10 @@ try {
 }
 
 const {
+  FIX_SIGNATURE_DESTINATION_URL,
+  FIX_SIGNATURE_HTML,
+  FIX_SIGNATURE_IMAGE_URL,
+  FIX_SIGNATURE_PLAIN_TEXT,
   SIGNATURE_DESTINATION_URL,
   SIGNATURE_HOMEPAGE_URL,
   SIGNATURE_HTML,
@@ -79,6 +83,27 @@ assert(!/\bsrc\s*=\s*["']data:/i.test(SIGNATURE_HTML), 'copied signature HTML co
 assert(!/base64/i.test(SIGNATURE_HTML), 'copied signature HTML contains base64');
 assert(!/registered\s+office|streetAddress|addressLocality|addressRegion|postalCode|PostalAddress/i.test(SIGNATURE_HTML), 'copied signature HTML contains prohibited private-location data');
 assert(!/stripe\.com|buy\.stripe|checkout\.stripe/i.test(SIGNATURE_HTML), 'copied signature HTML contains a public Stripe link');
+
+const expectedFixImageUrl = 'https://liontechinnovations.co.uk/brand/fix-banner.png';
+const expectedFixHash = 'a609e9102c44b8d536742be7e0ca3de09c08ea6699061ab65eb8ad0f452fe165';
+for (const directory of ['public', 'dist']) {
+  const bytes = await readFile(join(projectRoot, directory, 'brand', 'fix-banner.png'));
+  assert(bytes.subarray(0, 8).toString('hex') === '89504e470d0a1a0a', `${directory}: fix banner is not PNG`);
+  assert(bytes.readUInt32BE(16) === 1774 && bytes.readUInt32BE(20) === 887, `${directory}: fix banner dimensions changed`);
+  assert(createHash('sha256').update(bytes).digest('hex') === expectedFixHash, `${directory}: approved fix banner bytes changed`);
+}
+assert(FIX_SIGNATURE_IMAGE_URL === expectedFixImageUrl, 'fix image URL changed');
+assert(FIX_SIGNATURE_DESTINATION_URL === expectedDestinationUrl, 'fix destination must be the homepage');
+assert(FIX_SIGNATURE_PLAIN_TEXT === `Kind regards,
+
+Freejoy Chimbizi
+Founder & CEO
+Lion Tech Innovations Ltd
++44 7305 824321
+admin@liontechinnovations.co.uk
+https://liontechinnovations.co.uk/`, 'fix plain-text contact details changed');
+assert(!/AI Visibility|See what AI says|liontech-email-signature-20260815|Snapshot|CareOps|PostOrder|stripe/i.test(FIX_SIGNATURE_HTML), 'fix signature contains another campaign');
+assert(!/<script\b|<map\b|<area\b|\bclass\s*=|\bon\w+\s*=/i.test(FIX_SIGNATURE_HTML), 'fix signature must use conservative email HTML');
 
 const installerSource = await readFile(join(projectRoot, 'src', 'pages', 'SignatureInstallPage.tsx'), 'utf8');
 for (const expectedSource of ["'text/html'", "'text/plain'", 'navigator.clipboard.write', 'navigator.clipboard.writeText']) {
@@ -220,6 +245,95 @@ try {
   await fallbackPage.getByRole('status').filter({ hasText: 'plain-text signature was copied' }).waitFor();
   const fallbackCalls = await fallbackPage.evaluate(() => window.__signatureClipboardCalls);
   assert(fallbackCalls.writeText.length === 1 && fallbackCalls.writeText[0] === SIGNATURE_PLAIN_TEXT, 'plain-text clipboard fallback changed');
+
+  const fixPageErrors = [];
+  formattedPage.on('pageerror', (error) => fixPageErrors.push(error.message));
+  const fixResponse = await formattedPage.goto(`http://127.0.0.1:${port}/email/signature-install?variant=fix`, { waitUntil: 'networkidle' });
+  assert(fixResponse?.ok(), 'fix installer did not return HTTP 200');
+  await formattedPage.getByRole('heading', { name: 'LionTech Founder — Automation Fix', exact: true }).waitFor();
+  const fixImage = formattedPage.getByRole('img', { name: 'Lion Tech Innovations — Turn More Enquiries Into Revenue', exact: true });
+  const fixState = await fixImage.evaluate((image) => {
+    const banner = image.parentElement;
+    const preview = image.closest('.lt-signature-preview');
+    const bounds = image.getBoundingClientRect();
+    const anchorBounds = banner.getBoundingClientRect();
+    return {
+      source: image.getAttribute('src'), complete: image.complete, width: image.naturalWidth, height: image.naturalHeight,
+      renderedWidth: bounds.width, renderedHeight: bounds.height, widthAttribute: image.getAttribute('width'),
+      bannerTag: banner.tagName, href: banner.getAttribute('href'), target: banner.getAttribute('target'), rel: banner.getAttribute('rel'),
+      onlyImage: banner.children.length === 1 && banner.firstElementChild === image,
+      covered: bounds.left >= anchorBounds.left && bounds.right <= anchorBounds.right && bounds.top >= anchorBounds.top && bounds.bottom <= anchorBounds.bottom,
+      phone: preview.querySelector('a[href^="tel:"]')?.getAttribute('href'),
+      email: preview.querySelector('a[href^="mailto:"]')?.getAttribute('href'),
+      website: [...preview.querySelectorAll('a')].find((link) => link.textContent === 'https://liontechinnovations.co.uk')?.getAttribute('href'),
+      horizontalOverflow: preview.scrollWidth > preview.clientWidth || document.documentElement.scrollWidth > innerWidth,
+    };
+  });
+  assert(fixState.source === expectedFixImageUrl, 'fix preview image URL is incorrect');
+  assert(fixState.complete && fixState.width === 1774 && fixState.height === 887, 'fix preview image did not load');
+  assert(fixState.widthAttribute === '600' && Math.abs(fixState.renderedWidth - 600) <= 1 && Math.abs(fixState.renderedWidth / fixState.renderedHeight - 2) < 0.01, 'fix image size or proportions changed');
+  assert(fixState.bannerTag === 'A' && fixState.onlyImage && fixState.covered && fixState.href === expectedDestinationUrl, 'whole fix banner is not inside the homepage anchor');
+  assert(fixState.target === '_blank' && fixState.rel === 'noopener noreferrer', 'fix banner external-link attributes changed');
+  assert(fixState.phone === 'tel:+447305824321' && fixState.email === 'mailto:admin@liontechinnovations.co.uk' && fixState.website === expectedDestinationUrl, 'fix contact links are incorrect');
+  assert(!fixState.horizontalOverflow, 'fix desktop preview clips horizontally');
+
+  // Verify external-protocol clicks without starting a call or composing an email.
+  await formattedPage.evaluate(() => {
+    window.__signatureProtocolClicks = [];
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest('a');
+      if (link && /^(tel:|mailto:)/.test(link.getAttribute('href'))) {
+        event.preventDefault();
+        window.__signatureProtocolClicks.push(link.getAttribute('href'));
+      }
+    });
+  });
+  await formattedPage.getByRole('link', { name: '+44 7305 824321', exact: true }).click();
+  await formattedPage.getByRole('link', { name: 'admin@liontechinnovations.co.uk', exact: true }).click();
+  assert(JSON.stringify(await formattedPage.evaluate(() => window.__signatureProtocolClicks)) === JSON.stringify(['tel:+447305824321', 'mailto:admin@liontechinnovations.co.uk']), 'fix phone/email clicks failed');
+
+  const fixBanner = formattedPage.getByRole('link', { name: 'Lion Tech Innovations — Turn More Enquiries Into Revenue', exact: true });
+  for (const [xFraction, yFraction] of [[0.05, 0.5], [0.5, 0.5], [0.95, 0.9]]) {
+    const [popup] = await Promise.all([
+      formattedPage.waitForEvent('popup'),
+      fixBanner.click({ position: { x: fixState.renderedWidth * xFraction, y: fixState.renderedHeight * yFraction } }),
+    ]);
+    await popup.waitForURL(expectedDestinationUrl, { waitUntil: 'domcontentloaded' });
+    assert(popup.url() === expectedDestinationUrl, `fix banner click at ${xFraction} missed the homepage`);
+    await popup.close();
+  }
+  const [websitePopup] = await Promise.all([
+    formattedPage.waitForEvent('popup'),
+    formattedPage.getByRole('link', { name: 'https://liontechinnovations.co.uk', exact: true }).click(),
+  ]);
+  await websitePopup.waitForURL(expectedDestinationUrl, { waitUntil: 'domcontentloaded' });
+  assert(websitePopup.url() === expectedDestinationUrl, 'fix website text does not open the homepage');
+  await websitePopup.close();
+
+  await formattedPage.getByRole('button', { name: 'COPY SIGNATURE', exact: true }).click();
+  await formattedPage.getByRole('status').filter({ hasText: 'Copied with formatting' }).waitFor();
+  const fixClipboardCalls = await formattedPage.evaluate(() => window.__signatureClipboardCalls);
+  assert(fixClipboardCalls.write.length === 1 && fixClipboardCalls.write[0]?.[0]?.['text/html'] === FIX_SIGNATURE_HTML && fixClipboardCalls.write[0]?.[0]?.['text/plain'] === FIX_SIGNATURE_PLAIN_TEXT, 'fix rich clipboard content differs from approved signature');
+  assert(fixClipboardCalls.writeText.length === 0, 'fix rich copy unexpectedly fell back to text');
+  assert(fixPageErrors.length === 0, `fix installer browser/hydration errors: ${fixPageErrors.join('; ')}`);
+
+  await fallbackPage.goto(`http://127.0.0.1:${port}/email/signature-install?variant=fix`, { waitUntil: 'networkidle' });
+  await fallbackPage.getByRole('button', { name: 'COPY SIGNATURE', exact: true }).click();
+  await fallbackPage.getByRole('status').filter({ hasText: 'plain-text signature was copied' }).waitFor();
+  const fixMobile = await fallbackPage.evaluate(() => {
+    const preview = document.querySelector('.lt-signature-preview');
+    const image = preview.querySelector('img');
+    const bounds = image.getBoundingClientRect();
+    const previewBounds = preview.getBoundingClientRect();
+    return {
+      calls: window.__signatureClipboardCalls.writeText,
+      complete: image.complete && image.naturalWidth === 1774,
+      fits: preview.scrollWidth <= preview.clientWidth && document.documentElement.scrollWidth <= innerWidth && bounds.left >= previewBounds.left && bounds.right <= previewBounds.right,
+      ratio: bounds.width / bounds.height,
+    };
+  });
+  assert(fixMobile.calls.length === 1 && fixMobile.calls[0] === FIX_SIGNATURE_PLAIN_TEXT, 'fix plain-text fallback changed');
+  assert(fixMobile.complete && fixMobile.fits && Math.abs(fixMobile.ratio - 2) < 0.01, 'fix mobile preview is broken, clipped or distorted');
 } catch (error) {
   failures.push(`browser signature check failed: ${error.message}`);
 } finally {
@@ -230,5 +344,6 @@ try {
 
 process.stdout.write(`Email signature asset: 2172x724 sha256=${expectedHash}\n`);
 process.stdout.write(`Email signature installer: route=1 formattedClipboard=1 plainTextFallback=1\n`);
+process.stdout.write(`Automation Fix signature: lockedImage=1774x887 variant=fix bannerClickPositions=3 contactLinks=3 richClipboard=1 mobileFallback=1\n`);
 process.stdout.write(`Email signature failures: ${failures.length}\n`);
 if (failures.length) throw new Error(failures.join('\n'));

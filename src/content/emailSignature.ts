@@ -26,6 +26,31 @@ export const SIGNATURE_HTML = `<div style="font-family:Arial,Helvetica,sans-seri
   </a>
 </div>`;
 
+export const FIX_SIGNATURE_IMAGE_URL = 'https://liontechinnovations.co.uk/brand/fix-banner.png';
+export const FIX_SIGNATURE_DESTINATION_URL = 'https://liontechinnovations.co.uk/';
+
+export const FIX_SIGNATURE_PLAIN_TEXT = `Kind regards,
+
+Freejoy Chimbizi
+Founder & CEO
+Lion Tech Innovations Ltd
++44 7305 824321
+admin@liontechinnovations.co.uk
+https://liontechinnovations.co.uk/`;
+
+export const FIX_SIGNATURE_HTML = `<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.45;color:#263746;">
+  <div style="margin:0 0 12px;">Kind regards,</div>
+  <div style="font-size:15px;font-weight:700;color:#071426;">Freejoy Chimbizi</div>
+  <div>Founder &amp; CEO</div>
+  <div style="font-weight:700;color:#071426;">Lion Tech Innovations Ltd</div>
+  <div><a href="tel:+447305824321" style="color:#8a6a20;text-decoration:none;">+44 7305 824321</a></div>
+  <div><a href="mailto:admin@liontechinnovations.co.uk" style="color:#8a6a20;text-decoration:none;">admin@liontechinnovations.co.uk</a></div>
+  <div><a href="${FIX_SIGNATURE_DESTINATION_URL}" target="_blank" rel="noopener noreferrer" style="color:#8a6a20;text-decoration:none;">https://liontechinnovations.co.uk</a></div>
+  <a href="${FIX_SIGNATURE_DESTINATION_URL}" target="_blank" rel="noopener noreferrer" style="display:block;width:600px;max-width:100%;margin-top:12px;text-decoration:none;">
+    <img src="${FIX_SIGNATURE_IMAGE_URL}" width="600" alt="Lion Tech Innovations — Turn More Enquiries Into Revenue" style="display:block;border:0;outline:none;text-decoration:none;max-width:100%;height:auto;" />
+  </a>
+</div>`;
+
 export const signatureInstallSeo = {
   title: 'Install the LionTech Gmail Signature',
   description: 'Internal LionTech utility for copying the approved Gmail signature with its linked banner.',
