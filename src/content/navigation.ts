@@ -6,7 +6,7 @@ export const navigation = [
   { label: 'Industries', href: '/industries' },
   { label: 'Zimbabwe', href: '/zimbabwe' },
   { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Build / Fix', href: '/contact' },
 ] as const;
 
 export type NavigationHref = (typeof navigation)[number]['href'];

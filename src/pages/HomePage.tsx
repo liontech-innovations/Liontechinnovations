@@ -18,6 +18,7 @@ import { RouteLink } from '../components/ui/RouteLink';
 import { homepage } from '../content/homepage';
 import { routeSeo } from '../content/routeSeo';
 import { useSeo } from '../lib/seo';
+import '../styles/dev-request.css';
 
 function CinematicHero() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -84,6 +85,12 @@ export function HomePage() {
     <>
       <CinematicHero />
       <StackStrip />
+      <section className="lt-dev-entry" aria-labelledby="dev-entry-title">
+        <div className="lt-shell lt-dev-entry-inner">
+          <div><h2 id="dev-entry-title">Need Something Built or Fixed?</h2><p>Small app fixes, integrations, AI automation and focused MVP development.</p></div>
+          <RouteLink className="lt-button lt-button-primary" href="/contact">REQUEST A DEV FIX</RouteLink>
+        </div>
+      </section>
       <CredibilityMetrics />
       <BuyerBehaviour />
       <FiveGates />

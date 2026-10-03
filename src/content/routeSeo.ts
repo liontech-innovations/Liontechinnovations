@@ -76,8 +76,8 @@ export const routeSeo = {
     schema: withOrganization(breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }])),
   },
   '/contact': {
-    title: 'Request an AI Visibility Snapshot | LionTech',
-    description: 'Send Lion Tech Innovations Ltd the minimum business details needed to review a founding AI Visibility Snapshot request.',
+    title: 'Dev & Automation Services | LionTech Innovations',
+    description: 'Need an app fixed, an integration completed or a small business system built? Send LionTech your development request.',
     path: '/contact',
     schema: withOrganization(contactPageSchema, breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }])),
   },

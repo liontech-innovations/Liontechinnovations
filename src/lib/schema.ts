@@ -51,8 +51,8 @@ export const contactPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
   '@id': `${company.website}/contact#webpage`,
-  name: 'Request an AI Visibility Snapshot',
-  description: 'Contact Lion Tech Innovations Ltd to request an AI Visibility Snapshot.',
+  name: 'Dev & Automation Services | LionTech Innovations',
+  description: 'Need an app fixed, an integration completed or a small business system built? Send LionTech your development request.',
   url: `${company.website}/contact`,
   mainEntity: {
     '@id': organizationSchema['@id'],

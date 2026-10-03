@@ -55,7 +55,7 @@ export function SiteHeader({ market }: { market?: 'zimbabwe' }) {
               className={activeHref === item.href ? 'is-active' : undefined}
               aria-current={activeHref === item.href ? 'page' : undefined}
             >
-              {item.label}
+              {market === 'zimbabwe' && item.href === '/contact' ? 'Contact' : item.label}
             </RouteLink>
           ))}
         </nav>
@@ -86,7 +86,7 @@ export function SiteHeader({ market }: { market?: 'zimbabwe' }) {
               aria-current={activeHref === item.href ? 'page' : undefined}
               onClick={() => setOpen(false)}
             >
-              {item.label}
+              {market === 'zimbabwe' && item.href === '/contact' ? 'Contact' : item.label}
             </RouteLink>
           ))}
           {enquiryAction}
