@@ -12,8 +12,14 @@ import {
 import { company } from './company';
 import { companyBrainOffer, fixSprintOffer, monitoringOffer, snapshotOffer } from './offers';
 import { zimbabwe } from './zimbabwe';
+import { devFixDescription, devFixPackages } from './devFix';
 
 const withOrganization = (...schemas: Array<Record<string, unknown>>) => [organizationSchema, ...schemas];
+const devFixServiceSchema = {
+  '@context': 'https://schema.org', '@type': 'Service', name: 'LionTech Dev Fix Desk',
+  description: devFixDescription, provider: { '@id': organizationSchema['@id'] }, areaServed: 'GB',
+  offers: devFixPackages.map((item) => ({ '@type': 'Offer', name: item.name, price: item.amount, priceCurrency: 'GBP', url: item.href })),
+};
 
 export const routeSeo = {
   '/zimbabwe': {
@@ -24,10 +30,18 @@ export const routeSeo = {
     schema: [zimbabweOrganizationSchema, zimbabweServiceSchema, zimbabweFaqSchema, breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Zimbabwe', path: '/zimbabwe' }])],
   },
   '/': {
-    title: 'LionTech AI Business Readiness | See What AI Says About Your Business',
-    description: company.description,
+    title: 'LionTech Dev Fix Desk | Fast Website, App, Stripe & AI MVP Fixes',
+    ogTitle: 'LionTech Dev Fix Desk',
+    description: devFixDescription,
     path: '/',
-    schema: withOrganization(snapshotServiceSchema),
+    schema: withOrganization(devFixServiceSchema),
+  },
+  '/dev-fix': {
+    title: 'LionTech Dev Fix Desk | Fast Website, App, Stripe & AI MVP Fixes',
+    ogTitle: 'LionTech Dev Fix Desk',
+    description: devFixDescription,
+    path: '/dev-fix',
+    schema: withOrganization(devFixServiceSchema, breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Dev Fix Desk', path: '/dev-fix' }])),
   },
   '/ai-business-readiness': {
     title: 'AI Business Readiness Services | LionTech Innovations',

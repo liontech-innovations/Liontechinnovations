@@ -13,6 +13,7 @@ const routes = [
   '/methodology',
   '/about',
   '/contact#snapshot-enquiry',
+  '/dev-fix',
   '/email/signature-install',
   '/privacy-policy',
   '/terms-and-conditions',
@@ -23,7 +24,8 @@ const routes = [
 
 const expectedText = {
   '/zimbabwe': "Built in the UK. Designed for Zimbabwe's next generation of business.",
-  '/': 'See What AI Tells Your Customers About You. Then Fix It.',
+  '/': 'Fast fixes for broken websites, apps, forms, Stripe flows, AI-built MVPs, and business workflows.',
+  '/dev-fix': 'Broken website, app, form, payment flow, or AI-built MVP?',
   '/ai-visibility-snapshot': 'See what AI says. Know what to fix.',
   '/ai-business-readiness': 'See it. Fix it. Stay ready.',
   '/readiness-fix-sprint': 'Turn priority gaps into approved changes.',

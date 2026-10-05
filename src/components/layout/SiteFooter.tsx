@@ -2,12 +2,14 @@ import { ExternalLink, Mail, MapPin } from 'lucide-react';
 import { company } from '../../content/company';
 import { RouteLink } from '../ui/RouteLink';
 import { zimbabwe } from '../../content/zimbabwe';
+import '../../styles/dev-fix.css';
 
 export function SiteFooter({ market }: { market?: 'zimbabwe' }) {
   const isZimbabwe = market === 'zimbabwe';
   const email = isZimbabwe ? zimbabwe.email : company.email;
   return (
     <footer className="lt-unified-footer">
+      {!isZimbabwe && <div className="lt-shell lt-dev-fix-footer"><p>Broken website, app, form, Stripe flow, or AI-built MVP?</p><RouteLink className="lt-button lt-button-primary" href="/dev-fix">Request a Dev Fix</RouteLink></div>}
       <div className="lt-shell lt-unified-footer-grid">
         <div className="lt-unified-footer-brand">
           <RouteLink href="/" aria-label="LionTech Innovations home"><img src={company.logo} alt="LionTech Innovations" className="footer-logo" /></RouteLink>

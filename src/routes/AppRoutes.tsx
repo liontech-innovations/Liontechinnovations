@@ -6,6 +6,7 @@ import { AIBusinessReadinessPage } from '../pages/AIBusinessReadinessPage';
 import { AIVisibilitySnapshotPage } from '../pages/AIVisibilitySnapshotPage';
 import { CompanyBrainPage } from '../pages/CompanyBrainPage';
 import { ContactPage } from '../pages/ContactPage';
+import { DevFixPage } from '../pages/DevFixPage';
 import { HomePage } from '../pages/HomePage';
 import { ZimbabwePage } from '../pages/ZimbabwePage';
 import { ZimbabweIndustryPage } from '../pages/ZimbabweIndustryPage';
@@ -32,6 +33,7 @@ const marketingRoutes = {
   '/methodology': MethodologyPage,
   '/about': AboutPage,
   '/contact': ContactPage,
+  '/dev-fix': DevFixPage,
   '/zimbabwe': ZimbabwePage,
 } as const;
 

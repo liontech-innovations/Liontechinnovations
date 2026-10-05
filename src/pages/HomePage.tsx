@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { ArrowRight, Check } from 'lucide-react';
 import {
   BuyerBehaviour,
   CompanyBrain,
@@ -13,12 +14,13 @@ import {
   SnapshotOffer,
 } from '../components/sections/RestoredHomeSections';
 import { StackStrip } from '../components/sections/StackStrip';
-import { PrimaryCta } from '../components/ui/PrimaryCta';
+import { DevFixPackages } from '../components/sections/DevFixPackages';
 import { RouteLink } from '../components/ui/RouteLink';
 import { homepage } from '../content/homepage';
 import { routeSeo } from '../content/routeSeo';
 import { useSeo } from '../lib/seo';
 import '../styles/dev-request.css';
+import '../styles/dev-fix.css';
 
 function CinematicHero() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -43,7 +45,7 @@ function CinematicHero() {
   }, [reduceMotion]);
 
   return (
-    <section className="lt-hero">
+    <section className="lt-hero lt-dev-fix-home-hero">
       <video
         ref={videoRef}
         className="lt-hero-video"
@@ -64,14 +66,14 @@ function CinematicHero() {
         <h1>{homepage.hero.title}</h1>
         <p className="lt-hero-copy">{homepage.hero.description}</p>
         <div className="lt-hero-actions">
-          <PrimaryCta />
-          <RouteLink className="lt-button lt-button-secondary" href="/methodology">
+          <RouteLink className="lt-button lt-button-primary" href="/dev-fix">{homepage.hero.primaryCta}<ArrowRight size={17} aria-hidden="true" /></RouteLink>
+          <RouteLink className="lt-button lt-button-secondary" href="/#packages">
             {homepage.hero.secondaryCta}
           </RouteLink>
         </div>
+        <ul className="lt-dev-fix-hero-bullets">{homepage.hero.bullets.map((line) => <li key={line}><Check size={16} aria-hidden="true" /><span>{line}</span></li>)}</ul>
         <div className="lt-hero-proof">
           <span>{homepage.hero.trust}</span>
-          <span>{homepage.hero.foundingNote}</span>
         </div>
       </div>
     </section>
@@ -85,12 +87,7 @@ export function HomePage() {
     <>
       <CinematicHero />
       <StackStrip />
-      <section className="lt-dev-entry" aria-labelledby="dev-entry-title">
-        <div className="lt-shell lt-dev-entry-inner">
-          <div><h2 id="dev-entry-title">Need Something Built or Fixed?</h2><p>Small app fixes, integrations, AI automation and focused MVP development.</p></div>
-          <RouteLink className="lt-button lt-button-primary" href="/contact">REQUEST A DEV FIX</RouteLink>
-        </div>
-      </section>
+      <DevFixPackages />
       <CredibilityMetrics />
       <BuyerBehaviour />
       <FiveGates />

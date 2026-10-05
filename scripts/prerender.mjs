@@ -34,7 +34,7 @@ function applyHead(html, seo) {
 
   let output = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(seo.title)}</title>`);
   output = replaceMeta(output, 'name', 'description', seo.description);
-  output = replaceMeta(output, 'property', 'og:title', seo.title);
+  output = replaceMeta(output, 'property', 'og:title', seo.ogTitle ?? seo.title);
   output = replaceMeta(output, 'property', 'og:description', seo.description);
   output = replaceMeta(output, 'property', 'og:type', seo.type ?? 'website');
   output = replaceMeta(output, 'property', 'og:url', canonical);
@@ -47,7 +47,7 @@ function applyHead(html, seo) {
     output = replaceMeta(output, 'name', 'twitter:image:alt', seo.image.alt);
   }
   if (seo.path === '/zimbabwe' || seo.path.startsWith('/zimbabwe/')) output = output.replace(/<link\s+rel="preload"[^>]*liontech-hero-poster\.jpg[^>]*>/i, '');
-  output = replaceMeta(output, 'name', 'twitter:title', seo.title);
+  output = replaceMeta(output, 'name', 'twitter:title', seo.ogTitle ?? seo.title);
   output = replaceMeta(output, 'name', 'twitter:description', seo.description);
   output = replaceMeta(output, 'name', 'robots', seo.robots ?? 'index,follow');
   output = output.replace(/<link\s+rel="canonical"[\s\S]*?>/i, `<link rel="canonical" href="${escapeHtml(canonical)}" />`);

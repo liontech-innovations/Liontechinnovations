@@ -10,6 +10,7 @@ const sends = [];
 try {
   const { default: handler } = await vite.ssrLoadModule('/api/dev-request.ts');
   const { projectTypes, budgets, timescales } = await vite.ssrLoadModule('/src/content/devRequest.ts');
+  const { devFixPackageInterests, devFixUrgencies } = await vite.ssrLoadModule('/src/content/devFix.ts');
   process.env.RESEND_API_KEY = 'local-validation-only';
   delete process.env.INTAKE_RECIPIENT_EMAIL;
   delete process.env.INTAKE_FROM_EMAIL;
@@ -63,6 +64,30 @@ try {
   assert.ok(!sends.at(-1).html.includes('<script>'));
   assert.match(sends.at(-1).html, /&lt;script&gt;/);
   assert.match(sends.at(-1).text, /\nSecond line/);
+  const desk = { requestType: 'dev-fix', name: 'Production QA', email: 'qa@example.com', phone: '+44 7700 900123', company: 'Example', websiteUrl: 'example.com', description: 'Contact form does not send.', expectedOutcome: 'An email should arrive.', tools: 'React\nVercel\nResend', urgency: '48h', packageInterest: devFixPackageInterests[0], referenceLinks: 'https://example.com/screenshot\nhttps://example.com/repo', consent: 'on', website: '', requestId: crypto.randomUUID(), submittedAt: new Date().toISOString() };
+  await test(desk, 200);
+  await test(desk, 200);
+  assert.deepEqual(sends.at(-1), sends.at(-2), 'Dev Fix retries must preserve payload and idempotency key');
+  assert.equal(sends.at(-1).key, `dev-fix/${desk.requestId}`);
+  assert.equal(sends.at(-1).to, 'admin@liontechinnovations.co.uk', 'Dev Fix has the explicitly required recipient');
+  assert.equal(sends.at(-1).reply_to, desk.email);
+  assert.match(sends.at(-1).subject, /^\[DEV FIX REQUEST\]/);
+  for (const field of ['name', 'email', 'company', 'description', 'expectedOutcome', 'tools', 'urgency', 'packageInterest', 'referenceLinks', 'phone']) assert.ok(sends.at(-1).text.includes(desk[field]));
+  assert.match(sends.at(-1).text, /Source route: \/dev-fix/);
+  assert.match(sends.at(-1).text, /Submitted at \(UTC\):/);
+  for (const urgency of devFixUrgencies) await test({ ...desk, urgency }, 200);
+  for (const packageInterest of devFixPackageInterests) await test({ ...desk, packageInterest }, 200);
+  for (const field of ['name', 'email', 'company', 'websiteUrl', 'description', 'expectedOutcome', 'tools', 'urgency', 'packageInterest', 'consent', 'requestId', 'submittedAt']) {
+    const missing = { ...desk }; delete missing[field]; await test(missing, 400);
+  }
+  await test({ ...desk, phone: '', referenceLinks: '' }, 200);
+  for (const bad of [{ phone: 'hello' }, { consent: 'no' }, { urgency: 'tomorrow' }, { packageInterest: 'Free' }, { referenceLinks: 'javascript:alert(1)' }, { referenceLinks: 'https://user:password@example.com' }, { expectedOutcome: 'x'.repeat(4001) }, { tools: {} }, { company: 'Header\r\nInjection' }, { sourceRoute: '/contact' }, { requestType: 'other' }]) await test({ ...desk, ...bad }, 400);
+  await test({ ...desk, description: '<script>bad</script>', expectedOutcome: '<img src=x onerror=bad>', tools: '<b>React</b>' }, 200);
+  assert.ok(!sends.at(-1).html.includes('<script>'));
+  assert.match(sends.at(-1).html, /&lt;img/);
+  const beforeDeskSpam = sends.length;
+  await test({ ...desk, website: 'bot' }, 200);
+  assert.equal(sends.length, beforeDeskSpam);
   for (let i = 0; i < 6; i++) await test(valid, i < 5 ? 200 : 429, { headers: { 'x-forwarded-for': 'rate-test' } });
   const method = await handler(new Request('https://liontechinnovations.co.uk/api/dev-request'));
   assert.equal(method.status, 405); assert.equal(method.headers.get('allow'), 'POST'); checks++;

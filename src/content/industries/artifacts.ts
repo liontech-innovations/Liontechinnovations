@@ -215,6 +215,7 @@ export const coreSitemapRoutes = [
   '/methodology',
   '/about',
   '/contact',
+  '/dev-fix',
   '/uk-ai-infrastructure',
   '/saas-platform-development',
   '/ai-intake-systems',

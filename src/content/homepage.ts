@@ -1,13 +1,13 @@
 export const homepage = {
   hero: {
-    eyebrow: 'AI BUSINESS READINESS',
-    title: 'See What AI Tells Your Customers About You. Then Fix It.',
+    eyebrow: 'LIONTECH DEV FIX DESK',
+    title: 'Fast fixes for broken websites, apps, forms, Stripe flows, AI-built MVPs, and business workflows.',
     description:
-      'LionTech tests how leading AI systems describe, compare and surface your business, shows you the evidence, and gives you a practical plan to fix the gaps.',
-    primaryCta: 'See What AI Says About Your Business',
-    secondaryCta: 'How It Works',
-    trust: 'Evidence-led · Human-reviewed · UK-based',
-    foundingNote: '£395 founding Snapshot · 48-hour delivery after onboarding · Minimum-5 Guarantee',
+      'LionTech fixes broken digital revenue points for founders, SMEs, and AI builders — from contact forms and Stripe payments to Vercel, Supabase, deployment, email delivery, and AI-built app rescue.',
+    primaryCta: 'Request a Dev Fix',
+    secondaryCta: 'View Packages',
+    trust: 'Built and delivered by LionTech Innovations Ltd, Manchester.',
+    bullets: ['48–72 hour fix slots', 'Fixed-scope technical repair', 'Stripe, forms, Vercel, Supabase, email and workflows', 'AI-built MVP rescue', 'No long agency process'],
   },
   shift: {
     title: 'Your customers are already asking AI who to choose.',

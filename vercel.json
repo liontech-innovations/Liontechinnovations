@@ -67,6 +67,10 @@
       "destination": "/contact/index.html"
     },
     {
+      "source": "/dev-fix",
+      "destination": "/dev-fix/index.html"
+    },
+    {
       "source": "/email/signature-install",
       "destination": "/email/signature-install/index.html"
     },

@@ -1,7 +1,6 @@
 import { Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { getActiveNavigationHref, navigation } from '../../content/navigation';
-import { PrimaryCta } from '../ui/PrimaryCta';
 import { RouteLink } from '../ui/RouteLink';
 import { zimbabwe } from '../../content/zimbabwe';
 
@@ -15,7 +14,7 @@ export function SiteHeader({ market }: { market?: 'zimbabwe' }) {
   const activeHref = getActiveNavigationHref(currentLocation.pathname, currentLocation.hash);
   const enquiryAction = market === 'zimbabwe'
     ? <RouteLink className="lt-button lt-button-primary" href={zimbabwe.enquiryHref} onClick={() => setOpen(false)}>Request an Executive Review</RouteLink>
-    : <PrimaryCta label="Get AI Snapshot" />;
+    : <RouteLink className="lt-button lt-button-primary" href="/dev-fix" onClick={() => setOpen(false)}>Request a Dev Fix</RouteLink>;
 
   useEffect(() => {
     const updateLocation = () => setCurrentLocation({

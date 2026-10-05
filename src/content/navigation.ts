@@ -37,7 +37,7 @@ export function getActiveNavigationHref(pathname: string, hash = ''): Navigation
   if (path === '/industries' || path.startsWith('/industries/')) return '/industries';
   if (path === '/zimbabwe' || path.startsWith('/zimbabwe/')) return '/zimbabwe';
   if (path === '/about') return '/about';
-  if (path === '/contact' || path === '/roofing-brief') return '/contact';
+  if (path === '/contact' || path === '/dev-fix' || path === '/roofing-brief') return '/contact';
 
   return null;
 }
