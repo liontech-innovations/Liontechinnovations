@@ -73,7 +73,7 @@
     .featured small { display:block; margin-top:5px; color:#b7c0cc; font-size:11px; line-height:1.45; }
     .arrow { margin-left:auto; align-self:center; color:var(--gold); font-size:22px; font-weight:300; flex:none; }
     .venture-list { display:grid; gap:10px; }
-    .venture { display:flex; align-items:stretch; gap:0; border-radius:13px; border:1px solid rgba(194,169,118,.22); background:var(--card); overflow:hidden; transition:background .2s,border-color .2s; }
+    .venture { border-radius:13px; border:1px solid rgba(194,169,118,.22); background:var(--card); overflow:hidden; transition:background .2s,border-color .2s; }
     .venture:hover { background:var(--card-hover); border-color:rgba(216,182,111,.55); }
     .venture-main { display:flex; align-items:center; gap:13px; flex:1; min-width:0; padding:14px 11px 14px 13px; }
     .venture-mark { width:47px; height:47px; border:1px solid rgba(212,174,106,.2); background:#0b1728; border-radius:10px; font-size:23px; font-weight:700; font-family:Georgia,serif; }
@@ -84,10 +84,13 @@
     .venture-copy { min-width:0; }
     .venture-copy strong { display:block; font-size:14px; font-weight:680; color:#f1f2f0; }
     .venture-copy small { display:block; margin-top:5px; font-size:11px; color:#a9b4c5; line-height:1.36; }
-    .venture-external { display:flex; align-items:center; justify-content:center; align-self:center; color:var(--gold); padding:0 7px; font-size:19px; }
-    .tiktok-link { display:flex; align-items:center; justify-content:center; gap:5px; width:56px; flex:none; border-left:1px solid rgba(200,162,74,.17); color:var(--light-gold); flex-direction:column; font-size:9px; letter-spacing:.025em; transition:background .2s; }
-    .tiktok-link:hover { background:#23324b; }
-    .tiktok-link svg { width:18px; height:18px; stroke:currentColor; stroke-width:1.8; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .venture-domain { display:block; margin-top:10px; color:var(--light-gold); font-size:15px; font-weight:650; line-height:1.4; overflow-wrap:anywhere; }
+    .venture-action { display:block; margin-top:5px; color:var(--gold); font-size:11px; font-weight:600; line-height:1.5; }
+    .venture-main:hover .venture-domain { text-decoration:underline; text-underline-offset:3px; }
+    .venture-socials { display:flex; flex-wrap:wrap; gap:6px 16px; margin:0 13px 8px 73px; }
+    .project-social { display:inline-flex; align-items:center; gap:6px; min-height:44px; color:var(--muted); font-size:11px; }
+    .project-social:hover { color:var(--light-gold); }
+    .project-social svg { width:14px; height:14px; stroke:currentColor; stroke-width:1.8; fill:none; stroke-linecap:round; stroke-linejoin:round; }
     .footer-cta { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin:25px 0 17px; }
     .footer-cta a { min-height:45px; display:flex; justify-content:center; align-items:center; border-radius:10px; padding:10px; font-size:11px; font-weight:750; letter-spacing:.035em; text-align:center; }
     .footer-cta .contact { color:#0d1724; background:var(--gold); }
@@ -110,7 +113,7 @@
     .modal-actions button { color:var(--light-gold); background:#19283c; border:1px solid var(--hair); }
     .toast { position:fixed; z-index:90; left:50%; bottom:25px; transform:translateX(-50%); width:max-content; max-width:calc(100% - 40px); background:#e9d4aa; color:#091320; padding:11px 19px; border-radius:100px; font-size:12px; font-weight:700; text-align:center; box-shadow:0 8px 34px rgba(0,0,0,.4); }
     @media (min-width:630px) { body { padding:25px 0; } .shell { border:1px solid var(--hair); border-radius:22px; overflow:hidden; } .topbar { border-radius:22px 22px 0 0; } h1 { font-size:49px; } }
-    @media (max-width:355px) { .topbar { padding-inline:12px; } .brand img { width:132px; } .top-actions .icon-action { padding:0 9px; } .intro { padding-inline:15px; } .content { padding-inline:12px; } .venture-main { gap:9px; padding:12px 8px; } .venture-copy strong { font-size:12px; } }
+    @media (max-width:355px) { .topbar { padding-inline:12px; } .brand img { width:132px; } .top-actions .icon-action { padding:0 9px; } .intro { padding-inline:15px; } .content { padding-inline:12px; } .venture-main { gap:9px; padding:12px 8px; } .venture-copy strong { font-size:12px; } .venture-socials { margin-left:64px; } }
     @media (prefers-reduced-motion:reduce) { *,*:before,*:after { scroll-behavior:auto!important; transition:none!important; } }
   </style>
 </head>
@@ -159,54 +162,63 @@
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
 
-        <p class="section-tag">MY COMPANIES & PROJECTS <span>02</span></p>
+        <p class="section-tag">MY WEBSITES & PROJECTS <span>02</span></p>
         <div class="venture-list">
           <div class="venture">
-            <a class="venture-main" href="https://liontechinnovations.co.uk/" aria-label="Visit LionTech Innovations website">
+            <a class="venture-main" href="https://liontechinnovations.co.uk" target="_blank" rel="noopener noreferrer" aria-label="Visit LionTech Innovations website (opens in new tab)">
               <span class="venture-mark lt" aria-hidden="true">L</span>
-              <span class="venture-copy"><strong>LionTech Innovations</strong><small>Websites, apps & AI automation</small></span>
-              <span class="venture-external" aria-hidden="true">↗</span>
+              <span class="venture-copy"><strong>LionTech Innovations</strong><small>Websites, apps and AI automation.</small><span class="venture-domain">liontechinnovations.co.uk</span><span class="venture-action">Visit website <span aria-hidden="true">↗</span></span></span>
             </a>
           </div>
           <div class="venture">
-            <a class="venture-main" href="https://getcareops.co.uk/" target="_blank" rel="noopener noreferrer" aria-label="Visit CareOps website">
+            <a class="venture-main" href="https://getcareops.co.uk" target="_blank" rel="noopener noreferrer" aria-label="Visit CareOps website (opens in new tab)">
               <span class="venture-mark co" aria-hidden="true">✚</span>
-              <span class="venture-copy"><strong>CareOps</strong><small>Care operations technology</small></span>
-              <span class="venture-external" aria-hidden="true">↗</span>
+              <span class="venture-copy"><strong>CareOps</strong><small>Operational oversight for UK care providers.</small><span class="venture-domain">getcareops.co.uk</span><span class="venture-action">Visit website <span aria-hidden="true">↗</span></span></span>
             </a>
-            <a class="tiktok-link" href="https://www.tiktok.com/@getcareops.co.uk" target="_blank" rel="noopener noreferrer" aria-label="CareOps on TikTok, @getcareops.co.uk">
+            <div class="venture-socials">
+            <a class="project-social" href="https://www.instagram.com/careops_uk/" target="_blank" rel="noopener noreferrer" aria-label="CareOps on Instagram, @careops_uk (opens in new tab)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.8" y="2.8" width="18.4" height="18.4" rx="5.3"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.7" cy="6.6" r=".9" fill="currentColor" stroke="none"/></svg> Instagram
+            </a>
+            <a class="project-social" href="https://www.tiktok.com/@getcareops.co.uk" target="_blank" rel="noopener noreferrer" aria-label="CareOps on TikTok, @getcareops.co.uk (opens in new tab)">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.9a5 5 0 1 1-5-5M14 3c0 4.1 2.1 6 6 6"/></svg> TikTok
             </a>
+            </div>
           </div>
           <div class="venture">
-            <a class="venture-main" href="https://clearvisas.co.uk/" target="_blank" rel="noopener noreferrer" aria-label="Visit ClearVisa UK website">
+            <a class="venture-main" href="https://clearvisas.co.uk" target="_blank" rel="noopener noreferrer" aria-label="Visit ClearVisa UK website (opens in new tab)">
               <span class="venture-mark cv" aria-hidden="true">V</span>
-              <span class="venture-copy"><strong>ClearVisa UK</strong><small>UK visa eligibility pre-checks</small></span>
-              <span class="venture-external" aria-hidden="true">↗</span>
+              <span class="venture-copy"><strong>ClearVisa UK</strong><small>UK visa eligibility and refusal-risk checks.</small><span class="venture-domain">clearvisas.co.uk</span><span class="venture-action">Visit website <span aria-hidden="true">↗</span></span></span>
             </a>
-            <a class="tiktok-link" href="https://www.tiktok.com/@clearvisa" target="_blank" rel="noopener noreferrer" aria-label="ClearVisa on TikTok, @clearvisa">
+            <div class="venture-socials">
+            <a class="project-social" href="https://www.instagram.com/clearvisasuk/" target="_blank" rel="noopener noreferrer" aria-label="ClearVisa UK on Instagram, @clearvisasuk (opens in new tab)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.8" y="2.8" width="18.4" height="18.4" rx="5.3"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.7" cy="6.6" r=".9" fill="currentColor" stroke="none"/></svg> Instagram
+            </a>
+            <a class="project-social" href="https://www.tiktok.com/@clearvisa" target="_blank" rel="noopener noreferrer" aria-label="ClearVisa on TikTok, @clearvisa (opens in new tab)">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.9a5 5 0 1 1-5-5M14 3c0 4.1 2.1 6 6 6"/></svg> TikTok
             </a>
+            </div>
           </div>
           <div class="venture">
-            <a class="venture-main" href="https://qwotly.co.uk/" target="_blank" rel="noopener noreferrer" aria-label="Visit Qwotly website">
+            <a class="venture-main" href="https://qwotly.co.uk" target="_blank" rel="noopener noreferrer" aria-label="Visit Qwotly website (opens in new tab)">
               <span class="venture-mark qw" aria-hidden="true">Q</span>
-              <span class="venture-copy"><strong>Qwotly</strong><small>Quotes & business workflows</small></span>
-              <span class="venture-external" aria-hidden="true">↗</span>
+              <span class="venture-copy"><strong>Qwotly</strong><small>AI-powered professional quoting for UK trades.</small><span class="venture-domain">qwotly.co.uk</span><span class="venture-action">Visit website <span aria-hidden="true">↗</span></span></span>
             </a>
-            <a class="tiktok-link" href="https://www.tiktok.com/@qwotly8" target="_blank" rel="noopener noreferrer" aria-label="Qwotly on TikTok, @qwotly8">
+            <div class="venture-socials">
+            <a class="project-social" href="https://www.tiktok.com/@qwotly8" target="_blank" rel="noopener noreferrer" aria-label="Qwotly on TikTok, @qwotly8 (opens in new tab)">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.9a5 5 0 1 1-5-5M14 3c0 4.1 2.1 6 6 6"/></svg> TikTok
             </a>
+            </div>
           </div>
           <div class="venture">
-            <a class="venture-main" href="https://postorder.co.zw/" target="_blank" rel="noopener noreferrer" aria-label="Visit PostOrder website">
+            <a class="venture-main" href="https://postorder.co.zw" target="_blank" rel="noopener noreferrer" aria-label="Visit PostOrder website (opens in new tab)">
               <span class="venture-mark" aria-hidden="true">P</span>
-              <span class="venture-copy"><strong>PostOrder</strong><small>Explore PostOrder</small></span>
-              <span class="venture-external" aria-hidden="true">↗</span>
+              <span class="venture-copy"><strong>PostOrder</strong><small>WhatsApp order tracking from payment confirmation to delivery.</small><span class="venture-domain">postorder.co.zw</span><span class="venture-action">Visit website <span aria-hidden="true">↗</span></span></span>
             </a>
-            <a class="tiktok-link" href="https://www.tiktok.com/@postorder8" target="_blank" rel="noopener noreferrer" aria-label="PostOrder on TikTok, @postorder8">
+            <div class="venture-socials">
+            <a class="project-social" href="https://www.tiktok.com/@postorder8" target="_blank" rel="noopener noreferrer" aria-label="PostOrder on TikTok, @postorder8 (opens in new tab)">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.9a5 5 0 1 1-5-5M14 3c0 4.1 2.1 6 6 6"/></svg> TikTok
             </a>
+            </div>
           </div>
         </div>
 
