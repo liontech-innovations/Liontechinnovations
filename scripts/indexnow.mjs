@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createServer } from 'vite';
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const key = 'ea2e1642bf8083743785ff72bd130b4e';
@@ -31,7 +32,14 @@ if (all) {
     const xml = await readFile(join(projectRoot, 'public', filename), 'utf8');
     for (const match of xml.matchAll(/<loc>(https:\/\/liontechinnovations\.co\.uk\/[^<]*)<\/loc>/g)) urls.push(match[1]);
   }
-  if (urls.length !== 119) throw new Error(`Expected 119 public URLs for the all-routes scope, received ${urls.length}.`);
+  const vite = await createServer({ root: projectRoot, configFile: false, appType: 'custom', logLevel: 'error', server: { middlewareMode: true, hmr: false }, optimizeDeps: { noDiscovery: true, include: [] } });
+  try {
+    const { coreSitemapRoutes } = await vite.ssrLoadModule('/src/content/industries/artifacts.ts');
+    const { programmaticRoutes } = await vite.ssrLoadModule('/src/content/industries/index.ts');
+    const { publishedTenderRoutes } = await vite.ssrLoadModule('/src/content/tenders/index.ts');
+    const expected = new Set([...coreSitemapRoutes, ...programmaticRoutes, ...publishedTenderRoutes].map(path => new URL(path, siteUrl).toString()));
+    if (urls.length !== expected.size || urls.some(url => !expected.has(url))) throw new Error('IndexNow sitemap inventory does not exactly match the authored public route registry.');
+  } finally { await vite.close(); }
   scope = 'all-public-routes';
 } else {
   const manifest = JSON.parse(await readFile(join(projectRoot, 'public', 'ai-data', 'release-cohorts.json'), 'utf8'));

@@ -19,6 +19,38 @@
   ],
   "rewrites": [
     {
+      "source": "/tenders",
+      "destination": "/tenders/index.html"
+    },
+    {
+      "source": "/tenders/cleaning-tender-support",
+      "destination": "/tenders/cleaning-tender-support/index.html"
+    },
+    {
+      "source": "/tenders/facilities-management-tender-support",
+      "destination": "/tenders/facilities-management-tender-support/index.html"
+    },
+    {
+      "source": "/tenders/construction-tender-support",
+      "destination": "/tenders/construction-tender-support/index.html"
+    },
+    {
+      "source": "/tenders/bid-no-bid-checklist",
+      "destination": "/tenders/bid-no-bid-checklist/index.html"
+    },
+    {
+      "source": "/tenders/tender-compliance-matrix-template",
+      "destination": "/tenders/tender-compliance-matrix-template/index.html"
+    },
+    {
+      "source": "/tenders/:path*",
+      "destination": "/api/tender-not-found"
+    },
+    {
+      "source": "/downloads/tenders/:path*",
+      "destination": "/api/tender-not-found"
+    },
+    {
       "source": "/links",
       "destination": "/links/index.html"
     },

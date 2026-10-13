@@ -150,10 +150,13 @@ try {
   // SPA navigation restores the global UK metadata and form on return.
   await formPage.locator('.lt-logo-link').click();
   await formPage.waitForFunction(() => document.querySelector('meta[property="og:image"]').content.endsWith('/assets/ogliontech.png'));
-  assert.equal(await formPage.locator('.lt-header-action a').textContent(), 'Get AI Snapshot');
+  assert.equal(await formPage.locator('.lt-header-action a').textContent(), 'Request a Dev Fix');
+  assert.equal(await formPage.locator('.lt-header-action a').getAttribute('href'), '/dev-fix');
   assert.ok((await formPage.locator('.lt-unified-footer').innerText()).includes('contact@liontechinnovations.co.uk'));
   await formPage.locator('.lt-desktop-nav').getByRole('link', { name: 'Zimbabwe', exact: true }).click();
   await formPage.waitForFunction(() => document.querySelector('meta[property="og:image"]').content.endsWith('/assets/zimbabwe/zimbabwe-og.png'));
+  assert.equal(await formPage.locator('.lt-header-action a').textContent(), 'Request an Executive Review');
+  assert.equal(await formPage.locator('.lt-header-action a').getAttribute('href'), '/zimbabwe#zimbabwe-enquiry');
   assert.ok(!(await formPage.locator('body').innerText()).includes('£395'));
   assert.ok(!(await formPage.locator('body').innerText()).includes('contact@liontechinnovations.co.uk'));
   assert.deepEqual(await formPage.evaluate(() => window.__unhandledRejections), []);

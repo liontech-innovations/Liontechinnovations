@@ -21,6 +21,9 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run lint
       - run: npm run build
+        env:
+          VERCEL_ENV: production
+          VITE_TENDERS_PREVIEW: 'true'
       - run: node scripts/check-dev-request.mjs
       - run: node scripts/check-dev-request-browser.mjs
       - run: npm run test:public-privacy
@@ -33,3 +36,9 @@ jobs:
       - run: node scripts/check-programmatic-routes.mjs
       - run: npm run seo:indexnow:dry-run
       - run: npm audit --audit-level=high
+      - run: npm run build
+        env:
+          VITE_TENDERS_PREVIEW: 'true'
+      - run: npm run test:tenders
+        env:
+          VITE_TENDERS_PREVIEW: 'true'

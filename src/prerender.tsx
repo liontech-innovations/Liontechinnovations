@@ -9,6 +9,8 @@ import { programmaticRoutes } from './content/industries';
 import { signatureInstallSeo } from './content/emailSignature';
 import { zimbabweIndustryRoutes } from './content/zimbabweIndustries';
 import { zimbabweIndustrySeo } from './content/zimbabweIndustrySeo';
+import { tenderPageByPath, tenderRoutes } from './content/tenders';
+import { tenderHubSeo, createTenderSeo } from './content/tenders/seo';
 
 type RuntimeWithWindow = typeof globalThis & { window?: Window & typeof globalThis };
 
@@ -21,7 +23,7 @@ const legacyPrerenderRoutes = [
   '/careops/command-centre',
 ] as const;
 
-type PrerenderRoutePath = MarketingRoutePath | (typeof legacyPrerenderRoutes)[number] | '/email/signature-install' | '/industries' | (typeof programmaticRoutes)[number];
+type PrerenderRoutePath = MarketingRoutePath | (typeof legacyPrerenderRoutes)[number] | '/email/signature-install' | '/industries' | (typeof programmaticRoutes)[number] | `/tenders${string}`;
 
 export const prerenderRoutes: PrerenderRoutePath[] = [
   ...(Object.keys(routeSeo) as MarketingRoutePath[]),
@@ -30,6 +32,7 @@ export const prerenderRoutes: PrerenderRoutePath[] = [
   '/industries',
   ...programmaticRoutes,
   ...zimbabweIndustryRoutes,
+  ...tenderRoutes as PrerenderRoutePath[],
 ];
 
 function createPrerenderWindow(pathname: string) {
@@ -49,7 +52,9 @@ function createPrerenderWindow(pathname: string) {
 }
 
 export function renderMarketingRoute(pathname: PrerenderRoutePath) {
-  const seo = pathname in routeSeo
+  const seo = pathname === '/tenders' ? tenderHubSeo
+    : tenderPageByPath.has(pathname) ? createTenderSeo(tenderPageByPath.get(pathname)!)
+    : pathname in routeSeo
     ? routeSeo[pathname as MarketingRoutePath]
     : pathname === '/email/signature-install'
       ? signatureInstallSeo

@@ -2,6 +2,7 @@ import { ExternalLink, Mail, MapPin } from 'lucide-react';
 import { company } from '../../content/company';
 import { RouteLink } from '../ui/RouteLink';
 import { zimbabwe } from '../../content/zimbabwe';
+import { tenderHubVisible } from '../../content/tenders';
 import '../../styles/dev-fix.css';
 
 export function SiteFooter({ market }: { market?: 'zimbabwe' }) {
@@ -23,6 +24,7 @@ export function SiteFooter({ market }: { market?: 'zimbabwe' }) {
           <RouteLink href="/readiness-fix-sprint">Readiness Fix Sprint</RouteLink>
           <RouteLink href="/monitoring">Monitoring</RouteLink>
           <RouteLink href="/ai-business-readiness">Business Readiness</RouteLink>
+          {!isZimbabwe && tenderHubVisible && <RouteLink href="/tenders">Tender Support</RouteLink>}
         </nav>
 
         <nav aria-label="Footer platforms">
