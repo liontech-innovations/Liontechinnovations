@@ -22,6 +22,9 @@ import { industryPageByPath, programmaticRoutes } from '../content/industries';
 import { RouteLink } from '../components/ui/RouteLink';
 import { scrollToHash } from '../lib/navigation';
 import { useSeo } from '../lib/seo';
+import { TendersPage } from '../pages/TendersPage';
+import { TenderSupportPage } from '../pages/TenderSupportPage';
+import { tenderHubVisible, tenderPageByPath, tenderRoutes } from '../content/tenders';
 
 const marketingRoutes = {
   '/': HomePage,
@@ -111,6 +114,12 @@ export function AppRoutes() {
 
   if (legacyRoutes.has(pathname)) return <LegacySite />;
 
+  if (tenderHubVisible) {
+    if (pathname === '/tenders') return <MarketingLayout><TendersPage /></MarketingLayout>;
+    const tenderPage = tenderPageByPath.get(pathname);
+    if (tenderPage) return <MarketingLayout><TenderSupportPage key={pathname} page={tenderPage} /></MarketingLayout>;
+  }
+
   if (pathname === '/email/signature-install') return <SignatureInstallPage />;
 
   if (pathname === '/industries') {
@@ -141,5 +150,5 @@ export const routeInventory = {
   legacy: Array.from(legacyRoutes),
   static: ['/careops/free-check', '/careops/free-check/thanks.html'],
   internal: ['/email/signature-install'],
-  programmatic: ['/industries', ...programmaticRoutes, ...zimbabweIndustryRoutes],
+  programmatic: ['/industries', ...programmaticRoutes, ...zimbabweIndustryRoutes, ...tenderRoutes],
 } as const;

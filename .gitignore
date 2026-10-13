@@ -4,6 +4,7 @@ build/
 dist/
 coverage/
 qa-artifacts/
+public/downloads/tenders/
 artifacts/zimbabwe-page/
 .seo-cache/
 .DS_Store

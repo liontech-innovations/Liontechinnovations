@@ -31,6 +31,7 @@ export default defineConfig(({mode, command}) => {
       },
     }] : [])],
     define: {
+      'import.meta.env.VITE_TENDERS_PREVIEW': JSON.stringify(process.env.VERCEL_ENV !== 'production' && (process.env.VERCEL_ENV === 'preview' || process.env.VITE_TENDERS_PREVIEW === 'true') ? 'true' : 'false'),
       ...Object.fromEntries(
         careOpsPublicEnvVars.map((key) => [
           `process.env.${key}`,

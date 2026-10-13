@@ -39,6 +39,17 @@ const vite = await createServer({
 try {
   const industryModule = await vite.ssrLoadModule('/src/content/industries/index.ts');
   const { zimbabweIndustryRoutes, zimbabweIndustryUpdatedAt } = await vite.ssrLoadModule('/src/content/zimbabweIndustries.ts');
+  const { tenderVisiblePages, publishedTenderRoutes, tenderPages, tenderHubReview } = await vite.ssrLoadModule('/src/content/tenders/index.ts');
+  const { tenderCsv, tenderWorksheet } = await vite.ssrLoadModule('/src/content/tenders/downloads.ts');
+  const tenderDownloads = join(publicDirectory, 'downloads', 'tenders');
+  if (!tenderDownloads.startsWith(`${publicDirectory}${process.platform === 'win32' ? '\\' : '/'}`)) throw new Error('Unsafe tender download path');
+  await rm(tenderDownloads, { recursive: true, force: true });
+  if (tenderVisiblePages.length) await mkdir(tenderDownloads, { recursive: true });
+  for (const page of tenderVisiblePages) {
+    await writeFile(join(tenderDownloads, `${page.slug}.csv`), tenderCsv(page), 'utf8');
+    await writeFile(join(tenderDownloads, `${page.slug}.md`), tenderWorksheet(page), 'utf8');
+  }
+  for (const route of publishedTenderRoutes) routeLastModified[route] = route === '/tenders' ? tenderHubReview.updatedAt : tenderPages.find(page => page.path === route).updatedAt;
   for (const route of zimbabweIndustryRoutes) routeLastModified[route] = zimbabweIndustryUpdatedAt;
   const artifactModule = await vite.ssrLoadModule('/src/content/industries/artifacts.ts');
   const { industries } = industryModule;
@@ -66,7 +77,7 @@ try {
 
   const sitemapFiles = ['sitemap-core.xml', ...industrySitemapGroups.map((_, index) => `sitemap-industries-${index + 1}.xml`), 'sitemap-zimbabwe.xml'];
   await writeFile(join(publicDirectory, 'sitemap.xml'), sitemapIndex(sitemapFiles), 'utf8');
-  await writeFile(join(publicDirectory, 'sitemap-core.xml'), urlset(coreSitemapRoutes), 'utf8');
+  await writeFile(join(publicDirectory, 'sitemap-core.xml'), urlset([...coreSitemapRoutes, ...publishedTenderRoutes]), 'utf8');
   await writeFile(join(publicDirectory, 'sitemap-zimbabwe.xml'), urlset(zimbabweIndustryRoutes), 'utf8');
   for (const [index, pages] of industrySitemapGroups.entries()) {
     await writeFile(join(publicDirectory, `sitemap-industries-${index + 1}.xml`), urlset(pages.map((page) => page.path)), 'utf8');
