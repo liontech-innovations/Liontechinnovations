@@ -9,6 +9,7 @@ const sends = [];
 try {
   const { default: handler } = await vite.ssrLoadModule('/api/tender-enquiry.ts');
   const { tenderCatalog } = await vite.ssrLoadModule('/src/content/tenders/catalog.ts');
+  const { tenderPreviewCohorts } = await vite.ssrLoadModule('/src/content/tenders/release.ts');
   const { tenderEnquiryLimits } = await vite.ssrLoadModule('/src/content/tenders/enquiry.ts');
   const { tenderPricing, tenderCheckoutAvailable } = await vite.ssrLoadModule('/src/content/tenders/pricing.ts');
   assert.equal(tenderCheckoutAvailable(), false);
@@ -36,7 +37,7 @@ try {
   assert.equal(sends[0].key, `tender-enquiry/${valid.requestId}`);
   assert.equal(sends[0].payload.to, 'admin@liontechinnovations.co.uk');
   assert.equal(sends[0].payload.reply_to, valid.email);
-  for (const page of tenderCatalog) await check({ ...valid, source: page.path }, 200);
+  for (const page of tenderCatalog) await check({ ...valid, source: page.path }, tenderPreviewCohorts.includes(page.cohort) ? 200 : 400);
   for (const key of Object.keys(tenderEnquiryLimits)) await check({ ...valid, [key]: 'x'.repeat(tenderEnquiryLimits[key]+1) }, 400);
   for (const key of ['name','email','company','deadline','timezone','sector','support','message','source','consent','requestId','submittedAt']) {
     const missing = { ...valid }; delete missing[key]; await check(missing, 400);

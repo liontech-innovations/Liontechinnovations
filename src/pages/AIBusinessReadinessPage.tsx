@@ -13,6 +13,7 @@ import { RouteLink } from '../components/ui/RouteLink';
 import { homepage } from '../content/homepage';
 import { companyBrainOffer, fixSprintOffer, monitoringOffer, snapshotOffer } from '../content/offers';
 import { routeSeo } from '../content/routeSeo';
+import { tenderHubVisible } from '../content/tenders';
 import { useSeo } from '../lib/seo';
 
 export function AIBusinessReadinessPage() {
@@ -122,6 +123,7 @@ export function AIBusinessReadinessPage() {
           description="A human-reviewed framework for how AI systems find, explain, support, compare and act on public business information."
         />
         <FiveGatesGrid destinations={gateDestinations} />
+        {tenderHubVisible && <p>Preparing a bid? <RouteLink href="/tenders">Explore Tender Support</RouteLink>.</p>}
       </RouteSection>
 
       <RouteCta

@@ -1,18 +1,18 @@
 import { RouteLink } from '../components/ui/RouteLink';
 import { useSeo } from '../lib/seo';
 import { createTenderSeo } from '../content/tenders/seo';
-import { tenderPageByPath, type TenderPage } from '../content/tenders';
+import { tenderPageByPath, isTenderPublished, type TenderPage } from '../content/tenders';
 import { tenderSources } from '../content/tenders/sources';
 import '../styles/tenders.css';
 export function TenderSupportPage({ page }: { page: TenderPage }) {
   useSeo(createTenderSeo(page));
-  const sources = [...new Set(page.sections.map(section => section.source).filter(Boolean))];
+  const sources = [...new Set(['nations', 'transitional', ...page.sections.map(section => section.source).filter(Boolean)])];
   return <article className="lt-tender-page lt-tender-guide" data-tender-page={page.slug}>
     <div className="lt-shell lt-tender-reading">
       <nav aria-label="Breadcrumb" className="lt-tender-breadcrumb"><RouteLink href="/">Home</RouteLink><span>/</span><RouteLink href="/tenders">Tender support</RouteLink><span>/</span><span aria-current="page">{page.h1}</span></nav>
       <p className="lt-kicker">{page.type === 'sector' ? 'SECTOR PREPARATION' : page.type === 'guide' ? 'PRACTICAL GUIDE' : 'TEMPLATE AND PLANNER'}</p>
       <h1>{page.h1}</h1><p className="lt-tender-answer" data-direct-answer>{page.answer}</p>
-      <aside className="lt-tender-review">Editorial review pending · Cohort {page.cohort}. This is practical preparation guidance, not personalised legal advice. Use the actual buyer documents and applicable jurisdiction; requirements and terminology can differ across the UK and between current and legacy procurements.</aside>
+      <aside className="lt-tender-review">{isTenderPublished(page) ? `Publication review: ${page.reviewedBy} · ${page.reviewedAt}.` : `Editorial review pending · Cohort ${page.cohort}.`} This is practical preparation guidance, not personalised legal advice. Use the actual buyer documents and applicable jurisdiction; requirements and terminology can differ across the UK and between current and legacy procurements.</aside>
       <section><h2>Start with the actual tender</h2><ol>{page.steps.map(step => <li key={step}>{step}</li>)}</ol></section>
       {page.sections.map(section => <section key={section.heading}><h2>{section.heading}</h2>{section.paragraphs.map(text => <p key={text}>{text}</p>)}{section.points && <ul>{section.points.map(point => <li key={point}>{point}</li>)}</ul>}{section.source && <p className="lt-tender-source"><a href={tenderSources[section.source].url} target="_blank" rel="noopener noreferrer">{tenderSources[section.source].title} ↗</a> — {tenderSources[section.source].scope}</p>}</section>)}
       <section className="lt-tender-utility" aria-labelledby="tender-utility-title"><h2 id="tender-utility-title">{page.utility.name}</h2><p>Use one record for each relevant item. Keep unknowns and approvals visible rather than filling them with assumptions.</p><div className="lt-tender-actions"><a className="lt-button lt-button-primary" href={`/downloads/tenders/${page.slug}.csv`} download>Download blank CSV</a><a className="lt-button lt-tender-outline" href={`/downloads/tenders/${page.slug}.md`} download>Download worksheet</a></div><table><caption>Field guide for the blank worksheet</caption><thead><tr><th scope="col">Field</th><th scope="col">What to record</th></tr></thead><tbody>{page.utility.fields.map((field,index) => <tr key={field}><th scope="row">{field}</th><td>{page.fieldHelp[index]}</td></tr>)}</tbody></table></section>

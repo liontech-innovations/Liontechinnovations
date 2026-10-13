@@ -1,6 +1,6 @@
 import { tenderEnquiryLimits, tenderSectors, tenderSupport } from '../src/content/tenders/enquiry.js';
 import { tenderCatalog } from '../src/content/tenders/catalog.js';
-import { tenderHubReview, tenderReviews, isTenderPublished, tenderReleaseEnabled } from '../src/content/tenders/release.js';
+import { tenderHubReview, tenderReviews, isTenderPublished, tenderReleaseEnabled, tenderPreviewCohorts, tenderProductionCohorts } from '../src/content/tenders/release.js';
 import { normalizeWebsiteUrl } from '../src/lib/normalizeWebsiteUrl.js';
 export const config = { runtime: 'edge' };
 // Best-effort bounded per-instance limiter, as in dev-request; not distributed protection.
@@ -54,7 +54,7 @@ export default async function handler(request: Request): Promise<Response> {
     fields[key] = value.trim();
   }
   if (fields.website) return json({ ok: true });
-  const sources = new Set(['/tenders', ...tenderCatalog.filter(page => preview || (tenderReviews[page.slug] && isTenderPublished(tenderReviews[page.slug]))).map(page => page.path)]);
+  const sources = new Set(['/tenders', ...tenderCatalog.filter(page => preview ? tenderPreviewCohorts.includes(page.cohort) : tenderProductionCohorts.includes(page.cohort) && tenderReviews[page.slug] && isTenderPublished(tenderReviews[page.slug])).map(page => page.path)]);
   if (!fields.name || !fields.company || !fields.message || !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(fields.email) || fields.consent !== 'on' ||
     !(tenderSectors as readonly string[]).includes(fields.sector) || !(tenderSupport as readonly string[]).includes(fields.support) || !sources.has(fields.source) || !validDeadline(fields.deadline) ||
     !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(fields.requestId)) return json({ ok: false }, 400);

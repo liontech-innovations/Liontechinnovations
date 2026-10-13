@@ -23,9 +23,9 @@ export const tenderCatalog = [
       ]
     },
     "related": [
-      "/tenders/tender-evidence-register-template",
-      "/tenders/90-day-mobilisation-plan-template",
-      "/tenders/bid-review-checklist"
+      "/tenders/facilities-management-tender-support",
+      "/tenders/tender-compliance-matrix-template",
+      "/tenders/bid-no-bid-checklist"
     ]
   },
   {
@@ -51,7 +51,7 @@ export const tenderCatalog = [
     },
     "related": [
       "/tenders/cleaning-tender-support",
-      "/tenders/building-maintenance-tender-support",
+      "/tenders/construction-tender-support",
       "/tenders/tender-compliance-matrix-template"
     ]
   },
@@ -77,8 +77,8 @@ export const tenderCatalog = [
       ]
     },
     "related": [
-      "/tenders/tender-case-study-template",
-      "/tenders/tender-document-checklist",
+      "/tenders/facilities-management-tender-support",
+      "/tenders/tender-compliance-matrix-template",
       "/tenders/bid-no-bid-checklist"
     ]
   },
@@ -239,9 +239,9 @@ export const tenderCatalog = [
       ]
     },
     "related": [
-      "/tenders/tender-document-checklist",
       "/tenders/tender-compliance-matrix-template",
-      "/tenders/tender-deadline-planner"
+      "/tenders/cleaning-tender-support",
+      "/tenders/construction-tender-support"
     ]
   },
   {
@@ -484,9 +484,9 @@ export const tenderCatalog = [
       ]
     },
     "related": [
-      "/tenders/tender-document-checklist",
-      "/tenders/tender-evidence-register-template",
-      "/tenders/tender-scoring-and-evaluation-criteria"
+      "/tenders/bid-no-bid-checklist",
+      "/tenders/cleaning-tender-support",
+      "/tenders/facilities-management-tender-support"
     ]
   },
   {

@@ -35,95 +35,19 @@
       "destination": "/tenders/construction-tender-support/index.html"
     },
     {
-      "source": "/tenders/grounds-maintenance-tender-support",
-      "destination": "/tenders/grounds-maintenance-tender-support/index.html"
-    },
-    {
-      "source": "/tenders/security-services-tender-support",
-      "destination": "/tenders/security-services-tender-support/index.html"
-    },
-    {
-      "source": "/tenders/catering-tender-support",
-      "destination": "/tenders/catering-tender-support/index.html"
-    },
-    {
-      "source": "/tenders/building-maintenance-tender-support",
-      "destination": "/tenders/building-maintenance-tender-support/index.html"
-    },
-    {
-      "source": "/tenders/it-services-tender-support",
-      "destination": "/tenders/it-services-tender-support/index.html"
-    },
-    {
       "source": "/tenders/bid-no-bid-checklist",
       "destination": "/tenders/bid-no-bid-checklist/index.html"
-    },
-    {
-      "source": "/tenders/how-to-find-uk-tenders",
-      "destination": "/tenders/how-to-find-uk-tenders/index.html"
-    },
-    {
-      "source": "/tenders/tender-document-checklist",
-      "destination": "/tenders/tender-document-checklist/index.html"
-    },
-    {
-      "source": "/tenders/how-to-write-tender-method-statements",
-      "destination": "/tenders/how-to-write-tender-method-statements/index.html"
-    },
-    {
-      "source": "/tenders/tender-scoring-and-evaluation-criteria",
-      "destination": "/tenders/tender-scoring-and-evaluation-criteria/index.html"
-    },
-    {
-      "source": "/tenders/framework-agreements-and-call-offs",
-      "destination": "/tenders/framework-agreements-and-call-offs/index.html"
-    },
-    {
-      "source": "/tenders/tender-clarification-questions",
-      "destination": "/tenders/tender-clarification-questions/index.html"
-    },
-    {
-      "source": "/tenders/ai-assisted-bid-writing-human-review",
-      "destination": "/tenders/ai-assisted-bid-writing-human-review/index.html"
-    },
-    {
-      "source": "/tenders/preparing-your-first-tender",
-      "destination": "/tenders/preparing-your-first-tender/index.html"
     },
     {
       "source": "/tenders/tender-compliance-matrix-template",
       "destination": "/tenders/tender-compliance-matrix-template/index.html"
     },
     {
-      "source": "/tenders/tender-evidence-register-template",
-      "destination": "/tenders/tender-evidence-register-template/index.html"
-    },
-    {
-      "source": "/tenders/90-day-mobilisation-plan-template",
-      "destination": "/tenders/90-day-mobilisation-plan-template/index.html"
-    },
-    {
-      "source": "/tenders/social-value-response-planner",
-      "destination": "/tenders/social-value-response-planner/index.html"
-    },
-    {
-      "source": "/tenders/tender-case-study-template",
-      "destination": "/tenders/tender-case-study-template/index.html"
-    },
-    {
-      "source": "/tenders/client-commitment-register-template",
-      "destination": "/tenders/client-commitment-register-template/index.html"
-    },
-    {
-      "source": "/tenders/bid-review-checklist",
-      "destination": "/tenders/bid-review-checklist/index.html"
-    },
-    {
-      "source": "/tenders/tender-deadline-planner",
-      "destination": "/tenders/tender-deadline-planner/index.html"
-    },
-    {
       "source": "/tenders/:path*",
+      "destination": "/api/tender-not-found"
+    },
+    {
+      "source": "/downloads/tenders/:path*",
       "destination": "/api/tender-not-found"
     },
     {

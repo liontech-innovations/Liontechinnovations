@@ -20,14 +20,17 @@ try {
     assert.equal(createHash('sha256').update(await readFile(resolve(root,folder,'assets/tenders',file))).digest('hex'),hash, `${folder}/${file} differs from the approved web asset`);
   }
   const { tenderPages, tenderRoutes, tendersPreview, publishedTenderRoutes, isTenderPublished } = await vite.ssrLoadModule('/src/content/tenders/index.ts');
+  const { tenderPreviewCohorts, tenderProductionCohorts } = await vite.ssrLoadModule('/src/content/tenders/release.ts');
   const { tenderSources } = await vite.ssrLoadModule('/src/content/tenders/sources.ts');
-  const { csvCell } = await vite.ssrLoadModule('/src/content/tenders/downloads.ts');
+  const { csvCell, tenderCsv, tenderWorksheet } = await vite.ssrLoadModule('/src/content/tenders/downloads.ts');
   const config = JSON.parse(await readFile(resolve(root,'vercel.json'),'utf8'));
   const rewrites = new Map(config.rewrites.map(r => [r.source,r.destination]));
   assert.equal(rewrites.get('/tenders/:path*'),'/api/tender-not-found');
+  assert.equal(rewrites.get('/downloads/tenders/:path*'),'/api/tender-not-found');
   assert.equal(tenderPages.length,25);
   assert.deepEqual(['sector','guide','template'].map(type=>tenderPages.filter(p=>p.type===type).length),[8,9,8]);
   assert.deepEqual([1,2,3].map(cohort=>tenderPages.filter(p=>p.cohort===cohort).length),[5,10,10]);
+  if (tendersPreview) assert.deepEqual(tenderRoutes, ['/tenders', ...tenderPages.filter(p=>tenderPreviewCohorts.includes(p.cohort)).map(p=>p.path)]);
   const sitemapTenderUrls = new Set();
   const titles=new Set(), descriptions=new Set(), answers=new Set();
   const similarity = text => new Set(text.toLowerCase().replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(Boolean).map((_,i,a)=>a.slice(i,i+4).join(' ')));
@@ -36,6 +39,7 @@ try {
     if (page.reviewStatus === 'draft') { assert.equal(page.reviewedBy,null); assert.equal(page.reviewedAt,null); }
     else { assert(page.reviewedBy && page.reviewedAt && Number.isFinite(Date.parse(page.reviewedAt)), 'Approval requires an actual reviewer and valid date'); }
     if (page.publishStatus === 'published') assert(isTenderPublished(page), 'Published pages require approval and publication evidence');
+    if (!tenderPreviewCohorts.includes(page.cohort) && !tenderProductionCohorts.includes(page.cohort)) { assert.equal(page.reviewStatus,'draft'); assert.equal(page.publishStatus,'draft'); }
     assert(!titles.has(page.title)); titles.add(page.title); assert(!descriptions.has(page.description)); descriptions.add(page.description); assert(!answers.has(page.answer)); answers.add(page.answer);
     assert.equal(page.utility.fields.length,page.fieldHelp.length);
     assert.equal(page.faqs.length,3); assert.equal(page.related.length,3);
@@ -43,7 +47,8 @@ try {
     assert.match(page.example,/fictional/i);
     for(const path of page.related) assert(tenderPages.some(p=>p.path===path));
     for(const section of page.sections) if(section.source) { const source=tenderSources[section.source]; assert(source?.supports && source.scope && source.checkedAt); assert.equal(new URL(source.url).protocol,'https:'); }
-    assert.equal(rewrites.get(page.path),`${page.path}/index.html`);
+    if (tenderPreviewCohorts.includes(page.cohort) || tenderProductionCohorts.includes(page.cohort)) assert.equal(rewrites.get(page.path),`${page.path}/index.html`);
+    else assert.equal(rewrites.has(page.path),false,'Unreleased cohorts must use the genuine 404 fallback');
     const htmlPath=resolve(root,'dist',page.path.slice(1),'index.html');
     if(tenderRoutes.includes(page.path)) {
       const html=await readFile(htmlPath,'utf8');
@@ -57,14 +62,17 @@ try {
       assert(schema.some(s=>s['@type']==='BreadcrumbList'));
       assert(schema.some(s=>s['@type']===(page.type==='guide'?'Article':'WebPage')));
       for(const path of page.related) assert(html.includes(`href="${path}"`));
+      for(const match of html.matchAll(/href="(\/tenders\/[^"?#]+)(?:[?#][^"]*)?"/g)) assert(tenderRoutes.includes(match[1]),'No links to unavailable resources');
       for(const ext of ['csv','md']) {
         const file=await readFile(resolve(root,'dist/downloads/tenders',`${page.slug}.${ext}`),'utf8');
+        assert.equal(file,ext==='csv'?tenderCsv(page):tenderWorksheet(page),'Download must exactly match its authored page fields and guidance');
         for(const field of page.utility.fields) assert(file.toLowerCase().includes(field.toLowerCase()));
         assert(file.length > 50); // Detect an empty or placeholder download, not an article word target.
       }
     } else {
       await assert.rejects(access(htmlPath), 'Unreleased HTML must not be emitted for a production build');
       await assert.rejects(access(resolve(root,'dist/downloads/tenders',`${page.slug}.csv`)));
+      await assert.rejects(access(resolve(root,'dist/downloads/tenders',`${page.slug}.md`)));
     }
   }
   for(let a=0;a<tenderPages.length;a++) for(let b=a+1;b<tenderPages.length;b++) {
@@ -84,6 +92,10 @@ try {
   if(tenderRoutes.includes('/tenders')) assert.match(await readFile(resolve(root,'dist/tenders/index.html'),'utf8'),/Your expertise/);
   else {
     await assert.rejects(access(resolve(root,'dist/tenders/index.html')));
+    for (const route of ['index.html','ai-business-readiness/index.html']) {
+      const html=await readFile(resolve(root,'dist',route),'utf8');
+      assert(!html.includes('href="/tenders"'),'Unreleased discovery links must not appear in production HTML');
+    }
     const bundles = await Promise.all((await readdir(resolve(root,'dist/assets'))).filter(file=>file.endsWith('.js')).map(file=>readFile(resolve(root,'dist/assets',file),'utf8')));
     for (const marker of ['Download blank CSV','Tender Fit Review','Your expertise. A stronger tender response.']) assert(!bundles.some(bundle=>bundle.includes(marker)), 'Unreleased tender UI should be removed from the production bundle');
   }

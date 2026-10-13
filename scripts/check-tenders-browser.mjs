@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, access } from 'node:fs/promises';
 import { resolve, join } from 'node:path';
 import { chromium } from 'playwright';
 import { createServer, preview } from 'vite';
@@ -20,7 +20,13 @@ try {
     server=await preview({root,plugins:[{name:'tender-preview-rewrites',configurePreviewServer(s){s.middlewares.use(async(req,res,next)=>{
       const url=new URL(req.url,'http://127.0.0.1');
       if(exact.has(url.pathname)) req.url=exact.get(url.pathname)+url.search;
-      else if(url.pathname==='/tenders'||url.pathname.startsWith('/tenders/')) {const response=notFound();res.statusCode=response.status;response.headers.forEach((value,key)=>res.setHeader(key,value));res.end(await response.text());return;}
+      else if(url.pathname==='/tenders'||url.pathname.startsWith('/tenders/')||url.pathname.startsWith('/downloads/tenders/')) {
+        if(url.pathname.startsWith('/downloads/tenders/')) {
+          const filename=url.pathname.slice('/downloads/tenders/'.length);
+          if(/^[a-z0-9-]+\.(csv|md)$/.test(filename)) { try { await access(join(root,'dist/downloads/tenders',filename)); next(); return; } catch {} }
+        }
+        const response=notFound();res.statusCode=response.status;response.headers.forEach((value,key)=>res.setHeader(key,value));res.end(await response.text());return;
+      }
       next();
     });}}],preview:{host:'127.0.0.1',port:5174,strictPort:true}});
   }
@@ -40,7 +46,10 @@ try {
   // Read the checked-in typed catalogue through Vite, not an invented route list.
   if(!ssr) ssr=await createServer({root,configFile:false,logLevel:'error',server:{middlewareMode:true,hmr:false},optimizeDeps:{noDiscovery:true,include:[]}});
   const {tenderCatalog}=await ssr.ssrLoadModule('/src/content/tenders/catalog.ts');
-  for(const entry of tenderCatalog) {
+  const {tenderPreviewCohorts}=await ssr.ssrLoadModule('/src/content/tenders/release.ts');
+  const selected=tenderCatalog.filter(entry=>tenderPreviewCohorts.includes(entry.cohort));
+  assert.equal(selected.length,5,'First-cohort preview must contain five resources');
+  for(const entry of selected) {
     const response=await page.goto(`${base}${entry.path}`,{waitUntil:'networkidle'});
     assert.equal(response.status(),200,entry.path);
     const initialHtml=await response.text();
@@ -74,6 +83,13 @@ try {
     const text=await readFile(file,'utf8'); for(const field of entry.utility.fields)assert(text.toLowerCase().includes(field.toLowerCase()));
     report.routes.push({path:entry.path,status:200,overflow:false,download:'PASS',fields:entry.utility.fields.length});
   }
+  for(const entry of tenderCatalog.filter(entry=>!tenderPreviewCohorts.includes(entry.cohort))) {
+    for(const path of [entry.path,`/downloads/tenders/${entry.slug}.csv`,`/downloads/tenders/${entry.slug}.md`]) {
+      const response=await context.request.get(`${base}${path}`,{headers:apiHeaders});
+      assert.equal(response.status(),404,`Unreviewed resource/download must not be publicly served: ${path}`);
+    }
+  }
+  report.unreviewed='20 resources and their 40 downloads return 404';
   for(const width of [375,768,1440]) {
     await page.setViewportSize({width,height:960});
     await page.goto(`${base}/tenders`,{waitUntil:'networkidle'});
@@ -111,6 +127,9 @@ try {
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
   await page.screenshot({path:join(out,'zoom-200-equivalent.png'),fullPage:true});
   report.zoom='200% equivalent reflow at 720 CSS pixels passed; not a full accessibility certification';
+  const availableLinks=await page.locator('a[href^="/tenders/"]').evaluateAll(links=>links.map(link=>new URL(link.href).pathname));
+  assert(availableLinks.every(path=>selected.some(entry=>entry.path===path)));
+  assert.equal(await page.locator('.lt-tender-directory li').count(),5);
   const enquiryLink=page.getByRole('link',{name:'Discuss your tender',exact:true});
   await enquiryLink.focus(); await page.keyboard.press('Enter');
   assert.equal(new URL(page.url()).pathname,'/tenders'); assert.equal(new URL(page.url()).hash,'#enquiry'); await page.getByRole('form',{name:'Tender enquiry'}).waitFor();
@@ -141,6 +160,25 @@ try {
   for(const path of ['/','/about','/contact','/dev-fix','/links','/ai-visibility-snapshot','/privacy-policy']) {
     const response=await page.goto(`${base}${path}`,{waitUntil:'domcontentloaded'});assert.equal(response.status(),200,path);await page.locator('h1').first().waitFor();
   }
+  for(const width of [375,768,1280,1440]) {
+    await page.setViewportSize({width,height:900}); await page.goto(`${base}/`,{waitUntil:'networkidle'});
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+    await page.evaluate(()=>{window.__tenderNavigationProbe=true;});
+    await page.getByRole('navigation',{name:'Footer solutions'}).getByRole('link',{name:'Tender Support',exact:true}).click();
+    await page.locator('.lt-tender-hero').waitFor(); assert.equal(new URL(page.url()).pathname,'/tenders');
+    assert.equal(await page.evaluate(()=>window.__tenderNavigationProbe),true,'Internal navigation must not reload');
+    assert.equal(await page.locator('.lt-desktop-nav a[aria-current="page"]').textContent(),'Services');
+    if(width>=1280) {
+      const rows=await page.locator('.lt-desktop-nav a').evaluateAll(links=>links.map(link=>link.getBoundingClientRect().y));
+      assert.equal(rows.length,8); assert.equal(new Set(rows).size,1);
+    } else {
+      await page.getByRole('button',{name:'Open navigation'}).click();
+      await page.locator('#mobile-navigation').getByRole('link',{name:'Services',exact:true}).click();
+      assert.equal(await page.locator('#mobile-navigation').count(),0);
+      await page.getByRole('link',{name:'Explore Tender Support',exact:true}).click(); await page.locator('.lt-tender-hero').waitFor();
+    }
+  }
+  report.navigation='Existing eight-item header preserved; Services/footer entry, mobile menu and no-reload navigation pass';
   // Existing external credential-provider errors are not counted as new tender-page errors.
   assert.deepEqual(report.networkWarnings,[]);
   report.expectedMockFailures=report.consoleErrors.filter(error=>error.url===`${origin}/api/tender-enquiry`&&error.text.includes('502'));
