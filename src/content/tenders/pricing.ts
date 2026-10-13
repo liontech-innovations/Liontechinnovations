@@ -21,5 +21,6 @@ export const formatTenderMoney = (minor: number) => new Intl.NumberFormat('en-GB
 
 export function tenderCheckoutAvailable() {
   // No checkout can be issued while commercial approval or returned Stripe IDs are missing.
-  return tenderPricing.liveActivation && tenderPricing.taxBasis !== null && tenderPricing.termsApproved && tenderPricing.capacityApproved;
+  return tenderPricing.liveActivation && tenderPricing.taxBasis !== null && tenderPricing.termsApproved && tenderPricing.capacityApproved &&
+    tenderPricing.offers.every(offer => offer.productId !== null && offer.priceId !== null && offer.paymentLink !== null);
 }
