@@ -31,6 +31,8 @@ No proposed fee, tax treatment, deposit amount, offer-card scope limit or fixed 
 
 Both approved illustrations/captions, responsive layouts, citations, company identity and existing branding remain. The other 20 resource pages and their 40 downloads remain draft/unavailable, outside directories, related links and sitemaps.
 
+Final screenshot inspection identified an inherited form-style specificity issue: some controls had dark values on a dark background. A tender-only selector now enforces the already-authored white controls/dark text, with readable muted placeholders. No global control style, typography, spacing or other form changes. A browser contrast assertion covers every visible value and placeholder against its actual background.
+
 ## Editorial Status
 
 Six page-specific records are prepared as draft: hub plus the five Cohort 1 slugs, with reviewer/review/publication dates null. Use `TENDERS_COHORT1_EDITORIAL.md` to record each actual accept / changes required / reject decision. No known unresolved source/worksheet correction remains from the documented AI QA; this is not human approval or legal certification. Founder must accept factual boundaries, page usefulness, original worksheet accuracy, illustration disclaimers and enquiry-only scope.
