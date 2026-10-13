@@ -72,3 +72,50 @@
 @media (prefers-reduced-motion:reduce) { .lt-tender-page * { scroll-behavior:auto; transition:none; animation:none; } }
 @media (max-width:1000px) { .lt-tender-hero { --lt-heading:var(--tender-ink); --lt-text:var(--tender-ink); } .marketing-site .lt-tender-page .lt-tender-hero-copy h1,.marketing-site .lt-tender-page .lt-tender-hero-copy p { color:var(--tender-ink); } .marketing-site .lt-tender-page .lt-tender-hero-copy .lt-button-secondary { color:var(--tender-ink); background:transparent; border-color:var(--tender-ink); } }
 @media (max-width:600px) { .marketing-site .lt-tender-page h1 { font-size:34px; } }
+
+/* The hub inherits LionTech's shared tokens; resource worksheets stay unchanged. */
+.lt-tender-hub { --lt-canvas:inherit; --lt-text:inherit; --lt-heading:inherit; --lt-body:inherit; --lt-muted:inherit; --tender-paper:var(--lt-canvas); --tender-ink:var(--lt-heading); --tender-muted:var(--lt-body); --tender-link:var(--lt-gold-light); font-size:inherit; line-height:inherit; }
+.marketing-site .lt-tender-hub h1 { font-size:3.25rem; line-height:1.08; font-weight:600; }
+.lt-tender-hub .lt-kicker { font-size:.71rem; font-weight:750; letter-spacing:.18em; line-height:1.25; }
+.lt-tender-hub :where(strong,summary) { color:var(--lt-heading); }
+.lt-tender-hub :focus-visible { outline-color:var(--lt-gold-light); }
+.marketing-site .lt-tender-hub .lt-button { min-height:44px; padding:.75rem 1.5rem; font-size:11px; letter-spacing:.12em; }
+.lt-tender-hub .lt-route-section { background:var(--lt-canvas); border-color:var(--lt-line); padding-block:3rem; }
+.lt-tender-hub .lt-route-section-soft { background:linear-gradient(180deg,rgba(16,34,56,.78),rgba(8,23,39,.88)),var(--lt-surface); }
+.lt-tender-hub .lt-route-section-navy { background:var(--lt-canvas-deep); }
+.lt-tender-hub .lt-route-heading { margin-bottom:1.5rem; }
+.lt-tender-hub .lt-route-heading p { font-size:inherit; }
+.lt-tender-hub .lt-tender-review { background:var(--lt-surface); }
+.lt-tender-hub .lt-tender-hero { min-height:560px; }
+.lt-tender-hub .lt-tender-hero-image { left:auto; width:80%; mask-image:linear-gradient(90deg,transparent,#000 32%); }
+.lt-tender-hub .lt-tender-hero-image img { object-position:right center; }
+.lt-tender-hub .lt-tender-hero-copy p { color:var(--lt-body); }
+.lt-tender-hub .lt-tender-hero-copy .lt-kicker { color:var(--lt-gold-light); }
+.lt-tender-hub .lt-tender-caption { font-size:.85rem; padding-block:1rem; color:var(--lt-support); }
+.lt-tender-hub .lt-tender-deliverables { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; padding:0; margin-block:1.5rem; list-style:none; }
+.lt-tender-hub .lt-tender-deliverables li { min-width:0; margin:0; padding:1.25rem; }
+.lt-tender-hub .lt-tender-deliverables strong { display:block; margin-bottom:.5rem; font-family:var(--lt-display-font); font-size:1.1rem; font-weight:600; }
+.lt-tender-hub .lt-tender-illustration { width:min(80%,640px); padding-block:1rem; }
+.lt-tender-hub .lt-tender-illustration img { outline:1px solid var(--lt-line-strong); outline-offset:-1px; border-radius:8px; }
+.lt-tender-hub .lt-tender-illustration figcaption { padding-block:.75rem; font-size:.85rem; color:var(--lt-support); }
+.lt-tender-hub .lt-tender-faq details { border-color:var(--lt-line); }
+.lt-tender-hub .lt-enquiry-form { background:var(--lt-surface); border-color:var(--lt-line-strong); }
+.lt-tender-hub .lt-tender-form label { font-size:1rem; }
+.lt-tender-hub .lt-tender-form :is(input:not([type='checkbox']),select,textarea) { color-scheme:dark; background:var(--lt-canvas-deep); color:var(--lt-text); border-color:var(--lt-support); }
+.lt-tender-hub .lt-tender-form :is(input,textarea)::placeholder { color:var(--lt-body); }
+.lt-tender-hub .lt-tender-consent input { accent-color:var(--lt-gold); }
+.lt-tender-hub .lt-tender-error { color:#ffb4ab; }
+.lt-tender-hub .lt-tender-success { background:var(--lt-surface); border-color:var(--lt-gold); }
+@media (max-width:1100px) {
+  .marketing-site .lt-tender-hub h1 { font-size:2.75rem; }
+  .lt-tender-hub .lt-tender-hero { display:flex; flex-direction:column; min-height:0; background:var(--lt-canvas-deep); }
+  .lt-tender-hub .lt-tender-hero::after { display:none; }
+  .lt-tender-hub .lt-tender-hero-image { position:static; order:2; width:min(100% - 48px,768px); margin:0 auto 2rem; mask-image:none; }
+  .lt-tender-hub .lt-tender-hero-image img { display:block; height:auto; object-fit:contain; border-radius:8px; }
+  .marketing-site .lt-tender-hub .lt-tender-hero-copy h1 { color:var(--lt-heading); }
+  .marketing-site .lt-tender-hub .lt-tender-hero-copy p { color:var(--lt-body); }
+  .marketing-site .lt-tender-hub .lt-tender-hero-copy .lt-kicker { color:var(--lt-gold-light); }
+  .marketing-site .lt-tender-hub .lt-tender-hero-copy .lt-button-secondary { color:var(--lt-text); border-color:rgba(238,241,243,.58); background:rgba(6,17,31,.45); }
+}
+@media (max-width:700px) { .marketing-site .lt-tender-hub h1 { font-size:2rem; } .lt-tender-hub .lt-tender-deliverables { grid-template-columns:minmax(0,1fr); } }
+@media (max-width:600px) { .lt-tender-hub .lt-route-section { padding-block:2rem; } }
