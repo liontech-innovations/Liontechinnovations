@@ -6,7 +6,7 @@ Review performed 13 October 2026 by Codex (AI implementation/source QA). This is
 
 | Page | QA decision | Founder publication decision |
 | --- | --- | --- |
-| `/tenders` | Ready for founder review, with commercial holds below | Pending |
+| `/tenders` | Enquiry-only; proposed offers/tax wording removed; ready for founder review | Pending |
 | `/tenders/cleaning-tender-support` | Direct SDS citation corrected; ready for founder review | Pending |
 | `/tenders/facilities-management-tender-support` | Scope and supplier-association claims supported; ready for founder review | Pending |
 | `/tenders/construction-tender-support` | GB CDM scope and technical boundaries supported; ready for founder review | Pending |
@@ -35,7 +35,7 @@ No monetary procurement thresholds, universal insurance/ISO/DBS requirements, un
 
 ## Page-Specific Usefulness and Downloads
 
-- **Hub:** describes requirements mapping, evidence gaps, scoped drafting and human/client review; explains boundaries and links to the five available resources. Both illustrations remain labelled AI-generated and independent of government. Proposed prices/availability are not approved business facts.
+- **Hub:** describes requirements mapping, evidence gaps, scoped drafting and human/client review; explains boundaries and links to the five available resources. Both illustrations remain labelled AI-generated and independent of government. The primary CTA is Request Tender Support. No proposed prices, deposits, fixed delivery packages or tax wording appear; availability is confirmed after enquiry.
 - **Cleaning:** turns a site schedule into staffing, supervision, chemical evidence, inspection and mobilisation decisions. Its six-column blank CSV matches all six field explanations; Markdown provides the same blanks and a labelled fictional access-window example.
 - **FM:** distinguishes service interfaces, hard/soft tasks, subcontractors, escalation, buyer KPIs and asset information. Six columns/field explanations align; the fictional leak example separates coordination, repair and client approval.
 - **Construction:** connects programme dependencies, relevant projects, delivery roles, supply chain, quality records and H&S documentation. Six fields align; the drawing-approval example avoids an unconditional programme or technical certification claim.
@@ -54,7 +54,7 @@ Each resource has three relevant siblings within Cohort 1, a hub link, its own c
 - [ ] Legal/procurement language is practical guidance within the stated jurisdiction, not personalised advice or compliance assurance.
 - [ ] Fictional examples cannot reasonably be mistaken for LionTech client work or a live opportunity.
 - [ ] Internal links and enquiry attribution are correct; no unreviewed resource is advertised.
-- [ ] I accept the illustrations, captions, visible company positioning and proposed commercial display.
+- [ ] I accept the illustrations, captions, visible company positioning and enquiry-only scope (no price/payment/tax activation).
 - [ ] Decision recorded: accept / changes required / reject. Actual reviewer, date, page path and reasons recorded.
 
 Founder reviewer: ____________________
@@ -62,3 +62,18 @@ Decision date: ____________________
 Separate decisions for hub / cleaning / FM / construction / bid-no-bid / matrix: ____________________
 
 Until this occurs, do not change the production approval records or count these pages as approved or published.
+
+## Six Page-Specific Founder Decision Records
+
+Each checked-in record is prepared as draft, with `reviewedBy`, `reviewedAt` and `publishedAt` null. The update timestamp is a content-version date, not an approval. The other 20 have no approval record. Fill each row from the founder's actual decision; leaving a blank is not approval.
+
+| Page / record | Founder decision (accept / changes / reject) | Actual reviewer | Actual decision date | Requested changes / accepted scope |
+| --- | --- | --- | --- | --- |
+| `/tenders` / `tenderHubReview` | Pending | — | — | Enquiry-only hub |
+| `/tenders/cleaning-tender-support` | Pending | — | — | Cleaning preparation + two worksheets |
+| `/tenders/facilities-management-tender-support` | Pending | — | — | FM preparation + two worksheets |
+| `/tenders/construction-tender-support` | Pending | — | — | Construction preparation + two worksheets |
+| `/tenders/bid-no-bid-checklist` | Pending | — | — | Bid/no-bid guide + two worksheets |
+| `/tenders/tender-compliance-matrix-template` | Pending | — | — | Compliance matrix + two worksheets |
+
+Outstanding editorial issues: no known unresolved source/worksheet correction from QA; human acceptance of all six pages, independent/AI illustration captions, jurisdiction limits and enquiry-only positioning remains pending. This is an AI QA finding, not a legal certification or human approval. VAT/Stripe decisions are deferred and must not delay this enquiry-only review.

@@ -1,6 +1,8 @@
 # Tenders Commercial Sign-Off: Founder Decisions Required
 
-This preserves proposal-1. It is not a binding quote, approved tax treatment, cancellation policy or active checkout. All Stripe IDs/payment links and tax basis remain null; activation, terms and capacity flags remain false. Existing products/payment flows are unchanged.
+Founder direction is now an **enquiry-only launch**. VAT administration and live Stripe integration are deferred, not prerequisites for publishing the six editorially approved enquiry pages. No proposed fee, deposit, turnaround package or tax treatment is advertised on those pages. Scope and next steps are confirmed after reviewing a genuine enquiry; submitting the form neither purchases work nor starts delivery.
+
+The following preserves proposal-1 privately in the repository for a later commercial/payment decision. It is not a binding quote, approved tax treatment, cancellation policy or active checkout. All Stripe IDs/payment links and tax basis remain null; activation, terms and capacity flags remain false. Existing products/payment flows are unchanged. The decision table below applies before future prices/payment terms or checkout are introduced, not as an extra launch gate for the enquiry-only pages.
 
 ## Fee and Payment Proposal
 

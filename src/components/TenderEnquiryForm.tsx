@@ -41,7 +41,7 @@ export function TenderEnquiryForm() {
   if (state === 'success') return <div className="lt-tender-success" role="status" tabIndex={-1} ref={success}><h3>Your enquiry has been received.</h3><p>We will review the opportunity and contact you about scope and availability.</p></div>;
   return <form className="lt-enquiry-form lt-tender-form" onSubmit={submit} aria-label="Tender enquiry" aria-busy={state === 'sending'}>
     <fieldset disabled={state === 'sending'}>
-      <legend>Discuss your tender</legend>
+      <legend>Request Tender Support</legend>
       <div className="lt-tender-form-grid">
         <label>Name<input name="name" required autoComplete="name" maxLength={limits.name} /></label>
         <label>Work email<input name="email" required type="email" autoComplete="email" maxLength={limits.email} /></label>
@@ -51,7 +51,7 @@ export function TenderEnquiryForm() {
         <label>Deadline timezone<input name="timezone" required defaultValue="Europe/London" maxLength={limits.timezone} onChange={e => e.currentTarget.setCustomValidity('')} /></label>
         <label>Sector<select name="sector" required defaultValue=""><option value="" disabled>Select sector</option>{tenderSectors.map(value => <option key={value}>{value}</option>)}</select></label>
         <label>Support needed<select name="support" required defaultValue=""><option value="" disabled>Select support</option>{tenderSupport.map(value => <option key={value}>{value}</option>)}</select></label>
-        <label className="lt-tender-form-wide">Brief message<textarea name="message" required rows={5} maxLength={limits.message} /></label>
+        <label className="lt-tender-form-wide">Opportunity and support details<textarea name="message" required rows={5} maxLength={limits.message} placeholder="Opportunity title or reference, and what you need help with." /></label>
       </div>
       <label className="lt-honeypot" aria-hidden="true">Leave empty<input name="website" tabIndex={-1} autoComplete="off" maxLength={limits.website} /></label>
       <p>Please do not include sensitive personal information, passwords, private access links or confidential documents in this initial form.</p>

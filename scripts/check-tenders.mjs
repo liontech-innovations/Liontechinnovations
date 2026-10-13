@@ -20,7 +20,12 @@ try {
     assert.equal(createHash('sha256').update(await readFile(resolve(root,folder,'assets/tenders',file))).digest('hex'),hash, `${folder}/${file} differs from the approved web asset`);
   }
   const { tenderPages, tenderRoutes, tendersPreview, publishedTenderRoutes, isTenderPublished } = await vite.ssrLoadModule('/src/content/tenders/index.ts');
-  const { tenderPreviewCohorts, tenderProductionCohorts } = await vite.ssrLoadModule('/src/content/tenders/release.ts');
+  const { tenderPreviewCohorts, tenderProductionCohorts, tenderHubReview, tenderReviews, tenderReleaseEnabled } = await vite.ssrLoadModule('/src/content/tenders/release.ts');
+  assert.deepEqual(Object.keys(tenderReviews).sort(),tenderPages.filter(page=>page.cohort===1).map(page=>page.slug).sort(),'Prepare exactly five page-specific approval records plus the hub');
+  if (!tenderReleaseEnabled) for (const record of [tenderHubReview,...Object.values(tenderReviews)]) {
+    assert.equal(record.reviewStatus,'draft'); assert.equal(record.publishStatus,'draft');
+    assert.equal(record.reviewedBy,null); assert.equal(record.reviewedAt,null); assert.equal(record.publishedAt,null);
+  }
   const { tenderSources } = await vite.ssrLoadModule('/src/content/tenders/sources.ts');
   const { csvCell, tenderCsv, tenderWorksheet } = await vite.ssrLoadModule('/src/content/tenders/downloads.ts');
   const config = JSON.parse(await readFile(resolve(root,'vercel.json'),'utf8'));
@@ -52,6 +57,7 @@ try {
     const htmlPath=resolve(root,'dist',page.path.slice(1),'index.html');
     if(tenderRoutes.includes(page.path)) {
       const html=await readFile(htmlPath,'utf8');
+      assert(!/(?:Proposed £|£149|£2,450|£3,950|tax treatment|VAT-inclusive|VAT-exclusive|initial deposit|checkout totals)/i.test(html),'Resources must not advertise unapproved tender pricing/tax terms');
       assert.equal((html.match(/<h1[ >]/g)||[]).length,1);
       assert(html.includes(page.h1.replaceAll('&','&amp;')));
       assert(html.includes(`name="robots" content="${tendersPreview || !isTenderPublished(page) ? 'noindex,follow' : 'index,follow'}"`));
@@ -62,6 +68,7 @@ try {
       assert(schema.some(s=>s['@type']==='BreadcrumbList'));
       assert(schema.some(s=>s['@type']===(page.type==='guide'?'Article':'WebPage')));
       for(const path of page.related) assert(html.includes(`href="${path}"`));
+      assert.match(html,new RegExp(`<a[^>]*href="/tenders\\?source=${page.slug}#enquiry"[^>]*>Request Tender Support</a>`));
       for(const match of html.matchAll(/href="(\/tenders\/[^"?#]+)(?:[?#][^"]*)?"/g)) assert(tenderRoutes.includes(match[1]),'No links to unavailable resources');
       for(const ext of ['csv','md']) {
         const file=await readFile(resolve(root,'dist/downloads/tenders',`${page.slug}.${ext}`),'utf8');
@@ -89,7 +96,12 @@ try {
   }
   assert.deepEqual([...sitemapTenderUrls].sort(), [...publishedTenderRoutes].sort(), 'Only approved published tender pages belong in the sitemap');
   for(const value of ['=SUM(A1)',' +CMD','@attack','-command']) assert(csvCell(value).startsWith('"\''));
-  if(tenderRoutes.includes('/tenders')) assert.match(await readFile(resolve(root,'dist/tenders/index.html'),'utf8'),/Your expertise/);
+  if(tenderRoutes.includes('/tenders')) {
+    const html=await readFile(resolve(root,'dist/tenders/index.html'),'utf8');
+    assert.match(html,/Your expertise/);
+    assert.match(html,/<a[^>]*href="\/tenders#enquiry"[^>]*>Request Tender Support<\/a>/);
+    assert(!/(?:£\s*\d|\bVAT\b|tax treatment|initial deposit|checkout totals|class="lt-tender-offer")/i.test(html),'Initial served HTML must be enquiry-only, without proposed pricing/tax wording');
+  }
   else {
     await assert.rejects(access(resolve(root,'dist/tenders/index.html')));
     for (const route of ['index.html','ai-business-readiness/index.html']) {

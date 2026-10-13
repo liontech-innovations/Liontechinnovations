@@ -1,6 +1,6 @@
 # PR #17: Controlled Tender Release
 
-Current status: protected first-cohort preview only. No founder publication decision or commercial approval has been recorded. Main, production, the existing offers and Stripe flows must remain unchanged until explicit approval.
+Current status: enquiry-only first-cohort launch preparation, in a protected preview. The founder has directed enquiry-only acquisition, with VAT administration and Stripe integration deferred; this is not yet approval of the six pages or a merge instruction. No page-specific publication decision has been recorded. Main, production, the existing offers and Stripe flows must remain unchanged until explicit page/release approval.
 
 ## Preview Inventory
 
@@ -20,7 +20,7 @@ The existing eight-item header is preserved. Tender Support is discoverable from
 ## Required Founder Decisions
 
 - Complete the six separate publication decisions in `docs/TENDERS_COHORT1_EDITORIAL.md`. An AI source/QA recommendation is not founder approval.
-- Complete `docs/TENDERS_COMMERCIAL_SIGNOFF.md`: displayable fees, VAT wording, scope, turnaround/capacity, deposit/balance arrangements and cancellation/refund treatment.
+- Approve the enquiry-only public scope: Request Tender Support opens the form; no advertised fees, tax wording, deposits, fixed delivery packages or checkout. VAT/Stripe decisions are deferred, not blockers for this launch. `docs/TENDERS_COMMERCIAL_SIGNOFF.md` retains future commercial decisions without activating them.
 - Explicitly authorise the exact six paths, discovery links and an enquiry-only release. Live checkout remains a separate hold and requires its own approval and verified implementation.
 - Agree confidential onboarding and permitted AI/retention before requesting private tender packs. The public form must continue to collect only an initial non-sensitive enquiry.
 
@@ -63,14 +63,16 @@ Before approval the production build must emit 143 existing routes, zero tender 
 
 ## Authorised Publication Change: Do Not Execute Yet
 
-In a subsequent owner-authorised commit, edit only `src/content/tenders/release.ts` and any expressly approved commercial-display wording:
+In a subsequent owner-authorised commit, edit only `src/content/tenders/release.ts` and any expressly requested editorial correction:
 
 - Set `tenderReleaseEnabled` to true and `tenderProductionCohorts` to `[1]` only after the founder's release authorisation.
 - Record the hub plus exactly T01/T02/T03/T09/T18 in `tenderHubReview`/`tenderReviews`, with `reviewStatus: 'approved'`, the real human reviewer and actual review date. Publication eligibility also requires `publishStatus: 'published'` and the actual authorised release date in `publishedAt`; these declarative records are not evidence that deployment has succeeded.
 - Do not pre-fill an invented reviewer, future date or approval for the other 20. Keep their review/publication records draft/null and production cohort membership absent.
-- Public price/tax/terms wording must match the completed sign-off. Do not activate `liveActivation`, configure Stripe IDs or change existing checkout handlers as part of an enquiry-only release.
+- Keep proposed pricing configuration unchanged and unused by the public page. Do not add fee/tax/deposit copy, activate `liveActivation`, configure Stripe IDs or change existing checkout handlers as part of this enquiry-only release. Do not wait for VAT administration or a Stripe build before publishing the explicitly approved enquiry pages.
 
 Run the production build and all gates again on that authorised change. Expected tender output is exactly the six approved paths and ten files; all other tender pages/downloads remain absent. The core sitemap must add precisely those six canonical URLs with truthful substantive update dates, retaining every existing entry. Check that the footer/Services link appears and all sibling/enquiry links resolve.
+
+The enquiry API opens from the same approved hub gate, independently of the closed checkout guard. Production tests read the actual release records: before approval they assert 503 with no provider call; after authorisation they verify a mocked successful send for the hub and approved Cohort 1 sources, rejecting the other 20 sources. No test writes or invents an approval record. Verify the email includes opportunity details/public link, company, deadline and timezone, support needed and source, addressed to `admin@liontechinnovations.co.uk` with the visitor as reply-to. No uploads or private document request is added.
 
 Review the diff and staged secret scan; stage only the authorised files. Push the existing feature branch normally and wait for GitHub checks, a protected preview and founder PR review. Do not force-push or bypass required branch rules. Merge PR #17 normally into main only when the founder explicitly authorises it and required reviews/checks are satisfied. Let the existing GitHub-to-Vercel integration deploy; do not create/promote a replacement project or run a manual production deployment.
 

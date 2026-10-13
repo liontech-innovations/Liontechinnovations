@@ -1,6 +1,6 @@
 # Tender Preview Review
 
-This is a review implementation, not a production release or commercial approval.
+This is an enquiry-only launch preparation, not a production release or page-specific editorial approval. Founder direction defers VAT administration and live Stripe; these are not prerequisites for the enquiry-only launch once the six pages are explicitly approved.
 
 Current PR #17 review scope is the hub plus Cohort 1's five resources and ten downloads. The other 20 records remain draft and unavailable, with no directory/sibling links or download access. See `TENDERS_COHORT1_EDITORIAL.md`, `TENDERS_COMMERCIAL_SIGNOFF.md` and `TENDERS_RELEASE_RUNBOOK.md` for the actual QA decisions, outstanding founder decisions and controlled release instructions.
 
@@ -11,7 +11,7 @@ Current PR #17 review scope is the hub plus Cohort 1's five resources and ten do
 - Both supplied illustrations in approved responsive WebP variants, with explicit AI-illustration and independence captions.
 - Initial HTML metadata, individual canonicals, appropriate structured data, related links and genuine unknown-route 404 handling.
 - Validated tender enquiry using the existing email provider. No uploads, arbitrary-link fetching, runtime AI calls or private pipeline integration.
-- Central proposed GBP fees and deposits. All Stripe product, price and payment-link values remain null.
+- Central proposed GBP fees and deposits retained for later, but no longer imported/rendered on the public hub. All Stripe product, price and payment-link values remain null. Public pages expose Request Tender Support, not unapproved prices or checkout.
 
 ## Release Controls
 
@@ -55,7 +55,7 @@ Existing Dev Fix/Snapshot API and browser checks, locked report assets, email si
 ## Approval and Payment Holds
 
 - Review the content and cited claims individually. Source access dates are not review dates.
-- Approve proposed price, scope, capacity, tax basis and terms together before any live checkout.
+- For this launch, approve the six pages and enquiry-only scope; proposed price/VAT/deposit/terms decisions remain deferred until future pricing or checkout is expressly requested.
 - Use an authorised Stripe sandbox/test account to implement and verify payment behaviour. Never infer test mode from a live connector.
 - Match verified payment to accepted scope and deduplicate fulfilment with signed server-side handling. A success redirect is not proof of payment.
 - Agree confidential onboarding, retention and AI-processing disclosures before requesting private tender packs.

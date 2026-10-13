@@ -64,6 +64,9 @@ try {
     assert.equal(await page.locator('.lt-tender-utility tbody tr').count(),entry.utility.fields.length);
     assert.equal(await page.locator('.lt-tender-faq details').count(),3);
     assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),'noindex,follow');
+    const request=page.getByRole('link',{name:'Request Tender Support',exact:true});
+    assert.equal(await request.getAttribute('href'),`/tenders?source=${entry.slug}#enquiry`);
+    await page.screenshot({path:join(out,`resource-${entry.slug}-375.png`),fullPage:true});
     const file=join(out,`${entry.slug}.csv`);
     if(process.env.TENDERS_BASE_URL && Object.keys(apiHeaders).length) {
       // Browser download navigation does not inherit route-injected OIDC headers.
@@ -111,7 +114,9 @@ try {
     assert.match(await page.locator('.lt-tender-caption').innerText(),/AI-generated.*independent.*not affiliated/s);
     await page.locator('.lt-tender-hero').screenshot({path:join(out,`hero-${width}.png`)});
     await page.locator('.lt-tender-illustration').screenshot({path:join(out,`illustration-${width}.png`)});
-    await page.locator('#pricing').screenshot({path:join(out,`pricing-${width}.png`)});
+    assert.equal(await page.locator('.lt-tender-offer').count(),0,'Enquiry-only pages must not advertise unapproved offers');
+    assert(!/(?:£\s*\d|\bVAT\b|tax treatment|initial deposit|checkout totals)/i.test(await page.locator('.lt-tender-page').innerText()));
+    await page.locator('#scope').screenshot({path:join(out,`scope-${width}.png`)});
     await page.screenshot({path:join(out,`hub-${width}.png`),fullPage:true});
     report.views.push({width,overflow:false,images,contrast:{body:contrast(colours.body,colours.paper),heading:contrast(colours.heading,colours.paper),button:contrast(colours.buttonText,colours.buttonBg)}});
   }
@@ -130,7 +135,7 @@ try {
   const availableLinks=await page.locator('a[href^="/tenders/"]').evaluateAll(links=>links.map(link=>new URL(link.href).pathname));
   assert(availableLinks.every(path=>selected.some(entry=>entry.path===path)));
   assert.equal(await page.locator('.lt-tender-directory li').count(),5);
-  const enquiryLink=page.getByRole('link',{name:'Discuss your tender',exact:true});
+  const enquiryLink=page.getByRole('link',{name:'Request Tender Support',exact:true});
   await enquiryLink.focus(); await page.keyboard.press('Enter');
   assert.equal(new URL(page.url()).pathname,'/tenders'); assert.equal(new URL(page.url()).hash,'#enquiry'); await page.getByRole('form',{name:'Tender enquiry'}).waitFor();
   const summary=page.locator('.lt-tender-faq summary').first();
@@ -139,9 +144,9 @@ try {
   report.keyboard='Enquiry CTA and FAQ activated from the keyboard; form success receives focus';
   await page.setViewportSize({width:375,height:844});
   await page.goto(`${base}/tenders?source=cleaning-tender-support#enquiry`,{waitUntil:'networkidle'});
-  await page.getByRole('link',{name:'View scope and pricing',exact:true}).click();
-  assert.equal(new URL(page.url()).pathname,'/tenders'); assert.equal(new URL(page.url()).search,'?source=cleaning-tender-support'); assert.equal(new URL(page.url()).hash,'#pricing');
-  await page.getByRole('link',{name:'Request a fit review',exact:true}).click();
+  await page.getByRole('link',{name:'How support works',exact:true}).click();
+  assert.equal(new URL(page.url()).pathname,'/tenders'); assert.equal(new URL(page.url()).search,'?source=cleaning-tender-support'); assert.equal(new URL(page.url()).hash,'#process');
+  await page.getByRole('link',{name:'Request Tender Support',exact:true}).click();
   assert.equal(new URL(page.url()).hash,'#enquiry'); assert.equal(new URL(page.url()).search,'?source=cleaning-tender-support');
   const requests=[];let status=502;
   await page.route('**/api/tender-enquiry',async route=>{requests.push(JSON.parse(route.request().postData()));await new Promise(r=>setTimeout(r,250));await route.fulfill({status,contentType:'application/json',body:JSON.stringify({ok:status===200})});});
