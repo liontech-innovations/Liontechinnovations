@@ -60,7 +60,7 @@
 .lt-tender-form-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
 .lt-tender-form label { display:grid; gap:8px; font-size:18px; color:var(--tender-ink); min-width:0; }
 .lt-tender-form :where(input,select,textarea) { width:100%; min-width:0; min-height:48px; border:1px solid #697875; background:#ffffff; color:var(--tender-ink); border-radius:6px; padding:12px; font:inherit; }
-.lt-tender-page .lt-tender-form :is(input:not([type='checkbox']),select,textarea) { background:#ffffff; color:var(--tender-ink); }
+.lt-tender-page .lt-tender-form :is(input:not([type='checkbox']),select,textarea) { background:#ffffff; color:var(--tender-ink); border-color:#697875; }
 .lt-tender-page .lt-tender-form :is(input,textarea)::placeholder { color:var(--tender-muted); opacity:1; }
 .lt-tender-form-wide { grid-column:1/-1; }
 .lt-tender-form .lt-tender-consent { display:flex; align-items:flex-start; gap:12px; margin-block:24px; }

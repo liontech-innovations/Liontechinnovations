@@ -151,9 +151,10 @@ try {
   const requests=[];let status=502;
   await page.route('**/api/tender-enquiry',async route=>{requests.push(JSON.parse(route.request().postData()));await new Promise(r=>setTimeout(r,250));await route.fulfill({status,contentType:'application/json',body:JSON.stringify({ok:status===200})});});
   const form=page.getByRole('form',{name:'Tender enquiry'});
-  const controls=await form.locator('input:not([type="checkbox"]):not([name="website"]),select,textarea').evaluateAll(elements=>elements.map(el=>({name:el.name,text:getComputedStyle(el).color,background:getComputedStyle(el).backgroundColor,placeholder:el.matches('input,textarea')?getComputedStyle(el,'::placeholder').color:null})));
+  const controls=await form.locator('input:not([type="checkbox"]):not([name="website"]),select,textarea').evaluateAll(elements=>elements.map(el=>({name:el.name,text:getComputedStyle(el).color,background:getComputedStyle(el).backgroundColor,border:getComputedStyle(el).borderTopColor,placeholder:el.matches('input,textarea')?getComputedStyle(el,'::placeholder').color:null})));
   for (const control of controls) {
     assert(contrast(control.text,control.background)>=4.5,`Readable ${control.name} input/selected value`);
+    assert(contrast(control.border,control.background)>=3,`Visible ${control.name} control boundary`);
     if(control.placeholder) assert(contrast(control.placeholder,control.background)>=4.5,`Readable ${control.name} placeholder`);
   }
   report.formContrast='All visible field values and placeholders exceed 4.5:1 against their actual control backgrounds';
