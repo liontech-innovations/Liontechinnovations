@@ -94,7 +94,7 @@ try {
     }
   }
   report.unreviewed='20 resources and their 40 downloads return 404';
-  for(const width of [375,768,1440]) {
+  for(const width of [375,390,768,1024,1440]) {
     await page.setViewportSize({width,height:960});
     await page.goto(`${base}/tenders`,{waitUntil:'networkidle'});
     await page.locator('.lt-tender-hero').waitFor();
@@ -106,11 +106,13 @@ try {
     if(width===375) assert.equal(images[0].fit,'contain');
     const colours=await page.evaluate(()=>{const paragraph=document.querySelector('.lt-tender-page .lt-route-section > .lt-shell > p:not(.lt-tender-review)'),heading=document.querySelector('.lt-tender-page .lt-route-section h2'),button=document.querySelector('.lt-tender-page .lt-button-primary');return{body:getComputedStyle(paragraph).color,heading:getComputedStyle(heading).color,paper:getComputedStyle(document.querySelector('.lt-tender-page')).backgroundColor,buttonText:getComputedStyle(button).color,buttonBg:getComputedStyle(button).backgroundColor,bodySize:getComputedStyle(paragraph).fontSize,bodyLine:getComputedStyle(paragraph).lineHeight};});
     assert(contrast(colours.body,colours.paper)>=4.5,'Body contrast'); assert(contrast(colours.heading,colours.paper)>=4.5,'Heading contrast'); assert(contrast(colours.buttonText,colours.buttonBg)>=4.5,'Primary CTA contrast');
-    if(width<=1000) {
+    if(width<=1100) {
       const heroColours=await page.locator('.lt-tender-hero-copy').evaluate(el=>({heading:getComputedStyle(el.querySelector('h1')).color,body:getComputedStyle(el.querySelector('p:not(.lt-kicker)')).color,secondary:getComputedStyle(el.querySelector('.lt-button-secondary')).color}));
-      for(const color of Object.values(heroColours)) assert(contrast(color,colours.paper)>=4.5,'Mobile/tablet hero must have dark readable text');
+      for(const color of Object.values(heroColours)) assert(contrast(color,colours.paper)>=4.5,'Mobile/tablet hero text must be readable on the LionTech canvas');
     }
-    assert.equal(colours.bodySize,'18px'); assert(parseFloat(colours.bodyLine)>=27);
+    assert.equal(colours.bodySize,await page.locator('.marketing-site').evaluate(el=>getComputedStyle(el).fontSize),'Hub body typography must inherit the shared LionTech scale'); assert(parseFloat(colours.bodyLine)>=24);
+    assert.equal(await page.locator('.lt-tender-hub .lt-standard-card').count(),4,'Deliverables reuse the homepage card style');
+    assert(images[1].box.width<=640,'Supporting illustration must not dominate the page');
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
     assert.match(await page.locator('.lt-tender-caption').innerText(),/AI-generated.*independent.*not affiliated/s);
     await page.locator('.lt-tender-hero').screenshot({path:join(out,`hero-${width}.png`)});
