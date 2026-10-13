@@ -1,6 +1,7 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createServer } from 'vite';
 
 const projectRoot = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const publicDirectory = join(projectRoot, 'public');
@@ -8,6 +9,12 @@ const failures = [];
 const siteUrl = 'https://liontechinnovations.co.uk';
 const reviewedAt = '2026-08-15';
 const sitemapFiles = ['sitemap-core.xml', 'sitemap-industries-1.xml', 'sitemap-industries-2.xml', 'sitemap-industries-3.xml', 'sitemap-industries-4.xml', 'sitemap-industries-5.xml', 'sitemap-zimbabwe.xml'];
+const vite = await createServer({ root: projectRoot, configFile: false, logLevel: 'error', server: { middlewareMode: true, hmr: false }, optimizeDeps: { noDiscovery: true, include: [] } });
+let tenderLastModified;
+try {
+  const { publishedTenderRoutes, tenderPages, tenderHubReview } = await vite.ssrLoadModule('/src/content/tenders/index.ts');
+  tenderLastModified = new Map(publishedTenderRoutes.map(path => [new URL(path, siteUrl).toString(), path === '/tenders' ? tenderHubReview.updatedAt : tenderPages.find(page => page.path === path).updatedAt]));
+} finally { await vite.close(); }
 
 const sitemapIndex = await readFile(join(publicDirectory, 'sitemap.xml'), 'utf8');
 for (const filename of sitemapFiles) if (!sitemapIndex.includes(`${siteUrl}/${filename}`)) failures.push(`sitemap.xml: missing ${filename}`);
@@ -17,16 +24,19 @@ const urls = [];
 for (const [index, filename] of sitemapFiles.entries()) {
   const xml = await readFile(join(publicDirectory, filename), 'utf8');
   const entries = [...xml.matchAll(/<url><loc>([^<]+)<\/loc><lastmod>([^<]+)<\/lastmod><\/url>/g)];
-  const expected = index === 0 ? 20 : filename === 'sitemap-zimbabwe.xml' ? 26 : 20;
+  const expected = index === 0 ? 20 + tenderLastModified.size : filename === 'sitemap-zimbabwe.xml' ? 26 : 20;
   if (entries.length !== expected) failures.push(`${filename}: expected ${expected} URLs, received ${entries.length}`);
   for (const [, url, lastmod] of entries) {
     if (!url.startsWith(`${siteUrl}/`) || /#|vercel\.app|localhost|127\.0\.0\.1/i.test(url)) failures.push(`${filename}: invalid public URL ${url}`);
-    const expectedLastmod = [siteUrl + '/', siteUrl + '/dev-fix'].includes(url) ? '2026-10-05' : url === `${siteUrl}/zimbabwe` || url.startsWith(`${siteUrl}/zimbabwe/`) ? '2026-09-02' : reviewedAt;
+    const expectedLastmod = tenderLastModified.get(url) ?? ([siteUrl + '/', siteUrl + '/dev-fix'].includes(url) ? '2026-10-05' : url === `${siteUrl}/zimbabwe` || url.startsWith(`${siteUrl}/zimbabwe/`) ? '2026-09-02' : reviewedAt);
     if (lastmod !== expectedLastmod) failures.push(`${filename}: invalid lastmod ${lastmod}`);
     urls.push(url);
   }
 }
-if (urls.length !== 146 || new Set(urls).size !== 146) failures.push(`Sitemap inventory expected 146 unique URLs, received ${urls.length}/${new Set(urls).size}`);
+const expectedCount = 146 + tenderLastModified.size;
+if (urls.length !== expectedCount || new Set(urls).size !== expectedCount) failures.push(`Sitemap inventory expected ${expectedCount} unique URLs, received ${urls.length}/${new Set(urls).size}`);
+const sitemapTenders = urls.filter(url => new URL(url).pathname.startsWith('/tenders'));
+if (sitemapTenders.length !== tenderLastModified.size || sitemapTenders.some(url => !tenderLastModified.has(url))) failures.push('Tender sitemap entries must exactly match the founder-authorised publication registry');
 
 const llms = await readFile(join(publicDirectory, 'llms.txt'), 'utf8');
 for (const fact of ['Lion Tech Innovations Ltd', '17068390', 'Manchester-based, serving UK businesses remotely', siteUrl, `${siteUrl}/contact#snapshot-enquiry`, `${siteUrl}/ai-data/index.json`, `${siteUrl}/ai-data/source-manifest.json`, `${siteUrl}/ai-data/content-review-manifest.json`, `${siteUrl}/ai-data/release-cohorts.json`]) {

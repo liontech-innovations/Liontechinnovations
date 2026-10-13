@@ -1,19 +1,19 @@
 # Tenders: Hub and Cohort 1 Editorial Review
 
-Review performed 13 October 2026 by Codex (AI implementation/source QA). This is not a human legal review, founder approval or publication decision. Every production review record remains draft with a null reviewer/date. The other 20 resources have not received this release review.
+Editorial QA performed 13 October 2026 by Codex (AI implementation/source QA), not a human legal review. Freejoy Chimbizi explicitly authorised the six named pages and ten worksheets for enquiry-only production release on 13 October 2026, based on this documented QA. This does not claim personal sentence-by-sentence founder inspection. The other 20 resources remain draft and unapproved.
 
 ## Actual Decisions
 
 | Page | QA decision | Founder publication decision |
 | --- | --- | --- |
-| `/tenders` | Enquiry-only; proposed offers/tax wording removed; ready for founder review | Pending |
-| `/tenders/cleaning-tender-support` | Direct SDS citation corrected; ready for founder review | Pending |
-| `/tenders/facilities-management-tender-support` | Scope and supplier-association claims supported; ready for founder review | Pending |
-| `/tenders/construction-tender-support` | GB CDM scope and technical boundaries supported; ready for founder review | Pending |
-| `/tenders/bid-no-bid-checklist` | Participation timing clarified; ready for founder review | Pending |
-| `/tenders/tender-compliance-matrix-template` | Coverage tool correctly distinguished from legal assurance; ready for founder review | Pending |
+| `/tenders` | Enquiry-only; proposed offers/tax wording removed | Authorised 13 October 2026 |
+| `/tenders/cleaning-tender-support` | Direct SDS citation corrected | Authorised 13 October 2026 |
+| `/tenders/facilities-management-tender-support` | Scope and supplier-association claims supported | Authorised 13 October 2026 |
+| `/tenders/construction-tender-support` | GB CDM scope and technical boundaries supported | Authorised 13 October 2026 |
+| `/tenders/bid-no-bid-checklist` | Participation timing clarified | Authorised 13 October 2026 |
+| `/tenders/tender-compliance-matrix-template` | Coverage tool correctly distinguished from legal assurance | Authorised 13 October 2026 |
 
-These decisions reflect a page-by-page inspection, not an automated approval based on word count or similarity. An authorised human must accept, request changes or reject each page separately. Do not put Codex in the production founder approval fields.
+The QA decisions reflect a page-by-page inspection, not automated approval based on word count or similarity. The separate founder release decisions below come from the explicit authorisation, not from Codex. Deployment must still be verified independently.
 
 ## Source and Material-Claim Register
 
@@ -57,23 +57,23 @@ Each resource has three relevant siblings within Cohort 1, a hub link, its own c
 - [ ] I accept the illustrations, captions, visible company positioning and enquiry-only scope (no price/payment/tax activation).
 - [ ] Decision recorded: accept / changes required / reject. Actual reviewer, date, page path and reasons recorded.
 
-Founder reviewer: ____________________
-Decision date: ____________________
-Separate decisions for hub / cleaning / FM / construction / bid-no-bid / matrix: ____________________
+Founder release approver: Freejoy Chimbizi
+Decision date: 13 October 2026
+Separate decisions for hub / cleaning / FM / construction / bid-no-bid / matrix: all six explicitly authorised for the scoped enquiry-only release.
 
-Until this occurs, do not change the production approval records or count these pages as approved or published.
+The personal-inspection checklist above remains unchecked: the founder authorised release based on documented editorial QA. Publication records express that authorisation; they are not proof of a successful deployment.
 
 ## Six Page-Specific Founder Decision Records
 
-Each checked-in record is prepared as draft, with `reviewedBy`, `reviewedAt` and `publishedAt` null. The update timestamp is a content-version date, not an approval. The other 20 have no approval record. Fill each row from the founder's actual decision; leaving a blank is not approval.
+The six checked-in records now identify Freejoy Chimbizi and the actual authorisation date, 2026-10-13. The other 20 remain draft with no approval or publication date. No live checkout or commercial proposal was approved.
 
 | Page / record | Founder decision (accept / changes / reject) | Actual reviewer | Actual decision date | Requested changes / accepted scope |
 | --- | --- | --- | --- | --- |
-| `/tenders` / `tenderHubReview` | Pending | — | — | Enquiry-only hub |
-| `/tenders/cleaning-tender-support` | Pending | — | — | Cleaning preparation + two worksheets |
-| `/tenders/facilities-management-tender-support` | Pending | — | — | FM preparation + two worksheets |
-| `/tenders/construction-tender-support` | Pending | — | — | Construction preparation + two worksheets |
-| `/tenders/bid-no-bid-checklist` | Pending | — | — | Bid/no-bid guide + two worksheets |
-| `/tenders/tender-compliance-matrix-template` | Pending | — | — | Compliance matrix + two worksheets |
+| `/tenders` / `tenderHubReview` | Authorised release | Freejoy Chimbizi | 2026-10-13 | Enquiry-only hub, illustrations/captions, form and discovery links |
+| `/tenders/cleaning-tender-support` | Authorised release | Freejoy Chimbizi | 2026-10-13 | Cleaning preparation + two worksheets |
+| `/tenders/facilities-management-tender-support` | Authorised release | Freejoy Chimbizi | 2026-10-13 | FM preparation + two worksheets |
+| `/tenders/construction-tender-support` | Authorised release | Freejoy Chimbizi | 2026-10-13 | Construction preparation + two worksheets |
+| `/tenders/bid-no-bid-checklist` | Authorised release | Freejoy Chimbizi | 2026-10-13 | Bid/no-bid guide + two worksheets |
+| `/tenders/tender-compliance-matrix-template` | Authorised release | Freejoy Chimbizi | 2026-10-13 | Compliance matrix + two worksheets |
 
-Outstanding editorial issues: no known unresolved source/worksheet correction from QA; human acceptance of all six pages, independent/AI illustration captions, jurisdiction limits and enquiry-only positioning remains pending. This is an AI QA finding, not a legal certification or human approval. VAT/Stripe decisions are deferred and must not delay this enquiry-only review.
+Outstanding editorial issues: no known unresolved source/worksheet correction from QA. The founder explicitly authorised all six pages, ten worksheets, independent/AI illustration captions, jurisdiction limits and enquiry-only positioning. This is not legal certification. VAT/Stripe decisions remain deferred; deployment and production verification remain separate release steps.

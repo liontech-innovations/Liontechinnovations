@@ -9,6 +9,7 @@ const aiDataDirectory = join(publicDirectory, 'ai-data');
 const reviewedAt = '2026-08-15';
 const routeLastModified = { '/zimbabwe': '2026-09-02', '/': '2026-10-05', '/dev-fix': '2026-10-05' };
 const siteUrl = 'https://liontechinnovations.co.uk';
+let coreSitemapLastModified = '2026-10-05';
 
 const escapeXml = (value) => value
   .replaceAll('&', '&amp;')
@@ -25,7 +26,7 @@ ${paths.map((path) => `  <url><loc>${escapeXml(new URL(path, siteUrl).toString()
 
 const sitemapIndex = (files) => `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${files.map((file) => `  <sitemap><loc>${siteUrl}/${file}</loc><lastmod>${file === 'sitemap-core.xml' ? '2026-10-05' : file === 'sitemap-zimbabwe.xml' ? '2026-09-02' : reviewedAt}</lastmod></sitemap>`).join('\n')}
+${files.map((file) => `  <sitemap><loc>${siteUrl}/${file}</loc><lastmod>${file === 'sitemap-core.xml' ? coreSitemapLastModified : file === 'sitemap-zimbabwe.xml' ? '2026-09-02' : reviewedAt}</lastmod></sitemap>`).join('\n')}
 </sitemapindex>
 `;
 
@@ -50,6 +51,7 @@ try {
     await writeFile(join(tenderDownloads, `${page.slug}.md`), tenderWorksheet(page), 'utf8');
   }
   for (const route of publishedTenderRoutes) routeLastModified[route] = route === '/tenders' ? tenderHubReview.updatedAt : tenderPages.find(page => page.path === route).updatedAt;
+  coreSitemapLastModified = [coreSitemapLastModified, ...publishedTenderRoutes.map(route => routeLastModified[route])].sort().at(-1);
   for (const route of zimbabweIndustryRoutes) routeLastModified[route] = zimbabweIndustryUpdatedAt;
   const artifactModule = await vite.ssrLoadModule('/src/content/industries/artifacts.ts');
   const { industries } = industryModule;

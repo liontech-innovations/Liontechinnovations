@@ -35,6 +35,7 @@ try {
   const apiHeaders={};
   if(process.env.VERCEL_OIDC_TOKEN) apiHeaders['x-vercel-trusted-oidc-idp-token']=process.env.VERCEL_OIDC_TOKEN;
   const origin=new URL(base).origin;
+  const expectedRobots=process.env.TENDERS_EXPECT_PUBLISHED==='true'?'index,follow':'noindex,follow';
   browser=await chromium.launch();
   const context=await browser.newContext(contextOptions);
   // Keep a protected-preview credential scoped to this exact origin; never send it to source sites.
@@ -55,7 +56,7 @@ try {
     const initialHtml=await response.text();
     assert.equal((initialHtml.match(/<h1[ >]/g)||[]).length,1);
     assert(initialHtml.includes(`rel="canonical" href="https://liontechinnovations.co.uk${entry.path}"`));
-    assert.match(initialHtml,/name="robots" content="noindex,follow"/);
+    assert(initialHtml.includes(`name="robots" content="${expectedRobots}"`));
     assert(initialHtml.includes('Field guide for the blank worksheet'),'Useful initial HTML must not require client rendering');
     await page.locator(`[data-tender-page="${entry.slug}"]`).waitFor();
     assert.equal(await page.locator('h1').count(),1);
@@ -63,7 +64,7 @@ try {
     assert.equal(geometry.overflow,false,entry.path); assert.equal(geometry.bodyFont,'18px');
     assert.equal(await page.locator('.lt-tender-utility tbody tr').count(),entry.utility.fields.length);
     assert.equal(await page.locator('.lt-tender-faq details').count(),3);
-    assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),'noindex,follow');
+    assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),expectedRobots);
     const request=page.getByRole('link',{name:'Request Tender Support',exact:true});
     assert.equal(await request.getAttribute('href'),`/tenders?source=${entry.slug}#enquiry`);
     await page.screenshot({path:join(out,`resource-${entry.slug}-375.png`),fullPage:true});
