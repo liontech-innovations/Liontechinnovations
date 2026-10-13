@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { RouteLink } from '../components/ui/RouteLink';
 import { RouteHeading, RouteSection } from '../components/sections/RoutePageSections';
 import { TenderEnquiryForm } from '../components/TenderEnquiryForm';
@@ -29,11 +30,22 @@ const faq = [
 ];
 export function TendersPage() {
   useSeo(tenderHubSeo);
+  const [source, setSource] = useState<string | null>(null);
+  useEffect(() => {
+    const update = () => {
+      const value = new URLSearchParams(window.location.search).get('source');
+      setSource(value && tenderVisiblePages.some(page => page.slug === value) ? value : null);
+    };
+    update();
+    window.addEventListener('popstate', update);
+    return () => window.removeEventListener('popstate', update);
+  }, []);
+  const tenderPath = `/tenders${source ? `?source=${encodeURIComponent(source)}` : ''}`;
   return <div className="lt-tender-page">
     {tendersPreview && <aside className="lt-tender-review" role="note">Review draft. Content, commercial scope and prices await founder approval. No checkout is active.</aside>}
     <section className="lt-tender-hero">
       <figure className="lt-tender-hero-image"><TenderImage /></figure>
-      <div className="lt-shell lt-tender-hero-copy"><p className="lt-kicker">TENDER SPRINT · UK BUSINESS BID SUPPORT</p><h1>UK Tender Support</h1><p><strong>Your expertise. A stronger tender response.</strong></p><p>Evidence-led tender support for UK businesses, with AI assistance and human review. LionTech helps turn a tender pack and company evidence into a clear, organised response. Identify requirements, surface missing proof and develop a draft before client approval.</p><div className="lt-tender-actions"><RouteLink className="lt-button lt-button-primary" href="#enquiry">Discuss your tender</RouteLink><RouteLink className="lt-button lt-button-secondary" href="#pricing">View scope and pricing</RouteLink></div><p>Clear scope · Evidence-led preparation · Human review · No win guarantees</p></div>
+      <div className="lt-shell lt-tender-hero-copy"><p className="lt-kicker">TENDER SPRINT · UK BUSINESS BID SUPPORT</p><h1>UK Tender Support</h1><p><strong>Your expertise. A stronger tender response.</strong></p><p>Evidence-led tender support for UK businesses, with AI assistance and human review. LionTech helps turn a tender pack and company evidence into a clear, organised response. Identify requirements, surface missing proof and develop a draft before client approval.</p><div className="lt-tender-actions"><RouteLink className="lt-button lt-button-primary" href={`${tenderPath}#enquiry`}>Discuss your tender</RouteLink><RouteLink className="lt-button lt-button-secondary" href={`${tenderPath}#pricing`}>View scope and pricing</RouteLink></div><p>Clear scope · Evidence-led preparation · Human review · No win guarantees</p></div>
     </section>
     <p className="lt-shell lt-tender-caption">{illustrationCaption}</p>
     <RouteSection><RouteHeading eyebrow="THE WORK BEHIND THE WORDS" title="A tender asks for more than good writing." /><p>A polished answer still needs to address the question, fit the word limit and be supported by the right documents. Current practice and future contractual promises are not the same thing.</p><p>What does the buyer ask for? What can your business evidence? What needs confirmation before the answer is final?</p>
@@ -43,7 +55,7 @@ export function TendersPage() {
     <RouteSection><RouteHeading eyebrow="FIT AND BOUNDARIES" title="For businesses with an opportunity they can stand behind." /><p>Best suited to UK SMEs with a real opportunity, an approved delivery approach and access to relevant evidence. The sector guidance below is not a claim of completed client work in each field.</p><p>Not a fit for fake qualifications, bypassing rules, submission without approval or award guarantees. Short deadlines, multiple lots and unusual technical or legal requirements need a specific scope discussion.</p><RouteLink href="/about">About LionTech</RouteLink></RouteSection>
     <RouteSection id="pricing"><RouteHeading eyebrow="CLEAR SCOPE, AGREED FEE" title="Confirm the opportunity before committing." />
       <p className="lt-tender-review">Proposed preview amounts only. Tax treatment, scope, capacity and payment terms are not yet approved. These are not final checkout totals.</p>
-      <div className="lt-tender-offers">{tenderPricing.offers.map(offer => <article className="lt-tender-offer" key={offer.code}><h3>{offer.name}</h3><p className="lt-tender-price">Proposed {formatTenderMoney(offer.fullFee)}</p><p>{offer.initialPayment === offer.fullFee ? 'One-off full payment after acceptance.' : `${formatTenderMoney(offer.initialPayment)} initial deposit after acceptance; ${formatTenderMoney(offer.fullFee-offer.initialPayment)} balance under agreed terms. No automatic second debit.`}</p><p>{offer.scope}</p><p>{offer.delivery}</p><RouteLink className="lt-button lt-button-primary" href="#enquiry">{offer.action}</RouteLink></article>)}</div>
+      <div className="lt-tender-offers">{tenderPricing.offers.map(offer => <article className="lt-tender-offer" key={offer.code}><h3>{offer.name}</h3><p className="lt-tender-price">Proposed {formatTenderMoney(offer.fullFee)}</p><p>{offer.initialPayment === offer.fullFee ? 'One-off full payment after acceptance.' : `${formatTenderMoney(offer.initialPayment)} initial deposit after acceptance; ${formatTenderMoney(offer.fullFee-offer.initialPayment)} balance under agreed terms. No automatic second debit.`}</p><p>{offer.scope}</p><p>{offer.delivery}</p><RouteLink className="lt-button lt-button-primary" href={`${tenderPath}#enquiry`}>{offer.action}</RouteLink></article>)}</div>
       <p>Clear scope, an agreed fee and no subscription. All tiers exclude: {tenderPricing.exclusions.join('; ')}.</p>
     </RouteSection>
     <RouteSection><RouteHeading eyebrow="PRACTICAL ANSWERS" title="Before you enquire" /><div className="lt-tender-faq">{faq.map(([question,answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div></RouteSection>

@@ -42,6 +42,14 @@ Remove only those test process variables before returning to a preview build. Br
 
 Checks cover all 25 resource routes, blank downloads, source attribution, unique metadata/main content, schema, sitemap exclusion, approved asset hashes, body contrast, mobile/tablet/desktop reflow, validation, error/retry behaviour and existing route smoke tests. The zoom check is equivalent 200% CSS-viewport reflow, not a full accessibility certification. Mocked email tests do not prove inbox receipt.
 
+## Observed Preview Evidence
+
+The existing project's automatic preview deployment built successfully. All 26 draft routes were prerendered; the production-isolation build emitted none. Source/build asset hashes match all eight approved WebP variants. The original PNGs remain unchanged outside the public deploy.
+
+One clearly labelled enquiry was submitted through the protected preview form on 13 October 2026. Its success UI and actual receipt in the configured admin inbox were verified, including the originating resource path. No second test email or purchase was made. This is preview evidence, not production release approval.
+
+Existing Dev Fix/Snapshot API and browser checks, locked report assets, email signature and social-card checks passed. Existing About, navigation, company copy and payment flows are unchanged. GitHub's inherited Zimbabwe browser gate fails at `scripts/check-zimbabwe-browser.mjs:153`: it expects the obsolete `Get AI Snapshot` header action while the unchanged header displays `Request a Dev Fix`. That test was not disabled or changed. It remains a release hold separate from this preview.
+
 ## Approval and Payment Holds
 
 - Review the content and cited claims individually. Source access dates are not review dates.

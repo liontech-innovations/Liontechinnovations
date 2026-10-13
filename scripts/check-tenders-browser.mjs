@@ -43,6 +43,11 @@ try {
   for(const entry of tenderCatalog) {
     const response=await page.goto(`${base}${entry.path}`,{waitUntil:'networkidle'});
     assert.equal(response.status(),200,entry.path);
+    const initialHtml=await response.text();
+    assert.equal((initialHtml.match(/<h1[ >]/g)||[]).length,1);
+    assert(initialHtml.includes(`rel="canonical" href="https://liontechinnovations.co.uk${entry.path}"`));
+    assert.match(initialHtml,/name="robots" content="noindex,follow"/);
+    assert(initialHtml.includes('Field guide for the blank worksheet'),'Useful initial HTML must not require client rendering');
     await page.locator(`[data-tender-page="${entry.slug}"]`).waitFor();
     assert.equal(await page.locator('h1').count(),1);
     const geometry=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth,bodyFont:getComputedStyle(document.querySelector('.lt-tender-answer')).fontSize,headColour:getComputedStyle(document.querySelector('.lt-tender-page h1')).color}));
@@ -50,8 +55,22 @@ try {
     assert.equal(await page.locator('.lt-tender-utility tbody tr').count(),entry.utility.fields.length);
     assert.equal(await page.locator('.lt-tender-faq details').count(),3);
     assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),'noindex,follow');
-    const downloadWait=page.waitForEvent('download'); await page.getByRole('link',{name:'Download blank CSV'}).click(); const download=await downloadWait;
-    const file=join(out,`${entry.slug}.csv`); await download.saveAs(file);
+    const file=join(out,`${entry.slug}.csv`);
+    if(process.env.TENDERS_BASE_URL && Object.keys(apiHeaders).length) {
+      // Browser download navigation does not inherit route-injected OIDC headers.
+      // Verify the same link's bytes over authenticated HTTP; local checks still require a real click/download.
+      const href=await page.getByRole('link',{name:'Download blank CSV'}).getAttribute('href');
+      assert.equal(href,`/downloads/tenders/${entry.slug}.csv`);
+      const response=await context.request.get(`${base}${href}`,{headers:apiHeaders});
+      assert.equal(response.status(),200); assert.match(response.headers()['content-type'],/text\/csv/);
+      await writeFile(file,await response.body());
+      const worksheet=await context.request.get(`${base}/downloads/tenders/${entry.slug}.md`,{headers:apiHeaders});
+      assert.equal(worksheet.status(),200); assert((await worksheet.text()).includes('Fictional'));
+      report.downloadTransport='Protected-preview authenticated HTTP; actual click/download also verified in the local built preview';
+    } else {
+      const downloadWait=page.waitForEvent('download'); await page.getByRole('link',{name:'Download blank CSV'}).click(); const download=await downloadWait;
+      await download.saveAs(file);
+    }
     const text=await readFile(file,'utf8'); for(const field of entry.utility.fields)assert(text.toLowerCase().includes(field.toLowerCase()));
     report.routes.push({path:entry.path,status:200,overflow:false,download:'PASS',fields:entry.utility.fields.length});
   }
@@ -80,13 +99,31 @@ try {
     await page.screenshot({path:join(out,`hub-${width}.png`),fullPage:true});
     report.views.push({width,overflow:false,images,contrast:{body:contrast(colours.body,colours.paper),heading:contrast(colours.heading,colours.paper),button:contrast(colours.buttonText,colours.buttonBg)}});
   }
+  for(const name of ['tender-hero-meeting','tender-support-illustration']) for(const width of [640,960,1440,1672]) {
+    const filename=`${name}-${width}.webp`;
+    const response=await context.request.get(`${base}/assets/tenders/${filename}`,{headers:apiHeaders});
+    assert.equal(response.status(),200);
+    assert.deepEqual(await response.body(),await readFile(join(root,'public/assets/tenders',filename)),'Deployed image differs from the approved asset');
+  }
+  report.approvedAssetBytes='All eight deployed variants match the checked-in approved files';
   // 200% zoom-equivalent CSS viewport reflow, plus a doubled rendering stress check.
   await page.setViewportSize({width:720,height:450}); await page.goto(`${base}/tenders`,{waitUntil:'networkidle'});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
   await page.screenshot({path:join(out,'zoom-200-equivalent.png'),fullPage:true});
   report.zoom='200% equivalent reflow at 720 CSS pixels passed; not a full accessibility certification';
+  const enquiryLink=page.getByRole('link',{name:'Discuss your tender',exact:true});
+  await enquiryLink.focus(); await page.keyboard.press('Enter');
+  assert.equal(new URL(page.url()).pathname,'/tenders'); assert.equal(new URL(page.url()).hash,'#enquiry'); await page.getByRole('form',{name:'Tender enquiry'}).waitFor();
+  const summary=page.locator('.lt-tender-faq summary').first();
+  await summary.focus(); await page.keyboard.press('Enter');
+  assert.equal(await summary.evaluate(el=>el.parentElement.open),true);
+  report.keyboard='Enquiry CTA and FAQ activated from the keyboard; form success receives focus';
   await page.setViewportSize({width:375,height:844});
   await page.goto(`${base}/tenders?source=cleaning-tender-support#enquiry`,{waitUntil:'networkidle'});
+  await page.getByRole('link',{name:'View scope and pricing',exact:true}).click();
+  assert.equal(new URL(page.url()).pathname,'/tenders'); assert.equal(new URL(page.url()).search,'?source=cleaning-tender-support'); assert.equal(new URL(page.url()).hash,'#pricing');
+  await page.getByRole('link',{name:'Request a fit review',exact:true}).click();
+  assert.equal(new URL(page.url()).hash,'#enquiry'); assert.equal(new URL(page.url()).search,'?source=cleaning-tender-support');
   const requests=[];let status=502;
   await page.route('**/api/tender-enquiry',async route=>{requests.push(JSON.parse(route.request().postData()));await new Promise(r=>setTimeout(r,250));await route.fulfill({status,contentType:'application/json',body:JSON.stringify({ok:status===200})});});
   const form=page.getByRole('form',{name:'Tender enquiry'});
