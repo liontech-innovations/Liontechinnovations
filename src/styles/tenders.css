@@ -73,7 +73,7 @@
 @media (max-width:1000px) { .lt-tender-hero { --lt-heading:var(--tender-ink); --lt-text:var(--tender-ink); } .marketing-site .lt-tender-page .lt-tender-hero-copy h1,.marketing-site .lt-tender-page .lt-tender-hero-copy p { color:var(--tender-ink); } .marketing-site .lt-tender-page .lt-tender-hero-copy .lt-button-secondary { color:var(--tender-ink); background:transparent; border-color:var(--tender-ink); } }
 @media (max-width:600px) { .marketing-site .lt-tender-page h1 { font-size:34px; } }
 
-/* The hub inherits LionTech's shared tokens; resource worksheets stay unchanged. */
+/* The approved hub inherits LionTech's shared tokens. */
 .lt-tender-hub { --lt-canvas:inherit; --lt-text:inherit; --lt-heading:inherit; --lt-body:inherit; --lt-muted:inherit; --tender-paper:var(--lt-canvas); --tender-ink:var(--lt-heading); --tender-muted:var(--lt-body); --tender-link:var(--lt-gold-light); font-size:inherit; line-height:inherit; }
 .marketing-site .lt-tender-hub h1 { font-size:3.25rem; line-height:1.08; font-weight:600; }
 .lt-tender-hub .lt-kicker { font-size:.71rem; font-weight:750; letter-spacing:.18em; line-height:1.25; }
@@ -138,6 +138,40 @@
 .lt-tender-resource-link svg { flex:none; }
 .lt-tender-resource-link:hover { color:var(--lt-text)!important; }
 .lt-tender-section .lt-tender-form { max-width:none; }
+
+/* All catalogue resources share the homepage's section, card and type system. */
+.lt-tender-guide { --lt-canvas:inherit; --lt-text:inherit; --lt-heading:inherit; --lt-body:inherit; --lt-muted:inherit; --tender-paper:var(--lt-canvas); --tender-ink:var(--lt-heading); --tender-muted:var(--lt-body); --tender-link:var(--lt-gold-light); font-size:inherit; line-height:inherit; }
+.lt-tender-guide section { margin-top:0; scroll-margin-top:84px; }
+.lt-tender-guide :where(h1,h2,h3,strong,summary,th,caption) { color:var(--lt-heading); }
+.marketing-site .lt-tender-guide h1 { max-width:980px; font-size:3.25rem; line-height:1.08; font-weight:600; }
+.marketing-site .lt-tender-guide h2 { max-width:980px; font-size:2.5rem; letter-spacing:0; }
+.lt-tender-guide .section-eyebrow { color:var(--lt-gold); }
+.lt-tender-guide .lt-tender-answer { max-width:880px; font-size:18px; line-height:1.7; }
+.lt-tender-guidance-note { max-width:880px; padding-left:1rem; border-left:2px solid var(--lt-gold); color:var(--lt-body); font-size:.875rem; }
+.lt-tender-guide .lt-tender-breadcrumb { color:var(--lt-body); font-size:.875rem; }
+.lt-tender-guide .lt-tender-prose { max-width:880px; }
+.lt-tender-guide :where(ul,ol) { padding-left:1.5rem; }
+.lt-tender-guide li::marker { color:var(--lt-gold); }
+.lt-tender-guide :where(.lt-tender-step-grid,.lt-tender-mistake-grid,.lt-tender-related-grid) { padding:0; list-style:none; }
+.lt-tender-guide :where(.lt-tender-step-grid,.lt-tender-mistake-grid,.lt-tender-related-grid) > li { margin:0; min-width:0; }
+.lt-tender-guide .lt-standard-card p { max-width:none; }
+.lt-tender-guide .lt-tender-source { font-size:.875rem; }
+.lt-tender-guide :focus-visible { outline-color:var(--lt-gold-light); }
+.marketing-site .lt-tender-guide .lt-button { min-height:44px; padding:.75rem 1.5rem; font-size:11px; letter-spacing:0; }
+.lt-tender-guide .lt-tender-utility table { max-width:980px; font-size:1rem; }
+.lt-tender-guide .lt-tender-utility :where(th,td) { border-color:var(--lt-line); }
+.lt-tender-guide .lt-tender-utility thead { background:var(--lt-surface-high); }
+.lt-tender-guide .lt-tender-faq { max-width:980px; }
+.lt-tender-guide .lt-tender-faq details { border-color:var(--lt-line); }
+.lt-tender-guide .lt-tender-faq summary { display:flex; align-items:center; justify-content:space-between; gap:1rem; list-style:none; }
+.lt-tender-guide .lt-tender-faq summary::-webkit-details-marker { display:none; }
+.lt-tender-guide .lt-tender-faq summary svg { flex:none; color:var(--lt-gold); }
+.lt-tender-guide .lt-tender-faq details[open] summary svg { transform:rotate(180deg); }
+.lt-tender-guide .lt-tender-related-grid a { display:flex; justify-content:space-between; align-items:center; gap:1rem; height:100%; min-height:44px; text-decoration:none; font-weight:600; }
+.lt-tender-guide .lt-tender-related-grid svg,.lt-tender-all-resources svg { flex:none; }
+.lt-tender-all-resources { display:inline-flex; align-items:center; gap:.75rem; min-height:44px; }
+@media (max-width:1100px) { .marketing-site .lt-tender-guide h1 { font-size:2.75rem; } }
+@media (max-width:700px) { .marketing-site .lt-tender-guide h1 { font-size:2rem; } .marketing-site .lt-tender-guide h2 { font-size:1.875rem; } }
 
 /* Opt-in compact footer; all other routes retain the original footer DOM/style. */
 .lt-unified-footer.lt-tender-footer { padding-top:12px; }

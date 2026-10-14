@@ -16,6 +16,8 @@ const careOpsPublicEnvVars = [
 
 export default defineConfig(({mode, command}) => {
   if (mode === 'founder-review' && command === 'build') throw new Error('Founder-review mode contains preview-only licensed imagery and cannot be built for release.');
+  const catalogueReview = mode === 'tender-catalogue-review';
+  if (catalogueReview && (command === 'build' || process.env.VERCEL_ENV)) throw new Error('Full tender catalogue review is local-only and cannot be built or deployed.');
   const env = loadEnv(mode, '.', '');
   return {
     plugins: [react(), tailwindcss(), ...(mode === 'founder-review' ? [{
@@ -31,7 +33,8 @@ export default defineConfig(({mode, command}) => {
       },
     }] : [])],
     define: {
-      'import.meta.env.VITE_TENDERS_PREVIEW': JSON.stringify(process.env.VERCEL_ENV !== 'production' && (process.env.VERCEL_ENV === 'preview' || process.env.VITE_TENDERS_PREVIEW === 'true') ? 'true' : 'false'),
+      'import.meta.env.VITE_TENDERS_PREVIEW': JSON.stringify(process.env.VERCEL_ENV !== 'production' && (catalogueReview || process.env.VERCEL_ENV === 'preview' || process.env.VITE_TENDERS_PREVIEW === 'true') ? 'true' : 'false'),
+      'import.meta.env.VITE_TENDERS_CATALOGUE_REVIEW': JSON.stringify(catalogueReview ? 'true' : 'false'),
       ...Object.fromEntries(
         careOpsPublicEnvVars.map((key) => [
           `process.env.${key}`,
@@ -44,6 +47,6 @@ export default defineConfig(({mode, command}) => {
         '@': path.resolve(__dirname, '.'),
       },
     },
-    server: { hmr: true },
+    server: { hmr: true, ...(catalogueReview ? { host: '127.0.0.1', headers: { 'X-Robots-Tag': 'noindex, nofollow', 'Cache-Control': 'no-store' } } : {}) },
   };
 });

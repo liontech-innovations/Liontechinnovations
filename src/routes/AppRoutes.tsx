@@ -117,7 +117,7 @@ export function AppRoutes() {
   if (tenderHubVisible) {
     if (pathname === '/tenders') return <MarketingLayout compactFooter><TendersPage /></MarketingLayout>;
     const tenderPage = tenderPageByPath.get(pathname);
-    if (tenderPage) return <MarketingLayout><TenderSupportPage key={pathname} page={tenderPage} /></MarketingLayout>;
+    if (tenderPage) return <MarketingLayout compactFooter><TenderSupportPage key={pathname} page={tenderPage} /></MarketingLayout>;
   }
 
   if (pathname === '/email/signature-install') return <SignatureInstallPage />;

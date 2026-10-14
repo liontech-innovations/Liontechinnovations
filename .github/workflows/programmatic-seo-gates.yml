@@ -24,6 +24,7 @@ jobs:
         env:
           VERCEL_ENV: production
           VITE_TENDERS_PREVIEW: 'true'
+          VITE_TENDERS_CATALOGUE_REVIEW: 'true'
       - run: node scripts/check-dev-request.mjs
       - run: node scripts/check-dev-request-browser.mjs
       - run: npm run test:public-privacy
@@ -42,3 +43,9 @@ jobs:
       - run: npm run test:tenders
         env:
           VITE_TENDERS_PREVIEW: 'true'
+      - run: node scripts/check-tender-resource-design.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tender-resource-visual-coverage
+          path: qa-artifacts/resource-parity/catalogue
