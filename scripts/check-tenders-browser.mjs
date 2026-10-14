@@ -28,9 +28,9 @@ try {
         const response=notFound();res.statusCode=response.status;response.headers.forEach((value,key)=>res.setHeader(key,value));res.end(await response.text());return;
       }
       next();
-    });}}],preview:{host:'127.0.0.1',port:5174,strictPort:true}});
+    });}}],preview:{host:'127.0.0.1',port:0,strictPort:false}});
   }
-  const base=process.env.TENDERS_BASE_URL || 'http://127.0.0.1:5174'; report.base=base;
+  const base=process.env.TENDERS_BASE_URL || `http://127.0.0.1:${server.httpServer.address().port}`; report.base=base;
   const contextOptions={reducedMotion:'reduce',viewport:{width:375,height:844}};
   const apiHeaders={};
   if(process.env.VERCEL_OIDC_TOKEN) apiHeaders['x-vercel-trusted-oidc-idp-token']=process.env.VERCEL_OIDC_TOKEN;
@@ -132,7 +132,8 @@ try {
     }
     assert(images[1].box.width<=640,'Supporting illustration must not dominate the page');
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
-    assert.match(await page.locator('.lt-tender-caption').innerText(),/AI-generated.*independent.*not affiliated/s);
+    assert.equal(await page.locator('.lt-tender-caption').count(),0,'Visible image-warning paragraphs are removed');
+    for (const description of await page.locator('.lt-tender-page img').evaluateAll(images=>images.map(image=>image.alt))) assert.match(description,/AI-generated/,'Accurate image descriptions remain available');
     await page.locator('.lt-tender-hero').screenshot({path:join(out,`hero-${width}.png`)});
     await page.locator('.lt-tender-illustration').screenshot({path:join(out,`illustration-${width}.png`)});
     assert.equal(await page.locator('.lt-tender-offer').count(),0,'Enquiry-only pages must not advertise unapproved offers');

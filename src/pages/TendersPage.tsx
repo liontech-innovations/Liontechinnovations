@@ -6,7 +6,6 @@ import { tenderVisiblePages, tendersPreview } from '../content/tenders';
 import { tenderHubSeo } from '../content/tenders/seo';
 import { useSeo } from '../lib/seo';
 import '../styles/tenders.css';
-const illustrationCaption = "AI-generated illustration, not a photograph of LionTech staff or premises. LionTech is independent and is not affiliated with the UK government.";
 export function TenderImage({ supporting = false }: { supporting?: boolean }) {
   const name = supporting ? 'tender-support-illustration' : 'tender-hero-meeting';
   return <img src={`/assets/tenders/${name}-960.webp`} srcSet={[640,960,1440,1672].map(width => `/assets/tenders/${name}-${width}.webp ${width}w`).join(', ')} sizes={supporting ? '(max-width: 800px) 80vw, 640px' : '(max-width: 1100px) 768px, 80vw'} width="1672" height="941" alt={supporting ? 'AI-generated UK tender illustration with documents, laptop and a Union flag; not LionTech premises.' : 'AI-generated scene of fictional professionals reviewing documents, with Westminster and a Union flag in the background.'} loading={supporting ? 'lazy' : 'eager'} fetchPriority={supporting ? 'auto' : 'high'} decoding="async" />;
@@ -51,7 +50,6 @@ export function TendersPage() {
       <figure className="lt-tender-hero-image"><TenderImage /></figure>
       <div className="lt-shell lt-tender-hero-copy"><p className="lt-kicker">TENDER SPRINT · UK BUSINESS BID SUPPORT</p><h1>UK Tender Support</h1><p><strong>Your expertise. A stronger tender response.</strong></p><p>Evidence-led tender support for UK businesses, with AI assistance and human review. LionTech helps turn a tender pack and company evidence into a clear, organised response. Identify requirements, surface missing proof and develop a draft before client approval.</p><div className="lt-tender-actions"><RouteLink className="lt-button lt-button-primary" href={`${tenderPath}#enquiry`}>Request Tender Support</RouteLink><RouteLink className="lt-button lt-button-secondary" href={`${tenderPath}#process`}>How support works</RouteLink></div><p>Clear scope · Evidence-led preparation · Human review · No win guarantees</p></div>
     </section>
-    <p className="lt-shell lt-tender-caption">{illustrationCaption}</p>
     <TenderSection eyebrow="THE WORK BEHIND THE WORDS" title="A tender asks for more than good writing.">
       <div className="mt-4 max-w-3xl space-y-3"><p>A polished answer still needs to address the question, fit the word limit and be supported by the right documents. Current practice and future contractual promises are not the same thing.</p><p>What does the buyer ask for? What can your business evidence? What needs confirmation before the answer is final?</p></div>
       <ul className="lt-tender-deliverables lt-uniform-grid lt-fix-cards mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -70,7 +68,7 @@ export function TendersPage() {
           <article className="lt-standard-card light-card p-5"><h3>A real opportunity</h3><p className="mt-3 text-sm leading-6">Best suited to UK SMEs with a real opportunity, an approved delivery approach and access to relevant evidence. The sector guidance below is not a claim of completed client work in each field.</p></article>
           <article className="lt-standard-card light-card p-5"><h3>Scope and boundaries</h3><p className="mt-3 text-sm leading-6">Not a fit for fake qualifications, bypassing rules, submission without approval or award guarantees. Short deadlines, multiple lots and unusual technical or legal requirements need a specific scope discussion.</p><RouteLink className="lt-tender-resource-link mt-4" href="/about">About LionTech <ArrowRight size={15} aria-hidden="true" /></RouteLink></article>
         </div>
-        <figure className="lt-tender-illustration"><TenderImage supporting /><figcaption>{illustrationCaption} The embedded promotional wording is illustrative, not proof of a government relationship or an award outcome. <a href="/assets/tenders/tender-support-illustration-1672.webp" target="_blank" rel="noopener noreferrer">View full illustration ↗</a></figcaption></figure>
+        <figure className="lt-tender-illustration"><TenderImage supporting /><figcaption><a href="/assets/tenders/tender-support-illustration-1672.webp" target="_blank" rel="noopener noreferrer">View full illustration ↗</a></figcaption></figure>
       </div>
     </TenderSection>
     <TenderSection id="scope" eyebrow="CLEAR SCOPE" title="Confirm the opportunity before committing." tone="section-light-connected">

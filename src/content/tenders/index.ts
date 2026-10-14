@@ -11,7 +11,8 @@ export const tenderPages: TenderPage[] = /* @__PURE__ */ tenderCatalog.map<Tende
   ...tenderReviews[entry.slug],
 }));
 export const publishedTenderPages = tenderReleaseEnabled && isTenderPublished(tenderHubReview) ? tenderPages.filter(page => tenderProductionCohorts.includes(page.cohort) && isTenderPublished(page)) : [];
-export const tenderVisiblePages = tendersPreview ? tenderPages.filter(page => tenderPreviewCohorts.includes(page.cohort)) : publishedTenderPages;
+// Only Vite's loopback-only, non-buildable catalogue-review mode enables this.
+export const tenderVisiblePages = import.meta.env.VITE_TENDERS_CATALOGUE_REVIEW === 'true' ? tenderPages : tendersPreview ? tenderPages.filter(page => tenderPreviewCohorts.includes(page.cohort)) : publishedTenderPages;
 export const tenderHubVisible = tendersPreview || (tenderReleaseEnabled && isTenderPublished(tenderHubReview));
 export const tenderRoutes = [...(tenderHubVisible ? ['/tenders'] : []), ...tenderVisiblePages.map(page => page.path)];
 export const tenderPageByPath = new Map(tenderVisiblePages.map(page => [page.path, page]));
