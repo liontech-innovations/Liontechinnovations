@@ -141,7 +141,7 @@
 
 /* Opt-in compact footer; all other routes retain the original footer DOM/style. */
 .lt-unified-footer.lt-tender-footer { padding-top:12px; }
-.lt-tender-footer .lt-unified-footer-grid { grid-template-columns:1.2fr .75fr .75fr 1.65fr; gap:1.5rem; padding-bottom:10px; }
+.lt-tender-footer .lt-unified-footer-grid { grid-template-columns:1.35fr .7fr .7fr 1.6fr; gap:1.5rem; padding-bottom:10px; }
 .lt-tender-footer .lt-unified-footer-brand .footer-logo { width:116px; }
 .lt-tender-footer .lt-unified-footer-brand > a { width:140px; height:40px; }
 .lt-tender-footer .lt-unified-footer-brand > p { margin:.25rem 0; font-size:.75rem; line-height:1.4; }

@@ -118,6 +118,10 @@ try {
     if(width<768) assert.equal(await page.locator('.lt-tender-resources').evaluate(el=>getComputedStyle(el).gridAutoRows),'auto','Stacked resources must be content-sized');
     const footerHeight=await page.locator('.lt-tender-footer').evaluate(el=>el.getBoundingClientRect().height);
     if(width>=1280) assert(footerHeight<=235,`Compact desktop footer is ${footerHeight}px`);
+    if(width>=1280) {
+      const fallbackHeights=await page.locator('.lt-tender-footer').evaluate(el=>{const original=el.style.fontFamily;try{return ['system-ui','sans-serif','Verdana'].map(family=>{el.style.fontFamily=family;return {family,height:el.getBoundingClientRect().height};});}finally{el.style.fontFamily=original;}});
+      for(const {family,height} of fallbackHeights) assert(height<=235,`Compact footer with ${family} is ${height}px`);
+    }
     if(width<768) {
       for(const details of await page.locator('.lt-tender-footer details').all()) {
         const summary=details.locator('summary'); await summary.focus(); await page.keyboard.press('Enter');
