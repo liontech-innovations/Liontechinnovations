@@ -1,6 +1,6 @@
 /* Approved compact footer, shared by React layouts and prerendered static pages. */
 .lt-unified-footer.lt-compact-footer {
-  --lt-line:rgba(218,226,233,.16); --lt-text:#eef1f3; --lt-body:#b8c2cb; --lt-support:#8795a2; --lt-gold:#c8a24a; --lt-gold-light:#e0bf6d;
+  --lt-line:rgba(218,226,233,.16); --lt-text:#eef1f3; --lt-body:#b8c2cb; --lt-support:#8795a2; --lt-gold:#c8a24a; --lt-gold-light:#e0bf6d; --lt-ink-on-gold:#07111f;
   display:block; width:100%; margin:0; padding:12px 0 0; text-align:left; color:var(--lt-text);
   font-family:"Segoe UI Variable Text","Avenir Next","Aptos","Segoe UI",ui-sans-serif,system-ui,sans-serif; font-size:16px; line-height:1.6;
   border-top:1px solid rgba(224,191,109,.34); background:radial-gradient(circle at 12% 0%,rgba(200,162,74,.08),transparent 22rem),#020912;

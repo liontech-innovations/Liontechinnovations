@@ -41,7 +41,12 @@ try {
       if (process.env.VERCEL_OIDC_TOKEN) await context.route(`${new URL(base).origin}/**`, route => route.continue({ headers: { ...route.request().headers(), 'x-vercel-trusted-oidc-idp-token': process.env.VERCEL_OIDC_TOKEN } }));
       await context.route(`${new URL(base).origin}/api/**`, route => route.abort());
       const page = await context.newPage();
-      page.on('pageerror', error => report.errors.push({ path,width,text:error.message }));
+      page.on('pageerror', error => {
+        const item = { path,width,text:error.message,stack:error.stack };
+        const sourceFrame = error.stack?.split('\n').find(line => /^\s+at /.test(line)) || '';
+        if (path === '/about' && /https:\/\/(certify\.sbs\.ox\.ac\.uk|eu\.api\.accredible\.com|web-sdk\.aptrinsic\.com|bat\.bing\.com)\//.test(sourceFrame)) report.externalWarnings.push(item);
+        else report.errors.push(item);
+      });
       page.on('console', message => {
         if (message.type() !== 'error') return;
         const item = { path,width,text:message.text(),url:message.location().url };
@@ -63,6 +68,8 @@ try {
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `${path}: horizontal overflow at ${width}`);
         const footerStyle = await footer.evaluate(el => ({ overflow: getComputedStyle(el).overflow, transform: getComputedStyle(el).transform }));
         assert(!/hidden|clip/.test(footerStyle.overflow)); assert.equal(footerStyle.transform, 'none');
+        const footerAction = footer.locator('.lt-dev-fix-footer .lt-button');
+        if (await footerAction.count()) assert.equal(await footerAction.evaluate(el => getComputedStyle(el).color), 'rgb(7, 17, 31)', 'Consistent dark text on the gold footer action');
         const isZimbabwe = path.startsWith('/zimbabwe');
         const solutions = footer.getByRole('navigation', { name: 'Footer solutions' });
         assert.equal(await solutions.locator('a').first().textContent(), isZimbabwe ? 'Corporate Readiness Review' : 'Tender Support');
