@@ -24,6 +24,11 @@ export function renderSharedFooter() {
 const legacyPrerenderRoutes = [
   '/privacy-policy',
   '/terms-and-conditions',
+  '/uk-ai-infrastructure',
+  '/saas-platform-development',
+  '/ai-intake-systems',
+  '/lead-recovery',
+  '/roofing-brief',
   '/careops/lost-enquiry-recovery',
   '/careops/command-centre',
 ] as const;

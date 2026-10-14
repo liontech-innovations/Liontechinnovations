@@ -22,6 +22,7 @@ try {
   if (!remote) {
     const config = JSON.parse(await readFile(join(root, 'vercel.json'), 'utf8'));
     const exact = new Map(config.rewrites.filter(rule => !/[(:]/.test(rule.source)).map(rule => [rule.source, rule.destination]));
+    for (const path of routeInventory.programmatic) if (path.startsWith('/industries/') || path.startsWith('/zimbabwe/')) exact.set(path, `${path}/index.html`);
     server = await preview({ root, plugins: [{ name: 'public-route-rewrites', configurePreviewServer(vite) {
       vite.middlewares.use((req, res, next) => {
         const url = new URL(req.url, 'http://127.0.0.1');
