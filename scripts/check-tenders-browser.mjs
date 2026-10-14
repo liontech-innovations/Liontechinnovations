@@ -15,7 +15,7 @@ try {
   if (!process.env.TENDERS_BASE_URL) {
     const config=JSON.parse(await readFile(join(root,'vercel.json'),'utf8'));
     const exact=new Map(config.rewrites.filter(r=>!/[(:]/.test(r.source)).map(r=>[r.source,r.destination]));
-    ssr=await createServer({root,configFile:false,logLevel:'error',server:{middlewareMode:true,hmr:false},optimizeDeps:{noDiscovery:true,include:[]}});
+    ssr=await createServer({root,configFile:false,logLevel:'error',server:{middlewareMode:true,hmr:false,watch:{ignored:['**/qa-artifacts/**','**/dist/**']}},optimizeDeps:{noDiscovery:true,include:[]}});
     const {default:notFound}=await ssr.ssrLoadModule('/api/tender-not-found.ts');
     server=await preview({root,plugins:[{name:'tender-preview-rewrites',configurePreviewServer(s){s.middlewares.use(async(req,res,next)=>{
       const url=new URL(req.url,'http://127.0.0.1');
@@ -45,7 +45,7 @@ try {
   page.on('pageerror',error=>report.consoleErrors.push({text:error.message,url:''}));
   page.on('request',request=>{if(/localhost:3000|127\.0\.0\.1:3000|mission-control/i.test(request.url()))report.networkWarnings.push('Unexpected private endpoint request');});
   // Read the checked-in typed catalogue through Vite, not an invented route list.
-  if(!ssr) ssr=await createServer({root,configFile:false,logLevel:'error',server:{middlewareMode:true,hmr:false},optimizeDeps:{noDiscovery:true,include:[]}});
+  if(!ssr) ssr=await createServer({root,configFile:false,logLevel:'error',server:{middlewareMode:true,hmr:false,watch:{ignored:['**/qa-artifacts/**','**/dist/**']}},optimizeDeps:{noDiscovery:true,include:[]}});
   const {tenderCatalog}=await ssr.ssrLoadModule('/src/content/tenders/catalog.ts');
   const {tenderPreviewCohorts}=await ssr.ssrLoadModule('/src/content/tenders/release.ts');
   const selected=tenderCatalog.filter(entry=>tenderPreviewCohorts.includes(entry.cohort));
@@ -94,8 +94,8 @@ try {
     }
   }
   report.unreviewed='20 resources and their 40 downloads return 404';
-  for(const width of [375,390,768,1024,1440]) {
-    await page.setViewportSize({width,height:960});
+  for(const [width,height] of [[375,812],[390,844],[768,1024],[1024,768],[1280,800],[1440,900]]) {
+    await page.setViewportSize({width,height});
     await page.goto(`${base}/tenders`,{waitUntil:'networkidle'});
     await page.locator('.lt-tender-hero').waitFor();
     const hero=page.locator('.lt-tender-hero-image img'),secondary=page.locator('.lt-tender-illustration img');
@@ -104,14 +104,32 @@ try {
     assert.equal(images.length,2); assert(images.every(i=>i.complete&&i.width>0)); assert.equal(images[1].loading,'lazy');
     assert(Math.abs(images[1].box.width/images[1].box.height-images[1].width/images[1].height)<.01);
     if(width===375) assert.equal(images[0].fit,'contain');
-    const colours=await page.evaluate(()=>{const paragraph=document.querySelector('.lt-tender-page .lt-route-section > .lt-shell > p:not(.lt-tender-review)'),heading=document.querySelector('.lt-tender-page .lt-route-section h2'),button=document.querySelector('.lt-tender-page .lt-button-primary');return{body:getComputedStyle(paragraph).color,heading:getComputedStyle(heading).color,paper:getComputedStyle(document.querySelector('.lt-tender-page')).backgroundColor,buttonText:getComputedStyle(button).color,buttonBg:getComputedStyle(button).backgroundColor,bodySize:getComputedStyle(paragraph).fontSize,bodyLine:getComputedStyle(paragraph).lineHeight};});
+    const colours=await page.evaluate(()=>{const paragraph=document.querySelector('.lt-tender-section p'),heading=document.querySelector('.lt-tender-section h2'),button=document.querySelector('.lt-tender-page .lt-button-primary');return{body:getComputedStyle(paragraph).color,heading:getComputedStyle(heading).color,paper:getComputedStyle(document.querySelector('.lt-tender-page')).backgroundColor,buttonText:getComputedStyle(button).color,buttonBg:getComputedStyle(button).backgroundColor,bodySize:getComputedStyle(paragraph).fontSize,bodyLine:getComputedStyle(paragraph).lineHeight};});
     assert(contrast(colours.body,colours.paper)>=4.5,'Body contrast'); assert(contrast(colours.heading,colours.paper)>=4.5,'Heading contrast'); assert(contrast(colours.buttonText,colours.buttonBg)>=4.5,'Primary CTA contrast');
     if(width<=1100) {
       const heroColours=await page.locator('.lt-tender-hero-copy').evaluate(el=>({heading:getComputedStyle(el.querySelector('h1')).color,body:getComputedStyle(el.querySelector('p:not(.lt-kicker)')).color,secondary:getComputedStyle(el.querySelector('.lt-button-secondary')).color}));
       for(const color of Object.values(heroColours)) assert(contrast(color,colours.paper)>=4.5,'Mobile/tablet hero text must be readable on the LionTech canvas');
     }
     assert.equal(colours.bodySize,await page.locator('.marketing-site').evaluate(el=>getComputedStyle(el).fontSize),'Hub body typography must inherit the shared LionTech scale'); assert(parseFloat(colours.bodyLine)>=24);
-    assert.equal(await page.locator('.lt-tender-hub .lt-standard-card').count(),4,'Deliverables reuse the homepage card style');
+    assert.equal(await page.locator('.lt-tender-deliverables .lt-standard-card').count(),4,'Four native deliverable cards');
+    assert.equal(await page.locator('#process .lt-restored-gates .lt-standard-card').count(),5,'Five structured native process cards');
+    assert.equal(await page.locator('.lt-tender-resources .lt-standard-card').count(),3,'Three branded resource groups');
+    assert.equal(await page.locator('[data-tender-faq] details').count(),7,'All approved FAQ answers retained');
+    if(width<768) assert.equal(await page.locator('.lt-tender-resources').evaluate(el=>getComputedStyle(el).gridAutoRows),'auto','Stacked resources must be content-sized');
+    const footerHeight=await page.locator('.lt-tender-footer').evaluate(el=>el.getBoundingClientRect().height);
+    if(width>=1280) assert(footerHeight<=235,`Compact desktop footer is ${footerHeight}px`);
+    if(width>=1280) {
+      const fallbackHeights=await page.locator('.lt-tender-footer').evaluate(el=>{const original=el.style.fontFamily;try{return ['system-ui','sans-serif','Verdana'].map(family=>{el.style.fontFamily=family;return {family,height:el.getBoundingClientRect().height};});}finally{el.style.fontFamily=original;}});
+      for(const {family,height} of fallbackHeights) assert(height<=235,`Compact footer with ${family} is ${height}px`);
+    }
+    if(width<768) {
+      for(const details of await page.locator('.lt-tender-footer details').all()) {
+        const summary=details.locator('summary'); await summary.focus(); await page.keyboard.press('Enter');
+        assert(await details.evaluate(el=>el.open),'Footer group opens from keyboard');
+        for(const link of await details.locator('a').all()) assert(await link.isVisible(),'Essential footer links are available');
+        await summary.focus(); await page.keyboard.press('Enter');
+      }
+    }
     assert(images[1].box.width<=640,'Supporting illustration must not dominate the page');
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
     assert.match(await page.locator('.lt-tender-caption').innerText(),/AI-generated.*independent.*not affiliated/s);
@@ -137,19 +155,23 @@ try {
   report.zoom='200% equivalent reflow at 720 CSS pixels passed; not a full accessibility certification';
   const availableLinks=await page.locator('a[href^="/tenders/"]').evaluateAll(links=>links.map(link=>new URL(link.href).pathname));
   assert(availableLinks.every(path=>selected.some(entry=>entry.path===path)));
-  assert.equal(await page.locator('.lt-tender-directory li').count(),5);
-  const enquiryLink=page.getByRole('link',{name:'Request Tender Support',exact:true});
+  assert.equal(await page.locator('.lt-tender-resources li').count(),5);
+  const enquiryLink=page.locator('.lt-tender-hero').getByRole('link',{name:'Request Tender Support',exact:true});
   await enquiryLink.focus(); await page.keyboard.press('Enter');
   assert.equal(new URL(page.url()).pathname,'/tenders'); assert.equal(new URL(page.url()).hash,'#enquiry'); await page.getByRole('form',{name:'Tender enquiry'}).waitFor();
-  const summary=page.locator('.lt-tender-faq summary').first();
-  await summary.focus(); await page.keyboard.press('Enter');
-  assert.equal(await summary.evaluate(el=>el.parentElement.open),true);
+  for(const details of await page.locator('[data-tender-faq] details').all()) {
+    const summary=details.locator('summary'); await summary.focus(); await page.keyboard.press('Enter');
+    assert(await details.evaluate(el=>el.open)); assert(await details.locator('p').isVisible(),'Approved FAQ answer is accessible');
+    await page.keyboard.press('Enter'); assert(!(await details.evaluate(el=>el.open)));
+  }
   report.keyboard='Enquiry CTA and FAQ activated from the keyboard; form success receives focus';
   await page.setViewportSize({width:375,height:844});
   await page.goto(`${base}/tenders?source=cleaning-tender-support#enquiry`,{waitUntil:'networkidle'});
   await page.getByRole('link',{name:'How support works',exact:true}).click();
   assert.equal(new URL(page.url()).pathname,'/tenders'); assert.equal(new URL(page.url()).search,'?source=cleaning-tender-support'); assert.equal(new URL(page.url()).hash,'#process');
-  await page.getByRole('link',{name:'Request Tender Support',exact:true}).click();
+  await page.locator('.lt-tender-hero').getByRole('link',{name:'Request Tender Support',exact:true}).click();
+  assert.equal(new URL(page.url()).hash,'#enquiry'); assert.equal(new URL(page.url()).search,'?source=cleaning-tender-support');
+  await page.locator('.lt-tender-scope-panel .lt-button-primary').click();
   assert.equal(new URL(page.url()).hash,'#enquiry'); assert.equal(new URL(page.url()).search,'?source=cleaning-tender-support');
   const requests=[];let status=502;
   await page.route('**/api/tender-enquiry',async route=>{requests.push(JSON.parse(route.request().postData()));await new Promise(r=>setTimeout(r,250));await route.fulfill({status,contentType:'application/json',body:JSON.stringify({ok:status===200})});});
