@@ -74,7 +74,7 @@ const vite = await createServer({
 });
 
 try {
-  const { prerenderRoutes, renderMarketingRoute } = await vite.ssrLoadModule('/src/prerender.tsx');
+  const { prerenderRoutes, renderMarketingRoute, renderSharedFooter } = await vite.ssrLoadModule('/src/prerender.tsx');
 
   for (const route of prerenderRoutes) {
     const { markup, seo } = renderMarketingRoute(route);
@@ -87,7 +87,19 @@ try {
     await writeFile(outputPath, rendered, 'utf8');
   }
 
-  process.stdout.write(`Prerendered ${prerenderRoutes.length} routes.\n`);
+  // Static public pages use the same footer component and stylesheet as React routes.
+  const footer = renderSharedFooter();
+  await writeFile(join(distDirectory, 'assets/site-footer.css'), await readFile(join(projectRoot, 'src/styles/site-footer.css')));
+  for (const path of ['links/index.html', 'careops/free-check/index.html', 'careops/free-check/thanks.html']) {
+    const outputPath = join(distDirectory, path);
+    let html = await readFile(outputPath, 'utf8');
+    const marker = '<!-- shared-site-footer -->';
+    if (html.split(marker).length !== 2) throw new Error(`Expected one shared footer marker: ${path}`);
+    html = html.replace(marker, `${footer}<script src="/assets/footer-groups.js" defer></script>`);
+    html = html.replace('</head>', '<link rel="stylesheet" href="/assets/site-footer.css" />\n</head>');
+    await writeFile(outputPath, html);
+  }
+  process.stdout.write(`Prerendered ${prerenderRoutes.length} routes and shared footers on three static public pages.\n`);
 } finally {
   await vite.close();
 }

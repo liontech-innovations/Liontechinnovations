@@ -1,6 +1,7 @@
 import { tenderHubVisible } from './tenders';
 
 export const navigation = [
+  ...(tenderHubVisible ? [{ label: 'Tender Support', href: '/tenders' } as const] : []),
   { label: 'AI Visibility', href: '/ai-visibility-snapshot' },
   { label: 'How It Works', href: '/methodology' },
   { label: 'Services', href: '/ai-business-readiness' },
@@ -34,7 +35,7 @@ export function getActiveNavigationHref(pathname: string, hash = ''): Navigation
   if (path === '/' && hash === '#platforms') return '/#platforms';
   if (path === '/ai-visibility-snapshot') return '/ai-visibility-snapshot';
   if (path === '/methodology') return '/methodology';
-  if (tenderHubVisible && (path === '/tenders' || path.startsWith('/tenders/'))) return '/ai-business-readiness';
+  if (tenderHubVisible && (path === '/tenders' || path.startsWith('/tenders/'))) return '/tenders';
   if (serviceRoutes.has(path)) return '/ai-business-readiness';
   if (platformRoutes.has(path)) return '/#platforms';
   if (path === '/industries' || path.startsWith('/industries/')) return '/industries';

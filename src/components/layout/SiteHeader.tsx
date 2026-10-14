@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { getActiveNavigationHref, navigation } from '../../content/navigation';
 import { RouteLink } from '../ui/RouteLink';
 import { zimbabwe } from '../../content/zimbabwe';
+import '../../styles/site-header.css';
 
 export function SiteHeader({ market }: { market?: 'zimbabwe' }) {
   const [open, setOpen] = useState(false);
@@ -14,7 +15,7 @@ export function SiteHeader({ market }: { market?: 'zimbabwe' }) {
   const activeHref = getActiveNavigationHref(currentLocation.pathname, currentLocation.hash);
   const enquiryAction = market === 'zimbabwe'
     ? <RouteLink className="lt-button lt-button-primary" href={zimbabwe.enquiryHref} onClick={() => setOpen(false)}>Request an Executive Review</RouteLink>
-    : <RouteLink className="lt-button lt-button-primary" href="/dev-fix" onClick={() => setOpen(false)}>Request a Dev Fix</RouteLink>;
+    : <RouteLink className="lt-button lt-button-primary" href="/tenders#enquiry" onClick={() => setOpen(false)}>Request Tender Support</RouteLink>;
 
   useEffect(() => {
     const updateLocation = () => setCurrentLocation({
@@ -34,8 +35,17 @@ export function SiteHeader({ market }: { market?: 'zimbabwe' }) {
     if (!open) return;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+    const closeWithEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') { setOpen(false); document.getElementById('navigation-toggle')?.focus(); }
+    };
+    const media = window.matchMedia('(min-width: 1280px)');
+    const closeOnDesktop = () => { if (media.matches) setOpen(false); };
+    document.addEventListener('keydown', closeWithEscape);
+    media.addEventListener('change', closeOnDesktop);
     return () => {
       document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', closeWithEscape);
+      media.removeEventListener('change', closeOnDesktop);
     };
   }, [open]);
 
@@ -64,6 +74,7 @@ export function SiteHeader({ market }: { market?: 'zimbabwe' }) {
         </div>
 
         <button
+          id="navigation-toggle"
           type="button"
           className="lt-menu-toggle"
           aria-expanded={open}

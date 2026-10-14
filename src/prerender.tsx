@@ -1,4 +1,5 @@
 import { StrictMode } from 'react';
+import { SiteFooter } from './components/layout/SiteFooter';
 import { renderToString } from 'react-dom/server';
 import App from './App';
 import { company } from './content/company';
@@ -16,9 +17,18 @@ type RuntimeWithWindow = typeof globalThis & { window?: Window & typeof globalTh
 
 const runtime = globalThis as RuntimeWithWindow;
 
+export function renderSharedFooter() {
+  return renderToString(<SiteFooter />);
+}
+
 const legacyPrerenderRoutes = [
   '/privacy-policy',
   '/terms-and-conditions',
+  '/uk-ai-infrastructure',
+  '/saas-platform-development',
+  '/ai-intake-systems',
+  '/lead-recovery',
+  '/roofing-brief',
   '/careops/lost-enquiry-recovery',
   '/careops/command-centre',
 ] as const;

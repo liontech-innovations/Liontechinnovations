@@ -119,6 +119,26 @@
       "destination": "/terms-and-conditions/index.html"
     },
     {
+      "source": "/uk-ai-infrastructure",
+      "destination": "/uk-ai-infrastructure/index.html"
+    },
+    {
+      "source": "/saas-platform-development",
+      "destination": "/saas-platform-development/index.html"
+    },
+    {
+      "source": "/ai-intake-systems",
+      "destination": "/ai-intake-systems/index.html"
+    },
+    {
+      "source": "/lead-recovery",
+      "destination": "/lead-recovery/index.html"
+    },
+    {
+      "source": "/roofing-brief",
+      "destination": "/roofing-brief/index.html"
+    },
+    {
       "source": "/careops/lost-enquiry-recovery",
       "destination": "/careops/lost-enquiry-recovery/index.html"
     },

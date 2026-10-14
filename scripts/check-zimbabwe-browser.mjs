@@ -55,7 +55,7 @@ try {
     assert.deepEqual(measurement.brokenImages, []);
     assert.deepEqual(measurement.unhandledRejections, []);
     assert.ok(parseFloat(measurement.fontSize) >= 16);
-    if (width >= 1280) { assert.equal(measurement.nav.length, 8); assert.equal(new Set(measurement.nav.map((item) => item.y)).size, 1); }
+    if (width >= 1280) { assert.equal(measurement.nav.length, 9); assert.equal(measurement.nav[0].text, 'Tender Support'); assert.equal(new Set(measurement.nav.map((item) => item.y)).size, 1); }
     assert.equal(await page.locator('.lt-desktop-nav a[aria-current="page"]').textContent(), 'Zimbabwe');
 
     // Keyboard-accessible native accordion.
@@ -150,8 +150,8 @@ try {
   // SPA navigation restores the global UK metadata and form on return.
   await formPage.locator('.lt-logo-link').click();
   await formPage.waitForFunction(() => document.querySelector('meta[property="og:image"]').content.endsWith('/assets/ogliontech.png'));
-  assert.equal(await formPage.locator('.lt-header-action a').textContent(), 'Request a Dev Fix');
-  assert.equal(await formPage.locator('.lt-header-action a').getAttribute('href'), '/dev-fix');
+  assert.equal(await formPage.locator('.lt-header-action a').textContent(), 'Request Tender Support');
+  assert.equal(await formPage.locator('.lt-header-action a').getAttribute('href'), '/tenders#enquiry');
   assert.ok((await formPage.locator('.lt-unified-footer').innerText()).includes('contact@liontechinnovations.co.uk'));
   await formPage.locator('.lt-desktop-nav').getByRole('link', { name: 'Zimbabwe', exact: true }).click();
   await formPage.waitForFunction(() => document.querySelector('meta[property="og:image"]').content.endsWith('/assets/zimbabwe/zimbabwe-og.png'));
