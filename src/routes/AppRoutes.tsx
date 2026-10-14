@@ -115,9 +115,9 @@ export function AppRoutes() {
   if (legacyRoutes.has(pathname)) return <LegacySite />;
 
   if (tenderHubVisible) {
-    if (pathname === '/tenders') return <MarketingLayout compactFooter><TendersPage /></MarketingLayout>;
+    if (pathname === '/tenders') return <MarketingLayout><TendersPage /></MarketingLayout>;
     const tenderPage = tenderPageByPath.get(pathname);
-    if (tenderPage) return <MarketingLayout compactFooter><TenderSupportPage key={pathname} page={tenderPage} /></MarketingLayout>;
+    if (tenderPage) return <MarketingLayout><TenderSupportPage key={pathname} page={tenderPage} /></MarketingLayout>;
   }
 
   if (pathname === '/email/signature-install') return <SignatureInstallPage />;
@@ -148,7 +148,7 @@ export function AppRoutes() {
 export const routeInventory = {
   marketing: Object.keys(marketingRoutes),
   legacy: Array.from(legacyRoutes),
-  static: ['/careops/free-check', '/careops/free-check/thanks.html'],
+  static: ['/links', '/careops/free-check', '/careops/free-check/thanks.html'],
   internal: ['/email/signature-install'],
   programmatic: ['/industries', ...programmaticRoutes, ...zimbabweIndustryRoutes, ...tenderRoutes],
 } as const;

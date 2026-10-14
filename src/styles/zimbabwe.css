@@ -217,9 +217,4 @@
   .lt-zimbabwe-page .lt-zimbabwe-form label { font-size: 15px; }
   .lt-zimbabwe-page .lt-zimbabwe-form-note { font-size: 15px; line-height: 1.55; border-left: 2px solid var(--lt-gold); padding-left: 12px; }
   .lt-zimbabwe-form > .lt-button { width: 100%; min-height: 48px; font-size: 11px; }
-  .marketing-site[data-market='zimbabwe'] .lt-unified-footer { padding-top: 34px; }
-  .marketing-site[data-market='zimbabwe'] .lt-unified-footer p,
-  .marketing-site[data-market='zimbabwe'] .lt-unified-footer a { font-size: 14px; line-height: 1.6; }
-  .marketing-site[data-market='zimbabwe'] .lt-unified-footer nav a,
-  .marketing-site[data-market='zimbabwe'] .lt-unified-footer-company > a { min-height: 44px; padding-block: 8px; }
 }

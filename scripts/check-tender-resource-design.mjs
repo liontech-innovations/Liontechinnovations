@@ -51,7 +51,7 @@ try {
   const headers = process.env.VERCEL_OIDC_TOKEN ? { 'x-vercel-trusted-oidc-idp-token': process.env.VERCEL_OIDC_TOKEN } : {};
   browser = await chromium.launch();
   for (const width of widths) {
-    const context = await browser.newContext({ viewport: { width, height: width <= 390 ? 812 : width === 768 ? 1024 : 900 }, reducedMotion: 'reduce' });
+    const context = await browser.newContext({ viewport: { width, height: ({1440:900,1280:800,1024:768,768:1024,390:844,375:812})[width] }, reducedMotion: 'reduce' });
     if (Object.keys(headers).length) await context.route(`${new URL(base).origin}/**`, route => route.continue({ headers: { ...route.request().headers(), ...headers } }));
     // Do not send real enquiries in a visual test.
     await context.route('**/api/tender-enquiry', route => route.abort());
@@ -72,10 +72,10 @@ try {
       const text = await surface.innerText();
       await page.screenshot({ path: join(out, `${slug}-${width}.png`), fullPage: true });
       assert(!/Publication review:|Editorial review pending|not a photograph of LionTech|embedded promotional wording|this is not editorial approval/.test(text));
-      const footer = page.locator('.lt-tender-footer');
+      const footer = page.locator('.lt-compact-footer');
       assert.equal(await footer.count(), 1, `${path}: compact footer required`);
       const footerHeight = await footer.evaluate(el => el.getBoundingClientRect().height);
-      assert(footerHeight <= (width >= 1280 ? 235 : 470), `${path}: footer ${footerHeight}px at ${width}`);
+      assert(footerHeight <= (width >= 1280 ? 225 : 470), `${path}: footer ${footerHeight}px at ${width}`);
       if (width < 768) for (const details of await footer.locator('details').all()) {
         assert.equal(await details.evaluate(el => el.open), false);
         await details.locator('summary').focus(); await page.keyboard.press('Enter');
@@ -111,7 +111,7 @@ try {
         }
         assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), `https://liontechinnovations.co.uk${path}`);
         assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'), remote && process.env.TENDERS_EXPECT_PUBLISHED === 'true' ? 'index,follow' : 'noindex,follow');
-        assert.equal(await page.getByRole('link', { name: 'Request Tender Support', exact: true }).getAttribute('href'), `/tenders?source=${slug}#enquiry`);
+        assert.equal(await surface.getByRole('link', { name: 'Request Tender Support', exact: true }).getAttribute('href'), `/tenders?source=${slug}#enquiry`);
         if (width === widths[0]) for (const ext of ['csv','md']) {
           const download = await context.request.get(`${base}/downloads/tenders/${slug}.${ext}`, { headers });
           assert.equal(download.status(), 200);
@@ -125,7 +125,7 @@ try {
       report.routes.push({ path, width, status: 'PASS', publication: record?.publishStatus || 'published', footerHeight, screenshot: `${slug}-${width}.png`, footerScreenshot: `${slug}-footer-${width}.png` });
       if (record && width === 375) {
         await page.evaluate(() => { window.__tenderResourceProbe = true; });
-        await page.getByRole('link', { name: 'Request Tender Support', exact: true }).focus();
+        await surface.getByRole('link', { name: 'Request Tender Support', exact: true }).focus();
         await page.keyboard.press('Enter');
         await page.getByRole('form', { name: 'Tender enquiry' }).waitFor();
         assert.equal(new URL(page.url()).pathname, '/tenders');

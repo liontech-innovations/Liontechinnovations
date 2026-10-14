@@ -10,7 +10,7 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -35,6 +35,7 @@ jobs:
       - run: npm run test:og-card
       - run: node scripts/check-ai-crawlers.mjs
       - run: node scripts/check-programmatic-routes.mjs
+      - run: node scripts/check-site-chrome.mjs
       - run: npm run seo:indexnow:dry-run
       - run: npm audit --audit-level=high
       - run: npm run build
@@ -49,3 +50,8 @@ jobs:
         with:
           name: tender-resource-visual-coverage
           path: qa-artifacts/resource-parity/catalogue
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: shared-site-chrome-coverage
+          path: qa-artifacts/site-chrome/local

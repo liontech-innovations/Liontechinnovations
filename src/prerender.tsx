@@ -1,4 +1,5 @@
 import { StrictMode } from 'react';
+import { SiteFooter } from './components/layout/SiteFooter';
 import { renderToString } from 'react-dom/server';
 import App from './App';
 import { company } from './content/company';
@@ -15,6 +16,10 @@ import { tenderHubSeo, createTenderSeo } from './content/tenders/seo';
 type RuntimeWithWindow = typeof globalThis & { window?: Window & typeof globalThis };
 
 const runtime = globalThis as RuntimeWithWindow;
+
+export function renderSharedFooter() {
+  return renderToString(<SiteFooter />);
+}
 
 const legacyPrerenderRoutes = [
   '/privacy-policy',

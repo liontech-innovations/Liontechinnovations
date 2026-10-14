@@ -18,14 +18,7 @@ import {
 } from 'lucide-react';
 import IntakeDialog from '../components/IntakeDialog';
 import { SiteFooter } from '../components/layout/SiteFooter';
-import { getActiveNavigationHref } from '../content/navigation';
-
-const navLinks = [
-  { label: 'Services', id: 'services' },
-  { label: 'Platforms', id: 'platforms' },
-  { label: 'Company', id: 'company' },
-  { label: 'Contact', id: 'contact' },
-];
+import { SiteHeader } from '../components/layout/SiteHeader';
 
 const techStack = ['Anthropic', 'NVIDIA', 'Vercel', 'AWS', 'Supabase', 'Stripe', 'OpenAI', 'Microsoft Azure', 'Google Cloud', 'GitHub'];
 
@@ -194,75 +187,9 @@ const BrandMark = ({ name }: { name: string }) => {
   }
 };
 
-const Navbar = ({ onStartIntake }: { onStartIntake: () => void }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const activeHref = getActiveNavigationHref(window.location.pathname, window.location.hash);
-  const activeNavId = activeHref === '/#platforms'
-    ? 'platforms'
-    : activeHref === '/ai-business-readiness'
-      ? 'services'
-      : activeHref === '/contact'
-        ? 'contact'
-        : null;
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 36);
-    handleScroll();
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleNav = (id: string) => {
-    setMobileMenuOpen(false);
-    scrollToSection(id);
-  };
-
-  return (
-    <nav className={`legacy-navbar fixed left-0 top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'border-b border-[#C8A24A]/14 bg-[#020817]/90 py-2.5 shadow-[0_14px_44px_rgba(0,0,0,0.28)] backdrop-blur-xl' : 'border-b border-white/8 bg-[#020817]/30 py-3.5 backdrop-blur-[3px]'}`}>
-      <div className="relative mx-auto flex max-w-[1320px] items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="/" className="flex min-w-0 max-w-[calc(100%-3.5rem)] items-center no-underline" onClick={(event) => { event.preventDefault(); navigateTo('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-          <img src="/assets/liontechlogo.png" alt="LionTech Innovations" className="nav-logo" />
-        </a>
-        <div className="hidden items-center gap-7 lg:flex">
-          {navLinks.map((link) => (
-            <button
-              key={link.id}
-              type="button"
-              aria-current={activeNavId === link.id ? 'page' : undefined}
-              onClick={() => handleNav(link.id)}
-              className={`legacy-nav-link border-none bg-transparent text-[11px] font-bold uppercase tracking-[0.22em] text-white/74 transition hover:text-[#C8A24A]${activeNavId === link.id ? ' is-active' : ''}`}
-            >
-              {link.label}
-            </button>
-          ))}
-          <button onClick={onStartIntake} className="btn-primary whitespace-nowrap rounded-md px-6 py-2.5 text-[11px] uppercase tracking-[0.16em]">Submit a Brief</button>
-        </div>
-        <button type="button" aria-label="Toggle navigation" aria-expanded={mobileMenuOpen} onClick={() => setMobileMenuOpen((open) => !open)} className="mobile-menu-button">
-          {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </div>
-      {mobileMenuOpen && (
-        <div className="absolute left-0 top-full w-full border-t border-[#C8A24A]/12 bg-[#020817]/96 px-4 py-3 shadow-2xl backdrop-blur-xl lg:hidden">
-          <div className="mx-auto max-w-[1320px] space-y-1.5">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                type="button"
-                aria-current={activeNavId === link.id ? 'page' : undefined}
-                onClick={() => handleNav(link.id)}
-                className={`legacy-nav-link block w-full rounded-md border-none bg-transparent px-3 py-2.5 text-left text-[12px] font-bold uppercase tracking-[0.18em] text-white/78 transition hover:bg-white/8 hover:text-[#C8A24A]${activeNavId === link.id ? ' is-active' : ''}`}
-              >
-                {link.label}
-              </button>
-            ))}
-            <button onClick={() => { setMobileMenuOpen(false); onStartIntake(); }} className="btn-primary mt-2 w-full rounded-md px-6 py-3 text-[11px] uppercase tracking-[0.16em]">Submit a Brief</button>
-          </div>
-        </div>
-      )}
-    </nav>
-  );
-};
+const Navbar = (_props: { onStartIntake: () => void }) => (
+  <div className="marketing-site lt-legacy-header"><SiteHeader /></div>
+);
 
 const TrustStrip = () => (
   <div className="trust-strip hero-trust mx-auto w-full min-w-0 max-w-[1320px] overflow-hidden rounded-md border border-[#C8A24A]/14 bg-[#020817]/76 px-3 py-2.5 shadow-[0_14px_48px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:px-4">

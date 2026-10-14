@@ -65,7 +65,7 @@ try {
     assert.equal(await page.locator('.lt-tender-utility tbody tr').count(),entry.utility.fields.length);
     assert.equal(await page.locator('.lt-tender-faq details').count(),3);
     assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),expectedRobots);
-    const request=page.getByRole('link',{name:'Request Tender Support',exact:true});
+    const request=page.locator('[data-tender-page]').getByRole('link',{name:'Request Tender Support',exact:true});
     assert.equal(await request.getAttribute('href'),`/tenders?source=${entry.slug}#enquiry`);
     await page.screenshot({path:join(out,`resource-${entry.slug}-375.png`),fullPage:true});
     const file=join(out,`${entry.slug}.csv`);
@@ -94,7 +94,7 @@ try {
     }
   }
   report.unreviewed='20 resources and their 40 downloads return 404';
-  for(const [width,height] of [[375,812],[390,844],[768,1024],[1024,768],[1280,800],[1440,900]]) {
+  for(const [width,height] of [[375,812],[390,844],[430,932],[768,1024],[1024,768],[1280,800],[1440,900]]) {
     await page.setViewportSize({width,height});
     await page.goto(`${base}/tenders`,{waitUntil:'networkidle'});
     await page.locator('.lt-tender-hero').waitFor();
@@ -116,14 +116,14 @@ try {
     assert.equal(await page.locator('.lt-tender-resources .lt-standard-card').count(),3,'Three branded resource groups');
     assert.equal(await page.locator('[data-tender-faq] details').count(),7,'All approved FAQ answers retained');
     if(width<768) assert.equal(await page.locator('.lt-tender-resources').evaluate(el=>getComputedStyle(el).gridAutoRows),'auto','Stacked resources must be content-sized');
-    const footerHeight=await page.locator('.lt-tender-footer').evaluate(el=>el.getBoundingClientRect().height);
-    if(width>=1280) assert(footerHeight<=235,`Compact desktop footer is ${footerHeight}px`);
+    const footerHeight=await page.locator('.lt-compact-footer').evaluate(el=>el.getBoundingClientRect().height);
+    if(width>=1280) assert(footerHeight<=225,`Compact desktop footer is ${footerHeight}px`);
     if(width>=1280) {
-      const fallbackHeights=await page.locator('.lt-tender-footer').evaluate(el=>{const original=el.style.fontFamily;try{return ['system-ui','sans-serif','Verdana'].map(family=>{el.style.fontFamily=family;return {family,height:el.getBoundingClientRect().height};});}finally{el.style.fontFamily=original;}});
-      for(const {family,height} of fallbackHeights) assert(height<=235,`Compact footer with ${family} is ${height}px`);
+      const fallbackHeights=await page.locator('.lt-compact-footer').evaluate(el=>{const original=el.style.fontFamily;try{return ['system-ui','sans-serif','Verdana'].map(family=>{el.style.fontFamily=family;return {family,height:el.getBoundingClientRect().height};});}finally{el.style.fontFamily=original;}});
+      for(const {family,height} of fallbackHeights) assert(height<=225,`Compact footer with ${family} is ${height}px`);
     }
     if(width<768) {
-      for(const details of await page.locator('.lt-tender-footer details').all()) {
+      for(const details of await page.locator('.lt-compact-footer details').all()) {
         const summary=details.locator('summary'); await summary.focus(); await page.keyboard.press('Enter');
         assert(await details.evaluate(el=>el.open),'Footer group opens from keyboard');
         for(const link of await details.locator('a').all()) assert(await link.isVisible(),'Essential footer links are available');
@@ -133,6 +133,8 @@ try {
     assert(images[1].box.width<=640,'Supporting illustration must not dominate the page');
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
     assert.equal(await page.locator('.lt-tender-caption').count(),0,'Visible image-warning paragraphs are removed');
+    assert.equal(await page.getByRole('link',{name:'View full illustration'}).count(),0);
+    if(width<=430) for(const image of images) assert(image.box.width>=width-32,'Mobile artwork fills the section width');
     for (const description of await page.locator('.lt-tender-page img').evaluateAll(images=>images.map(image=>image.alt))) assert.match(description,/AI-generated/,'Accurate image descriptions remain available');
     await page.locator('.lt-tender-hero').screenshot({path:join(out,`hero-${width}.png`)});
     await page.locator('.lt-tender-illustration').screenshot({path:join(out,`illustration-${width}.png`)});
@@ -203,13 +205,15 @@ try {
     await page.setViewportSize({width,height:900}); await page.goto(`${base}/`,{waitUntil:'networkidle'});
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
     await page.evaluate(()=>{window.__tenderNavigationProbe=true;});
-    await page.getByRole('navigation',{name:'Footer solutions'}).getByRole('link',{name:'Tender Support',exact:true}).click();
+    const solutions=page.getByRole('navigation',{name:'Footer solutions'});
+    if(width<768) await solutions.locator('summary').click();
+    await solutions.getByRole('link',{name:'Tender Support',exact:true}).click();
     await page.locator('.lt-tender-hero').waitFor(); assert.equal(new URL(page.url()).pathname,'/tenders');
     assert.equal(await page.evaluate(()=>window.__tenderNavigationProbe),true,'Internal navigation must not reload');
-    assert.equal(await page.locator('.lt-desktop-nav a[aria-current="page"]').textContent(),'Services');
+    assert.equal(await page.locator('.lt-desktop-nav a[aria-current="page"]').textContent(),'Tender Support');
     if(width>=1280) {
       const rows=await page.locator('.lt-desktop-nav a').evaluateAll(links=>links.map(link=>link.getBoundingClientRect().y));
-      assert.equal(rows.length,8); assert.equal(new Set(rows).size,1);
+      assert.equal(rows.length,9); assert.equal(new Set(rows).size,1);
     } else {
       await page.getByRole('button',{name:'Open navigation'}).click();
       await page.locator('#mobile-navigation').getByRole('link',{name:'Services',exact:true}).click();
@@ -217,7 +221,7 @@ try {
       await page.getByRole('link',{name:'Explore Tender Support',exact:true}).click(); await page.locator('.lt-tender-hero').waitFor();
     }
   }
-  report.navigation='Existing eight-item header preserved; Services/footer entry, mobile menu and no-reload navigation pass';
+  report.navigation='Tender Support first in the nine-item header; active route, Services/footer entry, mobile menu and no-reload navigation pass';
   // Existing external credential-provider errors are not counted as new tender-page errors.
   assert.deepEqual(report.networkWarnings,[]);
   report.expectedMockFailures=report.consoleErrors.filter(error=>error.url===`${origin}/api/tender-enquiry`&&error.text.includes('502'));
