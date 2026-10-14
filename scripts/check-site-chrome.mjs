@@ -44,7 +44,9 @@ try {
       page.on('pageerror', error => {
         const item = { path,width,text:error.message,stack:error.stack };
         const sourceFrame = error.stack?.split('\n').find(line => /^\s+at /.test(line)) || '';
-        if (path === '/about' && /https:\/\/(certify\.sbs\.ox\.ac\.uk|eu\.api\.accredible\.com|web-sdk\.aptrinsic\.com|bat\.bing\.com)\//.test(sourceFrame)) report.externalWarnings.push(item);
+        // The credential provider also loads this Clarity tag; retain its exact stack as external evidence.
+        const credentialClarity = sourceFrame.includes('https://www.clarity.ms/tag/uet/134625931:') && error.message === "Cannot read properties of undefined (reading 'unshift')";
+        if (path === '/about' && (/https:\/\/(certify\.sbs\.ox\.ac\.uk|eu\.api\.accredible\.com|web-sdk\.aptrinsic\.com|bat\.bing\.com)\//.test(sourceFrame) || credentialClarity)) report.externalWarnings.push(item);
         else report.errors.push(item);
       });
       page.on('console', message => {
