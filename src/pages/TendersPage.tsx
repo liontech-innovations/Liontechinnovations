@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 import { RouteLink } from '../components/ui/RouteLink';
-import { RouteHeading, RouteSection } from '../components/sections/RoutePageSections';
 import { TenderEnquiryForm } from '../components/TenderEnquiryForm';
 import { tenderVisiblePages, tendersPreview } from '../content/tenders';
 import { tenderHubSeo } from '../content/tenders/seo';
@@ -27,6 +27,11 @@ const faq = [
   ['Is AI used?', 'AI may assist analysis, organisation and drafting. It does not replace human review or client approval. Document handling must be agreed before confidential material is supplied.'],
   ['Do you submit the tender for us?', 'Submission is not included by default. Your business retains control of its portal account and final submission unless separately agreed in writing.'],
 ];
+function TenderSection({ eyebrow, title, id, tone = 'section-dark-connected', children }: { eyebrow: string; title: string; id?: string; tone?: string; children: ReactNode }) {
+  return <section id={id} className={`lt-tender-section lt-typography-polish ${tone} py-12 sm:py-14`}>
+    <div className="lt-shell"><div className="max-w-3xl"><span className="section-eyebrow">{eyebrow}</span><h2 className="mt-3 text-3xl font-semibold sm:text-[40px]">{title}</h2></div>{children}</div>
+  </section>;
+}
 export function TendersPage() {
   useSeo(tenderHubSeo);
   const [source, setSource] = useState<string | null>(null);
@@ -47,17 +52,38 @@ export function TendersPage() {
       <div className="lt-shell lt-tender-hero-copy"><p className="lt-kicker">TENDER SPRINT · UK BUSINESS BID SUPPORT</p><h1>UK Tender Support</h1><p><strong>Your expertise. A stronger tender response.</strong></p><p>Evidence-led tender support for UK businesses, with AI assistance and human review. LionTech helps turn a tender pack and company evidence into a clear, organised response. Identify requirements, surface missing proof and develop a draft before client approval.</p><div className="lt-tender-actions"><RouteLink className="lt-button lt-button-primary" href={`${tenderPath}#enquiry`}>Request Tender Support</RouteLink><RouteLink className="lt-button lt-button-secondary" href={`${tenderPath}#process`}>How support works</RouteLink></div><p>Clear scope · Evidence-led preparation · Human review · No win guarantees</p></div>
     </section>
     <p className="lt-shell lt-tender-caption">{illustrationCaption}</p>
-    <RouteSection><RouteHeading eyebrow="THE WORK BEHIND THE WORDS" title="A tender asks for more than good writing." /><p>A polished answer still needs to address the question, fit the word limit and be supported by the right documents. Current practice and future contractual promises are not the same thing.</p><p>What does the buyer ask for? What can your business evidence? What needs confirmation before the answer is final?</p>
-      <ul className="lt-tender-deliverables"><li className="lt-standard-card"><strong>Requirements and response map.</strong> Questions, mandatory points, deadlines, owners and references.</li><li className="lt-standard-card"><strong>Evidence and gap register.</strong> Available proof, its scope and the information still needed.</li><li className="lt-standard-card"><strong>Scoped draft responses.</strong> Structured around the instructions and your approved delivery approach.</li><li className="lt-standard-card"><strong>Review notes and checklist.</strong> Issues to resolve, agreed revisions and handover for your approval.</li></ul><p>Deliverables depend on accepted scope. We do not manufacture proof, set your tender price or promise buyer acceptance.</p></RouteSection>
-    <RouteSection id="process" tone="soft"><RouteHeading eyebrow="ONE CLEAR PROCESS" title="You bring the expertise. We bring structure." /><ol className="lt-tender-workflow">{workflow.map(([title,text]) => <li key={title}><h3>{title}</h3><p>{text}</p></li>)}</ol></RouteSection>
-    <figure className="lt-shell lt-tender-illustration"><TenderImage supporting /><figcaption>{illustrationCaption} The embedded promotional wording is illustrative, not proof of a government relationship or an award outcome. <a href="/assets/tenders/tender-support-illustration-1672.webp" target="_blank" rel="noopener noreferrer">View full illustration ↗</a></figcaption></figure>
-    <RouteSection><RouteHeading eyebrow="FIT AND BOUNDARIES" title="For businesses with an opportunity they can stand behind." /><p>Best suited to UK SMEs with a real opportunity, an approved delivery approach and access to relevant evidence. The sector guidance below is not a claim of completed client work in each field.</p><p>Not a fit for fake qualifications, bypassing rules, submission without approval or award guarantees. Short deadlines, multiple lots and unusual technical or legal requirements need a specific scope discussion.</p><RouteLink href="/about">About LionTech</RouteLink></RouteSection>
-    <RouteSection id="scope" tone="navy"><RouteHeading eyebrow="CLEAR SCOPE" title="Confirm the opportunity before committing." />
-      <p>Send the opportunity, deadline and support you need. We review fit and availability, then confirm a written scope and next steps. Sending an enquiry does not commit you to a purchase or start work.</p>
-      <p>No award guarantees, fabricated evidence or automatic portal submission. Your business retains approval of its technical approach, commercial commitments and final response.</p>
-    </RouteSection>
-    <RouteSection><RouteHeading eyebrow="PRACTICAL ANSWERS" title="Before you enquire" /><div className="lt-tender-faq">{faq.map(([question,answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div></RouteSection>
-    <RouteSection id="guides" tone="soft"><RouteHeading eyebrow="USEFUL RESOURCES" title="Find the guidance or worksheet you need." />{(['sector','guide','template'] as const).map(type => <section className="lt-tender-directory" key={type}><h3>{type === 'sector' ? 'Sector preparation' : type === 'guide' ? 'Practical guides' : 'Templates and planners'}</h3><ul>{tenderVisiblePages.filter(page => page.type===type).map(page => <li key={page.slug}><RouteLink href={page.path}>{page.h1} ↗</RouteLink></li>)}</ul></section>)}</RouteSection>
-    <RouteSection id="enquiry"><RouteHeading eyebrow="YOUR NEXT STEP" title="Have a tender in front of you?" description="Tell us the deadline, public opportunity link and where you need support. We will review the request and confirm an appropriate next step." /><TenderEnquiryForm /></RouteSection>
+    <TenderSection eyebrow="THE WORK BEHIND THE WORDS" title="A tender asks for more than good writing.">
+      <div className="mt-4 max-w-3xl space-y-3"><p>A polished answer still needs to address the question, fit the word limit and be supported by the right documents. Current practice and future contractual promises are not the same thing.</p><p>What does the buyer ask for? What can your business evidence? What needs confirmation before the answer is final?</p></div>
+      <ul className="lt-tender-deliverables lt-uniform-grid lt-fix-cards mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <li className="lt-standard-card light-card p-5"><h3>Requirements and response map.</h3><p className="mt-3 text-sm leading-6">Questions, mandatory points, deadlines, owners and references.</p></li>
+        <li className="lt-standard-card light-card p-5"><h3>Evidence and gap register.</h3><p className="mt-3 text-sm leading-6">Available proof, its scope and the information still needed.</p></li>
+        <li className="lt-standard-card light-card p-5"><h3>Scoped draft responses.</h3><p className="mt-3 text-sm leading-6">Structured around the instructions and your approved delivery approach.</p></li>
+        <li className="lt-standard-card light-card p-5"><h3>Review notes and checklist.</h3><p className="mt-3 text-sm leading-6">Issues to resolve, agreed revisions and handover for your approval.</p></li>
+      </ul><p className="mt-5">Deliverables depend on accepted scope. We do not manufacture proof, set your tender price or promise buyer acceptance.</p>
+    </TenderSection>
+    <TenderSection id="process" eyebrow="ONE CLEAR PROCESS" title="You bring the expertise. We bring structure." tone="section-light-connected">
+      <ol className="lt-restored-gates mt-8">{workflow.map(([title,text], index) => <li key={title} className="lt-standard-card light-card p-5"><span className="section-eyebrow">0{index + 1}</span><h3 className="mt-3 text-xl font-medium">{title}</h3><p className="mt-3 text-sm leading-6">{text}</p></li>)}</ol>
+    </TenderSection>
+    <TenderSection eyebrow="FIT AND BOUNDARIES" title="For businesses with an opportunity they can stand behind.">
+      <div className="lt-tender-fit-layout mt-8">
+        <div className="lt-fix-cards grid gap-4">
+          <article className="lt-standard-card light-card p-5"><h3>A real opportunity</h3><p className="mt-3 text-sm leading-6">Best suited to UK SMEs with a real opportunity, an approved delivery approach and access to relevant evidence. The sector guidance below is not a claim of completed client work in each field.</p></article>
+          <article className="lt-standard-card light-card p-5"><h3>Scope and boundaries</h3><p className="mt-3 text-sm leading-6">Not a fit for fake qualifications, bypassing rules, submission without approval or award guarantees. Short deadlines, multiple lots and unusual technical or legal requirements need a specific scope discussion.</p><RouteLink className="lt-tender-resource-link mt-4" href="/about">About LionTech <ArrowRight size={15} aria-hidden="true" /></RouteLink></article>
+        </div>
+        <figure className="lt-tender-illustration"><TenderImage supporting /><figcaption>{illustrationCaption} The embedded promotional wording is illustrative, not proof of a government relationship or an award outcome. <a href="/assets/tenders/tender-support-illustration-1672.webp" target="_blank" rel="noopener noreferrer">View full illustration ↗</a></figcaption></figure>
+      </div>
+    </TenderSection>
+    <TenderSection id="scope" eyebrow="CLEAR SCOPE" title="Confirm the opportunity before committing." tone="section-light-connected">
+      <div className="lt-commercial-card lt-tender-scope-panel mt-8 p-6"><div className="space-y-3"><p>Send the opportunity, deadline and support you need. We review fit and availability, then confirm a written scope and next steps. Sending an enquiry does not commit you to a purchase or start work.</p><p>No award guarantees, fabricated evidence or automatic portal submission. Your business retains approval of its technical approach, commercial commitments and final response.</p></div><RouteLink className="lt-button lt-button-primary" href={`${tenderPath}#enquiry`}>Request Tender Support <ArrowRight size={15} aria-hidden="true" /></RouteLink></div>
+    </TenderSection>
+    <TenderSection eyebrow="PRACTICAL ANSWERS" title="Before you enquire">
+      <div className="lt-faq mt-6" data-tender-faq>{faq.map(([question,answer]) => <details key={question}><summary>{question}<ChevronDown size={18} aria-hidden="true" /></summary><p>{answer}</p></details>)}</div>
+    </TenderSection>
+    <TenderSection id="guides" eyebrow="USEFUL RESOURCES" title="Find the guidance or worksheet you need." tone="section-light-connected">
+      <div className="lt-tender-resources lt-uniform-grid lt-fix-cards mt-8 grid gap-4 md:grid-cols-3">{(['sector','guide','template'] as const).map(type => <article className="lt-standard-card light-card p-5" key={type}><h3>{type === 'sector' ? 'Sector preparation' : type === 'guide' ? 'Practical guides' : 'Templates and planners'}</h3><ul className="mt-4">{tenderVisiblePages.filter(page => page.type===type).map(page => <li key={page.slug}><RouteLink className="lt-tender-resource-link" href={page.path}>{page.h1}<ArrowRight size={16} aria-hidden="true" /></RouteLink></li>)}</ul></article>)}</div>
+    </TenderSection>
+    <TenderSection id="enquiry" eyebrow="YOUR NEXT STEP" title="Have a tender in front of you?">
+      <p className="mt-4 max-w-3xl">Tell us the deadline, public opportunity link and where you need support. We will review the request and confirm an appropriate next step.</p><TenderEnquiryForm />
+    </TenderSection>
   </div>;
 }

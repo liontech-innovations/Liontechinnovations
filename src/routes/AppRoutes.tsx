@@ -115,7 +115,7 @@ export function AppRoutes() {
   if (legacyRoutes.has(pathname)) return <LegacySite />;
 
   if (tenderHubVisible) {
-    if (pathname === '/tenders') return <MarketingLayout><TendersPage /></MarketingLayout>;
+    if (pathname === '/tenders') return <MarketingLayout compactFooter><TendersPage /></MarketingLayout>;
     const tenderPage = tenderPageByPath.get(pathname);
     if (tenderPage) return <MarketingLayout><TenderSupportPage key={pathname} page={tenderPage} /></MarketingLayout>;
   }

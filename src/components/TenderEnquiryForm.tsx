@@ -39,7 +39,7 @@ export function TenderEnquiryForm() {
     finally { busy.current = false; }
   }
   if (state === 'success') return <div className="lt-tender-success" role="status" tabIndex={-1} ref={success}><h3>Your enquiry has been received.</h3><p>We will review the opportunity and contact you about scope and availability.</p></div>;
-  return <form className="lt-enquiry-form lt-tender-form" onSubmit={submit} aria-label="Tender enquiry" aria-busy={state === 'sending'}>
+  return <form className="lt-enquiry-form lt-tender-form lt-standard-card" onSubmit={submit} aria-label="Tender enquiry" aria-busy={state === 'sending'}>
     <fieldset disabled={state === 'sending'}>
       <legend>Request Tender Support</legend>
       <div className="lt-tender-form-grid">
