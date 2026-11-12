@@ -1,21 +1,21 @@
 {
-  "checked_date": "2026-11-12",
-  "website_release_commit": "e1428bd196405e4e29c18aaa216c6a2de0cc1096",
-  "crunchbase": {
-    "url": "https://www.crunchbase.com/organization/lion-tech-innovations-ltd-2cd8",
-    "status": "published",
-    "verification": "Submission success screen followed by company-profile page read-back"
-  },
-  "linkedin": {
-    "url": "https://www.linkedin.com/feed/update/urn:li:share:7526622715970060288?actorCompanyId=140834099",
-    "status": "published",
-    "verification": "Company published-post feed read-back and View post link"
-  },
-  "editorial": {
-    "UKTN": "submission confirmed in Sent; acceptance not established",
-    "BusinessCloud": "submission confirmed in Sent; acceptance not established"
-  },
-  "goodfirms": "registration prepared, not submitted",
-  "clutch": "sign-in required, not submitted",
-  "x_thread": "prepared, not published"
+    "checked_date":  "2026-11-12",
+    "website_release_commit":  "e1428bd196405e4e29c18aaa216c6a2de0cc1096",
+    "crunchbase":  {
+                       "url":  "https://www.crunchbase.com/organization/lion-tech-innovations-ltd-2cd8",
+                       "status":  "published",
+                       "verification":  "Submission success screen followed by company-profile page read-back"
+                   },
+    "linkedin":  {
+                     "url":  "https://www.linkedin.com/feed/update/urn:li:share:7526622715970060288?actorCompanyId=140834099",
+                     "status":  "published",
+                     "verification":  "Company published-post feed read-back and View post link"
+                 },
+    "editorial":  {
+                      "UKTN":  "submission confirmed in Sent; acceptance not established",
+                      "BusinessCloud":  "submission confirmed in Sent; acceptance not established"
+                  },
+    "goodfirms":  "registration prepared, not submitted",
+    "clutch":  "Signed in; free onboarding company fields prepared; mandatory admin phone and team size unconfirmed; not submitted",
+    "x_thread":  "prepared, not published"
 }

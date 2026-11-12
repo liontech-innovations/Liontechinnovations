@@ -39,7 +39,7 @@ Private message identifiers, correspondence and Search Console figures remain ou
 ## Remaining distribution
 
 - GoodFirms: free registration page reached and non-sensitive company fields prepared; password creation and account completion remain. No listing is claimed as submitted.
-- Clutch: Basic/free profile route reached; account sign-in remains. No listing is claimed as submitted.
+- Clutch: signed in through our business Google account and reached free provider onboarding. Known company fields were prepared. Mandatory admin contact phone and total employees require confirmed business details; project size and hourly rate have not been set. No listing is claimed as submitted.
 - X / Thread Reader: copy remains prepared, not published.
 
 We did not enrol in paid plans, trials, sponsorship or advertising.
