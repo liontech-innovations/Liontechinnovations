@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "npm run seo:generate-assets && vite build && node scripts/prerender.mjs && node scripts/check-programmatic-content.mjs && node scripts/check-seo-artifacts.mjs && node scripts/check-public-company-privacy.mjs && node scripts/check-zimbabwe-cluster.mjs && node scripts/check-tenders.mjs",
+    "build": "npm run seo:generate-assets && vite build && node scripts/prerender.mjs && node scripts/check-programmatic-content.mjs && node scripts/check-seo-artifacts.mjs && node scripts/check-public-company-privacy.mjs && node scripts/check-zimbabwe-cluster.mjs && node scripts/check-tenders.mjs && node scripts/check-organization-identity.mjs && node scripts/check-research.mjs",
     "preview": "vite preview",
     "test:browser-console": "npm run build && node scripts/check-browser-console.mjs",
     "test:snapshot-url": "npm run build && node scripts/check-snapshot-url-normalisation.mjs",
@@ -28,7 +28,9 @@
     "seo:indexnow:submit": "node scripts/indexnow.mjs --submit",
     "test:programmatic-content": "npm run build",
     "test:ai-crawlers": "npm run build && node scripts/check-ai-crawlers.mjs",
-    "test:programmatic-routes": "npm run build && node scripts/check-programmatic-routes.mjs"
+    "test:programmatic-routes": "npm run build && node scripts/check-programmatic-routes.mjs",
+    "test:research": "node scripts/check-research.mjs",
+    "test:research-browser": "node scripts/check-research-browser.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.14",
@@ -38,8 +40,7 @@
     "openai": "^4.77.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "resend": "^4.0.0",
-    "vite": "^6.2.0"
+    "resend": "^4.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
@@ -48,6 +49,6 @@
     "playwright": "^1.62.1",
     "tailwindcss": "^4.1.14",
     "typescript": "~5.8.2",
-    "vite": "^6.2.0"
+    "vite": "6.4.4"
   }
 }

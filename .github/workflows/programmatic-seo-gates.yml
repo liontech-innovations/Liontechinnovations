@@ -25,6 +25,8 @@ jobs:
           VERCEL_ENV: production
           VITE_TENDERS_PREVIEW: 'true'
           VITE_TENDERS_CATALOGUE_REVIEW: 'true'
+      - run: npm run test:research-browser
+      - run: python3 public/research/evidence/payment_flow_simulation.py
       - run: node scripts/check-dev-request.mjs
       - run: node scripts/check-dev-request-browser.mjs
       - run: npm run test:public-privacy

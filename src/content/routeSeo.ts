@@ -1,4 +1,5 @@
 import type { SeoConfig } from '../lib/seo';
+import { researchSeo } from './research';
 import {
   breadcrumbSchema,
   contactPageSchema,
@@ -22,6 +23,7 @@ const devFixServiceSchema = {
 };
 
 export const routeSeo = {
+  ...researchSeo,
   '/zimbabwe': {
     title: zimbabwe.seoTitle,
     description: zimbabwe.seoDescription,

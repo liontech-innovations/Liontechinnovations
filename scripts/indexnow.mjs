@@ -9,11 +9,11 @@ const host = 'liontechinnovations.co.uk';
 const siteUrl = `https://${host}`;
 const submit = process.argv.includes('--submit');
 const all = process.argv.includes('--all');
+const research = process.argv.includes('--research');
 const cohortArgument = process.argv.indexOf('--cohort');
 const cohortId = cohortArgument >= 0 ? process.argv[cohortArgument + 1] : undefined;
 
-if (all && cohortId) throw new Error('Choose either --all or --cohort <id>, not both.');
-if (!all && !cohortId) throw new Error('Choose an explicit release scope with --all or --cohort <id>.');
+if ([all, research, Boolean(cohortId)].filter(Boolean).length !== 1) throw new Error('Choose exactly one release scope: --all, --research or --cohort <id>.');
 
 const sitemapFiles = [
   'sitemap-core.xml',
@@ -26,7 +26,14 @@ const sitemapFiles = [
 
 let urls;
 let scope;
-if (all) {
+if (research) {
+  const vite = await createServer({ root: projectRoot, configFile: false, appType: 'custom', logLevel: 'error', server: { middlewareMode: true, hmr: false }, optimizeDeps: { noDiscovery: true, include: [] } });
+  try {
+    const { researchRoutes } = await vite.ssrLoadModule('/src/content/research.ts');
+    urls = researchRoutes.map(path => new URL(path, siteUrl).toString());
+  } finally { await vite.close(); }
+  scope = 'research-2026-11-12';
+} else if (all) {
   urls = [];
   for (const filename of sitemapFiles) {
     const xml = await readFile(join(projectRoot, 'public', filename), 'utf8');
@@ -37,7 +44,8 @@ if (all) {
     const { coreSitemapRoutes } = await vite.ssrLoadModule('/src/content/industries/artifacts.ts');
     const { programmaticRoutes } = await vite.ssrLoadModule('/src/content/industries/index.ts');
     const { publishedTenderRoutes } = await vite.ssrLoadModule('/src/content/tenders/index.ts');
-    const expected = new Set([...coreSitemapRoutes, ...programmaticRoutes, ...publishedTenderRoutes].map(path => new URL(path, siteUrl).toString()));
+    const { researchRoutes } = await vite.ssrLoadModule('/src/content/research.ts');
+    const expected = new Set([...coreSitemapRoutes, ...programmaticRoutes, ...publishedTenderRoutes, ...researchRoutes].map(path => new URL(path, siteUrl).toString()));
     if (urls.length !== expected.size || urls.some(url => !expected.has(url))) throw new Error('IndexNow sitemap inventory does not exactly match the authored public route registry.');
   } finally { await vite.close(); }
   scope = 'all-public-routes';

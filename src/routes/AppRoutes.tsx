@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import { ResearchPage } from '../pages/ResearchPage';
+import { ResearchArticlePage } from '../pages/ResearchArticlePage';
+import { researchArticleByPath, researchArticles } from '../content/research';
 import LegacySite from '../legacy/LegacySite';
 import { MarketingLayout } from '../components/layout/MarketingLayout';
 import { AboutPage } from '../pages/AboutPage';
@@ -27,6 +30,7 @@ import { TenderSupportPage } from '../pages/TenderSupportPage';
 import { tenderHubVisible, tenderPageByPath, tenderRoutes } from '../content/tenders';
 
 const marketingRoutes = {
+  '/research': ResearchPage,
   '/': HomePage,
   '/ai-visibility-snapshot': AIVisibilitySnapshotPage,
   '/ai-business-readiness': AIBusinessReadinessPage,
@@ -114,6 +118,9 @@ export function AppRoutes() {
 
   if (legacyRoutes.has(pathname)) return <LegacySite />;
 
+  const researchArticle = researchArticleByPath.get(pathname);
+  if (researchArticle) return <MarketingLayout><ResearchArticlePage key={pathname} article={researchArticle} /></MarketingLayout>;
+
   if (tenderHubVisible) {
     if (pathname === '/tenders') return <MarketingLayout><TendersPage /></MarketingLayout>;
     const tenderPage = tenderPageByPath.get(pathname);
@@ -150,5 +157,5 @@ export const routeInventory = {
   legacy: Array.from(legacyRoutes),
   static: ['/links', '/careops/free-check', '/careops/free-check/thanks.html'],
   internal: ['/email/signature-install'],
-  programmatic: ['/industries', ...programmaticRoutes, ...zimbabweIndustryRoutes, ...tenderRoutes],
+  programmatic: [...researchArticles.map(article => article.path), '/industries', ...programmaticRoutes, ...zimbabweIndustryRoutes, ...tenderRoutes],
 } as const;
