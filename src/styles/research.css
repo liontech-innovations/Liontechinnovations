@@ -1,0 +1,33 @@
+.marketing-site .lt-research-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.marketing-site .lt-research-card{padding:32px;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.marketing-site .lt-route-section .lt-research-card h2{font-size:clamp(1.35rem,2vw,1.8rem);line-height:1.35;margin:0;letter-spacing:-.025em}
+.marketing-site .lt-research-card p{margin:0;line-height:1.7}
+.marketing-site .lt-research-card h2 a{color:inherit;text-decoration:none}
+.marketing-site .lt-research-card h2 a:hover{text-decoration:underline}
+.marketing-site .lt-research-read{margin-top:auto;display:inline-flex;align-items:center;gap:10px;font-weight:700}
+.marketing-site .lt-research-meta{font-size:.9rem;line-height:1.8;color:#abc5d7}
+.marketing-site .lt-research-standards{max-width:800px;margin-top:46px;line-height:1.85}
+.marketing-site .lt-route-section .lt-research-standards h2{font-size:1.65rem;line-height:1.4;margin-bottom:14px}
+.marketing-site .lt-research-article-section{background:#061320}
+.marketing-site .lt-research-article{max-width:780px;margin:0 auto;font-size:1.0625rem;line-height:1.85;color:#d6e5f3;overflow-wrap:anywhere}
+.marketing-site .lt-research-article p{margin:0 0 22px;color:inherit}
+.marketing-site .lt-route-section .lt-research-article h2{font-size:clamp(1.35rem,2.2vw,1.8rem);line-height:1.4;color:#f1f6fb;margin:0 0 20px;letter-spacing:-.02em}
+.marketing-site .lt-research-article a,.marketing-site .lt-research-standards a,.marketing-site .lt-research-read{color:#f0ca6c;text-decoration:underline;text-underline-offset:3px}
+.marketing-site .lt-research-article .lt-button-primary{color:#081220;text-decoration:none}
+.marketing-site .lt-research-note{background:#10263b;border-left:4px solid #c7a347;padding:20px 24px;margin:28px 0;font-size:.95rem;color:#d6e5f3}
+.marketing-site .lt-research-article .lt-research-meta{color:#abc5d7}
+.marketing-site .lt-research-intro{font-size:1.18rem;line-height:1.8}
+.marketing-site .lt-research-contents{margin:32px 0 44px;padding:24px;border:1px solid #40566a;border-radius:12px}
+.marketing-site .lt-route-section .lt-research-contents h2{font-size:1.1rem;margin-bottom:12px}
+.marketing-site .lt-research-article ul,.marketing-site .lt-research-article ol{padding-left:24px;margin:14px 0 24px;list-style-position:outside}
+.marketing-site .lt-research-article ul{list-style-type:disc}
+.marketing-site .lt-research-article ol{list-style-type:decimal}
+.marketing-site .lt-research-article li{padding-left:5px;margin-bottom:10px;color:#d6e5f3}
+.marketing-site .lt-research-section{margin:0 0 44px;scroll-margin-top:120px}
+.marketing-site .lt-research-citation{font-size:.85em;font-weight:600}
+.marketing-site .lt-research-evidence{padding:28px;background:#10263b;border-radius:12px;margin:36px 0;color:#d6e5f3}
+.marketing-site .lt-research-sources{font-size:.95rem;border-top:1px solid #40566a;padding-top:30px}
+.marketing-site .lt-research-sources li{scroll-margin-top:120px}
+.marketing-site .lt-research-next{margin-top:40px;padding-top:28px;border-top:1px solid #40566a}
+.marketing-site .lt-route-section .lt-research-next h2{margin-top:32px;font-size:1.3rem}
+@media(max-width:700px){.marketing-site .lt-research-cards{grid-template-columns:1fr;gap:20px}.marketing-site .lt-research-card{padding:24px}.marketing-site .lt-research-article{font-size:1rem}.marketing-site .lt-research-note,.marketing-site .lt-research-contents,.marketing-site .lt-research-evidence{padding:18px}.marketing-site .lt-research-intro{font-size:1.08rem}.marketing-site .lt-research-article .lt-button{max-width:100%;white-space:normal;text-align:center}}

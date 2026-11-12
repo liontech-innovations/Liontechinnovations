@@ -1,0 +1,85 @@
+{
+  "scope": "Local Python/SQLite simulation; no Stripe API or production integration tested",
+  "pass_count": 8,
+  "fail_count": 0,
+  "cases": [
+    {
+      "case": "Paid server event without a browser return",
+      "result": "PASS",
+      "processed_events": 1,
+      "fulfilment_intents": 1,
+      "orders": {
+        "s1": "paid"
+      }
+    },
+    {
+      "case": "Same event delivered twice",
+      "result": "PASS",
+      "processed_events": 1,
+      "fulfilment_intents": 1,
+      "orders": {
+        "s1": "paid"
+      }
+    },
+    {
+      "case": "Different paid events for the same session",
+      "result": "PASS",
+      "processed_events": 2,
+      "fulfilment_intents": 1,
+      "orders": {
+        "s1": "paid"
+      }
+    },
+    {
+      "case": "Delayed payment: unpaid then paid",
+      "result": "PASS",
+      "processed_events": 2,
+      "fulfilment_intents": 1,
+      "orders": {
+        "s1": "paid"
+      }
+    },
+    {
+      "case": "Unpaid completion alone does not fulfil",
+      "result": "PASS",
+      "processed_events": 1,
+      "fulfilment_intents": 0,
+      "orders": {
+        "s1": "unpaid"
+      }
+    },
+    {
+      "case": "Late failed event does not undo a paid state",
+      "result": "PASS",
+      "processed_events": 2,
+      "fulfilment_intents": 1,
+      "orders": {
+        "s1": "paid"
+      }
+    },
+    {
+      "case": "Failure before commit then retry",
+      "result": "PASS",
+      "processed_events": 1,
+      "fulfilment_intents": 1,
+      "orders": {
+        "s1": "paid"
+      }
+    },
+    {
+      "case": "Eight concurrent deliveries for one session",
+      "result": "PASS",
+      "processed_events": 8,
+      "fulfilment_intents": 1,
+      "orders": {
+        "s1": "paid"
+      }
+    }
+  ],
+  "limits": [
+    "No cryptographic verification tested",
+    "No live network, database service or payment tested",
+    "Unique outbox intent is not a guarantee of exactly-once external delivery",
+    "Refunds, disputes, subscriptions and separate payment attempts are outside this model"
+  ]
+}

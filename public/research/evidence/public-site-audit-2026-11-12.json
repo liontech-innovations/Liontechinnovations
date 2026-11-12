@@ -1,0 +1,35 @@
+{
+  "checked_at": "2026-11-12",
+  "scope": "Public HTTP sample; not a full website crawl or ranking study",
+  "website": "https://liontechinnovations.co.uk/",
+  "observations": {
+    "homepage_http_status": 200,
+    "html_robots": "index,follow",
+    "canonical": "https://liontechinnovations.co.uk/",
+    "organization_schema_present": true,
+    "organization_id": "https://liontechinnovations.co.uk/#organization",
+    "organization_sameAs_present": false,
+    "robots_allows_public_paths": [
+      "Googlebot",
+      "Bingbot",
+      "OAI-SearchBot"
+    ],
+    "robots_disallows": [
+      "/api/",
+      "/admin/"
+    ],
+    "sitemap_index_children": 7
+  },
+  "sampled_urls": [
+    "https://liontechinnovations.co.uk/",
+    "https://liontechinnovations.co.uk/robots.txt",
+    "https://liontechinnovations.co.uk/sitemap.xml",
+    "https://liontechinnovations.co.uk/sitemap-core.xml"
+  ],
+  "limitations": [
+    "Robots directives do not establish crawler delivery through a firewall",
+    "HTTP access and canonical hints do not establish indexing or citations",
+    "No post-change ranking or traffic result is claimed",
+    "Private Search Console analytics are excluded from this public record"
+  ]
+}

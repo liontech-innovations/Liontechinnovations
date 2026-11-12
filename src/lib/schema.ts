@@ -11,6 +11,10 @@ export const organizationSchema = {
   legalName: company.legalName,
   alternateName: company.tradingName,
   url: company.website,
+  sameAs: [
+    company.companiesHouseUrl,
+    'https://uk.linkedin.com/company/liontechinnovations',
+  ],
   logo: `${company.website}${company.logo}`,
   email: company.email,
   description: company.description,

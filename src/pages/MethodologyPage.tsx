@@ -35,6 +35,7 @@ export function MethodologyPage() {
     <>
       <PageHero eyebrow="THE FIVE GATES METHOD" title="A clear way to inspect AI readiness." description="LionTech observes how AI systems find, explain, support, compare and act on public business information.">
         <PrimaryCta />
+        <RouteLink className="lt-button lt-button-secondary" href="/research">Read our research</RouteLink>
         <RouteLink className="lt-button lt-button-secondary" href="/ai-business-readiness">See the readiness path</RouteLink>
       </PageHero>
 

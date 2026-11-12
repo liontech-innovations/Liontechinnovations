@@ -48,6 +48,7 @@ export function SiteFooter({ market }: { market?: 'zimbabwe' }) {
 
         <FooterGroup title="Company" label="Footer company" companyGroup open={groupsOpen}>
           <RouteLink href="/methodology">Methodology</RouteLink>
+          <RouteLink href="/research">Research &amp; Practical Guides</RouteLink>
           <RouteLink href="/industries">Industry Guides</RouteLink>
           <RouteLink href="/zimbabwe">Zimbabwe → Corporate AI &amp; Digital Modernisation</RouteLink>
           <RouteLink href="/company-brain">Company Brain</RouteLink>

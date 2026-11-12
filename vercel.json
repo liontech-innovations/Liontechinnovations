@@ -19,6 +19,18 @@
   ],
   "rewrites": [
     {
+      "source": "/research",
+      "destination": "/research/index.html"
+    },
+    {
+      "source": "/research/ai-search-business-website-audit",
+      "destination": "/research/ai-search-business-website-audit/index.html"
+    },
+    {
+      "source": "/research/payment-fulfilment-eight-test-checklist",
+      "destination": "/research/payment-fulfilment-eight-test-checklist/index.html"
+    },
+    {
       "source": "/tenders",
       "destination": "/tenders/index.html"
     },

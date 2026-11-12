@@ -38,6 +38,9 @@ const vite = await createServer({
 });
 
 try {
+  const { researchRoutes, researchPublishedAt } = await vite.ssrLoadModule('/src/content/research.ts');
+  for (const route of researchRoutes) routeLastModified[route] = researchPublishedAt;
+  coreSitemapLastModified = [coreSitemapLastModified, researchPublishedAt].sort().at(-1);
   const industryModule = await vite.ssrLoadModule('/src/content/industries/index.ts');
   const { zimbabweIndustryRoutes, zimbabweIndustryUpdatedAt } = await vite.ssrLoadModule('/src/content/zimbabweIndustries.ts');
   const { tenderVisiblePages, publishedTenderRoutes, tenderPages, tenderHubReview } = await vite.ssrLoadModule('/src/content/tenders/index.ts');
@@ -79,7 +82,7 @@ try {
 
   const sitemapFiles = ['sitemap-core.xml', ...industrySitemapGroups.map((_, index) => `sitemap-industries-${index + 1}.xml`), 'sitemap-zimbabwe.xml'];
   await writeFile(join(publicDirectory, 'sitemap.xml'), sitemapIndex(sitemapFiles), 'utf8');
-  await writeFile(join(publicDirectory, 'sitemap-core.xml'), urlset([...coreSitemapRoutes, ...publishedTenderRoutes]), 'utf8');
+  await writeFile(join(publicDirectory, 'sitemap-core.xml'), urlset([...coreSitemapRoutes, ...publishedTenderRoutes, ...researchRoutes]), 'utf8');
   await writeFile(join(publicDirectory, 'sitemap-zimbabwe.xml'), urlset(zimbabweIndustryRoutes), 'utf8');
   for (const [index, pages] of industrySitemapGroups.entries()) {
     await writeFile(join(publicDirectory, `sitemap-industries-${index + 1}.xml`), urlset(pages.map((page) => page.path)), 'utf8');
