@@ -37,6 +37,9 @@
 .lt-compact-footer .lt-unified-footer-bottom > div { display:flex; gap:1rem; }
 .lt-compact-footer .lt-unified-footer-bottom a { color:var(--lt-support); text-decoration:none; }
 .lt-compact-footer :focus-visible { outline:2px solid var(--lt-gold-light); outline-offset:3px; }
+@media (min-width:1280px) {
+  .lt-compact-footer .lt-footer-company-links { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
 @media (max-width:1050px) {
   .lt-compact-footer .lt-unified-footer-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .lt-compact-footer .lt-unified-footer-brand,.lt-compact-footer .lt-unified-footer-company { grid-column:auto; }
