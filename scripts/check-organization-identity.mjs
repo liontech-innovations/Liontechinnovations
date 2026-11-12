@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 const expected = [
   'https://find-and-update.company-information.service.gov.uk/company/17068390',
   'https://uk.linkedin.com/company/liontechinnovations',
+  'https://www.crunchbase.com/organization/lion-tech-innovations-ltd-2cd8',
 ];
 const checked = [];
 for (const file of ['dist/index.html', 'dist/about/index.html']) {
@@ -16,7 +17,7 @@ for (const file of ['dist/index.html', 'dist/about/index.html']) {
   assert.equal(org.legalName, 'Lion Tech Innovations Ltd');
   assert.deepEqual(org.sameAs, expected);
   assert.equal(org.identifier.value, '17068390');
-  assert.equal(new Set(org.sameAs).size, 2);
+  assert.equal(new Set(org.sameAs).size, expected.length);
   checked.push(file);
 }
 console.log(JSON.stringify({status:'PASS', scope:'Built homepage and About Organization identity', checked, sameAs:expected}, null, 2));

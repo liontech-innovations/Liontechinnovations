@@ -1,6 +1,6 @@
 # LionTech external company profiles
 
-Prepared 12 November 2026. Status: ready for account completion; not submitted or published.
+Prepared 12 November 2026. Current status: Crunchbase published and read back; Clutch and GoodFirms remain unsubmitted. See `../RELEASE-STATUS.md` for verified outcomes. The platform instructions below are the original preparation notes.
 
 ## Shared identity
 
@@ -90,7 +90,7 @@ Use 3 March 2026 for incorporation, not an assumed earlier founding date. Leave 
 
 ## Submission checks
 
-A public web search on 12 November 2026 returned no matching results for the exact company name within the three target domains. This is not proof that no profile exists: search inside each platform before creating a duplicate. No authenticated sessions for these directories were available. No registration or submission has been completed.
+A public web search on 12 November 2026 returned no matching results for the exact company name within the three target domains. This is not proof that no profile exists: search inside each platform before creating a duplicate. At the initial preparation stage, authenticated directory sessions were unavailable. We subsequently completed Crunchbase through our signed-in account; the current outcome is recorded in RELEASE-STATUS.md.
 
 A profile is counted as complete only when its public URL works and the name, domain and company details have been checked. Add that exact URL to sameAs only after this check. Directory copy is self-published information, not independent editorial endorsement.
 

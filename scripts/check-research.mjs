@@ -17,7 +17,8 @@ for (const path of routes) {
   const schema = JSON.parse(html.match(/<script id="route-structured-data" type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
   const org = schema.find(item => item['@type'] === 'Organization');
   assert.equal(org['@id'], base + '/#organization');
-  assert.equal(org.sameAs.length, 2);
+  assert.equal(org.sameAs.length, 3);
+  assert.ok(org.sameAs.includes('https://www.crunchbase.com/organization/lion-tech-innovations-ltd-2cd8'));
   const article = articles.find(item => item.path === path);
   if (article) {
     const structured = schema.find(item => item['@type'] === 'Article');

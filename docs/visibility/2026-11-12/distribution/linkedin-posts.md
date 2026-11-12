@@ -1,6 +1,6 @@
 # LinkedIn publication copy
 
-Status: prepared, not posted. Publish the article pages first and verify their public URLs. The article URLs below are proposed publication paths, not currently confirmed live pages.
+Status: the articles are live and one combined company-page post linking both was published on 12 November 2026. See `../RELEASE-STATUS.md` for its verified URL. The component drafts below were not posted separately.
 
 ## Post 1: AI discoverability
 
