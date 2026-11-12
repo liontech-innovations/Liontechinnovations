@@ -14,6 +14,7 @@ export const organizationSchema = {
   sameAs: [
     company.companiesHouseUrl,
     'https://uk.linkedin.com/company/liontechinnovations',
+    'https://www.crunchbase.com/organization/lion-tech-innovations-ltd-2cd8',
   ],
   logo: `${company.website}${company.logo}`,
   email: company.email,
