@@ -2,6 +2,12 @@
 
 Vite, React and TypeScript website for Lion Tech Innovations Ltd. The primary commercial positioning is AI Business Readiness, led by the AI Visibility Snapshot.
 
+## Development documentation
+
+**Superpowers is LionTech's primary development framework.** All coding agents must start with [AGENTS.md](AGENTS.md) and the [central agent skills registry](docs/AGENT_SKILLS.md), then use the applicable skills through their own [officially supported Superpowers integration](https://github.com/obra/superpowers#installation). Each agent requires an independently verified global installation; repository documentation does not install or activate it.
+
+Existing [architecture](docs/ARCHITECTURE.md), [design](DESIGN.md), [Founder lock](docs/FOUNDER_LOCK_V1.1.md), [content governance](docs/AI_FIRST_CONTENT_GOVERNANCE.md) and [release controls](docs/RELEASE_READY_CHECKLIST.md) remain in force. Never merge, deploy or modify production without explicit Founder authorisation.
+
 ## Run Locally
 
 **Prerequisites:**  Node.js
